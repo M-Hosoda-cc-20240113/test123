@@ -1,0 +1,141 @@
+@startuml
+
+!define RELATION_ENTITY #FCE4D6-F8CBAD
+!define RELATION_MARK_COLOR FFAA00
+
+/'
+デフォルトのスタイルを設定
+'/
+skinparam class {
+    BorderColor Black
+}
+
+package "サンプル" as sample  {
+    entity "{テーブル名}" as samples <{テーブルの概要}>  {
+        + {カラム名}:{型} [{属性}] ({カラムの概要}) 緑丸は主キー
+        --
+        # {カラム名} [FK({外部キーのテーブル名}:{外部キーのカラム名}, OU:{on update(default=RESTRICT)} OD:{on delete(default=RESTRICT})] ({カラムの概要}) 黄色菱形は外部キー
+        - {カラム名} [{制約}] ({カラムの概要}) 赤四角はハッシュ化
+        ~ {カラム名} [{制約}] ({カラムの概要}) 青三角は暗号化
+        {カラム名}:{型} [{制約}] ({カラムの概要})
+    }
+}
+
+package "Aegis ER図" as aegis_erd {
+    entity "users" as users <ユーザー> {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        ~ email:varchar(255) [NN] (メールアドレス) 
+        - email_hash:varchar(255) [UQ, NN] (メールアドレス)
+        - password:varchar(255) [NN] (パスワード)
+        ~ sei:varchar(255) [NN] (姓)
+        ~ sei_kana:varchar(255) [NN] (姓カナ)
+        ~ mei:varchar(255) [NN] (名)
+        ~ mei_kana:varchar(255) [NN] (名カナ)
+        ~ tel:varchar(255) [NN, UQ] (電話番号)
+        ~ birthday:varchar(255) (生年月日)
+        remember_token:varchar(100) (自動ログイントークン)
+        is_receive_notification_mail:tinyint [NN, default:1] (メンションメールを受け取るか)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+        deleted_at:datetime (削除日時)
+    }
+
+    entity "skills" as skills <スキル> {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        name:varchar(255) [NN] (スキル名)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
+
+    entity "projects" as projects <案件> {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        name:varchar(255) [NN] (案件名)
+        min_unit_price:int (最小案件単価)
+        max_unit_price:int [NN] (最大案件単価)
+        min_operation_time:int (最小稼働時間)
+        max_operation_time:int [NN] (最大稼働時間)
+        description:text [NN] (案件概要)
+        required_condition:text (必須条件)
+        better_condition:text (尚可条件)
+        work_start:time (勤務開始時間)
+        work_end:time (勤務終了時間)
+        weekly_attendance:int (出勤回数/週)
+        feature:text (特徴)
+        place: varchar(255) [NN] (勤務地)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
+
+    entity "rel_projects_skills" as rel_projects_skills <案件・スキル> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        # project_id [FK(projects:id), UIDX(1)] (案件ID)
+        # skill_id [FK(skills:id), UIDX(2)] (スキルID)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    } 
+
+    entity "positions" as positions <ポジション> {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        name:varchar [NN, UQ] (配置ポジション名) 
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
+
+    entity "rel_positions_projects" as rel_positions_projects <ポジション・案件> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        # position_id [FK(positions:id), UIDX(1)] (ポジションID)
+        # project_id [FK(projects:id), UIDX(2)] (案件ID)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
+
+    entity "skill_levels" as skill_levels <スキルレベル> {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        level:varchar(255) [NN, UQ] (レベル感)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
+
+    entity "specs" as specs <スペック> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        # skill_id [FK(skills:id), UIDX(1)] (スキルID)
+        # skill_level_id [FK(skill_level:id), UIDX(2)] (スキルレベルID)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
+
+    entity "rel_specs_users" as rel_specs_users <スペック・ユーザー> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        # spec_id [FK(specs:id), UIDX(1)] (スペックID)
+        # user_id [FK(users:id), UIDX(2)] (ユーザーID)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
+}
+
+/' 案件・スキル '/
+skills      --le--o{    rel_projects_skills
+projects    --do--|{    rel_projects_skills
+
+/' ポジション・案件 '/
+positions   --ri--|{    rel_positions_projects   
+projects    --le--|{    rel_positions_projects
+
+/' スペック(スキル・スキルレベル) '/
+skills      --do--|{    specs
+skill_levels    --up--|{    specs
+
+/' スペック・ユーザー '/
+users   --do--o{    rel_specs_users
+specs   --ri--o{    rel_specs_users
+@enduml
+
