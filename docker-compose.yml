@@ -17,18 +17,18 @@ services:
       - ./app:/aegis
   
   mysql:
-        build: ./infra/mysql
-        environment:
-            MYSQL_DATABASE: aegis
-            MYSQL_ROOT_PASSWORD: password
-            MYSQL_USER: developer
-            MYSQL_PASSWORD: password
-            TZ: Asia/Tokyo
-        command: --port 4000
-        ports:
-            - 4000:4000
-        volumes:
-            - ./infra/mysql/data:/docker-entrypoint-initdb.d
+    build: ./infra/mysql
+    environment:
+        MYSQL_DATABASE: aegis
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_USER: developer
+        MYSQL_PASSWORD: password
+        TZ: Asia/Tokyo
+    command: --port 4000
+    ports:
+        - 4000:4000
+    volumes:
+        - ./infra/mysql/data:/docker-entrypoint-initdb.d
   redis:
     image: "redis:latest"
     ports:
