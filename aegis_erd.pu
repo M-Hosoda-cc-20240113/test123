@@ -36,6 +36,7 @@ package "Aegis ER図" as aegis_erd {
         ~ birthday:varchar(255) (生年月日)
         remember_token:varchar(100) (自動ログイントークン)
         is_receive_notification_mail:tinyint [NN, default:1] (メンションメールを受け取るか)
+        is_working:tinyint(1) [NN, default:0] (aegis経由で働いているかどうか)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
         deleted_at:datetime (削除日時)
@@ -65,6 +66,7 @@ package "Aegis ER図" as aegis_erd {
         weekly_attendance:int (出勤回数/週)
         feature:text (特徴)
         place: varchar(255) [NN] (勤務地)
+        decided:tinyint(1) [NN, default:0] (案件が決まったかどうか)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
@@ -95,47 +97,46 @@ package "Aegis ER図" as aegis_erd {
         updated_at:datetime [NN] (更新日時)
     }
 
-    entity "skill_levels" as skill_levels <スキルレベル> {
+    entity "rel_levels_skills_users" as rel_levels_skills_users <レベル・スキル・ユーザー> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
         + id:int [PK, AI, UN] (ID)
         ---
-        level:varchar(255) [NN, UQ] (レベル感)
+        # user_id [FK(users:id), UIDX(1)] (ユーザーID)
+        # skill_id [FK(skills:id), UIDX(2)] (スキルID)
+        # level_id [FK(levels:id), UIDX(3)] (レベルID)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
 
-    entity "specs" as specs <スペック> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
+    entity "levels" as levels <レベル> {
         + id:int [PK, AI, UN] (ID)
         ---
-        # skill_id [FK(skills:id), UIDX(1)] (スキルID)
-        # skill_level_id [FK(skill_level:id), UIDX(2)] (スキルレベルID)
+        level:varchar(255) [NN, UQ] (レベル)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
 
-    entity "rel_specs_users" as rel_specs_users <スペック・ユーザー> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
+    entity "applications" as applications <応募> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
         + id:int [PK, AI, UN] (ID)
         ---
-        # spec_id [FK(specs:id), UIDX(1)] (スペックID)
-        # user_id [FK(users:id), UIDX(2)] (ユーザーID)
+        user_id [FK(users:id), UIDX(1)] (ユーザーID)
+        project_id [FK(projects:is), UIDX(2)] (案件ID)
+        application_date:datetime [NN] (申込日)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
 }
 
-/' 案件・スキル '/
-skills      --le--o{    rel_projects_skills
+users       --ri--o{    rel_levels_skills_users
+levels      --le--|{    rel_levels_skills_users
+skills      --do--|{    rel_levels_skills_users
+
+skills      --up--|{    rel_projects_skills
 projects    --do--|{    rel_projects_skills
 
-/' ポジション・案件 '/
-positions   --ri--|{    rel_positions_projects   
-projects    --le--|{    rel_positions_projects
+projects    --do--|{    rel_positions_projects
+positions   --up--|{    rel_positions_projects
 
-/' スペック(スキル・スキルレベル) '/
-skills      --do--|{    specs
-skill_levels    --up--|{    specs
-
-/' スペック・ユーザー '/
-users   --do--o{    rel_specs_users
-specs   --ri--o{    rel_specs_users
+users       --up--o{    applications
+projects    --do--o{    applications
 @enduml
 
