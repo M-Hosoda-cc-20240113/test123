@@ -14,11 +14,18 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->increments('id');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('email_hash')->unique();
             $table->string('password');
+            $table->string('sei');
+            $table->string('sei_kana');
+            $table->string('mei');
+            $table->string('mei_kana');
+            $table->string('tel')->unique();
+            $table->string('birthday');
+            $table->tinyInteger('is_receive_notification_mail')->default(1);  //メンションメールを受け取るか
+            $table->tinyInteger('is_working')->default(0);  //aegis経由で働いてるかどうか
             $table->rememberToken();
             $table->timestamps();
         });
