@@ -11,7 +11,8 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+        <div>
+            <x-label for="sei" :value="__('名前')" />
             <!-- sei -->
             <div class="mt-4">
                 <x-label for="sei" :value="__('性')" />
@@ -32,6 +33,7 @@
                 <x-label for="mei_kana" :value="__('メイ')" />
                 <x-input id="mei_kana" class="mt-1 w-full" type="text" name="mei_kana" :value="old('mei_kana')" required autofocus />
             </div>
+        </div>
             <!-- tel -->
             <div class="mt-4">
                 <x-label for="tel" :value="__('Tel')" />
