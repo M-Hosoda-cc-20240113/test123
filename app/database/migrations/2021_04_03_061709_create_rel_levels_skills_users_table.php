@@ -23,13 +23,16 @@ class CreateRelLevelsSkillsUsersTable extends Migration
             //外部キーの設定
             $table->foreign('user_id')
 							->references('id')
-                            ->on('users');
+                            ->on('users')
+                            ->onDelete('cascade');
             $table->foreign('skill_id')
 							->references('id')
-                            ->on('skills');
+                            ->on('skills')
+                            ->onDelete('cascade');
             $table->foreign('level_id')
 							->references('id')
-                            ->on('levels');
+                            ->on('levels')
+                            ->onDelete('cascade');
         });
     }
 

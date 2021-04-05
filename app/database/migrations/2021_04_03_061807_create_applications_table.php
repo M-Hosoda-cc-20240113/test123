@@ -22,10 +22,13 @@ class CreateApplicationsTable extends Migration
             //外部キーの設定
             $table->foreign('user_id')
                         ->references('id')
-                        ->on('users');
+                        ->on('users')
+                        ->onDelete('cascade');
+
             $table->foreign('peoject_id')
                         ->references('id')
-                        ->on('projects');
+                        ->on('projects')
+                        ->onDelete('cascade');
             
         });
     }

@@ -21,10 +21,12 @@ class CreateRelProjectsSkillsTable extends Migration
             //外部キーの設定
             $table->foreign('project_id')
                         ->references('id')
-                        ->on('projects');
+                        ->on('projects')
+                        ->onDelete('cascade');
             $table->foreign('skill_id')
                         ->references('id')
-                        ->on('skills');
+                        ->on('skills')
+                        ->onDelete('cascade');
             
         });
     }
