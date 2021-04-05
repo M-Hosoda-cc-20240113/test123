@@ -1,0 +1,111 @@
+/* breakpoint */
+/* max min width */
+/* color */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: #f4f7f8;
+  color: #333333;
+  font-size: 1.4rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:focus {
+  outline: none;
+}
+
+li {
+  list-style: none;
+}
+
+.Container {
+  padding: 0 20px;
+  margin: 0 auto;
+  max-width: 960px;
+  display: flex;
+}
+
+.Main {
+  max-width: 72rem;
+  width: 75%;
+  padding: 0 15px;
+}
+
+.SideBar {
+  max-width: 24rem;
+  width: 25%;
+  padding-left: 15px;
+}
+
+/* A Modern CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
