@@ -1,0 +1,43 @@
+/* breakpoint */
+$breakpoint-pc: 768px;
+$breakpoint-sp: 767px;
+
+@mixin max-screen($break-point) {
+    @media screen and (max-width: $break-point) {
+        @content;
+    }
+}
+
+@mixin min-screen($break-point) {
+    @media screen and (min-width: $break-point) {
+        @content;
+    }
+}
+
+@mixin screen($break-point-min, $break-point-max) {
+    @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+        @content;
+    }
+}
+
+/* max min width */
+$content-max-width: 960px;
+$content-min-width: 320px;
+
+/* color */
+
+// primary
+$primary-color: #42b5d1;
+$primary-dark-color: #2c99b4;
+
+// muted
+$muted-color: #88889f;
+$muted-light-color: #cdcddf;
+$muted-lighter-color: #dfe4e7;
+$muted-lightest-color: #f4f7f8;
+
+// light
+$light-color: #ffffff;
+
+// dark
+$dark-color: #333333;
