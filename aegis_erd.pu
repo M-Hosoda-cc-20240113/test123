@@ -45,7 +45,7 @@ package "Aegis ER図" as aegis_erd {
     entity "skills" as skills <スキル> {
         + id:int [PK, AI, UN] (ID)
         ---
-        name:varchar(255) [NN] (スキル名)
+        name:varchar(255) [NN, UQ] (スキル名)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
