@@ -7,7 +7,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
 COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
 
 RUN apt-get update && \
-  apt-get -y install git unzip libzip-dev libicu-dev libonig-dev && \
+  apt-get -y install git unzip libzip-dev libicu-dev libonig-dev vim mlocate  && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   docker-php-ext-install intl pdo_mysql zip bcmath && \
@@ -17,6 +17,9 @@ RUN apt-get update && \
 # Node.jsをインストール
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
+
+#便利コマンド追加
+RUN echo "alias ll='ls -l'" >> /root/.bashrc
 
 COPY ./php.ini /usr/local/etc/php/php.ini
 
