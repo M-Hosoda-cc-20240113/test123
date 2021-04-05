@@ -33,7 +33,7 @@ package "Aegis ER図" as aegis_erd {
         ~ mei:varchar(255) [NN] (名)
         ~ mei_kana:varchar(255) [NN] (名カナ)
         ~ tel:varchar(255) [NN, UQ] (電話番号)
-        ~ birthday:varchar(255) (生年月日)
+        ~ birthday:date(255) (生年月日)
         remember_token:varchar(100) (自動ログイントークン)
         is_receive_notification_mail:tinyint [NN, default:1] (メンションメールを受け取るか)
         is_working:tinyint(1) [NN, default:0] (aegis経由で働いているかどうか)
@@ -74,8 +74,8 @@ package "Aegis ER図" as aegis_erd {
     entity "rel_projects_skills" as rel_projects_skills <案件・スキル> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
         + id:int [PK, AI, UN] (ID)
         ---
-        # project_id [FK(projects:id), UIDX(1)] (案件ID)
-        # skill_id [FK(skills:id), UIDX(2)] (スキルID)
+        # project_id [FK(projects:id), UIDX(1), OD:CASCADE] (案件ID)
+        # skill_id [FK(skills:id), UIDX(2), OD:CASCADE] (スキルID)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     } 
@@ -91,8 +91,8 @@ package "Aegis ER図" as aegis_erd {
     entity "rel_positions_projects" as rel_positions_projects <ポジション・案件> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
         + id:int [PK, AI, UN] (ID)
         ---
-        # position_id [FK(positions:id), UIDX(1)] (ポジションID)
-        # project_id [FK(projects:id), UIDX(2)] (案件ID)
+        # position_id [FK(positions:id), UIDX(1), OD:CASCADE] (ポジションID)
+        # project_id [FK(projects:id), UIDX(2), OD:CASCADE] (案件ID)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
@@ -100,9 +100,9 @@ package "Aegis ER図" as aegis_erd {
     entity "rel_levels_skills_users" as rel_levels_skills_users <レベル・スキル・ユーザー> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
         + id:int [PK, AI, UN] (ID)
         ---
-        # user_id [FK(users:id), UIDX(1)] (ユーザーID)
-        # skill_id [FK(skills:id), UIDX(2)] (スキルID)
-        # level_id [FK(levels:id), UIDX(3)] (レベルID)
+        # user_id [FK(users:id), UIDX(1) , OD:CASCADE] (ユーザーID)
+        # skill_id [FK(skills:id), UIDX(2) , OD:CASCADE] (スキルID)
+        # level_id [FK(levels:id), UIDX(3) , OD:CASCADE] (レベルID)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
@@ -118,8 +118,8 @@ package "Aegis ER図" as aegis_erd {
     entity "applications" as applications <応募> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
         + id:int [PK, AI, UN] (ID)
         ---
-        user_id [FK(users:id), UIDX(1)] (ユーザーID)
-        project_id [FK(projects:is), UIDX(2)] (案件ID)
+        user_id [FK(users:id), UIDX(1) , OD:CASCADE] (ユーザーID)
+        project_id [FK(projects:is), UIDX(2) , OD:CASCADE] (案件ID)
         application_date:datetime [NN] (申込日)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
