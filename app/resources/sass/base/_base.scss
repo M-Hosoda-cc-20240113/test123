@@ -1,0 +1,45 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: $muted-lightest-color;
+    color: $dark-color;
+    font-size: 1.4rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:focus {
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+.Container {
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: $content-max-width;
+    display: flex;
+}
+
+.Main {
+    max-width: 72rem;
+    width: 75%;
+    padding: 0 15px;
+}
+
+.SideBar {
+    max-width: 24rem;
+    width: 25%;
+    padding-left: 15px;
+}
