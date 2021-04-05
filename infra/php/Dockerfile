@@ -13,6 +13,10 @@ RUN apt-get update && \
   docker-php-ext-install intl pdo_mysql zip bcmath && \
   pecl install xdebug && \
   docker-php-ext-enable xdebug
+  
+# Node.jsをインストール
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
 
 COPY ./php.ini /usr/local/etc/php/php.ini
 
