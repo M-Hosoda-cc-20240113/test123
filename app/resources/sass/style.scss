@@ -2,3 +2,9 @@
 @import "./base/config"; // mediaクエリ、色など変数定義
 @import "./base/base"; // ベースの設定
 @import "./base/normalize"; // リセット系
+
+// atoms
+@import "./atoms/button";
+
+// oorganisms
+@import "./organisms/footer";
