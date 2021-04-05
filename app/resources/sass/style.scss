@@ -2,9 +2,12 @@
 @import "./base/config"; // mediaクエリ、色など変数定義
 @import "./base/base"; // ベースの設定
 @import "./base/normalize"; // リセット系
+@import "./base/spacing"; // マージン・パディング系
+@import "./base/with"; // マージン・パディング系
 
 // atoms
 @import "./atoms/button";
 
-// oorganisms
+// organisms
 @import "./organisms/footer";
+@import "./organisms/header";
