@@ -1,0 +1,31 @@
+.Footer {
+    width: 100%;
+    justify-content: center;
+    background-color: $muted-lighter-color;
+    position: fixed;
+    padding: 10px 0;
+    bottom: 0;
+    &__linkWrap {
+        width: 100%;
+        max-width: $content-max-width;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+    &__textLink {
+        color: $dark-color;
+        font-weight: bold;
+        padding: 10px;
+        &:hover {
+            color: $muted-color;
+        }
+    }
+    &__copy {
+        font-size: 10px;
+        text-align: center;
+        span {
+            font-size: 15px;
+            vertical-align: sub;
+        }
+    }
+}
