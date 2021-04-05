@@ -1,0 +1,21 @@
+.Header {
+    width: 100%;
+    justify-content: center;
+    background-color: $muted-lighter-color;
+    &__loginWrap {
+        width: 100%;
+        max-width: $content-max-width;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+    &__textLink {
+        color: $dark-color;
+        font-weight: bold;
+        padding: 10px;
+        align-self: center;
+        &:hover {
+            color: $muted-color;
+        }
+    }
+}
