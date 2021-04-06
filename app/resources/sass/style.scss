@@ -6,8 +6,13 @@
 @import "./base/with"; // マージン・パディング系
 
 // atoms
-@import "./atoms/button";
+@import "./atoms/Button";
+@import "./atoms/Tag";
 
 // organisms
 @import "./organisms/footer";
 @import "./organisms/header";
+@import "./organisms/ProjectCard";
+
+// pages
+@import "./pages/welcome";

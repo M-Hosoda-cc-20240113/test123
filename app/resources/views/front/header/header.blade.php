@@ -10,7 +10,7 @@
                     @include('atoms.RegularBtn', ['text' => '新規登録はこちら', 'class' => 'w-15 h-40px'])
                 </a>
                 @endif
-                    <a href="{{ route('login') }}" class="Header__textLink">ログイン</a> 
+                    <a href="{{ route('login') }}" class="Header__textLink ml-15">ログイン</a> 
                     <!-- <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a> -->
             @endauth
         @endif
