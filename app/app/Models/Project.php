@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Position;
+use App\Models\Skill;
 
 class Project extends Model
 {
@@ -17,7 +20,7 @@ class Project extends Model
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany(User::class);
     }
     /**
      * 
@@ -26,7 +29,7 @@ class Project extends Model
      */
     public function positions(): BelongsToMany
     {
-        return $this->belongsToMany('App\Models\Position','rel_positions_projects','project_id','position_id');
+        return $this->belongsToMany(Position::class,'rel_positions_projects','project_id','position_id');
     }
 
     /**
@@ -36,6 +39,6 @@ class Project extends Model
      */
     public function skills(): BelongsToMany
     {
-        return $this->belongsToMany('App\Models\Skill','rel_projects_skills','project_id','skill_id');
+        return $this->belongsToMany(Skill::class,'rel_projects_skills','project_id','skill_id');
     }
 }
