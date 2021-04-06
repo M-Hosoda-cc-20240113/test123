@@ -1,0 +1,133 @@
+$base-input-with: 220px;
+.Input {
+  width: 100%;
+  display: inline-block;
+  @at-root {
+    &__name {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333333;
+      padding: 3px 0;
+    }
+
+    &__label {
+      display: table;
+      border-collapse: separate;
+      $this: &;
+
+      &--select{
+        display: inline-block;
+        overflow: hidden;
+        width: $base-input-with * 2;
+        text-align: center;
+        position: relative;
+        border: 1px solid $muted-lightest-color;
+        border-radius: 3px;
+        background: $light-color;
+        line-height: 2;
+        &:before{
+          position: absolute;
+          top: 0.8em;
+          right: 0.9em;
+          width: 0;
+          height: 0;
+          padding: 0;
+          content: '';
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-top: 6px solid #666666;
+          pointer-events: none;
+        }
+      }
+
+      &--radio{
+        @extend #{$this};
+        display: inline-block;
+      }
+
+      &--button {
+        @extend #{$this};
+
+        &:hover:after {
+          cursor: pointer;
+        }
+
+        &:after {
+          content: '';
+          display: table-cell;
+          margin-left: -1px;
+          line-height: 25px;
+          width: 20px;
+          height: 20px;
+          background-image: url('/image/common/calender.svg');
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: center;
+          box-shadow: rgba(0, 0, 0, 0.1) 0 -2px 2px inset;
+          border-top-right-radius: 3px;
+          border-bottom-right-radius: 3px;
+          padding: 4px;
+          border: 1px solid #dddddd;
+          border-left: none;
+          position: relative;
+          left: -1px;
+        }
+      }
+    }
+
+    &__field {
+      width: $base-input-with;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      font-size: 14px;
+      padding: 6px 12px;
+      display: table-cell;
+
+      &:focus {
+        border-color: #66afe9;
+        outline: 0;
+      }
+
+      $this: &;
+
+      &--select{
+        width: 100%;
+        padding-right: 1em;
+        cursor: pointer;
+        text-indent: 10px;
+        font-size: 14px;
+        text-overflow: ellipsis;
+        border: none;
+        outline: none;
+        background: transparent;
+        background-image: none;
+        box-shadow: none;
+        -webkit-appearance: none;
+        appearance: none;
+        color: #333333;
+      }
+
+      &--radio{
+        @extend #{$this};
+        width: 20px;
+      }
+
+      &--long {
+        @extend #{$this};
+        width: $base-input-with * 2;
+      }
+
+      &--button {
+        @extend #{$this};
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        $this: &;
+
+        &--long {
+          @extend #{$this};
+          width: $base-input-with * 1.85;
+        }
+      }
+    }
+  }
+}

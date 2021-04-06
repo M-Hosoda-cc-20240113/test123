@@ -4,17 +4,17 @@
   height: auto;
   display: flex;
   margin: 0 auto;
-  border-bottom: 2px solid #4bc1c1;
+  border-bottom: 2px solid $secondary-color;
     &__item {
       width: 25%;
       margin: 0 5px;
       padding: 0 15px;
-      background-color: #dfe4e7;
+      background-color: $muted-lighter-color;
       border-radius: 6px 6px 0 0;
       $this: &;
       &--current {
         @extend #{$this};
-        background-color: #4bc1c1;
+        background-color: $secondary-color;
       }
     }
     &__itemText {

@@ -3,11 +3,13 @@
 @import "./base/base"; // ベースの設定
 @import "./base/normalize"; // リセット系
 @import "./base/spacing"; // マージン・パディング系
-@import "./base/with"; // マージン・パディング系
+@import "./base/with"; // width系
 
 // atoms
 @import "./atoms/Button";
 @import "./atoms/Tag";
+@import "./atoms/Input";
+@import "./atoms/Checkbox";
 
 // organisms
 @import "./organisms/footer";

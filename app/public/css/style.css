@@ -32,7 +32,6 @@ li {
   padding: 0 20px;
   margin: 0 auto;
   max-width: 960px;
-  display: flex;
 }
 
 .Main {
@@ -1900,6 +1899,170 @@ select {
   background-color: #606089;
 }
 
+.Input {
+  width: 100%;
+  display: inline-block;
+}
+
+.Input__name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  padding: 3px 0;
+}
+
+.Input__label, .Input__label--radio, .Input__label--button {
+  display: table;
+  border-collapse: separate;
+}
+
+.Input__label--select {
+  display: inline-block;
+  overflow: hidden;
+  width: 440px;
+  text-align: center;
+  position: relative;
+  border: 1px solid #f4f7f8;
+  border-radius: 3px;
+  background: #ffffff;
+  line-height: 2;
+}
+
+.Input__label--select:before {
+  position: absolute;
+  top: 0.8em;
+  right: 0.9em;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #666666;
+  pointer-events: none;
+}
+
+.Input__label--radio {
+  display: inline-block;
+}
+
+.Input__label--button:hover:after {
+  cursor: pointer;
+}
+
+.Input__label--button:after {
+  content: '';
+  display: table-cell;
+  margin-left: -1px;
+  line-height: 25px;
+  width: 20px;
+  height: 20px;
+  background-image: url("/image/common/calender.svg");
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 -2px 2px inset;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 4px;
+  border: 1px solid #dddddd;
+  border-left: none;
+  position: relative;
+  left: -1px;
+}
+
+.Input__field, .Input__field--radio, .Input__field--long, .Input__field--button, .Input__field--button--long {
+  width: 220px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 6px 12px;
+  display: table-cell;
+}
+
+.Input__field:focus, .Input__field--radio:focus, .Input__field--long:focus, .Input__field--button:focus, .Input__field--button--long:focus {
+  border-color: #66afe9;
+  outline: 0;
+}
+
+.Input__field--select {
+  width: 100%;
+  padding-right: 1em;
+  cursor: pointer;
+  text-indent: 10px;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  color: #333333;
+}
+
+.Input__field--radio {
+  width: 20px;
+}
+
+.Input__field--long {
+  width: 440px;
+}
+
+.Input__field--button, .Input__field--button--long {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.Input__field--button--long {
+  width: 407px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 20px;
+  font: "Open Sans", Arial, sans-serif;
+  color: #333333;
+  cursor: pointer;
+}
+
+input[type="checkbox"] + label:last-child {
+  margin-bottom: 0;
+}
+
+input[type="checkbox"] + label:before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #4bc1c1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.6;
+  -webkit-transition: all 0.12s, border-color 0.08s;
+  transition: all 0.12s, border-color 0.08s;
+}
+
+input[type="checkbox"]:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
 .Footer {
   width: 100%;
   justify-content: center;
@@ -2004,4 +2167,11 @@ select {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
+}
+
+.welcome-Checkbox {
+  padding: 20px;
+  display: flex;
+  border: 2px solid #4bc1c1;
+  border-top: 0;
 }
