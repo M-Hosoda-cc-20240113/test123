@@ -47,6 +47,22 @@ li {
   padding-left: 15px;
 }
 
+.fw-bold {
+  font-weight: bold !important;
+}
+
+.text-secondary {
+  color: #F9627D !important;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
 /* A Modern CSS Reset */
 *,
 *::before,
@@ -84,6 +100,10 @@ body {
 
 a:not([class]) {
   text-decoration-skip-ink: auto;
+}
+
+a {
+  text-decoration: none;
 }
 
 img,
@@ -1856,10 +1876,23 @@ select {
   border: none;
   color: #ffffff;
   font-size: 1.2rem;
+  outline: none;
 }
 
-.RegularBtn:hover, .RegularBtn:focus {
+.RegularBtn:hover {
   background: #2c99b4;
+}
+
+.Tag {
+  display: inline-block;
+  background-color: #88889f;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.Tag:hover {
+  background-color: #606089;
 }
 
 .Footer {
@@ -1922,4 +1955,18 @@ select {
 
 .Header__textLink:hover {
   color: #88889f;
+}
+
+.ProjectCard {
+  width: 100%;
+  max-width: 290px;
+  border-radius: 3px;
+  box-shadow: 0 3.81px 5.72px rgba(0, 0, 0, 0.26);
+  padding: 20px;
+}
+
+.welcome-ProjectCard {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
 }
