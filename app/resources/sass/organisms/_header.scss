@@ -1,7 +1,7 @@
 .Header {
     width: 100%;
     justify-content: center;
-    background-color: $muted-lighter-color;
+    border-bottom: 1px solid $muted-lighter-color;
     &__loginWrap {
         width: 100%;
         max-width: $content-max-width;

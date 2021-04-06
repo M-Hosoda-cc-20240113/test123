@@ -4,4 +4,10 @@
     flex-flow: row wrap;
     width: 100%;
   }
+  &-Checkbox {
+    padding: 20px;
+    display: flex;
+    border: 2px solid $secondary-color;
+    border-top: 0;
+  }
 }
