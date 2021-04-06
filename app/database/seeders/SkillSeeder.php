@@ -14,7 +14,6 @@ class SkillSeeder extends Seeder
      */
     public function run()
     {
-        $now = Carbon::now();
         $names = [
             'PHP',
             'Python',
@@ -24,18 +23,22 @@ class SkillSeeder extends Seeder
             'Laravel',
             'React.js',
             'Vue.js',
-            'HTML',
-            'CSS',
+            'HTML5',
+            'CSS3',
             'CakePHP',
             'Angular',
             'Sass',
             'C#',
             'C++',
-            'Django'
+            'Django',
+            'IOS',
+            'Android',
+            'MySQL',
+            'AWS',
+            'Linux'
         ];
         $now = Carbon::now();
         foreach ($names as $name) {
-            // $year = rand(0.3);
             Skill::create([
                 'name'       => $name,
                 'created_at' => $now
