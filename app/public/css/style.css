@@ -1873,10 +1873,15 @@ select {
   cursor: pointer;
   background: #42b5d1;
   border-radius: 3px;
+  text-align: center;
   border: none;
   color: #ffffff;
   font-size: 1.2rem;
   outline: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .RegularBtn:hover {
