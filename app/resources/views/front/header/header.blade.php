@@ -6,12 +6,10 @@
                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
             @else
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}" class=" RegularBtn w-15 h-40px">
-                    @include('atoms.RegularBtn', ['text' => '新規登録はこちら', 'class' => 'w-15 h-40px'])
-                </a>
+                    @include('atoms.RegularBtn', ['text' => '新規登録はこちら', 'class' => 'w-15 h-40px', 'link' => route('register')])
                 @endif
                     <a href="{{ route('login') }}" class="Header__textLink ml-15">ログイン</a> 
-                    <!-- <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a> -->
+                    <!-- <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</!-->
             @endauth
         @endif
         <!-- @include('atoms.RegularBtn', ['text' => '新規登録はこちら', 'class' => 'w-15 h-40px'])
