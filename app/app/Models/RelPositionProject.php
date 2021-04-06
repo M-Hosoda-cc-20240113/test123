@@ -16,4 +16,11 @@ use Illuminate\Database\Eloquent\Model;
 class RelPositionProject extends Model
 {
     use HasFactory;
+
+     /**
+     * モデルと関連しているテーブル
+     *
+     * @var string
+     */
+    protected $table = 'rel_positions_projects';
 }

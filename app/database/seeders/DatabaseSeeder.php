@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PositionSeeder::class);
         $this->call(LevelSeeder::class);
         $this->call(ProjectSeeder::class);
+        $this->call(RelLevelSkillUserTableSeeder::class);
     }
 }

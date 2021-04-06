@@ -28,4 +28,11 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
     use HasFactory;
+
+     /**
+     * モデルと関連しているテーブル
+     *
+     * @var string
+     */
+    protected $table = 'applications';
 }
