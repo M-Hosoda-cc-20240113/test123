@@ -3,4 +3,4 @@
  * @var string $text テキスト
  */
 @endphp
-<button class="RegularBtn {{ $class }}">{{ $text }}</button>
+<a href="{{ $link ?? '' }}" class="RegularBtn {{ $class }}">{{ $text }}</a>
