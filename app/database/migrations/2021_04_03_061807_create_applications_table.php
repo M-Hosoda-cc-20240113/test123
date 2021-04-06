@@ -16,7 +16,7 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('peoject_id')->unsigned();
+            $table->integer('project_id')->unsigned();
             $table->datetime('application_date');
             $table->timestamps();
             //外部キーの設定
@@ -25,7 +25,7 @@ class CreateApplicationsTable extends Migration
                         ->on('users')
                         ->onDelete('cascade');
 
-            $table->foreign('peoject_id')
+            $table->foreign('project_id')
                         ->references('id')
                         ->on('projects')
                         ->onDelete('cascade');

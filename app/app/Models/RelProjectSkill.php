@@ -21,5 +21,5 @@ class RelProjectSkill extends Model
      *
      * @var string
      */
-    protected $table = 'rel_projects_skills_users';
+    protected $table = 'rel_projects_skills';
 }
