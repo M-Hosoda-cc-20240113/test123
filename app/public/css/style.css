@@ -1873,10 +1873,15 @@ select {
   cursor: pointer;
   background: #42b5d1;
   border-radius: 3px;
+  text-align: center;
   border: none;
   color: #ffffff;
   font-size: 1.2rem;
   outline: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .RegularBtn:hover {
@@ -1961,7 +1966,7 @@ select {
   width: 100%;
   max-width: 290px;
   border-radius: 3px;
-  box-shadow: 0 3.81px 5.72px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 3.81px 5.72px rgba(0, 0, 0, 0.15);
   padding: 20px;
 }
 

@@ -1,5 +1,5 @@
 <div href="#" class="ProjectCard mg-5">
-  <a class="mb-20 fw-bold d-block">【Java/AWS】ユーザー向けスマホアプリサービス</a>
+  <a class="mb-10 fw-bold d-block">【Java/AWS】ユーザー向けスマホアプリサービス</a>
   <table class="mb-20 w-100">
     <tr>
       <td>単価/月</td>
