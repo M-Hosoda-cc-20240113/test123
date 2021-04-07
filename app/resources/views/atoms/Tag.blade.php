@@ -5,4 +5,4 @@
  * @var string $class スタイルクラス 
  */
 @endphp
-<span class="Tag {{$class}}">{{ $text }}</span>
+<span class="Tag {{ $class ?? ''}}">{{ $text ?? ''}}</span>
