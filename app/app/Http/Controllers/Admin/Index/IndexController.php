@@ -14,6 +14,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return 'hoge';
+        return view('adimn.dashboard');
     }
 }
