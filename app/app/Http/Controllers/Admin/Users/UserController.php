@@ -9,11 +9,41 @@ class UserController extends Controller
 {
     /**
      * 
-     * Admin index
+     * Admin user list
      * @var array
      */
     public function list()
     {
         return 'Users list';
+    }
+
+    /**
+     * 
+     * Admin user show
+     * @var array
+     */
+    public function show()
+    {
+        return 'Users show';
+    }
+
+    /**
+     * 
+     * Admin user edit
+     * @var array
+     */
+    public function edit()
+    {
+        return 'Users edit';
+    }
+
+    /**
+     * 
+     * Admin user delete
+     * @var array
+     */
+    public function delete()
+    {
+        return 'Users delete';
     }
 }
