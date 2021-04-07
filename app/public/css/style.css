@@ -2067,7 +2067,6 @@ input[type="checkbox"]:checked + label:before {
   width: 100%;
   justify-content: center;
   background-color: #dfe4e7;
-  position: fixed;
   padding: 10px 0;
   bottom: 0;
 }
