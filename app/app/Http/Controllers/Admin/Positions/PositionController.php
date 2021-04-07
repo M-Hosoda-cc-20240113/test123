@@ -16,4 +16,13 @@ class PositionController extends Controller
     {
         return 'Positions list';
     }
+    /**
+     * 
+     * Admin edit
+     * @var array
+     */
+    public function list()
+    {
+        return 'Positions edit';
+    }
 }
