@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Index;
+namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class UserController extends Controller
 {
     /**
      * 
      * Admin index
      * @var array
      */
-    public function index()
+    public function list()
     {
-        return 'hoge';
+        return 'Users list';
     }
 }
