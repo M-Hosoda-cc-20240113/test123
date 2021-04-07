@@ -1,49 +1,49 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Users;
+namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProjectController extends Controller
 {
     /**
      * 
-     * Admin user list
+     * Admin project index
      * @var array
      */
     public function list()
     {
-        return view('admin.pages.user.list');
+        return 'Projects list';
     }
 
     /**
      * 
-     * Admin user show
+     * Admin project show
      * @var array
      */
     public function show()
     {
-        return 'Users show';
+        return 'Projects show';
     }
 
     /**
      * 
-     * Admin user edit
+     * Admin project edit
      * @var array
      */
     public function edit()
     {
-        return 'Users edit';
+        return 'Projects edit';
     }
 
     /**
      * 
-     * Admin user delete
+     * Admin project delete
      * @var array
      */
     public function delete()
     {
-        return 'Users delete';
+        return 'Projects delete';
     }
 }

@@ -10,26 +10,14 @@
   </thead>
 
   <tbody class="RegularTable__body">
+    @foreach ($response->getUsers() as $user)
     <tr class="RegularTable__bodyRow" data-href="">
-      <td class="RegularTable__bodyRowItem">田中&nbsp;太郎</td>
-      <td class="RegularTable__bodyRowItem">2020/04/01</td>
-      <td class="RegularTable__bodyRowItem--textCenter">◎</td>
-      <td class="RegularTable__bodyRowItem">090-1123-4567</td>
-      <td class="RegularTable__bodyRowItem">1986/12/15&nbsp;(34)</td>
+      <td class="RegularTable__bodyRowItem">{{ $user->sei }}&nbsp;{{ $user->mei }}</td>
+      <td class="RegularTable__bodyRowItem">{{ $user->created_at }}</td>
+      <td class="RegularTable__bodyRowItem--textCenter">{{ $user->is_working ? '◎' : '-'}}</td>
+      <td class="RegularTable__bodyRowItem">{{ $user->tel }}</td>
+      <td class="RegularTable__bodyRowItem">{{ $user->birthday }}</td>
     </tr>
-    <tr class="RegularTable__bodyRow" data-href="">
-      <td class="RegularTable__bodyRowItem">田中&nbsp;太郎</td>
-      <td class="RegularTable__bodyRowItem">2020/04/01</td>
-      <td class="RegularTable__bodyRowItem--textCenter">◎</td>
-      <td class="RegularTable__bodyRowItem">090-1123-4567</td>
-      <td class="RegularTable__bodyRowItem">1986/12/15&nbsp;(34)</td>
-    </tr>
-    <tr class="RegularTable__bodyRow" data-href="">
-      <td class="RegularTable__bodyRowItem">田中&nbsp;太郎</td>
-      <td class="RegularTable__bodyRowItem">2020/04/01</td>
-      <td class="RegularTable__bodyRowItem--textCenter">◎</td>
-      <td class="RegularTable__bodyRowItem">090-1123-4567</td>
-      <td class="RegularTable__bodyRowItem">1986/12/15&nbsp;(34)</td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
