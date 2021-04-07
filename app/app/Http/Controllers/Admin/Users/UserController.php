@@ -14,6 +14,6 @@ class UserController extends Controller
      */
     public function list()
     {
-        return 'Users list';
+        return view('admin.pages.user.list');
     }
 }
