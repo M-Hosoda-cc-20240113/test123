@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +17,6 @@ use App\Http\Controllers\TestController;
 Route::get('/', function () {
   return 'hoge';
 });
+// Route::namespace('Index')->group(function () {
+//   Route::get('/', [IndexController::class, 'index'])->name('index');
+// });

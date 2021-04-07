@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('front.welcome');
 });
 
+// Route::namespace('Index')->group(function () {
+//     Route::get('/', 'IndexController@index')->name('index');
+// });
 // Route::get('/test', [TestController::class, 'index'])->name('test.index');
 
 Route::get('/dashboard', function () {
