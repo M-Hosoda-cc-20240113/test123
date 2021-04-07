@@ -9,11 +9,21 @@ class SkillController extends Controller
 {
     /**
      * 
-     * Admin index
+     * Admin skill list
      * @var array
      */
     public function list()
     {
         return 'Skills list';
+    }
+
+    /**
+     * 
+     * Admin skill edit
+     * @var array
+     */
+    public function edit()
+    {
+        return 'Skills edit';
     }
 }
