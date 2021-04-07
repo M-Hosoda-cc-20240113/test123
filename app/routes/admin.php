@@ -60,3 +60,7 @@ Route::namespace('Positions')->prefix('positions')->group(function () {
   Route::get('/', [PositionController::class, 'list'])->name('position.list');
   Route::get('/edit', [PositionController::class, 'edit'])->name('position.edit');
 });
+
+Route::get('/', function () {
+    return view('admin.dashboard');
+});
