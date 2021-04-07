@@ -5,7 +5,7 @@
  * @var string $text テキスト
  */
 @endphp
-<div class="Checkbox {{ $class }}">
-  <input type="checkbox" id="box-{{ $index }}">
-  <label for="box-{{ $index }}">{{ $text }}</label>
+<div class="Checkbox {{ $class ?? '' }}">
+  <input type="checkbox" id="box-{{ $index ?? '' }}">
+  <label for="box-{{ $index ?? ''}}">{{ $text ?? ''}}</label>
 </div>
