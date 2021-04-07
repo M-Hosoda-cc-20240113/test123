@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Front\Index\IndexController;
+use App\Http\Controllers\Front\Home\HomeController;
 use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,15 @@ use App\Http\Controllers\TestController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('front.welcome');
-});
-
+Route::namespace('Index')->group(function () {
+    Route::get('/', [IndexController::class, 'index'])->name('index');
+    Route::get('/project/{id}', [IndexController::class, 'show'])->name('index.project');
+  });
+Route::namespace('Home')->prefix('mypage')->middleware(['auth'])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home.mypage');
+    Route::get('/users/edit', [HomeController::class, 'edit'])->name('home.mypage.edit');
+    Route::get('/skills/edit', [HomeController::class, 'skill'])->name('home.mypage.skill.edit');
+  });
 // Route::get('/test', [TestController::class, 'index'])->name('test.index');
 
 Route::get('/dashboard', function () {
