@@ -5,5 +5,5 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 
 Route::get('/', function () {
-    return view('admin.dashboard');
+    return view('admin.pages.user.list');
 });
