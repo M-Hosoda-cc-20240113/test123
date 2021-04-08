@@ -21,7 +21,7 @@ class UserController extends Controller
 
         $response->setUsers($users);
 
-        return view('admin.pages.user.list', ['response' => $response]);
+        return view('admin.pages.user.list.list', ['response' => $response]);
     }
 
     /**

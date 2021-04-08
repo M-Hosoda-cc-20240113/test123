@@ -1,23 +1,35 @@
-<table class="RegularTable">
-  <thead class="RegularTable__head">
-    <tr class="RegularTable__headRow">
-      <th class="RegularTable__headRowItem">氏名</th>
-      <th class="RegularTable__headRowItem">登録日</th>
-      <th class="RegularTable__headRowItem">稼働中</th>
-      <th class="RegularTable__headRowItem">電話番号</th>
-      <th class="RegularTable__headRowItem">生年月日&nbsp;(年齢)</th>
-    </tr>
-  </thead>
+<table class="UserTable">
+    <thead class="UserTable__head">
+      <tr class="UserTable__headRow">
+        <th class="UserTable__headRowItem">社員番号</th>
+        <th class="UserTable__headRowItem">氏名</th>
+        <th class="UserTable__headRowItem">部署名</th>
+        <th class="UserTable__headRowItem">雇用日</th>
+        <th class="UserTable__headRowItem">生年月日&nbsp;(年齢)</th>
+      </tr>
+    </thead>
 
-  <tbody class="RegularTable__body">
-    @foreach ($response->getUsers() as $user)
-    <tr class="RegularTable__bodyRow" data-href="">
-      <td class="RegularTable__bodyRowItem">{{ $user->sei }}&nbsp;{{ $user->mei }}</td>
-      <td class="RegularTable__bodyRowItem">{{ $user->created_at }}</td>
-      <td class="RegularTable__bodyRowItem--textCenter">{{ $user->is_working ? '◎' : '-'}}</td>
-      <td class="RegularTable__bodyRowItem">{{ $user->tel }}</td>
-      <td class="RegularTable__bodyRowItem">{{ $user->birthday }}</td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
+    <tbody class="UserTable__body">
+      <tr class="UserTable__bodyRow" data-href="">
+        <td class="UserTable__bodyRowItem">A19787</td>
+        <td class="UserTable__bodyRowItem">田中&nbsp;太郎</td>
+        <td class="UserTable__bodyRowItem">SES事業部<br></td>
+        <td class="UserTable__bodyRowItem">2020/04/01</td>
+        <td class="UserTable__bodyRowItem">1986/12/15&nbsp;(34)</td>
+      </tr>
+      <tr class="UserTable__bodyRow" data-href="">
+        <td class="UserTable__bodyRowItem">A19787</td>
+        <td class="UserTable__bodyRowItem">田中&nbsp;太郎</td>
+        <td class="UserTable__bodyRowItem">SES事業部<br></td>
+        <td class="UserTable__bodyRowItem">2020/04/01</td>
+        <td class="UserTable__bodyRowItem">1986/12/15&nbsp;(34)</td>
+      </tr>
+      <tr class="UserTable__bodyRow" data-href="">
+        <td class="UserTable__bodyRowItem">A19787</td>
+        <td class="UserTable__bodyRowItem">田中&nbsp;太郎</td>
+        <td class="UserTable__bodyRowItem">SES事業部<br></td>
+        <td class="UserTable__bodyRowItem">2020/04/01</td>
+        <td class="UserTable__bodyRowItem">1986/12/15&nbsp;(34)</td>
+      </tr>
+    </tbody>
+  </table>
