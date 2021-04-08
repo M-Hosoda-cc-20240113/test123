@@ -5,7 +5,7 @@
 @section('body')
     @include('admin.header.header')
     <div class="Container mt-30">
-      @include('organisms.RegularList', ['class' => 'w-20'])
+      @include('admin.pages.dashboard._RegularList')
     </div>
 
     @include('admin.footer.footer')
