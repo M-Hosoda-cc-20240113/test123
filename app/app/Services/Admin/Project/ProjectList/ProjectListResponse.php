@@ -10,7 +10,7 @@ class ProjectListResponse
   /**
    * @var Project[]
    */
-  private $project;
+  private $projects;
 
   /**
    * Get the value of projects
