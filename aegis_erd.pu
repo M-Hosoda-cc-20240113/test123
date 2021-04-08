@@ -19,7 +19,7 @@ package "サンプル" as sample  {
         ~ {カラム名} [{制約}] ({カラムの概要}) 青三角は暗号化
         {カラム名}:{型} [{制約}] ({カラムの概要})
     }
-}
+}∂
 
 package "Aegis ER図" as aegis_erd {
     entity "users" as users <ユーザー> {

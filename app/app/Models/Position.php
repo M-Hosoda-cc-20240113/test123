@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Project;
 
@@ -38,4 +39,10 @@ class Position extends Model
     {
         return $this->belongsToMany(Project::class);
     }
+
+    public function agent(): HasMany
+    {
+        return $this->hasMany('App\Models\Agent');
+    }
+
 }
