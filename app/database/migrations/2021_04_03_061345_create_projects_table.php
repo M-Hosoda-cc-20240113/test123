@@ -15,7 +15,7 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('agent_id')->unsigned();
+            $table->integer('agent_id')->unsigned()->nullable();
             $table->string('name')->unique();
             $table->integer('min_unit_price')->nullable();
             $table->integer('max_unit_price');
@@ -34,7 +34,8 @@ class CreateProjectsTable extends Migration
 
             $table->foreign('agent_id')
                   ->references('id')
-                  ->on('agents');
+                  ->on('agents')
+                  ->onDelete('set null');
         });
     }
 
