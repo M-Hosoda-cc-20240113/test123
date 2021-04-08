@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Skill;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\Admin\Skill\SkillList\SkillListResponse;
+use App\Services\Admin\Skill\SkillList\SkillListService;
 
 class SkillController extends Controller
 {
@@ -12,9 +14,15 @@ class SkillController extends Controller
      * Admin skill list
      * @var array
      */
-    public function list()
+    public function list(SkillListService $skill_list_service)
     {
-        return 'Skills list';
+        $response = new SkillListResponse();
+
+        $skills = $skill_list_service->exec();
+
+        $response->setSkills($skills);
+
+        return view('admin.pages.skill.list', ['response' => $response]);
     }
 
     /**

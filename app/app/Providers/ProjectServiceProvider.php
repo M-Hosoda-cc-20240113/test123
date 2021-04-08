@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Infrastructures\Repositories\Eloquent\Admin\ProjectRepository;
+use App\Infrastructures\Repositories\Eloquent\Admin\Project\ProjectRepository;
 use App\Services\Admin\Project\ProjectRepositoryInterface;
 
 
