@@ -11,7 +11,8 @@
 @section('body')
     @include('admin.header.header')
     <div class="Container mt-30">
-      @include('admin.pages.project.list._ProjectTable', ['response' => $response])
+      @include('admin.bread_crumb._BreadCrumb')
+      @include('admin.pages.project.list._RegularTable', ['response' => $response])
     </div>
 
     @include('admin.footer.footer')

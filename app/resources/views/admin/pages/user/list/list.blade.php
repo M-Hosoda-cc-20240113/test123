@@ -11,6 +11,7 @@
 @section('body')
     @include('admin.header.header')
     <div class="Container mt-30">
+      @include('admin.bread_crumb._BreadCrumb')
       @include('admin.pages.user.list._RegularUserTable', ['response' => $response])
     </div>
 
