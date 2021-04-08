@@ -16,6 +16,7 @@ class ProjectSeeder extends Seeder
     {
         $now = Carbon::now();
         Project::create([
+            'agent_id'           => 1 ,
             'name'               => "CSタイトルのPS5移植案件・技術検証" ,
             'min_unit_price'     => null ,
             'max_unit_price'     => "850000" ,
@@ -29,12 +30,13 @@ class ProjectSeeder extends Seeder
             'weekly_attendance'  => '5' ,
             'feature'            => '基本リモート業務、人　数：2名' ,
             'place'              => '大久保' ,
-            'created_at'         => $now
+            'created_at'         => $now ,
         ]);
 
         Project::create([
+            'agent_id'           => 2 ,
             'name'               => "【PHP】不動産会社向け契約管理システム" ,
-            'min_unit_price'     => null,
+            'min_unit_price'     =>  null,
             'max_unit_price'     => "450000" ,
             'min_operation_time' => "140" ,
             'max_operation_time' => '180' ,
@@ -46,7 +48,7 @@ class ProjectSeeder extends Seeder
             'weekly_attendance'  => '5' ,
             'feature'            => '外国籍不可' ,
             'place'              => '池袋駅' ,
-            'created_at'         => $now
+            'created_at'         => $now 
         ]);
     }
 }

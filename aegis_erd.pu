@@ -19,7 +19,7 @@ package "サンプル" as sample  {
         ~ {カラム名} [{制約}] ({カラムの概要}) 青三角は暗号化
         {カラム名}:{型} [{制約}] ({カラムの概要})
     }
-}
+}∂
 
 package "Aegis ER図" as aegis_erd {
     entity "users" as users <ユーザー> {
@@ -43,6 +43,14 @@ package "Aegis ER図" as aegis_erd {
     }
 
     entity "skills" as skills <スキル> {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        name:varchar(255) [NN, UQ] (スキル名)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
+
+    entity "agents" as agents <エージェント> {
         + id:int [PK, AI, UN] (ID)
         ---
         name:varchar(255) [NN, UQ] (スキル名)
@@ -135,6 +143,8 @@ projects    --do--|{    rel_projects_skills
 
 projects    --do--|{    rel_positions_projects
 positions   --up--|{    rel_positions_projects
+
+agents      --do--|{    projects
 
 users       --up--o{    applications
 projects    --do--o{    applications

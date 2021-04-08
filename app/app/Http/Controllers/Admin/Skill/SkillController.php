@@ -22,7 +22,7 @@ class SkillController extends Controller
 
         $response->setSkills($skills);
 
-        return view('admin.pages.skill.list', ['response' => $response]);
+        return view('admin.pages.skill.list.list', ['response' => $response]);
     }
 
     /**
