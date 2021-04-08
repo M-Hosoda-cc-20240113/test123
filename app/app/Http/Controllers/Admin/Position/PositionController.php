@@ -22,6 +22,6 @@ class PositionController extends Controller
 
         $response->setPositions($positions);
 
-        return view('admin.pages.position.list', ['response' => $response]);
+        return view('admin.pages.position.list.list', ['response' => $response]);
     }
 }
