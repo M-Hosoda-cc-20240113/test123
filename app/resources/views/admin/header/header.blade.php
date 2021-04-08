@@ -6,7 +6,7 @@
                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
             @else
                 @if (Route::has('register'))
-                    @include('atoms.RegularBtn', ['text' => '案件登録', 'class' => 'w-15 h-40px', 'link' => route('register')])
+                    @include('atoms.RegularBtn', ['text' => '案件登録', 'class' => 'w-15 h-40px', 'link' => route('project.create')])
                 @endif
                     <a href="{{ route('login') }}" class="Header__textLink ml-15">ログイン</a> 
                     <!-- <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</!-->

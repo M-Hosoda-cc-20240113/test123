@@ -15,4 +15,13 @@ class ProjectRepository implements ProjectRepositoryInterface
   {
     return Project::all();
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function create(): Project
+  {
+    $project = new Project(); 
+    return $project;
+  }
 }
