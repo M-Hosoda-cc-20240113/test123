@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Services\Admin\Project\ProjectList;
+
+use App\Models\Project;
+use Illuminate\Support\Collection;
+
+class ProjectListResponse
+{
+  /**
+   * @var Project[]
+   */
+  private $project;
+
+  /**
+   * Get the value of projects
+   *
+   * @return  Project[]
+   */ 
+  public function getProjects()
+  {
+    return $this->projects;
+  }
+
+  /**
+   * Set the value of projects
+   *
+   * @param  Project[]  $projects
+   *
+   * @return  self
+   */ 
+  public function setProjects(Collection $projects)
+  {
+    $this->projects = $projects;
+
+    return $this;
+  }
+}

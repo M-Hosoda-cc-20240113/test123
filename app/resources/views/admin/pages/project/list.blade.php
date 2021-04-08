@@ -1,17 +1,17 @@
 @php
 /**
- * @var \App\Services\Admin\User\UserList\UserListResponse $response
+ * @var \App\Services\Admin\Project\ProjectList\ProjectListResponse $response
  */
 @endphp
 
 @extends('admin.layout')
 
-@section('title', 'ユーザー一覧|Aegis')
+@section('title', '案件一覧|Aegis')
 
 @section('body')
     @include('admin.header.header')
     <div class="Container mt-30">
-      @include('organisms.RegularTable', ['response' => $response])
+      @include('organisms.ProjectTable', ['response' => $response])
     </div>
 
     @include('admin.footer.footer')
