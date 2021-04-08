@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\Admin\Project\ProjectList\ProjectListResponse;
+use App\Services\Admin\Project\ProjectList\ProjectListService;
+
 
 class ProjectController extends Controller
 {
@@ -12,9 +15,15 @@ class ProjectController extends Controller
      * Admin project index
      * @var array
      */
-    public function list()
+    public function list(ProjectListService $project_list_service)
     {
-        return 'Projects list';
+        $response = new ProjectListResponse();
+
+        $projects = $project_list_service->exec();
+
+        $response->setProjects($projects);
+
+        return view('admin.pages.project.list', ['response' => $response]);
     }
 
     /**
