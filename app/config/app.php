@@ -177,6 +177,7 @@ return [
 
         App\Providers\UserServiceProvider::class,
         App\Providers\ProjectServiceProvider::class,
+        App\Providers\PositionServiceProvider::class,
 
     ],
 
