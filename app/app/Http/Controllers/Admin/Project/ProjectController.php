@@ -23,7 +23,7 @@ class ProjectController extends Controller
 
         $response->setProjects($projects);
 
-        return view('admin.pages.project.list', ['response' => $response]);
+        return view('admin.pages.project.list.list', ['response' => $response]);
     }
 
     /**
