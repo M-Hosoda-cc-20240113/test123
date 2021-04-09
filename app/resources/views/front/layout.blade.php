@@ -31,6 +31,7 @@
 @show 
 
 @section('script')
+  <script src="{{ asset('/js/bundle.js') }}" type="text/javascript"></script>
 @show
 </body>
 </html>

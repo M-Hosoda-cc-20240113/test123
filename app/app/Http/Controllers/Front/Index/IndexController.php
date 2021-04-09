@@ -26,7 +26,7 @@ class IndexController extends Controller
         $response->setProjects($projects);
         
         // return view('admin.pages.project.list.list', ['response' => $response]);
-         return view('front.welcome');
+         return view('front.pages.top.top');
      }
     /**
      * 
