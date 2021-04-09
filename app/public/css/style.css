@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* breakpoint */
 /* max min width */
 /* color */
@@ -2251,6 +2252,45 @@ input[type="checkbox"]:checked + label:before {
 .RegularTable__bodyRowItemInner {
   width: 13px;
   margin: 0 auto;
+}
+
+.BreadCrumb {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.BreadCrumb li {
+  display: inline-block;
+  /*横に並ぶように*/
+  list-style: none;
+  font-weight: bold;
+  /*太字*/
+}
+
+.BreadCrumb li:after {
+  /* ▶を表示*/
+  content: ">";
+  padding: 0 0.2em;
+  color: #42b5d1;
+}
+
+.BreadCrumb li:last-child:after {
+  content: "";
+}
+
+.BreadCrumb li a {
+  display: inline-block;
+  padding: 0.2em 0.8em;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #ffffff;
+  background: #42b5d1;
+  font-size: 0.9em;
+}
+
+.BreadCrumb li a:hover {
+  background: #2c99b4;
 }
 
 .welcome-ProjectCard {

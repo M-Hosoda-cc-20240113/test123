@@ -26,6 +26,11 @@ class ProjectController extends Controller
         return view('admin.pages.project.list.list', ['response' => $response]);
     }
 
+    public function showCreateForm()
+    {
+        return view('admin.pages.dashboard.dashboard');
+    }
+
     /**
      * 
      * Admin project show
