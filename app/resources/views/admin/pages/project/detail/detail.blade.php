@@ -5,7 +5,7 @@
 @section('body')
     @include('admin.header.header')
     <div class="Container mt-30">
-      <p>入力画面作成</p>
+    @include('organisms.ProjectDetailTable')
     </div>
     @include('admin.footer.footer')
 @endsection

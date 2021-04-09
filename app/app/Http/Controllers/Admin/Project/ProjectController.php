@@ -28,7 +28,7 @@ class ProjectController extends Controller
 
     public function showCreateForm()
     {
-        return view('admin.pages.dashboard.dashboard');
+        return view('admin.pages.project.detail.detail');
     }
 
     /**
