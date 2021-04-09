@@ -17,3 +17,8 @@
 
     @include('admin.footer.footer')
 @endsection
+
+@section('script')
+  @parent
+  <script src="{{ asset('/js/bundle.js') }}" type="text/javascript"></script>
+@endsection

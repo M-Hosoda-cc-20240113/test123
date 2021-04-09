@@ -42,7 +42,7 @@ Route::namespace('Project')->prefix('projects')->group(function () {
   Route::get('/', [ProjectController::class, 'list'])->name('project.list');
   Route::get('/create', [ProjectController::class, 'showCreateForm'])->name('project.create');
   Route::post('/create', [ProjectController::class, 'create']);
-  Route::get('/{id}', [ProjectController::class, 'show'])->name('project.show');
+  Route::get('/detail', [ProjectController::class, 'detail'])->name('project.detail');
   Route::get('/{id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
   Route::get('/{id}/delete', [ProjectController::class, 'delete'])->name('project.delete');
 });
