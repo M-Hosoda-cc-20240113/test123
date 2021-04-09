@@ -15,7 +15,7 @@ class Station extends Model
      * Project Table relation
      * @var array
      */
-     public function projects(): HasMany
+    public function projects(): HasMany
     {
         return $this->hasMany(Project::class);
     }

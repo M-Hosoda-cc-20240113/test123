@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Agent extends Model
 {
     use HasFactory;
-
     /**
      * 
      * Project Table relation

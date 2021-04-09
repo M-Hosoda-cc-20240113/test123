@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\User;
 use App\Models\Position;
 use App\Models\Skill;
@@ -98,18 +99,19 @@ class Project extends Model
      * agents Table relation
      * @var array
      */
-    public function agents(): BelongsTo
-    {
-        return $this->belongsTo(Agent::class);
-    }
+
+     public function agent(): HasOne
+     {
+         return $this->HasOne(Agent::class,'id');
+     }
 
     /**
      * 
      * stations Table relation
      * @var array
      */
-     public function station(): HasMany
+     public function station(): HasOne
      {
-         return $this->hasMany(Station::class);
+         return $this->HasOne(Station::class,'id');
      }
 }
