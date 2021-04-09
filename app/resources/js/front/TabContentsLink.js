@@ -29,6 +29,7 @@ export class TabContentsLink {
      */
     onClick(e, index) {
         this.contentsAllHide();
+        this.toggleTabActive(e);
         this.contents[index].style.display = "flex";
     }
 
@@ -42,5 +43,16 @@ export class TabContentsLink {
         this.tabs.forEach((tab, index) => {
             if (tab.classList.contains(".tab_defaul-js")) return index;
         });
+    }
+
+    /**
+     * 
+     * @param {MouseEvent} e 
+     */
+    toggleTabActive(e) {
+      this.tabs.forEach((tab)=>{
+          tab.classList.remove('active'); 
+      });
+      e.target.parentElement.classList.add('active');
     }
 }

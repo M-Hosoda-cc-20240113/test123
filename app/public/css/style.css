@@ -2142,16 +2142,12 @@ input[type="checkbox"]:checked + label:before {
   border-bottom: 2px solid #4bc1c1;
 }
 
-.ContentTab__item, .ContentTab__item--current {
+.ContentTab__item {
   width: 25%;
   margin: 0 5px;
   padding: 0 15px;
   background-color: #dfe4e7;
   border-radius: 3px 3px 0 0;
-}
-
-.ContentTab__item--current {
-  background-color: #4bc1c1;
 }
 
 .ContentTab__itemText {
@@ -2161,6 +2157,10 @@ input[type="checkbox"]:checked + label:before {
   display: block;
   text-align: center;
   color: #ffffff;
+}
+
+.active {
+  background-color: #4bc1c1 !important;
 }
 
 .RegularList {

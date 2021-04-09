@@ -1,5 +1,5 @@
 <ul class="ContentTab mt-30">
-    <li class="ContentTab__item--current tab-js tab_active-js">
+    <li class="ContentTab__item active tab-js tab_active-js">
         <a class="ContentTab__itemText">スキルで探す</a>
     </li>
     <li class="ContentTab__item tab-js">

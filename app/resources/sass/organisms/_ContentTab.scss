@@ -1,28 +1,26 @@
 .ContentTab {
-  width: 100%;
-  max-width: 960px;
-  height: auto;
-  display: flex;
-  margin: 0 auto;
-  border-bottom: 2px solid $secondary-color;
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+    border-bottom: 2px solid $secondary-color;
     &__item {
-      width: 25%;
-      margin: 0 5px;
-      padding: 0 15px;
-      background-color: $muted-lighter-color;
-      border-radius: 3px 3px 0 0;
-      $this: &;
-      &--current {
-        @extend #{$this};
-        background-color: $secondary-color;
-      }
+        width: 25%;
+        margin: 0 5px;
+        padding: 0 15px;
+        background-color: $muted-lighter-color;
+        border-radius: 3px 3px 0 0;
     }
     &__itemText {
-      width: 100%;
-      padding: 10px 10px;
-      font-size: 16px;
-      display: block;
-      text-align: center;
-      color: $light-color;
+        width: 100%;
+        padding: 10px 10px;
+        font-size: 16px;
+        display: block;
+        text-align: center;
+        color: $light-color;
     }
+}
+.active {
+    background-color: $secondary-color !important;
 }
