@@ -36,6 +36,6 @@ class Position extends Model
      */
     public function projects(): BelongsToMany
     {
-        return $this->belongsToMany(Project::class);
+        return $this->belongsToMany(Project::class, 'rel_positions_projects', 'position_id', 'project_id');
     }
 }

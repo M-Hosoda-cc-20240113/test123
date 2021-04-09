@@ -36,6 +36,6 @@ class Level extends Model
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'rel_levels_skills_users', 'level_id', 'user_id');
     }
 }

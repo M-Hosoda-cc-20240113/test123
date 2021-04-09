@@ -108,7 +108,7 @@ class User extends Authenticatable
      */
     public function levels(): BelongsToMany
     {
-        return $this->belongsToMany(Level::class,'rel_levels_skills_users','user_id','level_id');
+        return $this->belongsToMany(Level::class, 'rel_levels_skills_users', 'user_id', 'level_id');
     }
     /**
      * 
@@ -117,7 +117,7 @@ class User extends Authenticatable
      */
     public function skills(): BelongsToMany
     {
-        return $this->belongsToMany(Skill::class,'rel_levels_skills_users','user_id','skill_id');
+        return $this->belongsToMany(Skill::class,'rel_l evels_skills_users', 'user_id', 'skill_id');
     }
 
     /**
@@ -127,6 +127,6 @@ class User extends Authenticatable
      */
     public function projects(): BelongsToMany
     {
-        return $this->belongsToMany(Project::class,'applications','user_id','project_id');
+        return $this->belongsToMany(Project::class, 'applications', 'user_id', 'project_id');
     }
 }

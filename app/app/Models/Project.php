@@ -72,6 +72,7 @@ class Project extends Model
     {
         return $this->belongsToMany(User::class, 'applications', 'project_id', 'user_id');
     }
+
     /**
      * 
      * Positions Table relation
@@ -99,7 +100,7 @@ class Project extends Model
      */
     public function agent(): HasMany
     {
-        return $this->hasMany('App\Models\Agent');
+        return $this->hasMany(Agent::class);
     }
 
     /**
@@ -109,6 +110,6 @@ class Project extends Model
      */
      public function station(): HasMany
      {
-         return $this->hasMany('App\Models\Station');
+         return $this->hasMany(Station::class);
      }
 }
