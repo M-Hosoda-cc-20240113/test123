@@ -36,9 +36,9 @@ class ProjectController extends Controller
      * Admin project show
      * @var array
      */
-    public function show()
+    public function detail()
     {
-        return 'Projects show';
+        return view('admin.pages.project.detail.detail');
     }
 
     /**

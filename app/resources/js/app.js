@@ -1,3 +1,3 @@
-require('./bootstrap');
+import { project_list } from "./admin/pages/project_list";
 
-require('alpinejs');
+project_list();
