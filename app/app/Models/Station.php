@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Agent extends Model
+class Station extends Model
 {
     use HasFactory;
 
@@ -16,8 +16,8 @@ class Agent extends Model
      * Project Table relation
      * @var array
      */
-    public function project(): BelongsTo
-    {
-        return $this->belongsTo(Project::class);
-    }
+     public function project(): BelongsTo
+     {
+         return $this->belongsTo(Project::class);
+     }
 }
