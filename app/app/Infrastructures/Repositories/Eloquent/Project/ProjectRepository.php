@@ -14,7 +14,7 @@ class ProjectRepository implements ProjectRepositoryInterface
    */
   public function all(): Collection
   {
-    $projects = Project::with('agents')->with('stations')->get();
+    $projects = Project::with('agent')->with('station')->get();
     return $projects;
   }
 

@@ -24,12 +24,9 @@ class IndexController extends Controller
         $projects = $project_list_service->exec();
 
         $response->setProjects($projects);
-        // foreach($response->getProjects() as $project)
-        // {
-        //     dd($project->agents->name);
-        // }
-        return view('admin.pages.project.list.list', ['response' => $response]);
-        //  return view('front.welcome');
+        
+        // return view('admin.pages.project.list.list', ['response' => $response]);
+         return view('front.welcome');
      }
     /**
      * 
