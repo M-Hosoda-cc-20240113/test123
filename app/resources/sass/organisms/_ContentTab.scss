@@ -11,6 +11,11 @@
         padding: 0 15px;
         background-color: $muted-lighter-color;
         border-radius: 3px 3px 0 0;
+        text-align: center;
+        padding: 10px;
+        &:hover {
+            cursor: pointer;
+        }
     }
     &__itemText {
         width: 100%;
@@ -23,4 +28,5 @@
 }
 .active {
     background-color: $secondary-color !important;
+    color: $light-color;
 }

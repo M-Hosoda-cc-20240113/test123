@@ -2148,6 +2148,12 @@ input[type="checkbox"]:checked + label:before {
   padding: 0 15px;
   background-color: #dfe4e7;
   border-radius: 3px 3px 0 0;
+  text-align: center;
+  padding: 10px;
+}
+
+.ContentTab__item:hover {
+  cursor: pointer;
 }
 
 .ContentTab__itemText {
@@ -2161,6 +2167,7 @@ input[type="checkbox"]:checked + label:before {
 
 .active {
   background-color: #4bc1c1 !important;
+  color: #ffffff;
 }
 
 .RegularList {
