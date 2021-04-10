@@ -4,16 +4,18 @@
 @import "./base/normalize"; // リセット系
 @import "./base/spacing"; // マージン・パディング系
 @import "./base/with"; // width系
+@import "./base/font"; // width系
 
 // atoms
 @import "./atoms/Button";
 @import "./atoms/Tag";
 @import "./atoms/Input";
 @import "./atoms/Checkbox";
+@import "./atoms/Horizontal";
 
 // organisms
-@import "./organisms/footer";
-@import "./organisms/header";
+@import "./organisms/Footer";
+@import "./organisms/Header";
 @import "./organisms/ProjectCard";
 @import "./organisms/ContentTab";
 @import "./organisms/RegularList";
@@ -23,3 +25,4 @@
 
 // pages
 @import "./pages/welcome";
+@import "./pages/admin/project/detail";
