@@ -45,7 +45,7 @@ class ProjectController extends Controller
         $project = $project_detail_service->exec($id);
 
         $response->setProject($project);
-        // dd($response);
+        
         return view('admin.pages.project.detail.detail', ['response' => $response]);
     }
 
