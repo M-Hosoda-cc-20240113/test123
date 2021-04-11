@@ -13,11 +13,11 @@ class ProjectDetailService
 
   public function __construct(ProjectRepositoryInterface $project_repository) 
   {
-    $this->project_reopsitory = $project_repository; 
+    $this->project_reopsitory = $project_repository;
   }
 
-  public function exec()
+  public function exec(int $id)
   {
-    return $this->project_reopsitory->detail();
+    return $this->project_reopsitory->detail($id);
   }
 }

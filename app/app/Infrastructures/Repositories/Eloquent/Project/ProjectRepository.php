@@ -15,10 +15,16 @@ class ProjectRepository implements ProjectRepositoryInterface
    */
   public function all(): Collection
   {
-    $projects = Project::with('station')->with('position')->with('skill')->get();
-    return $projects;
+    return Project::with('station')->with('position')->with('skill')->get(); 
   }
-
+  /**
+   *for Front
+   * @inheritDoc 
+   */
+   public function detail(int $id): Project
+   {
+    return Project::with('station')->with('position')->with('skill')->findOrFail($id);
+   }
   /**
    * @inheritDoc 
    *all with users table

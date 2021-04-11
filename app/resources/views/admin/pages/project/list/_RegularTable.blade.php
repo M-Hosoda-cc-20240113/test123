@@ -10,7 +10,7 @@
   <tbody class="RegularTable__body">
     @foreach ($response->getProjects() as $project)
     <tr class="RegularTable__bodyRow"
-        data-href="{{ route('project.detail' , $project->id ) }}">
+        data-href="{{ route('project.detail' , $project->id)}}">
       <td class="RegularTable__bodyRowItem">{{ $project->name }}</td>
       <td class="RegularTable__bodyRowItem">{{ $project->created_at }}</td>
       <td class="RegularTable__bodyRowItem--textCenter">{{ $project->decided ? '否' : '可'}}</td>

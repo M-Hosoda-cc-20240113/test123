@@ -14,4 +14,11 @@ interface ProjectRepositoryInterface
    * 
    */
   public function create(): Project;
+
+  /**
+   * プロジェクト詳細
+   * @return Project
+   * 
+   */
+   public function detail(int $id): Project;
 }

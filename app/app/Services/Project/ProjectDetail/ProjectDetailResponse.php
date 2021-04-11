@@ -10,28 +10,28 @@ class ProjectDetailResponse
   /**
    * @var Project[]
    */
-  private $projects;
+  private $project;
 
   /**
-   * Get the value of projects
+   * Get the value of project
    *
    * @return  Project[]
    */ 
-  public function getProjects()
+  public function getProject()
   {
-    return $this->projects;
+    return $this->project;
   }
 
   /**
-   * Set the value of projects
+   * Set the value of project
    *
-   * @param  Project[]  $projects
+   * @param  Project[]  $project
    *
    * @return  self
    */ 
-  public function setProjects(Collection $projects)
+  public function setProject(Project $project)
   {
-    $this->projects = $projects;
+    $this->project = $project;
 
     return $this;
   }

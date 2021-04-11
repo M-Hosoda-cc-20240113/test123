@@ -7,7 +7,8 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Services\Project\ProjectList\ProjectListResponse;
 use App\Services\Project\ProjectList\ProjectListService;
-
+use App\Services\Project\ProjectDetail\ProjectDetailResponse;
+use App\Services\Project\ProjectDetail\ProjectDetailService;
 
 class ProjectController extends Controller
 {
@@ -37,11 +38,15 @@ class ProjectController extends Controller
      * Admin project show
      * @var array
      */
-    public function detail(int $id)
+    public function detail(ProjectDetailService $project_detail_service, int $id)
     {
-        $project = Project::with('station')->with('position')->with('skill')->findorfail($id);
-        // dd($projects);
-        return view('admin.pages.project.detail.detail');
+        $response = new ProjectDetailResponse();
+
+        $project = $project_detail_service->exec($id);
+
+        $response->setProject($project);
+        // dd($response);
+        return view('admin.pages.project.detail.detail', ['response' => $response]);
     }
 
     /**
