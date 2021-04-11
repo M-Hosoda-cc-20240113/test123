@@ -16,14 +16,6 @@ class ProjectRepository implements ProjectRepositoryInterface
   public function all(): Collection
   {
     $projects = Project::with('station')->with('position')->with('skill')->get();
-    // dd($projects);
-    // foreach($projects as $project){
-    //   dd($project);
-    //   foreach($project->skill as $skill)
-    //   {
-    //     dd($skill->name);
-    //   }
-    // }
     return $projects;
   }
 
