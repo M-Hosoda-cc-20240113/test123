@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin\Skill\SkillList;
+namespace App\Services\Skill\SkillList;
 
 use App\Models\Skill;
 use Illuminate\Support\Collection;

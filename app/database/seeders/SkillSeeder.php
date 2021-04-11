@@ -35,7 +35,8 @@ class SkillSeeder extends Seeder
             'Android',
             'MySQL',
             'AWS',
-            'Linux'
+            'Linux',
+            'GO'
         ];
         $now = Carbon::now();
         foreach ($names as $name) {

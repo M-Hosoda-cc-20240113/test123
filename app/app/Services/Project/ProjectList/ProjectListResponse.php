@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin\Project\ProjectList;
+namespace App\Services\Project\ProjectList;
 
 use App\Models\Project;
 use Illuminate\Support\Collection;

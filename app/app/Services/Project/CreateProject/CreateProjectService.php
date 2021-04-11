@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Admin\Project\CreateProject;
+namespace App\Services\Project\CreateProject;
 
-use App\Services\Admin\Project\ProjectRepositoryInterface;
+use App\Services\Project\ProjectRepositoryInterface;
 
 class CreateProjectService
 {

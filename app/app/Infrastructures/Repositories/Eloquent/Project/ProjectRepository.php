@@ -2,19 +2,33 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\Project;
 
+// use Illuminate\Support\Facades\DB;
 use App\Models\Project;
-use App\Services\Admin\Project\ProjectRepositoryInterface;
+use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 class ProjectRepository implements ProjectRepositoryInterface
 {
   /**
+   *for Front
    * @inheritDoc 
    */
   public function all(): Collection
   {
-    return Project::all();
+    $projects = Project::with('station')->with('position')->with('skill')->get();
+    return $projects;
   }
+
+  /**
+   * @inheritDoc 
+   *all with users table
+   *for Admin
+   */
+   public function allWithUsers(): Collection
+   {
+     $projects = Project::with('agent')->with('station')->get();
+     return $projects;
+   }
 
   /**
    * {@inheritDoc}

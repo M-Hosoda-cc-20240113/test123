@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Skill;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\Admin\Skill\SkillList\SkillListResponse;
-use App\Services\Admin\Skill\SkillList\SkillListService;
+use App\Services\Skill\SkillList\SkillListResponse;
+use App\Services\Skill\SkillList\SkillListService;
 
 class SkillController extends Controller
 {

@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\User;
 use App\Models\Position;
 use App\Models\Skill;
@@ -68,7 +69,7 @@ class Project extends Model
      * Users Table relation
      * @var array
      */
-    public function users(): BelongsToMany
+    public function user(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'applications', 'project_id', 'user_id');
     }
@@ -78,7 +79,7 @@ class Project extends Model
      * Positions Table relation
      * @var array
      */
-    public function positions(): BelongsToMany
+    public function position(): BelongsToMany
     {
         return $this->belongsToMany(Position::class, 'rel_positions_projects', 'project_id', 'position_id');
     }
@@ -88,7 +89,7 @@ class Project extends Model
      * Skills Table relation
      * @var array
      */
-    public function skills(): BelongsToMany
+    public function skill(): BelongsToMany
     {
         return $this->belongsToMany(Skill::class, 'rel_projects_skills', 'project_id', 'skill_id');
     }
@@ -98,18 +99,19 @@ class Project extends Model
      * agents Table relation
      * @var array
      */
-    public function agent(): HasMany
-    {
-        return $this->hasMany(Agent::class);
-    }
+
+     public function agent(): HasOne
+     {
+         return $this->HasOne(Agent::class,'id');
+     }
 
     /**
      * 
      * stations Table relation
      * @var array
      */
-     public function station(): HasMany
+     public function station(): HasOne
      {
-         return $this->hasMany(Station::class);
+         return $this->HasOne(Station::class,'id');
      }
 }

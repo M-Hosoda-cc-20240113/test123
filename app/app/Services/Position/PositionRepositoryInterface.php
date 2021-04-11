@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin\Position;
+namespace App\Services\Position;
 
 interface PositionRepositoryInterface
 {

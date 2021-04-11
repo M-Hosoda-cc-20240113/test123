@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Admin\Skill\SkillList;
+namespace App\Services\Skill\SkillList;
 
-use App\Services\Admin\Skill\SkillRepositoryInterface;
+use App\Services\Skill\SkillRepositoryInterface;
 
 class SkillListService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin\Skill;
+namespace App\Services\Skill;
 
 interface SkillRepositoryInterface
 {

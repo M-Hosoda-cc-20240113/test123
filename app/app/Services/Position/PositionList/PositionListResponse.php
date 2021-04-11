@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin\Position\PositionList;
+namespace App\Services\Position\PositionList;
 
 use App\Models\Position;
 use Illuminate\Support\Collection;

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
-use App\Services\Admin\User\UserList\UserListResponse;
-use App\Services\Admin\User\UserList\UserListService;
+use App\Services\User\UserList\UserListResponse;
+use App\Services\User\UserList\UserListService;
 
 class UserController extends Controller
 {
