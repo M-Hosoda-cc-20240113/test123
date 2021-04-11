@@ -1,57 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="ja">
+<head>
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta charset="utf-8">
+  <link rel="SHORTCUT ICON" href="/assets/images/favicon.ico">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>@yield('title')</title>
+  <title>@yield('title')</title>
+  @hasSection('description')
+    <meta name="description" content="@yield('description')">
+  @endif
+  @hasSection('keywords')
+    <meta name="keywords" content="@yield('keywords')">
+  @endif
+  @hasSection('robots')
+    <meta name="robots" content="@yield('robots')">
+  @endif
+  @hasSection('canonical')
+    <link rel="canonical" href="@yield('canonical')">
+  @endif
+  @section('stylesheet')
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}" media="all">
+  @show
+  @section('head')
+  @show
+</head>
+<body>
+@section('body')
+@show 
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 36px;
-                padding: 20px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            <div class="content">
-                <div class="title">
-                    @yield('message')
-                </div>
-            </div>
-        </div>
-    </body>
+@section('script')
+  <script src="{{ asset('/js/bundle.js') }}" type="text/javascript"></script>
+@show
+</body>
 </html>

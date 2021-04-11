@@ -15,8 +15,8 @@ use App\Http\Controllers\TestController;
 |
 */
 Route::namespace('Index')->group(function () {
-    Route::get('/', [IndexController::class, 'index'])->name('index');
-    Route::get('/project/{id}', [IndexController::class, 'show'])->name('index.project');
+    Route::get('/', [IndexController::class, 'index'])->name('front.index');
+    Route::get('/project/{id}', [IndexController::class, 'show'])->name('front.index.project');
   });
 Route::namespace('Home')->prefix('mypage')->middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home.mypage');
