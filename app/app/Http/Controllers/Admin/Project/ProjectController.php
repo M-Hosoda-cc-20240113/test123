@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Services\Project\ProjectList\ProjectListResponse;
 use App\Services\Project\ProjectList\ProjectListService;
@@ -36,8 +37,10 @@ class ProjectController extends Controller
      * Admin project show
      * @var array
      */
-    public function detail()
+    public function detail(int $id)
     {
+        $project = Project::with('station')->with('position')->with('skill')->findorfail($id);
+        // dd($projects);
         return view('admin.pages.project.detail.detail');
     }
 
