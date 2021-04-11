@@ -2008,7 +2008,7 @@ select {
   text-align: center;
   border: none;
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   outline: none;
   text-align: center;
   display: flex;
@@ -2497,4 +2497,6 @@ input[type="checkbox"]:checked + label:before {
   border-radius: 3px;
   box-shadow: 0 3.81px 5.72px rgba(0, 0, 0, 0.15);
   margin-bottom: 30px;
+  background-color: #ffffff;
+  padding: 20px;
 }
