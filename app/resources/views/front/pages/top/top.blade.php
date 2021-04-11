@@ -22,10 +22,9 @@
             @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 6, 'text' => 'hoge'])
         </div>
         <div class="welcome-ProjectCard mt-30">
-            @include('front.organisms.ProjectCard')
-            @include('front.organisms.ProjectCard')
-            @include('front.organisms.ProjectCard')
-            @include('front.organisms.ProjectCard')
+            @foreach ($response->getProjects() as $project)
+                @include('front.pages.top._ProjectCard',$project)
+            @endforeach
         </div>
     </div>
 

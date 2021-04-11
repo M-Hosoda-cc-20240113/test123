@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Infrastructures\Repositories\Eloquent\Admin\PositionRepository;
-use App\Services\Admin\Project\PositionRepositoryInterface;
+use App\Infrastructures\Repositories\Eloquent\PositionRepository;
+use App\Services\Project\PositionRepositoryInterface;
 
 class PositionServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class PositionServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            \App\Services\Admin\Position\PositionRepositoryInterface::class,
+            \App\Services\Position\PositionRepositoryInterface::class,
             \App\Infrastructures\Repositories\Eloquent\Position\PositionRepository::class
         );
     }

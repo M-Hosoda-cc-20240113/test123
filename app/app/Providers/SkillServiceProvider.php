@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Infrastructures\Repositories\Eloquent\Admin\Skill\SkillRepository;
-use App\Services\Admin\Skill\SkillRepositoryInterface;
+use App\Infrastructures\Repositories\Eloquent\Skill\SkillRepository;
+use App\Services\Skill\SkillRepositoryInterface;
 
 class SkillServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class SkillServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            \App\Services\Admin\Skill\SkillRepositoryInterface::class,
+            \App\Services\Skill\SkillRepositoryInterface::class,
             \App\Infrastructures\Repositories\Eloquent\Skill\SkillRepository::class
         );
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Admin\Project\CreateProject;
+namespace App\Services\Project\CreateProject;
 
 class CreateProjectParameter
 {
@@ -87,13 +87,6 @@ class CreateProjectParameter
    * @var string
    */
   private $feature;
-
-  /**
-   * 勤務地
-   *
-   * @var string
-   */
-  private $place;
 
   /**
    * 案件が決まっているかどうか
@@ -386,30 +379,6 @@ class CreateProjectParameter
   public function setFeature(string $feature)
   {
     $this->feature = $feature;
-
-    return $this;
-  }
-
-  /**
-   * Get 勤務地
-   *
-   * @return  string
-   */ 
-  public function getPlace()
-  {
-    return $this->place;
-  }
-
-  /**
-   * Set 勤務地
-   *
-   * @param  string  $place  勤務地
-   *
-   * @return  self
-   */ 
-  public function setPlace(string $place)
-  {
-    $this->place = $place;
 
     return $this;
   }

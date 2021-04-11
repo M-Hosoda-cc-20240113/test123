@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Infrastructures\Repositories\Eloquent\User\UserRepository;
-use App\Services\Admin\User\UserRepositoryInterface;
+use App\Services\User\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class UserServiceProvider extends ServiceProvider
@@ -16,7 +16,7 @@ class UserServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            \App\Services\Admin\User\UserRepositoryInterface::class,
+            \App\Services\User\UserRepositoryInterface::class,
             \App\Infrastructures\Repositories\Eloquent\User\UserRepository::class
         );
     }

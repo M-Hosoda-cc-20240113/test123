@@ -69,7 +69,7 @@ class Project extends Model
      * Users Table relation
      * @var array
      */
-    public function users(): BelongsToMany
+    public function user(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'applications', 'project_id', 'user_id');
     }
@@ -79,7 +79,7 @@ class Project extends Model
      * Positions Table relation
      * @var array
      */
-    public function positions(): BelongsToMany
+    public function position(): BelongsToMany
     {
         return $this->belongsToMany(Position::class, 'rel_positions_projects', 'project_id', 'position_id');
     }
@@ -89,7 +89,7 @@ class Project extends Model
      * Skills Table relation
      * @var array
      */
-    public function skills(): BelongsToMany
+    public function skill(): BelongsToMany
     {
         return $this->belongsToMany(Skill::class, 'rel_projects_skills', 'project_id', 'skill_id');
     }

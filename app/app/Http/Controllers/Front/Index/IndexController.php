@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Front\Index;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\Front\Project\ProjectCard\ProjectCardResponse;
-use App\Services\Front\Project\ProjectCard\ProjectCardService;
-
-use App\Services\Admin\Project\ProjectList\ProjectListResponse;
-use App\Services\Admin\Project\ProjectList\ProjectListService;
+use App\Services\Project\ProjectList\ProjectListResponse;
+use App\Services\Project\ProjectList\ProjectListService;
 
 class IndexController extends Controller
 {
@@ -20,13 +17,9 @@ class IndexController extends Controller
     public function index(ProjectListService $project_list_service)
      {
         $response = new ProjectListResponse();
-
         $projects = $project_list_service->exec();
-
         $response->setProjects($projects);
-        
-        // return view('admin.pages.project.list.list', ['response' => $response]);
-         return view('front.pages.top.top');
+        return view('front.pages.top.top', ['response' => $response]);
      }
     /**
      * 

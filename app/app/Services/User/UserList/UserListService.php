@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Admin\User\UserList;
+namespace App\Services\User\UserList;
 
-use App\Services\Admin\User\UserRepositoryInterface;
+use App\Services\User\UserRepositoryInterface;
 
 class UserListService
 {

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Position;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\Admin\Position\PositionList\PositionListResponse;
-use App\Services\Admin\Position\PositionList\PositionListService;
+use App\Services\Position\PositionList\PositionListResponse;
+use App\Services\Position\PositionList\PositionListService;
 
 class PositionController extends Controller
 {

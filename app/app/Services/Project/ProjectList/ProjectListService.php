@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Services\Front\Project\ProjectCard;
+namespace App\Services\Project\ProjectList;
 
-use App\Services\Front\Project\ProjectRepositoryInterface;
+use App\Services\Project\ProjectRepositoryInterface;
 
-class ProjectCardService
+class ProjectListService
 {
   /**
    * @var ProjectRepositoryInterface
    */
   private $project_reopsitory;
-  
+
   public function __construct(ProjectRepositoryInterface $project_repository) 
   {
     $this->project_reopsitory = $project_repository; 
