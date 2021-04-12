@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('mei_kana');
             $table->string('tel')->unique();
             $table->date('birthday');
+            $table->integer('points')->default(5000);
             $table->tinyInteger('is_receive_notification_mail')->default(1);  //メンションメールを受け取るか
             $table->tinyInteger('is_working')->default(0);  //aegis経由で働いてるかどうか
             $table->rememberToken();
