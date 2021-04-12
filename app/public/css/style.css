@@ -2534,3 +2534,10 @@ input[type="checkbox"]:checked + label:before {
   justify-content: space-between;
   min-width: 200px;
 }
+
+.front-register-ItemRight {
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  flex-flow: row wrap;
+}
