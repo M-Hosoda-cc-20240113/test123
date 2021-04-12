@@ -8,12 +8,14 @@
         @include('atoms.input', ['text' => 'フリーワードで探す'])
         @include('front.pages.top._ContentTab')
         <div class="welcome-Checkbox tab_content-js tab_active-js">
-            @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 1, 'text' => 'PHP'])
-            @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 2, 'text' => 'Anguler'])
+        @foreach ($skill_response->getskills() as $key => $skill)
+            @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => $key, 'text' => $skill->name])
+        @endforeach
+            <!-- @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 2, 'text' => 'Anguler'])
             @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 3, 'text' => 'React.js'])
             @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 4, 'text' => 'Vue.js'])
             @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 5, 'text' => 'Javascript'])
-            @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 6, 'text' => 'Python'])
+            @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 6, 'text' => 'Python']) -->
         </div>
         <div class="welcome-Checkbox tab_content-js">
             @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 1, 'text' => 'huga'])
@@ -22,8 +24,8 @@
             @include('atoms.Checkbox', ['class' => 'mr-30', 'index' => 6, 'text' => 'hoge'])
         </div>
         <div class="welcome-ProjectCard mt-30">
-            @foreach ($response->getProjects() as $project)
-                @include('front.pages.top._ProjectCard',$project)
+            @foreach ($pro_response->getProjects() as $project)
+                @include('front.pages.top._ProjectCard', $project)
             @endforeach
         </div>
     </div>
