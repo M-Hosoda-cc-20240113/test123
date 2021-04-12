@@ -11,8 +11,9 @@ class ProjectListService
    */
   private $project_reopsitory;
 
-  public function __construct(ProjectRepositoryInterface $project_repository) 
-  {
+  public function __construct(
+    ProjectRepositoryInterface $project_repository
+  ) {
     $this->project_reopsitory = $project_repository; 
   }
 
