@@ -60,11 +60,23 @@ li {
 }
 
 .d-flex {
-  display: flex;
+  display: flex !important;
 }
 
 .bg-light {
   background-color: #ffffff;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.f-end {
+  justify-content: flex-end;
+}
+
+.f-start {
+  justify-content: flex-start;
 }
 
 /* A Modern CSS Reset */
@@ -2032,24 +2044,23 @@ select {
   background-color: #606089;
 }
 
-.Input {
+.RegularInput {
   width: 100%;
   display: inline-block;
 }
 
-.Input__name {
+.RegularInput__name {
   font-size: 14px;
-  font-weight: bold;
   color: #333333;
   padding: 3px 0;
 }
 
-.Input__label, .Input__label--radio, .Input__label--button {
+.RegularInput__label, .RegularInput__label--radio, .RegularInput__label--button {
   display: table;
   border-collapse: separate;
 }
 
-.Input__label--select {
+.RegularInput__label--select {
   display: inline-block;
   overflow: hidden;
   width: 440px;
@@ -2061,7 +2072,7 @@ select {
   line-height: 2;
 }
 
-.Input__label--select:before {
+.RegularInput__label--select:before {
   position: absolute;
   top: 0.8em;
   right: 0.9em;
@@ -2075,15 +2086,15 @@ select {
   pointer-events: none;
 }
 
-.Input__label--radio {
+.RegularInput__label--radio {
   display: inline-block;
 }
 
-.Input__label--button:hover:after {
+.RegularInput__label--button:hover:after {
   cursor: pointer;
 }
 
-.Input__label--button:after {
+.RegularInput__label--button:after {
   content: '';
   display: table-cell;
   margin-left: -1px;
@@ -2104,7 +2115,7 @@ select {
   left: -1px;
 }
 
-.Input__field, .Input__field--radio, .Input__field--long, .Input__field--button, .Input__field--button--long {
+.RegularInput__field, .RegularInput__field--radio, .RegularInput__field--long, .RegularInput__field--button, .RegularInput__field--button--long {
   width: 220px;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -2113,12 +2124,12 @@ select {
   display: table-cell;
 }
 
-.Input__field:focus, .Input__field--radio:focus, .Input__field--long:focus, .Input__field--button:focus, .Input__field--button--long:focus {
+.RegularInput__field:focus, .RegularInput__field--radio:focus, .RegularInput__field--long:focus, .RegularInput__field--button:focus, .RegularInput__field--button--long:focus {
   border-color: #66afe9;
   outline: 0;
 }
 
-.Input__field--select {
+.RegularInput__field--select {
   width: 100%;
   padding-right: 1em;
   cursor: pointer;
@@ -2135,20 +2146,20 @@ select {
   color: #333333;
 }
 
-.Input__field--radio {
+.RegularInput__field--radio {
   width: 20px;
 }
 
-.Input__field--long {
+.RegularInput__field--long {
   width: 440px;
 }
 
-.Input__field--button, .Input__field--button--long {
+.RegularInput__field--button, .RegularInput__field--button--long {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.Input__field--button--long {
+.RegularInput__field--button--long {
   width: 407px;
 }
 
@@ -2202,6 +2213,16 @@ input[type="checkbox"]:checked + label:before {
   height: 2px;
   background-color: #42b5d1;
   border: 0;
+}
+
+.RegularLabel {
+  border-radius: 100px;
+  padding: 4px 10px;
+  font-size: 0.6rem;
+  text-align: center;
+  min-width: 50px;
+  border: 1px solid #F9627D;
+  color: #F9627D;
 }
 
 .Footer {
@@ -2499,4 +2520,17 @@ input[type="checkbox"]:checked + label:before {
   margin-bottom: 30px;
   background-color: #ffffff;
   padding: 20px;
+}
+
+.front-register-ItemWrap {
+  display: flex;
+  margin: 0 auto;
+}
+
+.front-register-ItemLeft {
+  align-self: center;
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+  min-width: 200px;
 }

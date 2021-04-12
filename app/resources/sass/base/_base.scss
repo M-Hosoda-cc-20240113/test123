@@ -48,7 +48,7 @@ li {
 }
 
 .text-secondary {
-    color: #F9627D !important;
+    color: $warning-color !important;
 }
 
 .d-block {
@@ -56,9 +56,21 @@ li {
 }
 
 .d-flex {
-    display: flex;
+    display: flex !important;
 }
 
 .bg-light {
     background-color: $light-color;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+.f-end {
+    justify-content: flex-end;
+}
+
+.f-start {
+    justify-content: flex-start;
 }
