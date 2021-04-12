@@ -38,7 +38,7 @@ class UserController extends Controller
         $user = $user_detail_service->exec($id);
 
         $response->setUser($user);
-        dd($response);
+
         return view('admin.pages.user.detail.detail', ['response' => $response]);
     }
 
