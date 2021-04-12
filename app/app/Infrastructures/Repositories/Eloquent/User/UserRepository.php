@@ -15,4 +15,12 @@ class UserRepository implements UserRepositoryInterface
   {
     return User::all();
   }
+
+  /**
+   * @inheritDoc 
+   */
+   public function detail(int $id): User
+   {
+     return User::findOrFail($id);
+   }
 }
