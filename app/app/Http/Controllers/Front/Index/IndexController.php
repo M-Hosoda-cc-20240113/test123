@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Front\Index;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\Project\ProjectList\ProjectListResponse;
-use App\Services\Project\ProjectList\ProjectListService;
+use App\Services\Top\FetchTopData\FetchTopResponse;
+use App\Services\Top\FetchTopData\FetchTopService;
 
 class IndexController extends Controller
 {
@@ -14,11 +14,9 @@ class IndexController extends Controller
      * Front index
      * @var array
      */
-    public function index(ProjectListService $project_list_service)
+    public function index(FetchTopService $fetch_top_data_service)
      {
-        $response = new ProjectListResponse();
-        $projects = $project_list_service->exec();
-        $response->setProjects($projects);
+        $response = $fetch_top_data_service->exec();
         return view('front.pages.top.top', ['response' => $response]);
      }
     /**

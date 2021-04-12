@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Services\Project\ProjectList\ProjectListResponse;
 use App\Services\Project\ProjectList\ProjectListService;
-
+use App\Services\Project\ProjectDetail\ProjectDetailResponse;
+use App\Services\Project\ProjectDetail\ProjectDetailService;
 
 class ProjectController extends Controller
 {
@@ -36,9 +38,15 @@ class ProjectController extends Controller
      * Admin project show
      * @var array
      */
-    public function detail()
+    public function detail(ProjectDetailService $project_detail_service, int $id)
     {
-        return view('admin.pages.project.detail.detail');
+        $response = new ProjectDetailResponse();
+
+        $project = $project_detail_service->exec($id);
+
+        $response->setProject($project);
+        
+        return view('admin.pages.project.detail.detail', ['response' => $response]);
     }
 
     /**
