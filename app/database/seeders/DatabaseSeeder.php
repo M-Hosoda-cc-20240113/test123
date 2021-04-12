@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PositionSeeder::class);
         $this->call(LevelSeeder::class);
         $this->call(AgentTableSeeder::class);
+        $this->call(AreaTableSeeder::class);
         $this->call(StationTableSeeder::class);
         $this->call(ProjectSeeder::class);
         $this->call(RelLevelSkillUserTableSeeder::class);

@@ -16,20 +16,21 @@ class StationTableSeeder extends Seeder
     public function run()
     {
         $stations = [
-            '大久保',
-            '池袋',
-            '表参道',
-            '渋谷',
-            '品川',
-            '東京',
-            '京橋',
-            '大田'
+            '大久保' => 1,
+            '池袋' => 2,
+            '表参道' => 7,
+            '渋谷' => 3,
+            '品川' => 8,
+            '東京' => 9,
+            '京橋' => 11,
+            '大田' => 10
         ];
         $now = Carbon::now();
-        foreach ($stations as $station) {
+        foreach ($stations as $station => $value) {
             Station::create([
-                'name'       => $station,
-                'created_at' => $now
+                'name'        => $station,
+                'area_id'     => $value,
+                'created_at'  => $now
             ]);  
         }
     }

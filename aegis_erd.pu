@@ -61,7 +61,16 @@ package "Aegis ER図" as aegis_erd {
     entity "stations" as stations <駅名> {
         + id:int [PK, AI, UN] (ID)
         ---
+        # area_id [FK(area:id), UIDX(1), OD:SETNULL] (エリアID)
         name:varchar(255) [NN, UQ] (駅名)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
+
+    entity "areas" as areas <エリア名> {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        name:varchar(255) [NN, UQ] (エリア名)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
@@ -69,6 +78,8 @@ package "Aegis ER図" as aegis_erd {
     entity "projects" as projects <案件> {
         + id:int [PK, AI, UN] (ID)
         ---
+        # station_id [FK(station:id), UIDX(1), OD:SETNULL] (駅名ID)
+        # agent_id [FK(agent:id), UIDX(1), OD:SETNULL] (エージェントID)
         name:varchar(255) [NN] (案件名)
         min_unit_price:int (最小案件単価)
         max_unit_price:int [NN] (最大案件単価)
@@ -155,6 +166,8 @@ positions   --up--|{    rel_positions_projects
 agents      --do--|{    projects
 
 stations    --le--|{    projects
+
+areas       --le--\{    stations
 
 users       --up--o{    applications
 projects    --do--o{    applications
