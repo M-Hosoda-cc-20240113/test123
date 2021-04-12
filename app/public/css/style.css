@@ -2331,6 +2331,10 @@ input[type="checkbox"]:checked + label:before {
   padding: 20px;
 }
 
+.ProjectCard > a {
+  min-height: 50px;
+}
+
 .ContentTab {
   width: 100%;
   max-width: 960px;

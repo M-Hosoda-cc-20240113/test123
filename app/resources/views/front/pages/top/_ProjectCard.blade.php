@@ -1,5 +1,5 @@
 <div href="#" class="ProjectCard mg-5">
-  <a class="mb-10 fw-bold d-block">{{ $project->name }}</a>
+  <a class="fw-bold d-block">{{ $project->name }}</a>
   <table class="mb-20 w-100">
     <tr>
       <td>単価/月</td>

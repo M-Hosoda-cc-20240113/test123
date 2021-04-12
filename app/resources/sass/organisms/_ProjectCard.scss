@@ -4,4 +4,7 @@
     border-radius: 3px;
     box-shadow: 0 3.81px 5.72px rgba(0,0,0,0.15);
     padding: 20px;
+    & > a{
+        min-height: 50px;
+    }
 }

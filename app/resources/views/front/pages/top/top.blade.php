@@ -6,7 +6,6 @@
     @component('front.header.header', ['href' => route('front.index')])
         @include('front.header._link_login_logout')
     @endcomponent
-    @include('atoms.RegularCheckbox')
     <div class="Container mt-30">
         @include('atoms.RegularInput', ['text' => 'フリーワードで探す'])
         @include('front.pages.top._ContentTab')
