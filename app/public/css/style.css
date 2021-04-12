@@ -2512,6 +2512,8 @@ input[type="checkbox"]:checked + label:before {
   display: flex;
   border: 2px solid #4bc1c1;
   border-top: 0;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 .admin-project-detail {
