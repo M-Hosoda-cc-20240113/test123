@@ -179,7 +179,7 @@ return [
         App\Providers\ProjectServiceProvider::class,
         App\Providers\PositionServiceProvider::class,
         App\Providers\SkillServiceProvider::class,
-        App\Providers\FetchTopDataServiceProvider::class,
+        App\Providers\StationServiceProvider::class,
 
     ],
 

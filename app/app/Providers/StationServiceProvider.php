@@ -3,10 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Services\Top\FetchTopDataRepositoryInterface;
-use App\Infrastructures\Repositories\Eloquent\Top\TopRepository;
 
-class FetchTopDataServiceProvider extends ServiceProvider
+class StationServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -14,10 +12,10 @@ class FetchTopDataServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
-        
+    {
         $this->app->bind(
-            \App\Services\Top\FetchTopDataRepositoryInterface::class,
-            \App\Infrastructures\Repositories\Eloquent\Top\TopRepository::class
+            \App\Services\Station\StationRepositoryInterface::class,
+            \App\Infrastructures\Repositories\Eloquent\Station\StationRepository::class
         );
     }
 
