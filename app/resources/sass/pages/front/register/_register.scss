@@ -1,0 +1,19 @@
+.front-register {
+    &-ItemWrap {
+        display: flex;
+        margin: 0 auto;
+    }
+    &-ItemLeft {
+      align-self: center;
+      display: flex;
+      width: 20%;
+      justify-content: space-between;
+      min-width: 200px;
+    }
+    &-ItemRight {
+      margin: 0 auto;
+      width: 70%;
+      display: flex;
+      flex-flow: row wrap;
+    }
+}

@@ -9,9 +9,10 @@
 // atoms
 @import "./atoms/Button";
 @import "./atoms/Tag";
-@import "./atoms/Input";
+@import "./atoms/RegularInput";
 @import "./atoms/Checkbox";
 @import "./atoms/Horizontal";
+@import "./atoms/RegularLabel";
 
 // organisms
 @import "./organisms/Footer";
@@ -26,3 +27,4 @@
 // pages
 @import "./pages/welcome";
 @import "./pages/admin/project/detail";
+@import "./pages/front/register/register";

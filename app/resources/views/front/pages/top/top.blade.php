@@ -3,9 +3,11 @@
 @section('title', 'トップページ|Aegis')
 
 @section('body')
-    @include('front.header.header')
+    @component('front.header.header', ['href' => route('front.index')])
+        @include('front.header._link_login_logout')
+    @endcomponent
     <div class="Container mt-30">
-        @include('atoms.input', ['text' => 'フリーワードで探す'])
+        @include('atoms.RegularInput', ['text' => 'フリーワードで探す'])
         @include('front.pages.top._ContentTab')
         <div class="welcome-Checkbox tab_content-js tab_active-js">
         @foreach ($response->getSkills() as $key => $skill)
