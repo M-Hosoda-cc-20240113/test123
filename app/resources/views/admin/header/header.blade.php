@@ -1,6 +1,6 @@
 <header class="Header">
     <div class="Header__loginWrap">
-        <a href="{{ route('index') }}" class="Header__textLink mr-a">Aegis</a> 
+        <a href="{{ route('admin.index') }}" class="Header__textLink mr-a">Aegis</a> 
         @if (Route::has('login'))
             @auth
                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>

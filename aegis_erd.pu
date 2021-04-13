@@ -151,6 +151,16 @@ package "Aegis ER図" as aegis_erd {
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
+
+    entity "assignment" as assignment <応募> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        user_id [FK(users:id), UIDX(1) , OD:CASCADE] (ユーザーID)
+        project_id [FK(projects:is), UIDX(2) , OD:CASCADE] (案件ID)
+        assignment_date:datetime [NN] (申込日)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
 }
 
 users       --ri--o{    rel_levels_skills_users
@@ -171,5 +181,8 @@ areas       --le--\{    stations
 
 users       --up--o{    applications
 projects    --do--o{    applications
+
+users       --up--o{    assignment
+projects    --do--o{    assignment
 @enduml
 
