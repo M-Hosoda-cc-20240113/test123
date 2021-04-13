@@ -16,6 +16,6 @@
 
   @if(url()->current() === route('application.list'))
   <li> <a href="{{ route('index') }}"><span>ホーム</span></a> </li>
-  <li> <a href="{{ route('project.create') }}"><span>申し込み状況</span></a> </li>
+  <li> <a href="{{ route('application.list') }}"><span>申し込み状況</span></a> </li>
   @endif
 </ol>
