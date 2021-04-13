@@ -29,6 +29,13 @@ class RelPositionProjectTableSeeder extends Seeder
                 'created_at' => $now
             ]);
         }
+        for ($i=1; $i < 3 ; $i++) { 
+            RelPositionProject::create([
+                'position_id'    => $i,
+                'project_id'    => 3,
+                'created_at' => $now
+            ]);
+        }
 
     }
 }
