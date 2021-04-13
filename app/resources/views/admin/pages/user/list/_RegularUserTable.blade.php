@@ -11,7 +11,7 @@
 
   <tbody class="RegularTable__body">
     @foreach ($response->getUsers() as $user)
-    <tr class="RegularTable__bodyRow" data-href="">
+    <tr class="RegularTable__bodyRow" data-href="{{ route('user.detail', $user->id) }}">
       <td class="RegularTable__bodyRowItem">{{ $user->sei }}&nbsp;{{ $user->mei }}</td>
       <td class="RegularTable__bodyRowItem">{{ $user->created_at }}</td>
       <td class="RegularTable__bodyRowItem--textCenter">{{ $user->is_working ? '◎' : '-'}}</td>

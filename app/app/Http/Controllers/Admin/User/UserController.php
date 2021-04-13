@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\User;
 use App\Http\Controllers\Controller;
 use App\Services\User\UserList\UserListResponse;
 use App\Services\User\UserList\UserListService;
+use App\Services\User\UserDetail\UserDetailResponse;
+use App\Services\User\UserDetail\UserDetailService;
 
 class UserController extends Controller
 {
@@ -26,12 +28,18 @@ class UserController extends Controller
 
     /**
      * 
-     * Admin user show
+     * Admin user detail
      * @var array
      */
-    public function show()
+    public function detail(UserDetailService $user_detail_service, int $id)
     {
-        return 'Users show';
+        $response = new UserDetailResponse();
+
+        $user = $user_detail_service->exec($id);
+
+        $response->setUser($user);
+
+        return view('admin.pages.user.detail.detail', ['response' => $response]);
     }
 
     /**

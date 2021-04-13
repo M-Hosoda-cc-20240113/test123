@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
 
         User::create([
             'sei'               => "田中" ,
-            'sei_kana'          => "たなか",
+            'sei_kana'          => "タナカ",
             'mei'               => "太郎" ,
             'mei_kana'          => "たろう",
             'email'             => $email,
@@ -27,11 +27,12 @@ class UserTableSeeder extends Seeder
             'tel'               => '08012341234',
             'birthday'          => '19940603',
             'password'          => bcrypt('test1234'),
+            'is_working'        => 1,
             'created_at'        => $now
         ]);
         User::create([
             'sei'               => "田中" ,
-            'sei_kana'          => "たなか",
+            'sei_kana'          => "タナカ",
             'mei'               => "二郎" ,
             'mei_kana'          => "じろう",
             'email'             => $email2,
@@ -39,6 +40,7 @@ class UserTableSeeder extends Seeder
             'tel'               => '07012341234',
             'birthday'          => '19940605',
             'password'          => bcrypt('test1234'),
+            'is_working'        => 1,
             'created_at'        => $now
         ]);
     }

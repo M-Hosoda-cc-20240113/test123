@@ -125,7 +125,7 @@ class User extends Authenticatable
      * Projects Table relation
      * @var array
      */
-    public function projects(): BelongsToMany
+    public function project(): BelongsToMany
     {
         return $this->belongsToMany(Project::class, 'applications', 'user_id', 'project_id');
     }
