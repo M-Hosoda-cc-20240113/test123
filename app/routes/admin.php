@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Admin\Skill\SkillController;
 use App\Http\Controllers\Admin\Project\ProjectController;
 use App\Http\Controllers\Admin\Position\PositionController;
+use App\Http\Controllers\Admin\Application\ApplicationController;
 use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
@@ -61,4 +62,11 @@ Route::namespace('Skill')->prefix('skills')->group(function () {
 Route::namespace('Position')->prefix('positions')->group(function () {
   Route::get('/', [PositionController::class, 'list'])->name('position.list');
   Route::get('/edit', [PositionController::class, 'edit'])->name('position.edit');
+});
+/**
+ * Admin application status
+ * @var array
+ */
+ Route::namespace('Application')->prefix('applications')->group(function () {
+  Route::get('/', [ApplicationController::class, 'list'])->name('application.list');
 });
