@@ -9,18 +9,26 @@ use Illuminate\Database\Eloquent\Collection;
 class UserRepository implements UserRepositoryInterface
 {
   /**
-   * @inheritDoc 
+   * {@inheritDoc}
    */
   public function all(): Collection
   {
-    return User::all();
+      return User::all();
   }
 
   /**
-   * @inheritDoc 
+   * {@inheritDoc}
    */
-   public function detail(int $id): User
-   {
-     return User::with('project')->findOrFail($id);
-   }
+  public static function makeEmailHash(string $email)
+  {
+      return hash(config('app.hash_email.algo'), $email . config('app.hash_email.salt'));
+  }
+  
+  /**
+    * {@inheritDoc}
+    */
+  public function detail(int $id): User
+  {
+      return User::with('project')->findOrFail($id);
+  }
 }

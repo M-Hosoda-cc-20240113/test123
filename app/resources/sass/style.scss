@@ -14,6 +14,7 @@
 @import "./atoms/Horizontal";
 @import "./atoms/RegularLabel";
 @import "./atoms/RegularCheckbox";
+@import "./atoms/RegularLink";
 
 // organisms
 @import "./organisms/Footer";
@@ -29,3 +30,4 @@
 @import "./pages/welcome";
 @import "./pages/admin/project/detail";
 @import "./pages/front/register/register";
+@import "./pages/front/login/Login";

@@ -14,14 +14,16 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $now = Carbon::now();
+        $email = 'taro@example.com';
+        $email2 = 'jiro@example.com';
 
         User::create([
             'sei'               => "田中" ,
             'sei_kana'          => "タナカ",
             'mei'               => "太郎" ,
-            'mei_kana'          => "タロウ",
-            'email'             => 'taro@example.com',
-            'email_hash'        => bcrypt('test_taro'),
+            'mei_kana'          => "たろう",
+            'email'             => $email,
+            'email_hash'        => hash(config('app.hash_email.algo'), $email . config('app.hash_email.salt')),
             'tel'               => '08012341234',
             'birthday'          => '19940603',
             'password'          => bcrypt('test1234'),
@@ -32,9 +34,9 @@ class UserTableSeeder extends Seeder
             'sei'               => "田中" ,
             'sei_kana'          => "タナカ",
             'mei'               => "二郎" ,
-            'mei_kana'          => "ジロウ",
-            'email'             => 'jiro@example.com',
-            'email_hash'        => bcrypt('test_jiro'),
+            'mei_kana'          => "じろう",
+            'email'             => $email2,
+            'email_hash'        => hash(config('app.hash_email.algo'), $email2 . config('app.hash_email.salt')),
             'tel'               => '07012341234',
             'birthday'          => '19940605',
             'password'          => bcrypt('test1234'),

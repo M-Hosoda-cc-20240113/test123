@@ -23,7 +23,7 @@ use App\Http\Controllers\TestController;
  * @var array
  */
 Route::namespace('Index')->group(function () {
-  Route::get('/', [IndexController::class, 'index'])->name('index');
+  Route::get('/', [IndexController::class, 'index'])->name('admin.index');
 });
 /**
  * Admin Users

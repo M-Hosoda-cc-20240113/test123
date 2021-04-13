@@ -2251,14 +2251,22 @@ input[type="checkbox"]:checked + label:before {
 .RegularCheckbox__indicator::after {
   display: block;
   left: 7px;
-  top: 4px;
-  width: 5px;
-  height: 8px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
   border: solid #ffffff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
   content: "";
   position: absolute;
+}
+
+.RegularLink {
+  color: #42b5d1;
+}
+
+.RegularLink:hover, .RegularLink:focus {
+  color: #2c99b4;
 }
 
 .Footer {
@@ -2582,4 +2590,60 @@ input[type="checkbox"]:checked + label:before {
   width: 70%;
   display: flex;
   flex-flow: row wrap;
+}
+
+.Login {
+  max-width: 40rem;
+  margin: 0 auto;
+  color: #88889f;
+}
+
+.Login__logo {
+  width: 70%;
+  margin: 0 auto;
+  padding: 50px 0 20px;
+}
+
+.Login__topText {
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: 40px;
+}
+
+.Login__footWrap {
+  color: #42b5d1;
+  border-top: 1px solid #cdcddf;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+
+.LoginIconInput {
+  padding-bottom: 20px;
+}
+
+.LoginIconInput__caption {
+  padding-top: 15px;
+}
+
+.IconInput {
+  display: flex;
+  background: #ffffff;
+  border: 1px solid #cdcddf;
+  border-radius: 3px;
+  height: 50px;
+}
+
+.IconInput img {
+  padding: 15px;
+  width: 50px;
+}
+
+.IconInput input {
+  font-size: 1.6rem;
+  border: none;
+  width: 100%;
+  border-left: 1px solid #cdcddf;
+  padding: 0 15px;
+  border-radius: 0 3px 3px 0;
 }
