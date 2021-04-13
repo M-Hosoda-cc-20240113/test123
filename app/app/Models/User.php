@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Crypt;
 use App\Models\Level;
 use App\Models\Skill;
 use App\Models\Project;
@@ -73,7 +74,6 @@ class User extends Authenticatable
         'sei_kana',
         'mei',
         'mei_kana',
-        'email',
         'birthday',
         'tel',
         'email',
@@ -128,5 +128,73 @@ class User extends Authenticatable
     public function project(): BelongsToMany
     {
         return $this->belongsToMany(Project::class, 'applications', 'user_id', 'project_id');
+    }
+
+        /**
+     * @param $val
+     * @return string
+     */
+    public function getSeiAttribute($val)
+    {
+       return Crypt::decrypt($val);
+    }
+
+    /**
+     * @param $val
+     */
+    public function setSeiAttribute($val)
+    {
+        $this->attributes['sei'] = Crypt::encrypt($val);
+    }
+
+    /**
+     * @param $val
+     * @return string
+     */
+    public function  getMeiAttribute($val)
+    {
+        return Crypt::decrypt($val);
+    }
+
+    /**
+     * @param $val
+     */
+    public function setMeiAttribute($val)
+    {
+        $this->attributes['mei'] = Crypt::encrypt($val);
+    }
+
+    /**
+     * @param $val
+     * @return string
+     */
+    public function getSeiKanaAttribute($val)
+    {
+       return Crypt::decrypt($val);
+    }
+
+    /**
+     * @param $val
+     */
+    public function setSeiKanaAttribute($val)
+    {
+        $this->attributes['sei_kana'] = Crypt::encrypt($val);
+    }
+
+    /**
+     * @param $val
+     * @return string
+     */
+    public function  getMeiKanaAttribute($val)
+    {
+        return Crypt::decrypt($val);
+    }
+
+    /**
+     * @param $val
+     */
+    public function setMeiKanaAttribute($val)
+    {
+        $this->attributes['mei_kana'] = Crypt::encrypt($val);
     }
 }

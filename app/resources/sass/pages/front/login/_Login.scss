@@ -1,0 +1,48 @@
+.Login {
+  max-width: 40rem;
+  margin: 0 auto;
+  color: $muted-color;
+  &__logo {
+      width: 70%;
+      margin: 0 auto;
+      padding: 50px 0 20px;
+  }
+  &__topText {
+      text-align: center;
+      font-size: 2rem;
+      padding-bottom: 40px;
+  }
+  &__footWrap {
+      color: $primary-color;
+      border-top: 1px solid $muted-light-color;
+      display: flex;
+      justify-content: space-around;
+      padding: 20px 0;
+  }
+}
+
+.LoginIconInput {
+  padding-bottom: 20px;
+  &__caption {
+      padding-top: 15px;
+  }
+}
+.IconInput {
+  display: flex;
+  background: $light-color;
+  border: 1px solid $muted-light-color;
+  border-radius: 3px;
+  height: 50px;
+  img {
+      padding: 15px;
+      width: 50px;
+  }
+  input {
+      font-size: 1.6rem;
+      border: none;
+      width: 100%;
+      border-left: 1px solid $muted-light-color;
+      padding: 0 15px;
+      border-radius: 0 3px 3px 0;
+  }
+}

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\Index\IndexController;
 use App\Http\Controllers\Front\Home\HomeController;
 use App\Http\Controllers\Front\Auth\RegisterController;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\Front\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +27,7 @@ Route::namespace('Home')->prefix('mypage')->middleware(['auth'])->group(function
 });
 Route::namespace("Auth")->group(function() {
   Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+  Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+  Route::post('login', [LoginController::class, 'login']);
+  Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
