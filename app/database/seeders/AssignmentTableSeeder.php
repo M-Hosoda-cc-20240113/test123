@@ -16,14 +16,8 @@ class AssignmentTableSeeder extends Seeder
     {
         $now = Carbon::now();
         Assignment::create([
-            'user_id'    => 1,
-            'project_id'    => 2,
-            'assignment_date' => $now,
-            'created_at' => $now
-        ]);
-        Assignment::create([
-            'user_id'    => 2,
-            'project_id'    => 1,
+            'user_id'    => 3,
+            'project_id'    => 6,
             'assignment_date' => $now,
             'created_at' => $now
         ]);

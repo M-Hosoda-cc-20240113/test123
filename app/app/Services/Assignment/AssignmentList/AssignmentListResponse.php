@@ -17,7 +17,7 @@ class AssignmentListResponse
    *
    * @return  Assignment[]
    */ 
-  public function getAssignments()
+  public function getAssignment()
   {
     return $this->assignments;
   }
@@ -29,7 +29,7 @@ class AssignmentListResponse
    *
    * @return  self
    */ 
-  public function setAssignments(Collection $assignments)
+  public function setAssignment(Collection $assignments)
   {
     $this->assignments = $assignments;
 

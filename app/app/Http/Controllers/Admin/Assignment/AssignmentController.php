@@ -20,7 +20,7 @@ class AssignmentController extends Controller
  
          $assignments = $assignment_list_service->exec();
  
-         $response->setAssignments($assignments);
+         $response->setAssignment($assignments);
          
          return view('admin.pages.assignment.list.list', ['response' => $response]);
      }
