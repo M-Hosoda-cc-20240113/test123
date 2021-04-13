@@ -70,3 +70,11 @@ Route::namespace('Position')->prefix('positions')->group(function () {
  Route::namespace('Application')->prefix('applications')->group(function () {
   Route::get('/', [ApplicationController::class, 'list'])->name('application.list');
 });
+
+/**
+ * Admin application status
+ * @var array
+ */
+ Route::namespace('Assignment')->prefix('assignments')->group(function () {
+  Route::get('/', [AssignmentController::class, 'list'])->name('assignment.list');
+});
