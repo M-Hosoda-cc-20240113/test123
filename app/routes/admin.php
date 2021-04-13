@@ -62,3 +62,10 @@ Route::namespace('Position')->prefix('positions')->group(function () {
   Route::get('/', [PositionController::class, 'list'])->name('position.list');
   Route::get('/edit', [PositionController::class, 'edit'])->name('position.edit');
 });
+/**
+ * Admin application status
+ * @var array
+ */
+ Route::namespace('Application')->prefix('applications')->group(function () {
+  Route::get('/', [ApplicationController::class, 'list'])->name('application.list');
+});

@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\User;
+use App\Models\Project;
 
 /**
  * App\Models\Application
@@ -35,4 +38,27 @@ class Application extends Model
      * @var string
      */
     protected $table = 'applications';
+
+    /**
+     * 
+     * users Table relation
+     * @var array
+     */
+
+     public function user(): HasOne
+     {
+         return $this->HasOne(User::class,'id');
+     }
+
+     /**
+     * 
+     * users Table relation
+     * @var array
+     */
+
+     public function project(): HasOne
+     {
+         return $this->HasOne(Project::class,'id');
+     }
+
 }
