@@ -15,4 +15,12 @@ class UserRepository implements UserRepositoryInterface
   {
     return User::all();
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  public static function makeEmailHash(string $email)
+  {
+      return hash(config('app.hash_email.algo'), $email . config('app.hash_email.salt'));
+  }
 }
