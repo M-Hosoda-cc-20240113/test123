@@ -180,6 +180,7 @@ return [
         App\Providers\PositionServiceProvider::class,
         App\Providers\SkillServiceProvider::class,
         App\Providers\StationServiceProvider::class,
+        App\Providers\ApplicationServiceProvider::class,
 
     ],
 
