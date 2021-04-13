@@ -181,6 +181,7 @@ return [
         App\Providers\SkillServiceProvider::class,
         App\Providers\StationServiceProvider::class,
         App\Providers\ApplicationServiceProvider::class,
+        App\Providers\AssignmentServiceProvider::class,
 
     ],
 

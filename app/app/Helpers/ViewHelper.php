@@ -30,6 +30,17 @@ class ViewHelper
         $date = new DateTime($value); 
         return date_format($date, 'G:i');
     }
+
+    /**
+    *
+    *@param time $value
+    *
+    */
+    public static function dateReplace( $value )
+    {
+        $date = new DateTime($value); 
+        return date_format($date, 'm月d日');
+    }
 }
 
 
