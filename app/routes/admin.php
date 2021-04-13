@@ -30,7 +30,7 @@ Route::namespace('Index')->group(function () {
  */
 Route::namespace('User')->prefix('users')->group(function () {
   Route::get('/', [UserController::class, 'list'])->name('user.list');
-  Route::get('/{id}', [UserController::class, 'show'])->name('user.show');
+  Route::get('/{id}', [UserController::class, 'detail'])->name('user.detail');
   Route::get('/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
   Route::get('/{id}/delete', [UserController::class, 'delete'])->name('user.delete');
 });
