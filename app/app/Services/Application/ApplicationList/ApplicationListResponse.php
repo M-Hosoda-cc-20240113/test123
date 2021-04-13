@@ -6,7 +6,7 @@ use App\Models\Application;
 use Illuminate\Support\Collection;
 
 class ApplicationListResponse
-{}
+{
   /**
    * @var Application[]
    */

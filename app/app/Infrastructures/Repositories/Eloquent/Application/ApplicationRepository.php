@@ -13,6 +13,6 @@ class ApplicationRepository implements ApplicationRepositoryInterface
    */
   public function all(): Collection
   {
-    return Application::with()->with()->get();
+    return Application::with('user')->with('project')->get();
   }
 }

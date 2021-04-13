@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Admin\Skill\SkillController;
 use App\Http\Controllers\Admin\Project\ProjectController;
 use App\Http\Controllers\Admin\Position\PositionController;
+use App\Http\Controllers\Admin\Application\ApplicationController;
 use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
