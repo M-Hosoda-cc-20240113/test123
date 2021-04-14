@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Project;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 /**
  * App\Models\Application
@@ -32,7 +33,7 @@ use App\Models\Project;
  * @property-read User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Application whereProjectId($value)
  */
-class Application extends Model
+class Application extends Pivot
 {
     use HasFactory;
 
@@ -42,27 +43,5 @@ class Application extends Model
      * @var string
      */
     protected $table = 'applications';
-
-    /**
-     * 
-     * users Table relation
-     * @var array
-     */
-
-     public function user(): HasOne
-     {
-         return $this->HasOne(User::class,'id');
-     }
-
-     /**
-     * 
-     * users Table relation
-     * @var array
-     */
-
-     public function project(): HasOne
-     {
-         return $this->HasOne(Project::class,'id');
-     }
 
 }

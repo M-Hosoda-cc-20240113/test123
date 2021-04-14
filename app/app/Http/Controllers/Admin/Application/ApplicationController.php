@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ApplicationController extends Controller
 {
     /**
-     * 
+     *
      * Admin application status
      * @var array
      */
@@ -21,7 +21,7 @@ class ApplicationController extends Controller
         $applications = $application_list_service->exec();
 
         $response->setApplications($applications);
-        
+
         return view('admin.pages.application.list.list', ['response' => $response]);
     }
 }

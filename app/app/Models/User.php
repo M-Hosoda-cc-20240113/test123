@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Project;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Crypt;
-use App\Models\Level;
-use App\Models\Skill;
-use App\Models\Project;
 
 /**
  * App\Models\User
@@ -132,13 +130,27 @@ class User extends Authenticatable
     }
 
     /**
-     * 
+     *
      * Projects Table relation
-     * @var array
+     *
+     * @return BelongsToMany
      */
-    public function project(): BelongsToMany
+    public function project_app(): BelongsToMany
     {
-        return $this->belongsToMany(Project::class, 'applications', 'user_id', 'project_id');
+        return $this->belongsToMany(Project::class, 'applications', 'user_id', 'project_id')
+                    ->withPivot('application_date');
+    }
+
+    /**
+     *
+     * Projects Table relation
+     *
+     * @return BelongsToMany
+     */
+    public function project_assign(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class, 'assignments', 'user_id', 'project_id')
+                    ->withPivot('assignment_date');
     }
 
         /**
