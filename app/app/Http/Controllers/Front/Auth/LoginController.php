@@ -91,8 +91,7 @@ class LoginController extends Controller
             return redirect()->route('admin.index');
         }
 
-        // 認証フィルターにかかる前にアクセスしようとしていたURLへ、ユーザーをリダイレクトしてくれる。
-        return redirect()->intended();
+        return redirect()->route('home.mypage');
     }
 
     public function loggedOut(Request $request)
