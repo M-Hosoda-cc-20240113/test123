@@ -2,17 +2,22 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\Assignment;
 
-use App\Models\Assignment;
+use App\Models\User;
 use App\Services\Assignment\AssignmentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 class AssignmentRepository implements AssignmentRepositoryInterface
 {
   /**
-   * @inheritDoc 
+   * @inheritDoc
    */
   public function all(): Collection
   {
-    return Assignment::with('user')->with('project')->get();
+      return User::with('project_assign')
+          ->whereHas('project_assign',function($q){
+              $q->whereExists(function($q){
+                  return $q;
+              });
+          })->get();
   }
 }

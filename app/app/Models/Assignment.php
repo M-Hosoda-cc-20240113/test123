@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Project;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 /**
  * App\Models\Assignment
@@ -30,7 +31,7 @@ use App\Models\Project;
  * @method static \Illuminate\Database\Eloquent\Builder|Assignment whereUserId($value)
  * @mixin \Eloquent
  */
-class Assignment extends Model
+class Assignment extends Pivot
 {
     use HasFactory;
     /**
@@ -39,26 +40,4 @@ class Assignment extends Model
      * @var string
      */
      protected $table = 'assignment';
-
-     /**
-     * 
-     * agents Table relation
-     * @var array
-     */
-
-     public function user(): HasOne
-     {
-         return $this->HasOne(User::class,'id');
-     }
-
-     /**
-     * 
-     * agents Table relation
-     * @var array
-     */
-
-     public function project(): HasOne
-     {
-         return $this->HasOne(Project::class,'id');
-     }
 }

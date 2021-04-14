@@ -77,17 +77,33 @@ class Project extends Model
     use HasFactory;
 
     /**
-     * 
+     *
      * Users Table relation
-     * @var array
+     *
+     * @return BelongsToMany
      */
-    public function user(): BelongsToMany
+    public function user_app(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'applications', 'project_id', 'user_id');
+        return $this->belongsToMany(User::class, 'applications', 'project_id', 'user_id')
+                    ->using('Ap\Models\application')
+                    ->withPivot('application_date');
     }
 
     /**
-     * 
+     *
+     * Users Table relation
+     *
+     * @return BelongsToMany
+     */
+    public function user_assign(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'assignments', 'project_id', 'user_id')
+                    ->using('Ap\Models\assignment')
+                    ->withPivot('assignments_date');
+    }
+
+    /**
+     *
      * Positions Table relation
      * @var array
      */
@@ -97,7 +113,7 @@ class Project extends Model
     }
 
     /**
-     * 
+     *
      * Skills Table relation
      * @var array
      */
@@ -107,7 +123,7 @@ class Project extends Model
     }
 
     /**
-     * 
+     *
      * agents Table relation
      * @var array
      */
@@ -118,7 +134,7 @@ class Project extends Model
      }
 
     /**
-     * 
+     *
      * stations Table relation
      * @var array
      */

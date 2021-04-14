@@ -10,9 +10,19 @@
   <tbody class="RegularTable__body">
     @foreach ($response->getApplications() as $application)
     <tr class="RegularTable__bodyRow" data-href="">
-      <td class="RegularTable__bodyRowItem"><a href="{{ route('project.detail', ['project_id' => $application->project->id] )}}">{{ $application->project->name ?? '' }}</a></td>
-      <td class="RegularTable__bodyRowItem"><a href="{{ route('user.detail', ['id' => $application->user->id] )}}">{{ $application->user->sei ?? ''  }}&nbsp;{{ $application->user->mei ?? '' }}</a></td>
-      <td class="RegularTable__bodyRowItem">{{ $application->application_date ?? ''  }}</td>
+      <td class="RegularTable__bodyRowItem">
+          @foreach($application->project_app as $project)
+          <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? '' }}</a>
+          @endforeach
+      </td>
+      <td class="RegularTable__bodyRowItem">
+          <a href="{{ route('user.detail', ['id' => $application->id] )}}">{{ $application->sei ?? ''  }}&nbsp;{{ $application->mei ?? '' }}</a>
+      </td>
+      <td class="RegularTable__bodyRowItem">
+          @foreach($application->project_app as $project)
+              {{ ViewHelper::dateReplace( $application->pivot->application_date ?? '' )}}
+          @endforeach
+      </td>
     </tr>
     @endforeach
   </tbody>

@@ -23,12 +23,12 @@ class UserRepository implements UserRepositoryInterface
   {
       return hash(config('app.hash_email.algo'), $email . config('app.hash_email.salt'));
   }
-  
+
   /**
     * {@inheritDoc}
     */
   public function detail(int $id): User
   {
-      return User::with('project')->findOrFail($id);
+      return User::with('project_app')->findOrFail($id);
   }
 }
