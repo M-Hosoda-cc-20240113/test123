@@ -1,3 +1,8 @@
+@php
+    /**
+     * @var \App\Services\User\UserPage\UserPageResponse $response
+     */
+@endphp
 @extends('front.layout')
 
 @section('title', 'トップページ|Aegis')
@@ -11,7 +16,7 @@
             @include('front.pages.mypage.top._RegularList')
         </div>
         <div class="Main">
-            @include('front.pages.mypage.top._SideColumnTable')
+            @include('front.pages.mypage.top._SideColumnTable', ['response' => $response])
         </div>
     </div>
 

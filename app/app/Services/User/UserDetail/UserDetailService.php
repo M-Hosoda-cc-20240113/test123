@@ -9,15 +9,15 @@ class UserDetailService
   /**
    * @var UserRepositoryInterface
    */
-  private $user_reopsitory;
+  private $user_repository;
 
-  public function __construct(UserRepositoryInterface $user_repository) 
+  public function __construct(UserRepositoryInterface $user_repository)
   {
-    $this->user_reopsitory = $user_repository;
+    $this->user_repository = $user_repository;
   }
 
-  public function exec(int $id)
+  public function exec(int $id): \App\Models\User
   {
-    return $this->user_reopsitory->detail($id);
+    return $this->user_repository->detail($id);
   }
 }
