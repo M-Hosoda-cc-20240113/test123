@@ -10,7 +10,7 @@ use App\Services\Top\FetchTopData\FetchTopService;
 class IndexController extends Controller
 {
     /**
-     * 
+     *
      * Front index
      * @var array
      */
@@ -19,13 +19,4 @@ class IndexController extends Controller
         $response = $fetch_top_data_service->exec();
         return view('front.pages.top.top', ['response' => $response]);
      }
-    /**
-     * 
-     * Front index
-     * @var array
-     */
-    public function show()
-    {
-        return view('front.welcome');
-    }
 }
