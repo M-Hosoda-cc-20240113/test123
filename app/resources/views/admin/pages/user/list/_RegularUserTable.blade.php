@@ -1,3 +1,8 @@
+@php
+/**
+ * @var \App\Services\User\UserList\UserListResponse $response
+ */
+@endphp
 <table class="RegularTable">
   <thead class="RegularTable__head">
     <tr class="RegularTable__headRow">

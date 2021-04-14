@@ -12,25 +12,25 @@ use Illuminate\Support\Collection;
 class UserListResponse
 {
     /**
-     * @var
+     * @var User[]|Collection
      */
-    private $user;
+    private $users;
 
     /**
-     * @return mixed
+     * @return User[]|Collection
      */
-    public function getUser()
+    public function getUsers()
     {
-        return $this->user;
+        return $this->users;
     }
 
     /**
-     * @param mixed $user
+     * @param User[]|Collection $users
      * @return UserListResponse
      */
-    public function setUser($user): UserListResponse
+    public function setUsers($users): UserListResponse
     {
-        $this->user = $user;
+        $this->users = $users;
         return $this;
     }
 }
