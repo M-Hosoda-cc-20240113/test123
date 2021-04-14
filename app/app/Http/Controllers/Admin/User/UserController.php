@@ -11,7 +11,7 @@ use App\Services\User\UserDetail\UserDetailService;
 class UserController extends Controller
 {
     /**
-     * 
+     *
      * Admin user list
      * @var array
      */
@@ -27,7 +27,7 @@ class UserController extends Controller
     }
 
     /**
-     * 
+     *
      * Admin user detail
      * @var array
      */
@@ -43,7 +43,7 @@ class UserController extends Controller
     }
 
     /**
-     * 
+     *
      * Admin user edit
      * @var array
      */
@@ -53,7 +53,7 @@ class UserController extends Controller
     }
 
     /**
-     * 
+     *
      * Admin user delete
      * @var array
      */

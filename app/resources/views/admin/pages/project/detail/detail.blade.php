@@ -9,7 +9,7 @@
         <div class="admin-project-detail">
             <p class="fw-bold fs-2">{{ $response->getProject()->name ?? '' }}</p>
             <hr class="Horizontal">
-            @include('admin.pages.project.detail._ProjectDetailTable', $response->getProject())
+            @include('admin.pages.project.detail._ProjectDetailTable', ['response' => $response])
         </div>
         @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 m0a'])
     </div>

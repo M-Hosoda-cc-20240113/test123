@@ -39,5 +39,5 @@ class Assignment extends Pivot
      *
      * @var string
      */
-     protected $table = 'assignment';
+     protected $table = 'assignments';
 }

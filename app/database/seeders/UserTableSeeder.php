@@ -88,6 +88,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'is_admin'          => 1,
+            'points'            => 0,
             'created_at'        => $now
         ]);
     }

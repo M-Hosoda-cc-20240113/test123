@@ -14,7 +14,7 @@
         <div class="admin-project-detail">
             <p class="fw-bold fs-2">{{ $response->getUser()->sei  }}&nbsp;{{ $response->getUser()->mei }}</p>
             <hr class="Horizontal">
-            @include('admin.pages.user.detail._UserDetailTable', $response->getUser())
+            @include('admin.pages.user.detail._UserDetailTable', ['response' => $response])
         </div>
         @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 m0a'])
     </div>
