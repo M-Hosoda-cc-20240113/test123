@@ -29,6 +29,6 @@ class UserRepository implements UserRepositoryInterface
     */
   public function detail(int $id): User
   {
-      return User::with('project_app')->findOrFail($id);
+      return User::with('project_app')->with('project_assign')->findOrFail($id);
   }
 }

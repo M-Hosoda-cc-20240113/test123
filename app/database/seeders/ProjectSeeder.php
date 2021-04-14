@@ -48,7 +48,7 @@ class ProjectSeeder extends Seeder
             "work_end"           => "18:15" ,
             "weekly_attendance"  => "5" ,
             "feature"            => "外国籍不可" ,
-            "created_at"         => $now 
+            "created_at"         => $now
         ]);
 
         Project::create([
@@ -66,7 +66,7 @@ class ProjectSeeder extends Seeder
             "work_end"           => "19:00" ,
             "weekly_attendance"  => "5" ,
             "feature"            => "外国籍不可" ,
-            "created_at"         => $now 
+            "created_at"         => $now
         ]);
 
         Project::create([
@@ -84,7 +84,7 @@ class ProjectSeeder extends Seeder
             "work_end"           => "17:30" ,
             "weekly_attendance"  => "5" ,
             "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
-            "created_at"         => $now 
+            "created_at"         => $now
         ]);
 
         Project::create([
@@ -102,7 +102,7 @@ class ProjectSeeder extends Seeder
             "work_end"           => "17:30" ,
             "weekly_attendance"  => "5" ,
             "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
-            "created_at"         => $now 
+            "created_at"         => $now
         ]);
 
         Project::create([
@@ -120,7 +120,8 @@ class ProjectSeeder extends Seeder
             "work_end"           => "17:30" ,
             "weekly_attendance"  => "5" ,
             "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
-            "created_at"         => $now 
+            "decided"            => 1 ,
+            "created_at"         => $now
         ]);
 
         Project::create([
@@ -138,7 +139,7 @@ class ProjectSeeder extends Seeder
             "work_end"           => "17:30" ,
             "weekly_attendance"  => "5" ,
             "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
-            "created_at"         => $now 
+            "created_at"         => $now
         ]);
     }
 }
