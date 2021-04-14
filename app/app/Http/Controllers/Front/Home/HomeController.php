@@ -8,13 +8,21 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
+     * HomeController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * 
      * Front index
      * @var array
      */
-    public function index()
+    public function index(Request $request)
     {
-        return 'Hoge MyPage';
+        return view('front.pages.mypage.top.top');
     }
 
     /**

@@ -15,28 +15,32 @@ class ViewHelper
     * @param string $value
     * @return HtmlString
     */
-    public static function nl2brWithAnchor( $value )
+    public static function nl2brWithAnchor( string $value ): HtmlString
     {
         return new HtmlString(nl2br(preg_replace('/(https?)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#\w\-\.\/\?\,\#\:\u3000-\u30FE\u4E00-\u9FA0\uFF01-\uFFE3]+)/u', "<a href=\\1\\2>\\1\\2</a>", htmlentities($value, ENT_QUOTES, 'UTF-8', false))));
     }
 
     /**
-    *
-    *@param time $value
-    *
-    */
-    public static function timeReplace( $value )
+     *
+     * @param string $value
+     *
+     * @return false|string
+     * @throws Exception
+     */
+    public static function timeReplace( string $value )
     {
         $date = new DateTime($value); 
         return date_format($date, 'G:i');
     }
 
     /**
-    *
-    *@param time $value
-    *
-    */
-    public static function dateReplace( $value )
+     *
+     * @param string $value
+     *
+     * @return false|string
+     * @throws Exception
+     */
+    public static function dateReplace( string $value )
     {
         $date = new DateTime($value); 
         return date_format($date, 'm月d日');

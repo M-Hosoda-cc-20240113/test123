@@ -8,31 +8,25 @@ use Illuminate\Support\Collection;
 class UserDetailResponse
 {
   /**
-   * @var User[]
+   * @var User
    */
   private $user;
 
-  /**
-   * Get the value of user
-   *
-   * @return  User[]
-   */ 
-  public function getUser()
-  {
-    return $this->user;
-  }
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
 
-  /**
-   * Set the value of user
-   *
-   * @param  User[]  $user
-   *
-   * @return  self
-   */
-  public function setUser(User $user)
-  {
-    $this->user = $user;
-
-    return $this;
-  }
+    /**
+     * @param User $user
+     * @return UserDetailResponse
+     */
+    public function setUser(User $user): UserDetailResponse
+    {
+        $this->user = $user;
+        return $this;
+    }
 }

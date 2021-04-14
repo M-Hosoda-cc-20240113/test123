@@ -35,6 +35,9 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function showLoginForm()
     {
         return view('front.pages.login.login');
@@ -65,7 +68,11 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
-    public function credentials(Request $request)
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function credentials(Request $request): array
     {
         return [
             'email_hash' => UserRepository::makeEmailHash($request->email),
@@ -73,10 +80,15 @@ class LoginController extends Controller
         ];
     }
 
-    public function authenticated(Request $request, $user)
+    /**
+     * @param Request $request
+     * @param $user
+     * @return RedirectResponse
+     */
+    public function authenticated(Request $request, $user): RedirectResponse
     {
-        if ($user->is_admin){
-           return redirect()->route('admin.index');
+        if ($user->is_admin) {
+            return redirect()->route('admin.index');
         }
 
         // 認証フィルターにかかる前にアクセスしようとしていたURLへ、ユーザーをリダイレクトしてくれる。

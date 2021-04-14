@@ -5,34 +5,32 @@ namespace App\Services\User\UserList;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
+/**
+ * Class UserListResponse
+ * @package App\Services\User\UserList
+ */
 class UserListResponse
 {
-  /**
-   * @var User[]
-   */
-  private $users;
+    /**
+     * @var
+     */
+    private $user;
 
-  /**
-   * Get the value of users
-   *
-   * @return  User[]
-   */ 
-  public function getUsers()
-  {
-    return $this->users;
-  }
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 
-  /**
-   * Set the value of users
-   *
-   * @param  Project[]  $users
-   *
-   * @return  self
-   */ 
-  public function setUsers(Collection $users)
-  {
-    $this->users = $users;
-
-    return $this;
-  }
+    /**
+     * @param mixed $user
+     * @return UserListResponse
+     */
+    public function setUser($user): UserListResponse
+    {
+        $this->user = $user;
+        return $this;
+    }
 }

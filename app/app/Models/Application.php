@@ -27,6 +27,10 @@ use App\Models\Project;
  * @method static \Illuminate\Database\Eloquent\Builder|Application whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Application whereUserId($value)
  * @mixin \Eloquent
+ * @property int $project_id
+ * @property-read Project|null $project
+ * @property-read User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereProjectId($value)
  */
 class Application extends Model
 {
