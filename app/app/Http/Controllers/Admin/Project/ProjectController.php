@@ -13,7 +13,7 @@ use App\Services\Project\ProjectDetail\ProjectDetailService;
 class ProjectController extends Controller
 {
     /**
-     * 
+     *
      * Admin project index
      * @var array
      */
@@ -34,9 +34,12 @@ class ProjectController extends Controller
     }
 
     /**
-     * 
-     * Admin project show
-     * @var array
+     *
+     * Admin project detail
+     *
+     * @param ProjectDetailService $project_detail_service
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function detail(ProjectDetailService $project_detail_service, int $id)
     {
@@ -45,12 +48,12 @@ class ProjectController extends Controller
         $project = $project_detail_service->exec($id);
 
         $response->setProject($project);
-        
+
         return view('admin.pages.project.detail.detail', ['response' => $response]);
     }
 
     /**
-     * 
+     *
      * Admin project edit
      * @var array
      */
@@ -60,7 +63,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * 
+     *
      * Admin project delete
      * @var array
      */

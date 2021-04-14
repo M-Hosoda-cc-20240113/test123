@@ -5,6 +5,7 @@ use App\Http\Controllers\Front\Index\IndexController;
 use App\Http\Controllers\Front\Home\HomeController;
 use App\Http\Controllers\Front\Auth\RegisterController;
 use App\Http\Controllers\Front\Auth\LoginController;
+use App\Http\Controllers\Front\Project\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,6 @@ use App\Http\Controllers\Front\Auth\LoginController;
 */
 Route::namespace('Index')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('front.index');
-    Route::get('/project/{id}', [IndexController::class, 'show'])->name('front.index.project');
 });
 Route::namespace('Home')->prefix('mypage')->middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home.mypage');
@@ -30,4 +30,7 @@ Route::namespace("Auth")->group(function() {
   Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
   Route::post('login', [LoginController::class, 'login']);
   Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+});
+Route::namespace("Detail")->prefix('project')->group(function (){
+    Route::get('/{id}', [ProjectController::class, 'detail'])->name('front.project.detail');
 });
