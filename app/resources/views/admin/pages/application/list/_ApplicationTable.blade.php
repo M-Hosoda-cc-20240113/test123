@@ -11,7 +11,7 @@
     @foreach ($response->getApplications() as $application)
     <tr class="RegularTable__bodyRow" data-href="">
       <td class="RegularTable__bodyRowItem"><a href="{{ route('project.detail', ['project_id' => $application->project->id] )}}">{{ $application->project->name ?? '' }}</a></td>
-      <td class="RegularTable__bodyRowItem"><a href="{{ route('user.detail', ['id' => $application->user->id] )}}">{{ $application->user->sei ?? ''  }}&nbsp;{{ $application->user->mei ?? '' }}</a></td>
+      <td class="RegularTable__bodyRowItem"><a href="{{ route('user.detail', ['user_id' => $application->user->id] )}}">{{ $application->user->sei ?? ''  }}&nbsp;{{ $application->user->mei ?? '' }}</a></td>
       <td class="RegularTable__bodyRowItem">{{ $application->application_date ?? ''  }}</td>
     </tr>
     @endforeach

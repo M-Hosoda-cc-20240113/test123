@@ -11,7 +11,7 @@
     @foreach ($response->getAssignment() as $assignment)
     <tr class="RegularTable__bodyRow" data-href="">
       <td class="RegularTable__bodyRowItem"><a href="{{ route('project.detail', ['project_id' => $assignment->project->id] )}}">{{ $assignment->project->name ?? ''}}</a></td>
-      <td class="RegularTable__bodyRowItem"><a href="{{ route('user.detail', ['id' => $assignment->user->id] )}}">{{ $assignment->user->sei }}&nbsp;{{ $assignment->user->mei ?? ''}}</a></td>
+      <td class="RegularTable__bodyRowItem"><a href="{{ route('user.detail', ['user_id' => $assignment->user->id] )}}">{{ $assignment->user->sei }}&nbsp;{{ $assignment->user->mei ?? ''}}</a></td>
       <td class="RegularTable__bodyRowItem">{{ ViewHelper::dateReplace( $assignment->assignment_date ?? '' )}}</td>
     </tr>
     @endforeach
