@@ -20,9 +20,9 @@ class HomeController extends Controller
      * Front index
      * @var array
      */
-    public function index()
+    public function index(Request $request)
     {
-        return 'Hoge MyPage';
+        return view('front.pages.mypage.top.top');
     }
 
     /**

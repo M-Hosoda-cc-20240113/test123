@@ -104,6 +104,10 @@ ol[role="list"] {
   list-style: none;
 }
 
+ul {
+  margin-block-start: 0;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -2325,6 +2329,8 @@ input[type="checkbox"]:checked + label:before {
   font-weight: bold;
   padding: 10px;
   align-self: center;
+  font-weight: bold;
+  color: #333333;
 }
 
 .Header__textLink:hover {
@@ -2469,6 +2475,32 @@ input[type="checkbox"]:checked + label:before {
 .RegularTable__bodyRowItemInner {
   width: 13px;
   margin: 0 auto;
+}
+
+.SideColumnTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.SideColumnTable tr {
+  border: solid 1px #dfe4e7;
+  border-bottom: none;
+}
+
+.SideColumnTable tr:last-child {
+  border-bottom: solid 1px #dfe4e7;
+}
+
+.SideColumnTable th {
+  background: #88889f;
+  color: #ffffff;
+  padding: 10px;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.SideColumnTable td {
+  padding: 10px;
 }
 
 .ProjectDetailTable {
