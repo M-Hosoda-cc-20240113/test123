@@ -59,6 +59,18 @@ use App\Models\Station;
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereWorkEnd($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereWorkStart($value)
  * @mixin \Eloquent
+ * @property int|null $agent_id
+ * @property int|null $station_id
+ * @property-read \App\Models\Agent|null $agent
+ * @property-read \Illuminate\Database\Eloquent\Collection|Position[] $position
+ * @property-read int|null $position_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|Skill[] $skill
+ * @property-read int|null $skill_count
+ * @property-read Station|null $station
+ * @property-read \Illuminate\Database\Eloquent\Collection|User[] $user
+ * @property-read int|null $user_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Project whereAgentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Project whereStationId($value)
  */
 class Project extends Model
 {

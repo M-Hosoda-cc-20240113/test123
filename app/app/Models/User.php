@@ -58,6 +58,14 @@ use App\Models\Project;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $points
+ * @property int $is_admin
+ * @property string|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Project[] $project
+ * @property-read int|null $project_count
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsAdmin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePoints($value)
  */
 class User extends Authenticatable
 {
@@ -102,18 +110,21 @@ class User extends Authenticatable
     ];
 
     /**
-     * 
+     *
      * Levels Table relation
-     * @var array
+     *
+     * @return BelongsToMany
      */
     public function levels(): BelongsToMany
     {
         return $this->belongsToMany(Level::class, 'rel_levels_skills_users', 'user_id', 'level_id');
     }
+
     /**
-     * 
+     *
      * Skills Table relation
-     * @var array
+     *
+     * @return BelongsToMany
      */
     public function skills(): BelongsToMany
     {
