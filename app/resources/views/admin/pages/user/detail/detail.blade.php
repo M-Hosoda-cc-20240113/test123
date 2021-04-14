@@ -10,6 +10,7 @@
 @section('body')
     @include('admin.header.header')
     <div class="Container mt-30 pb-100">
+        @include('admin.bread_crumb._BreadCrumb')
         <div class="admin-project-detail">
             <p class="fw-bold fs-2">{{ $response->getUser()->sei  }}&nbsp;{{ $response->getUser()->mei }}</p>
             <hr class="Horizontal">

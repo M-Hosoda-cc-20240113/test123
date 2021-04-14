@@ -32,9 +32,9 @@ Route::namespace('Index')->group(function () {
  */
 Route::namespace('User')->prefix('users')->group(function () {
   Route::get('/', [UserController::class, 'list'])->name('user.list');
-  Route::get('/{id}', [UserController::class, 'detail'])->name('user.detail');
-  Route::get('/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-  Route::get('/{id}/delete', [UserController::class, 'delete'])->name('user.delete');
+  Route::get('/{user_id}', [UserController::class, 'detail'])->name('user.detail');
+  Route::get('/{user_id}/edit', [UserController::class, 'edit'])->name('user.edit');
+  Route::get('/{user_id}/delete', [UserController::class, 'delete'])->name('user.delete');
 });
 /**
  * Admin Projects
@@ -45,8 +45,8 @@ Route::namespace('Project')->prefix('projects')->group(function () {
   Route::get('/create', [ProjectController::class, 'showCreateForm'])->name('project.create');
   Route::post('/create', [ProjectController::class, 'create']);
   Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('project.detail');
-  Route::get('/{id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
-  Route::get('/{id}/delete', [ProjectController::class, 'delete'])->name('project.delete');
+  Route::get('/{project_id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
+  Route::get('/{project_id}/delete', [ProjectController::class, 'delete'])->name('project.delete');
 });
 /**
  * Admin Skills

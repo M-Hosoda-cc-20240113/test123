@@ -1,26 +1,45 @@
-<ol class="BreadCrumb">
-  @if(url()->current() === route('user.list'))
-  <li> <a href="{{ route('admin.index') }}"><span>ホーム</span></a> </li>
-  <li> <a href="{{ route('user.list') }}"><span>ユーザー一覧</span></a> </li>
-  @endif
+<ol class="BreadCrumb mb-20">
+    {{-- ユーザーリスト  --}}
+    @if(url()->current() === route('user.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('user.list') }}"><span>ユーザー一覧</span></a></li>
+    @endif
 
-  @if(url()->current() === route('project.list'))
-  <li> <a href="{{ route('admin.index') }}"><span>ホーム</span></a> </li>
-  <li> <a href="{{ route('project.list') }}"><span>案件一覧</span></a> </li>
-  @endif
+    {{-- ユーザー詳細  --}}
+    @if(Route::currentRouteName() === 'user.detail')
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('user.list') }}"><span>ユーザー一覧</span></a></li>
+        <li><a href=""><span>ユーザー詳細</span></a></li>
+    @endif
 
-  @if(url()->current() === route('project.create'))
-  <li> <a href="{{ route('admin.index') }}"><span>ホーム</span></a> </li>
-  <li> <a href="{{ route('project.create') }}"><span>案件登録</span></a> </li>
-  @endif
+    {{-- 案件リスト --}}
+    @if(url()->current() === route('project.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('project.list') }}"><span>案件一覧</span></a></li>
+    @endif
 
-  @if(url()->current() === route('application.list'))
-  <li> <a href="{{ route('admin.index') }}"><span>ホーム</span></a> </li>
-  <li> <a href="{{ route('application.list') }}"><span>申し込み状況</span></a> </li>
-  @endif
+    {{-- 案件詳細 --}}
+    @if(Route::currentRouteName() === 'project.detail')
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('project.list') }}"><span>案件一覧</span></a></li>
+        <li><a href=""><span>案件詳細</span></a></li>
+    @endif
 
-  @if(url()->current() === route('assignment.list'))
-  <li> <a href="{{ route('admin.index') }}"><span>ホーム</span></a> </li>
-  <li> <a href="{{ route('assignment.list') }}"><span>稼働状況</span></a> </li>
-  @endif
+    {{-- 案件作成 --}}
+    @if(url()->current() === route('project.create'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('project.create') }}"><span>案件登録</span></a></li>
+    @endif
+
+    {{-- 応募リスト --}}
+    @if(url()->current() === route('application.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('application.list') }}"><span>申し込み状況</span></a></li>
+    @endif
+
+    {{-- アサインリスト --}}
+    @if(url()->current() === route('assignment.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('assignment.list') }}"><span>稼働状況</span></a></li>
+    @endif
 </ol>

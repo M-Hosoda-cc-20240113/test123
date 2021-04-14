@@ -8,18 +8,18 @@
   </thead>
 
   <tbody class="RegularTable__body">
-    @foreach ($response->getAssignment() as $user_assign)
+    @foreach ($response->getAssignment() as $user)
     <tr class="RegularTable__bodyRow" data-href="">
       <td class="RegularTable__bodyRowItem">
-          @foreach($user_assign->project_assign as $project)
+          @foreach($user->project_assign as $project)
           <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? ''}}</a>
           @endforeach
       </td>
       <td class="RegularTable__bodyRowItem">
-          <a href="{{ route('user.detail', ['id' => $user_assign->id] )}}">{{ $user_assign->sei }}&nbsp;{{ $user_assign->mei ?? ''}}</a>
+          <a href="{{ route('user.detail', ['user_id' => $user->id] )}}">{{ $user->sei }}&nbsp;{{ $user->mei ?? ''}}</a>
       </td>
       <td class="RegularTable__bodyRowItem">
-          @foreach($user_assign->project_assign as $project)
+          @foreach($user->project_assign as $project)
           {{ ViewHelper::dateReplace( $project->pivot->assignment_date ?? '' )}}
           @endforeach
       </td>
