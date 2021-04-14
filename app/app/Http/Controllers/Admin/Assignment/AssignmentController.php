@@ -21,7 +21,7 @@ class AssignmentController extends Controller
          $assignments = $assignment_list_service->exec();
 
          $response->setAssignment($assignments);
-//         dd($response->getAssignment());
+
          return view('admin.pages.assignment.list.list', ['response' => $response]);
      }
 }
