@@ -17,11 +17,11 @@
   <tbody class="RegularTable__body">
     @foreach ($response->getUsers() as $user)
     <tr class="RegularTable__bodyRow" data-href="{{ route('user.detail', ['user_id' => $user->id]) }}">
-      <td class="RegularTable__bodyRowItem">{{ $user->sei }}&nbsp;{{ $user->mei }}</td>
-      <td class="RegularTable__bodyRowItem">{{ $user->created_at }}</td>
+      <td class="RegularTable__bodyRowItem">{{ $user->sei ?? '' }}&#160;{{ $user->mei ?? '' }}</td>
+      <td class="RegularTable__bodyRowItem">{{ ViewHelper::YmdReplace($user->created_at ?? '' )}}</td>
       <td class="RegularTable__bodyRowItem--textCenter">{{ $user->is_working ? '◎' : '-'}}</td>
-      <td class="RegularTable__bodyRowItem">{{ $user->tel }}</td>
-      <td class="RegularTable__bodyRowItem">{{ $user->birthday }}</td>
+      <td class="RegularTable__bodyRowItem">{{ $user->tel ?? '' }}</td>
+      <td class="RegularTable__bodyRowItem">{{ ViewHelper::YmdReplace($user->birthday ?? '')}}（{{ ViewHelper::CountAge($user->birthday ?? '')}}）</td>
     </tr>
     @endforeach
   </tbody>

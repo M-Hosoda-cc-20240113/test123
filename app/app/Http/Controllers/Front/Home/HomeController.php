@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Front\Home;
 
 use App\Http\Controllers\Controller;
+use App\Services\User\UserPage\UserPageResponse;
+use App\Services\User\UserPage\UserPageService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,31 +18,42 @@ class HomeController extends Controller
     }
 
     /**
-     * 
+     *
      * Front index
-     * @var array
+     *
+     * @param Request $request
+     * @param UserPageService $user_detail_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request, UserPageService $user_detail_service)
     {
-        return view('front.pages.mypage.top.top');
+        $response = new UserPageResponse();
+
+        $user = $user_detail_service->exec();
+
+        $response->setUser($user);
+
+        return view('front.pages.mypage.top.top', ['response' => $response]);
     }
 
     /**
-     * 
+     *
      * Front user基本情報 編集
-     * @var array
+     *
+     * @return string
      */
-    public function edit()
+    public function edit(): string
     {
         return 'Hoge MyPage Edit';
     }
 
     /**
-     * 
+     *
      * Front user基本情報 編集
-     * @var array
+     *
+     * @return string
      */
-    public function skill()
+    public function skill(): string
     {
         return 'Hoge MyPage Skill';
     }

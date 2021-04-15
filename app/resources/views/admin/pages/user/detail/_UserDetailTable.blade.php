@@ -14,7 +14,7 @@
     </tr>
     <tr class="ProjectDetailTable__row">
         <th class="ProjectDetailTable__head">誕生日</th>
-        <td class="ProjectDetailTable__body">{{ $response->getUser()->birthday ?? ''}}</td>
+        <td class="ProjectDetailTable__body">{{ ViewHelper::YmdReplace($response->getUser()->birthday ?? '')}}</td>
         <th class="ProjectDetailTable__head">保有ポイント</th>
         <td class="ProjectDetailTable__body">{{ $response->getUser()->points ?? ''}}pt</td>
     </tr>

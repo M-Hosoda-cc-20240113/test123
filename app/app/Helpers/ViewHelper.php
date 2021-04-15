@@ -13,7 +13,7 @@ class ViewHelper
      * {!! nl2br(e($value)) !!} とすれば同じ処理になるのだが、
      * 誤ってエスケープ処理が抜けることやユーザー入力文字列を出力する頻度が多いこと考慮して、本メソッドを実装
      * HtmlStringを使用することで、blade中で {{ }} と記述してもbrタグはエスケープされない
-     * よって、blade内では {!! !!} を使わないようにする
+     * よってblade内では {!! !!} を使わないようにする
      *
      *
      * @param string $value
@@ -30,7 +30,7 @@ class ViewHelper
      * @param string $value
      *
      * @return false|string
-     * @throws Exception
+     * @throws Exception|\Exception
      */
     public static function timeReplace(string $value)
     {
@@ -44,11 +44,34 @@ class ViewHelper
      *
      * @return false|string
      * @throws Exception
+     * @throws \Exception
      */
     public static function dateReplace(string $value)
     {
         $date = new DateTime($value);
         return date_format($date, 'm月d日');
+    }
+
+    /**
+     * @param string $value
+     * @return false|string
+     * @throws \Exception
+     */
+    public static function YmdReplace(string $value)
+    {
+        $date = new DateTime($value);
+        return date_format($date, 'Y/m/d');
+    }
+
+    /**
+     * @param string $value
+     * @return string
+     */
+    public static function CountAge(string $value): string
+    {
+        $now = date("Ymd");
+        $birthday = str_replace("-", "", $value);
+        return floor(($now-$birthday)/10000).'歳';
     }
 }
 
