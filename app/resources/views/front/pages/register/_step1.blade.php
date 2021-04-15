@@ -15,6 +15,9 @@
               'name'        => 'sei',
               'value'       => old('sei')
               ])
+            @if ($errors->first('sei'))
+                ※{{$errors->first('sei')}}
+            @endif
             @include('atoms.RegularInput', [
               'text'        => '名',
               'class'       => 'd-flex f-end w-50',
@@ -24,6 +27,9 @@
               'name'        => 'mei',
               'value'       => old('mei')
               ])
+            @if ($errors->first('mei'))
+                ※{{$errors->first('mei')}}
+            @endif
         </div>
     </div>
 
@@ -42,6 +48,9 @@
               'name'        => 'sei_kana',
               'value'       => old('sei_kana')
               ])
+            @if ($errors->first('sei_kana'))
+                ※{{$errors->first('sei_kana')}}
+            @endif
             @include('atoms.RegularInput', [
               'text'        => 'メイ',
               'class'       => 'd-flex f-end w-50',
@@ -51,6 +60,9 @@
               'name'        => 'mei_kana',
               'value'       => old('mei_kana')
               ])
+            @if ($errors->first('mei_kana'))
+                ※{{$errors->first('mei_kana')}}
+            @endif
         </div>
     </div>
 
@@ -63,11 +75,14 @@
             @include('atoms.RegularInput', [
               'class'       => 'd-flex f-start',
               'class2'      => 'align-self-center mr-10',
-              'placeholder' => '1992 / 07 / 08',
+              'placeholder' => '19920708',
               'type'        => 'text',
               'name'        => 'birthday',
               'value'       => old('birthday')
               ])
+            @if ($errors->first('birthday'))
+                ※{{$errors->first('birthday')}}
+            @endif
         </div>
     </div>
 
@@ -85,6 +100,9 @@
               'name'        => 'email',
               'value'       => old('email')
               ])
+            @if ($errors->first('email'))
+                ※{{$errors->first('email')}}
+            @endif
         </div>
     </div>
 
@@ -102,6 +120,9 @@
               'name'        => 'tel',
               'value'       => old('tel')
               ])
+            @if ($errors->first('tel'))
+                ※{{$errors->first('tel')}}
+            @endif
         </div>
     </div>
 
@@ -117,6 +138,9 @@
               'type'    => 'password',
               'name'    => 'password'
               ])
+            @if ($errors->first('password'))
+                ※{{$errors->first('password')}}
+            @endif
         </div>
     </div>
     <button class="RegularBtn w-20 m0a" type="submit">登録</button>
