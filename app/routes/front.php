@@ -25,12 +25,12 @@ Route::namespace('Home')->prefix('mypage')->middleware(['auth'])->group(function
     Route::get('/users/edit', [HomeController::class, 'edit'])->name('home.mypage.edit');
     Route::get('/skills/edit', [HomeController::class, 'skill'])->name('home.mypage.skill.edit');
 });
-Route::namespace("Auth")->group(function() {
-  Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-  Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-  Route::post('login', [LoginController::class, 'login']);
-  Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::namespace("Auth")->group(function () {
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
-Route::namespace("Detail")->prefix('project')->group(function (){
+Route::namespace("Detail")->prefix('project')->group(function () {
     Route::get('/{id}', [ProjectController::class, 'detail'])->name('front.project.detail');
 });

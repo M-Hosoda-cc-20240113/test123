@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin\Index;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -15,10 +18,12 @@ class IndexController extends Controller
         $this->middleware('auth');
         $this->middleware('is_admin');
     }
+
     /**
-     * 
+     *
      * Admin index
-     * @var array
+     *
+     * @return Application|Factory|View
      */
     public function index()
     {
