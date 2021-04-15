@@ -2513,6 +2513,8 @@ input[type="checkbox"]:checked + label:before {
   padding: 10px;
   text-align: left;
   margin-bottom: 0;
+  width: 1px;
+  white-space: nowrap;
 }
 
 .SideColumnTable td {
