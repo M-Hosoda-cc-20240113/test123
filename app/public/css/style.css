@@ -31,9 +31,9 @@ li {
 }
 
 .Container {
-  padding: 0 20px;
   margin: 0 auto;
   max-width: 960px;
+  padding: 0 20px 90px;
 }
 
 .Main {
@@ -2601,6 +2601,12 @@ input[type="checkbox"]:checked + label:before {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .welcome-ProjectCard {
+    justify-content: center;
+  }
 }
 
 .welcome-Checkbox {
