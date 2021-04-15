@@ -12,11 +12,11 @@
         <tr class="RegularTable__bodyRow" data-href="">
             <td class="RegularTable__bodyRowItem">
                 @foreach($user->project_app as $project)
-                    <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? '' }}</a>
+                    <a class="d-block w-100" href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? '' }}</a>
                 @endforeach
             </td>
             <td class="RegularTable__bodyRowItem">
-                <a href="{{ route('user.detail', ['user_id' => $user->id] )}}">{{ $user->sei ?? ''  }}
+                <a class="d-block w-100" href="{{ route('user.detail', ['user_id' => $user->id] )}}">{{ $user->sei ?? ''  }}
                     &nbsp;{{ $user->mei ?? '' }}</a>
             </td>
             <td class="RegularTable__bodyRowItem">

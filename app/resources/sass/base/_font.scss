@@ -1,5 +1,5 @@
-@for $i from 0 through 30 {
+@for $i from 0 through 100 {
     .fs-#{$i * 1} {
-        font-size: #{$i * 1}rem !important;
+        font-size: #{$i * 0.1}rem !important;
     }
 }

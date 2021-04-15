@@ -10,6 +10,14 @@ use App\Services\Top\FetchTopData\FetchTopService;
 class IndexController extends Controller
 {
     /**
+     * IndexController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('is_not_admin');
+    }
+
+    /**
      *
      * Front index
      * @var array
