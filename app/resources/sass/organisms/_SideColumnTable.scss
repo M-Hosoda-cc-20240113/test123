@@ -10,11 +10,13 @@
     }
   }
   th {
-    background: $muted-color;
+    background: $primary-color;
     color: $light-color;
     padding: 10px;
     text-align: left;
     margin-bottom: 0;
+    width: 1px;
+    white-space: nowrap;
   }
 
   td {
