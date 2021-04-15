@@ -2508,7 +2508,7 @@ input[type="checkbox"]:checked + label:before {
 }
 
 .SideColumnTable th {
-  background: #88889f;
+  background: #42b5d1;
   color: #ffffff;
   padding: 10px;
   text-align: left;
