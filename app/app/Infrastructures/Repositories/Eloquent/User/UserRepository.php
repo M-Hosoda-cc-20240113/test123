@@ -31,4 +31,22 @@ class UserRepository implements UserRepositoryInterface
   {
       return User::with('project_app')->with('project_assign')->findOrFail($id);
   }
+
+    /**
+     *
+     */
+    public function register(array $request)
+  {
+      return User::create([
+            'sei'       => $request['sei'],
+            'mei'       => $request['mei'],
+            'sei_kana'  => $request['sei_kana'],
+            'mei_kana'  => $request['mei_kana'],
+            'birthday'  => $request['birthday'],
+            'tel'       => $request['tel'],
+            'email'     => $request['email'],
+            'email_hash'=> hash(config('app.hash_email.algo'),$request['email']. config('app.hash_email.salt')),
+            'password'  => bcrypt($request['password']),
+        ]);
+  }
 }

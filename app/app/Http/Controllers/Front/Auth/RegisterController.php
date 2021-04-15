@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\RegisterUserRequest;
+use App\Services\User\UserRegister\RegisterUserService;
 use App\Models\User;
 use App\Http\Controllers\Traits\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -69,29 +71,15 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param \App\Http\Requests\Front\RegisterUserRequest $request
+     * @param \App\Services\User\UserRegister\RegisterUserService $registerUserService
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function register( RegisterUserRequest $request)
+    public function register(RegisterUserRequest $request, RegisterUserService $registerUserService)
     {
-        $user = $this->create($request->all());
+        $user = $registerUserService->exec($request->all());
 
         $this->guard()->login($user);
 
         return redirect($this->redirectTo);
-    }
-
-    private function create(array $request)
-    {
-        return User::create([
-            'sei'       => $request['sei'],
-            'mei'       => $request['mei'],
-            'sei_kana'  => $request['sei_kana'],
-            'mei_kana'  => $request['mei_kana'],
-            'birthday'  => $request['birthday'],
-            'tel'       => $request['tel'],
-            'email'     => $request['email'],
-            'email_hash'=> hash(config('app.hash_email.algo'),$request['email']. config('app.hash_email.salt')),
-            'password'  => bcrypt($request['password']),
-        ]);
     }
 }
