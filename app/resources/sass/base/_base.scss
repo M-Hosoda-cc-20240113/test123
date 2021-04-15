@@ -30,18 +30,29 @@ li {
     margin: 0 auto;
     max-width: $content-max-width;
     padding: 0 20px 90px;
+    @include max-screen($breakpoint-pc) {
+      flex-flow: column wrap;
+    }
 }
 
 .Main {
     max-width: 72rem;
     width: 75%;
     padding: 0 15px;
+    @include max-screen($breakpoint-pc) {
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 .SideBar {
     max-width: 24rem;
     width: 25%;
     padding-left: 15px;
+    @include max-screen($breakpoint-pc) {
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 .fw-bold {
