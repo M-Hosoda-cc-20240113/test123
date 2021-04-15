@@ -1,4 +1,4 @@
-<div href="#" class="ProjectCard mg-5">
+<div class="ProjectCard mg-5">
   <a class="fw-bold d-block" href="{{ route('front.project.detail', ['id' => $project->id] )}}">{{ $project->name }}</a>
   <table class="mb-20 w-100">
     <tr>

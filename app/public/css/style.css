@@ -19,6 +19,7 @@ input:focus {
 a {
   text-decoration: none;
   cursor: pointer;
+  color: #333333;
 }
 
 a:focus {
@@ -106,6 +107,7 @@ ol[role="list"] {
 
 ul {
   margin-block-start: 0;
+  padding-inline-start: 0;
 }
 
 html {
@@ -2356,12 +2358,12 @@ input[type="checkbox"]:checked + label:before {
   display: flex;
   margin: 0 auto;
   border-bottom: 2px solid #4bc1c1;
+  justify-content: center;
 }
 
 .ContentTab__item {
   width: 25%;
   margin: 0 5px;
-  padding: 0 15px;
   background-color: #dfe4e7;
   border-radius: 3px 3px 0 0;
   text-align: center;
@@ -2370,6 +2372,14 @@ input[type="checkbox"]:checked + label:before {
 
 .ContentTab__item:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .ContentTab__item {
+    width: 33%;
+    font-size: 1.1rem;
+    margin: 0 3px;
+  }
 }
 
 .ContentTab__itemText {

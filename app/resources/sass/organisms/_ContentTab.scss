@@ -5,16 +5,21 @@
     display: flex;
     margin: 0 auto;
     border-bottom: 2px solid $secondary-color;
+    justify-content: center;
     &__item {
         width: 25%;
         margin: 0 5px;
-        padding: 0 15px;
         background-color: $muted-lighter-color;
         border-radius: 3px 3px 0 0;
         text-align: center;
         padding: 10px;
         &:hover {
             cursor: pointer;
+        }
+        @include max-screen($breakpoint-pc) {
+            width: 33%;
+            font-size: 1.1rem;
+            margin: 0 3px;
         }
     }
     &__itemText {
