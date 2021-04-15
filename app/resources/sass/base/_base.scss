@@ -1,88 +1,92 @@
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    background: $muted-lightest-color;
-    color: $dark-color;
-    font-size: 1.4rem;
+  background: $muted-lightest-color;
+  color: $dark-color;
+  font-size: 1.4rem;
 }
 
 input:focus {
-    outline: none;
+  outline: none;
 }
 
 a {
-    text-decoration: none;
-    cursor: pointer;
-    color: $dark-color;
+  text-decoration: none;
+  cursor: pointer;
+  color: $dark-color;
 }
 
 a:focus {
-    outline: none;
+  outline: none;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 .Container {
-    margin: 0 auto;
-    max-width: $content-max-width;
-    padding: 0 20px 90px;
-    @include max-screen($breakpoint-pc) {
-      flex-flow: column wrap;
-    }
+  margin: 0 auto;
+  max-width: $content-max-width;
+  padding: 0 20px 90px;
+  @include max-screen($breakpoint-pc) {
+    flex-flow: column wrap;
+  }
 }
 
 .Main {
-    max-width: 72rem;
-    width: 75%;
-    padding: 0 15px;
-    @include max-screen($breakpoint-pc) {
-        max-width: 100%;
-        width: 100%;
-    }
+  max-width: 72rem;
+  width: 75%;
+  padding: 0 15px;
+  @include max-screen($breakpoint-pc) {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .SideBar {
-    max-width: 24rem;
-    width: 25%;
-    padding-left: 15px;
-    @include max-screen($breakpoint-pc) {
-        max-width: 100%;
-        width: 100%;
-    }
+  max-width: 24rem;
+  width: 25%;
+  padding-left: 15px;
+  @include max-screen($breakpoint-pc) {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .fw-bold {
-    font-weight: bold !important;
+  font-weight: bold !important;
 }
 
 .text-secondary {
-    color: $warning-color !important;
+  color: $warning-color !important;
 }
 
 .d-block {
-    display: block;
+  display: block;
+}
+
+.ta-center {
+  text-align: center;
 }
 
 .d-flex {
-    display: flex !important;
+  display: flex !important;
 }
 
 .bg-light {
-    background-color: $light-color;
+  background-color: $light-color;
 }
 
 .align-self-center {
-    align-self: center;
+  align-self: center;
 }
 
 .f-end {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .f-start {
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
