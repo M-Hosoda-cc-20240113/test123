@@ -7,7 +7,7 @@
     <div class="Container mt-30 pb-100">
         @include('admin.bread_crumb._BreadCrumb')
         <div class="admin-project-detail">
-            <p class="fw-bold fs-2">{{ $response->getProject()->name ?? '' }}</p>
+            <p class="fw-bold fs-20">{{ $response->getProject()->name ?? '' }}</p>
             <hr class="Horizontal">
             @include('admin.pages.project.detail._ProjectDetailTable', ['response' => $response])
         </div>

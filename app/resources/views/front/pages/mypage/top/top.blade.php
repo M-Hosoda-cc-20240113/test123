@@ -16,11 +16,11 @@
             @include('front.pages.mypage.top._RegularList')
         </div>
         <div class="Main">
-            <p class="fw-bold fs-2">ユーザー情報</p>
+            <p class="fw-bold fs-20">ユーザー情報</p>
             <hr class="Horizontal">
             @include('front.pages.mypage.top._SideColumnTable', ['response' => $response])
 
-            <p class="fw-bold fs-2 mt-20">スキル</p>
+            <p class="fw-bold fs-20 mt-20">スキル</p>
             <hr class="Horizontal">
             <div class="d-flex">
                 @include('atoms.Tag', ['text' => 'PHP（3年以上）', 'class' => 'mr-10'])
