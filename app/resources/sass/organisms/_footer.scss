@@ -19,6 +19,9 @@
         &:hover {
             color: $muted-color;
         }
+        @include max-screen($breakpoint-pc) {
+            font-size: 1.2rem;
+        }
     }
     &__copy {
         font-size: 10px;
