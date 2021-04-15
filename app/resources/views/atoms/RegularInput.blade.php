@@ -11,7 +11,7 @@
 <div class="RegularInput {{ $class ?? '' }}">
   <p class="RegularInput__name {{ $class2 ?? '' }}">{{ $text ?? ''}}</p>
   <label class="RegularInput__label">
-    <input name="{{ $name ?? '' }}" type="{{ $type ?? '' }}" placeholder="{{ $placeholder ?? '' }}" class="RegularInput__field" type="text" value="">
+    <input name="{{ $name ?? '' }}" placeholder="{{ $placeholder ?? '' }}" class="RegularInput__field" type="{{ $type ?? '' }}" value="{{ $value ?? '' }}">
   </label>
 </div>
 

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Front\RegisterUserRequest;
 use App\Models\User;
 use App\Http\Controllers\Traits\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -51,27 +54,47 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'sei'       => ['required', 'string', 'max:255'],
+            'mei'       => ['required', 'string', 'max:255'],
+            'sei_kana'  => ['required', 'string', 'max:255'],
+            'mei_kana'  => ['required', 'string', 'max:255'],
+            'birthday'  => ['required', 'string', 'max:255'],
+            'tel'       => ['required', 'string', 'max:255'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'  => ['required', 'string', 'min:8', 'confirmed','alpha_dash'],
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param \App\Http\Requests\Front\RegisterUserRequest $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    protected function create(array $data)
+    public function register( RegisterUserRequest $request)
+    {
+        $user = $this->create($request->all());
+
+        $this->guard()->login($user);
+
+        return redirect($this->redirectTo);
+    }
+
+    private function create(array $request)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'sei'       => $request['sei'],
+            'mei'       => $request['mei'],
+            'sei_kana'  => $request['sei_kana'],
+            'mei_kana'  => $request['mei_kana'],
+            'birthday'  => $request['birthday'],
+            'tel'       => $request['tel'],
+            'email'     => $request['email'],
+            'email_hash'=> hash(config('app.hash_email.algo'),$request['email']. config('app.hash_email.salt')),
+            'password'  => bcrypt($request['password']),
         ]);
     }
 }

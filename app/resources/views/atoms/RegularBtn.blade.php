@@ -5,4 +5,4 @@
  * @var string $link リンク
  */
 @endphp
-<a href="{{ $link ?? '' }}" class="RegularBtn {{ $class ?? '' }}">{{ $text ?? '' }}</a>
+<a href="{{ $link ?? '' }}" class="RegularBtn {{ $class ?? '' }}" type="{{ $type ?? '' }}">{{ $text ?? '' }}</a>
