@@ -74,9 +74,9 @@ class RegisterController extends Controller
      * @param \App\Services\User\UserRegister\RegisterUserService $registerUserService
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function register(RegisterUserRequest $request, RegisterUserService $registerUserService)
+    public function register(RegisterUserRequest $request, RegisterUserService $register_user_service)
     {
-        $user = $registerUserService->exec($request->all());
+        $user = $register_user_service->exec($request->all());
 
         $this->guard()->login($user);
 
