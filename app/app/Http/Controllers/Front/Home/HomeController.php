@@ -29,12 +29,6 @@ class HomeController extends Controller
     public function index(UserPageService $user_page_service)
     {
         $response = $user_page_service->exec();
-//        dd($response->getLevelSkillUser());
-//        foreach ($response->getLevelSkillUser() as $LevelSkill)
-//        {
-//            dd($LevelSkill->name);
-//        }
-
         return view('front.pages.mypage.top.top', ['response' => $response]);
     }
 
