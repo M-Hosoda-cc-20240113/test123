@@ -32,7 +32,7 @@ class UserPageService
         $user = $this->user_repository->detail($user_id);
         $response->setUser($user);
         $LevelSkillUSer = $this->relLevelSKillUser_repository->detail($user_id);
-        $response->setLevelSkillUSer($LevelSkillUSer);
+        $response->setRelLevelSkillUSer($LevelSkillUSer);
         return $response;
     }
 }

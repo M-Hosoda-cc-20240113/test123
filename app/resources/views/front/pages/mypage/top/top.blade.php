@@ -22,7 +22,7 @@
             <p class="fw-bold fs-20 mt-20">スキル</p>
             <hr class="Horizontal">
             <div class="d-flex">
-                @foreach($response->getLevelSkillUser() as $LevelSkill)
+                @foreach($response->getRelLevelSkillUser() as $LevelSkill)
                     @include('atoms.Tag', ['text' => $LevelSkill->name.'（'.$LevelSkill->level.'）', 'class' => 'mr-10'])
                 @endforeach
             </div>

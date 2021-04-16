@@ -12,7 +12,7 @@ class UserPageResponse
      * @var User
      */
     private $user;
-    private $LevelSkillUser;
+    private $RelLevelSkillUser;
 
     /**
      * @return User
@@ -35,16 +35,16 @@ class UserPageResponse
     /**
      * @return mixed
      */
-    public function getLevelSkillUser()
+    public function getRelLevelSkillUser()
     {
-        return $this->LevelSkillUser;
+        return $this->RelLevelSkillUser;
     }
 
     /**
-     * @param mixed $LevelSkillUser
+     * @param mixed $RelLevelSkillUser
      */
-    public function setLevelSkillUser($LevelSkillUser): void
+    public function setRelLevelSkillUser($RelLevelSkillUser): void
     {
-        $this->LevelSkillUser = $LevelSkillUser;
+        $this->RelLevelSkillUser = $RelLevelSkillUser;
     }
 }
