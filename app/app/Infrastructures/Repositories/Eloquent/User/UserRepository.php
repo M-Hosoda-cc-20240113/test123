@@ -26,7 +26,7 @@ class UserRepository implements UserRepositoryInterface
   }
 
   /**
-    * {}
+    * {@inheritDoc}
     */
   public function detail(int $id)
   {
