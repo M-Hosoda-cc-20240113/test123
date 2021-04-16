@@ -12,6 +12,7 @@ class UserPageResponse
      * @var User
      */
     private $user;
+    private $LevelSkillUser;
 
     /**
      * @return User
@@ -29,5 +30,21 @@ class UserPageResponse
     {
         $this->user = $user;
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLevelSkillUser()
+    {
+        return $this->LevelSkillUser;
+    }
+
+    /**
+     * @param mixed $LevelSkillUser
+     */
+    public function setLevelSkillUser($LevelSkillUser): void
+    {
+        $this->LevelSkillUser = $LevelSkillUser;
     }
 }

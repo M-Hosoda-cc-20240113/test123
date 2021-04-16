@@ -19,12 +19,12 @@
             <p class="fw-bold fs-20">ユーザー情報</p>
             <hr class="Horizontal">
             @include('front.pages.mypage.top._SideColumnTable', ['response' => $response])
-
             <p class="fw-bold fs-20 mt-20">スキル</p>
             <hr class="Horizontal">
             <div class="d-flex">
-                @include('atoms.Tag', ['text' => 'PHP（3年以上）', 'class' => 'mr-10'])
-                @include('atoms.Tag', ['text' => 'Python（1年未満）'])
+                @foreach($response->getLevelSkillUser() as $LevelSkill)
+                    @include('atoms.Tag', ['text' => $LevelSkill->name.'（'.$LevelSkill->level.'）', 'class' => 'mr-10'])
+                @endforeach
             </div>
         </div>
     </div>

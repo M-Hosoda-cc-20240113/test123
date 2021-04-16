@@ -20,7 +20,9 @@ class IndexController extends Controller
     /**
      *
      * Front index
-     * @var array
+     *
+     * @param \App\Services\Top\FetchTopData\FetchTopService $fetch_top_data_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(FetchTopService $fetch_top_data_service)
      {

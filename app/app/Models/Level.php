@@ -30,9 +30,10 @@ class Level extends Model
     use HasFactory;
 
     /**
-     * 
+     *
      * Users Table relation
-     * @var array
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function users(): BelongsToMany
     {
