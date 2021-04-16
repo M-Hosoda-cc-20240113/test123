@@ -2,6 +2,7 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\User;
 
+use App\Models\RelLevelSkillUser;
 use App\Models\User;
 use App\Services\User\UserRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -27,8 +28,10 @@ class UserRepository implements UserRepositoryInterface
   /**
     * {@inheritDoc}
     */
-  public function detail(int $id): User
+  public function detail(int $id)
   {
-      return User::with('project_app')->with('project_assign')->findOrFail($id);
+      return User::with('project_app')
+          ->with('project_assign')
+          ->findOrFail($id);
   }
 }
