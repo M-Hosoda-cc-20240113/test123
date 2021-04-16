@@ -29,7 +29,7 @@ class RegisterUserRequest extends FormRequest
             'sei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'mei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'birthday'  => ['required', 'integer', 'digits:8'],
-            'tel'       => ['required', 'integer','digits_between:8,11','unique:users'],
+            'tel'       => ['required', 'digits_between:8,11', 'unique:users'],
             'email'     => ['required', 'email', 'unique:users'],
             'password'  => ['required', 'regex:/^[a-zA-Z0-9]+$/', 'min:8', 'max:30'],
         ];
@@ -59,7 +59,6 @@ class RegisterUserRequest extends FormRequest
             'birthday.integer'  => '半角数字で入力してください。',
             'birthday.digits'   => '８桁で入力してください。',
             'tel.required'      => '電話番号を入力して下さい。',
-            'tel.integer'       => '半角数字で入力してください。',
             'tel.digits_between'=> '無効な電話番号です。',
             'tel.unique'        => '登録済みの電話番号です。',
             'email.required'    => 'メールアドレスを入力して下さい',
