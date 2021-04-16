@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\AuthenticatesUsers;
 use App\Infrastructures\Repositories\Eloquent\User\UserRepository;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -48,9 +50,23 @@ class LoginController extends Controller
      *
      * @param Request $request
      * @return RedirectResponse|Response|JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function login(Request $request)
     {
+//        dd($request);
+        if (!empty($request->remember))
+            {
+                $remember_cookie_name = Auth::getRecallerName();
+                Cookie::queue(
+                    $name = $remember_cookie_name,
+                    $value = Cookie::queued($remember_cookie_name)->getValue(),
+                    $minutes = 10080, // 7日
+                    $path = '/',
+                    $domain = null
+                );
+            }
+
         $this->validateLogin($request);
 
         if ($this->hasTooManyLoginAttempts($request)) {
@@ -94,8 +110,20 @@ class LoginController extends Controller
         return redirect()->route('home.mypage');
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function loggedOut(Request $request)
     {
         return redirect()->route('login');
+    }
+
+    /**
+     * @return string
+     */
+    public function getRecallerName(): string
+    {
+        return 'remember_'.$this->name.'_'.sha1(static::class);
     }
 }
