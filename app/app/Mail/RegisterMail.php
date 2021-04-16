@@ -16,13 +16,11 @@ class RegisterMail extends Mailable
      *
      * @return void
      */
-    protected $name;
-    protected $data;
+    protected $user;
 
-    public function __construct($name,$data)
+    public function __construct($user)
     {
-        $this->name = $name;
-        $this->data = data;
+        $this->user = $user;
     }
 
     /**
@@ -32,9 +30,9 @@ class RegisterMail extends Mailable
      */
     public function build(): RegisterMail
     {
-        return $this->from('sns@care-con.co.jp')   // 送信先アドレス
-        ->subject('登録完了しました。')                 // 件名
-        ->view('registers.register_mail')              // 本文
-        ->with(['name' => $this->name]);
+        return $this->from('sns@care-con.co.jp')
+        ->subject('Aegis 登録完了メール')
+        ->view('mail.register')
+        ->with(['user' => $this->user]);
     }
 }

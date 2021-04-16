@@ -2,10 +2,11 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\User;
 
-use App\Models\RelLevelSkillUser;
+use App\Mail\RegisterMail;
 use App\Models\User;
 use App\Services\User\UserRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Mail;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -40,6 +41,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function register(array $request)
   {
+      Mail::to($request['email'])->send(new RegisterMail($request));
       return User::create([
             'sei'       => $request['sei'],
             'mei'       => $request['mei'],
