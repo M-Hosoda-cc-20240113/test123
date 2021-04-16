@@ -33,18 +33,21 @@ class Skill extends Model
     use HasFactory;
 
     /**
-     * 
+     *
      * Users Table relation
-     * @var array
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'rel_levels_skills_users', 'user_id', 'skill_id');
     }
+
     /**
-     * 
+     *
      * Projects Table relation
-     * @var array
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function projects(): BelongsToMany
     {
