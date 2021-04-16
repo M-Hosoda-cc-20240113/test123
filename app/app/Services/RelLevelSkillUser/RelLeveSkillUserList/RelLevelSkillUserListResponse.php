@@ -15,20 +15,20 @@ class RelLevelSkillUserListResponse
     private $rel_level_skill_user;
 
     /**
-     * @return RelLevelSkillUser[]|Collection
+     * @return \App\Models\RelLevelSkillUser[]|\Illuminate\Support\Collection
      */
-    public function getLevelSkillUSer()
+    public function getRelLevelSkillUser()
     {
         return $this->rel_level_skill_user;
     }
 
     /**
-     * @param RelLevelSkillUser[]|Collection $rel_level_skill_user
-     * @return RelLevelSkillUserListResponse
+     * @param \App\Models\RelLevelSkillUser[]|\Illuminate\Support\Collection $rel_level_skill_user
      */
-    public function setLevelSkillUSer($rel_level_skill_user): RelLevelSkillUserListResponse
+    public function setRelLevelSkillUser($rel_level_skill_user): void
     {
         $this->rel_level_skill_user = $rel_level_skill_user;
-        return $this;
     }
+
+
 }
