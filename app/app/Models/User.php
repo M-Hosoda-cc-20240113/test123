@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Crypt;
+use App\Notifications\PasswordResetNotification;
 
 /**
  * App\Models\User
@@ -219,5 +220,13 @@ class User extends Authenticatable
     public function setMeiKanaAttribute($val)
     {
         $this->attributes['mei_kana'] = Crypt::encrypt($val);
+    }
+
+    /**
+     * @param string $token
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new PasswordResetNotification($token, $this));
     }
 }
