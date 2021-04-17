@@ -13,6 +13,7 @@
       <input type="hidden" name="token" value="{{ $token }}">
       <input type="hidden" name="token2" value="{{ $token2 }}">
       <p>パスワードの再設定を行います。新しいパスワードを入力してください。</p>
+      <p>半角8文字以上、英字大文字、英字小文字、数字を全て含むパスワードを入力してください。</p>
       @foreach($errors->all() as $error)
         <p>{{ $error }}</p>
       @endforeach
