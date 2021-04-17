@@ -182,7 +182,7 @@ return [
         App\Providers\StationServiceProvider::class,
         App\Providers\ApplicationServiceProvider::class,
         App\Providers\AssignmentServiceProvider::class,
-
+        App\Providers\RelLevelSkillUserServiceProvider::class,
     ],
 
     /*
@@ -236,9 +236,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'ViewHelper' => App\Helpers\ViewHelper::class,
-        
+
     ],
-    
+
     /*
     |--------------------------------------------------------------------------
     | Hash

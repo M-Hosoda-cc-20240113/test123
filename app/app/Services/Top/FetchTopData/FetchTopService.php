@@ -23,18 +23,18 @@ class FetchTopService
   private $station_repository;
 
   public function __construct(
-    ProjectRepositoryInterface $project_repository, 
-    SkillRepositoryInterface $skill_repository, 
+    ProjectRepositoryInterface $project_repository,
+    SkillRepositoryInterface $skill_repository,
     PositionRepositoryInterface $position_repository,
     StationRepositoryInterface $station_repository
   ) {
-    $this->project_repository = $project_repository; 
-    $this->skill_repository = $skill_repository; 
-    $this->position_repository = $position_repository; 
-    $this->station_repository = $station_repository; 
+    $this->project_repository = $project_repository;
+    $this->skill_repository = $skill_repository;
+    $this->position_repository = $position_repository;
+    $this->station_repository = $station_repository;
   }
 
-  public function exec()
+  public function exec(): \App\Services\Top\FetchTopData\FetchTopResponse
   {
     $response = new FetchTopResponse();
     $projects = $this->project_repository->all();

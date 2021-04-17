@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Services\User\UserCreate;
+namespace App\Services\User\UserRegister;
 
 
 use App\Services\User\UserRepositoryInterface;
 
-class UserCreateService
+class RegisterUserService
 {
     /**
      * @var UserRepositoryInterface
@@ -20,6 +20,6 @@ class UserCreateService
 
     public function exec(array $request): \App\Models\User
     {
-        return $this->user_repository->create($request);
+        return $this->user_repository->register($request);
     }
 }

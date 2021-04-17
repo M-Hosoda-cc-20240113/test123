@@ -9,15 +9,15 @@ class StationListService
   /**
    * @var StationRepositoryInterface
    */
-  private $station_reopsitory;
+  private $station_repository;
 
-  public function __construct(StationRepositoryInterface $station_repository) 
+  public function __construct(StationRepositoryInterface $station_repository)
   {
-    $this->station_reopsitory = $station_repository; 
+    $this->station_repository = $station_repository;
   }
 
   public function exec()
   {
-    return $this->station_reopsitory->all();
+    return $this->station_repository->all();
   }
 }
