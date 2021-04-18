@@ -54,19 +54,6 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-//        dd($request);
-        if (!empty($request->remember))
-            {
-                $remember_cookie_name = Auth::getRecallerName();
-                Cookie::queue(
-                    $name = $remember_cookie_name,
-                    $value = Cookie::queued($remember_cookie_name)->getValue(),
-                    $minutes = 10080, // 7日
-                    $path = '/',
-                    $domain = null
-                );
-            }
-
         $this->validateLogin($request);
 
         if ($this->hasTooManyLoginAttempts($request)) {
