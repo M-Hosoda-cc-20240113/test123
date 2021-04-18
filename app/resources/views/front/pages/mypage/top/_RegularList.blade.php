@@ -8,5 +8,5 @@
   <li class="RegularList__item"><a class="RegularList__itemInner" href="/">基本情報編集</a></li>
   <li class="RegularList__item"><a class="RegularList__itemInner" href="/">詳細情報編集</a></li>
   <li class="RegularList__item"><a class="RegularList__itemInner" href="/">スキル編集</a></li>
-  <li class="RegularList__item"><a class="RegularList__itemInner" href="/">パスワード変更</a></li>
+  <li class="RegularList__item"><a class="RegularList__itemInner" href="{{ route('password.request') }}">パスワード変更</a></li>
 </ul>
