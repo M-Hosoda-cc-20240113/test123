@@ -27,13 +27,13 @@ class UserPageService
 
     public function exec(): UserPageResponse
     {
-        $id = Auth::user()->id;
+        $user_id = Auth::user()->id;
         $response = new UserPageResponse();
 
-        $user = $this->user_repository->detail($id);
+        $user = $this->user_repository->detail($user_id);
         $response->setUser($user);
 
-        $LevelSkillUSer = $this->relLevelSKillUser_repository->detail($id);
+        $LevelSkillUSer = $this->relLevelSKillUser_repository->detail($user_id);
         $response->setRelLevelSkillUSer($LevelSkillUSer);
 
         return $response;

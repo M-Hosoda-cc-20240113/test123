@@ -6,10 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\RegisterUserRequest;
 use App\Services\Application\ProjectApplication\ProjectApplicationService;
 use App\Services\User\UserRegister\RegisterUserService;
-use App\Models\User;
 use App\Http\Controllers\Traits\RegistersUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -46,8 +44,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm(Request $request)
     {
-        $project_id = $request->project_id;
-        return view('front.pages.register.register', [ 'project_id' => $project_id ]);
+        return view('front.pages.register.register', [ 'project_id' => $request->project_id ]);
     }
 
     /**

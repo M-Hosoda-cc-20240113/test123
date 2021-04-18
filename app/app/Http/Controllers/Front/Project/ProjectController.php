@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Front\Project;
 
 use App\Http\Controllers\Controller;
-use App\Models\Application;
 use App\Services\Application\ProjectApplication\ProjectApplicationService;
 use App\Services\Project\ProjectDetail\ProjectDetailResponse;
 use App\Services\Project\ProjectDetail\ProjectDetailService;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
