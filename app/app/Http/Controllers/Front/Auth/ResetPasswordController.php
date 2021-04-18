@@ -36,7 +36,7 @@ class ResetPasswordController extends Controller
      */
     public function showResetForm(Request $request, $token = null)
     {
-        return view('front.pages.password.reset.reset')->with(
+        return view('front.pages.password.reset')->with(
             ['token' => $token, 'token2' => $request->email_hash]
         );
     }
@@ -56,7 +56,7 @@ class ResetPasswordController extends Controller
         if ($response == Password::PASSWORD_RESET) {
             Auth::logout();
             $request->session()->invalidate();
-            return view('front.pages.password.reset_complete.reset_complete');
+            return view('front.pages.password.reset_complete');
         }
         return $this->sendResetFailedResponse($request, $response);
     }

@@ -30,7 +30,7 @@ class ForgotPasswordController extends Controller
      */
     public function showLinkRequestForm()
     {
-        return view('front.pages.password.change_request.change_request');
+        return view('front.pages.password.change_request');
     }
 
     /**
@@ -47,6 +47,6 @@ class ForgotPasswordController extends Controller
             ['email_hash' => UserRepository::makeEmailHash($request->email)]
         );
 
-        return view('front.pages.password.email_sent.email_sent');
+        return view('front.pages.password.email_sent');
     }
 }
