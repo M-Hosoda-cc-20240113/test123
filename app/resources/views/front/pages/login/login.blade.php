@@ -28,6 +28,9 @@
             </div>
             <p class="LoginIconInput__caption">半角英数字8文字以上</p>
           </div>
+            <div>
+                @include('atoms.RegularCheckbox', ['class' => 'mr-10 mb-10 w-200px', 'text' => __('Remember me'), 'id' => 'remember_me', 'name' => 'remember'])
+            </div>
           <button type="submit" class="RegularBtn">ログイン</button>
         </form>
         <div class="Login__footWrap">
