@@ -6,6 +6,8 @@ use App\Http\Controllers\Front\Home\HomeController;
 use App\Http\Controllers\Front\Auth\RegisterController;
 use App\Http\Controllers\Front\Auth\LoginController;
 use App\Http\Controllers\Front\Project\ProjectController;
+use App\Http\Controllers\Front\Auth\ResetPasswordController;
+use App\Http\Controllers\Front\Auth\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +34,15 @@ Route::namespace("Auth")->group(function() {
   Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
   Route::post('login', [LoginController::class, 'login']);
   Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
 });
+
+Route::namespace('Auth')->prefix('password')->group(function () {
+    Route::get('reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('reset', [ResetPasswordController::class,'reset']);
+    Route::post('email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('reset/{token}/{email_hash}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+});
+
 Route::namespace("Detail")->prefix('project')->group(function () {
     Route::get('/{id}', [ProjectController::class, 'detail'])->name('front.project.detail');
 });

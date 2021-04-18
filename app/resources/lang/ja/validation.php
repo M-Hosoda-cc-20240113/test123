@@ -90,6 +90,14 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'password' => [
+            'half_width_upper_case' => ':attributeは半角英字大文字を含めて入力してください。',
+            'half_width_lower_case' => ':attributeは半角英字小文字を含めて入力してください。',
+            'half_width_number' => ':attributeは半角数字を含めて入力してください。',
+            'same_password_as_before' => '前回設定した:attributeとは異なる、新しい:attributeを入力してください。',
+            'included_email_text_in_password' => ':attributeはメールアドレスの文字列を含めずに入力してください。'
+        ],
+
     ],
 
     /*
