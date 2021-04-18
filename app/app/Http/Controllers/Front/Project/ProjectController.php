@@ -3,12 +3,22 @@
 namespace App\Http\Controllers\Front\Project;
 
 use App\Http\Controllers\Controller;
+use App\Models\Application;
+use App\Services\Application\CreateApplication\CreateApplicationService;
 use App\Services\Project\ProjectDetail\ProjectDetailResponse;
 use App\Services\Project\ProjectDetail\ProjectDetailService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
+
+    /**
+     * @var string
+     */
+    protected $redirectToLogin = '/login';
+
     /**
      *
      * Admin project detail
@@ -26,5 +36,17 @@ class ProjectController extends Controller
         $response->setProject($project);
 
         return view('front.pages.project.detail.detail', ['response' => $response]);
+    }
+
+    /**
+     * @param int $id
+     * @param \App\Services\Application\CreateApplication\CreateApplicationService $create_application_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function create_application(int $id, CreateApplicationService $create_application_service)
+    {
+        $user = Auth::user();
+        $create_application_service->exec($id, $user);
+        return  redirect('/');
     }
 }

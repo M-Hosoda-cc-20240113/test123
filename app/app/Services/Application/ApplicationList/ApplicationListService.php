@@ -9,16 +9,16 @@ class ApplicationListService
   /**
    * @var ApplicationRepositoryInterface
    */
-  private $application_reopsitory;
+  private $application_repository;
 
   public function __construct(
     ApplicationRepositoryInterface $application_repository
   ) {
-    $this->application_reopsitory = $application_repository; 
+    $this->application_repository = $application_repository;
   }
 
   public function exec()
   {
-    return $this->application_reopsitory->all();
+    return $this->application_repository->all();
   }
 }
