@@ -15,7 +15,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface
   /**
    * @inheritDoc
    */
-  public function all(): Collection
+  public function all()
   {
       return User::with('project_app')
           ->whereHas('project_app',function($q){
@@ -24,7 +24,13 @@ class ApplicationRepository implements ApplicationRepositoryInterface
           });
       })->get();
   }
-  public function create(int $id,$user)
+
+    /**
+     * @param int $id
+     * @param $user
+     * @return void
+     */
+    public function create($id,$user)
   {
       $user->project_app()->attach($id);
   }

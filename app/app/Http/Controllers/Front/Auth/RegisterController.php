@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\RegisterUserRequest;
+use App\Services\Application\ProjectApplication\ProjectApplicationService;
 use App\Services\User\UserRegister\RegisterUserService;
 use App\Models\User;
 use App\Http\Controllers\Traits\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -42,9 +44,10 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function showRegistrationForm()
+    public function showRegistrationForm(Request $request)
     {
-        return view('front.pages.register.register');
+        $project_id = $request->project_id;
+        return view('front.pages.register.register', [ 'project_id' => $project_id ]);
     }
 
     /**
@@ -74,11 +77,15 @@ class RegisterController extends Controller
      * @param \App\Services\User\UserRegister\RegisterUserService $register_user_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function register(RegisterUserRequest $request, RegisterUserService $register_user_service)
+    public function register(RegisterUserRequest $request, RegisterUserService $register_user_service, ProjectApplicationService $project_application_service)
     {
         $user = $register_user_service->exec($request->all());
-
         $this->guard()->login($user);
+
+        if(!empty($request->project_id))
+        {
+            $project_application_service->exec($request->project_id, $user);
+        }
 
         return redirect($this->redirectTo);
     }

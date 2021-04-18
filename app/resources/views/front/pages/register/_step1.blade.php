@@ -143,5 +143,6 @@
             @endif
         </div>
     </div>
+    <input type="hidden" name="project_id" value="{{ $project_id ?? '' }}">
     <button class="RegularBtn w-20 m0a" type="submit">登録</button>
 </form>

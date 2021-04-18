@@ -85,7 +85,7 @@ class Project extends Model
     public function user_app(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'applications', 'project_id', 'user_id')
-                    ->withPivot('application_date');
+                    ->withPivot('created_at');
     }
 
     /**
@@ -97,7 +97,7 @@ class Project extends Model
     public function user_assign(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'assignments', 'project_id', 'user_id')
-                    ->withPivot('assignment_date');
+                    ->withPivot('created_at');
     }
 
     /**

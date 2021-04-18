@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Front\Project;
 
 use App\Http\Controllers\Controller;
 use App\Models\Application;
-use App\Services\Application\CreateApplication\CreateApplicationService;
+use App\Services\Application\ProjectApplication\ProjectApplicationService;
 use App\Services\Project\ProjectDetail\ProjectDetailResponse;
 use App\Services\Project\ProjectDetail\ProjectDetailService;
 use Carbon\Carbon;
@@ -40,13 +40,13 @@ class ProjectController extends Controller
 
     /**
      * @param int $id
-     * @param \App\Services\Application\CreateApplication\CreateApplicationService $create_application_service
+     * @param \App\Services\Application\ProjectApplication\ProjectApplicationService $create_application_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function create_application(int $id, CreateApplicationService $create_application_service)
+    public function create_application(int $id, ProjectApplicationService $project_application_service)
     {
         $user = Auth::user();
-        $create_application_service->exec($id, $user);
+        $project_application_service->exec($id, $user);
         return  redirect('/');
     }
 }

@@ -17,8 +17,8 @@ class CreateAssignmentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('project_id')->unsigned();
-            $table->datetime('assignment_date');
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             //外部キーの設定
             $table->foreign('user_id')
                         ->references('id')

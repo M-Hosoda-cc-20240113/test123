@@ -31,4 +31,11 @@ interface UserRepositoryInterface
      * @return User
      */
     public function findByEmailHash(string $email_hash): User;
+
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function detail(int $id);
 }
