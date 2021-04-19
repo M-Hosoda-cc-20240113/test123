@@ -1,0 +1,27 @@
+// pc
+@for $i from 0 through 20 {
+  .u-w-#{$i * 5}-pc {
+    @include min-screen($breakpoint-pc) {
+      width: #{$i * 5}% !important;
+    }
+  }
+}
+
+// sp
+@for $i from 0 through 20 {
+  .u-w-#{$i * 5}-sp {
+    @include max-screen($breakpoint-pc) {
+      width: #{$i * 5}% !important;
+    }
+  }
+}
+
+@for $i from 0 through 100 {
+  .u-w-#{$i * 5}px {
+    width: #{$i * 5}px !important;
+  }
+}
+
+.u-w-auto {
+  width: auto;
+}

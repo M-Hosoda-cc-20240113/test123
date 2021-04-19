@@ -2,13 +2,12 @@
  * タブとコンテンツを紐付ける機能
  * usage 
  * 1.全てのタブにtab-jsクラスをつける
- * 2.全てのコンテンツにtab_content-jsをつける
- * 3.デフォルトでactiveにしたいタブにtab_active-jsをつける
+ * 2.全てのコンテンツにjs-tab_contentをつける
  */
 export class TabContentsLink {
     constructor() {
-        this.tabs = document.querySelectorAll(".tab-js");
-        this.contents = document.querySelectorAll(".tab_content-js");
+        this.tabs = document.querySelectorAll(".js-tab");
+        this.contents = document.querySelectorAll(".js-tab_content");
         this.init().setEvent();
     }
 
@@ -19,7 +18,7 @@ export class TabContentsLink {
     init() {
         this.contentsAllHide();
         this.tabs.forEach((tab, index) => {
-            if (this.tabs[index].classList.contains("active")) {
+            if (this.tabs[index].classList.contains("is-active")) {
                 this.contents[index].style.display = "flex";
             }
         });
@@ -39,7 +38,8 @@ export class TabContentsLink {
 
     /**
      * クリックイベント
-     * @param {MouseEvent} e
+     * @param {Event} e
+     * @param {number} index
      */
     onClick(e, index) {
         this.contentsAllHide();
@@ -58,12 +58,12 @@ export class TabContentsLink {
 
     /**
      * 
-     * @param {MouseEvent} e 
+     * @param {Event} e
      */
     toggleTabActive(e) {
       this.tabs.forEach((tab)=>{
-          tab.classList.remove('active'); 
+          tab.classList.remove('is-active');
       });
-      e.target.classList.add('active');
+      e.target.classList.add('is-active');
     }
 }

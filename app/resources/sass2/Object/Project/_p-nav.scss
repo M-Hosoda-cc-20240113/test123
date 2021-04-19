@@ -1,0 +1,12 @@
+.p-nav {
+  &__list {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  &__item {
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

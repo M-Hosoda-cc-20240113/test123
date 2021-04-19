@@ -1,0 +1,21 @@
+.p-card {
+  padding: 20px;
+  box-shadow: 0 3px 5.7px rgba(0,0,0,0.15);
+  border-radius: 3px;
+  $this: &;
+  &__title {
+    min-height: 50px;
+    display: block;
+    &:hover {
+      text-decoration: underline;
+      color: $dark-color;
+    }
+  }
+  &__table {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  &__sub-title {
+    margin-bottom: 5px;
+  }
+}

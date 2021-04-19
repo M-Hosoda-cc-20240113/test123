@@ -1,0 +1,34 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+body {
+  background-color: $muted-lightest-color;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a {
+  color: $dark-color;
+}
+
+input:focus {
+  outline: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: underline;
+  color: $dark-color;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}

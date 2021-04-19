@@ -1,0 +1,12 @@
+.p-checkboxUnit{
+  padding: 20px;
+  display: flex;
+  border: 2px solid $secondary-color;
+  border-top: 0;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  &__item {
+    margin-bottom: 30px;
+    margin-right: 10px;
+  }
+}
