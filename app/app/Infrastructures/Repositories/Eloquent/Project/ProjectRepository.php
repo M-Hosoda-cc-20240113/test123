@@ -21,9 +21,14 @@ class ProjectRepository implements ProjectRepositoryInterface
    *for Front
    * @inheritDoc
    */
-   public function detail(int $id): Project
+   public function detail(int $project_id): Project
    {
-    return Project::with('station')->with('positions')->with('skills')->findOrFail($id);
+    return Project::with('station')
+        ->with('positions')
+        ->with('skills')
+        ->with('user_app')
+        ->with('user_assign')
+        ->findOrFail($project_id);
    }
   /**
    * @inheritDoc

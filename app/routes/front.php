@@ -44,6 +44,6 @@ Route::namespace('Auth')->prefix('password')->group(function () {
 });
 
 Route::namespace("Detail")->prefix('project')->group(function () {
-    Route::get('/{id}', [ProjectController::class, 'detail'])->name('front.project.detail');
-    Route::post('/{id}/application', [ProjectController::class, 'create_application'])->name('front.project.app');
+    Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('front.project.detail');
+    Route::post('/{project_id}/application', [ProjectController::class, 'create_application'])->name('front.project.app');
 });

@@ -85,7 +85,7 @@ class Project extends Model
     public function user_app(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'applications', 'project_id', 'user_id')
-                    ->withPivot('created_at');
+            ->withPivot('created_at');
     }
 
     /**
@@ -97,7 +97,7 @@ class Project extends Model
     public function user_assign(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'assignments', 'project_id', 'user_id')
-                    ->withPivot('created_at');
+            ->withPivot('created_at');
     }
 
     /**
@@ -126,18 +126,34 @@ class Project extends Model
      * @var array
      */
 
-     public function agent(): HasOne
-     {
-         return $this->HasOne(Agent::class,'id');
-     }
+    public function agent(): HasOne
+    {
+        return $this->HasOne(Agent::class, 'id');
+    }
 
     /**
      *
      * stations Table relation
      * @var array
      */
-     public function station(): HasOne
-     {
-         return $this->HasOne(Station::class,'id');
-     }
+    public function station(): HasOne
+    {
+        return $this->HasOne(Station::class, 'id');
+    }
+
+    public static function applyUser(int $user_id, int $project_app_user_id): string
+    {
+        if ($user_id === $project_app_user_id) {
+            return "※応募済みです。担当営業からの連絡をお待ちください。";
+        }
+        return "";
+    }
+
+    public static function assignUser(int $user_id, int $project_assign_user_id): string
+    {
+        if ($user_id === $project_assign_user_id) {
+            return "※稼働中です。ご連絡は担当営業にお願いいたします。";
+        }
+        return "";
+    }
 }

@@ -11,14 +11,14 @@ interface ProjectRepositoryInterface
   /**
    * プロジェクト新規登録
    * @return Project
-   * 
+   *
    */
   public function create(): Project;
 
   /**
    * プロジェクト詳細
    * @return Project
-   * 
+   *
    */
-   public function detail(int $id): Project;
+   public function detail(int $project_id): Project;
 }

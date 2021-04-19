@@ -15,8 +15,9 @@ interface ApplicationRepositoryInterface
 
     /**
      * 案件応募
+     * @param $id
+     * @param $user
      * @return Application
-     *
      */
     public function create($id,$user);
 }
