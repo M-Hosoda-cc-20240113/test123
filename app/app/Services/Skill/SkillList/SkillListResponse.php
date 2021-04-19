@@ -1,38 +1,30 @@
 <?php
 
-namespace App\Services\Station\StationList;
+namespace App\Services\Skill\SkillList;
 
-use App\Models\Station;
+use App\Models\Skill;
 use Illuminate\Support\Collection;
 
 class StationListResponse
 {
   /**
-   * @var Station[]
+   * @var Skill[]
    */
-  private $stations;
+  private $skills;
 
-  /**
-   * Get the value of projects
-   *
-   * @return  Station[]
-   */ 
-  public function getStations()
-  {
-    return $this->stations;
-  }
+    /**
+     * @return \App\Models\Skill[]
+     */
+    public function getSkills(): array
+    {
+        return $this->skills;
+    }
 
-  /**
-   * Set the value of projects
-   *
-   * @param  Station[]  $projects
-   *
-   * @return  self
-   */ 
-  public function setStations(Collection $stations)
-  {
-    $this->stations = $stations;
-
-    return $this;
-  }
+    /**
+     * @param \App\Models\Skill[] $skills
+     */
+    public function setSkills(array $skills): void
+    {
+        $this->skills = $skills;
+    }
 }
