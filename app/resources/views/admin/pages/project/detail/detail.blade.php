@@ -3,7 +3,9 @@
 @section('title', '案件詳細|Aegis')
 
 @section('body')
-    @include('admin.header.header')
+    @component('admin.header.header', ['href' => route('front.index')])
+        @include('admin.header._link_login_logout')
+    @endcomponent
     <div class="Container mt-30 pb-100">
         @include('admin.bread_crumb._BreadCrumb')
         <div class="admin-project-detail">
