@@ -44,4 +44,9 @@ class Application extends Pivot
      */
     protected $table = 'applications';
 
+    protected $fillable = [
+        'user_id',
+        'project_id',
+    ];
+
 }

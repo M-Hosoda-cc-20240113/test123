@@ -18,13 +18,11 @@ class ApplicationTableSeeder extends Seeder
         Application::create([
             'user_id'    => 1,
             'project_id'    => 2,
-            'application_date' => $now,
             'created_at' => $now
         ]);
         Application::create([
             'user_id'    => 2,
             'project_id'    => 1,
-            'application_date' => $now,
             'created_at' => $now
         ]);
     }

@@ -85,7 +85,7 @@ class Project extends Model
     public function user_app(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'applications', 'project_id', 'user_id')
-                    ->withPivot('application_date');
+                    ->withPivot('created_at');
     }
 
     /**
@@ -97,7 +97,7 @@ class Project extends Model
     public function user_assign(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'assignments', 'project_id', 'user_id')
-                    ->withPivot('assignment_date');
+                    ->withPivot('created_at');
     }
 
     /**
@@ -105,7 +105,7 @@ class Project extends Model
      * Positions Table relation
      * @var array
      */
-    public function position(): BelongsToMany
+    public function positions(): BelongsToMany
     {
         return $this->belongsToMany(Position::class, 'rel_positions_projects', 'project_id', 'position_id');
     }
@@ -115,7 +115,7 @@ class Project extends Model
      * Skills Table relation
      * @var array
      */
-    public function skill(): BelongsToMany
+    public function skills(): BelongsToMany
     {
         return $this->belongsToMany(Skill::class, 'rel_projects_skills', 'project_id', 'skill_id');
     }

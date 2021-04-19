@@ -29,10 +29,13 @@ class UserPageService
     {
         $user_id = Auth::user()->id;
         $response = new UserPageResponse();
+
         $user = $this->user_repository->detail($user_id);
         $response->setUser($user);
+
         $LevelSkillUSer = $this->relLevelSKillUser_repository->detail($user_id);
         $response->setRelLevelSkillUSer($LevelSkillUSer);
+
         return $response;
     }
 }

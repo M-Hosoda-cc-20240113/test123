@@ -32,7 +32,7 @@ class RegisterMail extends Mailable
     {
         return $this->from('sns@care-con.co.jp')
         ->subject('Aegis 登録完了メール')
-        ->view('mail.register')
+        ->view('front.emails.register.register')
         ->with(['user' => $this->user]);
     }
 }

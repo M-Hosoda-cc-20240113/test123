@@ -2,18 +2,15 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\Application;
 
-use App\Models\Application;
 use App\Models\User;
 use App\Services\Application\ApplicationRepositoryInterface;
-use Illuminate\Database\Eloquent\Collection;
-use function PHPUnit\Framework\isEmpty;
 
 class ApplicationRepository implements ApplicationRepositoryInterface
 {
   /**
    * @inheritDoc
    */
-  public function all(): Collection
+  public function all()
   {
       return User::with('project_app')
           ->whereHas('project_app',function($q){
@@ -21,5 +18,15 @@ class ApplicationRepository implements ApplicationRepositoryInterface
              return $q;
           });
       })->get();
+  }
+
+    /**
+     * @param int $id
+     * @param $user
+     * @return void
+     */
+    public function create($id,$user)
+  {
+      $user->project_app()->attach($id);
   }
 }
