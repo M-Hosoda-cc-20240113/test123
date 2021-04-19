@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Front;
+namespace App\Http\Requests\Front\Front;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -32,6 +32,7 @@ class RegisterUserRequest extends FormRequest
             'tel'       => ['required', 'digits_between:8,11', 'unique:users'],
             'email'     => ['required', 'email', 'unique:users'],
             'password'  => ['required', 'regex:/^[a-zA-Z0-9]+$/', 'min:8', 'max:30'],
+            '' => ['exists:application','id','deleted_at','NULL'],
         ];
     }
 

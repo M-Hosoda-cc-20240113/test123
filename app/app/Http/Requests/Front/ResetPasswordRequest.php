@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Front;
+namespace App\Http\Requests\Front\Front;
 
 use App\Rules\HalfWidthLowerCase;
 use App\Rules\HalfWidthNumber;
