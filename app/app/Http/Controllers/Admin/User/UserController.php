@@ -33,12 +33,7 @@ class UserController extends Controller
      */
     public function detail(UserDetailService $user_detail_service, int $id)
     {
-        $response = new UserDetailResponse();
-
-        $user = $user_detail_service->exec($id);
-
-        $response->setUser($user);
-
+        $response = $user_detail_service->exec($id);
         return view('admin.pages.user.detail.detail', ['response' => $response]);
     }
 
