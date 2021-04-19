@@ -1,0 +1,13 @@
+.l-container {
+  margin-top: 20px;
+  max-width: $content-max-width;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  @include max-screen($breakpoint-pc) {
+    max-width: $content-min-width;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

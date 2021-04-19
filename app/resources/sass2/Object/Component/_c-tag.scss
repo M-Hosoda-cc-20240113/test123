@@ -1,0 +1,14 @@
+.c-tag {
+  font-size: 1.4rem;
+  background-color: $muted-color;
+  color: $light-color;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: inline-block;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: $light-color;
+    background-color: $muted-dark-color;
+  }
+}

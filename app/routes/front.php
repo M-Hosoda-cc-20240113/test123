@@ -47,3 +47,9 @@ Route::namespace('Project')->prefix('project')->group(function () {
     Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('front.project.detail');
     Route::post('/{project_id}/application', [ProjectController::class, 'createApplication'])->name('front.project.app');
 });
+
+// viewテスト用のルーティング
+// TODO リリース前に削除
+Route::get('/test', function () {
+    return view('front.test');
+});

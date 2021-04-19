@@ -1,11 +1,10 @@
 @php
 /**
- * @var string $class スタイルクラス
- * @var string $index チェックボックスの識別番号
  * @var string $text テキスト
+ * @var string $class スタイルクラス
  */
 @endphp
-<div class="Checkbox {{ $class ?? '' }}">
-  <input type="checkbox" id="box-{{ $index ?? '' }}">
-  <label for="box-{{ $index ?? ''}}">{{ $text ?? ''}}</label>
-</div>
+<label class="p-checkbox {{ $class ?? '' }}">{{ $text ?? '' }}
+  <input type="checkbox"/>
+  <div class="p-checkbox__indicator"></div>
+</label>

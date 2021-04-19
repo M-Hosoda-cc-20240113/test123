@@ -1,0 +1,25 @@
+.p-cardUnit {
+  display: flex;
+  flex-wrap: wrap;
+  $this: &;
+  &--col3 {
+    @extend #{$this};
+    margin-bottom: -30px;
+    @include max-screen($breakpoint-pc) {
+      margin-bottom: -20px;
+    }
+    & > .p-card:nth-of-type(3n) {
+      margin-right: 0;
+    }
+  }
+  & > .p-card {
+    width: 31.707%;
+    margin-right: 2.43902%;
+    margin-bottom: 30px;
+    @include max-screen($breakpoint-pc) {
+      width: 100%;
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+  }
+}

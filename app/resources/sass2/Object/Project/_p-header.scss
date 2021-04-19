@@ -1,0 +1,17 @@
+.p-header {
+    width: 100%;
+    background-color: $muted-lightest-color;
+    border-bottom: 1px solid $muted-lighter-color;
+    &__container {
+        display: flex;
+        padding: 20px;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: $content-max-width;
+        margin: 0 auto;
+    }
+    &__logo {
+      width: 100px;
+    }
+}

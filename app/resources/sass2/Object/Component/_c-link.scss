@@ -1,0 +1,19 @@
+.c-text {
+  font-size: 1.4rem;
+  margin: 0;
+  color: $dark-color;
+  text-decoration: none;
+  $this: &;
+  &--bold {
+    @extend #{$this};
+    font-weight: bold;
+  }
+  &--center {
+    @extend #{$this};
+    text-align: center;
+  }
+  &--warning {
+    @extend #{$this};
+    color: $warning-color;
+  }
+}
