@@ -45,8 +45,9 @@ class UserDetailResponse
     /**
      * @param mixed $rel_level_skill_user
      */
-    public function setRelLevelSkillUser($rel_level_skill_user): void
+    public function setRelLevelSkillUser($rel_level_skill_user): UserDetailResponse
     {
         $this->rel_level_skill_user = $rel_level_skill_user;
+        return $this;
     }
 }

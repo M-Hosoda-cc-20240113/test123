@@ -31,9 +31,9 @@ class UserController extends Controller
      * Admin user detail
      * @var array
      */
-    public function detail(UserDetailService $user_detail_service, int $id)
+    public function detail(UserDetailService $user_detail_service, int $user_id)
     {
-        $response = $user_detail_service->exec($id);
+        $response = $user_detail_service->exec($user_id);
         return view('admin.pages.user.detail.detail', ['response' => $response]);
     }
 

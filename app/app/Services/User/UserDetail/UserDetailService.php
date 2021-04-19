@@ -25,14 +25,14 @@ class UserDetailService
         $this->relLevelSKillUser_repository = $relLevelSKillUser_repository;
     }
 
-    public function exec(int $id)
+    public function exec(int $user_id)
     {
         $response = new UserDetailResponse();
 
-        $user = $this->user_repository->detail($id);
+        $user = $this->user_repository->detail($user_id);
         $response->setUser($user);
 
-        $LevelSkillUSer = $this->relLevelSKillUser_repository->detail($id);
+        $LevelSkillUSer = $this->relLevelSKillUser_repository->detail($user_id);
         $response->setRelLevelSkillUSer($LevelSkillUSer);
 
         return $response;

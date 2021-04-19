@@ -5,7 +5,7 @@ namespace App\Services\Skill\SkillList;
 use App\Models\Skill;
 use Illuminate\Support\Collection;
 
-class StationListResponse
+class SkillListResponse
 {
   /**
    * @var Skill[]
@@ -23,8 +23,9 @@ class StationListResponse
     /**
      * @param \App\Models\Skill[] $skills
      */
-    public function setSkills(array $skills): void
+    public function setSkills(array $skills): SkillListResponse
     {
         $this->skills = $skills;
+        return $this;
     }
 }
