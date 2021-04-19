@@ -9,7 +9,6 @@ use App\Services\Project\ProjectDetail\ProjectDetailResponse;
 use App\Services\Project\ProjectDetail\ProjectDetailService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use function PHPUnit\Framework\isEmpty;
 
 class ProjectController extends Controller
 {
@@ -34,7 +33,7 @@ class ProjectController extends Controller
         $project = $project_detail_service->exec($project_id);
 
         $response->setProject($project);
-//        dd($response);
+
         return view('front.pages.project.detail.detail', ['response' => $response]);
     }
 

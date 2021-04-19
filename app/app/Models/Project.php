@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use App\Models\User;
-use App\Models\Position;
-use App\Models\Skill;
-use App\Models\Station;
 
 /**
  * App\Models\Project
@@ -139,21 +134,5 @@ class Project extends Model
     public function station(): HasOne
     {
         return $this->HasOne(Station::class, 'id');
-    }
-
-    public static function applyUser(int $user_id, int $project_app_user_id): string
-    {
-        if ($user_id === $project_app_user_id) {
-            return "※応募済みです。担当営業からの連絡をお待ちください。";
-        }
-        return "";
-    }
-
-    public static function assignUser(int $user_id, int $project_assign_user_id): string
-    {
-        if ($user_id === $project_assign_user_id) {
-            return "※稼働中です。ご連絡は担当営業にお願いいたします。";
-        }
-        return "";
     }
 }
