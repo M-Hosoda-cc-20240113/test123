@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\RegisterUserRequest;
-use App\Services\Application\ProjectApplication\ProjectApplicationService;
+use App\Services\Application\ApplyProjectService\ApplyProjectService;
 use App\Services\User\UserRegister\RegisterUserService;
 use App\Http\Controllers\Traits\RegistersUsers;
 use Illuminate\Http\Request;
@@ -44,26 +44,26 @@ class RegisterController extends Controller
 
     public function showRegistrationForm(Request $request)
     {
-        return view('front.pages.register.register', [ 'project_id' => $request->project_id ]);
+        return view('front.pages.register.register', ['project_id' => $request->project_id]);
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
         return Validator::make($data, [
-            'sei'       => ['required', 'string', 'max:255'],
-            'mei'       => ['required', 'string', 'max:255'],
-            'sei_kana'  => ['required', 'string', 'max:255'],
-            'mei_kana'  => ['required', 'string', 'max:255'],
-            'birthday'  => ['required', 'string', 'max:255'],
-            'tel'       => ['required', 'string', 'max:255'],
-            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'  => ['required', 'string', 'min:8', 'confirmed','alpha_dash'],
+            'sei' => ['required', 'string', 'max:255'],
+            'mei' => ['required', 'string', 'max:255'],
+            'sei_kana' => ['required', 'string', 'max:255'],
+            'mei_kana' => ['required', 'string', 'max:255'],
+            'birthday' => ['required', 'string', 'max:255'],
+            'tel' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed', 'alpha_dash'],
         ]);
     }
 
@@ -74,14 +74,16 @@ class RegisterController extends Controller
      * @param \App\Services\User\UserRegister\RegisterUserService $register_user_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function register(RegisterUserRequest $request, RegisterUserService $register_user_service, ProjectApplicationService $project_application_service)
-    {
+    public function register(
+        RegisterUserRequest $request,
+        RegisterUserService $register_user_service,
+        ApplyProjectService $apply_project_service
+    ) {
         $user = $register_user_service->exec($request->all());
         $this->guard()->login($user);
 
-        if(!empty($request->project_id))
-        {
-            $project_application_service->exec($request->project_id, $user);
+        if (!empty($request->project_id)) {
+            $apply_project_service->exec($request->project_id, $user);
         }
 
         return redirect($this->redirectTo);

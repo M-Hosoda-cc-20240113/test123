@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Services\Application\ProjectApplication;
+namespace App\Services\Application\ApplyProjectService;
 
 use App\Services\Application\ApplicationRepositoryInterface;
 
 
-class ProjectApplicationService
+class ApplyProjectService
 {
     /**
      * @var ApplicationRepositoryInterface

@@ -34,8 +34,8 @@ interface UserRepositoryInterface
 
 
     /**
-     * @param int $id
+     * @param int $user_id
      * @return mixed
      */
-    public function detail(int $id);
+    public function detail(int $user_id);
 }

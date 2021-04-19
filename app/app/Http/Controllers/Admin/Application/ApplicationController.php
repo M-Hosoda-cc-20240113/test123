@@ -12,7 +12,9 @@ class ApplicationController extends Controller
     /**
      *
      * Admin application status
-     * @var array
+     *
+     * @param \App\Services\Application\ApplicationList\ApplicationListService $application_list_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function list(ApplicationListService $application_list_service)
     {

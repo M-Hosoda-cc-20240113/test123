@@ -9,5 +9,5 @@ interface RelLevelSkillUSerRepositoryInterface
     /**
      * @return mixed
      */
-    public function detail(int $id);
+    public function detail(int $user_id);
 }
