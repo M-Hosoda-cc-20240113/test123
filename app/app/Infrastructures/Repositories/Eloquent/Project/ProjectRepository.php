@@ -11,22 +11,22 @@ class ProjectRepository implements ProjectRepositoryInterface
 {
   /**
    *for Front
-   * @inheritDoc 
+   * @inheritDoc
    */
   public function all(): Collection
   {
-    return Project::with('station')->with('position')->with('skill')->get(); 
+    return Project::with('station')->with('positions')->with('skills')->get();
   }
   /**
    *for Front
-   * @inheritDoc 
+   * @inheritDoc
    */
    public function detail(int $id): Project
    {
-    return Project::with('station')->with('position')->with('skill')->findOrFail($id);
+    return Project::with('station')->with('positions')->with('skills')->findOrFail($id);
    }
   /**
-   * @inheritDoc 
+   * @inheritDoc
    *all with users table
    *for Admin
    */
@@ -41,7 +41,7 @@ class ProjectRepository implements ProjectRepositoryInterface
    */
   public function create(): Project
   {
-    $project = new Project(); 
+    $project = new Project();
     return $project;
   }
 }

@@ -21,13 +21,13 @@
     <tr class="ProjectDetailTable__row">
         <th class="ProjectDetailTable__head">職種</th>
         <td class="ProjectDetailTable__body">
-            @foreach ($response->getProject()->position as $position)
+            @foreach ($response->getProject()->positions as $position)
                 @include('atoms.Tag', ['component' => 'Tag--link', 'text' => $position->name ?? '', 'class' => 'mr-5 mb-5'])
             @endforeach
         </td>
         <th class="ProjectDetailTable__head">スキル</th>
         <td class="ProjectDetailTable__body">
-            @foreach ($response->getProject()->skill as $skill)
+            @foreach ($response->getProject()->skills as $skill)
                 @include('atoms.Tag', ['component' => 'Tag--link', 'text' => $skill->name ?? '', 'class' => 'mr-5 mb-5'])
             @endforeach
         </td>
