@@ -28,7 +28,7 @@ use Illuminate\Database\Eloquent\Model;
 class RelLevelSkillUser extends Model
 {
     use HasFactory;
-    
+
     /**
      * モデルと関連しているテーブル
      *

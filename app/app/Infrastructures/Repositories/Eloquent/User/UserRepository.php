@@ -38,11 +38,11 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function detail(int $id)
+    public function detail(int $user_id)
     {
         return User::with('project_app')
             ->with('project_assign')
-            ->findOrFail($id);
+            ->findOrFail($user_id);
     }
 
     /**

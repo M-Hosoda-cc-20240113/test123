@@ -32,5 +32,13 @@
             @endforeach
         </td>
     </tr>
+    <tr class="ProjectDetailTable__row">
+        <th class="ProjectDetailTable__head">スキルレベル</th>
+        <td class="ProjectDetailTable__body">
+            @foreach ($response->getRelLevelSkillUser() as $LevelSkill)
+                @include('atoms.Tag', ['text' => $LevelSkill->name.'（'.$LevelSkill->level.'）', 'class' => 'mg-5'])
+            @endforeach
+        </td>
+    </tr>
     </tbody>
 </table>
