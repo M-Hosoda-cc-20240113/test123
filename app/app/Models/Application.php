@@ -48,5 +48,4 @@ class Application extends Pivot
         'user_id',
         'project_id',
     ];
-
 }

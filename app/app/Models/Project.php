@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use App\Models\User;
-use App\Models\Position;
-use App\Models\Skill;
-use App\Models\Station;
 
 /**
  * App\Models\Project
@@ -85,7 +80,7 @@ class Project extends Model
     public function user_app(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'applications', 'project_id', 'user_id')
-                    ->withPivot('created_at');
+            ->withPivot('created_at');
     }
 
     /**
@@ -97,7 +92,7 @@ class Project extends Model
     public function user_assign(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'assignments', 'project_id', 'user_id')
-                    ->withPivot('created_at');
+            ->withPivot('created_at');
     }
 
     /**
@@ -126,18 +121,18 @@ class Project extends Model
      * @var array
      */
 
-     public function agent(): HasOne
-     {
-         return $this->HasOne(Agent::class,'id');
-     }
+    public function agent(): HasOne
+    {
+        return $this->HasOne(Agent::class, 'id');
+    }
 
     /**
      *
      * stations Table relation
      * @var array
      */
-     public function station(): HasOne
-     {
-         return $this->HasOne(Station::class,'id');
-     }
+    public function station(): HasOne
+    {
+        return $this->HasOne(Station::class, 'id');
+    }
 }

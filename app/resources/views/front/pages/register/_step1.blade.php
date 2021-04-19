@@ -27,7 +27,7 @@
               'name'        => 'mei',
               'value'       => old('mei')
               ])
-            @if ($errors->first('mei'))
+            @if ($errors->first('mei')
                 ※{{$errors->first('mei')}}
             @endif
         </div>

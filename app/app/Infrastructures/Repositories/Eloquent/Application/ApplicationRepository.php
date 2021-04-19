@@ -21,12 +21,12 @@ class ApplicationRepository implements ApplicationRepositoryInterface
   }
 
     /**
-     * @param int $id
+     * @param $project_id
      * @param $user
      * @return void
      */
-    public function create($id,$user)
+    public function create($project_id,$user)
   {
-      $user->project_app()->attach($id);
+      $user->project_app()->attach($project_id);
   }
 }

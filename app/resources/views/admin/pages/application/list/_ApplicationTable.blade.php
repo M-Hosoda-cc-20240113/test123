@@ -21,7 +21,7 @@
             </td>
             <td class="RegularTable__bodyRowItem">
                 @foreach($user->project_app as $project)
-                    {{ ViewHelper::YmdReplace( $project->pivot->created_at ?? '' )}}
+                    {{ ViewHelper::YmdReplace( $project->pivot->created_at ?? '' )}}<br>
                 @endforeach
             </td>
         </tr>

@@ -22,13 +22,13 @@
         <th class="ProjectDetailTable__head">応募案件</th>
         <td class="ProjectDetailTable__body">
             @foreach ($response->getUser()->project_app as $project)
-                <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? ''}}</a>
+                <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}<br></a>
             @endforeach
         </td>
         <th class="ProjectDetailTable__head">稼働案件</th>
         <td class="ProjectDetailTable__body">
             @foreach ($response->getUser()->project_assign as $project)
-                <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? ''}}</a>
+                <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? ''}}<br></a>
             @endforeach
         </td>
     </tr>

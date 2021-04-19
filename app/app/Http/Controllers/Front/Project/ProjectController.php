@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Front\Project;
 
 use App\Http\Controllers\Controller;
+use App\Services\Application\ApplyProjectService\ApplyProjectService;
 use App\Services\Application\ProjectApplication\ProjectApplicationService;
 use App\Services\Project\ProjectDetail\ProjectDetailResponse;
 use App\Services\Project\ProjectDetail\ProjectDetailService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
@@ -24,11 +26,11 @@ class ProjectController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function detail(ProjectDetailService $project_detail_service, int $id)
+    public function detail(ProjectDetailService $project_detail_service, int $project_id)
     {
         $response = new ProjectDetailResponse();
 
-        $project = $project_detail_service->exec($id);
+        $project = $project_detail_service->exec($project_id);
 
         $response->setProject($project);
 
@@ -36,14 +38,18 @@ class ProjectController extends Controller
     }
 
     /**
-     * @param int $id
-     * @param \App\Services\Application\ProjectApplication\ProjectApplicationService $create_application_service
+     * @param int $project_id
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Services\Application\ApplyProjectService\ApplyProjectService $apply_project_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function create_application(int $id, ProjectApplicationService $project_application_service)
+    public function create_application(int $project_id, Request $request, ApplyProjectService $apply_project_service)
     {
-        $user = Auth::user();
-        $project_application_service->exec($id, $user);
-        return  redirect('/');
+        if(empty($request->assign_user_id) && empty($request->app_user_id)){
+            $user = Auth::user();
+            $apply_project_service->exec($project_id, $user);
+            return  redirect('/');
+        }
+        return back();
     }
 }
