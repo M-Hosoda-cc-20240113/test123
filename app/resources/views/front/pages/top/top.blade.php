@@ -1,36 +1,53 @@
+@php
+  /**
+   * @var \App\Services\Top\FetchTopData\FetchTopResponse $response
+   */
+@endphp
+
 @extends('front.layout')
 
 @section('title', 'トップページ|Aegis')
 
 @section('body')
-    @component('front.header.header', ['href' => route('front.index')])
-        @include('front.header._link_mypage')
-        @include('front.header._link_login_logout')
-    @endcomponent
-    <div class="Container mt-30">
-        @include('atoms.RegularInput', ['text' => 'フリーワードで探す'])
-        @include('front.pages.top._ContentTab')
-        <div class="welcome-Checkbox tab_content-js tab_active-js">
-        @foreach ($response->getSkills() as $skill)
-            @include('atoms.RegularCheckbox', ['class' => 'mr-10 mb-10 w-100px', 'text' => $skill->name])
-        @endforeach
-        </div>
-        <div class="welcome-Checkbox tab_content-js">
-        @foreach ($response->getPositions() as $position)
-            @include('atoms.RegularCheckbox', ['class' => 'mr-10 mb-10 w-200px', 'text' => $position->name])
-        @endforeach
-        </div>
-        <div class="welcome-Checkbox tab_content-js">
-        @foreach ($response->getStations() as $station)
-            @include('atoms.RegularCheckbox', ['class' => 'mr-10 mb-10 w-100px', 'text' => $station->name])
-        @endforeach
-        </div>
-        <div class="welcome-ProjectCard mt-30">
-            @foreach ($response->getProjects() as $project)
-                @include('front.pages.top._ProjectCard', $project)
-            @endforeach
-        </div>
-    </div>
+  @component('front.header.header', ['href' => route('front.index')])
+    @include('front.header._link_mypage')
+    @include('front.header._link_login_logout')
+  @endcomponent
 
-    @include('front.footer.footer')
+  <div class="l-container">
+    <ul class="p-searchTab">
+      <li class="p-searchTab__item js-tab is-active">スキルでさがす</li>
+      <li class="p-searchTab__item js-tab">ポジションでさがす</li>
+      <li class="p-searchTab__item js-tab">最寄り駅でさがす</li>
+    </ul>
+    <div class="p-checkboxUnit js-tab_content">
+      @foreach($response->getSkills() as $skill)
+        @include('atoms.Checkbox', ['text' => $skill->name, 'class' => 'p-checkboxUnit__item'])
+      @endforeach
+    </div>
+    {{--  skills  --}}
+
+    <div class="p-checkboxUnit js-tab_content">
+      @foreach($response->getPositions() as $position)
+        @include('atoms.Checkbox', ['text' => $position->name, 'class' => 'p-checkboxUnit__item u-w-auto'])
+      @endforeach
+    </div>
+    {{--  positions  --}}
+
+    <div class="p-checkboxUnit js-tab_content">
+      @foreach($response->getStations() as $station)
+        @include('atoms.Checkbox', ['text' => $station->name, 'class' => 'p-checkboxUnit__item'])
+      @endforeach
+    </div>
+    {{--  stations  --}}
+
+    <div class="p-cardUnit--col3 u-mt-30">
+      @foreach($response->getProjects() as $project)
+        @include('organisms.ProjectCard', $project)
+      @endforeach
+    </div>
+    {{-- p-cardUnit--col3 --}}
+  </div>
+
+  @include('front.footer.footer')
 @endsection

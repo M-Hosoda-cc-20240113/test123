@@ -1,0 +1,31 @@
+.p-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  input:checked ~ .p-checkbox__indicator {
+    background-color: $secondary-color;
+    display: block;
+  }
+  &__indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: $muted-lighter-color;
+    &::after {
+      display: block;
+      left: 7px;
+      top: 2px;
+      width: 6px;
+      height: 12px;
+      border: solid $light-color;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      content: "";
+      position: absolute;
+    }
+  }
+}

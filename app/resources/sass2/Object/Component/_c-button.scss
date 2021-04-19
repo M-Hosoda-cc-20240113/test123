@@ -1,0 +1,17 @@
+.c-button {
+  display: inline-block;
+  max-width: 100%;
+  padding: 10px 15px;
+  background-color: $primary-color;
+  border-radius: 3px;
+  color: $light-color;
+  text-align: center;
+  font-size: 1.6rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: .25s;
+  $this:&;
+  &:focus, &:hover {
+    background-color: $primary-dark-color;
+  }
+}
