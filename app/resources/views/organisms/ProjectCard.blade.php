@@ -6,7 +6,7 @@
 @endphp
 
 <div class="{{ $class ?? '' }} p-card">
-  <a href="{{ route('front.project.detail', ['id' => $project->id]) }}" class="c-text--bold p-card__title">{{ $project->name }}</a>
+  <a href="{{ route('front.project.detail', ['project_id' => $project->id]) }}" class="c-text--bold p-card__title">{{ $project->name }}</a>
   <table class="p-card__table">
     <tr>
       <td class="c-text">単価/月</td>
