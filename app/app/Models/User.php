@@ -243,10 +243,10 @@ class User extends Authenticatable
     {
         $user_id = $this->id;
         if(!empty($project_id)){
-            $Assignment_ids = array_column(Assignment::where('Project_id',$project_id)->get()->toArray(), 'user_id');
-            return in_array($user_id, $Assignment_ids);
+            $assignment_ids = array_column(Assignment::where('Project_id',$project_id)->get()->toArray(), 'user_id');
+            return in_array($user_id, $assignment_ids);
         }
-        $Assignment_ids = array_column(Assignment::all()->toArray(), 'user_id');
-        return in_array($user_id, $Assignment_ids);
+        $assignment_ids = array_column(Assignment::all()->toArray(), 'user_id');
+        return in_array($user_id, $assignment_ids);
     }
 }
