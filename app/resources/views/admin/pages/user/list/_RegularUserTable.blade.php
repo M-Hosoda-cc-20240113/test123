@@ -1,6 +1,6 @@
 @php
 /**
- * @var \App\Services\User\UserList\UserListResponse $response
+ * @var \App\Services\AdminUser\UserList\UserListResponse $response
  */
 @endphp
 <table class="RegularTable">

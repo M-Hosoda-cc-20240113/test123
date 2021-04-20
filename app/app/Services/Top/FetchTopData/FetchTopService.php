@@ -6,7 +6,6 @@ use App\Services\Project\ProjectRepositoryInterface;
 use App\Services\Skill\SkillRepositoryInterface;
 use App\Services\Position\PositionRepositoryInterface;
 use App\Services\Station\StationRepositoryInterface;
-use App\Services\Top\FetchTopData\FetchTopResponse;
 
 class FetchTopService
 {

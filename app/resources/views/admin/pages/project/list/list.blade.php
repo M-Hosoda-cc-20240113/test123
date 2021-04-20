@@ -1,6 +1,6 @@
 @php
 /**
- * @var \App\Services\Admin\Project\ProjectList\ProjectListResponse $response
+ * @var \App\Services\AdminProject\ProjectList\ProjectListResponse $response
  */
 @endphp
 

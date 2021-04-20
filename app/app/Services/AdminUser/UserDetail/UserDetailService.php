@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Services\User\UserDetail;
+namespace App\Services\AdminUser\UserDetail;
 
 use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
-use App\Services\RelLevelSkillUser\RelLeveSkillUserList\RelLevelSkillUserListResponse;
 use App\Services\User\UserRepositoryInterface;
 
 class UserDetailService
@@ -29,10 +28,10 @@ class UserDetailService
     {
         $response = new UserDetailResponse();
 
-        $user = $this->user_repository->detail($user_id);
+        $user = $this->user_repository->fetchWithProjectsThroughApplicationOrAssignment($user_id);
         $response->setUser($user);
 
-        $LevelSkillUSer = $this->relLevelSKillUser_repository->detail($user_id);
+        $LevelSkillUSer = $this->relLevelSKillUser_repository->fetchByUserId($user_id);
         $response->setRelLevelSkillUSer($LevelSkillUSer);
 
         return $response;

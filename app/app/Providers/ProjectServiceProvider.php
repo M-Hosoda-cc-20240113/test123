@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Infrastructures\Repositories\Eloquent\Project\ProjectRepository;
-use App\Services\Project\ProjectRepositoryInterface;
 
 
 class ProjectServiceProvider extends ServiceProvider

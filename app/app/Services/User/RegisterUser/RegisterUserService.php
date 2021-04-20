@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services\User\UserRegister;
+namespace App\Services\User\RegisterUser;
 
 
 use App\Services\User\UserRepositoryInterface;
