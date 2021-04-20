@@ -23,7 +23,7 @@ class ProjectRepository implements ProjectRepositoryInterface
    *for Front
    * @inheritDoc
    */
-   public function find(int $project_id): Project
+   public function findWithUsersThroughApplicationOrAssignment(int $project_id): Project
    {
     return Project::with('station')
         ->with('positions')
@@ -37,7 +37,7 @@ class ProjectRepository implements ProjectRepositoryInterface
      * @param int $project_id
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      */
-    public function findWithAgent(int $project_id): Project
+    public function findWithUsersAndAgentThroughApplicationOrAssignment(int $project_id): Project
    {
        return Project::with('station')
            ->with('agent')

@@ -18,6 +18,6 @@ class ProjectDetailService
 
   public function exec(int $project_id)
   {
-    return $this->project_repository->findWithAgent($project_id);
+    return $this->project_repository->findWithUsersAndAgentThroughApplicationOrAssignment($project_id);
   }
 }

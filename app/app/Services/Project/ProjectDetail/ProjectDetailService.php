@@ -18,6 +18,6 @@ class ProjectDetailService
 
   public function exec(int $project_id)
   {
-    return $this->project_repository->find($project_id);
+    return $this->project_repository->findWithUsersThroughApplicationOrAssignment($project_id);
   }
 }
