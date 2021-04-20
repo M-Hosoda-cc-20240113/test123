@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\ResetsPasswords;
-use App\Http\Requests\Front\Front\ResetPasswordRequest;
+use App\Http\Requests\Front\ResetPasswordRequest;
 use Auth;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
