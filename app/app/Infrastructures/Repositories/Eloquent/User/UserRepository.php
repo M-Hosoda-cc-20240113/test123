@@ -38,7 +38,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchProjectAppAssign(int $user_id)
+    public function fetchWithProjectsThroughApplicationOrAssignment(int $user_id)
     {
         return User::with('project_app')
             ->with('project_assign')

@@ -28,7 +28,7 @@ class UserDetailService
     {
         $response = new UserDetailResponse();
 
-        $user = $this->user_repository->fetchProjectAppAssign($user_id);
+        $user = $this->user_repository->fetchWithProjectsThroughApplicationOrAssignment($user_id);
         $response->setUser($user);
 
         $LevelSkillUSer = $this->relLevelSKillUser_repository->fetchByUserId($user_id);

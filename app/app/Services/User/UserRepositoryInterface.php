@@ -38,5 +38,5 @@ interface UserRepositoryInterface
      * @param int $user_id
      * @return mixed
      */
-    public function fetchProjectAppAssign(int $user_id);
+    public function fetchWithProjectsThroughApplicationOrAssignment(int $user_id);
 }
