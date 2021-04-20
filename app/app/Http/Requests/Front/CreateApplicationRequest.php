@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\CanApply;
 

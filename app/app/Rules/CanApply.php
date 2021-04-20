@@ -3,6 +3,7 @@
 namespace App\Rules;
 
 use App\Models\Project;
+use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Contracts\Validation\Rule;
 
 class CanApply implements Rule
@@ -14,11 +15,10 @@ class CanApply implements Rule
     protected $project_id;
 
     /**
-     * Create a new rule instance.
-     *
-     * @param int $project_id
+     * CanApply constructor.
+     * @param $project_id
      */
-    public function __construct(int $project_id)
+    public function __construct($project_id)
     {
         $this->project_id = $project_id;
     }
@@ -30,9 +30,10 @@ class CanApply implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
-        $project_ids = array_column($this->fetchCanApply()->toArray(),'id');
+        $project_repository = resolve(ProjectRepositoryInterface::class);
+        $project_ids = array_column($project_repository->fetchCanApply()->toArray(),'id');
         return in_array((int)$this->project_id, $project_ids);
     }
 
@@ -41,17 +42,8 @@ class CanApply implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
         return '予期せぬ値が入力されました。';
     }
-
-    /**
-     * @return \App\Models\Project[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Query\Builder[]|\Illuminate\Support\Collection
-     */
-    private function fetchCanApply()
-    {
-        return Project::where('decided',0)->select('id')->get();
-    }
-
 }
