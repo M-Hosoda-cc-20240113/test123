@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Project\CreateProject;
+namespace App\Services\AdminProject\CreateProject;
 
 use App\Services\Project\ProjectRepositoryInterface;
 
@@ -13,11 +13,11 @@ class CreateProjectService
 
   public function __construct(ProjectRepositoryInterface $project_repository)
   {
-    $this->project_repository = $project_repository;  
+    $this->project_repository = $project_repository;
   }
 
   public function exec()
   {
-    $this->create(); 
+    $this->create();
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Project\ProjectList;
+namespace App\Services\AdminProject\ProjectList;
 
 use App\Models\Project;
 use Illuminate\Support\Collection;
@@ -16,7 +16,7 @@ class ProjectListResponse
    * Get the value of projects
    *
    * @return  Project[]
-   */ 
+   */
   public function getProjects()
   {
     return $this->projects;
@@ -28,7 +28,7 @@ class ProjectListResponse
    * @param  Project[]  $projects
    *
    * @return  self
-   */ 
+   */
   public function setProjects(Collection $projects)
   {
     $this->projects = $projects;

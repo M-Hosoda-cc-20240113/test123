@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Project\CreateProject;
+namespace App\Services\AdminProject\CreateProject;
 
 class CreateProjectParameter
 {
@@ -34,7 +34,7 @@ class CreateProjectParameter
 
   /**
    * 最大稼働時間
-   * 
+   *
    * @var int
    */
   private $max_operation_time;
@@ -48,7 +48,7 @@ class CreateProjectParameter
 
   /**
    * 必須条件
-   * 
+   *
    * @var string
    */
   private $required_condition;
@@ -69,7 +69,7 @@ class CreateProjectParameter
 
   /**
    * 勤務終了時間
-   * 
+   *
    * @var string
    */
   private $work_end;
@@ -92,14 +92,14 @@ class CreateProjectParameter
    * 案件が決まっているかどうか
    *
    * @var bool
-   */ 
+   */
   private $decided;
 
   /**
    * Get 案件名
    *
    * @return  string
-   */ 
+   */
   public function getName()
   {
     return $this->name;
@@ -111,7 +111,7 @@ class CreateProjectParameter
    * @param  string  $name  案件名
    *
    * @return  self
-   */ 
+   */
   public function setName(string $name)
   {
     $this->name = $name;
@@ -123,7 +123,7 @@ class CreateProjectParameter
    * Get 最小案件単価
    *
    * @return  int
-   */ 
+   */
   public function getMinUnitPrice()
   {
     return $this->min_unit_price;
@@ -135,7 +135,7 @@ class CreateProjectParameter
    * @param  int  $min_unit_price  最小案件単価
    *
    * @return  self
-   */ 
+   */
   public function setMinUnitPrice(int $min_unit_price)
   {
     $this->min_unit_price = $min_unit_price;
@@ -147,7 +147,7 @@ class CreateProjectParameter
    * Get 最大案件単価
    *
    * @return  int
-   */ 
+   */
   public function getMaxUnitPrice()
   {
     return $this->max_unit_price;
@@ -159,7 +159,7 @@ class CreateProjectParameter
    * @param  int  $max_unit_price  最大案件単価
    *
    * @return  self
-   */ 
+   */
   public function setMaxUnitPrice(int $max_unit_price)
   {
     $this->max_unit_price = $max_unit_price;
@@ -171,7 +171,7 @@ class CreateProjectParameter
    * Get 最小稼働時間
    *
    * @return  int
-   */ 
+   */
   public function getMinOperationTime()
   {
     return $this->min_operation_time;
@@ -183,7 +183,7 @@ class CreateProjectParameter
    * @param  int  $min_operation_time  最小稼働時間
    *
    * @return  self
-   */ 
+   */
   public function setMinOperationTime(int $min_operation_time)
   {
     $this->min_operation_time = $min_operation_time;
@@ -195,7 +195,7 @@ class CreateProjectParameter
    * Get 最大稼働時間
    *
    * @return  int
-   */ 
+   */
   public function getMaxOperationTime()
   {
     return $this->max_operation_time;
@@ -207,7 +207,7 @@ class CreateProjectParameter
    * @param  int  $max_operation_time  最大稼働時間
    *
    * @return  self
-   */ 
+   */
   public function setMaxOperationTime(int $max_operation_time)
   {
     $this->max_operation_time = $max_operation_time;
@@ -219,7 +219,7 @@ class CreateProjectParameter
    * Get 案件概要
    *
    * @return  string
-   */ 
+   */
   public function getDescription()
   {
     return $this->description;
@@ -231,7 +231,7 @@ class CreateProjectParameter
    * @param  string  $description  案件概要
    *
    * @return  self
-   */ 
+   */
   public function setDescription(string $description)
   {
     $this->description = $description;
@@ -243,7 +243,7 @@ class CreateProjectParameter
    * Get 必須条件
    *
    * @return  string
-   */ 
+   */
   public function getRequiredCondition()
   {
     return $this->required_condition;
@@ -255,7 +255,7 @@ class CreateProjectParameter
    * @param  string  $required_condition  必須条件
    *
    * @return  self
-   */ 
+   */
   public function setRequiredCondition(string $required_condition)
   {
     $this->required_condition = $required_condition;
@@ -267,7 +267,7 @@ class CreateProjectParameter
    * Get 尚可条件
    *
    * @return  string
-   */ 
+   */
   public function getBetterCondition()
   {
     return $this->better_condition;
@@ -279,7 +279,7 @@ class CreateProjectParameter
    * @param  string  $better_condition  尚可条件
    *
    * @return  self
-   */ 
+   */
   public function setBetterCondition(string $better_condition)
   {
     $this->better_condition = $better_condition;
@@ -291,7 +291,7 @@ class CreateProjectParameter
    * Get 勤務開始時間
    *
    * @return  string
-   */ 
+   */
   public function getWorkStart()
   {
     return $this->work_start;
@@ -303,7 +303,7 @@ class CreateProjectParameter
    * @param  string  $work_start  勤務開始時間
    *
    * @return  self
-   */ 
+   */
   public function setWorkStart(string $work_start)
   {
     $this->work_start = $work_start;
@@ -315,7 +315,7 @@ class CreateProjectParameter
    * Get 勤務終了時間
    *
    * @return  string
-   */ 
+   */
   public function getWorkEnd()
   {
     return $this->work_end;
@@ -327,7 +327,7 @@ class CreateProjectParameter
    * @param  string  $work_end  勤務終了時間
    *
    * @return  self
-   */ 
+   */
   public function setWorkEnd(string $work_end)
   {
     $this->work_end = $work_end;
@@ -339,7 +339,7 @@ class CreateProjectParameter
    * Get 出勤回数/週
    *
    * @return  int
-   */ 
+   */
   public function getWeeklyAttendance()
   {
     return $this->weekly_attendance;
@@ -351,7 +351,7 @@ class CreateProjectParameter
    * @param  int  $weekly_attendance  出勤回数/週
    *
    * @return  self
-   */ 
+   */
   public function setWeeklyAttendance(int $weekly_attendance)
   {
     $this->weekly_attendance = $weekly_attendance;
@@ -363,7 +363,7 @@ class CreateProjectParameter
    * Get 特徴
    *
    * @return  string
-   */ 
+   */
   public function getFeature()
   {
     return $this->feature;
@@ -375,7 +375,7 @@ class CreateProjectParameter
    * @param  string  $feature  特徴
    *
    * @return  self
-   */ 
+   */
   public function setFeature(string $feature)
   {
     $this->feature = $feature;
@@ -385,7 +385,7 @@ class CreateProjectParameter
 
   /**
    * Get the value of decided
-   */ 
+   */
   public function getDecided()
   {
     return $this->decided;
@@ -395,7 +395,7 @@ class CreateProjectParameter
    * Set the value of decided
    *
    * @return  self
-   */ 
+   */
   public function setDecided($decided)
   {
     $this->decided = $decided;

@@ -27,6 +27,6 @@ class ApplicationRepository implements ApplicationRepositoryInterface
      */
     public function create($project_id,$user)
   {
-      $user->project_app()->attach($project_id);
+      $user->project_app()->sync($project_id);
   }
 }

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
-use App\Services\User\UserList\UserListResponse;
-use App\Services\User\UserList\UserListService;
-use App\Services\User\UserDetail\UserDetailResponse;
-use App\Services\User\UserDetail\UserDetailService;
+use App\Services\AdminUser\UserList\UserListResponse;
+use App\Services\AdminUser\UserList\UserListService;
+use App\Services\AdminUser\UserDetail\UserDetailService;
 
 class UserController extends Controller
 {

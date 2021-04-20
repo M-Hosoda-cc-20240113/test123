@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Services\User\UserDetail;
+namespace App\Services\AdminUser\UserDetail;
 
 use App\Models\User;
-use Illuminate\Support\Collection;
 
 class UserDetailResponse
 {

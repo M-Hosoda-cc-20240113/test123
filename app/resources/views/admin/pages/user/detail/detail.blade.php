@@ -1,6 +1,6 @@
 @php
 /**
- * @var \App\Services\User\UserDetail\UserDetailResponse $response
+ * @var \App\Services\AdminUser\UserDetail\UserDetailResponse $response
  */
 @endphp
 @extends('admin.layout')

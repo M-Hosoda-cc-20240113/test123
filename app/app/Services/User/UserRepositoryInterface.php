@@ -34,8 +34,9 @@ interface UserRepositoryInterface
 
 
     /**
+     * ユーザー情報取得
      * @param int $user_id
      * @return mixed
      */
-    public function detail(int $user_id);
+    public function fetchWithProjectsThroughApplicationOrAssignment(int $user_id);
 }
