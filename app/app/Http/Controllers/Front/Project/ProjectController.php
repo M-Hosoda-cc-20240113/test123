@@ -39,16 +39,15 @@ class ProjectController extends Controller
     }
 
     /**
-     * @param int $project_id
      * @param \App\Http\Requests\Front\CreateApplicationRequest $request
      * @param \App\Services\Application\ApplyProjectService\ApplyProjectService $apply_project_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function createApplication(int $project_id, Request $request, ApplyProjectService $apply_project_service)
+    public function createApplication(CreateApplicationRequest $request, ApplyProjectService $apply_project_service)
     {
         if(empty($request->assign_user_id) && empty($request->app_user_id)){
             $user = Auth::user();
-            $apply_project_service->exec($project_id, $user);
+            $apply_project_service->exec($request->project_id, $user);
             return  redirect('/');
         }
         return back();

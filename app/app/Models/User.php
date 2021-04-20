@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Project;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -228,5 +226,27 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new PasswordResetNotification($token, $this));
+    }
+
+    public function is_apply(int $project_id = null): bool
+    {
+        $user_id = $this->id;
+        if(!empty($project_id)){
+            $application_ids = array_column(Application::where('Project_id',$project_id)->get()->toArray(), 'user_id');
+            return in_array($user_id, $application_ids);
+        }
+        $application_ids = array_column(Application::all()->toArray(), 'user_id');
+        return in_array($user_id, $application_ids);
+    }
+
+    public function is_assign(int $project_id = null): bool
+    {
+        $user_id = $this->id;
+        if(!empty($project_id)){
+            $Assignment_ids = array_column(Assignment::where('Project_id',$project_id)->get()->toArray(), 'user_id');
+            return in_array($user_id, $Assignment_ids);
+        }
+        $Assignment_ids = array_column(Assignment::all()->toArray(), 'user_id');
+        return in_array($user_id, $Assignment_ids);
     }
 }

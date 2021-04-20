@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Front;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\CanApply;
 
 class CreateApplicationRequest extends FormRequest
 {
@@ -21,10 +22,24 @@ class CreateApplicationRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'project_id'
+            'project_id' => ['integer',new CanApply($this->input('project_id'))],
+            'assign_user_id' => ['integer'],
+            'app_user_id' => ['integer']
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function messages(): array
+    {
+        return [
+            'project_id.integer'     => '予期せぬ値が入力されました',
+            'assign_user_id.integer' => '予期せぬ値が入力されました',
+            'app_user_id.integer'    => '予期せぬ値が入力されました',
         ];
     }
 }

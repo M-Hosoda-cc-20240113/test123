@@ -16,9 +16,9 @@ class CanApply implements Rule
     /**
      * Create a new rule instance.
      *
-     * @param $project_id
+     * @param int $project_id
      */
-    public function __construct($project_id)
+    public function __construct(int $project_id)
     {
         $this->project_id = $project_id;
     }
@@ -32,8 +32,8 @@ class CanApply implements Rule
      */
     public function passes($attribute, $value)
     {
-        $project_ids = array_column(Project::all()->toArray(),'id');
-        return in_array()
+        $project_ids = array_column($this->fetchCanApply()->toArray(),'id');
+        return in_array((int)$this->project_id, $project_ids);
     }
 
     /**
@@ -43,6 +43,15 @@ class CanApply implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return '予期せぬ値が入力されました。';
     }
+
+    /**
+     * @return \App\Models\Project[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Query\Builder[]|\Illuminate\Support\Collection
+     */
+    private function fetchCanApply()
+    {
+        return Project::where('decided',0)->select('id')->get();
+    }
+
 }
