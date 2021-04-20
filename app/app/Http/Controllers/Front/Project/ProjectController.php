@@ -23,7 +23,7 @@ class ProjectController extends Controller
      * Admin project detail
      *
      * @param ProjectDetailService $project_detail_service
-     * @param int $id
+     * @param int $project_id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function detail(ProjectDetailService $project_detail_service, int $project_id)
@@ -43,7 +43,7 @@ class ProjectController extends Controller
      * @param \App\Services\Application\ApplyProjectService\ApplyProjectService $apply_project_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function create_application(int $project_id, Request $request, ApplyProjectService $apply_project_service)
+    public function createApplication(int $project_id, Request $request, ApplyProjectService $apply_project_service)
     {
         if(empty($request->assign_user_id) && empty($request->app_user_id)){
             $user = Auth::user();

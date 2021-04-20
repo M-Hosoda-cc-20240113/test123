@@ -1,6 +1,6 @@
 @php
     /**
-     * @var \App\Services\User\UserPage\UserPageResponse $response
+     * @var \App\Services\AdminUser\UserPage\UserPageResponse $response
      */
 @endphp
 @extends('front.layout')

@@ -16,19 +16,18 @@ class AssignmentListResponse
    * Get the value of assignments
    *
    * @return  Assignment[]
-   */ 
+   */
   public function getAssignment()
   {
     return $this->assignments;
   }
 
-  /**
-   * Set the value of assignments
-   *
-   * @param  Assignment[]  
-   *
-   * @return  self
-   */ 
+    /**
+     * Set the value of assignments
+     *
+     * @param \Illuminate\Support\Collection $assignments
+     * @return  self
+     */
   public function setAssignment(Collection $assignments)
   {
     $this->assignments = $assignments;

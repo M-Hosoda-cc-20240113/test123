@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
-use App\Models\Project;
-use Illuminate\Http\Request;
-use App\Services\Project\ProjectList\ProjectListResponse;
-use App\Services\Project\ProjectList\ProjectListService;
-use App\Services\Project\ProjectDetail\ProjectDetailResponse;
-use App\Services\Project\ProjectDetail\ProjectDetailService;
+use App\Services\AdminProject\ProjectList\ProjectListResponse;
+use App\Services\AdminProject\ProjectList\ProjectListService;
+use App\Services\AdminProject\ProjectDetail\ProjectDetailResponse;
+use App\Services\AdminProject\ProjectDetail\ProjectDetailService;
 
 class ProjectController extends Controller
 {

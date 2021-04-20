@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Project\ProjectDetail;
+namespace App\Services\AdminProject\ProjectDetail;
 
 use App\Services\Project\ProjectRepositoryInterface;
 
@@ -18,6 +18,6 @@ class ProjectDetailService
 
   public function exec(int $project_id)
   {
-    return $this->project_repository->find($project_id);
+    return $this->project_repository->findWithAgent($project_id);
   }
 }

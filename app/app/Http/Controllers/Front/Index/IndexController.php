@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Front\Index;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Services\Top\FetchTopData\FetchTopResponse;
 use App\Services\Top\FetchTopData\FetchTopService;
 
 class IndexController extends Controller

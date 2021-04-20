@@ -20,11 +20,11 @@ class RelLevelSkillUserService
     }
 
     /**
-     * @param int $id
+     * @param int $user_id
      * @return mixed
      */
-    public function exec(int $id): \App\Models\RelLevelSkillUser
+    public function exec(int $user_id): \App\Models\RelLevelSkillUser
     {
-        return $this->relLevelSKillUser_repository->detail($id);
+        return $this->relLevelSKillUser_repository->fetchByUserId($user_id);
     }
 }

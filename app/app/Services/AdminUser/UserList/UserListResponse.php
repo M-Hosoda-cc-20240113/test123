@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\User\UserList;
+namespace App\Services\AdminUser\UserList;
 
 use App\Models\User;
 use Illuminate\Support\Collection;
