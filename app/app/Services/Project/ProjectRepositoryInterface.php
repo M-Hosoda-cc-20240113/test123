@@ -3,6 +3,7 @@
 namespace App\Services\Project;
 
 use App\Models\Project;
+use Illuminate\Support\Collection;
 
 interface ProjectRepositoryInterface
 {
@@ -28,4 +29,10 @@ interface ProjectRepositoryInterface
      * @return \App\Models\Project
      */
     public function findWithUsersAndAgentThroughApplicationOrAssignment(int $project_id): Project;
+
+    /**
+     * 応募できるプロジェクトを取得
+     * @return \App\Models\Project
+     */
+    public function fetchCanApply();
 }

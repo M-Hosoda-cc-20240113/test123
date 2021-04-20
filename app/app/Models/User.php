@@ -227,4 +227,26 @@ class User extends Authenticatable
     {
         $this->notify(new PasswordResetNotification($token, $this));
     }
+
+    public function is_apply(int $project_id = null): bool
+    {
+        $user_id = $this->id;
+        if(!empty($project_id)){
+            $application_ids = array_column(Application::where('Project_id',$project_id)->get()->toArray(), 'user_id');
+            return in_array($user_id, $application_ids);
+        }
+        $application_ids = array_column(Application::all()->toArray(), 'user_id');
+        return in_array($user_id, $application_ids);
+    }
+
+    public function is_assign(int $project_id = null): bool
+    {
+        $user_id = $this->id;
+        if(!empty($project_id)){
+            $assignment_ids = array_column(Assignment::where('Project_id',$project_id)->get()->toArray(), 'user_id');
+            return in_array($user_id, $assignment_ids);
+        }
+        $assignment_ids = array_column(Assignment::all()->toArray(), 'user_id');
+        return in_array($user_id, $assignment_ids);
+    }
 }

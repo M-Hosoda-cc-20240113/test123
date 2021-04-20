@@ -71,6 +71,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param \App\Http\Requests\Front\RegisterUserRequest $request
+     * @param \App\Services\Application\ApplyProjectService\ApplyProjectService $apply_project_service
      * @param \App\Services\User\RegisterUser\RegisterUserService $register_user_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
