@@ -45,11 +45,8 @@ class ProjectController extends Controller
      */
     public function createApplication(CreateApplicationRequest $request, ApplyProjectService $apply_project_service)
     {
-        if(empty($request->assign_user_id) && empty($request->app_user_id)){
-            $user = Auth::user();
-            $apply_project_service->exec($request->project_id, $user);
-            return  redirect('/');
-        }
-        return back();
+        $user = Auth::user();
+        $apply_project_service->exec($request->project_id, $user);
+        return  redirect('/');
     }
 }

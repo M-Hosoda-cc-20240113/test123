@@ -26,8 +26,6 @@ class CreateApplicationRequest extends FormRequest
     {
         return [
             'project_id' => ['integer',new CanApply($this->input('project_id'))],
-            'assign_user_id' => ['integer'],
-            'app_user_id' => ['integer']
         ];
     }
 
@@ -38,8 +36,6 @@ class CreateApplicationRequest extends FormRequest
     {
         return [
             'project_id.integer'     => '予期せぬ値が入力されました',
-            'assign_user_id.integer' => '予期せぬ値が入力されました',
-            'app_user_id.integer'    => '予期せぬ値が入力されました',
         ];
     }
 }
