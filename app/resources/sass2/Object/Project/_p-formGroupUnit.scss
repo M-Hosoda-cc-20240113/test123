@@ -19,5 +19,31 @@
         }
       }
     }
+
+    &__title {
+      width: 100%;
+      display: flex;
+      margin-top: 20px;
+
+      p {
+        width: 50%;
+      }
+    }
+
+    &__itemForSkill {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+
+      select {
+        width: 48%;
+        border: none;
+        border-bottom: 1px solid $muted-light-color;
+        border-radius: 0;
+        @include max-screen($breakpoint-pc) {
+          width: 48%;
+        }
+      }
+    }
   }
 }
