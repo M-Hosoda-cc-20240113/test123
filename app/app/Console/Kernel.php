@@ -25,9 +25,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//        $schedule->command('batch:addUserPoints')->monthlyOn(1,'9:00');
+//        $schedule->command('batch:addUserPoints')
+//          ->monthlyOn(1,'9:00');      //本番用
         $schedule->command('batch:addUserPoints')
-            ->everyMinute();
+            ->everyMinute();            //test用
     }
 
     /**
