@@ -71,6 +71,15 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'min_unit_price',
+        'max_unit_price',
+        '',
+        '',
+        '',
+        '',
+    ];
+
     /**
      *
      * Users Table relation

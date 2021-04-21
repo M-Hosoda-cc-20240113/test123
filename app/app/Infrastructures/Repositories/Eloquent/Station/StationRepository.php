@@ -9,10 +9,21 @@ use Illuminate\Database\Eloquent\Collection;
 class StationRepository implements StationRepositoryInterface
 {
   /**
-   * @inheritDoc 
+   * @inheritDoc
    */
   public function all(): Collection
   {
     return Station::all();
   }
+
+    /**
+     * @inheritDoc
+     */
+    public function create($request)
+    {
+        return Station::create([
+            'name'      => $request['name'],
+            'area_id'   => $request['area_id'],
+        ]);
+    }
 }

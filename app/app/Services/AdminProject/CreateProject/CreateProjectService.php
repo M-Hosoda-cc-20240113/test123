@@ -16,8 +16,8 @@ class CreateProjectService
     $this->project_repository = $project_repository;
   }
 
-  public function exec()
+  public function exec( array $request)
   {
-    $this->create();
+    $this->project_repository->create($request);
   }
 }

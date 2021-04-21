@@ -52,10 +52,24 @@ class ProjectRepository implements ProjectRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function create(): Project
+    public function create($request): Project
     {
-        $project = new Project();
-        return $project;
+        return Project::create([
+            'agent_id' => $request['agent_id'],
+            'station_id' => $request['station_id'],
+            'name' => $request['name'],
+            'min_unit_price' => $request['min_unit_price'],
+            'max_unit_price' => $request['max_unit_price'],
+            'min_operation_time' => $request['min_operation_time'],
+            'max_operation_time' => $request['max_operation_time'],
+            'description' => $request['description'],
+            'required_condition' => $request['required_condition'],
+            'better_condition' => $request['better_condition'],
+            'work_start' => $request['work_start'],
+            'work_end' => $request['work_end'],
+            'weekly_attendance' => $request['weekly_attendance'],
+            'feature' => $request['feature'],
+        ]);
     }
 
     /**
@@ -66,7 +80,7 @@ class ProjectRepository implements ProjectRepositoryInterface
         return Project::with('station')
             ->with('positions')
             ->with('skills')
-            ->where('decided',0)
+            ->where('decided', 0)
             ->get();
     }
 }

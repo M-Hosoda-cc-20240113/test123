@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Project\CreateProjectRequest;
+use App\Services\AdminProject\CreateProject\CreateProjectService;
 use App\Services\AdminProject\ProjectList\ProjectListResponse;
 use App\Services\AdminProject\ProjectList\ProjectListService;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailResponse;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailService;
+use App\Services\Agent\CreateAgent\CreateAgentService;
+use App\Services\Station\CreateStation\CreateStationService;
 
 class ProjectController extends Controller
 {
@@ -28,7 +32,7 @@ class ProjectController extends Controller
 
     public function showCreateForm()
     {
-        return view('admin.pages.project.detail.detail');
+        return view('admin.pages.project.create.create');
     }
 
     /**
@@ -48,6 +52,19 @@ class ProjectController extends Controller
         $response->setProject($project);
 
         return view('admin.pages.project.detail.detail', ['response' => $response]);
+    }
+
+    /**
+     * @param \App\Http\Requests\Admin\Project\CreateProjectRequest $request
+     * @param \App\Services\AdminProject\CreateProject\CreateProjectService $create_project_service
+     */
+    public function create(
+        CreateProjectRequest $request,
+        CreateProjectService $create_project_service): \Illuminate\Http\RedirectResponse
+    {
+        $project = $create_project_service->exec($request->all());
+        $project_id = $project->id;
+        return redirect()->route('project.detail', ['project_id' => $project_id]);
     }
 
     /**

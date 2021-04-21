@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Agent\AgentController;
+use App\Http\Controllers\Admin\Station\StationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Index\IndexController;
 use App\Http\Controllers\Admin\User\UserController;
@@ -42,40 +44,39 @@ Route::namespace('User')->prefix('users')->group(function () {
  */
 Route::namespace('Project')->prefix('projects')->group(function () {
   Route::get('/', [ProjectController::class, 'list'])->name('project.list');
-  Route::get('/create', [ProjectController::class, 'showCreateForm'])->name('project.create');
-  Route::post('/create', [ProjectController::class, 'create']);
+  Route::get('/create', [ProjectController::class, 'showCreateForm'])->name('project.create.form');
+  Route::post('/create', [ProjectController::class, 'create'])->name('project.create');
   Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('project.detail');
   Route::get('/{project_id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
   Route::get('/{project_id}/delete', [ProjectController::class, 'delete'])->name('project.delete');
 });
-/**
- * Admin Skills
- * @var array
- */
+
+Route::namespace('Agent')->prefix('agent')->group(function () {
+    Route::get('/',[AgentController::class, 'list'])->name('agent.list');
+    Route::get('/create',[AgentController::class, 'showCreateForm'])->name('agent.create.form');
+    Route::post('/create',[AgentController::class, 'create'])->name('agent.create');
+});
+
+Route::namespace('Station')->prefix('station')->group(function () {
+    Route::get('/',[StationController::class, 'list'])->name('station.list');
+    Route::get('/create',[StationController::class, 'showCreateForm'])->name('station.create.form');
+    Route::post('/create',[StationController::class, 'create'])->name('station.create');
+});
+
 Route::namespace('Skill')->prefix('skills')->group(function () {
   Route::get('/', [SkillController::class, 'list'])->name('skill.list');
   Route::get('/edit', [SkillController::class, 'edit'])->name('skill.edit');
 });
-/**
- * Admin Positions
- * @var array
- */
+
 Route::namespace('Position')->prefix('positions')->group(function () {
   Route::get('/', [PositionController::class, 'list'])->name('position.list');
   Route::get('/edit', [PositionController::class, 'edit'])->name('position.edit');
 });
-/**
- * Admin application status
- * @var array
- */
+
  Route::namespace('Application')->prefix('applications')->group(function () {
   Route::get('/', [ApplicationController::class, 'list'])->name('application.list');
 });
 
-/**
- * Admin assignment status
- * @var array
- */
  Route::namespace('Assignment')->prefix('assignments')->group(function () {
   Route::get('/', [AssignmentController::class, 'list'])->name('assignment.list');
 });

@@ -14,7 +14,7 @@ interface ProjectRepositoryInterface
      * @return Project
      *
      */
-    public function create(): Project;
+    public function create(array $request);
 
     /**
      * プロジェクト詳細（Front）
