@@ -47,4 +47,14 @@ class UserController extends Controller
 
         return redirect()->route('home.mypage');
     }
+
+    public function showEditSkillForm()
+    {
+        return view('front.pages.mypage.skill.edit');
+    }
+
+    public function skillEdit()
+    {
+         
+    }
 }
