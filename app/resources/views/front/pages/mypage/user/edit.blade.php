@@ -27,6 +27,12 @@
     <div class="l-main">
       <p class="p-level2Heading">ユーザー情報編集</p>
 
+      @if($errors->any())
+        @foreach($errors->all() as $error)
+          <p class="c-text--warning">{{ $error }}</p>
+        @endforeach
+      @endif
+
       <form action="{{ route('front.user.edit') }}" method="post">
         {{ @csrf_field() }}
         <div class="p-formGroupUnit--2col">
