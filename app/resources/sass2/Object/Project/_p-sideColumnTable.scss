@@ -1,0 +1,28 @@
+.p-sideColumnTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  tr {
+    border: solid 1px $muted-lighter-color;
+    border-bottom: none;
+
+    &:last-child {
+      border-bottom: solid 1px $muted-lighter-color;
+    }
+  }
+
+  th {
+    background: $primary-color;
+    color: $light-color;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 0;
+    width: 1px;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  td {
+    padding: 10px;
+  }
+}

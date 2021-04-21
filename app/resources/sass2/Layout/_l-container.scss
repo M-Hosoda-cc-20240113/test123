@@ -5,9 +5,42 @@
   margin-left: auto;
   padding-left: 20px;
   padding-right: 20px;
+
+  // footer相殺分
+  padding-bottom: 90px;
   @include max-screen($breakpoint-pc) {
     max-width: $content-min-width;
     padding-left: 10px;
     padding-right: 10px;
+  }
+  $this: &;
+
+  &--2col {
+    @extend #{$this};
+    display: flex;
+    @include max-screen($breakpoint-pc) {
+      flex-flow: column;
+    }
+
+    .l-sidebar {
+      padding-left: 20px;
+      padding-right: 10px;
+      @include max-screen($breakpoint-pc) {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+      }
+    }
+
+    .l-main {
+      padding-left: 10px;
+      padding-right: 20px;
+      @include max-screen($breakpoint-pc) {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 20px;
+        width: 100%;
+      }
+    }
   }
 }

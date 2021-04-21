@@ -1,0 +1,23 @@
+.p-formGroupUnit {
+  display: flex;
+  flex-flow: row wrap;
+  @include max-screen($breakpoint-pc) {
+    flex-flow: column wrap;
+  }
+  $this: &;
+
+  &--2col {
+    @extend #{$this};
+
+    &__item {
+      width: 50%;
+      margin-top: 20px;
+      @include max-screen($breakpoint-pc) {
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
