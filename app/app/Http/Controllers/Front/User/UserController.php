@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Front\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Front\UpdateUserRequest;
 use App\Services\User\ShowEditUserForm\ShowEditUserFormService;
+use App\Services\User\UpdateUser\UpdateUserParameter;
+use App\Services\User\UpdateUser\UpdateUserService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class UserController
@@ -22,10 +27,24 @@ class UserController extends Controller
     }
 
     /**
-     * @return string
+     * @param UpdateUserRequest $request
+     * @param UpdateUserService $update_user_service
+     * @return RedirectResponse
+     * @throws \Throwable
      */
-    public function edit()
+    public function edit(UpdateUserRequest $request, UpdateUserService $update_user_service): string
     {
-        return 'hoge';
+        $parameter = new UpdateUserParameter();
+        $parameter->setUser(Auth::user());
+        $parameter->setSei($request->sei);
+        $parameter->setSeiKana($request->sei_kana);
+        $parameter->setMei($request->mei);
+        $parameter->setMeiKana($request->mei_kana);
+        $parameter->setTel($request->tel);
+        $parameter->setBirthday($request->birthday);
+
+        $update_user_service->exec($parameter);
+
+        return redirect()->route('home.mypage');
     }
 }
