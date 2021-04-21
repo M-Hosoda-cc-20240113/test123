@@ -4,8 +4,10 @@ namespace App\Infrastructures\Repositories\Eloquent\User;
 
 use App\Mail\RegisterMail;
 use App\Models\User;
+use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class UserRepository implements UserRepositoryInterface
@@ -43,6 +45,24 @@ class UserRepository implements UserRepositoryInterface
         return User::with('project_app')
             ->with('project_assign')
             ->findOrFail($user_id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function update(UpdateUserParameter $parameter): void
+    {
+        DB::transaction(function () use ($parameter) {
+            $user = $parameter->getUser();
+
+            $user->sei = $parameter->getSei();
+            $user->sei_kana = $parameter->getSeiKana();
+            $user->mei = $parameter->getMei();
+            $user->mei_kana = $parameter->getMeiKana();
+            $user->tel = $parameter->getTel();
+            $user->birthday = $parameter->getBirthday();
+            $user->save();
+        });
     }
 
     /**

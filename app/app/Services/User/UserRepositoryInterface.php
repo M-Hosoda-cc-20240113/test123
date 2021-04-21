@@ -3,6 +3,7 @@
 namespace App\Services\User;
 
 use App\Models\User;
+use App\Services\User\UpdateUser\UpdateUserParameter;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -39,4 +40,10 @@ interface UserRepositoryInterface
      * @return mixed
      */
     public function fetchWithProjectsThroughApplicationOrAssignment(int $user_id);
+
+    /**
+     * @param UpdateUserParameter $parameter
+     * @throws \Throwable
+     */
+    public function update(UpdateUserParameter $parameter): void;
 }

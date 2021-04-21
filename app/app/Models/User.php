@@ -221,6 +221,57 @@ class User extends Authenticatable
     }
 
     /**
+     * @param $val
+     * @return string
+     */
+    public function getEmailAttribute($val): string
+    {
+        return Crypt::decrypt($val);
+    }
+
+    /**
+     * @param $val
+     */
+    public function setEmailAttribute($val)
+    {
+        $this->attributes['email'] = Crypt::encrypt($val);
+    }
+
+    /**
+     * @param $val
+     * @return string
+     */
+    public function getTelAttribute($val): string
+    {
+        return Crypt::decrypt($val);
+    }
+
+    /**
+     * @param $val
+     */
+    public function setTelAttribute($val)
+    {
+        $this->attributes['tel'] = Crypt::encrypt($val);
+    }
+
+    /**
+     * @param $val
+     * @return mixed
+     */
+    public function getBirthdayAttribute($val)
+    {
+        return Crypt::decrypt($val);
+    }
+
+    /**
+     * @param $val
+     */
+    public function setBirthdayAttribute($val)
+    {
+        $this->attributes['birthday'] = Crypt::encrypt($val);
+    }
+
+    /**
      * @param string $token
      */
     public function sendPasswordResetNotification($token)
