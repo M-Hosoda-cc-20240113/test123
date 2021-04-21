@@ -1,43 +1,81 @@
 @php
-    /**
-     * @var \App\Services\AdminUser\UserPage\UserPageResponse $response
-     */
+  /**
+   * @var \App\Services\User\UserPage\UserPageResponse $response
+   */
 @endphp
 @extends('front.layout')
 
 @section('title', 'トップページ|Aegis')
 
 @section('body')
-    @component('front.header.header', ['href' => route('front.index')])
-        @include('front.header._link_login_logout')
-    @endcomponent
-    <div class="Container d-flex mt-30">
-        <div class="SideBar">
-            @include('front.pages.mypage.top._RegularList')
-        </div>
-        <div class="Main">
-            <p class="fw-bold fs-20">ユーザー情報</p>
-            <hr class="Horizontal">
-            @include('front.pages.mypage.top._SideColumnTable', ['response' => $response])
-            <p class="fw-bold fs-20 mt-20">スキル</p>
-            <hr class="Horizontal">
-            <div class="d-flex">
-                @foreach($response->getRelLevelSkillUser() as $LevelSkill)
-                    @include('atoms.Tag', ['text' => $LevelSkill->name.'（'.$LevelSkill->level.'）', 'class' => 'mr-10'])
-                @endforeach
-            </div>
-            <p class="fw-bold fs-20 mt-20">応募案件</p>
-            <hr class="Horizontal">
-                @foreach($response->getUser()->project_app as $application)
-                    <a class="fw-bold d-block" href="{{ route('front.project.detail', ['project_id' => $application->id] )}}">・{{$application->name ?? ''}}</a>
-                @endforeach
-            <p class="fw-bold fs-20 mt-20">稼働案件</p>
-            <hr class="Horizontal">
-                @foreach($response->getUser()->project_assign as $assignment)
-                    <a class="fw-bold d-block" href="{{ route('front.project.detail', ['project_id' => $assignment->id] )}}">・{{$assignment->name ?? ''}}</a>
-                @endforeach
-        </div>
+  @component('front.header.header', ['href' => route('front.index')])
+    @include('front.header._link_login_logout')
+  @endcomponent
+  <div class="l-container--2col">
+    <div class="l-sidebar">
+      <ul class="p-list {{ $class ?? '' }}">
+        <li class="c-text p-list__item--header">メニュー</li>
+        <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('front.user.edit') }}">ユーザー情報編集</a>
+        </li>
+        <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('password.request') }}">パスワード変更</a>
+        </li>
+        <li class="p-list__item"><a class="c-text p-list__itemInner" href="/">スキル編集</a></li>
+      </ul>
     </div>
+    {{--  l-sidebar  --}}
 
     @include('front.footer.footer')
+    <div class="l-main">
+      <p class="p-level2Heading">ユーザー情報</p>
+      <table class="p-sideColumnTable u-mt-20">
+        <tbody>
+        <tr>
+          <th>氏名</th>
+          <td>{{ $response->getUser()->sei ?? '' }}&#160;{{ $response->getUser()->mei ?? '' }}</td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td>{{ $response->getUser()->sei_kana ?? '' }}&#160;{{ $response->getUser()->mei_kana ?? '' }}</td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td>{{ $response->getUser()->email ?? '' }}</td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td>{{ $response->getUser()->tel ?? '' }}</td>
+        </tr>
+        <tr>
+          <th>生年月日</th>
+          <td>{{ ViewHelper::YmdReplace($response->getUser()->birthday ?? '' )}}</td>
+        </tr>
+        </tbody>
+      </table>
+      {{--   ユーザー情報   --}}
+
+      <p class="p-level2Heading u-mt-20">スキル</p>
+      @foreach($response->getRelLevelSkillUser() as $level_skill)
+        @include('atoms.Tag', ['text' => $level_skill->name.'（'.$level_skill->level.'）', 'class' => 'u-mr-5 u-mt-5'])
+      @endforeach
+      {{--  スキル  --}}
+
+      <p class="p-level2Heading u-mt-20">応募案件</p>
+      @foreach($response->getUser()->project_app as $project)
+        <a class="c-text u-db u-mt-10"
+           href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
+      @endforeach
+      {{--  応募案件  --}}
+
+      <p class="p-level2Heading u-mt-20">稼働案件</p>
+      @foreach($response->getUser()->project_assign as $project)
+        <a class="c-text u-db u-mt-10"
+           href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
+      @endforeach
+      {{--  応募案件  --}}
+
+    </div>
+    {{--  l-main  --}}
+  </div>
+
+  @include('front.footer.footer')
 @endsection
