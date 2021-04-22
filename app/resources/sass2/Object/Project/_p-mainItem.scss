@@ -5,4 +5,7 @@
   border: 1px solid $muted-light-color;
   box-shadow: rgba(0, 0, 0, 0.04) 0 3px 1px;
   width: 100%;
+  @include max-screen($breakpoint-pc) {
+    padding: 15px;
+  }
 }

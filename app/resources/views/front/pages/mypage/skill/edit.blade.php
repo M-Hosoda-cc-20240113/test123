@@ -55,7 +55,7 @@
                   </select>
                 </label>
 
-                <label class="p-formGroupUnit--2col__label" for="">
+                <label class="p-formGroupUnit--2col__label--after" for="">
                   <select name="" id="" class="c-input">
                     @foreach($response->getLevels() as $level)
                       <option value="" {{ $level_skill->level === $level->level ? 'selected' : '' }}>{{ $level->level }}</option>

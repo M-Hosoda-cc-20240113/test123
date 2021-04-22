@@ -631,6 +631,13 @@ img {
   border-radius: 3px;
   border: 1px solid #cdcddf;
   box-shadow: rgba(0, 0, 0, 0.04) 0 3px 1px;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .p-mainItem {
+    padding: 15px;
+  }
 }
 
 .p-cardUnit, .p-cardUnit--col3 {
@@ -980,12 +987,18 @@ img {
 
 .p-formGroupUnit--2col__itemForSkill {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 20px;
+  position: relative;
 }
 
-.p-formGroupUnit--2col__itemForSkill label {
-  width: 49%;
+.p-formGroupUnit--2col__itemForSkill:after {
+  content: url(/images/icons/icon_trush.png);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -12px;
+  cursor: pointer;
 }
 
 .p-formGroupUnit--2col__itemForSkill select {
@@ -993,15 +1006,16 @@ img {
   border: none;
   border-bottom: 1px solid #cdcddf;
   border-radius: 0;
+  cursor: pointer;
 }
 
-.p-formGroupUnit--2col__label {
+.p-formGroupUnit--2col__label, .p-formGroupUnit--2col__label--after {
   position: relative;
   display: block;
-  width: 200px;
+  width: 49%;
 }
 
-.p-formGroupUnit--2col__label::before {
+.p-formGroupUnit--2col__label::before, .p-formGroupUnit--2col__label--after::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -1012,6 +1026,17 @@ img {
   margin: -2px 0 0 0;
   border: 5px solid transparent;
   border-top: 7px solid #42b5d1;
+}
+
+.p-formGroupUnit--2col__label--after {
+  width: 45%;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .p-formGroupUnit--2col__label--after {
+    width: 38%;
+  }
 }
 
 .p-formGroup {
