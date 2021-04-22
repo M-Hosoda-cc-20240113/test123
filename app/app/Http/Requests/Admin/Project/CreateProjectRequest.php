@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Station\Admin\Agent\Admin\Project;
+namespace App\Http\Requests\Admin\Project;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,17 +27,17 @@ class CreateProjectRequest extends FormRequest
             'name'                  => ['required','string','max:100'],
             'agent_id'              => ['nullable','integer'],
             'station_id'            => ['nullable','integer'],
-            'min_unit_price'        => ['nullable','integer','max:3'],
-            'max_unit_price'        => ['required','integer','max:4'],
-            'min_operation_time'    => ['nullable','integer','max:4'],
-            'max_operation_time'    => ['required','integer','max:4'],
-            'description'           => ['required','string','max:3000'],
-            'required_condition'    => ['nullable','string','max:3000'],
-            'better_condition'      => ['nullable','string','max:3000'],
+            'min_unit_price'        => ['nullable','integer'],
+            'max_unit_price'        => ['required','integer'],
+            'min_operation_time'    => ['nullable','integer'],
+            'max_operation_time'    => ['required','integer'],
+            'description'           => ['required','string','max:500'],
+            'required_condition'    => ['nullable','string','max:500'],
+            'better_condition'      => ['nullable','string','max:500'],
             'work_start'            => ['nullable','string','max:6'],
             'work_end'              => ['nullable','string','max:6'],
             'weekly_attendance'     => ['nullable','integer','between:1,5'],
-            'feature'               => ['nullable','string','max:3000'],
+            'feature'               => ['nullable','string','max:500'],
         ];
     }
     public function  messages(): array
@@ -49,11 +49,12 @@ class CreateProjectRequest extends FormRequest
             'agent_id.integer'              => '予期せぬ値が入力されました',
             'station_id.integer'            => '予期せぬ値が入力されました',
             'min_unit_price.integer'        => '半角数字で入力してください。',
-            'min_unit_price.max'            => '3桁以上の値は入力できません',
-            'max_operation_time.integer'    => '必須項目です。',
+            'max_unit_price.required'       => '最高単価は必須項目です。',
+            'max_unit_price.integer'        => '半角数字で入力してください。',
+            'min_operation_time.integer'    => '半角数字で入力してください',
+            'max_operation_time.required'   => '最高生産幅は必須項目です。',
             'max_operation_time.integer'    => '半角数字で入力してください。',
-            'max_operation_time.max'        => '3桁以上の値は入力できません',
-            'description.required'          => '必須項目です。',
+            'description.required'          => '案件内容は必須項目です。',
             'description.string'            => '予期せぬ値が入力されました。',
             'description.max'               => '3000文字以上は入力できません。',
             'required_condition.string'     => '予期せぬ値が入力されました。',
@@ -61,9 +62,9 @@ class CreateProjectRequest extends FormRequest
             'better_condition.string'       => '予期せぬ値が入力されました',
             'better_condition.max'          => '3000文字以上は入力できません',
             'work_start.string'             => '時間を入力してください。',
-            'work_start.max'                => '時間を入力してください。',
+            'work_start.max'                => '正しい時間を入力してください。',
             'work_end.string'               => '時間を入力してください。',
-            'work_start.max'                => '時間を入力してください。',
+            'work_end.max'                  => '正しい時間を入力してください。',
             'weekly_attendance.integer'     => '半角数字で入力してください',
             'weekly_attendance.between'     => '5以上の値は入力できません',
             'feature.string'                => '案件名に文字列以外が入力されました',

@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Station\Admin\Agent\Admin\Project\CreateProjectRequest;
+use App\Http\Requests\Admin\Project\CreateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
+use App\Services\AdminProject\PositionSkillList\PositionSkillListResponse;
+use App\Services\AdminProject\PositionSkillList\PositionSkillListService;
 use App\Services\AdminProject\ProjectList\ProjectListResponse;
 use App\Services\AdminProject\ProjectList\ProjectListService;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailResponse;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailService;
-use App\Services\Agent\CreateAgent\CreateAgentService;
-use App\Services\Station\CreateStation\CreateStationService;
-use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -31,9 +30,15 @@ class ProjectController extends Controller
         return view('admin.pages.project.list.list', ['response' => $response]);
     }
 
-    public function showCreateForm()
+    public function showCreateForm(PositionSkillListService $position_skill_list_service)
     {
-        return view('admin.pages.project.create.create');
+        $response = new PositionSkillListResponse();
+
+        $positionWithSkill = $position_skill_list_service->exec();
+
+        $response->setPositionSkillList($positionWithSkill);
+
+        return view('admin.pages.project.create.create', ['response' => $response]);
     }
 
     /**
@@ -56,12 +61,12 @@ class ProjectController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\Admin\Station\Admin\Agent\Admin\Project\CreateProjectRequest $request
+     * @param \App\Http\Requests\Admin\Project\CreateProjectRequest $request
      * @param \App\Services\AdminProject\CreateProject\CreateProjectService $create_project_service
      * @return \Illuminate\Http\RedirectResponse
      */
     public function create(
-        Request $request,
+        CreateProjectRequest $request,
         CreateProjectService $create_project_service
     ) {
         $project = $create_project_service->exec($request->all());

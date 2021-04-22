@@ -60,7 +60,7 @@ class RegisterUserRequest extends FormRequest
             'birthday.digits'   => '８桁で入力してください。',
             'tel.required'      => '電話番号を入力して下さい。',
             'tel.digits_between'=> '無効な電話番号です。',
-            'tel.unique'        => '登録済みの電話番号です。',
+            'tel.unique'        => 'この電話番号は既に使用されています。',
             'email.required'    => 'メールアドレスを入力して下さい',
             'email.email'       => 'メールアドレスを入力して下さい',
             'email.unique'      => 'このメールアドレスは既に使用されています。',
