@@ -35,7 +35,28 @@
           @endforeach
         @endif
 
-        <form action="{{ route('front.user.skill.edit') }}" method="post">
+        <template id="skill_row">
+          <div class="p-formGroupUnit--2col__itemForSkill">
+            <label class="p-formGroupUnit--2col__label" for="">
+              <select name="" id="" class="c-input">
+                @foreach($response->getSkills() as $skill)
+                  <option value="" >{{ $skill->name }}</option>
+                @endforeach
+              </select>
+            </label>
+
+            <label class="p-formGroupUnit--2col__label--after" for="">
+              <select name="" id="" class="c-input">
+                @foreach($response->getLevels() as $level)
+                  <option value="" >{{ $level->level }}</option>
+                @endforeach
+              </select>
+            </label>
+          </div>
+        </template>
+        {{--   テンプレート    --}}
+
+        <form class="js-form" action="{{ route('front.user.skill.edit') }}" method="post">
           {{ @csrf_field() }}
           <div class="p-formGroupUnit--2col">
             @foreach($response->getRelLevelSkillUsers() as $level_skill)
@@ -45,7 +66,8 @@
                   <p class="c-text u-pl-15">経験</p>
                 </div>
               @endif
-              <div class="p-formGroupUnit--2col__itemForSkill u-w-100-pc">
+
+              <div class="p-formGroupUnit--2col__itemForSkill">
 
                 <label class="p-formGroupUnit--2col__label" for="">
                   <select name="" id="" class="c-input">
@@ -63,9 +85,10 @@
                   </select>
                 </label>
               </div>
+              {{--    itemForSkill      --}}
             @endforeach
           </div>
-
+          <img class="c-icon--clickable u-m0a js-add" src="/images/icons/icon_add.png" alt="">
           <button type="submit" class="c-button u-db u-m0a u-mt-20">更新する</button>
         </form>
       </div>

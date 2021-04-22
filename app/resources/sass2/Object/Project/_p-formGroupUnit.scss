@@ -32,14 +32,18 @@
 
     &__itemForSkill {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       margin-bottom: 20px;
       position: relative;
+      width: 95%;
+      @include max-screen($breakpoint-pc) {
+        width: 90%;
+      }
       &:after {
         content: url(/images/icons/icon_trush.png);
         position: absolute;
         top: 50%;
-        right: 0;
+        right: -25px;
         margin-top: -12px;
         cursor: pointer;
       }
@@ -68,6 +72,9 @@
         margin: -2px 0 0 0;
         border: 5px solid transparent;
         border-top: 7px solid $primary-color;
+      }
+      @include max-screen($breakpoint-pc) {
+        width: 55%;
       }
       $this: &;
       &--after {
