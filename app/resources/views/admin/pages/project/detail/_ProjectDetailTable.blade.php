@@ -38,5 +38,9 @@
       <th class="ProjectDetailTable__head">特徴</th>
       <td class="ProjectDetailTable__body">{{ ViewHelper::nl2brWithAnchor( $response->getProject()->feature ?? '' )}}</td>
     </tr>
+    <tr class="ProjectDetailTable__row">
+      <th class="ProjectDetailTable__head">出勤回数</th>
+      <td class="ProjectDetailTable__body">週 {{ $response->getProject()->weekly_attendance ?? ''}} 回</td>
+    </tr>
   </tbody>
 </table>

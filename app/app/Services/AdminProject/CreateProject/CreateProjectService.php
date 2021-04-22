@@ -18,6 +18,6 @@ class CreateProjectService
 
   public function exec( array $request)
   {
-    $this->project_repository->create($request);
+     return $this->project_repository->create($request);
   }
 }

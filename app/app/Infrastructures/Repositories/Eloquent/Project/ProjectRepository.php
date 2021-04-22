@@ -3,6 +3,8 @@
 namespace App\Infrastructures\Repositories\Eloquent\Project;
 
 use App\Models\Project;
+use App\Models\RelLevelSkillUser;
+use App\Models\Skill;
 use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -54,22 +56,27 @@ class ProjectRepository implements ProjectRepositoryInterface
      */
     public function create($request): Project
     {
-        return Project::create([
-            'agent_id' => $request['agent_id'],
-            'station_id' => $request['station_id'],
-            'name' => $request['name'],
-            'min_unit_price' => $request['min_unit_price'],
-            'max_unit_price' => $request['max_unit_price'],
+        $project = Project::create([
+            'agent_id'           => $request['agent_id'],
+            'station_id'         => $request['station_id'],
+            'name'               => $request['name'],
+            'min_unit_price'     => $request['min_unit_price'],
+            'max_unit_price'     => $request['max_unit_price'],
             'min_operation_time' => $request['min_operation_time'],
             'max_operation_time' => $request['max_operation_time'],
-            'description' => $request['description'],
+            'description'        => $request['description'],
             'required_condition' => $request['required_condition'],
-            'better_condition' => $request['better_condition'],
-            'work_start' => $request['work_start'],
-            'work_end' => $request['work_end'],
-            'weekly_attendance' => $request['weekly_attendance'],
-            'feature' => $request['feature'],
+            'better_condition'   => $request['better_condition'],
+            'work_start'         => $request['work_start'],
+            'work_end'           => $request['work_end'],
+            'weekly_attendance'  => $request['weekly_attendance'],
+            'feature'            => $request['feature'],
         ]);
+        $skills = [$request['skill_id_1'],$request['skill_id_2'],$request['skill_id_3']];
+        $positions = [$request['position_id_1'],$request['position_id_2'],$request['position_id_3']];
+            $project->skills()->sync($request['skill_id']);
+        $project->positions()->sync($request['position_id']);
+        return $project;
     }
 
     /**

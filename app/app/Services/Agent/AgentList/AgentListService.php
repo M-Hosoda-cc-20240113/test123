@@ -1,26 +1,28 @@
 <?php
 
 
-namespace App\Services\Agent\CreateAgent;
+namespace App\Services\Agent\AgentList;
 
 use App\Services\Agent\AgentRepositoryInterface;
 
-class CreateAgentService
+class AgentListService
 {
     /**
      * @var AgentRepositoryInterface
      */
     private $agent_repository;
+
     /**
-     * CreateAgentService constructor.
+     * AgentListService constructor.
+     * @param \App\Services\Agent\AgentRepositoryInterface $agent_repository
      */
     public function __construct(AgentRepositoryInterface $agent_repository)
     {
         $this->agent_repository = $agent_repository;
     }
 
-    public function exec($request)
+    public function exec()
     {
-        $this->agent_repository->create($request);
+        return $this->agent_repository->all();
     }
 }

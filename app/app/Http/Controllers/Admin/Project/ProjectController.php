@@ -11,6 +11,7 @@ use App\Services\AdminProject\ProjectDetail\ProjectDetailResponse;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailService;
 use App\Services\Agent\CreateAgent\CreateAgentService;
 use App\Services\Station\CreateStation\CreateStationService;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -57,11 +58,12 @@ class ProjectController extends Controller
     /**
      * @param \App\Http\Requests\Admin\Project\CreateProjectRequest $request
      * @param \App\Services\AdminProject\CreateProject\CreateProjectService $create_project_service
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function create(
-        CreateProjectRequest $request,
-        CreateProjectService $create_project_service): \Illuminate\Http\RedirectResponse
-    {
+        Request $request,
+        CreateProjectService $create_project_service
+    ) {
         $project = $create_project_service->exec($request->all());
         $project_id = $project->id;
         return redirect()->route('project.detail', ['project_id' => $project_id]);
@@ -70,7 +72,8 @@ class ProjectController extends Controller
     /**
      *
      * Admin project edit
-     * @var array
+     *
+     * @return string
      */
     public function edit()
     {

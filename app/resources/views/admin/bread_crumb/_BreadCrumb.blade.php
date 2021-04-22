@@ -42,4 +42,23 @@
         <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
         <li><a href="{{ route('assignment.list') }}"><span>稼働状況</span></a></li>
     @endif
+
+    {{-- エージェントリスト --}}
+    @if(url()->current() === route('agent.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('agent.list') }}"><span>エージェント一覧</span></a></li>
+    @endif
+
+    {{-- エージェント登録 --}}
+    @if(url()->current() === route('agent.create'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('agent.list') }}"><span>エージェント一覧</span></a></li>
+        <li><a href="{{ route('agent.create') }}"><span>エージェント登録</span></a></li>
+    @endif
+
+    {{-- 駅名リスト --}}
+    @if(url()->current() === route('station.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('station.list') }}"><span>駅名一覧</span></a></li>
+    @endif
 </ol>

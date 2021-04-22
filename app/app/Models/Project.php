@@ -72,12 +72,20 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
+        'agent_id',
+        'station_id',
+        'name',
         'min_unit_price',
         'max_unit_price',
-        '',
-        '',
-        '',
-        '',
+        'min_operation_time',
+        'max_operation_time',
+        'description',
+        'required_condition',
+        'better_condition',
+        'work_start',
+        'work_end',
+        'weekly_attendance',
+        'feature',
     ];
 
     /**

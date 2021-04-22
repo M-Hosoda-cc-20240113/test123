@@ -11,9 +11,9 @@ class CreateProjectRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,9 +28,9 @@ class CreateProjectRequest extends FormRequest
             'agent_id'              => ['nullable','integer'],
             'station_id'            => ['nullable','integer'],
             'min_unit_price'        => ['nullable','integer','max:3'],
-            'max_unit_price'        => ['required','integer','max:3'],
-            'min_operation_time'    => ['nullable','integer','between:2,3'],
-            'max_operation_time'    => ['required','integer','between:3,4'],
+            'max_unit_price'        => ['required','integer','max:4'],
+            'min_operation_time'    => ['nullable','integer','max:4'],
+            'max_operation_time'    => ['required','integer','max:4'],
             'description'           => ['required','string','max:3000'],
             'required_condition'    => ['nullable','string','max:3000'],
             'better_condition'      => ['nullable','string','max:3000'],

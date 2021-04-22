@@ -24,10 +24,49 @@
                 {{--   p-userRegisterRow   --}}
 
                 <div class="p-userRegister__row">
+                    <span class="c-text--bold p-userRegister__title u-mb-5-sp">会社名</span>
+                    <div class="p-userRegister__inputUnitWrap">
+                        <div class="p-userRegister__inputUnit--single u-w-50-pc">
+                            <select class="c-input p-userRegister__input u-w-100-sp" name="agent_id" id="">
+                                <option value=1>株式会社LiNew</option>
+                                <option value=2>パッション株式会社</option>
+                                <option value=3>インフィック株式会社</option>
+                                <option value=4>Amazon.inc</option>
+                                <option value=5>Apple.inc</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {{--   p-userRegisterRow   --}}
+
+                <div class="p-userRegister__row">
+                    <span class="c-text--bold p-userRegister__title u-mb-5-sp">最寄り駅</span>
+                    <div class="p-userRegister__inputUnitWrap">
+                        <div class="p-userRegister__inputUnit--single u-w-50-pc">
+                            <select class="c-input p-userRegister__input u-w-100-sp" name="station_id" id="">
+                                <option value=1>大久保</option>
+                                <option value=2>池袋</option>
+                                <option value=3>表参道</option>
+                                <option value=4>渋谷</option>
+                                <option value=5>品川</option>
+                                <option value=6>東京</option>
+                                <option value=7>京橋</option>
+                                <option value=8>大田</option>
+                            </select>
+                            <span class="c-text p-userRegister__inputName">駅</span>
+                        </div>
+                    </div>
+                </div>
+
+                {{--   p-userRegisterRow   --}}
+
+                <div class="p-userRegister__row">
                     <span class="c-text--bold p-userRegister__title u-mb-5-sp">案件名</span>
                     <div class="p-userRegister__inputUnitWrap">
                         <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                            <input class="c-input p-userRegister__input u-w-100-sp" type="text" placeholder="大規模総合ＥＣサイトの開発"
+                            <input class="c-input p-userRegister__input u-w-100-sp" type="text"
+                                   placeholder="大規模総合ＥＣサイトの開発"
                                    name="name"
                                    value="{{ old('name') }}">
                             <span class="c-text p-userRegister__inputName">　</span>
@@ -38,13 +77,18 @@
                 {{--   p-userRegisterRow   --}}
 
                 <div class="p-userRegister__row">
-                    <span class="c-text--bold p-userRegister__title u-mb-5-sp">会社名</span>
+                    <span class="c-text--bold p-userRegister__title u-mb-5-sp">出勤回数</span>
                     <div class="p-userRegister__inputUnitWrap">
                         <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                            <input class="c-input p-userRegister__input u-w-100-sp" type="text" placeholder="株式会社Linew"
-                                   name="agent_name"
-                                   value="{{ old('agent_name') }}">
-                            <span class="c-text p-userRegister__inputName">　</span>
+                            <span class="c-text p-userRegister__inputName">週</span>
+                            <select class="c-input p-userRegister__input u-w-100-sp" name="weekly_attendance" id="">
+                                <option value=5>5</option>
+                                <option value=4>4</option>
+                                <option value=3>3</option>
+                                <option value=2>2</option>
+                                <option value=1>1</option>
+                            </select>
+                            <span class="c-text p-userRegister__inputName">回</span>
                         </div>
                     </div>
                 </div>
@@ -54,13 +98,13 @@
                     <span class="c-text--bold p-userRegister__title u-mb-5-sp">単価</span>
                     <div class="p-userRegister__inputUnitWrap--2col">
                         <div class="p-userRegister__inputUnit">
-                            <input class="c-input p-userRegister__input" type="text" placeholder="40"
+                            <input class="c-input p-userRegister__input" type="number" placeholder="40"
                                    name="min_unit_price"
                                    value="{{ old('min_unit_price') }}">
                             <span class="c-text p-userRegister__inputName">〜</span>
                         </div>
                         <div class="p-userRegister__inputUnit">
-                            <input class="c-input p-userRegister__input" type="text" placeholder="50"
+                            <input class="c-input p-userRegister__input" type="number" placeholder="50"
                                    name="max_unit_price"
                                    value="{{ old('max_unit_price') }}">
                             <span class="c-text p-userRegister__inputName">万円</span>
@@ -91,13 +135,13 @@
                     <span class="c-text--bold p-userRegister__title u-mb-5-sp">精算幅</span>
                     <div class="p-userRegister__inputUnitWrap--2col">
                         <div class="p-userRegister__inputUnit">
-                            <input class="c-input p-userRegister__input" type="text" placeholder="160"
+                            <input class="c-input p-userRegister__input" type="number" placeholder="160"
                                    name="min_operation_time"
                                    value="{{ old('min_operation_time') }}">
                             <span class="c-text p-userRegister__inputName">〜</span>
                         </div>
                         <div class="p-userRegister__inputUnit">
-                            <input class="c-input p-userRegister__input" type="text" placeholder="200"
+                            <input class="c-input p-userRegister__input" type="number" placeholder="200"
                                    name="max_operation_time"
                                    value="{{ old('max_operation_time') }}">
                             <span class="c-text p-userRegister__inputName">時間</span>
@@ -105,19 +149,6 @@
                     </div>
                 </div>
 
-                {{--   p-userRegisterRow   --}}
-
-                <div class="p-userRegister__row">
-                    <span class="c-text--bold p-userRegister__title u-mb-5-sp">最寄り駅</span>
-                    <div class="p-userRegister__inputUnitWrap">
-                        <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                            <input class="c-input p-userRegister__input" type="text" placeholder="渋谷"
-                                   name="station_name"
-                                   value="{{ old('station_name') }}">
-                            <span class="c-text p-userRegister__inputName">駅</span>
-                        </div>
-                    </div>
-                </div>
 
                 {{--   p-userRegisterRow   --}}
 
@@ -126,8 +157,7 @@
                     <div class="p-userRegister__inputUnitWrap">
                         <div class="p-userRegister__inputUnit--single u-w-50-pc">
                             <textarea class="c-input p-userRegister__input " rows="5" cols="60"
-                                      name="description" value="{{ old('description') }}">
-                            </textarea>
+                                      name="description">{{ old('description') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -138,8 +168,7 @@
                     <div class="p-userRegister__inputUnitWrap">
                         <div class="p-userRegister__inputUnit--single u-w-50-pc">
                             <textarea class="c-input p-userRegister__input u-w-100-sp" rows="5" cols="60"
-                                      name="required_condition" value="{{ old('required_condition') }}">
-                            </textarea>
+                                      name="required_condition">{{ old('required_condition') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -151,8 +180,7 @@
                     <div class="p-userRegister__inputUnitWrap">
                         <div class="p-userRegister__inputUnit--single u-w-50-pc">
                             <textarea class="c-input p-userRegister__input u-w-100-sp" rows="5" cols="60"
-                                      name="better_condition" value="{{ old('better_condition') }}">
-                            </textarea>
+                                      name="better_condition">{{ old('better_condition') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -164,8 +192,7 @@
                     <div class="p-userRegister__inputUnitWrap">
                         <div class="p-userRegister__inputUnit--single u-w-50-pc">
                             <textarea class="c-input p-userRegister__input u-w-100-sp" rows="5" cols="60"
-                                      name="feature" value="{{ old('feature') }}">
-                            </textarea>
+                                      name="feature">{{ old('feature') }}</textarea>
                         </div>
                     </div>
                 </div>
