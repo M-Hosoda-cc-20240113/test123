@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Station\Admin\Agent\Front;
+namespace App\Http\Requests\Admin\Station\Admin\Agent;
 
-use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\CanApply;
 
-class CreateApplicationRequest extends FormRequest
+class CreateAgentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,17 +24,16 @@ class CreateApplicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'project_id' => ['integer',new CanApply($this->input('project_id'))],
+            'name' => ['required','string','max:40'],
         ];
     }
 
-    /**
-     * @return string[]
-     */
     public function messages(): array
     {
         return [
-            'project_id.integer'     => '予期せぬ値が入力されました',
+          'name.required'   => '会社名を入力してください。',
+          'name.string'     => '予期せぬ値が入力されました。',
+          'name.max40'      => '会社名が長すぎます。',
         ];
     }
 }

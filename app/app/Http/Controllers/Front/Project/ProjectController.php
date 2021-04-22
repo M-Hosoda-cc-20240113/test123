@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front\Project;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Front\CreateApplicationRequest;
+use App\Http\Requests\Admin\Station\Admin\Agent\Front\CreateApplicationRequest;
 use App\Services\Application\ApplyProjectService\ApplyProjectService;
 use App\Services\Application\ProjectApplication\ProjectApplicationService;
 use App\Services\Project\ProjectDetail\ProjectDetailResponse;
@@ -39,7 +39,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\Front\CreateApplicationRequest $request
+     * @param \App\Http\Requests\Admin\Station\Admin\Agent\Front\CreateApplicationRequest $request
      * @param \App\Services\Application\ApplyProjectService\ApplyProjectService $apply_project_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Front\UpdateUserRequest;
+use App\Http\Requests\Admin\Station\Admin\Agent\Front\UpdateUserRequest;
 use App\Services\User\ShowEditUserForm\ShowEditUserFormService;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UpdateUser\UpdateUserService;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Station;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Station\CreateStationRequest;
 use App\Services\Area\AreaList\AreaListResponse;
 use App\Services\Area\AreaList\AreaListService;
 use App\Services\Station\CreateStation\CreateStationService;
@@ -41,11 +42,11 @@ class StationController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\Admin\Station\CreateStationRequest $request
      * @param \App\Services\Station\CreateStation\CreateStationService $create_station_service
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(Request $request, CreateStationService $create_station_service)
+    public function create(CreateStationRequest $request, CreateStationService $create_station_service)
     {
         $create_station_service->exec($request->all());
         return redirect()->route('station.list');
