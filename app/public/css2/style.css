@@ -625,6 +625,14 @@ img {
   }
 }
 
+.p-mainItem {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 3px;
+  border: 1px solid #cdcddf;
+  box-shadow: rgba(0, 0, 0, 0.04) 0 3px 1px;
+}
+
 .p-cardUnit, .p-cardUnit--col3 {
   display: flex;
   flex-wrap: wrap;
@@ -976,17 +984,34 @@ img {
   margin-bottom: 20px;
 }
 
+.p-formGroupUnit--2col__itemForSkill label {
+  width: 49%;
+}
+
 .p-formGroupUnit--2col__itemForSkill select {
-  width: 48%;
+  width: 100%;
   border: none;
   border-bottom: 1px solid #cdcddf;
   border-radius: 0;
 }
 
-@media screen and (max-width: 768px) {
-  .p-formGroupUnit--2col__itemForSkill select {
-    width: 48%;
-  }
+.p-formGroupUnit--2col__label {
+  position: relative;
+  display: block;
+  width: 200px;
+}
+
+.p-formGroupUnit--2col__label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: block;
+  width: 0;
+  height: 0;
+  margin: -2px 0 0 0;
+  border: 5px solid transparent;
+  border-top: 7px solid #42b5d1;
 }
 
 .p-formGroup {

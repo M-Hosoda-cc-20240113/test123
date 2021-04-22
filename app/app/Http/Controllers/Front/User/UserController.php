@@ -20,6 +20,14 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     /**
+     * UserController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function showEditForm(ShowEditUserFormService  $show_edit_user_form_service)
