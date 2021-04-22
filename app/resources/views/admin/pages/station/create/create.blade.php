@@ -43,16 +43,16 @@
                         <span class="c-text--bold p-userRegister__title u-mb-5-sp">エリア名</span>
                         <div class="p-userRegister__inputUnitWrap">
                             <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                                <select class="c-input p-userRegister__input u-w-100-sp mr-20" name="area_id" id="">
-                                    <option value=1>新宿区</option>
-                                    <option value=2>豊島区</option>
-                                    <option value=3>渋谷区</option>
-                                    <option value=4>杉並区</option>
-                                    <option value=5>目黒区</option>
-                                </select>
+                                <input class="c-input p-userRegister__input u-w-100-sp mr-20" list="area" name="area_name" type="text">
+                                <datalist id="area">
+                                    @foreach($response->getAreas() as $area)
+                                        <option value={{ $area->name }}>
+                                    @endforeach
+                                </datalist>
                             </div>
                         </div>
                     </div>
+
                     {{--   p-userRegisterRow   --}}
                     @include('atoms.Button', ['text' => '新規登録', 'class' => 'u-w-200px u-db u-m0a'])
                 </form>

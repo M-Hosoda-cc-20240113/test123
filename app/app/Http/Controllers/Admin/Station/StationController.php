@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\Station;
 
 use App\Http\Controllers\Controller;
+use App\Services\Area\AreaList\AreaListResponse;
+use App\Services\Area\AreaList\AreaListService;
 use App\Services\Station\CreateStation\CreateStationService;
 use App\Services\Station\StationList\StationListResponse;
 use App\Services\Station\StationList\StationListService;
@@ -27,9 +29,15 @@ class StationController extends Controller
     /**
      *
      */
-    public function showCreateForm()
+    public function showCreateForm(AreaListService $area_list_service)
     {
-        return view('admin.pages.station.create.create');
+        $response = new AreaListResponse();
+
+        $areas = $area_list_service->exec();
+
+        $response->setAreas($areas);
+
+        return view('admin.pages.station.create.create', ['response' => $response]);
     }
 
     /**
