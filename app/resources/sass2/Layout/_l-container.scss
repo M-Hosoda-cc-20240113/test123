@@ -15,6 +15,7 @@
   }
   $this: &;
 
+  // mainとsideberの2カラムの場合はこちらを使用する
   &--2col {
     @extend #{$this};
     display: flex;

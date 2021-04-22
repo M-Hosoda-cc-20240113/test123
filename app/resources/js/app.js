@@ -8,4 +8,6 @@ if (url === '/admin/users') user_list();
 
 // front
 import { index } from "./front/pages/index";
+import { user_skill_edit } from "./front/pages/user_skill_edit";
 if (url === '/') index();
+if (url === '/users/skills/edit') user_skill_edit();

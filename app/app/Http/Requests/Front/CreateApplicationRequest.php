@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Station\Admin\Agent\Front;
+namespace App\Http\Requests\Front;
 
 use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Foundation\Http\FormRequest;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Station\Admin\Agent\Front;
+namespace App\Http\Requests\Front;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;

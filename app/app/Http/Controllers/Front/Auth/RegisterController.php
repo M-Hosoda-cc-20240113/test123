@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Station\Admin\Agent\Front\RegisterUserRequest;
+use App\Http\Requests\Front\RegisterUserRequest;
 use App\Services\Application\ApplyProjectService\ApplyProjectService;
 use App\Services\User\RegisterUser\RegisterUserService;
 use App\Http\Controllers\Traits\RegistersUsers;
@@ -70,7 +70,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param \App\Http\Requests\Admin\Station\Admin\Agent\Front\RegisterUserRequest $request
+     * @param \App\Http\Requests\Front\RegisterUserRequest $request
      * @param \App\Services\Application\ApplyProjectService\ApplyProjectService $apply_project_service
      * @param \App\Services\User\RegisterUser\RegisterUserService $register_user_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector

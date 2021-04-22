@@ -185,6 +185,7 @@ return [
         App\Providers\RelLevelSkillUserServiceProvider::class,
         App\Providers\AgentServiceProvider::class,
         App\Providers\AreaServiceProvider::class,
+        App\Providers\LevelServiceProvider::class,
     ],
 
     /*

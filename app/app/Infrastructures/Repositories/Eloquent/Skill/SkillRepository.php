@@ -4,12 +4,12 @@ namespace App\Infrastructures\Repositories\Eloquent\Skill;
 
 use App\Models\Skill;
 use App\Services\Skill\SkillRepositoryInterface;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 class SkillRepository implements SkillRepositoryInterface
 {
   /**
-   * @inheritDoc 
+   * {@inheritDoc}
    */
   public function all(): Collection
   {
