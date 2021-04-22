@@ -43,17 +43,17 @@
         <li><a href="{{ route('assignment.list') }}"><span>稼働状況</span></a></li>
     @endif
 
-    {{-- エージェントリスト --}}
+    {{-- 案件元リスト --}}
     @if(url()->current() === route('agent.list'))
         <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
-        <li><a href="{{ route('agent.list') }}"><span>エージェント一覧</span></a></li>
+        <li><a href="{{ route('agent.list') }}"><span>案件元会社一覧</span></a></li>
     @endif
 
     {{-- エージェント登録 --}}
     @if(url()->current() === route('agent.create'))
         <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
-        <li><a href="{{ route('agent.list') }}"><span>エージェント一覧</span></a></li>
-        <li><a href="{{ route('agent.create') }}"><span>エージェント登録</span></a></li>
+        <li><a href="{{ route('agent.list') }}"><span>案件元会社一覧</span></a></li>
+        <li><a href="{{ route('agent.create') }}"><span>案件元会社新規登録</span></a></li>
     @endif
 
     {{-- 駅名リスト --}}

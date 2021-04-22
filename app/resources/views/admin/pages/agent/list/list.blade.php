@@ -6,7 +6,7 @@
 
 @extends('admin.layout')
 
-@section('title', 'エージェント一覧|Aegis')
+@section('title', '案件元会社一覧|Aegis')
 
 @section('body')
     @component('admin.header.header', ['href' => route('front.index')])

@@ -1,6 +1,6 @@
 @extends('front.layout')
 
-@section('title', 'エージェント登録|Aegis')
+@section('title', '新規案件元会社登録|Aegis')
 
 @section('body')
     @component('admin.header.header', ['href' => route('front.index')])
@@ -9,7 +9,7 @@
 <div class="Container mt-30">
     @include('admin.bread_crumb._BreadCrumb')
     <div class="l-container">
-        <h2 class="c-text fs-20">新規エージェント登録</h2>
+        <h2 class="c-text fs-20">新規案件元会社登録</h2>
         <hr class="Horizontal">
 
         @if($errors->all())
