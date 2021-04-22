@@ -1040,6 +1040,12 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+  .p-formGroupUnit--2col__label::before, .p-formGroupUnit--2col__label--after::before {
+    right: 3px;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .p-formGroupUnit--2col__label, .p-formGroupUnit--2col__label--after {
     width: 55%;
   }

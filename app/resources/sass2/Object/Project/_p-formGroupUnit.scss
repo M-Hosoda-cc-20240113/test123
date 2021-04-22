@@ -72,6 +72,9 @@
         margin: -2px 0 0 0;
         border: 5px solid transparent;
         border-top: 7px solid $primary-color;
+        @include max-screen($breakpoint-pc) {
+          right: 3px;
+        }
       }
       @include max-screen($breakpoint-pc) {
         width: 55%;

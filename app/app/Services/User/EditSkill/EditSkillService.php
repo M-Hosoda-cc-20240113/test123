@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Services\User\EditSkill;
+
+use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
+
+/**
+ * Class EditSkillService
+ * @package App\Services\User\EditSkill
+ */
+class EditSkillService
+{
+    /**
+     * @var RelLevelSkillUSerRepositoryInterface
+     */
+    private $rel_revel_skill_user_repository;
+
+    /**
+     * EditSkillService constructor.
+     * @param RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
+     */
+    public function __construct(RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository)
+    {
+        $this->rel_revel_skill_user_repository = $rel_revel_skill_user_repository;
+    }
+
+    public function exec()
+    {
+
+    }
+}
