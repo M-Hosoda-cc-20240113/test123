@@ -2,7 +2,18 @@
 
 namespace App\Services\Skill;
 
+
+use App\Models\Skill;
+use Illuminate\Support\Collection;
+
+/**
+ * Interface SkillRepositoryInterface
+ * @package App\Services\Skill
+ */
 interface SkillRepositoryInterface
 {
-  public function all();
+    /**
+     * @return Skill[]|Collection
+     */
+    public function all(): Collection;
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\UpdateUserRequest;
+use App\Services\User\ShowEditSkillForm\ShowEditSkillFormResponse;
+use App\Services\User\ShowEditSkillForm\ShowEditSkillFormService;
 use App\Services\User\ShowEditUserForm\ShowEditUserFormService;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UpdateUser\UpdateUserService;
@@ -17,6 +19,14 @@ use Illuminate\Support\Facades\Auth;
  */
 class UserController extends Controller
 {
+    /**
+     * UserController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -46,5 +56,16 @@ class UserController extends Controller
         $update_user_service->exec($parameter);
 
         return redirect()->route('home.mypage');
+    }
+
+    public function showEditSkillForm(ShowEditSkillFormService $show_edit_skill_form_service)
+    {
+        $response = $show_edit_skill_form_service->exec();
+        return view('front.pages.mypage.skill.edit', ['response' => $response]);
+    }
+
+    public function skillEdit()
+    {
+
     }
 }
