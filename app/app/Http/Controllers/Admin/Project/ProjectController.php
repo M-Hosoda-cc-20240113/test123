@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Admin\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\CreateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
-use App\Services\AdminProject\PositionSkillList\PositionSkillListResponse;
-use App\Services\AdminProject\PositionSkillList\PositionSkillListService;
+use App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormService;
 use App\Services\AdminProject\ProjectList\ProjectListResponse;
 use App\Services\AdminProject\ProjectList\ProjectListService;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailResponse;
@@ -17,7 +16,9 @@ class ProjectController extends Controller
     /**
      *
      * Admin project index
-     * @var array
+     *
+     * @param \App\Services\AdminProject\ProjectList\ProjectListService $project_list_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function list(ProjectListService $project_list_service)
     {
@@ -30,14 +31,9 @@ class ProjectController extends Controller
         return view('admin.pages.project.list.list', ['response' => $response]);
     }
 
-    public function showCreateForm(PositionSkillListService $position_skill_list_service)
+    public function showCreateForm(ShowCreateProjectFormService $create_project_form_service)
     {
-        $response = new PositionSkillListResponse();
-
-        $positionWithSkill = $position_skill_list_service->exec();
-
-        $response->setPositionSkillList($positionWithSkill);
-
+        $response = $create_project_form_service->exec();
         return view('admin.pages.project.create.create', ['response' => $response]);
     }
 

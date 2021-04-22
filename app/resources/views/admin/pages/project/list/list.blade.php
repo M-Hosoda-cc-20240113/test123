@@ -14,7 +14,7 @@
     @endcomponent
     <div class="Container mt-30">
       @include('admin.bread_crumb._BreadCrumb')
-      @include('admin.pages.station.list._RegularTable', ['response' => $response])
+      @include('admin.pages.project.list._RegularTable', ['response' => $response])
     </div>
 
     @include('admin.footer.footer')

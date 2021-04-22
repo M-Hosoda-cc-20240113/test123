@@ -74,8 +74,13 @@ class ProjectRepository implements ProjectRepositoryInterface
         ]);
         $skills = [$request['skill_id_1'],$request['skill_id_2'],$request['skill_id_3']];
         $positions = [$request['position_id_1'],$request['position_id_2'],$request['position_id_3']];
-            $project->skills()->sync($request['skill_id']);
-        $project->positions()->sync($request['position_id']);
+        foreach ($skills as $skill){
+            $project->skills()->sync($skill);
+        }
+        foreach ($positions as $position){
+            $project->positions()->sync($position);
+        }
+
         return $project;
     }
 
