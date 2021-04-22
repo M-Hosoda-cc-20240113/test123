@@ -1,23 +1,19 @@
 export function user_skill_edit() {
   // 要素
-  const rows = document.querySelectorAll( '.p-formGroupUnit--2col__itemForSkill');
+  const rows = document.querySelectorAll('.p-formGroupUnit--2col__itemForSkill');
   const add_button = document.querySelector('.js-add');
   const template = document.querySelector('template');
   const REGISTER_LIMIT = 10;
 
-  this.init();
-
-  // init
-  this.init = function() {
-    rows.forEach(function(row) {
-      row.addEventListener('click', (e) => {
-        // 擬似要素がクリックされた時起動
-        if (e.offsetX > row.offsetWidth) {
-          e.target.parentNode.removeChild(e.target);
-        }
-      });
+  // イベント設置
+  rows.forEach(function(row) {
+    row.addEventListener('click', (e) => {
+      // 擬似要素がクリックされた時起動
+      if (e.offsetX > row.offsetWidth) {
+        e.target.parentNode.removeChild(e.target);
+      }
     });
-  }
+  });
 
   try {
     add_button.addEventListener('click', (e) => {
