@@ -61,4 +61,11 @@
         <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
         <li><a href="{{ route('station.list') }}"><span>駅名一覧</span></a></li>
     @endif
+
+    {{-- 新規駅名登録 --}}
+    @if(url()->current() === route('station.create'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('station.list') }}"><span>駅名一覧</span></a></li>
+        <li><a href="{{ route('station.create') }}"><span>新規駅名登録</span></a></li>
+    @endif
 </ol>

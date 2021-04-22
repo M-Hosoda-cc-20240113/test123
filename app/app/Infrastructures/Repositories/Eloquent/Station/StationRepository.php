@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Collection;
 
 class StationRepository implements StationRepositoryInterface
 {
-  /**
-   * @inheritDoc
-   */
-  public function all(): Collection
-  {
-    return Station::all();
-  }
+    /**
+     * @inheritDoc
+     * station with area
+     */
+    public function all(): Collection
+    {
+        return Station::all();
+    }
 
     /**
      * @inheritDoc
@@ -22,8 +23,8 @@ class StationRepository implements StationRepositoryInterface
     public function create($request)
     {
         return Station::create([
-            'name'      => $request['name'],
-            'area_id'   => $request['area_id'],
+            'name' => $request['name'],
+            'area_id' => $request['area_id'],
         ]);
     }
 }

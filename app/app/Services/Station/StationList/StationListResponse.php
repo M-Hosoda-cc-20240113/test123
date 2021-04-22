@@ -16,19 +16,18 @@ class StationListResponse
    * Get the value of projects
    *
    * @return  Station[]
-   */ 
+   */
   public function getStations()
   {
     return $this->stations;
   }
 
-  /**
-   * Set the value of projects
-   *
-   * @param  Station[]  $projects
-   *
-   * @return  self
-   */ 
+    /**
+     * Set the value of projects
+     *
+     * @param \Illuminate\Support\Collection $stations
+     * @return  self
+     */
   public function setStations(Collection $stations)
   {
     $this->stations = $stations;

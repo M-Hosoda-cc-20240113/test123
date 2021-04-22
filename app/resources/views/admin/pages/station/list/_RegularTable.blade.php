@@ -1,20 +1,22 @@
 <table class="RegularTable">
-  <thead class="RegularTable__head">
+    <thead class="RegularTable__head">
     <tr class="RegularTable__headRow">
-      <th class="RegularTable__headRowItem">案件名</th>
-      <th class="RegularTable__headRowItem">登録日時</th>
-      <th class="RegularTable__headRowItem">アサイン可否</th>
+        <th class="RegularTable__headRowItem">駅名</th>
+        <th class="RegularTable__headRowItem">エリア名</th>
+        <th class="RegularTable__headRowItem">登録日</th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody class="RegularTable__body">
-    @foreach ($response->getProjects() as $project)
-    <tr class="RegularTable__bodyRow"
-        data-href="{{ route('project.detail', ['project_id' => $project->id])}}">
-      <td class="RegularTable__bodyRowItem">{{ $project->name ?? ''}}</td>
-      <td class="RegularTable__bodyRowItem">{{ ViewHelper::YmdReplace($project->created_at ?? '' )}}</td>
-      <td class="RegularTable__bodyRowItem--textCenter">{{ $project->decided ? '否' : '可'}}</td>
-    </tr>
+    <tbody class="RegularTable__body">
+    @foreach ($response->getStations() as $station)
+        <tr class="RegularTable__bodyRow">
+            <td class="RegularTable__bodyRowItem">{{ $station->name ?? ''}}駅</td>
+            <td class="RegularTable__bodyRowItem">{{ $station->area->name}}</td>
+            <td class="RegularTable__bodyRowItem">{{ ViewHelper::YmdReplace($station->created_at ?? '' )}}</td>
+        </tr>
     @endforeach
-  </tbody>
+    </tbody>
 </table>
+<div class="mt-30 pb-100">
+    <a href="{{ route('station.create.form') }}" class="RegularBtn w-30 m0a ">新規登録する</a>
+</div>

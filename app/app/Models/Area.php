@@ -30,12 +30,12 @@ class Area extends Model
     use HasFactory;
 
     /**
-     * 
+     *
      * Project Table relation
      * @var array
      */
     public function stations(): HasMany
     {
-        return $this->hasMany(Station::class);
+        return $this->hasMany(Station::class,);
     }
 }

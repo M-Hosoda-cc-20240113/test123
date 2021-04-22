@@ -16,6 +16,5 @@
         @include('admin.bread_crumb._BreadCrumb')
         @include('admin.pages.agent.list._RegularTable', ['response' => $response])
     </div>
-
     @include('admin.footer.footer')
 @endsection
