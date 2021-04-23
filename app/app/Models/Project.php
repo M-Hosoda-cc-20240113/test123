@@ -140,7 +140,7 @@ class Project extends Model
 
     public function agent(): BelongsTo
     {
-        return $this->BelongsTo(Agent::class, 'id');
+        return $this->BelongsTo(Agent::class, 'agent_id','id');
     }
 
     /**
@@ -150,6 +150,6 @@ class Project extends Model
      */
     public function station(): BelongsTo
     {
-        return $this->BelongsTo(Station::class, 'id');
+        return $this->BelongsTo(Station::class, 'station_id','id');
     }
 }
