@@ -1,7 +1,7 @@
 @php
-/**
- * @var \App\Services\Station\StationList\StationListResponse $response
- */
+    /**
+     * @var \App\Services\Agent\AgentList\AgentListResponse $response
+     */
 @endphp
 
 @extends('admin.layout')
@@ -13,8 +13,8 @@
         @include('admin.header._link_login_logout')
     @endcomponent
     <div class="Container mt-30">
-      @include('admin.bread_crumb._BreadCrumb')
-      @include('admin.pages.project.list._RegularTable', ['response' => $response])
+        @include('admin.bread_crumb._BreadCrumb')
+        @include('admin.pages.station.list._RegularTable', ['response' => $response])
     </div>
 
     @include('admin.footer.footer')

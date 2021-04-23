@@ -28,10 +28,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Agent extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+      'name',
+    ];
+
     /**
-     * 
+     *
      * Project Table relation
-     * @var array
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function projects(): HasMany
     {

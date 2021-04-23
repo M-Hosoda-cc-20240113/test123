@@ -29,13 +29,18 @@ class Area extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     /**
-     * 
+     *
      * Project Table relation
-     * @var array
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function stations(): HasMany
     {
-        return $this->hasMany(Station::class);
+        return $this->hasMany(Station::class,);
     }
 }

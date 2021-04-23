@@ -42,4 +42,30 @@
         <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
         <li><a href="{{ route('assignment.list') }}"><span>稼働状況</span></a></li>
     @endif
+
+    {{-- 案件元リスト --}}
+    @if(url()->current() === route('agent.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('agent.list') }}"><span>案件元会社一覧</span></a></li>
+    @endif
+
+    {{-- エージェント登録 --}}
+    @if(url()->current() === route('agent.create'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('agent.list') }}"><span>案件元会社一覧</span></a></li>
+        <li><a href="{{ route('agent.create') }}"><span>案件元会社新規登録</span></a></li>
+    @endif
+
+    {{-- 駅名リスト --}}
+    @if(url()->current() === route('station.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('station.list') }}"><span>駅名一覧</span></a></li>
+    @endif
+
+    {{-- 新規駅名登録 --}}
+    @if(url()->current() === route('station.create'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('station.list') }}"><span>駅名一覧</span></a></li>
+        <li><a href="{{ route('station.create') }}"><span>新規駅名登録</span></a></li>
+    @endif
 </ol>

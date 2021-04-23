@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Models\Project
@@ -71,6 +71,23 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'agent_id',
+        'station_id',
+        'name',
+        'min_unit_price',
+        'max_unit_price',
+        'min_operation_time',
+        'max_operation_time',
+        'description',
+        'required_condition',
+        'better_condition',
+        'work_start',
+        'work_end',
+        'weekly_attendance',
+        'feature',
+    ];
+
     /**
      *
      * Users Table relation
@@ -121,9 +138,9 @@ class Project extends Model
      * @var array
      */
 
-    public function agent(): HasOne
+    public function agent(): BelongsTo
     {
-        return $this->HasOne(Agent::class, 'id');
+        return $this->BelongsTo(Agent::class, 'id');
     }
 
     /**
@@ -131,8 +148,8 @@ class Project extends Model
      * stations Table relation
      * @var array
      */
-    public function station(): HasOne
+    public function station(): BelongsTo
     {
-        return $this->HasOne(Station::class, 'id');
+        return $this->BelongsTo(Station::class, 'id');
     }
 }

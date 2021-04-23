@@ -183,6 +183,8 @@ return [
         App\Providers\ApplicationServiceProvider::class,
         App\Providers\AssignmentServiceProvider::class,
         App\Providers\RelLevelSkillUserServiceProvider::class,
+        App\Providers\AgentServiceProvider::class,
+        App\Providers\AreaServiceProvider::class,
         App\Providers\LevelServiceProvider::class,
     ],
 
