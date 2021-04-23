@@ -53,6 +53,6 @@ class Station extends Model
 
     public function area(): BelongsTo
      {
-         return $this->belongsTo(Area::class,'area_id','id');
+         return $this->belongsTo(Area::class,'area_id', 'id');
      }
 }
