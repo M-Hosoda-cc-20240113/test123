@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Station\CreateStationRequest;
 use App\Services\Area\AreaList\AreaListResponse;
 use App\Services\Area\AreaList\AreaListService;
+use App\Services\Station\CreateStation\CreateStationParameter;
 use App\Services\Station\CreateStation\CreateStationService;
 use App\Services\Station\StationList\StationListResponse;
 use App\Services\Station\StationList\StationListService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StationController extends Controller
 {
@@ -45,10 +47,17 @@ class StationController extends Controller
      * @param \App\Http\Requests\Admin\Station\CreateStationRequest $request
      * @param \App\Services\Station\CreateStation\CreateStationService $create_station_service
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
      */
     public function create(CreateStationRequest $request, CreateStationService $create_station_service)
     {
-        $create_station_service->exec($request->all());
+        $parameter = new CreateStationParameter();
+        $parameter->setName($request->name);
+        $parameter->setArea($request->area_name);
+
+        DB::transaction(function () use ($create_station_service, $parameter) {
+            $create_station_service->exec($parameter);
+        });
         return redirect()->route('station.list');
     }
 }

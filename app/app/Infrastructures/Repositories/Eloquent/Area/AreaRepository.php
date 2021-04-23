@@ -6,10 +6,15 @@ namespace App\Infrastructures\Repositories\Eloquent\Area;
 
 use App\Models\Area;
 use App\Services\Area\AreaRepositoryInterface;
+use Illuminate\Support\Collection;
 
 class AreaRepository implements AreaRepositoryInterface
 {
-    public function all()
+    /**
+     * @inheritDoc
+     * @return \App\Models\Area[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function all(): Collection
     {
         return Area::all();
     }

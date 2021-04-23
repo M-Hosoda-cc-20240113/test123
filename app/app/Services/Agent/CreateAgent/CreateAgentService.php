@@ -19,8 +19,11 @@ class CreateAgentService
         $this->agent_repository = $agent_repository;
     }
 
-    public function exec($request)
+    /**
+     * @param $parameter
+     */
+    public function exec($parameter)
     {
-        $this->agent_repository->create($request);
+        $this->agent_repository->create($parameter);
     }
 }

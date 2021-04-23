@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Agent\CreateAgentRequest;
 use App\Services\Agent\AgentList\AgentListResponse;
 use App\Services\Agent\AgentList\AgentListService;
+use App\Services\Agent\CreateAgent\CreateAgentParameter;
 use App\Services\Agent\CreateAgent\CreateAgentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AgentController extends Controller
 {
@@ -39,10 +41,16 @@ class AgentController extends Controller
      * @param \App\Http\Requests\Admin\Agent\CreateAgentRequest $request
      * @param \App\Services\Agent\CreateAgent\CreateAgentService $create_agent_service
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
      */
     public function create(CreateAgentRequest $request, CreateAgentService $create_agent_service)
     {
-        $create_agent_service->exec($request->all());
+        $parameter = new CreateAgentParameter();
+        $parameter->setName($request->name);
+
+        DB::transaction(function () use ($create_agent_service ,$parameter) {
+            $create_agent_service->exec($parameter);
+        });
         return redirect()->route('agent.list');
     }
 }

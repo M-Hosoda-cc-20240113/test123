@@ -3,10 +3,10 @@
 namespace App\Infrastructures\Repositories\Eloquent\Project;
 
 use App\Models\Project;
-use App\Models\RelLevelSkillUser;
-use App\Models\Skill;
+use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class ProjectRepository implements ProjectRepositoryInterface
 {
@@ -52,35 +52,36 @@ class ProjectRepository implements ProjectRepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
+     * @throws \Throwable
      */
-    public function create($request): Project
+    public function create(CreateProjectParameter $parameter): Project
     {
-        $project = Project::create([
-            'agent_id'           => $request['agent_id'],
-            'station_id'         => $request['station_id'],
-            'name'               => $request['name'],
-            'min_unit_price'     => $request['min_unit_price'],
-            'max_unit_price'     => $request['max_unit_price'],
-            'min_operation_time' => $request['min_operation_time'],
-            'max_operation_time' => $request['max_operation_time'],
-            'description'        => $request['description'],
-            'required_condition' => $request['required_condition'],
-            'better_condition'   => $request['better_condition'],
-            'work_start'         => $request['work_start'],
-            'work_end'           => $request['work_end'],
-            'weekly_attendance'  => $request['weekly_attendance'],
-            'feature'            => $request['feature'],
-        ]);
-        $skills = [$request['skill_id_1'],$request['skill_id_2'],$request['skill_id_3']];
-        $positions = [$request['position_id_1'],$request['position_id_2'],$request['position_id_3']];
-        foreach ($skills as $skill){
-            $project->skills()->sync($skill);
-        }
-        foreach ($positions as $position){
-            $project->positions()->sync($position);
-        }
+        $project = new Project();
+        $project->agent_id = $parameter->getAgent();
+        $project->station_id = $parameter->getStation();
+        $project->name = $parameter->getName();
+        $project->min_unit_price = $parameter->getMinUnitPrice();
+        $project->max_unit_price = $parameter->getMaxUnitPrice();
+        $project->min_operation_time = $parameter->getMinOperationTime();
+        $project->max_operation_time = $parameter->getMaxOperationTime();
+        $project->description = $parameter->getDescription();
+        $project->required_condition = $parameter->getRequiredCondition();
+        $project->better_condition = $parameter->getBetterCondition();
+        $project->work_start = $parameter->getWorkStart();
+        $project->work_end = $parameter->getWorkEnd();
+        $project->weekly_attendance = $parameter->getWeeklyAttendance();
+        $project->feature = $parameter->getFeature();
+        $project->save();
 
+        $skills = [$parameter->getSkill1(), $parameter->getSkill2(), $parameter->getSkill3()];
+        foreach ($skills as $skill) {
+            $project->skills()->syncWithoutDetaching($skill);
+        }
+        $positions = [$parameter->getPosition1(), $parameter->getPosition2(), $parameter->getPosition3()];
+        foreach ($positions as $position) {
+            $project->positions()->syncWithoutDetaching($position);
+        }
         return $project;
     }
 

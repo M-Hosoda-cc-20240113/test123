@@ -3,6 +3,7 @@
 namespace App\Services\Project;
 
 use App\Models\Project;
+use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use Illuminate\Support\Collection;
 
 interface ProjectRepositoryInterface
@@ -11,10 +12,10 @@ interface ProjectRepositoryInterface
 
     /**
      * プロジェクト新規登録（Admin）
+     * @param CreateProjectParameter $parameter
      * @return Project
-     *
      */
-    public function create(array $request): Project;
+    public function create(CreateProjectParameter $parameter): Project;
 
     /**
      * プロジェクト詳細（Front）

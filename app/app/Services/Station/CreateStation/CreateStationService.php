@@ -13,13 +13,20 @@ class CreateStationService
      */
     private $station_repository;
 
+    /**
+     * CreateStationService constructor.
+     * @param \App\Services\Station\StationRepositoryInterface $station_repository
+     */
     public function __construct(StationRepositoryInterface $station_repository)
     {
         $this->station_repository = $station_repository;
     }
 
-    public function exec($request)
+    /**
+     * @param $parameter
+     */
+    public function exec($parameter)
     {
-        return $this->station_repository->create($request);
+        return $this->station_repository->create($parameter);
     }
 }

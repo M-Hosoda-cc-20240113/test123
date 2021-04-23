@@ -2,8 +2,10 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\Station;
 
+use App\Http\Requests\Admin\Station\CreateStationRequest;
 use App\Models\Area;
 use App\Models\Station;
+use App\Services\Station\CreateStation\CreateStationParameter;
 use App\Services\Station\StationRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -21,20 +23,13 @@ class StationRepository implements StationRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function create($request)
+    public function create(CreateStationParameter $parameter): void
     {
-        $area = Area::where('name',$request['area_name'])->get();
-        if(empty($area[0])){
-            $newArea = Area::create([
-                'name' => $request['area_name'],
-            ]);
-            $area_id = $newArea->id;
-        }else{
-            $area_id = $area[0]->id;
-        }
-        return Station::create([
-            'name' => $request['name'],
-            'area_id' => $area_id,
-        ]);
+        $station = new Station();
+        $area_name = $parameter->getArea();
+        $area = Area::firstOrCreate(['name' => $area_name]);
+        $station->name = $parameter->getName();
+        $station->area_id =  $area->id;
+        $station->save();
     }
 }

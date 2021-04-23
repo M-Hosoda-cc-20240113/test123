@@ -28,25 +28,29 @@ class CreateStationParameter
 
     /**
      * @param string $name
+     * @return \App\Services\Station\CreateStation\CreateStationParameter
      */
-    public function setName(string $name): void
+    public function setName(string $name): CreateStationParameter
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
-     * @return Area
+     * @return string
      */
-    public function getArea(): Area
+    public function getArea(): string
     {
         return $this->area;
     }
 
     /**
-     * @param Area $area
+     * @param string $area
+     * @return \App\Services\Station\CreateStation\CreateStationParameter
      */
-    public function setArea(Area $area): void
+    public function setArea(string $area): CreateStationParameter
     {
         $this->area = $area;
+        return $this;
     }
 }

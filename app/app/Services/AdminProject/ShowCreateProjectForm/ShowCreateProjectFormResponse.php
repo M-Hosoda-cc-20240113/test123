@@ -23,11 +23,13 @@ class ShowCreateProjectFormResponse
     }
 
     /**
-     * @param mixed $positions
+     * @param $positions
+     * @return \App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormResponse
      */
-    public function setPositions($positions)
+    public function setPositions($positions): ShowCreateProjectFormResponse
     {
         $this->positions = $positions;
+        return $this;
     }
 
     /**
@@ -41,9 +43,10 @@ class ShowCreateProjectFormResponse
     /**
      * @param mixed $skills
      */
-    public function setSkills($skills)
+    public function setSkills($skills): ShowCreateProjectFormResponse
     {
         $this->skills = $skills;
+        return $this;
     }
 
     /**
@@ -57,13 +60,14 @@ class ShowCreateProjectFormResponse
     /**
      * @param mixed $stations
      */
-    public function setStations($stations)
+    public function setStations($stations): ShowCreateProjectFormResponse
     {
         $this->stations = $stations;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return
      */
     public function getAgents()
     {
@@ -71,11 +75,13 @@ class ShowCreateProjectFormResponse
     }
 
     /**
-     * @param mixed $agents
+     * @param  $agents
+     * @return \App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormResponse
      */
-    public function setAgents($agents)
+    public function setAgents($agents): ShowCreateProjectFormResponse
     {
         $this->agents = $agents;
+        return $this;
     }
 
 }

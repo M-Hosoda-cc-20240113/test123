@@ -2,6 +2,8 @@
 
 namespace App\Services\Station;
 
+use App\Services\Station\CreateStation\CreateStationParameter;
+
 interface StationRepositoryInterface
 {
     /**
@@ -10,7 +12,7 @@ interface StationRepositoryInterface
     public function all();
 
     /**
-     * @param $request
+     * @param \App\Services\Station\CreateStation\CreateStationParameter $parameter
      */
-    public function create($request);
+    public function create(CreateStationParameter $parameter): void;
 }

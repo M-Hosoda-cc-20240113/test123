@@ -4,9 +4,15 @@ namespace App\Services\AdminProject\CreateProject;
 
 use App\Models\Agent;
 use App\Models\Station;
+use App\Models\Project;
 
 class CreateProjectParameter
 {
+    /**
+     * @var Project
+     */
+    private $project;
+
     /**
      * 案件名
      *
@@ -20,7 +26,7 @@ class CreateProjectParameter
     private $agent;
 
     /**
-     * @var
+     * @var int
      */
     private $station;
     /**
@@ -101,18 +107,42 @@ class CreateProjectParameter
     private $feature;
 
     /**
-     * 案件が決まっているかどうか
-     *
-     * @var bool
+     * @var int
      */
-    private $decided;
+    private $skill1;
+
+    /**
+     * @var int
+     */
+    private $skill2;
+
+    /**
+     * @var int
+     */
+    private $skill3;
+
+    /**
+     * @var int
+     */
+    private $position1;
+
+    /**
+     * @var int
+     */
+    private $position2;
+
+    /**
+     * @var int
+     */
+    private $position3;
+
 
     /**
      * Get 案件名
      *
      * @return  string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -124,10 +154,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setName(string $name)
+    public function setName(string $name): CreateProjectParameter
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -136,7 +165,7 @@ class CreateProjectParameter
      *
      * @return  int
      */
-    public function getMinUnitPrice()
+    public function getMinUnitPrice(): int
     {
         return $this->min_unit_price;
     }
@@ -148,10 +177,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setMinUnitPrice(int $min_unit_price)
+    public function setMinUnitPrice(int $min_unit_price): CreateProjectParameter
     {
         $this->min_unit_price = $min_unit_price;
-
         return $this;
     }
 
@@ -160,7 +188,7 @@ class CreateProjectParameter
      *
      * @return  int
      */
-    public function getMaxUnitPrice()
+    public function getMaxUnitPrice(): int
     {
         return $this->max_unit_price;
     }
@@ -172,10 +200,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setMaxUnitPrice(int $max_unit_price)
+    public function setMaxUnitPrice(int $max_unit_price): CreateProjectParameter
     {
         $this->max_unit_price = $max_unit_price;
-
         return $this;
     }
 
@@ -184,7 +211,7 @@ class CreateProjectParameter
      *
      * @return  int
      */
-    public function getMinOperationTime()
+    public function getMinOperationTime(): int
     {
         return $this->min_operation_time;
     }
@@ -196,10 +223,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setMinOperationTime(int $min_operation_time)
+    public function setMinOperationTime(int $min_operation_time): CreateProjectParameter
     {
         $this->min_operation_time = $min_operation_time;
-
         return $this;
     }
 
@@ -208,7 +234,7 @@ class CreateProjectParameter
      *
      * @return  int
      */
-    public function getMaxOperationTime()
+    public function getMaxOperationTime(): int
     {
         return $this->max_operation_time;
     }
@@ -220,10 +246,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setMaxOperationTime(int $max_operation_time)
+    public function setMaxOperationTime(int $max_operation_time): CreateProjectParameter
     {
         $this->max_operation_time = $max_operation_time;
-
         return $this;
     }
 
@@ -232,7 +257,7 @@ class CreateProjectParameter
      *
      * @return  string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -244,10 +269,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setDescription(string $description)
+    public function setDescription(string $description): CreateProjectParameter
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -256,7 +280,7 @@ class CreateProjectParameter
      *
      * @return  string
      */
-    public function getRequiredCondition()
+    public function getRequiredCondition(): string
     {
         return $this->required_condition;
     }
@@ -268,10 +292,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setRequiredCondition(string $required_condition)
+    public function setRequiredCondition(string $required_condition): CreateProjectParameter
     {
         $this->required_condition = $required_condition;
-
         return $this;
     }
 
@@ -280,7 +303,7 @@ class CreateProjectParameter
      *
      * @return  string
      */
-    public function getBetterCondition()
+    public function getBetterCondition(): string
     {
         return $this->better_condition;
     }
@@ -292,10 +315,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setBetterCondition(string $better_condition)
+    public function setBetterCondition(string $better_condition): CreateProjectParameter
     {
         $this->better_condition = $better_condition;
-
         return $this;
     }
 
@@ -304,7 +326,7 @@ class CreateProjectParameter
      *
      * @return  string
      */
-    public function getWorkStart()
+    public function getWorkStart(): string
     {
         return $this->work_start;
     }
@@ -316,10 +338,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setWorkStart(string $work_start)
+    public function setWorkStart(string $work_start): CreateProjectParameter
     {
         $this->work_start = $work_start;
-
         return $this;
     }
 
@@ -328,7 +349,7 @@ class CreateProjectParameter
      *
      * @return  string
      */
-    public function getWorkEnd()
+    public function getWorkEnd(): string
     {
         return $this->work_end;
     }
@@ -340,10 +361,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setWorkEnd(string $work_end)
+    public function setWorkEnd(string $work_end): CreateProjectParameter
     {
         $this->work_end = $work_end;
-
         return $this;
     }
 
@@ -352,7 +372,7 @@ class CreateProjectParameter
      *
      * @return  int
      */
-    public function getWeeklyAttendance()
+    public function getWeeklyAttendance(): int
     {
         return $this->weekly_attendance;
     }
@@ -364,10 +384,9 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setWeeklyAttendance(int $weekly_attendance)
+    public function setWeeklyAttendance(int $weekly_attendance): CreateProjectParameter
     {
         $this->weekly_attendance = $weekly_attendance;
-
         return $this;
     }
 
@@ -376,7 +395,7 @@ class CreateProjectParameter
      *
      * @return  string
      */
-    public function getFeature()
+    public function getFeature(): string
     {
         return $this->feature;
     }
@@ -388,64 +407,168 @@ class CreateProjectParameter
      *
      * @return  self
      */
-    public function setFeature(string $feature)
+    public function setFeature(string $feature): CreateProjectParameter
     {
         $this->feature = $feature;
-
         return $this;
     }
 
     /**
-     * Get the value of decided
-     */
-    public function getDecided(): int
-    {
-        return $this->decided;
-    }
-
-    /**
-     * Set the value of decided
-     *
-     * @param $decided
      * @return int
      */
-    public function setDecided($decided): int
-    {
-        $this->decided = $decided;
-
-        return $this;
-    }
-
-    /**
-     * @return Agent
-     */
-    public function getAgent(): Agent
+    public function getAgent(): int
     {
         return $this->agent;
     }
 
     /**
-     * @param Agent $agent
+     * @param int $agent
+     * @return \App\Services\AdminProject\CreateProject\CreateProjectParameter
      */
-    public function setAgent(Agent $agent): void
+    public function setAgent(int $agent): CreateProjectParameter
     {
         $this->agent = $agent;
+        return $this;
     }
 
     /**
-     * @return Station
+     * @return int
      */
-    public function getStation(): Station
+    public function getStation(): int
     {
         return $this->station;
     }
 
     /**
-     * @param Station $station
+     * @param int $station
+     * @return \App\Services\AdminProject\CreateProject\CreateProjectParameter
      */
-    public function setStation(Station $station): void
+    public function setStation(int $station): CreateProjectParameter
     {
         $this->station = $station;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSkill1(): int
+    {
+        return $this->skill1;
+    }
+
+    /**
+     * @param int $skill1
+     */
+    public function setSkill1(int $skill1): CreateProjectParameter
+    {
+        $this->skill1 = $skill1;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSkill2(): int
+    {
+        return $this->skill2;
+    }
+
+    /**
+     * @param int $skill2
+     * @return \App\Services\AdminProject\CreateProject\CreateProjectParameter
+     */
+    public function setSkill2(int $skill2): CreateProjectParameter
+    {
+        $this->skill2 = $skill2;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSkill3(): int
+    {
+        return $this->skill3;
+    }
+
+    /**
+     * @param int $skill3
+     * @return \App\Services\AdminProject\CreateProject\CreateProjectParameter
+     */
+    public function setSkill3(int $skill3): CreateProjectParameter
+    {
+        $this->skill3 = $skill3;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition1(): int
+    {
+        return $this->position1;
+    }
+
+    /**
+     * @param int $position1
+     */
+    public function setPosition1(int $position1): CreateProjectParameter
+    {
+        $this->position1 = $position1;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition2(): int
+    {
+        return $this->position2;
+    }
+
+    /**
+     * @param int $position2
+     */
+    public function setPosition2(int $position2): CreateProjectParameter
+    {
+        $this->position2 = $position2;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition3(): int
+    {
+        return $this->position3;
+    }
+
+    /**
+     * @param int $position3
+     */
+    public function setPosition3(int $position3): CreateProjectParameter
+    {
+        $this->position3 = $position3;
+        return $this;
+    }
+
+    /**
+     * @return Project
+     */
+    public function getProject(): Project
+    {
+        return $this->project;
+    }
+
+    /**
+     * @param Project $project
+     * @return \App\Services\AdminProject\CreateProject\CreateProjectParameter
+     */
+    public function setProject(Project $project): CreateProjectParameter
+    {
+        $this->project = $project;
+        return $this;
     }
 
 
