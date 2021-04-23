@@ -85,8 +85,9 @@ class ProjectRepository implements ProjectRepositoryInterface
         return $project;
     }
 
+
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function fetchCanApply()
     {
