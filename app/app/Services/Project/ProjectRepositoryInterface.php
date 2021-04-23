@@ -33,7 +33,6 @@ interface ProjectRepositoryInterface
 
     /**
      * 応募できるプロジェクトを取得
-     * @return \App\Models\Project
      */
     public function fetchCanApply();
 }

@@ -11,13 +11,13 @@ interface ApplicationRepositoryInterface
      * @return Application
      *
      */
-    public function all();
+    public function all(): Application;
 
     /**
      * 案件応募
-     * @param $id
+     * @param $project_id
      * @param $user
-     * @return Application
+     * @return void
      */
-    public function create($id,$user);
+    public function create($project_id,$user): void;
 }

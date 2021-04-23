@@ -36,7 +36,7 @@ class FetchTopService
   public function exec(): \App\Services\Top\FetchTopData\FetchTopResponse
   {
     $response = new FetchTopResponse();
-    $projects = $this->project_repository->all();
+    $projects = $this->project_repository->fetchCanApply();
     $response->setProjects($projects);
     $skills = $this->skill_repository->all();
     $response->setSkills($skills);
