@@ -16,8 +16,8 @@ interface ApplicationRepositoryInterface
     /**
      * 案件応募
      * @param $project_id
-     * @param $user
+     * @param \App\Services\Application\　 $user
      * @return void
      */
-    public function create($project_id,$user): void;
+    public function create($project_id,　$user): void;
 }
