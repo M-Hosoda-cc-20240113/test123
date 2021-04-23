@@ -17,7 +17,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function all(): Collection
     {
-        return User::all();
+        return User::where('is_admin', 0)->get();
     }
 
     /**
