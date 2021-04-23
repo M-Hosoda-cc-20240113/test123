@@ -39,6 +39,12 @@
                 @include('atoms.Tag', ['text' => $LevelSkill->name.'（'.$LevelSkill->level.'）', 'class' => 'mg-5'])
             @endforeach
         </td>
+        <th class="ProjectDetailTable__head">備考欄</th>
+        <td class="ProjectDetailTable__body">{{ $response->getUser()->remarks ?? '' }}</td>
+    </tr>
+    <tr class="ProjectDetailTable__row">
+        <th class="ProjectDetailTable__head">営業開始月</th>
+        <td class="ProjectDetailTable__body">{{ ViewHelper::YmdReplace($response->getUser()->operation_start_month ?? '' )}}</td>
     </tr>
     </tbody>
 </table>

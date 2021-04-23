@@ -11,6 +11,8 @@
       <th class="RegularTable__headRowItem">稼働中</th>
       <th class="RegularTable__headRowItem">電話番号</th>
       <th class="RegularTable__headRowItem">生年月日&nbsp;(年齢)</th>
+      <th class="RegularTable__headRowItem">備考欄</th>
+      <th class="RegularTable__headRowItem">営業開始月</th>
     </tr>
   </thead>
 
@@ -22,6 +24,8 @@
       <td class="RegularTable__bodyRowItem--textCenter">{{ $user->is_working ? '◎' : '-'}}</td>
       <td class="RegularTable__bodyRowItem">{{ $user->tel ?? '' }}</td>
       <td class="RegularTable__bodyRowItem">{{ ViewHelper::YmdReplace($user->birthday ?? '')}}（{{ ViewHelper::CountAge($user->birthday ?? '')}}）</td>
+      <td class="RegularTable__bodyRowItem">{{ $user->remarks ?? '' }}</td>
+      <td class="RegularTable__bodyRowItem">{{ ViewHelper::YmdReplace($user->operation_start_month ?? '' )}}</td>
     </tr>
     @endforeach
   </tbody>

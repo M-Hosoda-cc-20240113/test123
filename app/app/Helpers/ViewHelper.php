@@ -59,8 +59,11 @@ class ViewHelper
      */
     public static function YmdReplace(string $value)
     {
-        $date = new DateTime($value);
-        return date_format($date, 'Y/m/d');
+        if(!empty($value)){
+            $date = new DateTime($value);
+            return date_format($date, 'Y/m/d');
+        }
+        return "";
     }
 
     /**
