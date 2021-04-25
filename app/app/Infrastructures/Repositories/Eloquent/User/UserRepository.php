@@ -83,4 +83,22 @@ class UserRepository implements UserRepositoryInterface
             'password' => bcrypt($request['password']),
         ]);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findByEmail(string $email): ?User
+    {
+        return User::where('email_hash', $this->makeEmailHash($email))->first();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function changeEmail(User $user, string $wanna_change_email)
+    {
+        $user->email = $wanna_change_email;
+        $user->email_hash = self::makeEmailHash($wanna_change_email);
+        $user->save();
+    }
 }

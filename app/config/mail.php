@@ -87,6 +87,10 @@ return [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
+    'from_noreply' => [
+        'address' => env('MAIL_FOR_NOREPLY_FROM_ADDRESS', 'noreply_dev@teamroom.jp'),
+        'name' => env('MAIL_FOR_NOREPLY_FROM_NAME', 'チームルーム運営'),
+    ],
 
     /*
     |--------------------------------------------------------------------------

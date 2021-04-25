@@ -186,6 +186,7 @@ return [
         App\Providers\AgentServiceProvider::class,
         App\Providers\AreaServiceProvider::class,
         App\Providers\LevelServiceProvider::class,
+        App\Providers\EmailResetServiceProvider::class,
     ],
 
     /*
