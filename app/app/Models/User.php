@@ -63,6 +63,10 @@ use App\Notifications\PasswordResetNotification;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereIsAdmin($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePoints($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Project[] $project_app
+ * @property-read int|null $project_app_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Project[] $project_assign
+ * @property-read int|null $project_assign_count
  */
 class User extends Authenticatable
 {
