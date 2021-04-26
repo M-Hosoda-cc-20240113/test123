@@ -66,6 +66,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $user_count
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereAgentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereStationId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $user_app
+ * @property-read int|null $user_app_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $user_assign
+ * @property-read int|null $user_assign_count
  */
 class Project extends Model
 {

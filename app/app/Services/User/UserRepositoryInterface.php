@@ -46,4 +46,18 @@ interface UserRepositoryInterface
      * @throws \Throwable
      */
     public function update(UpdateUserParameter $parameter): void;
+
+    /**
+     * @param string $email
+     * @return User
+     */
+    public function findByEmail(string $email): ?User;
+
+    /**
+     * メールアドレス変更
+     *
+     * @param User $user
+     * @param string $wanna_change_email
+     */
+    public function changeEmail(User $user, string $wanna_change_email);
 }
