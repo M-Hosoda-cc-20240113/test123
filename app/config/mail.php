@@ -88,8 +88,8 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
     'from_noreply' => [
-        'address' => env('MAIL_FOR_NOREPLY_FROM_ADDRESS', 'noreply_dev@teamroom.jp'),
-        'name' => env('MAIL_FOR_NOREPLY_FROM_NAME', 'チームルーム運営'),
+        'address' => env('MAIL_FOR_NOREPLY_FROM_ADDRESS', 'noreply@aegis.jp'),
+        'name' => env('MAIL_FOR_NOREPLY_FROM_NAME', 'Aegis運営'),
     ],
 
     /*
