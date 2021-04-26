@@ -27,7 +27,7 @@
     <div class="l-main">
       <div class="p-mainItem">
         <p class="p-level2Heading">ユーザー情報</p>
-        <table class="p-sideColumnTable">
+        <table class="p-sideColumnTable u-mb-30">
           <tbody>
           <tr>
             <th>氏名</th>
@@ -53,7 +53,7 @@
         </table>
         {{--   ユーザー情報   --}}
 
-        <p class="p-level2Heading u-mt-30 u-mb-5">スキル</p>
+        <p class="p-level2Heading u-mb-5">スキル</p>
         <div class="u-mb-30">
           @foreach($response->getRelLevelSkillUser() as $level_skill)
             @include('atoms.Tag', ['text' => $level_skill->name.'（'.$level_skill->level.'）', 'class' => 'u-mr-5 u-mt-5'])
