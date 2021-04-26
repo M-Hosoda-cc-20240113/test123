@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services\AdminProject\EditProject;
+namespace App\Services\AdminProject\ShowEditProjectForm;
 
 
 use App\Services\Agent\AgentRepositoryInterface;
@@ -10,7 +10,7 @@ use App\Services\Project\ProjectRepositoryInterface;
 use App\Services\Skill\SkillRepositoryInterface;
 use App\Services\Station\StationRepositoryInterface;
 
-class ShowEditFormService
+class ShowEditProjectFormService
 {
     private $project_repository;
     private $position_repository;
@@ -38,11 +38,11 @@ class ShowEditFormService
 
     /**
      * @param $project_id
-     * @return \App\Services\AdminProject\EditProject\ShowEditFormResponse
+     * @return \App\Services\AdminProject\ShowEditProjectForm\ShowEditProjectFormResponse
      */
-    public function exec($project_id): ShowEditFormResponse
+    public function exec($project_id): ShowEditProjectFormResponse
     {
-        $response = new ShowEditFormResponse();
+        $response = new ShowEditProjectFormResponse();
         $project = $this->project_repository->findWithUsersAndAgentThroughApplicationOrAssignment($project_id);
         $positions = $this->position_repository->all();
         $skills = $this->skill_repository->all();

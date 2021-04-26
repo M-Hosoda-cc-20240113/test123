@@ -4,6 +4,7 @@ namespace App\Infrastructures\Repositories\Eloquent\Project;
 
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
+use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
@@ -82,6 +83,36 @@ class ProjectRepository implements ProjectRepositoryInterface
         foreach ($positions as $position) {
             $project->positions()->syncWithoutDetaching($position);
         }
+        return $project;
+    }
+
+    public function update(UpdateProjectParameter $parameter): Project
+    {
+        $project = Project::findOrFail($parameter->getProject());
+        $project->agent_id = $parameter->getAgent();
+        $project->station_id = $parameter->getStation();
+        $project->name = $parameter->getName();
+        $project->min_unit_price = $parameter->getMinUnitPrice();
+        $project->max_unit_price = $parameter->getMaxUnitPrice();
+        $project->min_operation_time = $parameter->getMinOperationTime();
+        $project->max_operation_time = $parameter->getMaxOperationTime();
+        $project->description = $parameter->getDescription();
+        $project->required_condition = $parameter->getRequiredCondition();
+        $project->better_condition = $parameter->getBetterCondition();
+        $project->work_start = $parameter->getWorkStart();
+        $project->work_end = $parameter->getWorkEnd();
+        $project->weekly_attendance = $parameter->getWeeklyAttendance();
+        $project->feature = $parameter->getFeature();
+        $project->save();
+
+        foreach ($parameter->getSkills() as $skill) {
+            $project->skills()->syncWithoutDetaching($skill);
+        }
+
+        foreach ($parameter->getPositions() as $position) {
+            $project->positions()->syncWithoutDetaching($position);
+        }
+
         return $project;
     }
 

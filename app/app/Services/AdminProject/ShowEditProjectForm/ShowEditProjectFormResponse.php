@@ -1,17 +1,13 @@
 <?php
 
 
-namespace App\Services\AdminProject\EditProject;
+namespace App\Services\AdminProject\ShowEditProjectForm;
 
 
 use App\Models\Project;
-use App\Models\Agent;
-use App\Models\Skill;
-use App\Models\Position;
-use App\Models\Station;
 use Illuminate\Support\Collection;
 
-class ShowEditFormResponse
+class ShowEditProjectFormResponse
 {
     /**
      * @var Project
@@ -48,9 +44,9 @@ class ShowEditFormResponse
 
     /**
      * @param \Illuminate\Support\Collection $agents
-     * @return ShowEditFormResponse
+     * @return ShowEditProjectFormResponse
      */
-    public function setAgents(Collection $agents): ShowEditFormResponse
+    public function setAgents(Collection $agents): ShowEditProjectFormResponse
     {
         $this->agents = $agents;
         return $this;
@@ -66,9 +62,9 @@ class ShowEditFormResponse
 
     /**
      * @param \Illuminate\Support\Collection $skills
-     * @return ShowEditFormResponse
+     * @return ShowEditProjectFormResponse
      */
-    public function setSkills(Collection $skills): ShowEditFormResponse
+    public function setSkills(Collection $skills): ShowEditProjectFormResponse
     {
         $this->skills = $skills;
         return $this;
@@ -84,9 +80,9 @@ class ShowEditFormResponse
 
     /**
      * @param \Illuminate\Support\Collection $positions
-     * @return ShowEditFormResponse
+     * @return ShowEditProjectFormResponse
      */
-    public function setPositions(Collection $positions): ShowEditFormResponse
+    public function setPositions(Collection $positions): ShowEditProjectFormResponse
     {
         $this->positions = $positions;
         return $this;
@@ -102,9 +98,9 @@ class ShowEditFormResponse
 
     /**
      * @param \Illuminate\Support\Collection $stations
-     * @return ShowEditFormResponse
+     * @return ShowEditProjectFormResponse
      */
-    public function setStations(Collection $stations): ShowEditFormResponse
+    public function setStations(Collection $stations): ShowEditProjectFormResponse
     {
         $this->stations = $stations;
         return $this;
@@ -120,9 +116,9 @@ class ShowEditFormResponse
 
     /**
      * @param Project $project
-     * @return \App\Services\AdminProject\EditProject\ShowEditFormResponse
+     * @return \App\Services\AdminProject\ShowEditProjectForm\ShowEditProjectFormResponse
      */
-    public function setProject(Project $project): ShowEditFormResponse
+    public function setProject(Project $project): ShowEditProjectFormResponse
     {
         $this->project = $project;
         return $this;

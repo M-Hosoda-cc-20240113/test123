@@ -20,7 +20,7 @@
             〜{{ ViewHelper::timeReplace( $response->getProject()->work_end ?? '' )}}</td>
         <th class="ProjectDetailTable__head">精算幅</th>
         <td class="ProjectDetailTable__body">{{ $response->getProject()->min_operation_time ?? ''}}
-            時間〜{{ $response->getProject()->max_operation_time ?? ''}}時間
+            〜{{ $response->getProject()->max_operation_time ?? ''}}時間
         </td>
     </tr>
     <tr class="ProjectDetailTable__row">

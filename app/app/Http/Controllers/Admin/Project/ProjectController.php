@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\CreateProjectRequest;
+use App\Http\Requests\Admin\Project\UpdateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
-use App\Services\AdminProject\EditProject\ShowEditFormService;
+use App\Services\AdminProject\ShowEditProjectForm\ShowEditProjectFormService;
 use App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormService;
 use App\Services\AdminProject\ProjectList\ProjectListResponse;
 use App\Services\AdminProject\ProjectList\ProjectListService;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailResponse;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailService;
+use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
+use App\Services\AdminProject\UpdateProject\UpdateProjectService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -104,7 +107,7 @@ class ProjectController extends Controller
         return redirect()->route('project.detail', ['project_id' => $project_id]);
     }
 
-    public function showEditForm(ShowEditFormService $show_edit_form_service, int $project_id)
+    public function showEditForm(ShowEditProjectFormService $show_edit_form_service, int $project_id)
     {
         $response = $show_edit_form_service->exec($project_id);
 //        dd($response);
@@ -117,15 +120,60 @@ class ProjectController extends Controller
         return view('admin.pages.project.edit.edit', ['response' => $response]);
     }
 
+
     /**
-     *
-     * Admin project edit
-     *
-     * @return string
+     * @param \App\Http\Requests\Admin\Project\UpdateProjectRequest $request
+     * @param \App\Services\AdminProject\UpdateProject\UpdateProjectService $update_project_service
+     * @param $project_id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
      */
-    public function edit()
+    public function edit(UpdateProjectRequest $request, UpdateProjectService $update_project_service,$project_id)
     {
-        return 'Projects edit';
+        $parameter = new UpdateProjectParameter();
+
+        $parameter->setProject($project_id);
+        $parameter->setAgent($request->agent_id ?? null);
+        $parameter->setStation($request->station_id ?? null);
+        $parameter->setName($request->name);
+        $parameter->setMinUnitPrice($request->min_unit_price ?? null);
+        $parameter->setMaxUnitPrice($request->max_unit_price ?? '');
+        $parameter->setMinOperationTime($request->min_operation_time ?? null);
+        $parameter->setMaxOperationTime($request->max_operation_time ?? null);
+        $parameter->setDescription($request->description ?? '');
+        $parameter->setRequiredCondition($request->required_condition ?? '');
+        $parameter->setBetterCondition($request->better_condition ?? '');
+        $parameter->setWorkStart($request->work_start ?? null);
+        $parameter->setWorkEnd($request->work_end ?? null);
+        $parameter->setWeeklyAttendance($request->weekly_attendance ?? null);
+        $parameter->setFeature($request->feature ?? '');
+
+        $skills = [];
+        for ($i=0; $i<3; $i++) {
+            $skill_id = 'skill_id_'.$i;
+            $skillRequest = $request->$skill_id;
+            if(!empty($skillRequest)){
+                $skills[] = $skillRequest;
+            }
+        }
+        $parameter->setSkills($skills);
+
+        $positions = [];
+        for ($i=0; $i<3; $i++) {
+            $position_id = 'position_id_'.$i;
+            $positionRequest = $request->$position_id;
+            if(!empty($positionRequest)){
+                $positions[] = $positionRequest;
+            }
+        }
+        $parameter->setPositions($positions);
+
+        $project = DB::transaction(function () use ($update_project_service, $parameter) {
+            return $update_project_service->exec($parameter);
+        });
+        $project_update_id = $project->id;
+
+        return redirect()->route('project.detail', ['project_id' => $project_update_id]);;
     }
 
     /**
