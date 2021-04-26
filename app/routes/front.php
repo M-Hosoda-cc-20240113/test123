@@ -58,6 +58,7 @@ Route::namespace('Auth')->prefix('password')->group(function () {
 });
 
 Route::namespace('Project')->prefix('project')->group(function () {
+    Route::get('/search', [ProjectController::class, 'search'])->name('front.project.search');
     Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('front.project.detail');
     Route::post('/application', [ProjectController::class, 'createApplication'])->name('front.project.app');
 });

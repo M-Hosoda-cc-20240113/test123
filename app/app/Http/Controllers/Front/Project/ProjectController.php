@@ -49,4 +49,8 @@ class ProjectController extends Controller
         $apply_project_service->exec($request->project_id, $user);
         return  redirect('/');
     }
+
+    public function search(Request $request): string
+    {
+    }
 }
