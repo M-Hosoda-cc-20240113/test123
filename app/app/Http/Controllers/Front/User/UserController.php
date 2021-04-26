@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\UpdateUserRequest;
+use App\Services\User\DeleteSkill\DeleteSkillService;
 use App\Services\User\EditSkill\UpdateSkillParameter;
 use App\Services\User\EditSkill\UpdateSkillService;
 use App\Services\User\ShowEditSkillForm\ShowEditSkillFormService;
@@ -76,17 +77,17 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function skillEdit(Request $request, UpdateSkillService $update_skill_service)
+    public function skillEdit(Request $request, UpdateSkillService $update_skill_service, DeleteSkillService $delete_skill_service)
     {
-        dd($request);
+        $user_id = Auth::id();
         $parameter = new UpdateSkillParameter();
-        $parameter->setUser(Auth::user());
-        $parameter->setSkills($request->skill_ids ?? '');
-        $parameter->setLevels($request->level_ids ?? '');
+        $parameter->setUser($user_id);
+        $parameter->setSkills($request->skill_ids ?? []);
+        $parameter->setLevels($request->level_ids ?? []);
 
-        DB::transaction(function () use ($update_skill_service, $parameter) {
-
-            return $update_skill_service->exec($parameter);
+        DB::transaction(function () use ($update_skill_service, $delete_skill_service, $user_id, $parameter) {
+            $delete_skill_service->deleteByUserId($user_id);
+            $update_skill_service->exec($parameter);
         });
 
         return redirect()->route('home.mypage');

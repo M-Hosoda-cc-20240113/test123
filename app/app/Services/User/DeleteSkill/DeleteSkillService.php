@@ -22,8 +22,8 @@ class DeleteSkillService
         $this->rel_revel_skill_user_repository = $rel_revel_skill_user_repository;
     }
 
-    public function deleteByUserId()
+    public function deleteByUserId($user_id): void
     {
-        $this->rel_revel_skill_user_repository->deleteByUserId();
+        $this->rel_revel_skill_user_repository->deleteByUserId($user_id);
     }
 }

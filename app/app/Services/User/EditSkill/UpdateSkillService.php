@@ -26,6 +26,6 @@ class UpdateSkillService
 
     public function exec(UpdateSkillParameter $parameter)
     {
-        $this->rel_revel_skill_user_repository->update($parameter);
+        $this->rel_revel_skill_user_repository->create($parameter);
     }
 }

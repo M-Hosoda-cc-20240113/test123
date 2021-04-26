@@ -32,10 +32,10 @@ class UpdateSkillParameter
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param int $user
      * @return UpdateSkillParameter
      */
-    public function setUser(User $user): UpdateSkillParameter
+    public function setUser(int $user): UpdateSkillParameter
     {
         $this->user = $user;
         return $this;
@@ -50,10 +50,10 @@ class UpdateSkillParameter
     }
 
     /**
-     * @param array $skills
+     * @param array|null $skills
      * @return UpdateSkillParameter
      */
-    public function setSkills(array $skills): UpdateSkillParameter
+    public function setSkills(?array $skills): UpdateSkillParameter
     {
         $this->skills = $skills;
         return $this;
@@ -68,10 +68,10 @@ class UpdateSkillParameter
     }
 
     /**
-     * @param array $levels
+     * @param array|null $levels
      * @return UpdateSkillParameter
      */
-    public function setLevels(array $levels): UpdateSkillParameter
+    public function setLevels(?array $levels): UpdateSkillParameter
     {
         $this->levels = $levels;
         return $this;

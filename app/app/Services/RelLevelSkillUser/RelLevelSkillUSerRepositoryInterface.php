@@ -18,5 +18,10 @@ interface RelLevelSkillUSerRepositoryInterface
      * @param \App\Services\User\EditSkill\UpdateSkillParameter $parameter
      * @return void
      */
-    public function update(UpdateSkillParameter $parameter): void;
+    public function create(UpdateSkillParameter $parameter): void;
+
+    /**
+     * @param $user_id
+     */
+    public function deleteByUserId($user_id): void;
 }

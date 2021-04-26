@@ -39,17 +39,17 @@
                 <template id="skill_row">
                     <div class="p-formGroupUnit--2col__itemForSkill">
                         <label class="p-formGroupUnit--2col__label" for="">
-                            <select name="skill_name" id="" class="c-input">
+                            <select name="skill_ids[]" id="" class="c-input">
                                 @foreach($response->getSkills() as $skill)
-                                    <option value="">{{ $skill->name }}</option>
+                                    <option value="{{ $skill->id }}">{{ $skill->name }}</option>
                                 @endforeach
                             </select>
                         </label>
 
                         <label class="p-formGroupUnit--2col__label--after" for="">
-                            <select name="skill_level" id="" class="c-input">
+                            <select name="level_ids[]" id="" class="c-input">
                                 @foreach($response->getLevels() as $level)
-                                    <option value="">{{ $level->level }}</option>
+                                    <option value="{{ $level->id }}">{{ $level->level }}</option>
                                 @endforeach
                             </select>
                         </label>

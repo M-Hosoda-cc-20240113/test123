@@ -24,20 +24,27 @@ class RelLevelSkillUserRepository implements RelLevelSkillUserRepositoryInterfac
     /**
      * @param \App\Services\User\EditSkill\UpdateSkillParameter $parameter
      */
-    public function update(UpdateSkillParameter $parameter): void
+    public function create(UpdateSkillParameter $parameter): void
     {
-        $user = $parameter->getUser();
+        $user_id = $parameter->getUser();
         $skill_level = array_combine($parameter->getSkills(), $parameter->getLevels());
 
         foreach ($skill_level as $skill_id => $level_id) {
-            $is_relLevelSkillUser = RelLevelSkillUser::where()->exists();
-            if(!$is_relLevelSkillUser){
                 $relLevelSkillUser = new RelLevelSkillUser();
-                $relLevelSkillUser->user_id = $user->id;
+                $relLevelSkillUser->user_id = $user_id;
                 $relLevelSkillUser->skill_id = $skill_id;
                 $relLevelSkillUser->level_id = $level_id;
                 $relLevelSkillUser->save();
-            }
         }
+    }
+
+    /**
+     * @param $user_id
+     * @return void 削除した件数
+     * @throws \Exception
+     */
+    public function deleteByUserId($user_id): void
+    {
+        RelLevelSkillUser::where('user_id',$user_id)->delete();
     }
 }
