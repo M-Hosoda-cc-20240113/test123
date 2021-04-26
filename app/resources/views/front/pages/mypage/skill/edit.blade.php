@@ -71,7 +71,7 @@
                             <div class="p-formGroupUnit--2col__itemForSkill">
 
                                 <label class="p-formGroupUnit--2col__label" for="">
-                                    <select name="skill_name" id="" class="c-input">
+                                    <select name="skill_ids[]" id="skill_id" class="c-input">
                                         @foreach($response->getSkills() as $skill)
                                             <option
                                                 value="{{ $skill->id }}" {{ $level_skill->name === $skill->name ? 'selected' : '' }}>{{ $skill->name }}</option>
@@ -80,7 +80,7 @@
                                 </label>
 
                                 <label class="p-formGroupUnit--2col__label--after" for="">
-                                    <select name="skill_level" id="" class="c-input">
+                                    <select name="level_ids[]" id="" class="c-input">
                                         @foreach($response->getLevels() as $level)
                                             <option
                                                 value="{{ $level->id }}" {{ $level_skill->level === $level->level ? 'selected' : '' }}>{{ $level->level }}</option>

@@ -4,17 +4,16 @@ namespace App\Http\Controllers\Front\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\UpdateUserRequest;
-use App\Services\User\EditSkill\EditSkillParameter;
-use App\Services\User\EditSkill\EditSkillService;
-use App\Services\User\ShowEditSkillForm\ShowEditSkillFormResponse;
+use App\Services\User\EditSkill\UpdateSkillParameter;
+use App\Services\User\EditSkill\UpdateSkillService;
 use App\Services\User\ShowEditSkillForm\ShowEditSkillFormService;
 use App\Services\User\ShowEditUserForm\ShowEditUserFormService;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UpdateUser\UpdateUserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class UserController
@@ -73,14 +72,22 @@ class UserController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Services\User\EditSkill\EditSkillService $edit_skill_service
+     * @param \App\Services\User\EditSkill\UpdateSkillService $update_skill_service
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
      */
-    public function skillEdit(Request $request, EditSkillService $edit_skill_service)
+    public function skillEdit(Request $request, UpdateSkillService $update_skill_service)
     {
         dd($request);
-        $parameter = new EditSkillParameter;
+        $parameter = new UpdateSkillParameter();
+        $parameter->setUser(Auth::user());
+        $parameter->setSkills($request->skill_ids ?? '');
+        $parameter->setLevels($request->level_ids ?? '');
 
+        DB::transaction(function () use ($update_skill_service, $parameter) {
+
+            return $update_skill_service->exec($parameter);
+        });
 
         return redirect()->route('home.mypage');
     }
