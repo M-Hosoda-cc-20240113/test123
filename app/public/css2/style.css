@@ -923,11 +923,14 @@ img {
   border-bottom: 2px solid #42b5d1;
   font-size: 1.75rem;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .p-sideColumnTable {
   width: 100%;
   border-collapse: collapse;
+  display: block;
+  overflow-x: scroll;
 }
 
 .p-sideColumnTable tr {
@@ -952,6 +955,7 @@ img {
 
 .p-sideColumnTable td {
   padding: 10px;
+  width: 100%;
 }
 
 .p-formGroupUnit, .p-formGroupUnit--2col {

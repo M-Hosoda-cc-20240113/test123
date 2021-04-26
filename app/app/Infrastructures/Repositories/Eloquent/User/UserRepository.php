@@ -17,7 +17,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function all(): Collection
     {
-        return User::all();
+        return User::where('is_admin', 0)->get();
     }
 
     /**
@@ -82,5 +82,23 @@ class UserRepository implements UserRepositoryInterface
             'email_hash' => hash(config('app.hash_email.algo'), $request['email'] . config('app.hash_email.salt')),
             'password' => bcrypt($request['password']),
         ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findByEmail(string $email): ?User
+    {
+        return User::where('email_hash', $this->makeEmailHash($email))->first();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function changeEmail(User $user, string $wanna_change_email)
+    {
+        $user->email = $wanna_change_email;
+        $user->email_hash = self::makeEmailHash($wanna_change_email);
+        $user->save();
     }
 }

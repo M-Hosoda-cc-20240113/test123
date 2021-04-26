@@ -36,17 +36,23 @@ Route::namespace('User')->prefix('users')->group(function () {
     Route::post('/skills/edit', [UserController::class, 'skillEdit'])->name('front.user.skill.edit');
 });
 
-Route::namespace("Auth")->group(function() {
-  Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-  Route::post('register', [RegisterController::class, 'register'])->name('auth.register');
-  Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-  Route::post('login', [LoginController::class, 'login']);
-  Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::namespace('Email')->prefix('email')->group(function () {
+    Route::get('reset', 'EmailController@showEditForm')->name('email.request');
+    Route::post('sendEmail', 'EmailController@sendChangeEmail')->name('email.sendEmail');
+    Route::get('reset/{token}/{email_hash}', 'EmailController@changeEmail')->name('email.reset');
+});
+
+Route::namespace("Auth")->group(function () {
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [RegisterController::class, 'register'])->name('auth.register');
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 Route::namespace('Auth')->prefix('password')->group(function () {
     Route::get('reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-    Route::post('reset', [ResetPasswordController::class,'reset']);
+    Route::post('reset', [ResetPasswordController::class, 'reset']);
     Route::post('email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
     Route::get('reset/{token}/{email_hash}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 });
