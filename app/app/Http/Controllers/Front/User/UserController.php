@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\UpdateUserRequest;
+use App\Http\Requests\Front\UpdateUserSkillRequest;
 use App\Services\User\DeleteSkill\DeleteSkillService;
 use App\Services\User\EditSkill\UpdateSkillParameter;
 use App\Services\User\EditSkill\UpdateSkillService;
@@ -72,12 +73,13 @@ class UserController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\Front\UpdateUserSkillRequest $request
      * @param \App\Services\User\EditSkill\UpdateSkillService $update_skill_service
+     * @param \App\Services\User\DeleteSkill\DeleteSkillService $delete_skill_service
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function skillEdit(Request $request, UpdateSkillService $update_skill_service, DeleteSkillService $delete_skill_service)
+    public function skillEdit(UpdateUserSkillRequest $request, UpdateSkillService $update_skill_service, DeleteSkillService $delete_skill_service)
     {
         $user_id = Auth::id();
         $parameter = new UpdateSkillParameter();
