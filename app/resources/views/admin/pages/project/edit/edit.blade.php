@@ -29,10 +29,9 @@
                     <div class="p-userRegister__inputUnitWrap">
                         <div class="p-userRegister__inputUnit--single u-w-50-pc">
                             <select class="c-input p-userRegister__input u-w-100-sp" name="agent_id" id="">
-                                <option
-                                    value={{ $response->getProject()->agent->id ?? ''}}>{{ $response->getProject()->agent->name ?? ''}}</option>
                                 @foreach($response->getAgents() as $agent)
-                                    <option value={{ $agent->id ?? ''}}>{{ $agent->name ?? ''}}</option>
+                                    <option
+                                        value={{ $agent->id ?? ''}} {{ $response->getProject()->agent->id === $agent->id ? 'selected' : '' }}>{{ $agent->name ?? ''}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -46,10 +45,9 @@
                     <div class="p-userRegister__inputUnitWrap">
                         <div class="p-userRegister__inputUnit--single u-w-50-pc">
                             <select class="c-input p-userRegister__input u-w-100-sp" name="station_id" id="">
-                                <option
-                                    value={{ $response->getProject()->station->id ?? ''}}>{{ $response->getProject()->station->name ?? ''}}</option>
                                 @foreach($response->getStations() as $station)
-                                    <option value={{ $station->id ?? ''}}>{{ $station->name ?? ''}}</option>
+                                    <option
+                                        value={{ $station->id ?? ''}} {{ $response->getProject()->station->id === $station->id ? 'selected' : '' }}>{{ $station->name ?? ''}}</option>
                                 @endforeach
                             </select>
                             <span class="c-text p-userRegister__inputName">駅</span>
@@ -79,13 +77,10 @@
                         <div class="p-userRegister__inputUnit--single u-w-50-pc">
                             <span class="c-text p-userRegister__inputName">週</span>
                             <select class="c-input p-userRegister__input u-w-100-sp" name="weekly_attendance" id="">
-                                <option
-                                    value="{{ $response->getProject()->weekly_attendance ?? ''}}">{{ $response->getProject()->weekly_attendance ?? ''}}</option>
-                                <option value=5>5</option>
-                                <option value=4>4</option>
-                                <option value=3>3</option>
-                                <option value=2>2</option>
-                                <option value=1>1</option>
+                                @for($i = 1; $i<6; $i++ )
+                                    <option
+                                        value={{ $i }} {{ $response->getProject()->weekly_attendance === $i ? 'selected' : '' }}>{{ $i }}</option>
+                                @endfor
                             </select>
                             <span class="c-text p-userRegister__inputName">回</span>
                         </div>
@@ -100,10 +95,9 @@
                             <div class="p-userRegister__inputUnit">
                                 <select class="c-input p-userRegister__input u-w-100-sp" name="position_id_{{ $key }}"
                                         id="">
-                                    <option
-                                        value="{{ $projectPosition->id ?? ''}}">{{ $projectPosition->name ?? ''}}</option>
                                     @foreach($response->getPositions() as $position)
-                                        <option value={{ $position->id ?? ''}}>{{ $position->name ?? ''}}</option>
+                                        <option
+                                            value={{ $position->id ?? ''}} {{ $projectPosition->id === $position->id ? 'selected' : '' }}>{{ $position->name ?? ''}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -117,10 +111,11 @@
                     <div class="p-userRegister__inputUnitWrap--2col">
                         @foreach($response->getProject()->skills as $key => $projectSkill)
                             <div class="p-userRegister__inputUnit">
-                                <select class="c-input p-userRegister__input u-w-100-sp" name="skill_id_{{ $key }}" id="">
-                                    <option value="{{ $projectSkill->id ?? ''}}">{{ $projectSkill->name ?? ''}}</option>
+                                <select class="c-input p-userRegister__input u-w-100-sp" name="skill_id_{{ $key }}"
+                                        id="">
                                     @foreach($response->getSkills() as $skill)
-                                        <option value={{ $skill->id ?? ''}}>{{ $skill->name ?? ''}}</option>
+                                        <option
+                                            value={{ $skill->id ?? ''}} {{ $projectSkill->id === $skill->id ? 'selected' : '' }}>{{ $skill->name ?? ''}}</option>
                                     @endforeach
                                 </select>
                             </div>
