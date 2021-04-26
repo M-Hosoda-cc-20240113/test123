@@ -21,10 +21,10 @@ class ShowCreateProjectFormService
 
     /**
      * ShowCreateProjectFormService constructor.
-     * @param $position_repository
-     * @param $skill_repository
-     * @param $station_repository
-     * @param $agent_repository
+     * @param \App\Services\Position\PositionRepositoryInterface $position_repository
+     * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
+     * @param \App\Services\Station\StationRepositoryInterface $station_repository
+     * @param \App\Services\Agent\AgentRepositoryInterface $agent_repository
      */
     public function __construct(
         PositionRepositoryInterface $position_repository,

@@ -13,7 +13,8 @@
             <hr class="Horizontal">
             @include('admin.pages.project.detail._ProjectDetailTable', ['response' => $response])
         </div>
-        @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 m0a'])
+        @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 m0a', 'link' => route('project.edit', ['project_id' => $response->getProject()->id])])
+{{--        <a class="RegularList__itemInner" href="{{ route('station.list') }}">駅マスタ新規登録</a>--}}
     </div>
     @include('admin.footer.footer')
 @endsection

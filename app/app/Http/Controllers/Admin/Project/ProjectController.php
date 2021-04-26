@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\CreateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
+use App\Services\AdminProject\EditProject\ShowEditFormService;
 use App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormService;
 use App\Services\AdminProject\ProjectList\ProjectListResponse;
 use App\Services\AdminProject\ProjectList\ProjectListService;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailResponse;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
@@ -33,12 +35,6 @@ class ProjectController extends Controller
         return view('admin.pages.project.list.list', ['response' => $response]);
     }
 
-    public function showCreateForm(ShowCreateProjectFormService $create_project_form_service)
-    {
-        $response = $create_project_form_service->exec();
-        return view('admin.pages.project.create.create', ['response' => $response]);
-    }
-
     /**
      *
      * Admin project detail
@@ -47,15 +43,25 @@ class ProjectController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function detail(ProjectDetailService $project_detail_service, int $id)
+    public function detail(ProjectDetailService $project_detail_service, int $project_id)
     {
         $response = new ProjectDetailResponse();
 
-        $project = $project_detail_service->exec($id);
+        $project = $project_detail_service->exec($project_id);
 
         $response->setProject($project);
 
         return view('admin.pages.project.detail.detail', ['response' => $response]);
+    }
+
+    /**
+     * @param \App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormService $create_project_form_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function showCreateForm(ShowCreateProjectFormService $create_project_form_service)
+    {
+        $response = $create_project_form_service->exec();
+        return view('admin.pages.project.create.create', ['response' => $response]);
     }
 
     /**
@@ -96,6 +102,19 @@ class ProjectController extends Controller
         });
         $project_id = $project->id;
         return redirect()->route('project.detail', ['project_id' => $project_id]);
+    }
+
+    public function showEditForm(ShowEditFormService $show_edit_form_service, int $project_id)
+    {
+        $response = $show_edit_form_service->exec($project_id);
+//        dd($response);
+//        dd($response->getPositions());
+//        foreach ($response->getProject()->positions as $key => $position)
+//        {
+//            dd("project_id_".$key.' = '.$position->id);
+//        }
+
+        return view('admin.pages.project.edit.edit', ['response' => $response]);
     }
 
     /**
