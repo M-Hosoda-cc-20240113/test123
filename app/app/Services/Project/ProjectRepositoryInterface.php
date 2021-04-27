@@ -46,9 +46,16 @@ interface ProjectRepositoryInterface
 
 
     /**
-     * 案件終了処理
+     * 応募終了処理
      * @param $project_id
      * @return \App\Models\Project
      */
-    public function finish($project_id): Project;
+    public function close($project_id): Project;
+
+    /**
+     * 応募開始処理
+     * @param $project_id
+     * @return \App\Models\Project
+     */
+    public function open($project_id): Project;
 }

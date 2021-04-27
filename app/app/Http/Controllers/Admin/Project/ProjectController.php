@@ -7,8 +7,10 @@ use App\Http\Requests\Admin\Project\CreateProjectRequest;
 use App\Http\Requests\Admin\Project\UpdateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
-use App\Services\AdminProject\FinishProject\ProjectFinishService;
+use App\Services\AdminProject\TggleProjectDisplay\ProjectCloseService;
 use App\Services\AdminProject\DeletePosition\DeletePositionService;
+use App\Services\AdminProject\TggleProjectDisplay\ProjectOpenService;
+use App\Services\AdminProject\TggleProjectDisplay\ProjectDisplayToggleService;
 use App\Services\AdminProject\ShowEditProjectForm\ShowEditProjectFormService;
 use App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormService;
 use App\Services\AdminProject\ProjectList\ProjectListResponse;
@@ -46,7 +48,7 @@ class ProjectController extends Controller
      * Admin project detail
      *
      * @param ProjectDetailService $project_detail_service
-     * @param int $id
+     * @param int $project_id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function detail(ProjectDetailService $project_detail_service, int $project_id)
@@ -181,9 +183,13 @@ class ProjectController extends Controller
         return 'Projects delete';
     }
 
-    public function finish(ProjectFinishService $project_finish_service,int $project_id)
-    {
-        $project_finish_service->exec($project_id);
+    /**
+     * @param \App\Services\AdminProject\TggleProjectDisplay\ProjectDisplayToggleService $project_toggle_service
+     * @param int $project_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function toggle(ProjectDisplayToggleService $project_display_toggle_service, int $project_id) {
+        $project_display_toggle_service->exec($project_id);
         return redirect()->route('project.list');
     }
 }
