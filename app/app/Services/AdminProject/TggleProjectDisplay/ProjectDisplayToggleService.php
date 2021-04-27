@@ -18,6 +18,9 @@ class ProjectDisplayToggleService
         $this->project_repository = $project_repository;
     }
 
+    /**
+     * @param int $project_id
+     */
     public function exec(int $project_id)
     {
         $project = $this->project_repository->findWithUsersAndAgentThroughApplicationOrAssignment($project_id);
