@@ -24,20 +24,20 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'                  => ['required','string','max:100'],
-            'agent_id'              => ['nullable','integer'],
-            'station_id'            => ['nullable','integer'],
-            'min_unit_price'        => ['nullable','integer'],
-            'max_unit_price'        => ['required','integer'],
-            'min_operation_time'    => ['nullable','integer'],
-            'max_operation_time'    => ['required','integer'],
-            'description'           => ['required','string','max:500'],
-            'required_condition'    => ['nullable','string','max:500'],
-            'better_condition'      => ['nullable','string','max:500'],
-            'work_start'            => ['nullable','string','max:6'],
-            'work_end'              => ['nullable','string','max:6'],
-            'weekly_attendance'     => ['nullable','integer','between:1,5'],
-            'feature'               => ['nullable','string','max:500'],
+            'name'                  => ['required', 'string', 'max:100'],
+            'agent_id'              => ['nullable', 'integer'],
+            'station_id'            => ['nullable', 'integer'],
+            'min_unit_price'        => ['nullable', 'integer'],
+            'max_unit_price'        => ['required', 'integer'],
+            'min_operation_time'    => ['nullable', 'integer'],
+            'max_operation_time'    => ['required', 'integer'],
+            'description'           => ['required', 'string', 'max:500'],
+            'required_condition'    => ['nullable', 'string', 'max:500'],
+            'better_condition'      => ['nullable', 'string', 'max:500'],
+            'work_start'            => ['nullable', 'string', 'max:6'],
+            'work_end'              => ['nullable', 'string', 'max:6'],
+            'weekly_attendance'     => ['nullable', 'integer', 'between:1,5'],
+            'feature'               => ['nullable', 'string', 'max:500'],
         ];
     }
 

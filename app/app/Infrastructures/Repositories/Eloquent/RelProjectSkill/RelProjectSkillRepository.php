@@ -16,6 +16,6 @@ class RelProjectSkillRepository implements RelProjectSkillRepositoryInterface
      */
     public function deleteByProjectId($project_id): void
     {
-        RelProjectSkill::where('project_id',$project_id)->delete();
+        RelProjectSkill::where('project_id', $project_id)->delete();
     }
 }

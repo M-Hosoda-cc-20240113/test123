@@ -4,13 +4,13 @@
 namespace App\Services\AdminProject\UpdateProject;
 
 
-use App\Infrastructures\Repositories\Eloquent\Project\ProjectRepository;
+use App\Models\Project;
 use App\Services\Project\ProjectRepositoryInterface;
 
 class UpdateProjectService
 {
     /**
-     * @var
+     * @var ProjectRepositoryInterface
      */
     private $project_repository;
 
@@ -23,7 +23,11 @@ class UpdateProjectService
         $this->project_repository = $project_repository;
     }
 
-    public function exec(UpdateProjectParameter $parameter)
+    /**
+     * @param \App\Services\AdminProject\UpdateProject\UpdateProjectParameter $parameter
+     * @return \App\Models\Project
+     */
+    public function exec(UpdateProjectParameter $parameter): Project
     {
         return $this->project_repository->update($parameter);
     }

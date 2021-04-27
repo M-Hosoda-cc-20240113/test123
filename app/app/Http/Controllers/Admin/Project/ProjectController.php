@@ -123,8 +123,13 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function edit(UpdateProjectRequest $request, UpdateProjectService $update_project_service, DeleteSkillService $delete_skill_service, DeletePositionService $delete_position_service , $project_id)
-    {
+    public function edit(
+        UpdateProjectRequest $request,
+        UpdateProjectService $update_project_service,
+        DeleteSkillService $delete_skill_service,
+        DeletePositionService $delete_position_service,
+        $project_id
+    ) {
         $parameter = new UpdateProjectParameter();
 
         $parameter->setProjectId($project_id);
@@ -146,7 +151,13 @@ class ProjectController extends Controller
         $parameter->setSkillids($request->skill_ids ?? []);
         $parameter->setPositionids($request->position_ids ?? []);
 
-        $project = DB::transaction(function () use ($update_project_service, $delete_position_service, $parameter, $delete_skill_service, $project_id) {
+        $project = DB::transaction(function () use (
+            $update_project_service,
+            $delete_position_service,
+            $parameter,
+            $delete_skill_service,
+            $project_id
+        ) {
             $delete_position_service->deleteByProjectId($project_id);
             $delete_skill_service->deleteByProjectId($project_id);
             return $update_project_service->exec($parameter);

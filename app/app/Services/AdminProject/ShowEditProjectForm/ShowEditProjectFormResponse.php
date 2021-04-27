@@ -4,7 +4,11 @@
 namespace App\Services\AdminProject\ShowEditProjectForm;
 
 
+use App\Models\Agent;
+use App\Models\Position;
 use App\Models\Project;
+use App\Models\Skill;
+use App\Models\Station;
 use Illuminate\Support\Collection;
 
 class ShowEditProjectFormResponse
@@ -15,22 +19,22 @@ class ShowEditProjectFormResponse
     private $project;
 
     /**
-     * @var
+     * @var Collection
      */
     private $agents;
 
     /**
-     * @var
+     * @var Collection
      */
     private $skills;
 
     /**
-     * @var
+     * @var Collection
      */
     private $positions;
 
     /**
-     * @var
+     * @var Collection
      */
     private $stations;
 

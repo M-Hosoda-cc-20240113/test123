@@ -21,6 +21,10 @@ class ShowEditProjectFormService
     /**
      * ShowEditFormService constructor.
      * @param ProjectRepositoryInterface $project_repository
+     * @param \App\Services\Position\PositionRepositoryInterface $position_repository
+     * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
+     * @param \App\Services\Station\StationRepositoryInterface $station_repository
+     * @param \App\Services\Agent\AgentRepositoryInterface $agent_repository
      */
     public function __construct(
         ProjectRepositoryInterface $project_repository,
