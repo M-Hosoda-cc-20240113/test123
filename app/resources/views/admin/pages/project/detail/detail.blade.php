@@ -17,11 +17,11 @@
             <hr class="Horizontal">
             @include('admin.pages.project.detail._ProjectDetailTable', ['response' => $response])
         </div>
-        @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 m0a'])
+        @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 ', 'link' => route('project.edit', ['project_id' => $response->getProject()->id])])
         @if( $response->getProject()->decided === 1)
-            @include('atoms.RegularBtn', ['text' => '応募開始', 'class' => 'w-30 m0a', 'link' => route('project.finish', ['project_id' => $response->getProject()->id ?? ''])])
+            @include('atoms.RegularBtn', ['text' => '応募開始', 'class' => 'w-30 ', 'link' => route('project.finish', ['project_id' => $response->getProject()->id ?? ''])])
         @elseif($response->getProject()->decided === 0)
-            @include('atoms.RegularBtn', ['text' => '応募終了', 'class' => 'w-30 m0a', 'link' => route('project.finish', ['project_id' => $response->getProject()->id ?? ''])])
+            @include('atoms.RegularBtn', ['text' => '応募終了', 'class' => 'w-30 ', 'link' => route('project.finish', ['project_id' => $response->getProject()->id ?? ''])])
         @endif
     </div>
     @include('admin.footer.footer')

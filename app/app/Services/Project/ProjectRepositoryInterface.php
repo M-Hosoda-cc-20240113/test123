@@ -4,6 +4,7 @@ namespace App\Services\Project;
 
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
+use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use Illuminate\Support\Collection;
 
 interface ProjectRepositoryInterface
@@ -16,6 +17,13 @@ interface ProjectRepositoryInterface
      * @return Project
      */
     public function create(CreateProjectParameter $parameter): Project;
+
+    /**
+     * プロジェクト更新機能（Admin）
+     * @param \App\Services\AdminProject\UpdateProject\UpdateProjectParameter $parameter
+     * @return \App\Models\Project
+     */
+    public function update(UpdateProjectParameter $parameter):Project;
 
     /**
      * プロジェクト詳細（Front）
