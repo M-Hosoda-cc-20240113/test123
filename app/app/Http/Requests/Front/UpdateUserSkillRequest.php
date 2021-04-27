@@ -25,6 +25,8 @@ class UpdateUserSkillRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'skill_ids' => ['array','max:10'],
+            'level_ids' => ['array','max:10'],
             'skill_ids.*' => ['integer','digits_between:1,3'],
             'level_ids.*' => ['integer','digits_between:1,3'],
         ];
