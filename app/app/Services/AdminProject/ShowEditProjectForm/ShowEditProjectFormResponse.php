@@ -19,22 +19,22 @@ class ShowEditProjectFormResponse
     private $project;
 
     /**
-     * @var Collection
+     * @var Agent[]|Collection
      */
     private $agents;
 
     /**
-     * @var Collection
+     * @var Skill[]|Collection
      */
     private $skills;
 
     /**
-     * @var Collection
+     * @var Position[]|Collection
      */
     private $positions;
 
     /**
-     * @var Collection
+     * @var Station[]|Collection
      */
     private $stations;
 

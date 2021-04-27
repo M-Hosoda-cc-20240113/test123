@@ -105,11 +105,11 @@ class ProjectRepository implements ProjectRepositoryInterface
         $project->feature = $parameter->getFeature();
         $project->save();
 
-        foreach ($parameter->getSkillids() as $skill) {
+        foreach ($parameter->getSkillIds() as $skill) {
             $project->skills()->syncWithoutDetaching($skill);
         }
 
-        foreach ($parameter->getPositionids() as $position) {
+        foreach ($parameter->getPositionIds() as $position) {
             $project->positions()->syncWithoutDetaching($position);
         }
 

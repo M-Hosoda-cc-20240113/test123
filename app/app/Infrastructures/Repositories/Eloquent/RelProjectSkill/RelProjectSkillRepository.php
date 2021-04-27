@@ -10,7 +10,6 @@ use App\Services\RelProjectSkill\RelProjectSkillRepositoryInterface;
 class RelProjectSkillRepository implements RelProjectSkillRepositoryInterface
 {
     /**
-     * @z
      * @param $project_id
      * @throws \Exception
      */

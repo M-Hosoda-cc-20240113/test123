@@ -391,7 +391,7 @@ class UpdateProjectParameter
     /**
      * @return array
      */
-    public function getSkillids(): array
+    public function getSkillIds(): array
     {
         return $this->skill_ids;
     }
@@ -400,7 +400,7 @@ class UpdateProjectParameter
      * @param array $skill_ids
      * @return UpdateProjectParameter
      */
-    public function setSkillids(array $skill_ids): UpdateProjectParameter
+    public function setSkillIds(array $skill_ids): UpdateProjectParameter
     {
         $this->skill_ids = $skill_ids;
         return $this;
@@ -409,7 +409,7 @@ class UpdateProjectParameter
     /**
      * @return array
      */
-    public function getPositionids(): array
+    public function getPositionIds(): array
     {
         return $this->position_ids;
     }
@@ -418,7 +418,7 @@ class UpdateProjectParameter
      * @param array $position_ids
      * @return UpdateProjectParameter
      */
-    public function setPositionids(array $position_ids): UpdateProjectParameter
+    public function setPositionIds(array $position_ids): UpdateProjectParameter
     {
         $this->position_ids = $position_ids;
         return $this;

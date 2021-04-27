@@ -148,8 +148,8 @@ class ProjectController extends Controller
         $parameter->setWeeklyAttendance($request->weekly_attendance ?? null);
         $parameter->setFeature($request->feature ?? '');
 
-        $parameter->setSkillids($request->skill_ids ?? []);
-        $parameter->setPositionids($request->position_ids ?? []);
+        $parameter->setSkillIds($request->skill_ids ?? []);
+        $parameter->setPositionIds($request->position_ids ?? []);
 
         $project = DB::transaction(function () use (
             $update_project_service,

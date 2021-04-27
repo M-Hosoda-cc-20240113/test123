@@ -22,6 +22,9 @@ class DeletePositionService
         $this->rel_position_project_repository = $rel_position_project_repository;
     }
 
+    /**
+     * @param $project_id
+     */
     public function deleteByProjectId($project_id): void
     {
         $this->rel_position_project_repository->deleteByProjectId($project_id);
