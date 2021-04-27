@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\CreateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
+use App\Services\AdminProject\FinishProject\ProjectFinishService;
 use App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormService;
 use App\Services\AdminProject\ProjectList\ProjectListResponse;
 use App\Services\AdminProject\ProjectList\ProjectListService;
@@ -112,7 +113,8 @@ class ProjectController extends Controller
     /**
      *
      * Admin project delete
-     * @var array
+     *
+     * @return string
      */
     public function delete()
     {
@@ -121,7 +123,7 @@ class ProjectController extends Controller
 
     public function finish(ProjectFinishService $project_finish_service,int $project_id)
     {
-        $project = $project_finish_service->exec($project_id);
+        $project_finish_service->exec($project_id);
         return redirect()->route('project.list');
     }
 }

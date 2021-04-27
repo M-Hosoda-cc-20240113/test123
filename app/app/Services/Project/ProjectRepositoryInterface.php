@@ -40,7 +40,7 @@ interface ProjectRepositoryInterface
     /**
      * 案件終了処理
      * @param $project_id
-     * @return bool
+     * @return \App\Models\Project
      */
-    public function finish($project_id):bool;
+    public function finish($project_id): Project;
 }

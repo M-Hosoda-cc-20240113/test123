@@ -101,11 +101,16 @@ class ProjectRepository implements ProjectRepositoryInterface
 
     /**
      * @param $project_id
-     * @return bool|void
+     * @return \App\Models\Project|void
      */
-    public function finish($project_id):bool
+    public function finish($project_id): Project
     {
         $project = Project::findOrFail($project_id);
+        if($project->decided === 1){
+            $project->decided = 0;
+            $project->save();
+            return $project;
+        }
         $project->decided = 1;
         $project->save();
         return $project;

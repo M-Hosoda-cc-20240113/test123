@@ -4,6 +4,7 @@
 namespace App\Services\AdminProject\FinishProject;
 
 
+use App\Models\Project;
 use App\Services\Project\ProjectRepositoryInterface;
 
 class ProjectFinishService
@@ -24,10 +25,9 @@ class ProjectFinishService
 
     /**
      * @param $project_id
-     * @return bool
      */
-    public function exec($project_id): bool
+    public function exec($project_id)
     {
-        return $this->project_repository->finish($project_id);
+        $this->project_repository->finish($project_id);
     }
 }
