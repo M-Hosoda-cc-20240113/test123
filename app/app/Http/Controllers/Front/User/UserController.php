@@ -83,9 +83,9 @@ class UserController extends Controller
     {
         $user_id = Auth::id();
         $parameter = new UpdateSkillParameter();
-        $parameter->setUser($user_id);
-        $parameter->setSkills($request->skill_ids ?? []);
-        $parameter->setLevels($request->level_ids ?? []);
+        $parameter->setUserId($user_id);
+        $parameter->setSkillids($request->skill_ids ?? []);
+        $parameter->setLevelids($request->level_ids ?? []);
 
         DB::transaction(function () use ($update_skill_service, $delete_skill_service, $user_id, $parameter) {
             $delete_skill_service->deleteByUserId($user_id);

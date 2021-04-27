@@ -9,71 +9,71 @@ use App\Models\User;
 class UpdateSkillParameter
 {
     /**
-     * @var
+     * @var int
      */
-    private $user;
+    private $user_id;
 
     /**
-     * @var
+     * @var int[]|array
      */
-    private $skills;
+    private $skill_ids;
 
     /**
-     * @var
+     * @var int[]|array
      */
-    private $levels;
+    private $level_ids;
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getUser()
+    public function getUserId(): int
     {
-        return $this->user;
+        return $this->user_id;
     }
 
     /**
-     * @param int $user
+     * @param int $user_id
      * @return UpdateSkillParameter
      */
-    public function setUser(int $user): UpdateSkillParameter
+    public function setUserId(int $user_id): UpdateSkillParameter
     {
-        $this->user = $user;
+        $this->user_id = $user_id;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getSkills()
+    public function getSkillids(): array
     {
-        return $this->skills;
+        return $this->skill_ids;
     }
 
     /**
-     * @param array|null $skills
+     * @param array|null $skill_ids
      * @return UpdateSkillParameter
      */
-    public function setSkills(?array $skills): UpdateSkillParameter
+    public function setSkillids(?array $skill_ids): UpdateSkillParameter
     {
-        $this->skills = $skills;
+        $this->skill_ids = $skill_ids;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return array|int[]
      */
-    public function getLevels()
+    public function getLevelids(): array
     {
-        return $this->levels;
+        return $this->level_ids;
     }
 
     /**
-     * @param array|null $levels
+     * @param array|null $level_ids
      * @return UpdateSkillParameter
      */
-    public function setLevels(?array $levels): UpdateSkillParameter
+    public function setLevelids(?array $level_ids): UpdateSkillParameter
     {
-        $this->levels = $levels;
+        $this->level_ids = $level_ids;
         return $this;
     }
 }
