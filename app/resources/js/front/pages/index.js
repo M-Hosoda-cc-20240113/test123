@@ -21,9 +21,11 @@ export function index() {
     page: current_page_of_search,
     keyword: text,
   };
+  const search_input = document.querySelector('.js-search_input');
 
   const search_api = new SearchProjectApi(search_url);
   search_button.addEventListener('click', (e) => {
+    search_parameter['keyword'] = search_input.value;
     search_api.search(search_parameter).then((obj) => {
       console.log(obj);
     });

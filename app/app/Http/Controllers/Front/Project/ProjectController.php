@@ -8,9 +8,16 @@ use App\Services\Application\ApplyProjectService\ApplyProjectService;
 use App\Services\Application\ProjectApplication\ProjectApplicationService;
 use App\Services\Project\ProjectDetail\ProjectDetailResponse;
 use App\Services\Project\ProjectDetail\ProjectDetailService;
+use App\Services\Project\SearchProject\SearchProjectParameter;
+use App\Services\Project\SearchProject\SearchProjectService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class ProjectController
+ * @package App\Http\Controllers\Front\Project
+ */
 class ProjectController extends Controller
 {
 
@@ -50,7 +57,32 @@ class ProjectController extends Controller
         return  redirect('/');
     }
 
-    public function search(Request $request): string
+    /**
+     * @param Request $request
+     * @param SearchProjectService $search_project_service
+     * @return JsonResponse
+     */
+    public function search(Request $request, SearchProjectService $search_project_service): JsonResponse
     {
+        $parameter = new SearchProjectParameter();
+
+        if (isset($request->hits)) {
+            $parameter->setHits($request->hits);
+        }
+
+        if (isset($request->page)) {
+            $parameter->setPage($request->page);
+        }
+
+        if (isset($request->skill_ids)) {
+            $parameter->setSkillIds($request->skill_ids);
+        }
+
+        if (isset($request->keyword)) {
+            $parameter->setKeyword($request->keyword);
+        }
+
+        $res = $search_project_service->search($parameter)->toArray();
+        return response()->json($res)->header('Content-Type', 'application/json; charset=utf8');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Services\Project;
 
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
-use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Collection;
 
 interface ProjectRepositoryInterface
 {
@@ -35,4 +35,12 @@ interface ProjectRepositoryInterface
      * 応募できるプロジェクトを取得
      */
     public function fetchCanApply();
+
+    /**
+     * キーワード検索
+     * @param string[] $keywords
+     * @param int[] $exclude_ids
+     * @return Project[]|Collection
+     */
+    public function fetchByKeyWord(array $keywords, array $exclude_ids = []);
 }

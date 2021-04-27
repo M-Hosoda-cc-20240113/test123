@@ -41,8 +41,8 @@
             @endforeach
         </div>
         {{--  stations  --}}
-
-        <button class="c-button u-db u-m0a u-mt-20 js-project_search" data-search-url="{{ route('front.project.search') }}">検索</button>
+        <input name="keyword" class="c-input js-search_input" type="text" value="">
+        <button class="c-button js-project_search" data-search-url="{{ route('front.project.search') }}">検索</button>
 
         <div class="p-cardUnit--col3 u-mt-30">
             @foreach($response->getProjects() as $project)

@@ -5,6 +5,7 @@ namespace App\Infrastructures\Repositories\Eloquent\Project;
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\Project\ProjectRepositoryInterface;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -96,5 +97,36 @@ class ProjectRepository implements ProjectRepositoryInterface
             ->with('skills')
             ->where('decided', 0)
             ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByKeyWord(array $keywords, array $exclude_ids = [])
+    {
+        $query = Project::with(['station', 'positions', 'skills'])
+            ->where('decided', 0)
+            ->whereNotIn('id', $exclude_ids);
+
+        foreach ($keywords as $keyword) {
+            $like_keyword = '%' . $keyword . '%';
+            $query->where(static function (Builder $query) use ($like_keyword) {
+                $query->where('name', 'like', $like_keyword)
+                    ->orWhere('description', 'like', $like_keyword)
+                    ->orWhere('required_condition', 'like', $like_keyword)
+                    ->orWhere('better_condition', 'like', $like_keyword)
+                    ->orWhere('feature', 'like', $like_keyword);
+//                    ->orWhere('station', static function (Builder $query) use ($like_keyword) {
+//                        $query->where('name', 'like', $like_keyword);
+//                    })
+//                    ->orWhereHas('positions', static function (Builder $query) use ($like_keyword) {
+//                        $query->where('name', 'like', $like_keyword);
+//                    })
+//                    ->orWhereHas('skills', static function (Builder $query) use ($like_keyword) {
+//                        $query->where('name', 'like', $like_keyword);
+//                    });
+            });
+        }
+        return $query->get();
     }
 }
