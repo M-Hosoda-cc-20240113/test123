@@ -95,12 +95,8 @@ class ProjectController extends Controller
         $parameter->setWorkEnd($request->work_end);
         $parameter->setWeeklyAttendance($request->weekly_attendance);
         $parameter->setFeature($request->feature);
-        $parameter->setSkill1($request->skill_id_1);
-        $parameter->setSkill2($request->skill_id_2);
-        $parameter->setSkill3($request->skill_id_3);
-        $parameter->setPosition1($request->position_id_1);
-        $parameter->setPosition2($request->position_id_2);
-        $parameter->setPosition3($request->position_id_3);
+        $parameter->setSkillIds($request->skill_ids);
+        $parameter->setPositionIds($request->position_ids);
 
         $project = DB::transaction(function () use ($create_project_service, $parameter) {
             return $create_project_service->exec($parameter);

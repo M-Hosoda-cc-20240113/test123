@@ -107,35 +107,14 @@ class CreateProjectParameter
     private $feature;
 
     /**
-     * @var int
+     * @var int[]|array
      */
-    private $skill1;
+    private $skill_ids;
 
     /**
-     * @var int
+     * @var int[]|array
      */
-    private $skill2;
-
-    /**
-     * @var int
-     */
-    private $skill3;
-
-    /**
-     * @var int
-     */
-    private $position1;
-
-    /**
-     * @var int
-     */
-    private $position2;
-
-    /**
-     * @var int
-     */
-    private $position3;
-
+    private $position_ids;
 
     /**
      * Get 案件名
@@ -450,106 +429,38 @@ class CreateProjectParameter
     }
 
     /**
-     * @return int
+     * @return array|int[]
      */
-    public function getSkill1(): int
+    public function getSkillIds(): array
     {
-        return $this->skill1;
+        return $this->skill_ids;
     }
 
     /**
-     * @param int $skill1
+     * @param array|int[] $skill_ids
+     * @return CreateProjectParameter
      */
-    public function setSkill1(int $skill1): CreateProjectParameter
+    public function setSkillIds(array $skill_ids): CreateProjectParameter
     {
-        $this->skill1 = $skill1;
+        $this->skill_ids = $skill_ids;
         return $this;
     }
 
     /**
-     * @return int
+     * @return array|int[]
      */
-    public function getSkill2(): int
+    public function getPositionIds(): array
     {
-        return $this->skill2;
+        return $this->position_ids;
     }
 
     /**
-     * @param int $skill2
-     * @return \App\Services\AdminProject\CreateProject\CreateProjectParameter
+     * @param array|int[] $position_ids
+     * @return CreateProjectParameter
      */
-    public function setSkill2(int $skill2): CreateProjectParameter
+    public function setPositionIds(array $position_ids): CreateProjectParameter
     {
-        $this->skill2 = $skill2;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getSkill3(): int
-    {
-        return $this->skill3;
-    }
-
-    /**
-     * @param int $skill3
-     * @return \App\Services\AdminProject\CreateProject\CreateProjectParameter
-     */
-    public function setSkill3(int $skill3): CreateProjectParameter
-    {
-        $this->skill3 = $skill3;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition1(): int
-    {
-        return $this->position1;
-    }
-
-    /**
-     * @param int $position1
-     */
-    public function setPosition1(int $position1): CreateProjectParameter
-    {
-        $this->position1 = $position1;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition2(): int
-    {
-        return $this->position2;
-    }
-
-    /**
-     * @param int $position2
-     */
-    public function setPosition2(int $position2): CreateProjectParameter
-    {
-        $this->position2 = $position2;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition3(): int
-    {
-        return $this->position3;
-    }
-
-    /**
-     * @param int $position3
-     */
-    public function setPosition3(int $position3): CreateProjectParameter
-    {
-        $this->position3 = $position3;
+        $this->position_ids = $position_ids;
         return $this;
     }
 
