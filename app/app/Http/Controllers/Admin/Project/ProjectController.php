@@ -118,4 +118,10 @@ class ProjectController extends Controller
     {
         return 'Projects delete';
     }
+
+    public function finish(ProjectFinishService $project_finish_service,int $project_id)
+    {
+        $project = $project_finish_service->exec($project_id);
+        return redirect()->route('project.list');
+    }
 }

@@ -49,6 +49,7 @@ Route::namespace('Project')->prefix('projects')->group(function () {
   Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('project.detail');
   Route::get('/{project_id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
   Route::get('/{project_id}/delete', [ProjectController::class, 'delete'])->name('project.delete');
+  Route::get('/{project_id}/finish', [ProjectController::class, 'finish'])->name('project.finish');
 });
 
 Route::namespace('Agent')->prefix('agent')->group(function () {

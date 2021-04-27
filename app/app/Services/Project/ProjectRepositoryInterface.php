@@ -35,4 +35,12 @@ interface ProjectRepositoryInterface
      * 応募できるプロジェクトを取得
      */
     public function fetchCanApply();
+
+
+    /**
+     * 案件終了処理
+     * @param $project_id
+     * @return bool
+     */
+    public function finish($project_id):bool;
 }

@@ -14,6 +14,7 @@
             @include('admin.pages.project.detail._ProjectDetailTable', ['response' => $response])
         </div>
         @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 m0a'])
+        @include('atoms.RegularBtn', ['text' => '応募終了', 'class' => 'w-30 m0a', 'link' => route('project.finish', ['project_id' => $project->id])])
     </div>
     @include('admin.footer.footer')
 @endsection

@@ -97,4 +97,17 @@ class ProjectRepository implements ProjectRepositoryInterface
             ->where('decided', 0)
             ->get();
     }
+
+
+    /**
+     * @param $project_id
+     * @return bool|void
+     */
+    public function finish($project_id):bool
+    {
+        $project = Project::findOrFail($project_id);
+        $project->decided = 1;
+        $project->save();
+        return $project;
+    }
 }
