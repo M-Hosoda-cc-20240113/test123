@@ -47,7 +47,8 @@ Route::namespace('Project')->prefix('projects')->group(function () {
   Route::get('/create', [ProjectController::class, 'showCreateForm'])->name('project.create.form');
   Route::post('/create', [ProjectController::class, 'create'])->name('project.create');
   Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('project.detail');
-  Route::get('/{project_id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
+  Route::get('/{project_id}/edit', [ProjectController::class, 'showEditForm'])->name('project.edit.form');
+  Route::post('/{project_id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
   Route::get('/{project_id}/delete', [ProjectController::class, 'delete'])->name('project.delete');
 });
 
