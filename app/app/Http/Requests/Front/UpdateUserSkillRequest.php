@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Front;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateUserSkillRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateUserSkillRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -24,8 +25,8 @@ class UpdateUserSkillRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'skill_ids.*' => ['integer'],
-            'level_ids.*' => ['integer'],
+            'skill_ids.*' => ['integer','digits_between:1,3'],
+            'level_ids.*' => ['integer','digits_between:1,3'],
         ];
     }
 }
