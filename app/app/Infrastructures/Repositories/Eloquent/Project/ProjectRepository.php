@@ -88,7 +88,7 @@ class ProjectRepository implements ProjectRepositoryInterface
 
     public function update(UpdateProjectParameter $parameter): Project
     {
-        $project = Project::findOrFail($parameter->getProject());
+        $project = Project::findOrFail($parameter->getProjectId());
         $project->agent_id = $parameter->getAgent();
         $project->station_id = $parameter->getStation();
         $project->name = $parameter->getName();
@@ -105,11 +105,11 @@ class ProjectRepository implements ProjectRepositoryInterface
         $project->feature = $parameter->getFeature();
         $project->save();
 
-        foreach ($parameter->getSkills() as $skill) {
+        foreach ($parameter->getSkillids() as $skill) {
             $project->skills()->syncWithoutDetaching($skill);
         }
 
-        foreach ($parameter->getPositions() as $position) {
+        foreach ($parameter->getPositionids() as $position) {
             $project->positions()->syncWithoutDetaching($position);
         }
 

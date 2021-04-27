@@ -10,9 +10,9 @@ use App\Models\Project;
 class UpdateProjectParameter
 {
     /**
-     * @var Project
+     * @var int
      */
-    private $project;
+    private $project_id;
 
     /**
      * 案件名
@@ -108,31 +108,31 @@ class UpdateProjectParameter
     private $feature;
 
     /**
-     * @var int
+     * @var int[]|array
      */
-    private $skills;
+    private $skill_ids;
 
 
     /**
-     * @var int
+     * @var int[]|array
      */
-    private $positions;
+    private $position_ids;
 
     /**
      * @return int
      */
-    public function getProject(): int
+    public function getProjectId(): int
     {
-        return $this->project;
+        return $this->project_id;
     }
 
     /**
      * @param int $project_id
      * @return UpdateProjectParameter
      */
-    public function setProject(int $project_id): UpdateProjectParameter
+    public function setProjectId(int $project_id): UpdateProjectParameter
     {
-        $this->project = $project_id;
+        $this->project_id = $project_id;
         return $this;
     }
 
@@ -389,38 +389,38 @@ class UpdateProjectParameter
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getSkills(): array
+    public function getSkillids(): array
     {
-        return $this->skills;
+        return $this->skill_ids;
     }
 
     /**
-     * @param array $skills
+     * @param array $skill_ids
      * @return UpdateProjectParameter
      */
-    public function setSkills(array $skills): UpdateProjectParameter
+    public function setSkillids(array $skill_ids): UpdateProjectParameter
     {
-        $this->skills = $skills;
+        $this->skill_ids = $skill_ids;
         return $this;
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getPositions(): array
+    public function getPositionids(): array
     {
-        return $this->positions;
+        return $this->position_ids;
     }
 
     /**
-     * @param array $positions
+     * @param array $position_ids
      * @return UpdateProjectParameter
      */
-    public function setPositions(array $positions): UpdateProjectParameter
+    public function setPositionids(array $position_ids): UpdateProjectParameter
     {
-        $this->positions = $positions;
+        $this->position_ids = $position_ids;
         return $this;
     }
 

@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Project\CreateProjectRequest;
 use App\Http\Requests\Admin\Project\UpdateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
+use App\Services\AdminProject\DeletePosition\DeletePositionService;
 use App\Services\AdminProject\ShowEditProjectForm\ShowEditProjectFormService;
 use App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormService;
 use App\Services\AdminProject\ProjectList\ProjectListResponse;
@@ -15,6 +16,7 @@ use App\Services\AdminProject\ProjectDetail\ProjectDetailResponse;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailService;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectService;
+use App\Services\AdminProject\DeleteSkill\DeleteSkillService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -110,13 +112,6 @@ class ProjectController extends Controller
     public function showEditForm(ShowEditProjectFormService $show_edit_form_service, int $project_id)
     {
         $response = $show_edit_form_service->exec($project_id);
-//        dd($response);
-//        dd($response->getPositions());
-//        foreach ($response->getProject()->positions as $key => $position)
-//        {
-//            dd("project_id_".$key.' = '.$position->id);
-//        }
-
         return view('admin.pages.project.edit.edit', ['response' => $response]);
     }
 
@@ -128,11 +123,11 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function edit(UpdateProjectRequest $request, UpdateProjectService $update_project_service,$project_id)
+    public function edit(UpdateProjectRequest $request, UpdateProjectService $update_project_service, DeleteSkillService $delete_skill_service, DeletePositionService $delete_position_service , $project_id)
     {
         $parameter = new UpdateProjectParameter();
 
-        $parameter->setProject($project_id);
+        $parameter->setProjectId($project_id);
         $parameter->setAgent($request->agent_id ?? null);
         $parameter->setStation($request->station_id ?? null);
         $parameter->setName($request->name);
@@ -148,27 +143,12 @@ class ProjectController extends Controller
         $parameter->setWeeklyAttendance($request->weekly_attendance ?? null);
         $parameter->setFeature($request->feature ?? '');
 
-        $skills = [];
-        for ($i=0; $i<3; $i++) {
-            $skill_id = 'skill_id_'.$i;
-            $skillRequest = $request->$skill_id;
-            if(!empty($skillRequest)){
-                $skills[] = $skillRequest;
-            }
-        }
-        $parameter->setSkills($skills);
+        $parameter->setSkillids($request->skill_ids ?? []);
+        $parameter->setPositionids($request->position_ids ?? []);
 
-        $positions = [];
-        for ($i=0; $i<3; $i++) {
-            $position_id = 'position_id_'.$i;
-            $positionRequest = $request->$position_id;
-            if(!empty($positionRequest)){
-                $positions[] = $positionRequest;
-            }
-        }
-        $parameter->setPositions($positions);
-
-        $project = DB::transaction(function () use ($update_project_service, $parameter) {
+        $project = DB::transaction(function () use ($update_project_service, $delete_position_service, $parameter, $delete_skill_service, $project_id) {
+            $delete_position_service->deleteByProjectId($project_id);
+            $delete_skill_service->deleteByProjectId($project_id);
             return $update_project_service->exec($parameter);
         });
         $project_update_id = $project->id;

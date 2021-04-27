@@ -93,7 +93,7 @@
                     <div class="p-userRegister__inputUnitWrap--2col">
                         @foreach($response->getProject()->positions as $key => $projectPosition)
                             <div class="p-userRegister__inputUnit">
-                                <select class="c-input p-userRegister__input u-w-100-sp" name="position_id_{{ $key }}"
+                                <select class="c-input p-userRegister__input u-w-100-sp" name="position_ids[]"
                                         id="">
                                     @foreach($response->getPositions() as $position)
                                         <option
@@ -111,7 +111,7 @@
                     <div class="p-userRegister__inputUnitWrap--2col">
                         @foreach($response->getProject()->skills as $key => $projectSkill)
                             <div class="p-userRegister__inputUnit">
-                                <select class="c-input p-userRegister__input u-w-100-sp" name="skill_id_{{ $key }}"
+                                <select class="c-input p-userRegister__input u-w-100-sp" name="skill_ids[]"
                                         id="">
                                     @foreach($response->getSkills() as $skill)
                                         <option
@@ -149,12 +149,12 @@
                         <div class="p-userRegister__inputUnit">
                             <input class="c-input p-userRegister__input" type="text"
                                    name="work_start"
-                                   value="{{ $response->getProject()->work_start ?? ''}}">
+                                   value="{{ ViewHelper::timeReplace( $response->getProject()->work_start ?? '' )}}">
                             <span class="c-text p-userRegister__inputName">〜</span>
                         </div>
                         <div class="p-userRegister__inputUnit">
                             <input class="c-input p-userRegister__input" type="text" name="work_end"
-                                   value="{{ $response->getProject()->work_end ?? ''}}">
+                                   value="{{ ViewHelper::timeReplace( $response->getProject()->work_end ?? '' )}}">
                             <span class="c-text p-userRegister__inputName">　　</span>
                         </div>
                     </div>
