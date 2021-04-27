@@ -115,16 +115,16 @@ class ProjectRepository implements ProjectRepositoryInterface
                     ->orWhere('description', 'like', $like_keyword)
                     ->orWhere('required_condition', 'like', $like_keyword)
                     ->orWhere('better_condition', 'like', $like_keyword)
-                    ->orWhere('feature', 'like', $like_keyword);
-//                    ->orWhere('station', static function (Builder $query) use ($like_keyword) {
-//                        $query->where('name', 'like', $like_keyword);
-//                    })
-//                    ->orWhereHas('positions', static function (Builder $query) use ($like_keyword) {
-//                        $query->where('name', 'like', $like_keyword);
-//                    })
-//                    ->orWhereHas('skills', static function (Builder $query) use ($like_keyword) {
-//                        $query->where('name', 'like', $like_keyword);
-//                    });
+                    ->orWhere('feature', 'like', $like_keyword)
+                    ->orWhereHas('station', static function (Builder $query) use ($like_keyword) {
+                        $query->where('name', 'like', $like_keyword);
+                    })
+                    ->orWhereHas('positions', static function (Builder $query) use ($like_keyword) {
+                        $query->where('name', 'like', $like_keyword);
+                    })
+                    ->orWhereHas('skills', static function (Builder $query) use ($like_keyword) {
+                        $query->where('name', 'like', $like_keyword);
+                    });
             });
         }
         return $query->get();
