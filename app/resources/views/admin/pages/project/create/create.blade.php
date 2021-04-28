@@ -93,23 +93,7 @@
                     <span class="c-text--bold p-userRegister__title u-mb-5-sp">ポジション</span>
                     <div class="p-userRegister__inputUnitWrap--2col">
                         <div class="p-userRegister__inputUnit">
-                            <select class="c-input p-userRegister__input u-w-100-sp" name="position_id_1" id="">
-                                <option value="">選択してください</option>
-                                @foreach($response->getPositions() as $position)
-                                    <option value={{ $position->id }}>{{ $position->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="p-userRegister__inputUnit">
-                            <select class="c-input p-userRegister__input u-w-100-sp" name="position_id_2" id="">
-                                <option value="">選択してください</option>
-                                @foreach($response->getPositions() as $position)
-                                    <option value={{ $position->id }}>{{ $position->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="p-userRegister__inputUnit">
-                            <select class="c-input p-userRegister__input u-w-100-sp" name="position_id_3" id="">
+                            <select class="c-input p-userRegister__input u-w-100-sp" name="position_ids[]" id="">
                                 <option value="">選択してください</option>
                                 @foreach($response->getPositions() as $position)
                                     <option value={{ $position->id }}>{{ $position->name }}</option>
@@ -124,23 +108,7 @@
                     <span class="c-text--bold p-userRegister__title u-mb-5-sp">スキル</span>
                     <div class="p-userRegister__inputUnitWrap--2col">
                         <div class="p-userRegister__inputUnit">
-                            <select class="c-input p-userRegister__input u-w-100-sp" name="skill_id_1" id="">
-                                <option value="">選択してください</option>
-                                @foreach($response->getSkills() as $skill)
-                                    <option value={{ $skill->id }}>{{ $skill->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="p-userRegister__inputUnit">
-                            <select class="c-input p-userRegister__input u-w-100-sp" name="skill_id_2" id="">
-                                <option value="">選択してください</option>
-                                @foreach($response->getSkills() as $skill)
-                                    <option value={{ $skill->id }}>{{ $skill->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="p-userRegister__inputUnit">
-                            <select class="c-input p-userRegister__input u-w-100-sp" name="skill_id_3" id="">
+                            <select class="c-input p-userRegister__input u-w-100-sp" name="skill_ids[]" id="">
                                 <option value="">選択してください</option>
                                 @foreach($response->getSkills() as $skill)
                                     <option value={{ $skill->id }}>{{ $skill->name }}</option>
