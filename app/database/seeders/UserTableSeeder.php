@@ -34,6 +34,7 @@ class UserTableSeeder extends Seeder
             'remarks'           => "面談結果待ち",
             'operation_start_month' => 20210701,
             'created_at'        => $now
+
         ]);
 
         User::create([
