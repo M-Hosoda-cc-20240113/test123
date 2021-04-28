@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Front\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Front\DeleteUserRequest;
 use App\Http\Requests\Front\UpdateUserRequest;
 use App\Http\Requests\Front\UpdateUserSkillRequest;
 use App\Services\User\DeleteSkill\DeleteSkillService;
+use App\Services\User\DeleteUser\DeleteUserService;
 use App\Services\User\EditSkill\UpdateSkillParameter;
 use App\Services\User\EditSkill\UpdateSkillService;
 use App\Services\User\ShowEditSkillForm\ShowEditSkillFormService;
@@ -34,7 +36,7 @@ class UserController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function showEditForm(ShowEditUserFormService  $show_edit_user_form_service)
+    public function showEditForm(ShowEditUserFormService $show_edit_user_form_service)
     {
         $response = $show_edit_user_form_service->exec();
         return view('front.pages.mypage.user.edit', ['response' => $response]);
@@ -79,8 +81,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function skillEdit(UpdateUserSkillRequest $request, UpdateSkillService $update_skill_service, DeleteSkillService $delete_skill_service)
-    {
+    public function skillEdit(
+        UpdateUserSkillRequest $request,
+        UpdateSkillService $update_skill_service,
+        DeleteSkillService $delete_skill_service
+    ) {
         $user_id = Auth::id();
         $parameter = new UpdateSkillParameter();
         $parameter->setUserId($user_id);
@@ -93,5 +98,28 @@ class UserController extends Controller
         });
 
         return redirect()->route('home.mypage');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function showDeleteForm()
+    {
+        return view('front.pages.mypage.delete.showDeleteForm');
+    }
+
+    /**
+     * @param \App\Http\Requests\Front\DeleteUserRequest $request
+     * @param \App\Services\User\DeleteUser\DeleteUserService $delete_user_service
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
+     */
+    public function delete(DeleteUserRequest $request, DeleteUserService $delete_user_service)
+    {
+        $user_id = Auth::id();
+        DB::transaction(function () use ($delete_user_service, $user_id) {
+            $delete_user_service->exec($user_id);
+        });
+        return redirect()->route('front.index');
     }
 }
