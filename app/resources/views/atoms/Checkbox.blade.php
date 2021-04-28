@@ -6,6 +6,6 @@
  */
 @endphp
 <label class="p-checkbox {{ $class ?? '' }}">{{ $text ?? '' }}
-  <input name="{{ $name ?? '' }}" type="checkbox"/>
+  <input value="{{ $value ?? '' }}" name="{{ $name ?? '' }}" type="checkbox"/>
   <div class="p-checkbox__indicator"></div>
 </label>

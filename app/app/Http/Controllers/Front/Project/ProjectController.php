@@ -10,7 +10,6 @@ use App\Services\Project\ProjectDetail\ProjectDetailResponse;
 use App\Services\Project\ProjectDetail\ProjectDetailService;
 use App\Services\Project\SearchProject\SearchProjectParameter;
 use App\Services\Project\SearchProject\SearchProjectService;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,19 +59,11 @@ class ProjectController extends Controller
     /**
      * @param Request $request
      * @param SearchProjectService $search_project_service
-     * @return JsonResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function search(Request $request, SearchProjectService $search_project_service): JsonResponse
+    public function search(Request $request, SearchProjectService $search_project_service)
     {
         $parameter = new SearchProjectParameter();
-
-        if (isset($request->hits)) {
-            $parameter->setHits($request->hits);
-        }
-
-        if (isset($request->page)) {
-            $parameter->setPage($request->page);
-        }
 
         if (isset($request->skill_ids)) {
             $parameter->setSkillIds($request->skill_ids);
@@ -82,7 +73,7 @@ class ProjectController extends Controller
             $parameter->setKeyword($request->keyword);
         }
 
-        $res = $search_project_service->search($parameter)->toArray();
-        return response()->json($res)->header('Content-Type', 'application/json; charset=utf8');
+        $response = $search_project_service->search($parameter);
+        return view('front.pages.top.top', ['response' => $response]);
     }
 }

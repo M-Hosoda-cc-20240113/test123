@@ -4,7 +4,11 @@
 namespace App\Services\Project\SearchProject;
 
 
+use App\Services\Position\PositionRepositoryInterface;
 use App\Services\Project\ProjectRepositoryInterface;
+use App\Services\Skill\SkillRepositoryInterface;
+use App\Services\Station\StationRepositoryInterface;
+use App\Services\Top\FetchTopData\FetchTopResponse;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -19,23 +23,45 @@ class SearchProjectService
     private $project_repository;
 
     /**
-     * SearchProjectService constructor.
-     * @param ProjectRepositoryInterface $project_repository
+     * @var SkillRepositoryInterface
      */
-    public function __construct(ProjectRepositoryInterface $project_repository)
-    {
+    private $skill_repository;
+
+    /**
+     * @var PositionRepositoryInterface
+     */
+    private $position_repository;
+
+    /**
+     * @var StationRepositoryInterface
+     */
+    private $station_repository;
+
+    /**
+     * SearchProjectService constructor.
+     * @param \App\Services\Project\ProjectRepositoryInterface $project_repository
+     * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
+     * @param \App\Services\Position\PositionRepositoryInterface $position_repository
+     * @param \App\Services\Station\StationRepositoryInterface $station_repository
+     */
+    public function __construct(
+        ProjectRepositoryInterface $project_repository,
+        SkillRepositoryInterface $skill_repository,
+        PositionRepositoryInterface $position_repository,
+        StationRepositoryInterface $station_repository
+    ) {
         $this->project_repository = $project_repository;
+        $this->skill_repository = $skill_repository;
+        $this->position_repository = $position_repository;
+        $this->station_repository = $station_repository;
     }
 
     /**
-     * 様々な条件で検索する
-     *
-     * @param SearchProjectParameter $parameter
-     * @return SearchProjectResponse
+     * @param \App\Services\Project\SearchProject\SearchProjectParameter $parameter
+     * @return \App\Services\Top\FetchTopData\FetchTopResponse
      */
-    public function search(SearchProjectParameter $parameter): SearchProjectResponse
+    public function search(SearchProjectParameter $parameter)
     {
-        $response = new SearchProjectResponse();
         $search_results = [];
         $searched_ids = [];
 
@@ -46,7 +72,17 @@ class SearchProjectService
             $search_results[] = $result;
         }
 
-        return $response->setItems($this->getResultMerged($search_results));
+        $skills = $this->skill_repository->all();
+        $positions = $this->position_repository->all();
+        $stations = $this->station_repository->all();
+
+        $response = new FetchTopResponse();
+        $response->setProjects($this->getResultMerged($search_results));
+        $response->setSkills($skills);
+        $response->setPositions($positions);
+        $response->setStations($stations);
+
+        return $response;
     }
 
     /**

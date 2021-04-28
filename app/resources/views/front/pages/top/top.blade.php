@@ -21,28 +21,30 @@
             <li class="p-searchTab__item js-tab">最寄り駅でさがす</li>
         </ul>
 
-        <div class="p-checkboxUnit js-tab_content">
-            @foreach($response->getSkills() as $skill)
-                @include('atoms.Checkbox', ['text' => $skill->name, 'class' => 'p-checkboxUnit__item', 'name' => 'skill_ids[]'])
-            @endforeach
-        </div>
-        {{--  skills  --}}
+        <form action="{{ route('front.project.search') }}" method="get">
+            <div class="p-checkboxUnit js-tab_content">
+                @foreach($response->getSkills() as $skill)
+                    @include('atoms.Checkbox', ['text' => $skill->name, 'class' => 'p-checkboxUnit__item', 'name' => 'skill_ids[]', 'value' => $skill->id])
+                @endforeach
+            </div>
+            {{--  skills  --}}
 
-        <div class="p-checkboxUnit js-tab_content">
-            @foreach($response->getPositions() as $position)
-                @include('atoms.Checkbox', ['text' => $position->name, 'class' => 'p-checkboxUnit__item u-w-auto', 'name' => 'position_ids[]'])
-            @endforeach
-        </div>
-        {{--  positions  --}}
+            <div class="p-checkboxUnit js-tab_content">
+                @foreach($response->getPositions() as $position)
+                    @include('atoms.Checkbox', ['text' => $position->name, 'class' => 'p-checkboxUnit__item u-w-auto', 'name' => 'position_ids[]', 'value' => $position->id])
+                @endforeach
+            </div>
+            {{--  positions  --}}
 
-        <div class="p-checkboxUnit js-tab_content">
-            @foreach($response->getStations() as $station)
-                @include('atoms.Checkbox', ['text' => $station->name, 'class' => 'p-checkboxUnit__item', 'name' => 'station_ids[]'])
-            @endforeach
-        </div>
-        {{--  stations  --}}
-        <input name="keyword" class="c-input js-search_input" type="text" value="">
-        <button class="c-button js-project_search" data-search-url="{{ route('front.project.search') }}">検索</button>
+            <div class="p-checkboxUnit js-tab_content">
+                @foreach($response->getStations() as $station)
+                    @include('atoms.Checkbox', ['text' => $station->name, 'class' => 'p-checkboxUnit__item', 'name' => 'station_ids[]', 'value' => $station->id])
+                @endforeach
+            </div>
+            {{--  stations  --}}
+            <input name="keyword" class="c-input js-search_input" type="text" value="">
+            <button type="submit" class="c-button js-project_search" data-search-url="{{ route('front.project.search') }}">検索</button>
+        </form>
 
         <div class="p-cardUnit--col3 u-mt-30">
             @foreach($response->getProjects() as $project)
