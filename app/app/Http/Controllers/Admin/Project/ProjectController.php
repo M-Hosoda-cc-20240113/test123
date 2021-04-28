@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Project\UpdateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
 use App\Services\AdminProject\DeletePosition\DeletePositionService;
+use App\Services\AdminProject\DeleteProject\DeleteProjectService;
 use App\Services\AdminProject\TggleProjectDisplay\ProjectDisplayToggleService;
 use App\Services\AdminProject\ShowEditProjectForm\ShowEditProjectFormService;
 use App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormService;
@@ -167,18 +168,20 @@ class ProjectController extends Controller
     }
 
     /**
-     *
      * Admin project delete
      *
-     * @return string
+     * @throws \Throwable
      */
-    public function delete()
+    public function delete(DeleteProjectService $delete_project_service, int $project_id)
     {
-        return 'Projects delete';
+        DB::transaction(function () use ($delete_project_service, $project_id) {
+            $delete_project_service->exec($project_id);
+        });
+        return redirect()->route('project.list');
     }
 
     /**
-     * @param \App\Services\AdminProject\TggleProjectDisplay\ProjectDisplayToggleService $project_toggle_service
+     * @param \App\Services\AdminProject\TggleProjectDisplay\ProjectDisplayToggleService $project_display_toggle_service
      * @param int $project_id
      * @return \Illuminate\Http\RedirectResponse
      */

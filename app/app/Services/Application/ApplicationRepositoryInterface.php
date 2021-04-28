@@ -3,15 +3,15 @@
 namespace App\Services\Application;
 
 use App\Models\Application;
+use Illuminate\Support\Collection;
 
 interface ApplicationRepositoryInterface
 {
     /**
      * 申し込み状況情報
-     * @return Application
-     *
+     * @return \Illuminate\Support\Collection
      */
-    public function all(): Application;
+    public function all(): Collection;
 
     /**
      * 案件応募

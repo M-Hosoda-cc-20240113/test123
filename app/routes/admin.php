@@ -51,6 +51,7 @@ Route::namespace('Project')->prefix('projects')->group(function () {
   Route::post('/{project_id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
   Route::get('/{project_id}/delete', [ProjectController::class, 'delete'])->name('project.delete');
   Route::get('/{project_id}/toggle', [ProjectController::class, 'toggle'])->name('project.toggle');
+  Route::get('/{project_id}/delete', [ProjectController::class, 'delete'])->name('project.delete');
 });
 
 Route::namespace('Agent')->prefix('agent')->group(function () {

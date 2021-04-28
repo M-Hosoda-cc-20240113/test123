@@ -58,4 +58,9 @@ interface ProjectRepositoryInterface
      * @return \App\Models\Project
      */
     public function open($project_id): Project;
+
+    /**
+     * @param $project_id
+     */
+    public function delete($project_id): void;
 }

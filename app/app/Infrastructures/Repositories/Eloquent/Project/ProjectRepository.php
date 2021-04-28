@@ -151,4 +151,14 @@ class ProjectRepository implements ProjectRepositoryInterface
         $project->save();
         return $project;
     }
+
+    /**
+     * @param $project_id
+     * @throws \Exception
+     */
+    public function delete($project_id): void
+    {
+        $project = Project::findOrFail($project_id);
+        $project->delete();
+    }
 }

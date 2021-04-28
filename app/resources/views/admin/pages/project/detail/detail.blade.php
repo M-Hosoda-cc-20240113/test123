@@ -21,6 +21,7 @@
         @elseif($response->getProject()->decided === 0)
             @include('atoms.RegularBtn', ['text' => '応募終了', 'class' => 'w-30 ', 'link' => route('project.toggle', ['project_id' => $response->getProject()->id ?? ''])])
         @endif
+        <a href="{{ route('project.delete', ['project_id' => $response->getProject()->id]) }}" id="leave_project" class="RegularBtn w-30" style="background-color: coral">削除</a>
     </div>
     @include('admin.footer.footer')
 @endsection
