@@ -22,9 +22,9 @@ class DeleteUserService
 
     /**
      * @param int $user_id
-     * @return \App\Models\User
+     * @return void
      */
-    public function exec(int $user_id): User
+    public function exec(int $user_id): void
     {
         $this->user_repository->delete($user_id);
     }

@@ -11,7 +11,7 @@ class DeleteUserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class DeleteUserRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'withdraw-confirm.required' => '内容を確認してください。',
@@ -36,7 +36,6 @@ class DeleteUserRequest extends FormRequest
             'withdraw-confirm.alpha' => '予期せぬ値が入力されました。',
             'withdraw-confirm.starts_with' => '予期せぬ値が入力されました。',
             'withdraw-confirm.ends_with' => '予期せぬ値が入力されました。',
-
         ];
     }
 }

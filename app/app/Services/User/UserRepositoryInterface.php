@@ -64,7 +64,7 @@ interface UserRepositoryInterface
 
     /**
      * @param int $user_id
-     * @return \App\Models\User
+     * @return void
      */
-    public function delete(int $user_id): User;
+    public function delete(int $user_id): void;
 }

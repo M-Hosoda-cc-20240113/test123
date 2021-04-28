@@ -34,7 +34,7 @@ Route::namespace('User')->prefix('users')->group(function () {
     Route::post('/edit', [UserController::class, 'edit']);
     Route::get('/skills/edit', [UserController::class, 'showEditSkillForm'])->name('front.user.skill.form');
     Route::post('/skills/edit', [UserController::class, 'skillEdit'])->name('front.user.skill.edit');
-    Route::get('/withdraw', [UserController::class, 'showDeleteForm'])->name('front.user.delete.form');
+    Route::get('/leave', [UserController::class, 'showDeleteForm'])->name('front.user.delete.form');
     Route::post('/delete', [UserController::class, 'delete'])->name('front.user.delete');
 });
 

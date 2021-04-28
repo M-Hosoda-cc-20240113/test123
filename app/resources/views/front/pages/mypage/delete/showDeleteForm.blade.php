@@ -21,7 +21,7 @@
                 {{ @csrf_field() }}
                 <div class="p-checkboxUnit">
                     <label class="p-checkbox p-checkboxUnit__item">
-                        <p style="color: red">※退会後は、登録内容の確認はできなくなります。</p>
+                        <p style="color: red">※退会後は、登録内容の確認はできなくなり取得したポイントは破棄されます。</p>
                     </label>
                     <label class="p-checkbox p-checkboxUnit__item">確認しました。
                         <input type="checkbox" name="withdraw-confirm" value="confirm"/>
