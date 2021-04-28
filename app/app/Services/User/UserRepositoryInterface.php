@@ -60,4 +60,11 @@ interface UserRepositoryInterface
      * @param string $wanna_change_email
      */
     public function changeEmail(User $user, string $wanna_change_email);
+
+
+    /**
+     * @param int $user_id
+     * @return \App\Models\User
+     */
+    public function delete(int $user_id): User;
 }
