@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Project\UpdateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
 use App\Services\AdminProject\DeletePosition\DeletePositionService;
+use App\Services\AdminProject\TggleProjectDisplay\ProjectDisplayToggleService;
 use App\Services\AdminProject\ShowEditProjectForm\ShowEditProjectFormService;
 use App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormService;
 use App\Services\AdminProject\ProjectList\ProjectListResponse;
@@ -45,7 +46,7 @@ class ProjectController extends Controller
      * Admin project detail
      *
      * @param ProjectDetailService $project_detail_service
-     * @param int $id
+     * @param int $project_id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function detail(ProjectDetailService $project_detail_service, int $project_id)
@@ -115,6 +116,8 @@ class ProjectController extends Controller
     /**
      * @param \App\Http\Requests\Admin\Project\UpdateProjectRequest $request
      * @param \App\Services\AdminProject\UpdateProject\UpdateProjectService $update_project_service
+     * @param \App\Services\AdminProject\DeleteSkill\DeleteSkillService $delete_skill_service
+     * @param \App\Services\AdminProject\DeletePosition\DeletePositionService $delete_position_service
      * @param $project_id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
@@ -166,10 +169,21 @@ class ProjectController extends Controller
     /**
      *
      * Admin project delete
-     * @var array
+     *
+     * @return string
      */
     public function delete()
     {
         return 'Projects delete';
+    }
+
+    /**
+     * @param \App\Services\AdminProject\TggleProjectDisplay\ProjectDisplayToggleService $project_toggle_service
+     * @param int $project_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function toggle(ProjectDisplayToggleService $project_display_toggle_service, int $project_id) {
+        $project_display_toggle_service->exec($project_id);
+        return redirect()->route('project.list');
     }
 }

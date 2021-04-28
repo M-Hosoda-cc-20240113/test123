@@ -126,4 +126,29 @@ class ProjectRepository implements ProjectRepositoryInterface
             ->where('decided', 0)
             ->get();
     }
+
+
+    /**
+     * @param $project_id
+     * @return \App\Models\Project|void
+     */
+    public function close($project_id): Project
+    {
+        $project = Project::findOrFail($project_id);
+        $project->decided = 1;
+        $project->save();
+        return $project;
+    }
+
+    /**
+     * @param $project_id
+     * @return \App\Models\Project
+     */
+    public function open($project_id): Project
+    {
+        $project = Project::findOrFail($project_id);
+        $project->decided = 0;
+        $project->save();
+        return $project;
+    }
 }
