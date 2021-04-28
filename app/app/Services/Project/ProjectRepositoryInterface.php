@@ -43,4 +43,19 @@ interface ProjectRepositoryInterface
      * 応募できるプロジェクトを取得
      */
     public function fetchCanApply();
+
+
+    /**
+     * 応募終了処理
+     * @param $project_id
+     * @return \App\Models\Project
+     */
+    public function close($project_id): Project;
+
+    /**
+     * 応募開始処理
+     * @param $project_id
+     * @return \App\Models\Project
+     */
+    public function open($project_id): Project;
 }
