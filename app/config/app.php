@@ -187,6 +187,8 @@ return [
         App\Providers\AreaServiceProvider::class,
         App\Providers\LevelServiceProvider::class,
         App\Providers\EmailResetServiceProvider::class,
+        App\Providers\RelProjectSkillServiceProvider::class,
+        App\Providers\RelPositionProjectServiceProvider::class,
     ],
 
     /*

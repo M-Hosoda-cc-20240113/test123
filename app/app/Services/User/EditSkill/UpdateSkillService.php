@@ -8,7 +8,7 @@ use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
  * Class EditSkillService
  * @package App\Services\User\EditSkill
  */
-class EditSkillService
+class UpdateSkillService
 {
     /**
      * @var RelLevelSkillUSerRepositoryInterface
@@ -24,8 +24,11 @@ class EditSkillService
         $this->rel_revel_skill_user_repository = $rel_revel_skill_user_repository;
     }
 
-    public function exec()
+    /**
+     * @param \App\Services\User\EditSkill\UpdateSkillParameter $parameter
+     */
+    public function exec(UpdateSkillParameter $parameter)
     {
-
+        $this->rel_revel_skill_user_repository->create($parameter);
     }
 }

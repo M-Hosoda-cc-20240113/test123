@@ -141,5 +141,239 @@ class ProjectSeeder extends Seeder
             "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
             "created_at"         => $now
         ]);
+
+        Project::create([
+            "agent_id"           => 2 ,
+            "station_id"         => 3 ,
+            "name"               => "【大手商業施設 POSレジシステム開発】" ,
+            "min_unit_price"     => "70",
+            "max_unit_price"     => "95" ,
+            "min_operation_time" => "150" ,
+            "max_operation_time" => "220" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "10:00" ,
+            "work_end"           => "19:30" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 2 ,
+            "station_id"         => 5 ,
+            "name"               => "スマホアプリ開発" ,
+            "min_unit_price"     => "70",
+            "max_unit_price"     => "95" ,
+            "min_operation_time" => "150" ,
+            "max_operation_time" => "210" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "11:00" ,
+            "work_end"           => "20:30" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 5 ,
+            "station_id"         => 1 ,
+            "name"               => "大手アパレルメーカーEC案件" ,
+            "min_unit_price"     => "70",
+            "max_unit_price"     => "95" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "11:00" ,
+            "work_end"           => "20:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 1 ,
+            "station_id"         => 8 ,
+            "name"               => "テスト案件#1" ,
+            "min_unit_price"     => null,
+            "max_unit_price"     => "70" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "11:00" ,
+            "work_end"           => "20:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 3 ,
+            "station_id"         => 2 ,
+            "name"               => "テスト案件#2" ,
+            "min_unit_price"     => null,
+            "max_unit_price"     => "80" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "11:00" ,
+            "work_end"           => "20:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 5 ,
+            "station_id"         => 4 ,
+            "name"               => "テスト案件#3" ,
+            "min_unit_price"     => null,
+            "max_unit_price"     => "90" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "10:00" ,
+            "work_end"           => "19:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 5 ,
+            "station_id"         => 3 ,
+            "name"               => "テスト案件#4" ,
+            "min_unit_price"     => null,
+            "max_unit_price"     => "60" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "10:00" ,
+            "work_end"           => "19:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 3 ,
+            "station_id"         => 3 ,
+            "name"               => "テスト案件#5" ,
+            "min_unit_price"     => null,
+            "max_unit_price"     => "100" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "10:00" ,
+            "work_end"           => "19:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 2 ,
+            "station_id"         => 3 ,
+            "name"               => "テスト案件#6" ,
+            "min_unit_price"     => null,
+            "max_unit_price"     => "75" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "10:00" ,
+            "work_end"           => "19:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 2 ,
+            "station_id"         => 2 ,
+            "name"               => "テスト案件#7" ,
+            "min_unit_price"     => "55",
+            "max_unit_price"     => "85" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "10:00" ,
+            "work_end"           => "19:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 1 ,
+            "station_id"         => 3 ,
+            "name"               => "テスト案件#8" ,
+            "min_unit_price"     => "75",
+            "max_unit_price"     => "90" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "10:00" ,
+            "work_end"           => "19:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 2 ,
+            "station_id"         => 4 ,
+            "name"               => "テスト案件#9" ,
+            "min_unit_price"     => "35",
+            "max_unit_price"     => "55" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "10:00" ,
+            "work_end"           => "19:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
+
+        Project::create([
+            "agent_id"           => 4 ,
+            "station_id"         => 3 ,
+            "name"               => "テスト案件#10" ,
+            "min_unit_price"     => null,
+            "max_unit_price"     => "95" ,
+            "min_operation_time" => "140" ,
+            "max_operation_time" => "200" ,
+            "description"        => "不1産会社向け契約管理システムリプレイスを行います。" ,
+            "required_condition" => "上流ＳＥ：要件整理\r\n仕様調整 ＳＥ：基本設計\r\n詳細設計\r\n結合テスト\r\n統合テスト ＰＧ：詳細設計\r\n製造\r\n単体テスト\r\n結合テスト" ,
+            "better_condition"   => "要件定義経験\r\nスクラッチ開発経験" ,
+            "work_start"         => "10:00" ,
+            "work_end"           => "19:00" ,
+            "weekly_attendance"  => "5" ,
+            "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
+            "created_at"         => $now
+        ]);
     }
 }

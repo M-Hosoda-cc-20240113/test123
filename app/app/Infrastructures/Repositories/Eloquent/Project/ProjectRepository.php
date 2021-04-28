@@ -4,6 +4,7 @@ namespace App\Infrastructures\Repositories\Eloquent\Project;
 
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
+use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -75,12 +76,39 @@ class ProjectRepository implements ProjectRepositoryInterface
         $project->feature = $parameter->getFeature();
         $project->save();
 
-        $skills = [$parameter->getSkill1(), $parameter->getSkill2(), $parameter->getSkill3()];
-        foreach ($skills as $skill) {
+        foreach ($parameter->getSkillIds() as $skill) {
             $project->skills()->syncWithoutDetaching($skill);
         }
-        $positions = [$parameter->getPosition1(), $parameter->getPosition2(), $parameter->getPosition3()];
-        foreach ($positions as $position) {
+        foreach ($parameter->getPositionIds() as $position) {
+            $project->positions()->syncWithoutDetaching($position);
+        }
+        return $project;
+    }
+
+    public function update(UpdateProjectParameter $parameter): Project
+    {
+        $project = Project::findOrFail($parameter->getProjectId());
+        $project->agent_id = $parameter->getAgent();
+        $project->station_id = $parameter->getStation();
+        $project->name = $parameter->getName();
+        $project->min_unit_price = $parameter->getMinUnitPrice();
+        $project->max_unit_price = $parameter->getMaxUnitPrice();
+        $project->min_operation_time = $parameter->getMinOperationTime();
+        $project->max_operation_time = $parameter->getMaxOperationTime();
+        $project->description = $parameter->getDescription();
+        $project->required_condition = $parameter->getRequiredCondition();
+        $project->better_condition = $parameter->getBetterCondition();
+        $project->work_start = $parameter->getWorkStart();
+        $project->work_end = $parameter->getWorkEnd();
+        $project->weekly_attendance = $parameter->getWeeklyAttendance();
+        $project->feature = $parameter->getFeature();
+        $project->save();
+
+        foreach ($parameter->getSkillIds() as $skill) {
+            $project->skills()->syncWithoutDetaching($skill);
+        }
+
+        foreach ($parameter->getPositionIds() as $position) {
             $project->positions()->syncWithoutDetaching($position);
         }
         return $project;
@@ -128,5 +156,30 @@ class ProjectRepository implements ProjectRepositoryInterface
             });
         }
         return $query->get();
+    }
+
+
+    /**
+     * @param $project_id
+     * @return \App\Models\Project|void
+     */
+    public function close($project_id): Project
+    {
+        $project = Project::findOrFail($project_id);
+        $project->decided = 1;
+        $project->save();
+        return $project;
+    }
+
+    /**
+     * @param $project_id
+     * @return \App\Models\Project
+     */
+    public function open($project_id): Project
+    {
+        $project = Project::findOrFail($project_id);
+        $project->decided = 0;
+        $project->save();
+        return $project;
     }
 }
