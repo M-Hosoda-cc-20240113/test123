@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class ProjectRepository
+ * @package App\Infrastructures\Repositories\Eloquent\Project
+ */
 class ProjectRepository implements ProjectRepositoryInterface
 {
     /**
@@ -85,6 +89,10 @@ class ProjectRepository implements ProjectRepositoryInterface
         return $project;
     }
 
+    /**
+     * @param \App\Services\AdminProject\UpdateProject\UpdateProjectParameter $parameter
+     * @return \App\Models\Project
+     */
     public function update(UpdateProjectParameter $parameter): Project
     {
         $project = Project::findOrFail($parameter->getProjectId());
@@ -181,5 +189,21 @@ class ProjectRepository implements ProjectRepositoryInterface
         $project->decided = 0;
         $project->save();
         return $project;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchBySkillIds(array $skill_ids, array $exclude_ids = [])
+    {
+        return Project::with(['station', 'positions', 'skills'])
+            ->where('decided', 0)
+            ->whereNotIn('id', $exclude_ids)
+            ->where(static function (Builder $query) use ($skill_ids) {
+                $query->whereHas('skills', static function (Builder $query) use ($skill_ids) {
+                    $query->whereIn('skills.id', $skill_ids);
+                });
+            })
+            ->get();
     }
 }

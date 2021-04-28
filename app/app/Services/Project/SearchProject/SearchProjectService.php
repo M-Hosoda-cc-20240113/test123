@@ -60,7 +60,7 @@ class SearchProjectService
      * @param \App\Services\Project\SearchProject\SearchProjectParameter $parameter
      * @return \App\Services\Top\FetchTopData\FetchTopResponse
      */
-    public function search(SearchProjectParameter $parameter)
+    public function search(SearchProjectParameter $parameter): FetchTopResponse
     {
         $search_results = [];
         $searched_ids = [];
@@ -68,6 +68,13 @@ class SearchProjectService
         // キーワード検索
         if ($parameter->hasKeyword()) {
             $result = $this->project_repository->fetchByKeyWord($parameter->cutKeywordByMaxLength()->explodeKeyword());
+            $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            $search_results[] = $result;
+        }
+
+        // スキル検索
+        if ($parameter->hasSkill()) {
+            $result = $this->project_repository->fetchBySkillIds($parameter->getSkillIds(), $searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results[] = $result;
         }

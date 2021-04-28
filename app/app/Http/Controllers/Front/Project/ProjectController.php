@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front\Project;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\CreateApplicationRequest;
+use App\Http\Requests\Front\SearchProjectRequest;
 use App\Services\Application\ApplyProjectService\ApplyProjectService;
 use App\Services\Application\ProjectApplication\ProjectApplicationService;
 use App\Services\Project\ProjectDetail\ProjectDetailResponse;
@@ -57,11 +58,11 @@ class ProjectController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param SearchProjectRequest $request
      * @param SearchProjectService $search_project_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function search(Request $request, SearchProjectService $search_project_service)
+    public function search(SearchProjectRequest $request, SearchProjectService $search_project_service)
     {
         $parameter = new SearchProjectParameter();
 

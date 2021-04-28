@@ -7,8 +7,15 @@ use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Interface ProjectRepositoryInterface
+ * @package App\Services\Project
+ */
 interface ProjectRepositoryInterface
 {
+    /**
+     * @return mixed
+     */
     public function all();
 
     /**
@@ -23,7 +30,7 @@ interface ProjectRepositoryInterface
      * @param \App\Services\AdminProject\UpdateProject\UpdateProjectParameter $parameter
      * @return \App\Models\Project
      */
-    public function update(UpdateProjectParameter $parameter):Project;
+    public function update(UpdateProjectParameter $parameter): Project;
 
     /**
      * プロジェクト詳細（Front）
@@ -66,4 +73,12 @@ interface ProjectRepositoryInterface
      * @return Project[]|Collection
      */
     public function fetchByKeyWord(array $keywords, array $exclude_ids = []);
+
+    /**
+     * スキル検索
+     * @param int[]|array $skill_ids
+     * @param int[]|array $exclude_ids
+     * @return Project[]|Collection
+     */
+    public function fetchBySkillIds(array $skill_ids, array $exclude_ids = []);
 }

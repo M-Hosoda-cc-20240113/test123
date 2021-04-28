@@ -122,6 +122,11 @@ class SearchProjectParameter
         return count($this->explodeKeyword()) > 0;
     }
 
+    public function hasSkill(): bool
+    {
+        return count($this->getSkillIds()) > 0;
+    }
+
     /**
      * @return string[]
      */
