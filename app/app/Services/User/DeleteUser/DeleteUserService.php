@@ -9,6 +9,9 @@ use App\Services\User\UserRepositoryInterface;
 
 class DeleteUserService
 {
+    /**
+     * @var UserRepositoryInterface
+     */
     private $user_repository;
 
     /**
