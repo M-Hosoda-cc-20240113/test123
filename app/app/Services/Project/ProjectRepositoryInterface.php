@@ -5,6 +5,7 @@ namespace App\Services\Project;
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
+use App\Services\AdminProject\ToggleProjectDisplay\ProjectDisplayToggleParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use Illuminate\Support\Collection;
 
@@ -48,17 +49,17 @@ interface ProjectRepositoryInterface
 
     /**
      * 応募終了処理
-     * @param $project_id
+     * @param ProjectDisplayToggleParameter $parameter
      * @return \App\Models\Project
      */
-    public function close($project_id): Project;
+    public function close(ProjectDisplayToggleParameter $parameter): Project;
 
     /**
      * 応募開始処理
-     * @param $project_id
+     * @param ProjectDisplayToggleParameter $parameter
      * @return \App\Models\Project
      */
-    public function open($project_id): Project;
+    public function open(ProjectDisplayToggleParameter $parameter): Project;
 
 
     /**

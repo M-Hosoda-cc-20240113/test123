@@ -4,6 +4,7 @@
 namespace App\Services\AdminProject\DeletePosition;
 
 
+use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\RelPositionProject\RelPositionProjectRepositoryInterface;
 
 class DeletePositionService
@@ -25,8 +26,8 @@ class DeletePositionService
     /**
      * @param $project_id
      */
-    public function deleteByProjectId($project_id): void
+    public function deleteByProjectId(UpdateProjectParameter $parameter): void
     {
-        $this->rel_position_project_repository->deleteByProjectId($project_id);
+        $this->rel_position_project_repository->deleteByProjectId($parameter);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services\AdminProject\TggleProjectDisplay;
+namespace App\Services\AdminProject\ToggleProjectDisplay;
 
 
 use App\Services\Project\ProjectRepositoryInterface;
@@ -19,11 +19,12 @@ class ProjectDisplayToggleService
     }
 
     /**
-     * @param int $project_id
+     * @param ProjectDisplayToggleParameter $parameter
      */
-    public function exec(int $project_id)
+    public function exec(ProjectDisplayToggleParameter $parameter)
     {
+        $project_id = $parameter->getProjectId();
         $project = $this->project_repository->findWithUsersAndAgentThroughApplicationOrAssignment($project_id);
-        $project->decided ? $this->project_repository->open($project_id) : $this->project_repository->close($project_id);
+        $project->decided ? $this->project_repository->open($parameter) : $this->project_repository->close($parameter);
     }
 }
