@@ -12,7 +12,7 @@ export class CopyFragment {
     this.template = document.querySelector('template');
     this.parent = document.querySelector('.js-parent');
     this.add_button = document.querySelector('.js-add');
-    this.remove_button = document.querySelector('.js-remove');
+    this.remove_button = document.querySelectorAll('.js-remove');
     this.copy_limit = copy_limit;
     this.delete_btn_is_after_el = delete_btn_is_after_el;
     this.count = document.querySelectorAll('.js-content').length;
@@ -35,9 +35,9 @@ export class CopyFragment {
       this.onClick(e);
     });
 
-    document.querySelectorAll('.js-remove').forEach((item) => {
+    document.querySelectorAll('.js-remove').forEach((item, index) => {
       item.addEventListener('click', (e) => {
-        this.onClick(e);
+        this.onClick(e, index);
       });
     });
   }
@@ -45,15 +45,16 @@ export class CopyFragment {
   /**
    * onClick
    * @param {Event} e
+   * @param {int} index
    */
-  onClick(e) {
+  onClick(e, index) {
     switch (e.target) {
       case this.add_button:
         if (this.count > 9) return;
         this.insertFragment(this.createFragment());
         this.isLimit();
         break;
-      case this.remove_button:
+      case this.remove_button[index]:
         this.removeSelf(e);
         break;
     }
@@ -77,6 +78,12 @@ export class CopyFragment {
   insertFragment(fragment) {
     this.parent.insertBefore(fragment, this.add_button);
     this.count++;
+    if (this.delete_btn_is_after_el) {
+      document.querySelectorAll('.js-content')[this.count - 1].addEventListener('click', (e) => {
+        this.removeSelf(e);
+      });
+      return
+    }
     document.querySelectorAll('.js-content')[this.count - 1].querySelector(
         '.js-remove').addEventListener('click', (e) => {
       this.removeSelf(e);
@@ -93,6 +100,9 @@ export class CopyFragment {
       if (e.offsetX > e.target.offsetWidth) {
         e.target.parentNode.removeChild(e.target);
       }
+      this.count--;
+      this.isLimit();
+      return;
     }
     e.target.parentNode.remove();
     this.count--;
