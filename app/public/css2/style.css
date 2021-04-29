@@ -1087,6 +1087,7 @@ img {
 .p-searchBox__input {
   margin-right: 10px;
   width: 40%;
+  border-color: #cdcddf;
 }
 
 @media screen and (max-width: 768px) {

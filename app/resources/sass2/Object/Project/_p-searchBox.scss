@@ -4,6 +4,7 @@
   &__input {
     margin-right: 10px;
     width: 40%;
+    border-color: $muted-light-color;
     @include max-screen($breakpoint-pc) {
       width: 75%;
     }
