@@ -14,15 +14,6 @@ class SearchProjectParameter
      * @const int 最大検索文字長
      */
     const MAX_KEYWORD_LENGTH = 100;
-    /**
-     * @var int 何件欲しいか
-     */
-    private $hits = 4;
-
-    /**
-     * @var int 何ページ目か
-     */
-    private $page = 1;
 
     /**
      * @var int[]|array
@@ -43,42 +34,6 @@ class SearchProjectParameter
      * @var string
      */
     private $keyword = '';
-
-    /**
-     * @return int
-     */
-    public function getHits(): int
-    {
-        return $this->hits;
-    }
-
-    /**
-     * @param int $hits
-     * @return SearchProjectParameter
-     */
-    public function setHits(int $hits): SearchProjectParameter
-    {
-        $this->hits = $hits;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPage(): int
-    {
-        return $this->page;
-    }
-
-    /**
-     * @param int $page
-     * @return SearchProjectParameter
-     */
-    public function setPage(int $page): SearchProjectParameter
-    {
-        $this->page = $page;
-        return $this;
-    }
 
     /**
      * @return array
@@ -150,14 +105,6 @@ class SearchProjectParameter
     {
         $this->keyword = $keyword;
         return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getOffset(): int
-    {
-        return $this->hits * ($this->page - 1);
     }
 
     /**
