@@ -10,7 +10,6 @@ use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
 
 class ProjectRepository implements ProjectRepositoryInterface
 {
@@ -87,6 +86,10 @@ class ProjectRepository implements ProjectRepositoryInterface
         return $project;
     }
 
+    /**
+     * @param UpdateProjectParameter $parameter
+     * @return \App\Models\Project
+     */
     public function update(UpdateProjectParameter $parameter): Project
     {
         $project = Project::findOrFail($parameter->getProjectId());
@@ -158,7 +161,7 @@ class ProjectRepository implements ProjectRepositoryInterface
 
     /**
      * @inheritDoc
-     * @param \App\Services\AdminProject\DeleteProject\DeleteProjectParameter $parameter
+     * @param DeleteProjectParameter $parameter
      * @throws \Exception
      */
     public function delete(DeleteProjectParameter $parameter): void

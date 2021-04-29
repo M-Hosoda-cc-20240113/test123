@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\CreateProjectRequest;
 use App\Http\Requests\Admin\Project\DeleteProjectRequest;
 use App\Http\Requests\Admin\Project\UpdateProjectRequest;
-use App\Models\Application;
-use App\Models\Assignment;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
 use App\Services\AdminProject\DeletePosition\DeletePositionService;
@@ -23,7 +21,6 @@ use App\Services\AdminProject\ProjectDetail\ProjectDetailService;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectService;
 use App\Services\AdminProject\DeleteSkill\DeleteSkillService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller

@@ -9,7 +9,7 @@ class CanDeleteProject implements Rule
 {
 
     /**
-     * @var
+     * @var int
      */
     protected $project_id;
 
@@ -29,7 +29,7 @@ class CanDeleteProject implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         $project_repository = resolve(ProjectRepositoryInterface::class);
         $project_ids = array_column($project_repository->fetchAppAssignProjectId(),'project_id');
