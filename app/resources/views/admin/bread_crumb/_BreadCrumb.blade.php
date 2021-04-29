@@ -28,7 +28,7 @@
     {{-- 案件作成 --}}
     @if(url()->current() === route('project.create'))
         <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
-        <li><a href="{{ route('project.create') }}"><span>案件登録</span></a></li>
+        <li><a href="{{ route('project.create') }}"><span>新規案件登録</span></a></li>
     @endif
 
     {{-- 応募リスト --}}

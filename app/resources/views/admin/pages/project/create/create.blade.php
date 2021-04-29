@@ -7,6 +7,7 @@
         @include('admin.header._link_login_logout')
     @endcomponent
     <div class="l-container">
+        @include('admin.bread_crumb._BreadCrumb')
         <h2 class="c-text fs-20">新規案件情報入力</h2>
         <hr class="Horizontal">
 
