@@ -23,11 +23,11 @@ class DeleteProjectService
     }
 
     /**
-     * @param int $project_id
+     * @param DeleteProjectParameter $parameter
      * @return void
      */
-    public function exec(int $project_id)
+    public function exec(DeleteProjectParameter $parameter)
     {
-        $this->project_repository->delete($project_id);
+        $this->project_repository->delete($parameter);
     }
 }

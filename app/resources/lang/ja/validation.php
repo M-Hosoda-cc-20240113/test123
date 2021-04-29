@@ -31,6 +31,7 @@ return [
     'confirmed'            => ':attributeは確認用項目と一致していません。',
     'date'                 => ':attributeは正しい日付ではありません。',
     'date_format'          => ':attributeは":format"書式と一致していません。',
+    'delete_project'       => 'この案件には稼働か応募しているユーザーがいます。',
     'different'            => ':attributeは:otherと違うものにしてください。',
     'digits'               => ':attributeは:digits桁にしてください',
     'digits_between'       => ':attributeは:min〜:max桁にしてください。',

@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\CreateProjectRequest;
+use App\Http\Requests\Admin\Project\DeleteProjectRequest;
 use App\Http\Requests\Admin\Project\UpdateProjectRequest;
+use App\Models\Application;
+use App\Models\Assignment;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
 use App\Services\AdminProject\DeletePosition\DeletePositionService;
+use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectService;
 use App\Services\AdminProject\TggleProjectDisplay\ProjectDisplayToggleService;
 use App\Services\AdminProject\ShowEditProjectForm\ShowEditProjectFormService;
@@ -167,15 +171,19 @@ class ProjectController extends Controller
         return redirect()->route('project.detail', ['project_id' => $project_update_id]);;
     }
 
+
     /**
-     * Admin project delete
-     *
+     * @param \App\Http\Requests\Admin\Project\DeleteProjectRequest $request
+     * @param \App\Services\AdminProject\DeleteProject\DeleteProjectService $delete_project_service
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function delete(DeleteProjectService $delete_project_service, int $project_id)
+    public function delete(DeleteProjectRequest $request, DeleteProjectService $delete_project_service)
     {
-        DB::transaction(function () use ($delete_project_service, $project_id) {
-            $delete_project_service->exec($project_id);
+        $parameter = new DeleteProjectParameter;
+        $parameter->setProjectId($request->project_id);
+        DB::transaction(function () use ($delete_project_service, $parameter) {
+            $delete_project_service->exec($parameter);
         });
         return redirect()->route('project.list');
     }
