@@ -4,6 +4,7 @@ namespace App\Services\Project;
 
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
+use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use Illuminate\Support\Collection;
 
@@ -58,4 +59,10 @@ interface ProjectRepositoryInterface
      * @return \App\Models\Project
      */
     public function open($project_id): Project;
+
+
+    /**
+     * @param DeleteProjectParameter $parameter
+     */
+    public function delete(DeleteProjectParameter $parameter): void;
 }
