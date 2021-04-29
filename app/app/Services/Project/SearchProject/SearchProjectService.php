@@ -79,6 +79,26 @@ class SearchProjectService
             $search_results[] = $result;
         }
 
+        // ポジション検索
+        if ($parameter->hasPosition()) {
+            $result = $this->project_repository->fetchByPositionIds($parameter->getPositionIds(), $searched_ids);
+            $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            $search_results[] = $result;
+        }
+
+        // 駅検索
+        if ($parameter->hasStation()) {
+            $result = $this->project_repository->fetchByStationIds($parameter->getStationIds(), $searched_ids);
+            $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            $search_results[] = $result;
+        }
+
+        // 検索条件がない時
+        if (!$parameter->hasKeyword() && !$parameter->hasSkill() && !$parameter->hasPosition() && !$parameter->hasStation()) {
+            $result = $this->project_repository->fetchCanApply();
+            $search_results[] = $result;
+        }
+
         $skills = $this->skill_repository->all();
         $positions = $this->position_repository->all();
         $stations = $this->station_repository->all();
@@ -88,6 +108,9 @@ class SearchProjectService
         $response->setSkills($skills);
         $response->setPositions($positions);
         $response->setStations($stations);
+        $response->setSearchedSkillIds($parameter->getSkillIds());
+        $response->setSearchedPositionIds($parameter->getPositionIds());
+        $response->setSearchedStationIds($parameter->getStationIds());
 
         return $response;
     }

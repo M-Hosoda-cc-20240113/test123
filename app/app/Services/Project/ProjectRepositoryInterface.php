@@ -81,4 +81,18 @@ interface ProjectRepositoryInterface
      * @return Project[]|Collection
      */
     public function fetchBySkillIds(array $skill_ids, array $exclude_ids = []);
+
+    /**
+     * @param array $position_ids
+     * @param array $exclude_ids
+     * @return Project[]|Collection
+     */
+    public function fetchByPositionIds(array $position_ids, array $exclude_ids = []);
+
+    /**
+     * @param array $station_ids
+     * @param array $exclude_ids
+     * @return Project[]|Collection
+     */
+    public function fetchByStationIds(array $station_ids, array $exclude_ids = []);
 }

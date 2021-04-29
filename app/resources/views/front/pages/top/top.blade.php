@@ -15,6 +15,13 @@
     @endcomponent
 
     <div class="l-container">
+        @if($errors->all())
+            <p class="c-text--bold u-mt-20">検索条件が不正です。</p>
+            @foreach($errors->all() as $error)
+                <p class="c-text--warning">{{ $error }}</p>
+            @endforeach
+        @endif
+
         <ul class="p-searchTab">
             <li class="p-searchTab__item js-tab is-active">スキルでさがす</li>
             <li class="p-searchTab__item js-tab">ポジションでさがす</li>
@@ -24,21 +31,30 @@
         <form action="{{ route('front.project.search') }}" method="get">
             <div class="p-checkboxUnit js-tab_content">
                 @foreach($response->getSkills() as $skill)
-                    @include('atoms.Checkbox', ['text' => $skill->name, 'class' => 'p-checkboxUnit__item', 'name' => 'skill_ids[]', 'value' => $skill->id])
+                    <label class="p-checkbox p-checkboxUnit__item">{{ $skill->name }}
+                        <input value="{{ $skill->id }}" name="skill_ids[]" type="checkbox" @if(!\Route::is('front.index') && in_array($skill->id, $response->getSearchedSkillIds())){{ 'checked' }}@endif>
+                        <div class="p-checkbox__indicator"></div>
+                    </label>
                 @endforeach
             </div>
             {{--  skills  --}}
 
             <div class="p-checkboxUnit js-tab_content">
                 @foreach($response->getPositions() as $position)
-                    @include('atoms.Checkbox', ['text' => $position->name, 'class' => 'p-checkboxUnit__item u-w-auto', 'name' => 'position_ids[]', 'value' => $position->id])
+                    <label class="p-checkbox p-checkboxUnit__item">{{ $position->name }}
+                        <input value="{{ $position->id }}" name="position_ids[]" type="checkbox" @if(!\Route::is('front.index') && in_array($position->id, $response->getSearchedPositionIds())){{ 'checked' }}@endif>
+                        <div class="p-checkbox__indicator"></div>
+                    </label>
                 @endforeach
             </div>
             {{--  positions  --}}
 
             <div class="p-checkboxUnit js-tab_content">
                 @foreach($response->getStations() as $station)
-                    @include('atoms.Checkbox', ['text' => $station->name, 'class' => 'p-checkboxUnit__item', 'name' => 'station_ids[]', 'value' => $station->id])
+                    <label class="p-checkbox p-checkboxUnit__item">{{ $station->name }}
+                        <input value="{{ $station->id }}" name="station_ids[]" type="checkbox" @if(!\Route::is('front.index') && in_array($station->id, $response->getSearchedStationIds())){{ 'checked' }}@endif>
+                        <div class="p-checkbox__indicator"></div>
+                    </label>
                 @endforeach
             </div>
             {{--  stations  --}}

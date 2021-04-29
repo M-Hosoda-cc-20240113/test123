@@ -70,6 +70,14 @@ class ProjectController extends Controller
             $parameter->setSkillIds($request->skill_ids);
         }
 
+        if (isset($request->position_ids)) {
+            $parameter->setPositionIds($request->position_ids);
+        }
+
+        if (isset($request->station_ids)) {
+            $parameter->setStationIds($request->station_ids);
+        }
+
         if (isset($request->keyword)) {
             $parameter->setKeyword($request->keyword);
         }

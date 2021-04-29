@@ -3,6 +3,7 @@
 namespace App\Infrastructures\Repositories\Eloquent\Project;
 
 use App\Models\Project;
+use App\Models\RelProjectSkill;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\Project\ProjectRepositoryInterface;
@@ -196,12 +197,66 @@ class ProjectRepository implements ProjectRepositoryInterface
      */
     public function fetchBySkillIds(array $skill_ids, array $exclude_ids = [])
     {
+        $length = count($skill_ids);
+        $arr = join(",", $skill_ids);
+        $target_ids = \DB::select(\DB::raw("(
+            SELECT p.id FROM projects AS p
+            INNER JOIN 
+            (
+                SELECT rps.project_id, count(*) AS s
+                FROM rel_projects_skills AS rps
+                WHERE rps.skill_id IN (". $arr .")   
+                GROUP BY rps.project_id
+                HAVING s = $length
+            ) AS summary
+            ON p.id = summary.project_id
+        )"));
+
         return Project::with(['station', 'positions', 'skills'])
             ->where('decided', 0)
             ->whereNotIn('id', $exclude_ids)
-            ->where(static function (Builder $query) use ($skill_ids) {
-                $query->whereHas('skills', static function (Builder $query) use ($skill_ids) {
-                    $query->whereIn('skills.id', $skill_ids);
+            ->whereIn('id', array_column($target_ids, 'id'))
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByPositionIds(array $position_ids, array $exclude_ids = [])
+    {
+        $length = count($position_ids);
+        $arr = join(",", $position_ids);
+        $target_ids = \DB::select(\DB::raw("(
+            SELECT p.id FROM projects AS p
+            INNER JOIN 
+            (
+                SELECT rpp.project_id, count(*) AS s
+                FROM rel_positions_projects AS rpp
+                WHERE rpp.position_id IN (". $arr .")   
+                GROUP BY rpp.project_id
+                HAVING s = $length
+            ) AS summary
+            ON p.id = summary.project_id
+        )"));
+
+        return Project::with(['station', 'positions', 'skills'])
+            ->where('decided', 0)
+            ->whereNotIn('id', $exclude_ids)
+            ->whereIn('id', array_column($target_ids, 'id'))
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByStationIds(array $station_ids, array $exclude_ids = [])
+    {
+        return Project::with(['station', 'positions', 'skills'])
+            ->where('decided', 0)
+            ->whereNotIn('id', $exclude_ids)
+            ->where(static function (Builder $query) use ($station_ids) {
+                $query->whereHas('station', static function (Builder $query) use ($station_ids) {
+                    $query->whereIn('stations.id', $station_ids);
                 });
             })
             ->get();
