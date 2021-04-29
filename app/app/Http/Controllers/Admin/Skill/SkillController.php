@@ -10,7 +10,7 @@ use App\Services\Skill\SkillList\SkillListService;
 class SkillController extends Controller
 {
     /**
-     * 
+     *
      * Admin skill list
      * @var array
      */
@@ -23,15 +23,5 @@ class SkillController extends Controller
         $response->setSkills($skills);
 
         return view('admin.pages.skill.list.list', ['response' => $response]);
-    }
-
-    /**
-     * 
-     * Admin skill edit
-     * @var array
-     */
-    public function edit()
-    {
-        return 'Skills edit';
     }
 }

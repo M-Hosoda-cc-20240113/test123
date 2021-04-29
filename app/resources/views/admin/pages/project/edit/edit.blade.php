@@ -11,7 +11,8 @@
         @include('admin.header._link_login_logout')
     @endcomponent
     <div class="l-container">
-        <h2 class="c-text fs-20">新規案件情報入力</h2>
+        @include('admin.bread_crumb._BreadCrumb')
+        <h2 class="c-text fs-20">案件情報編集</h2>
         <hr class="Horizontal">
 
         @if($errors->all())
@@ -21,8 +22,9 @@
             @endforeach
         @endif
         <div class="p-userRegister">
-            <form action="{{ route('project.edit', ['project_id' => $response->getProject()->id]) }}" method="POST">
+            <form action="{{ route('project.edit') }}" method="POST">
                 {{ @csrf_field() }}
+                <input type="hidden" name="project_id" value="{{ $response->getProject()->id }}">
                 {{--   p-userRegisterRow   --}}
                 <div class="p-userRegister__row">
                     <span class="c-text--bold p-userRegister__title u-mb-5-sp">会社名</span>
