@@ -6,8 +6,12 @@ use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
-use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Interface ProjectRepositoryInterface
+ * @package App\Services\Project
+ */
 interface ProjectRepositoryInterface
 {
     public function all();
@@ -59,6 +63,36 @@ interface ProjectRepositoryInterface
      * @return \App\Models\Project
      */
     public function open($project_id): Project;
+
+    /**
+     * キーワード検索
+     * @param string[] $keywords
+     * @param int[] $exclude_ids
+     * @return Project[]|Collection
+     */
+    public function fetchByKeyWord(array $keywords, array $exclude_ids = []);
+
+    /**
+     * スキル検索
+     * @param int[]|array $skill_ids
+     * @param int[]|array $exclude_ids
+     * @return Project[]|Collection
+     */
+    public function fetchBySkillIds(array $skill_ids, array $exclude_ids = []);
+
+    /**
+     * @param array $position_ids
+     * @param array $exclude_ids
+     * @return Project[]|Collection
+     */
+    public function fetchByPositionIds(array $position_ids, array $exclude_ids = []);
+
+    /**
+     * @param array $station_ids
+     * @param array $exclude_ids
+     * @return Project[]|Collection
+     */
+    public function fetchByStationIds(array $station_ids, array $exclude_ids = []);
 
 
     /**

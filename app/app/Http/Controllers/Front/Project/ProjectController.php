@@ -4,13 +4,20 @@ namespace App\Http\Controllers\Front\Project;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\CreateApplicationRequest;
+use App\Http\Requests\Front\SearchProjectRequest;
 use App\Services\Application\ApplyProjectService\ApplyProjectService;
 use App\Services\Application\ProjectApplication\ProjectApplicationService;
 use App\Services\Project\ProjectDetail\ProjectDetailResponse;
 use App\Services\Project\ProjectDetail\ProjectDetailService;
+use App\Services\Project\SearchProject\SearchProjectParameter;
+use App\Services\Project\SearchProject\SearchProjectService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class ProjectController
+ * @package App\Http\Controllers\Front\Project
+ */
 class ProjectController extends Controller
 {
 
@@ -48,5 +55,34 @@ class ProjectController extends Controller
         $user = Auth::user();
         $apply_project_service->exec($request->project_id, $user);
         return  redirect('/');
+    }
+
+    /**
+     * @param SearchProjectRequest $request
+     * @param SearchProjectService $search_project_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function search(SearchProjectRequest $request, SearchProjectService $search_project_service)
+    {
+        $parameter = new SearchProjectParameter();
+
+        if (isset($request->skill_ids)) {
+            $parameter->setSkillIds($request->skill_ids);
+        }
+
+        if (isset($request->position_ids)) {
+            $parameter->setPositionIds($request->position_ids);
+        }
+
+        if (isset($request->station_ids)) {
+            $parameter->setStationIds($request->station_ids);
+        }
+
+        if (isset($request->keyword)) {
+            $parameter->setKeyword($request->keyword);
+        }
+
+        $response = $search_project_service->search($parameter);
+        return view('front.pages.top.top', ['response' => $response]);
     }
 }

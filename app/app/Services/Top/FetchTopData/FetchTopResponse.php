@@ -35,6 +35,21 @@ class FetchTopResponse
     private $stations;
 
     /**
+     * @var int[]|array
+     */
+    private $searched_skill_ids;
+
+    /**
+     * @var int[]|array
+     */
+    private $searched_position_ids;
+
+    /**
+     * @var int[]|array
+     */
+    private $searched_station_ids;
+
+    /**
      * Get the value of projects
      *
      * @return  Project[]|Collection
@@ -126,6 +141,60 @@ class FetchTopResponse
     {
         $this->stations = $stations;
 
+        return $this;
+    }
+
+    /**
+     * @return array|int[]
+     */
+    public function getSearchedSkillIds(): array
+    {
+        return $this->searched_skill_ids;
+    }
+
+    /**
+     * @param array|int[] $searched_skill_ids
+     * @return FetchTopResponse
+     */
+    public function setSearchedSkillIds(array $searched_skill_ids): FetchTopResponse
+    {
+        $this->searched_skill_ids = $searched_skill_ids;
+        return $this;
+    }
+
+    /**
+     * @return array|int[]
+     */
+    public function getSearchedPositionIds(): array
+    {
+        return $this->searched_position_ids;
+    }
+
+    /**
+     * @param array|int[] $searched_position_ids
+     * @return FetchTopResponse
+     */
+    public function setSearchedPositionIds(array $searched_position_ids): FetchTopResponse
+    {
+        $this->searched_position_ids = $searched_position_ids;
+        return $this;
+    }
+
+    /**
+     * @return array|int[]
+     */
+    public function getSearchedStationIds(): array
+    {
+        return $this->searched_station_ids;
+    }
+
+    /**
+     * @param array|int[] $searched_station_ids
+     * @return FetchTopResponse
+     */
+    public function setSearchedStationIds(array $searched_station_ids): FetchTopResponse
+    {
+        $this->searched_station_ids = $searched_station_ids;
         return $this;
     }
 }

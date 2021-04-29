@@ -4,4 +4,5 @@ export const routes = {
 
   index: '/',
   user_skill_edit: '/users/skills/edit',
+  project_search: '/project/search',
 };
