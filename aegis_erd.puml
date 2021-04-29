@@ -173,11 +173,11 @@ projects    --do--|{    rel_projects_skills
 projects    --do--|{    rel_positions_projects
 positions   --up--|{    rel_positions_projects
 
-agents      --do--|{    projects
+agents      --ri--|{    projects
 
 stations    --le--|{    projects
 
-areas       --le--\{    stations
+areas       --le--|{    stations
 
 users       --up--o{    applications
 projects    --do--o{    applications

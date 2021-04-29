@@ -101,4 +101,18 @@ class UserRepository implements UserRepositoryInterface
         $user->email_hash = self::makeEmailHash($wanna_change_email);
         $user->save();
     }
+
+    /**
+     * @param int $user_id
+     * @throws \Exception
+     */
+    public function delete(int $user_id): void
+    {
+        $user = User::findOrFail($user_id);
+        $user->skills()->detach();
+        $user->levels()->detach();
+        $user->project_app()->detach();
+        $user->project_assign()->detach();
+        $user->delete();
+    }
 }

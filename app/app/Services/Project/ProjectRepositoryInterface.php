@@ -4,6 +4,7 @@ namespace App\Services\Project;
 
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
+use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -13,9 +14,6 @@ use Illuminate\Database\Eloquent\Collection;
  */
 interface ProjectRepositoryInterface
 {
-    /**
-     * @return mixed
-     */
     public function all();
 
     /**
@@ -30,7 +28,7 @@ interface ProjectRepositoryInterface
      * @param \App\Services\AdminProject\UpdateProject\UpdateProjectParameter $parameter
      * @return \App\Models\Project
      */
-    public function update(UpdateProjectParameter $parameter): Project;
+    public function update(UpdateProjectParameter $parameter):Project;
 
     /**
      * プロジェクト詳細（Front）
@@ -95,4 +93,10 @@ interface ProjectRepositoryInterface
      * @return Project[]|Collection
      */
     public function fetchByStationIds(array $station_ids, array $exclude_ids = []);
+
+
+    /**
+     * @param DeleteProjectParameter $parameter
+     */
+    public function delete(DeleteProjectParameter $parameter): void;
 }

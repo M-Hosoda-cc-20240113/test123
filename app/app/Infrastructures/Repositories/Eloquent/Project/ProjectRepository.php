@@ -2,14 +2,15 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\Project;
 
+use App\Models\Application;
+use App\Models\Assignment;
 use App\Models\Project;
-use App\Models\RelProjectSkill;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
+use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class ProjectRepository
@@ -91,7 +92,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     }
 
     /**
-     * @param \App\Services\AdminProject\UpdateProject\UpdateProjectParameter $parameter
+     * @param UpdateProjectParameter $parameter
      * @return \App\Models\Project
      */
     public function update(UpdateProjectParameter $parameter): Project
@@ -120,6 +121,7 @@ class ProjectRepository implements ProjectRepositoryInterface
         foreach ($parameter->getPositionIds() as $position) {
             $project->positions()->syncWithoutDetaching($position);
         }
+
         return $project;
     }
 
@@ -190,6 +192,28 @@ class ProjectRepository implements ProjectRepositoryInterface
         $project->decided = 0;
         $project->save();
         return $project;
+    }
+
+
+    /**
+     * @inheritDoc
+     * @param DeleteProjectParameter $parameter
+     * @throws \Exception
+     */
+    public function delete(DeleteProjectParameter $parameter): void
+    {
+        $project = Project::findOrFail($parameter->getProjectId());
+        $project->delete();
+    }
+
+    /**
+     * @return array
+     */
+    public function fetchAppAssignProjectId(): array
+    {
+        $app_project_ids = Application::select('project_id')->get()->toArray();
+        $assign_project_ids = Assignment::select('project_id')->get()->toArray();
+        return array_merge($app_project_ids, $assign_project_ids);
     }
 
     /**

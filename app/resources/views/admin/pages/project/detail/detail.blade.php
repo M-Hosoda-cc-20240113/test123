@@ -21,6 +21,16 @@
         @elseif($response->getProject()->decided === 0)
             @include('atoms.RegularBtn', ['text' => '応募終了', 'class' => 'w-30 ', 'link' => route('project.toggle', ['project_id' => $response->getProject()->id ?? ''])])
         @endif
+        @if($errors->all())
+            @foreach($errors->all() as $error)
+                <p class="c-text--warning" style="color: red">{{ $error }}</p>
+            @endforeach
+        @endif
+        <form action="{{ route('project.delete') }}" method="POST">
+            {{ @csrf_field() }}
+            <input type="hidden" name="project_id" value="{{ $response->getProject()->id }}">
+            <button style="background-color: coral" type="submit" class="RegularBtn w-30 ">削除</button>
+        </form>
     </div>
     @include('admin.footer.footer')
 @endsection

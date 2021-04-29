@@ -19,11 +19,14 @@ class DeleteSkillService
      * @param \App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
      */
     public function __construct(
-        RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository,
+        RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
     ) {
         $this->rel_revel_skill_user_repository = $rel_revel_skill_user_repository;
     }
 
+    /**
+     * @param $user_id
+     */
     public function deleteByUserId($user_id): void
     {
         $this->rel_revel_skill_user_repository->deleteByUserId($user_id);
