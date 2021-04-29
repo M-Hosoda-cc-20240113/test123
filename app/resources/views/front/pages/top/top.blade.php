@@ -58,8 +58,10 @@
                 @endforeach
             </div>
             {{--  stations  --}}
-            <input name="keyword" class="c-input js-search_input" type="text" value="">
-            <button type="submit" class="c-button js-project_search" data-search-url="{{ route('front.project.search') }}">検索</button>
+            <div class="p-searchBox u-mt-20">
+                <input name="keyword" class="c-input p-searchBox__input js-search_input" type="text" value="" placeholder="PHP JavaScript">
+                <button type="submit" class="c-button--secondary p-searchBox__button js-project_search" data-search-url="{{ route('front.project.search') }}">検索</button>
+            </div>
         </form>
 
         <div class="p-cardUnit--col3 u-mt-30">

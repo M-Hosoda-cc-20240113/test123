@@ -14,4 +14,11 @@
   &:focus, &:hover {
     background-color: $primary-dark-color;
   }
+  &--secondary {
+    @extend #{$this};
+    background-color: $secondary-color;
+    &:focus, &:hover {
+      background-color: $secondary-dark-color;
+    }
+  }
 }

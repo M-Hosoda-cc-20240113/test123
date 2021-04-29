@@ -1,0 +1,17 @@
+.p-searchBox {
+  display: flex;
+  justify-content: center;
+  &__input {
+    margin-right: 10px;
+    width: 40%;
+    @include max-screen($breakpoint-pc) {
+      width: 75%;
+    }
+  }
+  &__button {
+    width: 10%;
+    @include max-screen($breakpoint-pc) {
+      width: 25%;
+    }
+  }
+}
