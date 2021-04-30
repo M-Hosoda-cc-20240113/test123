@@ -1,5 +1,6 @@
 .p-userRegister {
   margin-top: 30px;
+
   &__row {
     display: flex;
     justify-content: space-between;
@@ -7,6 +8,11 @@
     @include max-screen($breakpoint-pc) {
       flex-flow: column wrap;
     }
+  }
+
+  &__input {
+    background-color: #fff;
+    $this: &;
   }
 
   &__title {
@@ -23,6 +29,7 @@
       justify-content: space-between;
     }
     $this: &;
+
     &--single {
       @extend #{$this};
       @include min-screen($breakpoint-pc) {
