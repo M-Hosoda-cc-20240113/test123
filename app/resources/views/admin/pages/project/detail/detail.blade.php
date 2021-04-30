@@ -35,4 +35,5 @@
             </button>
         </form>
     </div>
+    @include('admin.footer.footer')
 @endsection
