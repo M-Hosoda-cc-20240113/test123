@@ -1,4 +1,4 @@
-@extends('front.layout2')
+@extends('admin.layout')
 
 @section('title', 'トップページ|Aegis')
 
@@ -32,4 +32,18 @@
       </div>
       <button class="c-button js-add">追加</button>
   </div>
+
+  <button style="background-color: coral" type="submit" name="deleteForm" class="RegularBtn w-30 "
+          id="alert_button" onClick="delete_alert(event);return false;">削除
+  </button>
+
+  <script>
+      function delete_alert(e) {
+          if (!window.confirm('本当に削除しますか？')) {
+              window.alert('キャンセルされました');
+              return false;
+          }
+          document.deleteForm.submit();
+      };
+  </script>
 @endsection

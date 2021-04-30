@@ -1,9 +1,12 @@
+const route_name = document.querySelector('.Container').dataset.routeName;
 const url = location.pathname;
 import {routes} from './route';
 
 // admin
 import { project_list } from "./admin/pages/project_list";
+import { project_detail } from "./admin/pages/project_detail";
 import { user_list } from "./admin/pages/user_list";
+if (route_name === routes.project_detail) project_detail();
 if (url === routes.project_list) project_list();
 if (url === routes.user_list) user_list();
 
