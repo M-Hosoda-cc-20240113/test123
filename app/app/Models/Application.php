@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use App\Models\User;
+use App\Models\Project;
 
 /**
  * App\Models\Application
@@ -44,4 +47,20 @@ class Application extends Pivot
         'user_id',
         'project_id',
     ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function users(): BelongsTo
+    {
+        return $this->BelongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function projects(): BelongsTo
+    {
+        return $this->BelongsTo(Project::class, 'project_id', 'id');
+    }
 }
