@@ -37,7 +37,7 @@
                 @endif
 
                 <template id="skill_row">
-                    <div class="p-formGroupUnit--2col__itemForSkill">
+                    <div class="p-formGroupUnit--2col__itemForSkill js-content js-remove">
                         <label class="p-formGroupUnit--2col__label" for="">
                             <select name="skill_ids[]" id="" class="c-input">
                                 @foreach($response->getSkills() as $skill)
@@ -59,7 +59,7 @@
 
                 <form class="js-form" action="{{ route('front.user.skill.edit') }}" method="post">
                     {{ @csrf_field() }}
-                    <div class="p-formGroupUnit--2col">
+                    <div class="p-formGroupUnit--2col u-ff-column js-parent">
                         @foreach($response->getRelLevelSkillUsers() as $level_skill)
                             @if ($loop->first)
                                 <div class="p-formGroupUnit--2col__title">
@@ -68,7 +68,7 @@
                                 </div>
                             @endif
 
-                            <div class="p-formGroupUnit--2col__itemForSkill">
+                            <div class="p-formGroupUnit--2col__itemForSkill js-content js-remove">
 
                                 <label class="p-formGroupUnit--2col__label" for="">
                                     <select name="skill_ids[]" id="skill_id" class="c-input">
@@ -90,9 +90,9 @@
                             </div>
                             {{--    itemForSkill      --}}
                         @endforeach
+                        <img class="c-icon--clickable u-m0a js-add" src="/images/icons/icon_add.png" alt="">
                     </div>
-                    <img class="c-icon--clickable u-m0a js-add" src="/images/icons/icon_add.png" alt="">
-                    <button type="submit" class="c-button u-db u-m0a u-mt-20">更新する</button>
+                    <button type="submit" class="c-button u-db u-m0a u-mt-20 js-add">更新する</button>
                 </form>
             </div>
 
