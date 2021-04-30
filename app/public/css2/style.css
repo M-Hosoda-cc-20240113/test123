@@ -1114,6 +1114,10 @@ img {
   display: flex;
 }
 
+.u-ff-column {
+  flex-flow: column wrap;
+}
+
 .u-m-0 {
   margin: 0px;
 }
