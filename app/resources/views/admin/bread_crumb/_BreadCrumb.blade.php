@@ -34,13 +34,13 @@
     {{-- 応募リスト --}}
     @if(url()->current() === route('application.list'))
         <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
-        <li><a href="{{ route('application.list') }}"><span>応募状況</span></a></li>
+        <li><a href="{{ route('application.list') }}"><span>応募状況一覧</span></a></li>
     @endif
 
     {{-- アサインリスト --}}
     @if(url()->current() === route('assignment.list'))
         <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
-        <li><a href="{{ route('assignment.list') }}"><span>稼働状況</span></a></li>
+        <li><a href="{{ route('assignment.list') }}"><span>稼働状況一覧</span></a></li>
     @endif
 
     {{-- 案件元リスト --}}
