@@ -34,7 +34,7 @@
     {{-- 応募リスト --}}
     @if(url()->current() === route('application.list'))
         <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
-        <li><a href="{{ route('application.list') }}"><span>申し込み状況</span></a></li>
+        <li><a href="{{ route('application.list') }}"><span>応募状況</span></a></li>
     @endif
 
     {{-- アサインリスト --}}
