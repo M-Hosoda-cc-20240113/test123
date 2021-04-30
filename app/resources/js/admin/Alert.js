@@ -3,23 +3,23 @@ export class Alert {
     /**
      * @param {Element|string} alert
      */
-    constructor(alert_button) {
-        this.alert_button = alert_button
+    constructor(alert_button, delete_message) {
+        this.alert_button = alert_button;
+        this.message = delete_message;
         this.setEvent();
     }
 
     setEvent() {
         this.alert_button.addEventListener("click", (e) => {
-            this.delete_alert(e);
+            this.confirmAlert(e,this.message);
         });
     }
 
     /**
      * @param {Event} e
      */
-    delete_alert(e) {
-        if (!window.confirm('本当に削除しますか？')) {
-            window.alert('キャンセルされました');
+    confirmAlert(e, message) {
+        if (!window.confirm(message)) {
             e.preventDefault();
             return false;
         }
