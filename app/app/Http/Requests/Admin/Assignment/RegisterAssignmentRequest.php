@@ -29,7 +29,10 @@ class RegisterAssignmentRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    /**
+     * @return string[]
+     */
+    public function messages(): array
     {
         return [
             'user_id.integer' => '予期せぬ値が入力されました',
