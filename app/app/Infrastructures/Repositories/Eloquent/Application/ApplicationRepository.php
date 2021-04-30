@@ -11,16 +11,14 @@ class ApplicationRepository implements ApplicationRepositoryInterface
 {
     /**
      * @inheritDoc
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function all(): Collection
     {
-        return User::with('project_app')
-            ->whereHas('project_app', function ($q) {
-                $q->whereExists(function ($q) {
-                    return $q;
-                });
-            })->get();
+        return Application::with('users')
+            ->with('projects')
+            ->orderBy('user_id')
+            ->get();
     }
 
     /**

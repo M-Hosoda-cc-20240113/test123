@@ -23,7 +23,7 @@ class ApplicationListService
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function exec(): Collection
     {

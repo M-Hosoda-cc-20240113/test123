@@ -6,7 +6,7 @@
 
 @extends('admin.layout')
 
-@section('title', '申し込み状況一覧|Aegis')
+@section('title', '稼働状況一覧|Aegis')
 
 @section('body')
     @include('admin.header.header')
