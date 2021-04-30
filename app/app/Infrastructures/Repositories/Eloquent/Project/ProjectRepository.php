@@ -7,6 +7,7 @@ use App\Models\Assignment;
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
+use App\Services\AdminProject\ToggleProjectDisplay\ProjectDisplayToggleParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
@@ -31,7 +32,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     }
 
     /**
-     *for Front
+     * for Front
      * @inheritDoc
      */
     public function findWithUsersThroughApplicationOrAssignment(int $project_id): Project
@@ -45,6 +46,8 @@ class ProjectRepository implements ProjectRepositoryInterface
     }
 
     /**
+     * for Admin
+     * @inheritDoc
      * @param int $project_id
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      */
@@ -171,24 +174,24 @@ class ProjectRepository implements ProjectRepositoryInterface
 
 
     /**
-     * @param $project_id
+     * @param ProjectDisplayToggleParameter $parameter
      * @return \App\Models\Project|void
      */
-    public function close($project_id): Project
+    public function close(ProjectDisplayToggleParameter $parameter): Project
     {
-        $project = Project::findOrFail($project_id);
+        $project = Project::findOrFail($parameter->getProjectId());
         $project->decided = 1;
         $project->save();
         return $project;
     }
 
     /**
-     * @param $project_id
+     * @param ProjectDisplayToggleParameter $parameter
      * @return \App\Models\Project
      */
-    public function open($project_id): Project
+    public function open(ProjectDisplayToggleParameter $parameter): Project
     {
-        $project = Project::findOrFail($project_id);
+        $project = Project::findOrFail($parameter->getProjectId());
         $project->decided = 0;
         $project->save();
         return $project;

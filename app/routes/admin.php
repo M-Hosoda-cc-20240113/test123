@@ -48,9 +48,9 @@ Route::namespace('Project')->prefix('projects')->group(function () {
   Route::post('/create', [ProjectController::class, 'create'])->name('project.create');
   Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('project.detail');
   Route::get('/{project_id}/edit', [ProjectController::class, 'showEditForm'])->name('project.edit.form');
-  Route::post('/{project_id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
+  Route::post('/edit', [ProjectController::class, 'edit'])->name('project.edit');
   Route::post('/delete', [ProjectController::class, 'delete'])->name('project.delete');
-  Route::get('/{project_id}/toggle', [ProjectController::class, 'toggle'])->name('project.toggle');
+  Route::post('/toggle', [ProjectController::class, 'toggle'])->name('project.toggle');
 });
 
 Route::namespace('Agent')->prefix('agent')->group(function () {
@@ -67,12 +67,10 @@ Route::namespace('Station')->prefix('station')->group(function () {
 
 Route::namespace('Skill')->prefix('skills')->group(function () {
   Route::get('/', [SkillController::class, 'list'])->name('skill.list');
-  Route::get('/edit', [SkillController::class, 'edit'])->name('skill.edit');
 });
 
 Route::namespace('Position')->prefix('positions')->group(function () {
   Route::get('/', [PositionController::class, 'list'])->name('position.list');
-  Route::get('/edit', [PositionController::class, 'edit'])->name('position.edit');
 });
 
  Route::namespace('Application')->prefix('applications')->group(function () {
