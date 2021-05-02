@@ -1,5 +1,6 @@
 export class Alert {
 
+
     /**
      * @param {Element|string} alert
      */
