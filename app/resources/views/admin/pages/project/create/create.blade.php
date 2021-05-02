@@ -64,7 +64,8 @@
                     <span class="p-register__title c-text--bold">案件名</span>
                     <div class="p-register__itemWrap">
                         <div class="p-register__item u-w-50-pc">
-                            <input name="name" class="c-input" type="text" value="{{ old('name') }}" placeholder="大規模総合ECサイト開発">
+                            <input name="name" class="c-input" type="text" value="{{ old('name') }}"
+                                   placeholder="大規模総合ECサイト開発">
                         </div>
                     </div>
                 </div>
@@ -90,25 +91,41 @@
                 </div>
                 {{--  出勤回数  --}}
 
+                <template>
+                    <div class="p-register__item--trash u-mt-20 js-content js-remove">
+                        <label for="" class="c-select p-register__itemPart">
+                            <select name="position_ids[]" id="">
+                                <option value="">選択してください</option>
+                                @foreach($response->getPositions() as $position)
+                                    <option value="{{ $position->id }}">{{ $position->name }}</option>
+                                @endforeach
+                            </select>
+                        </label>
+                    </div>
+                </template>
+
                 <div class="p-register__row">
                     <span class="p-register__title c-text--bold">ポジション</span>
-                    <div class="p-register__itemWrap">
-                        <div class="p-register__item u-w-50-pc">
-                            <label for="" class="c-select p-register__itemPart">
-                                <select name="position_ids[]" id="">
-                                    <option value="">選択してください</option>
-                                    @foreach($response->getPositions() as $position)
-                                        <option value="{{ $position->id }}">{{ $position->name }}</option>
-                                    @endforeach
-                                </select>
-                            </label>
+                    <div class="u-w-70-pc u-w-70-sp">
+                        <div class="p-register__itemWrap u-w-90-sp u-w-50-pc js-parent">
+                            <div class="p-register__item--trash js-content js-remove">
+                                <label for="" class="c-select p-register__itemPart">
+                                    <select name="position_ids[]" id="">
+                                        <option value="">選択してください</option>
+                                        @foreach($response->getPositions() as $position)
+                                            <option value="{{ $position->id }}">{{ $position->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </label>
+                            </div>
+                            <img class="c-icon--clickable u-mt-20 u-m0a js-add" src="/images/icons/icon_add.png" alt="">
                         </div>
                     </div>
                 </div>
                 {{--  ポジション  --}}
 
                 <template>
-                    <div class="p-register__item--trash u-mt-20 js-content">
+                    <div class="p-register__item--trash u-mt-20 js-content js-remove">
                         <label for="" class="c-select p-register__itemPart">
                             <select name="skill_ids[]" id="">
                                 <option value="">選択してください</option>
@@ -144,10 +161,12 @@
                     <span class="p-register__title c-text--bold">単価</span>
                     <div class="p-register__itemWrap--2col u-ff-row">
                         <div class="p-register__item u-w-25-pc u-w-50-sp">
-                            <input name="min_unit_price" value="{{ old('min_unit_price') }}" type="text" class="c-input"><span class="u-as-center u-pl-10 u-w-70px">〜</span>
+                            <input name="min_unit_price" value="{{ old('min_unit_price') }}" type="text"
+                                   class="c-input"><span class="u-as-center u-pl-10 u-w-70px">〜</span>
                         </div>
                         <div class="p-register__item u-w-25-pc u-w-50-sp">
-                            <input name="max_unit_price" value="{{ old('maz_unit_price') }}" type="text" class="c-input"><span class="u-as-center u-pl-10 u-w-70px">万円</span>
+                            <input name="max_unit_price" value="{{ old('maz_unit_price') }}" type="text"
+                                   class="c-input"><span class="u-as-center u-pl-10 u-w-70px">万円</span>
                         </div>
                     </div>
                 </div>

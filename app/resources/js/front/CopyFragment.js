@@ -8,14 +8,14 @@
  * 追加最大値は第一引数に入れる(defaultは10)
  */
 export class CopyFragment {
-  constructor(copy_limit = 10, delete_btn_is_after_el = false) {
-    this.template = document.querySelector('template');
-    this.parent = document.querySelector('.js-parent');
-    this.add_button = document.querySelector('.js-add');
-    this.remove_button = document.querySelectorAll('.js-remove');
+  constructor(index = 0, copy_limit = 10, delete_btn_is_after_el = false) {
+    this.template = document.querySelectorAll('template')[index];
+    this.parent = document.querySelectorAll('.js-parent')[index];
+    this.add_button = document.querySelectorAll('.js-add')[index];
+    this.remove_button = this.parent.querySelectorAll('.js-remove');
     this.copy_limit = copy_limit;
     this.delete_btn_is_after_el = delete_btn_is_after_el;
-    this.count = document.querySelectorAll('.js-content').length;
+    this.count = this.parent.querySelectorAll('.js-content').length;
 
     this.init();
     this.setEvent();
@@ -35,7 +35,7 @@ export class CopyFragment {
       this.onClick(e);
     });
 
-    document.querySelectorAll('.js-remove').forEach((item, index) => {
+    this.parent.querySelectorAll('.js-remove').forEach((item, index) => {
       item.addEventListener('click', (e) => {
         this.onClick(e, index);
       });
@@ -79,13 +79,12 @@ export class CopyFragment {
     this.parent.insertBefore(fragment, this.add_button);
     this.count++;
     if (this.delete_btn_is_after_el) {
-      document.querySelectorAll('.js-content')[this.count - 1].addEventListener('click', (e) => {
+      this.parent.querySelectorAll('.js-content')[this.count - 1].addEventListener('click', (e) => {
         this.removeSelf(e);
       });
       return
     }
-    document.querySelectorAll('.js-content')[this.count - 1].querySelector(
-        '.js-remove').addEventListener('click', (e) => {
+    this.parent.querySelectorAll('.js-content')[this.count - 1].querySelector('.js-remove').addEventListener('click', (e) => {
       this.removeSelf(e);
     });
   }
