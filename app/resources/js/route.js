@@ -1,11 +1,13 @@
 export const routes = {
-  project_list: '/admin/projects',
-  project_create: '/admin/projects/create',
+  // admin
+  project_list: 'project.list',
+  project_create: 'project.create.form',
   project_detail: "project.detail",
-  user_list: '/admin/users',
+  user_list: 'user.list',
 
-  index: '/',
-  user_skill_edit: '/users/skills/edit',
-  project_search: '/project/search',
-  test: '/test',
+  // front
+  index: 'front.index',
+  user_skill_edit: 'front.user.skill.form',
+  project_search: 'front.project.search',
+  test: 'front.test',
 };
