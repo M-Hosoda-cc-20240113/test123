@@ -6,7 +6,7 @@
     @component('admin.header.header', ['href' => route('front.index')])
         @include('admin.header._link_login_logout')
     @endcomponent
-    <div class="Container mt-30 pb-100">
+    <div class="Container mt-30 pb-100" data-route-name="project.detail">
         @include('admin.bread_crumb._BreadCrumb')
         <div class="admin-project-detail">
             <p class="fw-bold fs-20">{{ $response->getProject()->name ?? '' }}
@@ -30,7 +30,9 @@
         <form action="{{ route('project.delete') }}" method="POST">
             {{ @csrf_field() }}
             <input type="hidden" name="project_id" value="{{ $response->getProject()->id }}">
-            <button style="background-color: coral" type="submit" class="RegularBtn w-30 ">削除</button>
+            <button style="background-color: coral" type="submit" class="RegularBtn w-30 "
+                    id="alert_button">削除
+            </button>
         </form>
     </div>
     @include('admin.footer.footer')
