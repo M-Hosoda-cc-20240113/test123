@@ -1154,6 +1154,8 @@ img {
   justify-content: space-between;
   margin-bottom: 30px;
   flex-flow: row wrap;
+  border-bottom: 1px solid #cdcddf;
+  padding-bottom: 30px;
 }
 
 .p-register__row--spColumn {

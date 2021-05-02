@@ -6,6 +6,8 @@
     justify-content: space-between;
     margin-bottom: 30px;
     flex-flow: row wrap;
+    border-bottom: 1px solid $muted-light-color;
+    padding-bottom: 30px;
     $this: &;
     &--spColumn {
         @extend #{$this};
