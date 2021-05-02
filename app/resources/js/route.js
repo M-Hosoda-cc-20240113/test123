@@ -1,5 +1,6 @@
 export const routes = {
   project_list: '/admin/projects',
+  project_create: '/admin/projects/create',
   project_detail: "project.detail",
   user_list: '/admin/users',
 

@@ -1,10 +1,15 @@
 .c-input {
-  width: 220px;
+  width: 100%;
   border: 1px solid $muted-lighter-color;
   border-radius: 3px;
   font-size: 14px;
   padding: 6px 12px;
   display: inline-block;
+  $this: &;
+  &--light {
+    @extend #{$this};
+    background-color: $light-color;
+  }
 
   @include max-screen($breakpoint-pc) {
     width: 100%;

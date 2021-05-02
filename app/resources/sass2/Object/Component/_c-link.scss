@@ -3,6 +3,7 @@
   margin: 0;
   color: $dark-color;
   text-decoration: none;
+  text-align: left;
   $this: &;
   &--bold {
     @extend #{$this};
