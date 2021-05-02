@@ -30,10 +30,10 @@
                     <div class="p-register__itemWrap">
                         <div class="p-register__item u-w-50-pc">
                             <label for="" class="c-select">
-                                <select name="" id="">
+                                <select name="agent_id" id="">
                                     <option value="">選択してください</option>
                                     @foreach($response->getAgents() as $agent)
-                                        <option value="{{ $agent->id }}">{{ $agent }}</option>
+                                        <option value="{{ $agent->id }}">{{ $agent->name }}</option>
                                     @endforeach
                                 </select>
                             </label>
@@ -47,7 +47,7 @@
                     <div class="p-register__itemWrap">
                         <div class="p-register__item u-w-50-pc">
                             <label for="" class="c-select">
-                                <select name="" id="">
+                                <select name="station_id" id="">
                                     <option value="">選択してください</option>
                                     @foreach($response->getStations() as $station)
                                         <option value="{{ $station->id }}">{{ $station->name }}</option>
@@ -63,8 +63,7 @@
                     <span class="p-register__title c-text--bold">案件名</span>
                     <div class="p-register__itemWrap">
                         <div class="p-register__item u-w-50-pc">
-                            <input name="name" class="c-input" type="text" value="{{ old('name') }}"
-                                   placeholder="大規模総合ECサイト開発">
+                            <input name="name" class="c-input" type="text" value="{{ old('name') }}" placeholder="大規模総合ECサイト開発">
                         </div>
                     </div>
                 </div>
@@ -76,7 +75,7 @@
                         <div class="p-register__item u-w-50-pc">
                             <span class="p-register__itemPart c-text">週</span>
                             <label for="" class="c-select u-w-100px p-register__itemPart">
-                                <select name="" id="">
+                                <select name="weekly_attendance" id="">
                                     <option value="">5</option>
                                     <option value="">4</option>
                                     <option value="">3</option>
@@ -144,10 +143,10 @@
                     <span class="p-register__title c-text--bold">単価</span>
                     <div class="p-register__itemWrap--2col u-ff-row">
                         <div class="p-register__item u-w-25-pc u-w-50-sp">
-                            <input type="text" class="c-input"><span class="u-as-center u-pl-10 u-w-70px">〜</span>
+                            <input name="min_unit_price" value="{{ old('min_unit_price') }}" type="text" class="c-input"><span class="u-as-center u-pl-10 u-w-70px">〜</span>
                         </div>
                         <div class="p-register__item u-w-25-pc u-w-50-sp">
-                            <input type="text" class="c-input"><span class="u-as-center u-pl-10 u-w-70px">万円</span>
+                            <input name="max_unit_price" value="{{ old('maz_unit_price') }}" type="text" class="c-input"><span class="u-as-center u-pl-10 u-w-70px">万円</span>
                         </div>
                     </div>
                 </div>
@@ -157,11 +156,19 @@
                     <span class="p-register__title c-text--bold">就業時間</span>
                     <div class="p-register__itemWrap--2col u-ff-row">
                         <div class="p-register__item u-w-25-pc u-w-50-sp">
-                            <input type="text" class="c-input" placeholder="10:00"><span
-                                    class="u-as-center u-pl-10 u-w-70px">〜</span>
+                            <input type="text"
+                                   name="work_start"
+                                   class="c-input"
+                                   value="{{ old('work_start') }}"
+                                   placeholder="10:00">
+                            <span class="u-as-center u-pl-10 u-w-70px">〜</span>
                         </div>
                         <div class="p-register__item u-w-25-pc u-w-50-sp">
-                            <input type="text" class="c-input" placeholder="19:00">
+                            <input type="text"
+                                   name="work_end"
+                                   class="c-input"
+                                   value="{{ old('work_end') }}"
+                                   placeholder="19:00">
                         </div>
                     </div>
                 </div>
@@ -171,12 +178,20 @@
                     <span class="p-register__title c-text--bold">精算幅</span>
                     <div class="p-register__itemWrap--2col u-ff-row">
                         <div class="p-register__item u-w-25-pc u-w-50-sp">
-                            <input type="text" class="c-input" placeholder="160"><span
-                                    class="u-as-center u-pl-10 u-w-70px">〜</span>
+                            <input type="text"
+                                   class="c-input"
+                                   name="min_operation_time"
+                                   value="{{ old('min_operation_time') }}"
+                                   placeholder="160">
+                            <span class="u-as-center u-pl-10 u-w-70px">〜</span>
                         </div>
                         <div class="p-register__item u-w-25-pc u-w-50-sp">
-                            <input type="text" class="c-input" placeholder="200"><span
-                                    class="u-as-center u-pl-10 u-w-70px">時間</span>
+                            <input type="text"
+                                   class="c-input"
+                                   name="max_operation_time"
+                                   value="{{ old('max_operationo_time') }}"
+                                   placeholder="200">
+                            <span class="u-as-center u-pl-10 u-w-70px">時間</span>
                         </div>
                     </div>
                 </div>
@@ -186,7 +201,10 @@
                     <p class="p-register__title c-text--bold u-w-100-sp">案件内容</p>
                     <div class="p-register__itemWrap">
                         <div class="p-register__item">
-                            <textarea class="c-input--light" name="" id="" rows="10"></textarea>
+                            <textarea class="c-input--light"
+                                      name="description"
+                                      id=""
+                                      rows="10">{{ old('description') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -196,7 +214,10 @@
                     <p class="p-register__title c-text--bold u-w-100-sp">必須条件</p>
                     <div class="p-register__itemWrap">
                         <div class="p-register__item">
-                            <textarea class="c-input--light" name="" id="" rows="10"></textarea>
+                            <textarea class="c-input--light"
+                                      name="required_condition"
+                                      id=""
+                                      rows="10">{{ old('required_condition') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -206,7 +227,10 @@
                     <p class="p-register__title c-text--bold u-w-100-sp">尚可条件</p>
                     <div class="p-register__itemWrap">
                         <div class="p-register__item">
-                            <textarea class="c-input--light" name="" id="" rows="10"></textarea>
+                            <textarea class="c-input--light"
+                                      name="better_condition"
+                                      id=""
+                                      rows="10">{{ old('better_condition') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -216,13 +240,16 @@
                     <p class="p-register__title c-text--bold u-w-100-sp">案件特徴</p>
                     <div class="p-register__itemWrap">
                         <div class="p-register__item">
-                            <textarea class="c-input--light" name="" id="" rows="10"></textarea>
+                            <textarea class="c-input--light"
+                                      name="feature"
+                                      id=""
+                                      rows="10">{{ old('feature') }}</textarea>
                         </div>
                     </div>
                 </div>
                 {{--  案件特徴  --}}
 
-                <button type="submit" class="c-button u-db u-m0a">登録</button>
+                <button type="submit" class="c-button u-db u-m0a u-w-250px u-mb-20">登録</button>
             </form>
         </div>
         {{--  p-register  --}}
