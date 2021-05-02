@@ -25,6 +25,7 @@
 
         <div class="p-register">
             <form action="{{ route('project.create') }}" method="post">
+                {{ @csrf_field() }}
                 <div class="p-register__row">
                     <span class="p-register__title c-text--bold">会社名</span>
                     <div class="p-register__itemWrap">
@@ -76,11 +77,11 @@
                             <span class="p-register__itemPart c-text">週</span>
                             <label for="" class="c-select u-w-100px p-register__itemPart">
                                 <select name="weekly_attendance" id="">
-                                    <option value="">5</option>
-                                    <option value="">4</option>
-                                    <option value="">3</option>
-                                    <option value="">2</option>
-                                    <option value="">1</option>
+                                    <option value="5">5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
                                 </select>
                             </label>
                             <span class="p-register__itemPart c-text">回</span>
