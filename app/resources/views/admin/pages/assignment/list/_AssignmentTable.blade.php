@@ -8,22 +8,19 @@
     </thead>
 
     <tbody class="RegularTable__body">
-    @foreach ($response->getAssignment() as $user)
+    @foreach ($response->getAssignment() as $assignment)
         <tr class="RegularTable__bodyRow" data-href="">
             <td class="RegularTable__bodyRowItem">
-                @foreach($user->project_assign as $project)
-                    <a class="d-block w-100"
-                       href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? ''}}</a>
-                @endforeach
+                <a class="d-block w-100"
+                   href="{{ route('project.detail', ['project_id' => $assignment->projects->id] )}}">{{ $assignment->projects->name ?? ''}}</a>
             </td>
             <td class="RegularTable__bodyRowItem">
-                <a class="d-block w-100" href="{{ route('user.detail', ['user_id' => $user->id] )}}">{{ $user->sei }}
-                    &nbsp;{{ $user->mei ?? ''}}</a>
+                <a class="d-block w-100"
+                   href="{{ route('user.detail', ['user_id' => $assignment->users->id] )}}">{{ $assignment->projects->sei }}
+                    &nbsp;{{ $assignment->users->mei ?? ''}}</a>
             </td>
             <td class="RegularTable__bodyRowItem">
-                @foreach($user->project_assign as $project)
-                    {{ ViewHelper::YmdReplace($project->pivot->created_at ?? '' )}}<br>
-                @endforeach
+                {{ ViewHelper::YmdReplace( $assignment->created_at ?? '' )}}<br>
             </td>
         </tr>
     @endforeach

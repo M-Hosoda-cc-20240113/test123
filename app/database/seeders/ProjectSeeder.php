@@ -120,7 +120,6 @@ class ProjectSeeder extends Seeder
             "work_end"           => "17:30" ,
             "weekly_attendance"  => "5" ,
             "feature"            => "最新技術\r\nアーキテクチャーを使ったスピード感のある開発を学ぶことが可能。" ,
-            "decided"            => 1 ,
             "created_at"         => $now
         ]);
 
