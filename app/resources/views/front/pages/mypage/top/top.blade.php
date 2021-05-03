@@ -61,7 +61,7 @@
         <p class="p-level2Heading u-mb-5">スキル</p>
         <div class="u-mb-30">
           @foreach($response->getRelLevelSkillUser() as $level_skill)
-            @include('atoms.Tag', ['text' => $level_skill->name.'（'.$level_skill->level.'）', 'class' => 'u-mr-5 u-mt-5'])
+            <span class="c-label u-mt-5 u-mr-10">{{ $level_skill->name }}（{{ $level_skill->level }})</span>
           @endforeach
         </div>
         {{--  スキル  --}}
