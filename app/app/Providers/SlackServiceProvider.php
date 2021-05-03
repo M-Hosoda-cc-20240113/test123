@@ -15,7 +15,7 @@ class SlackServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             'slack',
-            'App\Services\Slack\SlackService'
+            'App\Services\SlackNotification\SlackService'
         );
     }
 

@@ -11,8 +11,17 @@ class SlackNotification extends Notification
 {
     use Queueable;
 
+    /**
+     * @var string
+     */
     protected $message;
+    /**
+     * @var \Illuminate\Config\Repository
+     */
     protected $channel;
+    /**
+     * @var \Illuminate\Config\Repository
+     */
     protected $name;
 
     /**
