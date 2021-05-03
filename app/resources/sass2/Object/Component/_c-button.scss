@@ -13,6 +13,7 @@
   $this:&;
   &:focus, &:hover {
     background-color: $primary-dark-color;
+    color: $light-color;
   }
   &--secondary {
     @extend #{$this};

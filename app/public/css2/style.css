@@ -525,6 +525,7 @@ img {
 .l-container--2col .l-sidebar {
   padding-left: 20px;
   padding-right: 10px;
+  width: 25%;
 }
 
 @media screen and (max-width: 768px) {
@@ -538,6 +539,7 @@ img {
 .l-container--2col .l-main {
   padding-left: 10px;
   padding-right: 20px;
+  width: 75%;
 }
 
 @media screen and (max-width: 768px) {
@@ -554,7 +556,7 @@ img {
 }
 
 .l-main {
-  width: 75%;
+  width: 100%;
 }
 
 .c-button, .c-button--secondary {
@@ -573,6 +575,7 @@ img {
 
 .c-button:focus, .c-button--secondary:focus, .c-button:hover, .c-button--secondary:hover {
   background-color: #2c99b4;
+  color: #ffffff;
 }
 
 .c-button--secondary {
@@ -796,6 +799,14 @@ img {
   font-size: 1.4rem;
 }
 
+@media screen and (max-width: 768px) {
+  .p-searchTab__item {
+    width: 33%;
+    margin: 0 3px;
+    font-size: 1.2rem;
+  }
+}
+
 .p-searchTab__item:hover {
   cursor: pointer;
 }
@@ -924,6 +935,8 @@ img {
 .p-userRegister__inputName {
   align-self: center;
   margin-right: 10px;
+  min-width: 10%;
+  text-align: right;
 }
 
 .p-list {
@@ -1226,6 +1239,47 @@ img {
   align-self: center;
 }
 
+.p-projectDetailTable {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.p-projectDetailTable__row {
+  border-top: 5px solid #ffffff;
+}
+
+.p-projectDetailTable__head {
+  line-height: 1.2em;
+  background-color: #dfe4e7;
+  font-weight: normal;
+  padding: 10px 0;
+  width: 100px;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  .p-projectDetailTable__head {
+    display: block;
+    width: auto;
+    min-width: 50px;
+    overflow: hidden;
+    clear: both;
+  }
+}
+
+.p-projectDetailTable__body {
+  padding: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .p-projectDetailTable__body {
+    display: block;
+  }
+}
+
 .u-db {
   display: block !important;
 }
@@ -1244,6 +1298,426 @@ img {
 
 .u-as-center {
   align-self: center;
+}
+
+@media screen and (max-width: 768px) {
+  .u-dn-sp {
+    display: none;
+  }
+}
+
+.u-dn-pc {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .u-dn-pc {
+    display: block;
+  }
+}
+
+.u-fs-0 {
+  font-size: 0rem !important;
+}
+
+.u-fs-1 {
+  font-size: 0.1rem !important;
+}
+
+.u-fs-2 {
+  font-size: 0.2rem !important;
+}
+
+.u-fs-3 {
+  font-size: 0.3rem !important;
+}
+
+.u-fs-4 {
+  font-size: 0.4rem !important;
+}
+
+.u-fs-5 {
+  font-size: 0.5rem !important;
+}
+
+.u-fs-6 {
+  font-size: 0.6rem !important;
+}
+
+.u-fs-7 {
+  font-size: 0.7rem !important;
+}
+
+.u-fs-8 {
+  font-size: 0.8rem !important;
+}
+
+.u-fs-9 {
+  font-size: 0.9rem !important;
+}
+
+.u-fs-10 {
+  font-size: 1rem !important;
+}
+
+.u-fs-11 {
+  font-size: 1.1rem !important;
+}
+
+.u-fs-12 {
+  font-size: 1.2rem !important;
+}
+
+.u-fs-13 {
+  font-size: 1.3rem !important;
+}
+
+.u-fs-14 {
+  font-size: 1.4rem !important;
+}
+
+.u-fs-15 {
+  font-size: 1.5rem !important;
+}
+
+.u-fs-16 {
+  font-size: 1.6rem !important;
+}
+
+.u-fs-17 {
+  font-size: 1.7rem !important;
+}
+
+.u-fs-18 {
+  font-size: 1.8rem !important;
+}
+
+.u-fs-19 {
+  font-size: 1.9rem !important;
+}
+
+.u-fs-20 {
+  font-size: 2rem !important;
+}
+
+.u-fs-21 {
+  font-size: 2.1rem !important;
+}
+
+.u-fs-22 {
+  font-size: 2.2rem !important;
+}
+
+.u-fs-23 {
+  font-size: 2.3rem !important;
+}
+
+.u-fs-24 {
+  font-size: 2.4rem !important;
+}
+
+.u-fs-25 {
+  font-size: 2.5rem !important;
+}
+
+.u-fs-26 {
+  font-size: 2.6rem !important;
+}
+
+.u-fs-27 {
+  font-size: 2.7rem !important;
+}
+
+.u-fs-28 {
+  font-size: 2.8rem !important;
+}
+
+.u-fs-29 {
+  font-size: 2.9rem !important;
+}
+
+.u-fs-30 {
+  font-size: 3rem !important;
+}
+
+.u-fs-31 {
+  font-size: 3.1rem !important;
+}
+
+.u-fs-32 {
+  font-size: 3.2rem !important;
+}
+
+.u-fs-33 {
+  font-size: 3.3rem !important;
+}
+
+.u-fs-34 {
+  font-size: 3.4rem !important;
+}
+
+.u-fs-35 {
+  font-size: 3.5rem !important;
+}
+
+.u-fs-36 {
+  font-size: 3.6rem !important;
+}
+
+.u-fs-37 {
+  font-size: 3.7rem !important;
+}
+
+.u-fs-38 {
+  font-size: 3.8rem !important;
+}
+
+.u-fs-39 {
+  font-size: 3.9rem !important;
+}
+
+.u-fs-40 {
+  font-size: 4rem !important;
+}
+
+.u-fs-41 {
+  font-size: 4.1rem !important;
+}
+
+.u-fs-42 {
+  font-size: 4.2rem !important;
+}
+
+.u-fs-43 {
+  font-size: 4.3rem !important;
+}
+
+.u-fs-44 {
+  font-size: 4.4rem !important;
+}
+
+.u-fs-45 {
+  font-size: 4.5rem !important;
+}
+
+.u-fs-46 {
+  font-size: 4.6rem !important;
+}
+
+.u-fs-47 {
+  font-size: 4.7rem !important;
+}
+
+.u-fs-48 {
+  font-size: 4.8rem !important;
+}
+
+.u-fs-49 {
+  font-size: 4.9rem !important;
+}
+
+.u-fs-50 {
+  font-size: 5rem !important;
+}
+
+.u-fs-51 {
+  font-size: 5.1rem !important;
+}
+
+.u-fs-52 {
+  font-size: 5.2rem !important;
+}
+
+.u-fs-53 {
+  font-size: 5.3rem !important;
+}
+
+.u-fs-54 {
+  font-size: 5.4rem !important;
+}
+
+.u-fs-55 {
+  font-size: 5.5rem !important;
+}
+
+.u-fs-56 {
+  font-size: 5.6rem !important;
+}
+
+.u-fs-57 {
+  font-size: 5.7rem !important;
+}
+
+.u-fs-58 {
+  font-size: 5.8rem !important;
+}
+
+.u-fs-59 {
+  font-size: 5.9rem !important;
+}
+
+.u-fs-60 {
+  font-size: 6rem !important;
+}
+
+.u-fs-61 {
+  font-size: 6.1rem !important;
+}
+
+.u-fs-62 {
+  font-size: 6.2rem !important;
+}
+
+.u-fs-63 {
+  font-size: 6.3rem !important;
+}
+
+.u-fs-64 {
+  font-size: 6.4rem !important;
+}
+
+.u-fs-65 {
+  font-size: 6.5rem !important;
+}
+
+.u-fs-66 {
+  font-size: 6.6rem !important;
+}
+
+.u-fs-67 {
+  font-size: 6.7rem !important;
+}
+
+.u-fs-68 {
+  font-size: 6.8rem !important;
+}
+
+.u-fs-69 {
+  font-size: 6.9rem !important;
+}
+
+.u-fs-70 {
+  font-size: 7rem !important;
+}
+
+.u-fs-71 {
+  font-size: 7.1rem !important;
+}
+
+.u-fs-72 {
+  font-size: 7.2rem !important;
+}
+
+.u-fs-73 {
+  font-size: 7.3rem !important;
+}
+
+.u-fs-74 {
+  font-size: 7.4rem !important;
+}
+
+.u-fs-75 {
+  font-size: 7.5rem !important;
+}
+
+.u-fs-76 {
+  font-size: 7.6rem !important;
+}
+
+.u-fs-77 {
+  font-size: 7.7rem !important;
+}
+
+.u-fs-78 {
+  font-size: 7.8rem !important;
+}
+
+.u-fs-79 {
+  font-size: 7.9rem !important;
+}
+
+.u-fs-80 {
+  font-size: 8rem !important;
+}
+
+.u-fs-81 {
+  font-size: 8.1rem !important;
+}
+
+.u-fs-82 {
+  font-size: 8.2rem !important;
+}
+
+.u-fs-83 {
+  font-size: 8.3rem !important;
+}
+
+.u-fs-84 {
+  font-size: 8.4rem !important;
+}
+
+.u-fs-85 {
+  font-size: 8.5rem !important;
+}
+
+.u-fs-86 {
+  font-size: 8.6rem !important;
+}
+
+.u-fs-87 {
+  font-size: 8.7rem !important;
+}
+
+.u-fs-88 {
+  font-size: 8.8rem !important;
+}
+
+.u-fs-89 {
+  font-size: 8.9rem !important;
+}
+
+.u-fs-90 {
+  font-size: 9rem !important;
+}
+
+.u-fs-91 {
+  font-size: 9.1rem !important;
+}
+
+.u-fs-92 {
+  font-size: 9.2rem !important;
+}
+
+.u-fs-93 {
+  font-size: 9.3rem !important;
+}
+
+.u-fs-94 {
+  font-size: 9.4rem !important;
+}
+
+.u-fs-95 {
+  font-size: 9.5rem !important;
+}
+
+.u-fs-96 {
+  font-size: 9.6rem !important;
+}
+
+.u-fs-97 {
+  font-size: 9.7rem !important;
+}
+
+.u-fs-98 {
+  font-size: 9.8rem !important;
+}
+
+.u-fs-99 {
+  font-size: 9.9rem !important;
+}
+
+.u-fs-100 {
+  font-size: 10rem !important;
 }
 
 .u-m-0 {

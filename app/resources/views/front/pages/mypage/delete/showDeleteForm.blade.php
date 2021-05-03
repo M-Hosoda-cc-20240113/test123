@@ -16,22 +16,18 @@
             @endforeach
         @endif
         <p class="p-level2Heading">ユーザー退会</p>
-        <div>
-            下記の内容をご確認の上、「退会する」ボタンを押してください。
-            <form action="{{ route('front.user.delete') }}" method="POST">
-                {{ @csrf_field() }}
-                <div class="p-checkboxUnit">
-                    <label class="p-checkbox p-checkboxUnit__item">
-                        <p style="color: red">※退会後は、登録内容の確認はできなくなり取得したポイントは破棄されます。</p>
-                    </label>
-                    <label class="p-checkbox p-checkboxUnit__item">確認しました。
-                        <input type="checkbox" name="withdraw-confirm" value="confirm"/>
-                        <div class="p-checkbox__indicator"></div>
-                    </label>
-                </div>
-                <button type="submit" class="c-button u-db u-m0a u-mt-20">退会する</button>
-            </form>
-        </div>
+        <p class="c-text">下記の内容をご確認の上、「退会する」ボタンを押してください。</p>
+        <form action="{{ route('front.user.delete') }}" method="POST">
+            {{ @csrf_field() }}
+            <p class="c-text--warning c-text--bold c-text--center u-mt-30">退会後は登録内容の確認ができなくなり、<br class="u-dn-pc">取得したポイントは破棄されます。</p>
+            <div class="u-db u-m0a u-w-180px u-mt-30">
+                <label class="p-checkbox p-checkboxUnit__item u-db u-m0a">確認しました。
+                    <input type="checkbox" name="withdraw-confirm" value="confirm"/>
+                    <div class="p-checkbox__indicator"></div>
+                </label>
+            </div>
+            <button type="submit" class="c-button u-db u-m0a u-mt-20">退会する</button>
+        </form>
     </div>
     @include('front.footer.footer')
 @endsection

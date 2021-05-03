@@ -23,9 +23,9 @@
         @endif
 
         <ul class="p-searchTab">
-            <li class="p-searchTab__item js-tab is-active">スキルでさがす</li>
-            <li class="p-searchTab__item js-tab">ポジションでさがす</li>
-            <li class="p-searchTab__item js-tab">最寄り駅でさがす</li>
+            <li class="p-searchTab__item js-tab is-active">スキル<span class="u-dn-sp">でさがす</span></li>
+            <li class="p-searchTab__item js-tab">ポジション<span class="u-dn-sp">でさがす</span></li>
+            <li class="p-searchTab__item js-tab">最寄り駅<span class="u-dn-sp">でさがす</span></li>
         </ul>
 
         <form action="{{ route('front.project.search') }}" method="get">
@@ -64,12 +64,18 @@
             </div>
         </form>
 
+        <p class="c-text u-mt-20">案件数：<span class="c-text--bold">{{ $response->getProjects()->count() }}</span>件</p>
+
         <div class="p-cardUnit--col3 u-mt-30">
             @foreach($response->getProjects() as $project)
                 @include('organisms.ProjectCard', $project)
             @endforeach
         </div>
         {{-- p-cardUnit--col3 --}}
+
+        @if($response->getProjects()->count() === 0)
+            <p class="u-text--center mt-30 u-fs-20">関連する求人・案件が見つかりませんでした。</p>
+        @endif
     </div>
 
     @include('front.footer.footer')

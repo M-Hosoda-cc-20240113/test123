@@ -7,8 +7,7 @@
   @endcomponent
 
   <div class="l-container">
-    <h2 class="c-text fs-20">新規登録情報入力（必須）</h2>
-    <hr class="Horizontal">
+    <h2 class="p-level2Heading">新規登録情報入力（必須）</h2>
 
     @if($errors->all())
       <p class="c-text--bold u-mt-20">以下のエラーを修正してください</p>
