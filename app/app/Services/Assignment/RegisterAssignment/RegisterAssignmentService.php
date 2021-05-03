@@ -4,7 +4,7 @@
 namespace App\Services\Assignment\RegisterAssignment;
 
 
-use App\Models\Assignment;
+use App\Models\User;
 use App\Services\Assignment\AssignmentRepositoryInterface;
 
 class RegisterAssignmentService
@@ -26,9 +26,9 @@ class RegisterAssignmentService
 
     /**
      * @param RegisterAssignmentParameter $parameter
-     * @return Assignment
+     * @return array
      */
-    public function exec(RegisterAssignmentParameter $parameter): Assignment
+    public function exec(RegisterAssignmentParameter $parameter): array
     {
         return $this->assignment_repository->register($parameter);
     }

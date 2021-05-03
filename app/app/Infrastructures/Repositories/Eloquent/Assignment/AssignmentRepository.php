@@ -27,9 +27,9 @@ class AssignmentRepository implements AssignmentRepositoryInterface
     /**
      * @inheritDoc
      * @param RegisterAssignmentParameter $parameter
-     * @return bool
+     * @return array
      */
-    public function register(RegisterAssignmentParameter $parameter): Assignment
+    public function register(RegisterAssignmentParameter $parameter): array
     {
         $assignment = new Assignment();
         $assignment->user_id = $parameter->getUserId();
@@ -48,6 +48,9 @@ class AssignmentRepository implements AssignmentRepositoryInterface
         $project->decided = 1;
         $project->save();
 
-        return $assignment;
+        $user_name = $user->sei." ".$user->mei;
+        $project_name = "【".$project->name."】";
+
+        return ['user_name' => $user_name, 'project_name' => $project_name];
     }
 }

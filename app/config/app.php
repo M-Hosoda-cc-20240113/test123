@@ -189,6 +189,7 @@ return [
         App\Providers\EmailResetServiceProvider::class,
         App\Providers\RelProjectSkillServiceProvider::class,
         App\Providers\RelPositionProjectServiceProvider::class,
+        App\Providers\SlackServiceProvider::class,
     ],
 
     /*
@@ -242,6 +243,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'ViewHelper' => App\Helpers\ViewHelper::class,
+        'Slack' => App\Services\Slack\SlackFacade::class,
 
     ],
 
@@ -265,4 +267,10 @@ return [
         'salt' => env('HASH_ACCOUNT_SALT'),
     ],
 
+    'slack' => [
+        'url' => env('SLACK_URL'),
+        'icon' => env('SLACK_ICON'),
+        'name' => env('SLACK_NAME'),
+        'channel' => env('SLACK_CHANNEL'),
+    ],
 ];
