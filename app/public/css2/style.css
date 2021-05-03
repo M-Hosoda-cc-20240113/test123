@@ -575,6 +575,7 @@ img {
 
 .c-button:focus, .c-button--secondary:focus, .c-button:hover, .c-button--secondary:hover {
   background-color: #2c99b4;
+  color: #ffffff;
 }
 
 .c-button--secondary {
