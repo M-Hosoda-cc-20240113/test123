@@ -31,7 +31,7 @@
         <form action="{{ route('front.project.search') }}" method="get">
             <div class="p-checkboxUnit js-tab_content">
                 @foreach($response->getSkills() as $skill)
-                    <label class="p-checkbox p-checkboxUnit__item">{{ $skill->name }}
+                    <label class="p-checkbox p-checkboxUnit__item u-w-130px">{{ $skill->name }}
                         <input value="{{ $skill->id }}" name="skill_ids[]" type="checkbox" @if(!\Route::is('front.index') && in_array($skill->id, $response->getSearchedSkillIds())){{ 'checked' }}@endif>
                         <div class="p-checkbox__indicator"></div>
                     </label>
@@ -41,7 +41,7 @@
 
             <div class="p-checkboxUnit js-tab_content">
                 @foreach($response->getPositions() as $position)
-                    <label class="p-checkbox p-checkboxUnit__item">{{ $position->name }}
+                    <label class="p-checkbox p-checkboxUnit__item u-w-260px">{{ $position->name }}
                         <input value="{{ $position->id }}" name="position_ids[]" type="checkbox" @if(!\Route::is('front.index') && in_array($position->id, $response->getSearchedPositionIds())){{ 'checked' }}@endif>
                         <div class="p-checkbox__indicator"></div>
                     </label>
@@ -51,7 +51,7 @@
 
             <div class="p-checkboxUnit js-tab_content">
                 @foreach($response->getStations() as $station)
-                    <label class="p-checkbox p-checkboxUnit__item">{{ $station->name }}
+                    <label class="p-checkbox p-checkboxUnit__item u-w-110px">{{ $station->name }}
                         <input value="{{ $station->id }}" name="station_ids[]" type="checkbox" @if(!\Route::is('front.index') && in_array($station->id, $response->getSearchedStationIds())){{ 'checked' }}@endif>
                         <div class="p-checkbox__indicator"></div>
                     </label>
