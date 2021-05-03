@@ -621,6 +621,16 @@ img {
   background-color: #606089;
 }
 
+.c-label {
+  font-size: 1.4rem;
+  color: #4bc1c1;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid #4bc1c1;
+}
+
 .c-input, .c-input--light {
   width: 100%;
   border: 1px solid #dfe4e7;
@@ -636,6 +646,24 @@ img {
 
 @media screen and (max-width: 768px) {
   .c-input, .c-input--light {
+    width: 100%;
+  }
+}
+
+.c-input2, .c-input2--light {
+  width: 100%;
+  font-size: 14px;
+  padding: 6px 12px;
+  display: inline-block;
+  border-bottom: 1px solid #cdcddf;
+}
+
+.c-input2--light {
+  background-color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+  .c-input2, .c-input2--light {
     width: 100%;
   }
 }
@@ -838,6 +866,13 @@ img {
   font-size: 18px;
 }
 
+@media screen and (max-width: 768px) {
+  .p-checkbox {
+    padding-left: 25px;
+    font-size: 12px;
+  }
+}
+
 .p-checkbox input:checked ~ .p-checkbox__indicator {
   background-color: #4bc1c1;
   display: block;
@@ -852,6 +887,13 @@ img {
   background: #dfe4e7;
 }
 
+@media screen and (max-width: 768px) {
+  .p-checkbox__indicator {
+    height: 15px;
+    width: 15px;
+  }
+}
+
 .p-checkbox__indicator::after {
   display: block;
   left: 7px;
@@ -863,6 +905,13 @@ img {
   transform: rotate(45deg);
   content: "";
   position: absolute;
+}
+
+@media screen and (max-width: 768px) {
+  .p-checkbox__indicator::after {
+    left: 5px;
+    top: 0;
+  }
 }
 
 .p-userRegister {
@@ -1028,17 +1077,23 @@ img {
   }
 }
 
-.p-formGroupUnit--2col__item {
+.p-formGroupUnit--2col__item, .p-formGroupUnit--2col__item--left {
   width: 50%;
   margin-top: 20px;
 }
 
 @media screen and (max-width: 768px) {
-  .p-formGroupUnit--2col__item {
+  .p-formGroupUnit--2col__item, .p-formGroupUnit--2col__item--left {
     width: 100%;
   }
-  .p-formGroupUnit--2col__item input {
+  .p-formGroupUnit--2col__item input, .p-formGroupUnit--2col__item--left input {
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .p-formGroupUnit--2col__item--left {
+    padding-right: 10px;
   }
 }
 
@@ -1288,6 +1343,10 @@ img {
   display: flex;
 }
 
+.u-dib {
+  display: inline-block;
+}
+
 .u-ff-column {
   flex-flow: column wrap;
 }
@@ -1314,6 +1373,15 @@ img {
   .u-dn-pc {
     display: block;
   }
+}
+
+.u-indent {
+  text-indent: 1.4rem;
+}
+
+.u-indent-1 {
+  padding-left: 1em;
+  text-indent: -1em;
 }
 
 .u-fs-0 {

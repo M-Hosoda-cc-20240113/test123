@@ -18,6 +18,13 @@
           width: 100%;
         }
       }
+      $this: &;
+      &--left {
+        @extend #{$this};
+        @include min-screen($breakpoint-pc) {
+          padding-right: 10px;
+        }
+      }
     }
 
     &__title {
