@@ -525,6 +525,7 @@ img {
 .l-container--2col .l-sidebar {
   padding-left: 20px;
   padding-right: 10px;
+  width: 25%;
 }
 
 @media screen and (max-width: 768px) {
@@ -538,6 +539,7 @@ img {
 .l-container--2col .l-main {
   padding-left: 10px;
   padding-right: 20px;
+  width: 75%;
 }
 
 @media screen and (max-width: 768px) {
@@ -554,7 +556,7 @@ img {
 }
 
 .l-main {
-  width: 75%;
+  width: 100%;
 }
 
 .c-button, .c-button--secondary {
@@ -1234,6 +1236,47 @@ img {
   align-self: center;
 }
 
+.p-projectDetailTable {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.p-projectDetailTable__row {
+  border-top: 5px solid #ffffff;
+}
+
+.p-projectDetailTable__head {
+  line-height: 1.2em;
+  background-color: #dfe4e7;
+  font-weight: normal;
+  padding: 10px 0;
+  width: 100px;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  .p-projectDetailTable__head {
+    display: block;
+    width: auto;
+    min-width: 50px;
+    overflow: hidden;
+    clear: both;
+  }
+}
+
+.p-projectDetailTable__body {
+  padding: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .p-projectDetailTable__body {
+    display: block;
+  }
+}
+
 .u-db {
   display: block !important;
 }
@@ -1257,6 +1300,16 @@ img {
 @media screen and (max-width: 768px) {
   .u-dn-sp {
     display: none;
+  }
+}
+
+.u-dn-pc {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .u-dn-pc {
+    display: block;
   }
 }
 
