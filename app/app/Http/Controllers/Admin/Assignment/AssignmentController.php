@@ -17,16 +17,16 @@ class AssignmentController extends Controller
      * @param AssignmentListService $assignment_list_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-     public function list(AssignmentListService $assignment_list_service)
-     {
-         $response = new AssignmentListResponse();
+    public function list(AssignmentListService $assignment_list_service)
+    {
+        $response = new AssignmentListResponse();
 
-         $assignments = $assignment_list_service->exec();
+        $assignments = $assignment_list_service->exec();
 
-         $response->setAssignment($assignments);
+        $response->setAssignment($assignments);
 
-         return view('admin.pages.assignment.list.list', ['response' => $response]);
-     }
+        return view('admin.pages.assignment.list.list', ['response' => $response]);
+    }
 
     /**
      * @param RegisterAssignmentRequest $request
@@ -34,15 +34,16 @@ class AssignmentController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function register(RegisterAssignmentRequest $request,RegisterAssignmentService $register_assignment_service)
+    public function register(RegisterAssignmentRequest $request, RegisterAssignmentService $register_assignment_service)
     {
         $parameter = new RegisterAssignmentParameter();
         $parameter->setUserId($request->user_id);
         $parameter->setProjectId($request->project_id);
-        DB::transaction(function () use ($register_assignment_service, $parameter) {
-             return $register_assignment_service->exec($parameter);
-        });
 
+        $user_project = DB::transaction(function () use ($register_assignment_service, $parameter) {
+            return $register_assignment_service->exec($parameter);
+        });
+        \Slack::send($user_project['user_name'] . "は" . $user_project['project_name'] . "にアサインしました。");
         return redirect()->route('application.list');
     }
 }
