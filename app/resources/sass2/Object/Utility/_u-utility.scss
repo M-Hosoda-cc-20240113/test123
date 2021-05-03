@@ -16,3 +16,15 @@
 .u-as-center {
   align-self: center;
 }
+
+.u-dn-sp {
+  @include max-screen($breakpoint-pc) {
+    display: none;
+  }
+}
+
+@for $i from 0 through 100 {
+  .u-fs-#{$i * 1} {
+    font-size: #{$i * 0.1}rem !important;
+  }
+}

@@ -23,15 +23,15 @@
         @endif
 
         <ul class="p-searchTab">
-            <li class="p-searchTab__item js-tab is-active">スキルでさがす</li>
-            <li class="p-searchTab__item js-tab">ポジションでさがす</li>
-            <li class="p-searchTab__item js-tab">最寄り駅でさがす</li>
+            <li class="p-searchTab__item js-tab is-active">スキル<span class="u-dn-sp">でさがす</span></li>
+            <li class="p-searchTab__item js-tab">ポジション<span class="u-dn-sp">でさがす</span></li>
+            <li class="p-searchTab__item js-tab">最寄り駅<span class="u-dn-sp">でさがす</span></li>
         </ul>
 
         <form action="{{ route('front.project.search') }}" method="get">
             <div class="p-checkboxUnit js-tab_content">
                 @foreach($response->getSkills() as $skill)
-                    <label class="p-checkbox p-checkboxUnit__item u-w-130px">{{ $skill->name }}
+                    <label class="p-checkbox p-checkboxUnit__item">{{ $skill->name }}
                         <input value="{{ $skill->id }}" name="skill_ids[]" type="checkbox" @if(!\Route::is('front.index') && in_array($skill->id, $response->getSearchedSkillIds())){{ 'checked' }}@endif>
                         <div class="p-checkbox__indicator"></div>
                     </label>
@@ -41,7 +41,7 @@
 
             <div class="p-checkboxUnit js-tab_content">
                 @foreach($response->getPositions() as $position)
-                    <label class="p-checkbox p-checkboxUnit__item u-w-260px">{{ $position->name }}
+                    <label class="p-checkbox p-checkboxUnit__item">{{ $position->name }}
                         <input value="{{ $position->id }}" name="position_ids[]" type="checkbox" @if(!\Route::is('front.index') && in_array($position->id, $response->getSearchedPositionIds())){{ 'checked' }}@endif>
                         <div class="p-checkbox__indicator"></div>
                     </label>
@@ -51,7 +51,7 @@
 
             <div class="p-checkboxUnit js-tab_content">
                 @foreach($response->getStations() as $station)
-                    <label class="p-checkbox p-checkboxUnit__item u-w-110px">{{ $station->name }}
+                    <label class="p-checkbox p-checkboxUnit__item">{{ $station->name }}
                         <input value="{{ $station->id }}" name="station_ids[]" type="checkbox" @if(!\Route::is('front.index') && in_array($station->id, $response->getSearchedStationIds())){{ 'checked' }}@endif>
                         <div class="p-checkbox__indicator"></div>
                     </label>
@@ -64,12 +64,18 @@
             </div>
         </form>
 
+        <p class="c-text u-mt-20">案件数：<span class="c-text--bold">{{ $response->getProjects()->count() }}</span>件</p>
+
         <div class="p-cardUnit--col3 u-mt-30">
             @foreach($response->getProjects() as $project)
                 @include('organisms.ProjectCard', $project)
             @endforeach
         </div>
         {{-- p-cardUnit--col3 --}}
+
+        @if($response->getProjects()->count() === 0)
+            <p class="u-text--center mt-30 u-fs-20">関連する求人・案件が見つかりませんでした。</p>
+        @endif
     </div>
 
     @include('front.footer.footer')
