@@ -91,6 +91,10 @@ class ViewHelper
         return floor(($now-$birthday)/10000).'歳';
     }
 
+    /**
+     * @param string $value
+     * @return string
+     */
     public static function Status(string $value):string
     {
         $status = "";
