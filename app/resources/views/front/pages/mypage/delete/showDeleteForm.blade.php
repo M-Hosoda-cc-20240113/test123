@@ -19,7 +19,7 @@
         <p class="c-text">下記の内容をご確認の上、「退会する」ボタンを押してください。</p>
         <form action="{{ route('front.user.delete') }}" method="POST">
             {{ @csrf_field() }}
-            <p class="c-text--warning c-text--bold c-text--center u-mt-30">退会後は登録内容の確認ができなくなり、<br class="u-dn-pc">取得しいたポイントは破棄されます。</p>
+            <p class="c-text--warning c-text--bold c-text--center u-mt-30">退会後は登録内容の確認ができなくなり、<br class="u-dn-pc">取得したポイントは破棄されます。</p>
             <div class="u-db u-m0a u-w-180px u-mt-30">
                 <label class="p-checkbox p-checkboxUnit__item u-db u-m0a">確認しました。
                     <input type="checkbox" name="withdraw-confirm" value="confirm"/>
