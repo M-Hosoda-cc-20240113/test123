@@ -1,8 +1,9 @@
 <?php
 
 namespace Database\Seeders;
-use Carbon\Carbon;
+
 use App\Models\Assignment;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Seeder;
 
 class AssignmentTableSeeder extends Seeder
@@ -14,10 +15,18 @@ class AssignmentTableSeeder extends Seeder
      */
     public function run()
     {
-        $now = Carbon::now();
+        $now = CarbonImmutable::now();
         Assignment::create([
-            'user_id'    => 3,
-            'project_id'    => 6,
+            'user_id' => 3,
+            'project_id' => 6,
+            'assignment_start_date' => $now->addMonth(2),
+            'created_at' => $now
+        ]);
+
+        Assignment::create([
+            'user_id' => 4,
+            'project_id' => 13,
+            'assignment_start_date' => $now->addMonth(3),
             'created_at' => $now
         ]);
     }

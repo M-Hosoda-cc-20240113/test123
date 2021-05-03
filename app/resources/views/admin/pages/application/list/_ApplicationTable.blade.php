@@ -4,6 +4,7 @@
         <th class="RegularTable__headRowItem">案件名</th>
         <th class="RegularTable__headRowItem">ユーザー名</th>
         <th class="RegularTable__headRowItem">応募日時</th>
+        <th class="RegularTable__headRowItem">面談予定日</th>
         <th class="RegularTable__headRowItem">アサイン</th>
     </tr>
     </thead>
@@ -22,6 +23,9 @@
             </td>
             <td class="RegularTable__bodyRowItem">
                 {{ ViewHelper::YmdReplace( $application->created_at ?? '' )}}<br>
+            </td>
+            <td class="RegularTable__bodyRowItem">
+                {{ ViewHelper::YmdReplace( $application->interview_date ?? '未定' )}}<br>
             </td>
             <td class="RegularTable__bodyRowItem--textCenter">
                 <form action="{{ route('assignment.register') }}" method="post">

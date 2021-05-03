@@ -13,6 +13,7 @@
       <th class="RegularTable__headRowItem">生年月日&nbsp;(年齢)</th>
       <th class="RegularTable__headRowItem">備考欄</th>
       <th class="RegularTable__headRowItem">営業開始月</th>
+      <th class="RegularTable__headRowItem">状態</th>
     </tr>
   </thead>
 
@@ -23,9 +24,10 @@
       <td class="RegularTable__bodyRowItem">{{ ViewHelper::YmdReplace($user->created_at ?? '' )}}</td>
       <td class="RegularTable__bodyRowItem--textCenter">{{ $user->is_working ? '◎' : '-'}}</td>
       <td class="RegularTable__bodyRowItem">{{ $user->tel ?? '' }}</td>
-      <td class="RegularTable__bodyRowItem">{{ ViewHelper::YmdReplace($user->birthday ?? '')}}（{{ ViewHelper::CountAge($user->birthday ?? '')}}）</td>
+      <td class="RegularTable__bodyRowItem">{{ ViewHelper::BirthdayReplace($user->birthday ?? '')}}（{{ ViewHelper::CountAge($user->birthday ?? '')}}）</td>
       <td class="RegularTable__bodyRowItem">{{ $user->remarks ?? '' }}</td>
       <td class="RegularTable__bodyRowItem">{{ ViewHelper::YmdReplace($user->operation_start_month ?? '' )}}</td>
+      <td class="RegularTable__bodyRowItem">{{ ViewHelper::Status($user->status ?? '' ) }}</td>
     </tr>
     @endforeach
   </tbody>

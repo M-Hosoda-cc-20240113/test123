@@ -53,17 +53,31 @@ class ViewHelper
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return false|string
      * @throws \Exception
      */
-    public static function YmdReplace(string $value)
+    public static function YmdReplace(string $value = null)
+    {
+        if(preg_match('/^(?=.*[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}).*$/', $value)){
+            $date = new DateTime($value);
+            return date_format($date, 'Y/m/d');
+        }
+        return $value;
+    }
+
+    /**
+     * @param string|null $value
+     * @return false|string|null
+     * @throws \Exception
+     */
+    public static function BirthdayReplace(string $value = null)
     {
         if(!empty($value)){
             $date = new DateTime($value);
             return date_format($date, 'Y/m/d');
         }
-        return "";
+        return $value;
     }
 
     /**
@@ -75,6 +89,27 @@ class ViewHelper
         $now = date("Ymd");
         $birthday = str_replace("-", "", $value);
         return floor(($now-$birthday)/10000).'歳';
+    }
+
+    public static function Status(string $value):string
+    {
+        $status = "";
+        switch ($value) {
+            case 0:
+                $status = "未営業";
+                break;
+            case 1:
+                $status = "面談待ち";
+                break;
+            case 2:
+                $status = "結果待ち";
+                break;
+            case 3:
+                $status = "稼働済み";
+                break;
+        }
+        return $status;
+
     }
 }
 
