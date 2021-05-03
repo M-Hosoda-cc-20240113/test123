@@ -5,6 +5,7 @@ import {routes} from './route';
 import { project_detail } from "./admin/pages/project_detail";
 import { project_list } from "./admin/pages/project_list";
 import {project_create} from './admin/pages/project_create';
+import {project_edit} from './admin/pages/project_edit';
 import { user_list } from "./admin/pages/user_list";
 
 // front
@@ -18,6 +19,7 @@ const route_name = document.querySelector('body').dataset.routeName;
 if (route_name === routes.project_detail) project_detail();
 if (route_name === routes.project_list) project_list();
 if (route_name === routes.project_create) project_create();
+if (route_name === routes.project_edit) project_edit();
 if (route_name === routes.user_list) user_list();
 
 // front
