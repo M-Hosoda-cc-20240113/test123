@@ -3,6 +3,7 @@ export const routes = {
   project_list: 'project.list',
   project_create: 'project.create.form',
   project_detail: "project.detail",
+  project_edit: 'project.edit.form',
   user_list: 'user.list',
 
   // front
