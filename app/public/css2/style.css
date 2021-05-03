@@ -1343,6 +1343,10 @@ img {
   display: flex;
 }
 
+.u-dib {
+  display: inline-block;
+}
+
 .u-ff-column {
   flex-flow: column wrap;
 }
@@ -1369,6 +1373,15 @@ img {
   .u-dn-pc {
     display: block;
   }
+}
+
+.u-indent {
+  text-indent: 1.4rem;
+}
+
+.u-indent-1 {
+  padding-left: 1em;
+  text-indent: -1em;
 }
 
 .u-fs-0 {
