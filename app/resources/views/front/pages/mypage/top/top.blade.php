@@ -48,7 +48,11 @@
           </tr>
           <tr>
             <th>生年月日</th>
-            <td>{{ ViewHelper::YmdReplace($response->getUser()->birthday ?? '' )}}</td>
+            <td>{{ ViewHelper::BirthdayReplace($response->getUser()->birthday ?? '' )}}</td>
+          </tr>
+          <tr>
+              <th>保有ポイント</th>
+              <td>{{ $response->getUser()->points ?? '' }} pt</td>
           </tr>
           </tbody>
         </table>
@@ -67,6 +71,7 @@
           @foreach($response->getUser()->project_app as $project)
             <a class="c-text u-db u-mt-10"
                href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
+                <p>面談予定日：{{ ViewHelper::YmdReplace($project->pivot->interview_date ?? '未定' )}}</p>
           @endforeach
         </div>
         {{--  応募案件  --}}
@@ -76,6 +81,8 @@
           @foreach($response->getUser()->project_assign as $project)
             <a class="c-text u-db u-mt-10"
                href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
+                <p>稼働開始日：{{ ViewHelper::YmdReplace($project->pivot->assignment_start_date ?? '未定' )}}</p>
+                <p>稼働終了日：{{ ViewHelper::YmdReplace($project->pivot->assignment_end_date ?? '未定' )}}</p>
           @endforeach
         </div>
         {{--  応募案件  --}}

@@ -5,6 +5,7 @@ namespace App\Services\User\UserPage;
 
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserPageResponse
 {
@@ -33,18 +34,19 @@ class UserPageResponse
     }
 
     /**
-     * @return mixed
+     * @return Collection
      */
-    public function getRelLevelSkillUser()
+    public function getRelLevelSkillUser(): Collection
     {
         return $this->RelLevelSkillUser;
     }
 
     /**
-     * @param mixed $RelLevelSkillUser
+     * @param  $RelLevelSkillUser
      */
-    public function setRelLevelSkillUser($RelLevelSkillUser): void
+    public function setRelLevelSkillUser($RelLevelSkillUser): UserPageResponse
     {
         $this->RelLevelSkillUser = $RelLevelSkillUser;
+        return $this;
     }
 }

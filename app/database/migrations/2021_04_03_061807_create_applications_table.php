@@ -17,6 +17,7 @@ class CreateApplicationsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('project_id')->unsigned();
+            $table->date("interview_date")->nullable();
             $table->timestamp('updated_at')->useCurrent();
             $table->timestamp('created_at')->useCurrent();
             //外部キーの設定
