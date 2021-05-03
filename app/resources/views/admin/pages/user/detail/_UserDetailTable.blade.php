@@ -14,7 +14,7 @@
     </tr>
     <tr class="ProjectDetailTable__row">
         <th class="ProjectDetailTable__head">誕生日</th>
-        <td class="ProjectDetailTable__body">{{ ViewHelper::YmdReplace($response->getUser()->birthday ?? '')}}</td>
+        <td class="ProjectDetailTable__body">{{ ViewHelper::BirthdayReplace($response->getUser()->birthday ?? '')}}</td>
         <th class="ProjectDetailTable__head">保有ポイント</th>
         <td class="ProjectDetailTable__body">{{ $response->getUser()->points ?? ''}}pt</td>
     </tr>
@@ -23,12 +23,16 @@
         <td class="ProjectDetailTable__body">
             @foreach ($response->getUser()->project_app as $project)
                 <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}<br></a>
+                <p>面談予定日：{{ ViewHelper::YmdReplace($project->pivot->interview_date ?? '未定' )}}</p>
+                <hr class="Horizontal">
             @endforeach
         </td>
         <th class="ProjectDetailTable__head">稼働案件</th>
         <td class="ProjectDetailTable__body">
             @foreach ($response->getUser()->project_assign as $project)
                 <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? ''}}<br></a>
+                <p>稼働開始日：{{ ViewHelper::YmdReplace($project->pivot->assignment_start_date ?? '未定' )}}</p>
+                <p>稼働終了日：{{ ViewHelper::YmdReplace($project->pivot->assignment_end_date ?? '未定' )}}</p>
             @endforeach
         </td>
     </tr>

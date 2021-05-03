@@ -1,8 +1,8 @@
 <?php
 
 namespace Database\Seeders;
-use Carbon\Carbon;
 use App\Models\Application;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Seeder;
 
 class ApplicationTableSeeder extends Seeder
@@ -14,29 +14,32 @@ class ApplicationTableSeeder extends Seeder
      */
     public function run()
     {
-        $now = Carbon::now();
+        $now = CarbonImmutable::now();
         Application::create([
             'user_id'    => 1,
             'project_id'    => 2,
+            'interview_date' => $now->addDays(15),
             'created_at' => $now
         ]);
 
         Application::create([
             'user_id'    => 2,
             'project_id'    => 1,
+            'interview_date' => $now->addDays(13),
             'created_at' => $now
         ]);
 
         Application::create([
             'user_id'    => 4,
             'project_id'    => 10,
+            'interview_date' => $now->addDays(16),
             'created_at' => $now
         ]);
 
         Application::create([
-        'user_id'    => 2,
-        'project_id'    => 11,
-        'created_at' => $now
+            'user_id'    => 2,
+            'project_id'    => 11,
+            'created_at' => $now
         ]);
 
         Application::create([
