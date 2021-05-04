@@ -190,6 +190,7 @@ return [
         App\Providers\RelProjectSkillServiceProvider::class,
         App\Providers\RelPositionProjectServiceProvider::class,
         App\Providers\SlackServiceProvider::class,
+        App\Providers\PaginatorServiceProvider::class,
     ],
 
     /*
