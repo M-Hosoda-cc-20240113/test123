@@ -36,8 +36,9 @@ Route::namespace('Index')->group(function () {
 Route::namespace('User')->prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'list'])->name('user.list');
     Route::get('/{user_id}', [UserController::class, 'detail'])->name('user.detail');
-    Route::get('/{user_id}/edit', [UserController::class, 'edit'])->name('user.edit');
-    Route::get('/{user_id}/delete', [UserController::class, 'delete'])->name('user.delete');
+    Route::get('/{user_id}/edit', [UserController::class, 'showEditForm'])->name('user.edit.form');
+    Route::post('/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/delete', [UserController::class, 'delete'])->name('user.delete');
 });
 /**
  * Admin Projects

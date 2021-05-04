@@ -18,7 +18,7 @@
             <hr class="Horizontal">
             @include('admin.pages.user.detail._UserDetailTable', ['response' => $response])
         </div>
-        @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 m0a'])
+        @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 m0a', 'link' => route('user.edit.form', ['user_id' => $response->getUser()->id])] )
     </div>
     @include('admin.footer.footer')
 @endsection

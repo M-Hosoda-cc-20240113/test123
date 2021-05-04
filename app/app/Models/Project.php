@@ -117,9 +117,19 @@ class Project extends Model
     }
 
     /**
+     * @return BelongsToMany
+     */
+    public function user_status(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'statuses', 'project_id', 'user_id')
+            ->withPivot('status');
+    }
+
+    /**
      *
      * Positions Table relation
-     * @var array
+     *
+     * @return BelongsToMany
      */
     public function positions(): BelongsToMany
     {
@@ -129,7 +139,8 @@ class Project extends Model
     /**
      *
      * Skills Table relation
-     * @var array
+     *
+     * @return BelongsToMany
      */
     public function skills(): BelongsToMany
     {
@@ -139,7 +150,8 @@ class Project extends Model
     /**
      *
      * agents Table relation
-     * @var array
+     *
+     * @return BelongsTo
      */
 
     public function agent(): BelongsTo
@@ -150,7 +162,8 @@ class Project extends Model
     /**
      *
      * stations Table relation
-     * @var array
+     *
+     * @return BelongsTo
      */
     public function station(): BelongsTo
     {
