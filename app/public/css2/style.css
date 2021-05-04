@@ -1336,7 +1336,6 @@ img {
 }
 
 .p-paginator {
-  margin: 0 0 3.75rem;
   font-size: 0;
   text-align: center;
 }
@@ -1347,6 +1346,7 @@ img {
   font-size: 1.125rem;
   font-weight: bold;
   margin: 0 2px;
+  border-radius: 3px;
 }
 
 @media screen and (max-width: 768px) {
