@@ -130,7 +130,7 @@ class User extends Authenticatable
      */
     public function skills(): BelongsToMany
     {
-        return $this->belongsToMany(Skill::class,'rel_levels_skills_users', 'user_id', 'skill_id');
+        return $this->belongsToMany(Skill::class, 'rel_levels_skills_users', 'user_id', 'skill_id');
     }
 
     /**
@@ -142,7 +142,7 @@ class User extends Authenticatable
     public function project_app(): BelongsToMany
     {
         return $this->belongsToMany(Project::class, 'applications', 'user_id', 'project_id')
-                    ->withPivot('created_at','interview_date');
+            ->withPivot('created_at', 'interview_date');
     }
 
     /**
@@ -154,16 +154,28 @@ class User extends Authenticatable
     public function project_assign(): BelongsToMany
     {
         return $this->belongsToMany(Project::class, 'assignments', 'user_id', 'project_id')
-                    ->withPivot('created_at','assignment_start_date','assignment_end_date');
+            ->withPivot('created_at', 'assignment_start_date', 'assignment_end_date');
     }
 
-        /**
+    /**
+     *
+     * Projects Table relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function project_status(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class, 'statuses', 'user_id', 'project_id')
+            ->withPivot('created_at', 'status');
+    }
+
+    /**
      * @param $val
      * @return string
      */
     public function getSeiAttribute($val)
     {
-       return Crypt::decrypt($val);
+        return Crypt::decrypt($val);
     }
 
     /**
@@ -178,7 +190,7 @@ class User extends Authenticatable
      * @param $val
      * @return string
      */
-    public function  getMeiAttribute($val)
+    public function getMeiAttribute($val)
     {
         return Crypt::decrypt($val);
     }
@@ -197,7 +209,7 @@ class User extends Authenticatable
      */
     public function getSeiKanaAttribute($val)
     {
-       return Crypt::decrypt($val);
+        return Crypt::decrypt($val);
     }
 
     /**
@@ -212,7 +224,7 @@ class User extends Authenticatable
      * @param $val
      * @return string
      */
-    public function  getMeiKanaAttribute($val)
+    public function getMeiKanaAttribute($val)
     {
         return Crypt::decrypt($val);
     }
@@ -284,22 +296,30 @@ class User extends Authenticatable
         $this->notify(new PasswordResetNotification($token, $this));
     }
 
+    /**
+     * @param int|null $project_id
+     * @return bool
+     */
     public function is_apply(int $project_id = null): bool
     {
         $user_id = $this->id;
-        if(!empty($project_id)){
-            $application_ids = array_column(Application::where('Project_id',$project_id)->get()->toArray(), 'user_id');
+        if (!empty($project_id)) {
+            $application_ids = array_column(Application::where('Project_id', $project_id)->get()->toArray(), 'user_id');
             return in_array($user_id, $application_ids);
         }
         $application_ids = array_column(Application::all()->toArray(), 'user_id');
         return in_array($user_id, $application_ids);
     }
 
+    /**
+     * @param int|null $project_id
+     * @return bool
+     */
     public function is_assign(int $project_id = null): bool
     {
         $user_id = $this->id;
-        if(!empty($project_id)){
-            $assignment_ids = array_column(Assignment::where('Project_id',$project_id)->get()->toArray(), 'user_id');
+        if (!empty($project_id)) {
+            $assignment_ids = array_column(Assignment::where('Project_id', $project_id)->get()->toArray(), 'user_id');
             return in_array($user_id, $assignment_ids);
         }
         $assignment_ids = array_column(Assignment::all()->toArray(), 'user_id');

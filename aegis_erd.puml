@@ -147,20 +147,32 @@ package "Aegis ER図" as aegis_erd {
         ---
         user_id [FK(users:id), UIDX(1) , OD:CASCADE] (ユーザーID)
         project_id [FK(projects:is), UIDX(2) , OD:CASCADE] (案件ID)
-        application_date:datetime [NN] (申込日)
+        interview_date:datetime [NN] (面談日)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
 
-    entity "assignment" as assignment <応募> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
+    entity "assignment" as assignment <稼働> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
         + id:int [PK, AI, UN] (ID)
         ---
         user_id [FK(users:id), UIDX(1) , OD:CASCADE] (ユーザーID)
         project_id [FK(projects:is), UIDX(2) , OD:CASCADE] (案件ID)
-        assignment_date:datetime [NN] (申込日)
+        assignment_start_date:datetime [NN] (稼働開始日)
+        assignment_end_date:datetime [NN] (稼働終了日)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
+
+    entity "status" as status <ステータス> <<R, RELATION_MARK_COLOR>> RELATION_ENTITY {
+            + id:int [PK, AI, UN] (ID)
+            ---
+            user_id [FK(users:id), UIDX(1) , OD:CASCADE] (ユーザーID)
+            project_id [FK(projects:is), UIDX(2) , OD:CASCADE] (案件ID)
+            status:int [NN] (申し込み状況)
+            created_at:datetime [NN] (登録日時)
+            updated_at:datetime [NN] (更新日時)
+        }
+
 }
 
 users       --ri--o{    rel_levels_skills_users
@@ -181,6 +193,9 @@ areas       --le--|{    stations
 
 users       --up--o{    applications
 projects    --do--o{    applications
+
+users       --up--o{    status
+projects    --do--o{    status
 
 users       --up--o{    assignment
 projects    --do--o{    assignment
