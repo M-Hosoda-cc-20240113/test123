@@ -22,13 +22,13 @@
         <th class="p-projectDetailTable__head">職種</th>
         <td class="p-projectDetailTable__body">
             @foreach ($response->getProject()->positions as $position)
-                @include('atoms.Tag', ['component' => 'Tag--link', 'text' => $position->name ?? '', 'class' => 'mr-5 mb-5'])
+                <a href="{{ route('front.project.search', ['position_ids[]' => $position->id]) }}" class="c-tag u-mb-5">{{ $position->name ?? ''}}</a>
             @endforeach
         </td>
         <th class="p-projectDetailTable__head">スキル</th>
         <td class="p-projectDetailTable__body">
             @foreach ($response->getProject()->skills as $skill)
-                @include('atoms.Tag', ['component' => 'Tag--link', 'text' => $skill->name ?? '', 'class' => 'mr-5 mb-5'])
+                <a href="{{ route('front.project.search', ['skill_ids[]' => $skill->id]) }}" class="c-tag u-mb-5">{{ $skill->name ?? '' }}</a>
             @endforeach
         </td>
     </tr>
