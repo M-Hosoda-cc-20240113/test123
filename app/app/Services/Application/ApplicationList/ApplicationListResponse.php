@@ -12,24 +12,23 @@ class ApplicationListResponse
    */
   private $applications;
 
-  /**
-   * Get the value of applications
-   *
-   * @return  Application[]
-   */ 
-  public function getApplications()
+    /**
+     * Get the value of applications
+     *
+     * @return \Illuminate\Support\Collection
+     */
+  public function getApplications(): Collection
   {
     return $this->applications;
   }
 
-  /**
-   * Set the value of applications
-   *
-   * @param  Application[]  $applications
-   *
-   * @return  self
-   */ 
-  public function setApplications(Collection $applications)
+    /**
+     * Set the value of applications
+     *
+     * @param \Illuminate\Support\Collection $applications
+     * @return ApplicationListResponse
+     */
+  public function setApplications(Collection $applications): ApplicationListResponse
   {
     $this->applications = $applications;
 

@@ -3,6 +3,7 @@
 namespace App\Infrastructures\Repositories\Eloquent\Application;
 
 use App\Models\Application;
+use App\Models\Status;
 use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Application\ApplicationRepositoryInterface;
@@ -48,5 +49,26 @@ class ApplicationRepository implements ApplicationRepositoryInterface
                 $application->save();
             }
         }
+    }
+
+    /**
+     * @inheritDoc
+     * @return array
+     */
+    public function fetchWithStatus():array
+    {
+        $application_with_status = [];
+        $application = Application::with('users')
+            ->with('projects')
+            ->orderBy('user_id')
+            ->get()
+            ->toArray();
+
+        $status = Status::select('status')
+            ->get()
+            ->toArray();
+        dd($status);
+//        $application_with_status = ;
+
     }
 }
