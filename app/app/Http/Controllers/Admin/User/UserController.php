@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\UpdateAdminUserRequest;
 use App\Services\AdminUser\ShowEditUserForm\ShowEditUserFormService;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserService;
@@ -62,14 +63,13 @@ class UserController extends Controller
      *
      * Admin user edit
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\Admin\User\UpdateAdminUserRequest $request
      * @param \App\Services\AdminUser\UpdateUser\UpdateUserService $update_user_service
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function edit(Request $request, UpdateUserService $update_user_service)
+    public function edit(UpdateAdminUserRequest $request, UpdateUserService $update_user_service)
     {
-//        dd($request);
         $parameter = new UpdateUserAdminParameter();
         $user_id = $request->user_id;
         $parameter->setUserId($user_id);
