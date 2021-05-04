@@ -4,6 +4,7 @@ namespace App\Infrastructures\Repositories\Eloquent\User;
 
 use App\Mail\RegisterMail;
 use App\Models\User;
+use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -44,6 +45,7 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::with('project_app')
             ->with('project_assign')
+            ->with('project_status')
             ->findOrFail($user_id);
     }
 
@@ -114,5 +116,19 @@ class UserRepository implements UserRepositoryInterface
         $user->project_app()->detach();
         $user->project_assign()->detach();
         $user->delete();
+    }
+
+    /**
+     * @param \App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter $parameter
+     * @return \App\Models\User
+     */
+    public function updateAdmin(UpdateUserAdminParameter $parameter): User
+    {
+        $user = User::findOrFail($parameter->getUserId());
+        $user->operation_start_month = $parameter->getOperationStartMonth() ?? null;
+        $user->remarks = $parameter->getRemarks() ?? null;
+        $user->save();
+
+        return $user;
     }
 }
