@@ -26,8 +26,6 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
-     * @param string $email
-     * @return string
      */
     public static function makeEmailHash(string $email): string
     {
@@ -37,8 +35,6 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
-     * @param string $email_hash
-     * @return \App\Models\User
      */
     public function findByEmailHash(string $email_hash): User
     {
@@ -48,8 +44,6 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
-     * @param int $user_id
-     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function fetchWithProjectsThroughApplicationOrAssignment(int $user_id)
     {
@@ -62,8 +56,6 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
-     * @param UpdateUserParameter $parameter
-     * @throws \Throwable
      */
     public function update(UpdateUserParameter $parameter): void
     {
@@ -82,8 +74,7 @@ class UserRepository implements UserRepositoryInterface
 
 
     /**
-     * @param array $request
-     * @return \App\Models\User|\Illuminate\Database\Eloquent\Model
+     * {@inheritdoc}
      */
     public function register(array $request)
     {
@@ -104,8 +95,6 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
-     * @param string $email
-     * @return \App\Models\User|null
      */
     public function findByEmail(string $email): ?User
     {
@@ -115,8 +104,6 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
-     * @param \App\Models\User $user
-     * @param string $wanna_change_email
      */
     public function changeEmail(User $user, string $wanna_change_email)
     {
@@ -127,8 +114,6 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritDoc}
-     * @param int $user_id
-     * @throws \Exception
      */
     public function delete(int $user_id): void
     {
@@ -142,8 +127,6 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritDoc}
-     * @param \App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter $parameter
-     * @return \App\Models\User
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter): User
     {

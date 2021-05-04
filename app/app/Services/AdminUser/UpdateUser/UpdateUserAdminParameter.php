@@ -4,6 +4,10 @@
 namespace App\Services\AdminUser\UpdateUser;
 
 
+/**
+ * Class UpdateUserAdminParameter
+ * @package App\Services\AdminUser\UpdateUser
+ */
 class UpdateUserAdminParameter
 {
     /**
