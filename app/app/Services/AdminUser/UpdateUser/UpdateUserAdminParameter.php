@@ -27,7 +27,6 @@ class UpdateUserAdminParameter
     private $project_assign_id;
 
     /**
-     * ステータス
      * @var int[]|array
      */
     private $statuses;

@@ -55,7 +55,6 @@ class UserController extends Controller
     public function showEditForm(ShowEditUserFormService $show_edit_user_form_service, int $user_id)
     {
         $response = $show_edit_user_form_service->exec($user_id);
-//        dd($response);
         return view('admin.pages.user.edit.edit', ['response' => $response]);
     }
 

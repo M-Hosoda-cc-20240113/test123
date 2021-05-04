@@ -13,16 +13,21 @@ use Illuminate\Support\Facades\Mail;
 
 class UserRepository implements UserRepositoryInterface
 {
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * @return Collection
      */
     public function all(): Collection
     {
         return User::where('is_admin', 0)->get();
     }
 
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * @param string $email
+     * @return string
      */
     public static function makeEmailHash(string $email): string
     {
@@ -32,14 +37,19 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
+     * @param string $email_hash
+     * @return \App\Models\User
      */
     public function findByEmailHash(string $email_hash): User
     {
         return User::where('email_hash', $email_hash)->first();
     }
 
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * @param int $user_id
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function fetchWithProjectsThroughApplicationOrAssignment(int $user_id)
     {
@@ -49,8 +59,11 @@ class UserRepository implements UserRepositoryInterface
             ->findOrFail($user_id);
     }
 
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * @param UpdateUserParameter $parameter
+     * @throws \Throwable
      */
     public function update(UpdateUserParameter $parameter): void
     {
@@ -67,8 +80,10 @@ class UserRepository implements UserRepositoryInterface
         });
     }
 
+
     /**
-     * {@inheritDoc}
+     * @param array $request
+     * @return \App\Models\User|\Illuminate\Database\Eloquent\Model
      */
     public function register(array $request)
     {
@@ -86,16 +101,22 @@ class UserRepository implements UserRepositoryInterface
         ]);
     }
 
+
     /**
      * {@inheritdoc}
+     * @param string $email
+     * @return \App\Models\User|null
      */
     public function findByEmail(string $email): ?User
     {
         return User::where('email_hash', $this->makeEmailHash($email))->first();
     }
 
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * @param \App\Models\User $user
+     * @param string $wanna_change_email
      */
     public function changeEmail(User $user, string $wanna_change_email)
     {
@@ -105,6 +126,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
+     * {@inheritDoc}
      * @param int $user_id
      * @throws \Exception
      */
@@ -119,6 +141,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
+     * {@inheritDoc}
      * @param \App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter $parameter
      * @return \App\Models\User
      */

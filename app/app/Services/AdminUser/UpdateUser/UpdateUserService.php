@@ -14,19 +14,28 @@ use App\Services\User\UserRepositoryInterface;
 class UpdateUserService
 {
     /**
-     * @var
+     * @var UserRepositoryInterface
      */
     private $user_repository;
+    /**
+     * @var ApplicationRepositoryInterface
+     */
     private $application_repository;
+    /**
+     * @var AssignmentRepositoryInterface
+     */
     private $assignment_repository;
+    /**
+     * @var StatusRepositoryInterface
+     */
     private $status_repository;
 
     /**
      * UpdateUserService constructor.
-     * @param \App\Services\User\UserRepositoryInterface $user_repository
-     * @param \App\Services\Application\ApplicationRepositoryInterface $application_repository
-     * @param \App\Services\Assignment\AssignmentRepositoryInterface $assignment_repository
-     * @param \App\Services\Status\StatusRepositoryInterface $status_repository
+     * @param UserRepositoryInterface $user_repository
+     * @param ApplicationRepositoryInterface $application_repository
+     * @param AssignmentRepositoryInterface $assignment_repository
+     * @param StatusRepositoryInterface $status_repository
      */
     public function __construct(
         UserRepositoryInterface $user_repository,
