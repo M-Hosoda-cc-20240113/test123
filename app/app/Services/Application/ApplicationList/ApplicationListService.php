@@ -3,8 +3,13 @@
 namespace App\Services\Application\ApplicationList;
 
 use App\Services\Application\ApplicationRepositoryInterface;
-use Illuminate\Support\Collection;
+use App\Services\Pagination\PaginatorService;
+use Illuminate\Pagination\LengthAwarePaginator;
 
+/**
+ * Class ApplicationListService
+ * @package App\Services\Application\ApplicationList
+ */
 class ApplicationListService
 {
     /**
@@ -13,20 +18,29 @@ class ApplicationListService
     private $application_repository;
 
     /**
+     * @var PaginatorService
+     */
+    private $paginator_service;
+
+    /**
      * ApplicationListService constructor.
      * @param \App\Services\Application\ApplicationRepositoryInterface $application_repository
+     * @param \App\Services\Pagination\PaginatorService $paginator_service
      */
     public function __construct(
-        ApplicationRepositoryInterface $application_repository
+        ApplicationRepositoryInterface $application_repository,
+        PaginatorService $paginator_service
     ) {
         $this->application_repository = $application_repository;
+        $this->paginator_service = $paginator_service;
     }
 
     /**
-     * @return Collection
+     * @return LengthAwarePaginator
      */
-    public function exec(): Collection
+    public function exec(): LengthAwarePaginator
     {
-        return $this->application_repository->all();
+        $applications = $this->application_repository->all();
+        return $this->paginator_service->paginate($applications);
     }
 }

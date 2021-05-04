@@ -2,37 +2,30 @@
 
 namespace App\Services\Application\ApplicationList;
 
-use App\Models\Application;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ApplicationListResponse
 {
   /**
-   * @var Application[]
+   * @var LengthAwarePaginator
    */
   private $applications;
 
-  /**
-   * Get the value of applications
-   *
-   * @return  Application[]
-   */ 
-  public function getApplications()
-  {
-    return $this->applications;
-  }
+    /**
+     * @return LengthAwarePaginator
+     */
+    public function getApplications(): LengthAwarePaginator
+    {
+        return $this->applications;
+    }
 
-  /**
-   * Set the value of applications
-   *
-   * @param  Application[]  $applications
-   *
-   * @return  self
-   */ 
-  public function setApplications(Collection $applications)
-  {
-    $this->applications = $applications;
-
-    return $this;
-  }
+    /**
+     * @param LengthAwarePaginator $applications
+     * @return ApplicationListResponse
+     */
+    public function setApplications(LengthAwarePaginator $applications): ApplicationListResponse
+    {
+        $this->applications = $applications;
+        return $this;
+    }
 }
