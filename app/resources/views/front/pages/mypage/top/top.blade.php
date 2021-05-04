@@ -61,7 +61,7 @@
         <p class="p-level2Heading u-mb-5">スキル</p>
         <div class="u-mb-30">
           @foreach($response->getRelLevelSkillUser() as $level_skill)
-            @include('atoms.Tag', ['text' => $level_skill->name.'（'.$level_skill->level.'）', 'class' => 'u-mr-5 u-mt-5'])
+            <span class="c-label u-mt-5 u-mr-10">{{ $level_skill->name }}（{{ $level_skill->level }})</span>
           @endforeach
         </div>
         {{--  スキル  --}}
@@ -69,9 +69,8 @@
         <p class="p-level2Heading">応募案件</p>
         <div class="u-mb-30">
           @foreach($response->getUser()->project_app as $project)
-            <a class="c-text u-db u-mt-10"
-               href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
-                <p>面談予定日：{{ ViewHelper::YmdReplace($project->pivot->interview_date ?? '未定' )}}</p>
+            <a class="c-text--bold u-dib u-mt-10 u-indent-1" href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
+                <p class="u-indent">面談予定日：{{ ViewHelper::YmdReplace($project->pivot->interview_date ?? '未定' )}}</p>
           @endforeach
         </div>
         {{--  応募案件  --}}
@@ -79,8 +78,7 @@
         <p class="p-level2Heading">稼働案件</p>
         <div class="u-mb-30">
           @foreach($response->getUser()->project_assign as $project)
-            <a class="c-text u-db u-mt-10"
-               href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
+            <a class="c-text--bold u-dib u-mt-10 u-indent-1" href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
                 <p>稼働開始日：{{ ViewHelper::YmdReplace($project->pivot->assignment_start_date ?? '未定' )}}</p>
                 <p>稼働終了日：{{ ViewHelper::YmdReplace($project->pivot->assignment_end_date ?? '未定' )}}</p>
           @endforeach

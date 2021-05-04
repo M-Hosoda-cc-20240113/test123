@@ -5,6 +5,10 @@
   display: flex;
 }
 
+.u-dib {
+  display: inline-block;
+}
+
 .u-ff-column {
   flex-flow: column wrap;
 }
@@ -28,6 +32,15 @@
   @include max-screen($breakpoint-pc) {
     display: block;
   }
+}
+
+.u-indent {
+  text-indent: $base-font-size;
+}
+
+.u-indent-1 {
+  padding-left:1em;
+  text-indent:-1em;
 }
 
 @for $i from 0 through 100 {
