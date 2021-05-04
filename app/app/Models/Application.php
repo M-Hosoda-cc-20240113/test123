@@ -43,6 +43,7 @@ class Application extends Pivot
     protected $fillable = [
         'user_id',
         'project_id',
+        'interview_date',
     ];
 
     /**

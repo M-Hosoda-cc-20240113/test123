@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\UpdateAdminUserRequest;
 use App\Services\AdminUser\ShowEditUserForm\ShowEditUserFormService;
+use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
+use App\Services\AdminUser\UpdateUser\UpdateUserService;
 use App\Services\AdminUser\UserList\UserListResponse;
 use App\Services\AdminUser\UserList\UserListService;
 use App\Services\AdminUser\UserDetail\UserDetailService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -58,12 +62,31 @@ class UserController extends Controller
      *
      * Admin user edit
      *
-     * @param \Illuminate\Http\Request $request
-     * @return string
+     * @param \App\Http\Requests\Admin\User\UpdateAdminUserRequest $request
+     * @param \App\Services\AdminUser\UpdateUser\UpdateUserService $update_user_service
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
      */
-    public function edit(Request $request)
+    public function edit(UpdateAdminUserRequest $request, UpdateUserService $update_user_service)
     {
-        return 'Users edit';
+        $parameter = new UpdateUserAdminParameter();
+        $user_id = $request->user_id;
+        $parameter->setUserId($user_id);
+        $parameter->setStatuses($request->statuses ?? null);
+        $parameter->setProjectStatusIds($request->project_status_ids ?? null);
+        $parameter->setOperationStartMonth($request->operation_start_month ?? null);
+        $parameter->setInterviewDate($request->interview_dates ?? null);
+        $parameter->setProjectInterviewIds($request->project_interview_ids ?? null);
+        $parameter->setProjectAssignId($request->project_assign_id ?? null);
+        $parameter->setAssignmentStartDate($request->assignment_start_date ?? null);
+        $parameter->setAssignmentEndDate($request->assignment_end_date ?? null);
+        $parameter->setRemarks($request->remarks ?? null);
+
+        $user = DB::transaction(function () use ($update_user_service, $parameter){
+            return $update_user_service->exec($parameter);
+        });
+
+        return redirect()->route('user.detail', ['user_id' => $user->id]);;
     }
 
     /**
