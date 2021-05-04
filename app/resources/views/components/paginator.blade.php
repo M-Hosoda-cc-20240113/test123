@@ -33,7 +33,7 @@
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            <li class="p-paginator__item p-paginator__item--next"><a class="p-paginator__link" href="#">
+            <li class="p-paginator__item p-paginator__item--next"><a class="p-paginator__link" href="{{ $paginator->nextPageUrl() }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewbox="0 0 8 12">
                         <g fill="none" fill-rule="evenodd">
                             <path fill="#33313C" d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"></path>
