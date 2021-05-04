@@ -19,6 +19,6 @@
   </table>
   <p class="c-text p-card__sub-title">応募スキル</p>
   @foreach($project->skills as $skill)
-    @include('atoms.LinkButton', ['text' => $skill->name, 'class' => 'c-tag u-mb-5'])
+    <a href="{{ route('front.project.search', ['skill_ids[]' => $skill->id]) }}" class="c-tag u-mt-5">{{ $skill->name }}</a>
   @endforeach
 </div>
