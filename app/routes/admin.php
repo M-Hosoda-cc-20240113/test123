@@ -82,4 +82,5 @@ Route::namespace('Application')->prefix('applications')->group(function () {
 Route::namespace('Assignment')->prefix('assignments')->group(function () {
     Route::get('/', [AssignmentController::class, 'list'])->name('assignment.list');
     Route::post('/register', [AssignmentController::class, 'register'])->name('assignment.register');
+    Route::post('/delete', [AssignmentController::class, 'delete'])->name('assignment.delete');
 });

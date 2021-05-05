@@ -8,6 +8,7 @@ use App\Services\Assignment\AssignmentList\AssignmentListService;
 use App\Services\Assignment\RegisterAssignment\RegisterAssignmentParameter;
 use App\Services\Assignment\RegisterAssignment\RegisterAssignmentService;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AssignmentController extends Controller
@@ -45,5 +46,10 @@ class AssignmentController extends Controller
         });
 //        \Slack::send($user_project['user_name'] . "は" . $user_project['project_name'] . "にアサインしました。");
         return redirect()->route('application.list');
+    }
+
+    public function delete(Request $request, DeleteAssignmentService $delete_assignment_service)
+    {
+        //
     }
 }
