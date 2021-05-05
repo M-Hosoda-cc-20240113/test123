@@ -2,7 +2,7 @@
 
 namespace App\Services\Application;
 
-use App\Models\Application;
+use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use Illuminate\Support\Collection;
 
 interface ApplicationRepositoryInterface
@@ -20,4 +20,9 @@ interface ApplicationRepositoryInterface
      * @return void
      */
     public function create($project_id,　$user): void;
+
+    /**
+     * @param UpdateUserAdminParameter $parameter
+     */
+    public function updateAdmin(UpdateUserAdminParameter $parameter): void;
 }

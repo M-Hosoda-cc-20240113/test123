@@ -4,6 +4,7 @@ namespace App\Infrastructures\Repositories\Eloquent\Application;
 
 use App\Models\Application;
 use App\Models\User;
+use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Application\ApplicationRepositoryInterface;
 use Illuminate\Support\Collection;
 
@@ -30,5 +31,22 @@ class ApplicationRepository implements ApplicationRepositoryInterface
     public function create($project_id, $user): void
     {
         $user->project_app()->syncWithoutDetaching($project_id);
+    }
+
+    /**
+     * @inheritDoc
+     * @param UpdateUserAdminParameter $parameter
+     */
+    public function updateAdmin(UpdateUserAdminParameter $parameter): void
+    {
+        if (!empty($parameter->getProjectInterviewIds())) {
+            foreach ($parameter->getProjectInterviewIds() as $key => $project_id) {
+                $application = Application::where('user_id', $parameter->getUserId())
+                    ->where('project_id', $project_id)
+                    ->firstOrFail();
+                $application->interview_date = $parameter->getInterviewDate()[$key] ?? '';
+                $application->save();
+            }
+        }
     }
 }

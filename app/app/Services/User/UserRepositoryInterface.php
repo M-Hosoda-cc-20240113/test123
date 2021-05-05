@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use App\Models\User;
 use App\Services\User\UpdateUser\UpdateUserParameter;
+use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -67,4 +68,10 @@ interface UserRepositoryInterface
      * @return void
      */
     public function delete(int $user_id): void;
+
+    /**
+     * @param \App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter $parameter
+     * @return mixed
+     */
+    public function updateAdmin(UpdateUserAdminParameter $parameter);
 }

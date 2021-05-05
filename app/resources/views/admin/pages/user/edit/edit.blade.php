@@ -24,49 +24,52 @@
                 {{ @csrf_field() }}
                 <input type="hidden" name="user_id" value="{{ $response->getUser()->id }}">
 
-                <div class="p-register__row">
-                    <span class="p-register__title c-text--bold">ステータス</span>
-                    <div class="p-register__itemWrap">
-                        <div class="p-register__item u-w-50-pc">
-                            <label for="" class="c-select">
-                                <select name="status" id="">
-                                    <option value="1">未営業</option>
-                                    <option value="2">面談待ち</option>
-                                    <option value="3">結果待ち</option>
-                                    <option value="4">稼働済み</option>
-                                </select>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                {{--  ステータス  --}}
-
-                <div class="p-register__row">
+                <div class="p-register__row" style="padding-top: 30px">
                     <span class="p-register__title c-text--bold">営業開始月</span>
                     <div class="p-register__itemWrap--2col u-ff-row">
                         <div class="p-register__item u-w-25-pc u-w-50-sp">
                             <input type="date"
                                    class="c-input"
                                    name="operation_start_month"
-                                   value="{{ $response->getUser()->operation_start_month ?? '' }}"
-                                   placeholder="160">
+                                   value="{{ $response->getUser()->operation_start_month ?? '' }}">
                         </div>
                     </div>
                 </div>
                 {{--  営業開始月  --}}
 
                 <div class="p-register__row">
+                    <span class="p-register__title c-text--bold">ステータス</span>
+                    @foreach($response->getUser()->project_status as $project)
+                        <div class="" style="width: 40%">
+                            <span>{{ $project->name }}</span>
+                            <input type="hidden" name="project_status_ids[]" value="{{ $project->id }}">
+                            <div class="p-register__item u-w-50-pc">
+                                <label for="" class="c-select">
+                                    <select name="statuses[]" id="">
+                                        @for($i = 0; $i < 4; $i++)
+                                            <option
+                                                value="{{ $i }}" {{ $i === $project->pivot->status ? 'selected' : '0' }}>{{ ViewHelper::Status($i) }}</option>
+                                        @endfor
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                {{--  ステータス  --}}
+
+                <div class="p-register__row">
                     <span class="p-register__title c-text--bold">面談予定日</span>
                     @foreach($response->getUser()->project_app as $project)
-                        <span class="u-as-center u-pl-30 u-w-1000px">{{ $project->name ?? ''}}</span>
-                        <div class="p-register__itemWrap--2col u-ff-row">
-                            <div class="p-register__item u-w-25-pc u-w-50-sp">
+                        <div class="" style="width: 40%">
+                            <span class="u-as-center u-w-1000px">{{ $project->name ?? ''}}</span>
+                            <input type="hidden" name="project_interview_ids[]" value="{{ $project->id }}">
+                            <div class="" style="width: 45%">
                                 <input type="date"
                                        class="c-input"
-                                       name="interview_date"
+                                       name="interview_dates[]"
                                        value="{{ $project->pivot->interview_date ?? '' }}">
                             </div>
-
                         </div>
                     @endforeach
                 </div>
@@ -76,8 +79,9 @@
                 <div class="p-register__row">
                     <span class="p-register__title c-text--bold">稼働日</span>
                     @foreach($response->getUser()->project_assign as $project)
-                        <span>{{ $project->name ?? ''}}</span>
-                        <div class="p-register__itemWrap--2col u-ff-row">
+                        <div style="width: 90%; display: flex;">
+                            <span class="p-register__title">{{ $project->name ?? ''}}</span>
+                            <input type="hidden" name="project_assign_id" value="{{ $project->id }}">
                             <span class="u-as-center u-pl-30 u-w-70px">開始</span>
                             <div class="p-register__item u-w-25-pc u-w-50-sp">
                                 <input type="date"
@@ -100,7 +104,7 @@
 
                 <div class="p-register__row--spColumn">
                     <p class="p-register__title c-text--bold u-w-100-sp">備考</p>
-                    <div class="p-register__itemWrap">
+                    <div style="width: 80%; display: flex;">
                         <div class="p-register__item">
                             <textarea class="c-input--light"
                                       name="remarks"

@@ -2,6 +2,7 @@
 
 namespace App\Services\Assignment;
 
+use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Assignment\RegisterAssignment\RegisterAssignmentParameter;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -18,4 +19,9 @@ interface AssignmentRepositoryInterface
      * @return array
      */
     public function register(RegisterAssignmentParameter $parameter): array;
+
+    /**
+     * @param \App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter $parameter
+     */
+    public function updateAdmin(UpdateUserAdminParameter $parameter): void;
 }

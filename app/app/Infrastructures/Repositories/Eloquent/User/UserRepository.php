@@ -4,6 +4,7 @@ namespace App\Infrastructures\Repositories\Eloquent\User;
 
 use App\Mail\RegisterMail;
 use App\Models\User;
+use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -12,16 +13,19 @@ use Illuminate\Support\Facades\Mail;
 
 class UserRepository implements UserRepositoryInterface
 {
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * @return Collection
      */
     public function all(): Collection
     {
         return User::where('is_admin', 0)->get();
     }
 
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function makeEmailHash(string $email): string
     {
@@ -37,18 +41,21 @@ class UserRepository implements UserRepositoryInterface
         return User::where('email_hash', $email_hash)->first();
     }
 
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fetchWithProjectsThroughApplicationOrAssignment(int $user_id)
     {
         return User::with('project_app')
             ->with('project_assign')
+            ->with('project_status')
             ->findOrFail($user_id);
     }
 
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function update(UpdateUserParameter $parameter): void
     {
@@ -65,8 +72,9 @@ class UserRepository implements UserRepositoryInterface
         });
     }
 
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function register(array $request)
     {
@@ -84,6 +92,7 @@ class UserRepository implements UserRepositoryInterface
         ]);
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -92,8 +101,9 @@ class UserRepository implements UserRepositoryInterface
         return User::where('email_hash', $this->makeEmailHash($email))->first();
     }
 
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function changeEmail(User $user, string $wanna_change_email)
     {
@@ -103,8 +113,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @param int $user_id
-     * @throws \Exception
+     * {@inheritDoc}
      */
     public function delete(int $user_id): void
     {
@@ -114,5 +123,18 @@ class UserRepository implements UserRepositoryInterface
         $user->project_app()->detach();
         $user->project_assign()->detach();
         $user->delete();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function updateAdmin(UpdateUserAdminParameter $parameter): User
+    {
+        $user = User::findOrFail($parameter->getUserId());
+        $user->operation_start_month = $parameter->getOperationStartMonth() ?? null;
+        $user->remarks = $parameter->getRemarks() ?? null;
+        $user->save();
+
+        return $user;
     }
 }
