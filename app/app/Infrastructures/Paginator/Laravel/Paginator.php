@@ -16,9 +16,7 @@ use Illuminate\Support\Collection;
 class Paginator implements PaginatorInterface
 {
     /**
-     * @param \Illuminate\Support\Collection $items
-     * @param int $per_page
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * {@inheritDoc}
      */
     public function paginate(Collection $items, int $per_page): LengthAwarePaginator
     {
