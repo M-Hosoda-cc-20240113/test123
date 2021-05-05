@@ -22,105 +22,31 @@
         @endcomponent
     </div>
     <div class="l-container">
-        <div class="p-register">
-            <div class="p-register__row">
-                <span class="p-register__title c-text--bold">会社名</span>
-                <div class="p-register__itemWrap">
-                    <div class="p-register__item u-w-50-pc">
-                        <label for="" class="c-select">
-                            <select name="" id="">
-                                <option value="">hoge</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-register__row">
-                <span class="p-register__title c-text--bold">最寄り駅</span>
-                <div class="p-register__itemWrap">
-                    <div class="p-register__item u-w-50-pc">
-                        <label for="" class="c-select">
-                            <select name="" id="">
-                                <option value="">hoge</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-register__row">
-                <span class="p-register__title c-text--bold">案件名</span>
-                <div class="p-register__itemWrap">
-                    <div class="p-register__item u-w-50-pc">
-                        <input class="c-input" type="text">
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-register__row">
-                <span class="p-register__title c-text--bold">出勤回数</span>
-                <div class="p-register__itemWrap">
-                    <div class="p-register__item u-w-50-pc">
-                        <span class="p-register__itemPart c-text">週</span>
-                        <label for="" class="c-select u-w-100px p-register__itemPart">
-                            <select name="" id="">
-                                <option value="">5</option>
-                                <option value="">4</option>
-                                <option value="">3</option>
-                            </select>
-                        </label>
-                        <span class="p-register__itemPart c-text">回</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-register__row">
-                <span class="p-register__title c-text--bold">ポジション</span>
-                <div class="p-register__itemWrap">
-                    <div class="p-register__item u-w-50-pc">
-                        <label for="" class="c-select p-register__itemPart">
-                            <select name="" id="">
-                                <option value="">フロント</option>
-                                <option value="">バックエンド</option>
-                                <option value="">PM</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <template>
-                <div class="p-register__item--trash u-mt-20 js-content">
-                    <label for="" class="c-select p-register__itemPart">
-                        <select name="" id="">
-                            <option value="">php</option>
-                            <option value="">js</option>
-                            <option value="">vue.js</option>
-                        </select>
-                    </label>
-                </div>
-            </template>
-
-            <div class="p-register__row">
-                <span class="p-register__title c-text--bold">スキル</span>
-                <div class="u-w-70-pc u-w-70-sp">
-                    <div class="p-register__itemWrap u-w-100-sp u-w-50-pc js-parent">
-                        <div class="p-register__item--trash js-content js-remove">
-                            <label for="" class="c-select p-register__itemPart">
-                                <select name="" id="">
-                                    <option value="">php</option>
-                                    <option value="">js</option>
-                                    <option value="">vue.js</option>
-                                </select>
-                            </label>
-                        </div>
-
-                        <img class="c-icon--clickable u-mt-20 u-m0a js-add" src="/images/icons/icon_add.png" alt="">
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <nav>
+            <ul class="p-paginator">
+                <li class="p-paginator__item p-paginator__item--prev"><a class="p-paginator__link" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewbox="0 0 8 12">
+                            <g fill="none" fill-rule="evenodd">
+                                <path fill="#33313C" d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"></path>
+                            </g>
+                        </svg>
+                    </a></li>
+                <li class="p-paginator__item"><a class="p-paginator__link" href="#">...</a></li>
+                <li class="p-paginator__item"><a class="p-paginator__link" href="#">1</a></li>
+                <li class="p-paginator__item active"><a class="p-paginator__link" href="#">2</a></li>
+                <li class="p-paginator__item"><a class="p-paginator__link" href="#">3</a></li>
+                <li class="p-paginator__item"><a class="p-paginator__link" href="#">4</a></li>
+                <li class="p-paginator__item"><a class="p-paginator__link" href="#">5</a></li>
+                <li class="p-paginator__item"><a class="p-paginator__link" href="#">6</a></li>
+                <li class="p-paginator__item"><a class="p-paginator__link" href="#">...</a></li>
+                <li class="p-paginator__item p-paginator__item--next"><a class="p-paginator__link" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewbox="0 0 8 12">
+                            <g fill="none" fill-rule="evenodd">
+                                <path fill="#33313C" d="M7.41 1.41L6 0 0 6l6 6 1.41-1.41L2.83 6z"></path>
+                            </g>
+                        </svg>
+                    </a></li>
+            </ul>
+        </nav>
     </div>
 @endsection

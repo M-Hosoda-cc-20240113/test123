@@ -1,0 +1,69 @@
+.p-paginator {
+  font-size: 0;
+  text-align: center;
+
+  &__item {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin: 0 2px;
+    border-radius: 3px;
+    @include max-screen($breakpoint-pc) {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      &.active, &:first-of-type, &:last-of-type, &:nth-of-type(2), &:nth-last-of-type(2) {
+        position: initial;
+        top: initial;
+        left: initial;
+      }
+      &.active {
+        & + li {
+          position: initial;
+          top: initial;
+          left: initial;
+        }
+      }
+    }
+
+    svg {
+      width: 8px;
+      height: 12px;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+
+    &.active .p-paginator__link {
+      background-color: $secondary-color;
+      border-color: $secondary-color;
+      color: $light-color;
+      text-decoration: none;
+    }
+
+    $this: &;
+
+    &--next {
+      @extend #{$this};
+
+      svg {
+        transform: rotate(180deg);
+        transform-origin: center center;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    border-radius: 4px;
+    display: block;
+    text-align: center;
+    width: 2.625rem;
+    height: 2.625rem;
+    line-height: 2.625rem;
+    margin-left: -1px;
+    color: $dark-color;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+}

@@ -2,37 +2,30 @@
 
 namespace App\Services\AdminProject\ProjectList;
 
-use App\Models\Project;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProjectListResponse
 {
-  /**
-   * @var Project[]
-   */
-  private $projects;
+    /**
+     * @var \Illuminate\Pagination\LengthAwarePaginator
+     */
+    private $projects;
 
-  /**
-   * Get the value of projects
-   *
-   * @return  Project[]
-   */
-  public function getProjects()
-  {
-    return $this->projects;
-  }
+    /**
+     * @return LengthAwarePaginator
+     */
+    public function getProjects(): LengthAwarePaginator
+    {
+        return $this->projects;
+    }
 
-  /**
-   * Set the value of projects
-   *
-   * @param  Project[]  $projects
-   *
-   * @return  self
-   */
-  public function setProjects(Collection $projects)
-  {
-    $this->projects = $projects;
-
-    return $this;
-  }
+    /**
+     * @param LengthAwarePaginator $projects
+     * @return ProjectListResponse
+     */
+    public function setProjects(LengthAwarePaginator $projects): ProjectListResponse
+    {
+        $this->projects = $projects;
+        return $this;
+    }
 }

@@ -1,7 +1,7 @@
 @php
-/**
- * @var \App\Services\Admin\_Assignment\_AssignmentList\_AssignmentListResponse $response
- */
+    /**
+     * @var \App\Services\Assignment\AssignmentList\AssignmentListResponse $response
+     */
 @endphp
 
 @extends('admin.layout')
@@ -11,8 +11,9 @@
 @section('body')
     @include('admin.header.header')
     <div class="Container mt-30">
-      @include('admin.bread_crumb._BreadCrumb')
-      @include('admin.pages.assignment.list._AssignmentTable', ['response' => $response])
+        @include('admin.bread_crumb._BreadCrumb')
+        @include('admin.pages.assignment.list._AssignmentTable', ['response' => $response])
+        {{ $response->getAssignments()->links('components.paginator') }}
     </div>
     @include('admin.footer.footer')
 @endsection
