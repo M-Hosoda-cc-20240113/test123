@@ -51,4 +51,27 @@ class ApplicationRepository implements ApplicationRepositoryInterface
             }
         }
     }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fetchWithStatus(): Collection
+    {
+        $application_with_status = [];
+        $applications = Application::with('users')
+            ->with('projects')
+            ->orderBy('user_id')
+            ->get()
+            ->toArray();
+        $statuses = Status::whereNotIn('status',[3])
+            ->orderBy('user_id')
+            ->select('status')
+            ->get()
+            ->toArray();
+        foreach ($applications as $key => $application)
+        {
+            $application_with_status[] = array_merge($application, $statuses[$key]);
+        }
+        return collect($application_with_status);
+    }
 }
