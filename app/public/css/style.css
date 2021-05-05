@@ -2839,8 +2839,8 @@ input[type="checkbox"]:checked + label:before {
   line-height: 1.2em;
   background-color: #dfe4e7;
   font-weight: normal;
-  padding: 10px 0;
-  width: 100px;
+  padding: 10px;
+  width: 120px;
   box-sizing: border-box;
 }
 
