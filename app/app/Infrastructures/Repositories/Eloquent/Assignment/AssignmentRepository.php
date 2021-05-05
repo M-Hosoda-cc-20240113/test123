@@ -13,12 +13,15 @@ use App\Services\Assignment\DeleteAssignment\DeleteAssignmentParameter;
 use App\Services\Assignment\RegisterAssignment\RegisterAssignmentParameter;
 use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Class AssignmentRepository
+ * @package App\Infrastructures\Repositories\Eloquent\Assignment
+ */
 class AssignmentRepository implements AssignmentRepositoryInterface
 {
 
     /**
      * @inheritDoc
-     * @return Collection
      */
     public function all(): Collection
     {
@@ -29,8 +32,6 @@ class AssignmentRepository implements AssignmentRepositoryInterface
 
     /**
      * @inheritDoc
-     * @param RegisterAssignmentParameter $parameter
-     * @return array
      */
     public function register(RegisterAssignmentParameter $parameter): array
     {
@@ -66,7 +67,6 @@ class AssignmentRepository implements AssignmentRepositoryInterface
 
     /**
      * @inheritDoc
-     * @param UpdateUserAdminParameter $parameter
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter): void
     {
@@ -80,6 +80,9 @@ class AssignmentRepository implements AssignmentRepositoryInterface
         }
     }
 
+    /**
+     * @inheritDoc
+     */
     public function delete(DeleteAssignmentParameter $parameter): void
     {
         Assignment::where('user_id', $parameter->getUserId())
