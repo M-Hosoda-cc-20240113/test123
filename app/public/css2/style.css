@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* breakpoint */
 /* color */
 /* max min width */
@@ -501,7 +502,7 @@ img {
   margin-left: auto;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 10%;
+  padding-bottom: 90px;
 }
 
 @media screen and (max-width: 768px) {
@@ -560,6 +561,7 @@ img {
 }
 
 .c-button, .c-button--secondary {
+  width: 100%;
   display: inline-block;
   max-width: 100%;
   padding: 10px 15px;
@@ -1398,6 +1400,99 @@ img {
   color: #333333;
   text-decoration: none;
   transition: 0.3s;
+}
+
+.p-table {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.p-table__head {
+  background-color: #dfe4e7;
+  border: 1px solid #cdcddf;
+}
+
+.p-table__headRowItem, .p-table__headRowItem--edit {
+  padding: 8px;
+  padding-right: 22px;
+  background-position: center right 5%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-image: url("/image/common/sort-solid.svg");
+  background-size: 8px;
+  font-size: 12px;
+}
+
+.p-table__headRowItem--edit {
+  background-image: none;
+}
+
+.p-table__bodyRow {
+  border: 1px solid #cdcddf;
+  background-color: #ffffff;
+}
+
+.p-table__bodyRow:hover {
+  background-color: #dfe4e7;
+  cursor: pointer;
+}
+
+.p-table__bodyRowItem, .p-table__bodyRowItem--textCenter {
+  padding: 8px;
+  font-size: 13px;
+  border-color: inherit;
+  color: #333333;
+  vertical-align: middle;
+}
+
+.p-table__bodyRowItem--textCenter {
+  text-align: center;
+}
+
+.p-table__bodyRowItemInner {
+  width: 13px;
+  margin: 0 auto;
+}
+
+.p-breadCrumb {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.p-breadCrumb li {
+  display: inline-block;
+  /*横に並ぶように*/
+  list-style: none;
+  font-weight: bold;
+  /*太字*/
+}
+
+.p-breadCrumb li:after {
+  /* ▶を表示*/
+  content: ">";
+  padding: 0 0.2em;
+  color: #42b5d1;
+}
+
+.p-breadCrumb li:last-child:after {
+  content: "";
+}
+
+.p-breadCrumb li a {
+  display: inline-block;
+  padding: 0.2em 0.8em;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #ffffff;
+  background: #42b5d1;
+  font-size: 0.9em;
+}
+
+.p-breadCrumb li a:hover {
+  background: #2c99b4;
 }
 
 .u-db {
