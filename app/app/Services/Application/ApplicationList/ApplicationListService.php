@@ -4,7 +4,8 @@ namespace App\Services\Application\ApplicationList;
 
 use App\Services\Application\ApplicationRepositoryInterface;
 use App\Services\Status\StatusRepositoryInterface;
-use Illuminate\Support\Collection;
+use App\Services\Pagination\PaginatorService;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Class ApplicationListService
@@ -22,28 +23,37 @@ class ApplicationListService
      */
     private $status_repository;
 
+     /**
+     * @var PaginatorService
+     */
+    private $paginator_service;
+
     /**
      * ApplicationListService constructor.
      * @param \App\Services\Application\ApplicationRepositoryInterface $application_repository
      * @param \App\Services\Status\StatusRepositoryInterface $status_repository
+     * @param \App\Services\Pagination\PaginatorService $paginator_service
      */
     public function __construct(
         ApplicationRepositoryInterface $application_repository,
-        StatusRepositoryInterface $status_repository
+        StatusRepositoryInterface $status_repository,
+        PaginatorService $paginator_service
     ) {
         $this->application_repository = $application_repository;
         $this->status_repository = $status_repository;
+        $this->paginator_service = $paginator_service;
     }
 
 
     /**
-     * @return Collection
+     * @return LengthAwarePaginator
      */
-    public function exec(): Collection
+    public function exec(): LengthAwarePaginator
     {
         $application = $this->application_repository->all();
         $status = $this->status_repository->all();
         $merged = collect();
-        return $merged->merge(['applications' => $application])->merge(['statuses' => $status]);
+        $merged =  $merged->merge(['applications' => $application])->merge(['statuses' => $status]);
+        return $this->paginator_service->paginate($merged);
     }
 }

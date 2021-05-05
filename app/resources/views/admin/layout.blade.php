@@ -22,6 +22,7 @@
   @endif
   @section('stylesheet')
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}" media="all">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css2/style.css') }}" media="all">
   @show
   @section('head')
   @show

@@ -2,36 +2,30 @@
 
 namespace App\Services\Assignment\AssignmentList;
 
-use App\Models\Assignment;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class AssignmentListResponse
 {
-  /**
-   * @var Assignment[]
-   */
-  private $assignments;
-
-  /**
-   * Get the value of assignments
-   *
-   * @return  Assignment[]
-   */
-  public function getAssignment()
-  {
-    return $this->assignments;
-  }
+    /**
+     * @var LengthAwarePaginator
+     */
+    private $assignments;
 
     /**
-     * Set the value of assignments
-     *
-     * @param \Illuminate\Support\Collection $assignments
-     * @return  self
+     * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-  public function setAssignment(Collection $assignments)
-  {
-    $this->assignments = $assignments;
+    public function getAssignments(): LengthAwarePaginator
+    {
+        return $this->assignments;
+    }
 
-    return $this;
-  }
+    /**
+     * @param \Illuminate\Pagination\LengthAwarePaginator $assignments
+     * @return AssignmentListResponse
+     */
+    public function setAssignments(LengthAwarePaginator $assignments): AssignmentListResponse
+    {
+        $this->assignments = $assignments;
+        return $this;
+    }
 }

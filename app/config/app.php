@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'ja_JP',
 
     /*
     |--------------------------------------------------------------------------
@@ -190,6 +190,7 @@ return [
         App\Providers\RelProjectSkillServiceProvider::class,
         App\Providers\RelPositionProjectServiceProvider::class,
         App\Providers\SlackServiceProvider::class,
+        App\Providers\PaginatorServiceProvider::class,
         App\Providers\StatusServiceProvider::class,
     ],
 

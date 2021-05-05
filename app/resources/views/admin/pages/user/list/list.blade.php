@@ -1,7 +1,7 @@
 @php
-/**
- * @var \App\Services\AdminUser\UserList\UserListResponse $response
- */
+    /**
+     * @var \App\Services\AdminUser\UserList\UserListResponse $response
+     */
 @endphp
 
 @extends('admin.layout')
@@ -13,8 +13,9 @@
         @include('admin.header._link_login_logout')
     @endcomponent
     <div class="Container mt-30">
-      @include('admin.bread_crumb._BreadCrumb')
-      @include('admin.pages.user.list._RegularUserTable', ['response' => $response])
+        @include('admin.bread_crumb._BreadCrumb')
+        @include('admin.pages.user.list._RegularUserTable', ['response' => $response])
+        {{ $response->getUsers()->links('components.paginator') }}
     </div>
 
     @include('admin.footer.footer')

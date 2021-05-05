@@ -2,8 +2,7 @@
 
 namespace App\Services\AdminUser\UserList;
 
-use App\Models\User;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Class UserListResponse
@@ -12,23 +11,23 @@ use Illuminate\Support\Collection;
 class UserListResponse
 {
     /**
-     * @var User[]|Collection
+     * @var LengthAwarePaginator
      */
     private $users;
 
     /**
-     * @return User[]|Collection
+     * @return LengthAwarePaginator
      */
-    public function getUsers()
+    public function getUsers(): LengthAwarePaginator
     {
         return $this->users;
     }
 
     /**
-     * @param User[]|Collection $users
-     * @return UserListResponse
+     * @param \Illuminate\Pagination\LengthAwarePaginator $users
+     * @return $this
      */
-    public function setUsers($users): UserListResponse
+    public function setUsers(LengthAwarePaginator $users): UserListResponse
     {
         $this->users = $users;
         return $this;
