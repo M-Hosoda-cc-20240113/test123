@@ -33,7 +33,6 @@ class UserListService
         $this->paginator_service = $paginator_service;
     }
 
-
     /**
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
