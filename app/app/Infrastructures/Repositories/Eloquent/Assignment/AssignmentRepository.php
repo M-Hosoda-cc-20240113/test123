@@ -9,6 +9,7 @@ use App\Models\Status;
 use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Assignment\AssignmentRepositoryInterface;
+use App\Services\Assignment\DeleteAssignment\DeleteAssignmentParameter;
 use App\Services\Assignment\RegisterAssignment\RegisterAssignmentParameter;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -77,5 +78,20 @@ class AssignmentRepository implements AssignmentRepositoryInterface
             $assignment->assignment_end_date = $parameter->getAssignmentEndDate() ?? null;
             $assignment->save();
         }
+    }
+
+    public function delete(DeleteAssignmentParameter $parameter): void
+    {
+        Assignment::where('user_id', $parameter->getUserId())
+            ->where('project_id', $parameter->getProjectId())
+            ->delete();
+        Status::where('user_id', $parameter->getUserId())
+            ->where('project_id', $parameter->getProjectId())
+            ->delete();
+
+        $user = User::where('id', $parameter->getUserId())
+            ->firstOrFail();
+        $user->is_working = 0;
+        $user->save();
     }
 }

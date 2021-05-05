@@ -48,5 +48,19 @@ class StatusTableSeeder extends Seeder
             'project_id'    => 15,
             'created_at' => $now
         ]);
+
+        Status::create([
+            'user_id'    => 3,
+            'project_id'    => 6,
+            'status'     => 3,
+            'created_at' => $now
+        ]);
+
+        Status::create([
+            'user_id'    => 4,
+            'project_id'    => 13,
+            'status'     => 3,
+            'created_at' => $now
+        ]);
     }
 }
