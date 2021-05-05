@@ -9,7 +9,7 @@
     </thead>
 
     <tbody class="RegularTable__body">
-    @foreach ($response->getAssignment() as $assignment)
+    @foreach ($response->getAssignments() as $assignment)
         <tr class="RegularTable__bodyRow" data-href="">
             <td class="RegularTable__bodyRowItem">
                 <a class="d-block w-100"
