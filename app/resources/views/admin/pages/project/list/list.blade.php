@@ -12,7 +12,7 @@
     @component('admin.header.header', ['href' => route('front.index')])
         @include('admin.header._link_login_logout')
     @endcomponent
-    <div class="Container mt-30">
+    <div class="l-container">
         @include('admin.bread_crumb._BreadCrumb')
         @include('admin.pages.project.list._RegularTable', ['response' => $response])
         {{ $response->getProjects()->links('components.paginator') }}

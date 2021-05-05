@@ -1,19 +1,19 @@
-<table class="RegularTable">
-    <thead class="RegularTable__head">
-    <tr class="RegularTable__headRow">
-        <th class="RegularTable__headRowItem">案件名</th>
-        <th class="RegularTable__headRowItem">登録日時</th>
-        <th class="RegularTable__headRowItem">アサイン可否</th>
+<table class="p-table">
+    <thead class="p-table__head">
+    <tr class="p-table__headRow">
+        <th class="p-table__headRowItem">案件名</th>
+        <th class="p-table__headRowItem">登録日時</th>
+        <th class="p-table__headRowItem">アサイン可否</th>
     </tr>
     </thead>
 
-    <tbody class="RegularTable__body">
+    <tbody class="p-table__body">
     @foreach ($response->getProjects() as $project)
-        <tr class="RegularTable__bodyRow"
+        <tr class="p-table__bodyRow"
             data-href="{{ route('project.detail', ['project_id' => $project->id])}}">
-            <td class="RegularTable__bodyRowItem">{{ $project->name ?? ''}}</td>
-            <td class="RegularTable__bodyRowItem">{{ ViewHelper::YmdReplace($project->created_at ?? '' )}}</td>
-            <td class="RegularTable__bodyRowItem--textCenter">{{ $project->decided ? '否' : '可'}}</td>
+            <td class="p-table__bodyRowItem">{{ $project->name ?? ''}}</td>
+            <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($project->created_at ?? '' )}}</td>
+            <td class="p-table__bodyRowItem--textCenter">{{ $project->decided ? '否' : '可'}}</td>
         </tr>
     @endforeach
     </tbody>
