@@ -32,7 +32,7 @@
                     {{ @csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $assignment->users->id }}">
                     <input type="hidden" name="project_id" value="{{  $assignment->projects->id }}">
-                    <button type="submit" class="c-button u-m0a" style="background-color: coral">削除</button>
+                    <button type="submit" id="alert_button" class="c-button u-m0a" style="background-color: coral">削除</button>
                 </form>
             </td>
         </tr>
