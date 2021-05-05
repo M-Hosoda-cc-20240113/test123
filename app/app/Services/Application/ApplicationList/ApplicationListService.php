@@ -18,11 +18,6 @@ class ApplicationListService
      */
     private $application_repository;
 
-    /**
-     * @var StatusRepositoryInterface
-     */
-    private $status_repository;
-
      /**
      * @var PaginatorService
      */
@@ -31,16 +26,13 @@ class ApplicationListService
     /**
      * ApplicationListService constructor.
      * @param \App\Services\Application\ApplicationRepositoryInterface $application_repository
-     * @param \App\Services\Status\StatusRepositoryInterface $status_repository
      * @param \App\Services\Pagination\PaginatorService $paginator_service
      */
     public function __construct(
         ApplicationRepositoryInterface $application_repository,
-        StatusRepositoryInterface $status_repository,
         PaginatorService $paginator_service
     ) {
         $this->application_repository = $application_repository;
-        $this->status_repository = $status_repository;
         $this->paginator_service = $paginator_service;
     }
 
@@ -50,10 +42,7 @@ class ApplicationListService
      */
     public function exec(): LengthAwarePaginator
     {
-        $application = $this->application_repository->all();
-        $status = $this->status_repository->all();
-        $merged = collect();
-        $merged =  $merged->merge(['applications' => $application])->merge(['statuses' => $status]);
-        return $this->paginator_service->paginate($merged);
+        $application = $this->application_repository->fetchWithStatus();
+        return $this->paginator_service->paginate($application);
     }
 }

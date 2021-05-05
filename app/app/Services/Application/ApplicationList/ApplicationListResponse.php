@@ -6,10 +6,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class ApplicationListResponse
 {
-  /**
-   * @var LengthAwarePaginator
-   */
-  private $applications;
+    /**
+     * @var LengthAwarePaginator
+     */
+    private $applications;
 
     /**
      * @return LengthAwarePaginator
