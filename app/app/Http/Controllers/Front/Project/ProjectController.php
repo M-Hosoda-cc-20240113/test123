@@ -46,18 +46,6 @@ class ProjectController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\Front\CreateApplicationRequest $request
-     * @param \App\Services\Application\ApplyProjectService\ApplyProjectService $apply_project_service
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function createApplication(CreateApplicationRequest $request, ApplyProjectService $apply_project_service)
-    {
-        $user = Auth::user();
-        $apply_project_service->exec($request->project_id, $user);
-        return  redirect('/');
-    }
-
-    /**
      * @param SearchProjectRequest $request
      * @param SearchProjectService $search_project_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View

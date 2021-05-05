@@ -21,6 +21,6 @@ class ApplyProjectService
 
     public function exec(int $project_id, $user)
     {
-        return $this->application_repository->create($project_id, $user);
+        $this->application_repository->create($project_id, $user);
     }
 }

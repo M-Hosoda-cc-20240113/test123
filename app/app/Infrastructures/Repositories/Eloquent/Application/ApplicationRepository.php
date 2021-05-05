@@ -31,6 +31,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface
      */
     public function create($project_id, $user): void
     {
+        $user->project_status()->syncWithoutDetaching($project_id);
         $user->project_app()->syncWithoutDetaching($project_id);
     }
 
@@ -45,30 +46,9 @@ class ApplicationRepository implements ApplicationRepositoryInterface
                 $application = Application::where('user_id', $parameter->getUserId())
                     ->where('project_id', $project_id)
                     ->firstOrFail();
-                $application->interview_date = $parameter->getInterviewDate()[$key] ?? '';
+                $application->interview_date = $parameter->getInterviewDate()[$key] ?? null;
                 $application->save();
             }
         }
-    }
-
-    /**
-     * @inheritDoc
-     * @return array
-     */
-    public function fetchWithStatus():array
-    {
-        $application_with_status = [];
-        $application = Application::with('users')
-            ->with('projects')
-            ->orderBy('user_id')
-            ->get()
-            ->toArray();
-
-        $status = Status::select('status')
-            ->get()
-            ->toArray();
-        dd($status);
-//        $application_with_status = ;
-
     }
 }

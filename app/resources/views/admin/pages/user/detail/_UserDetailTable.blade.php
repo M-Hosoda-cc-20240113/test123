@@ -21,7 +21,7 @@
     <tr class="ProjectDetailTable__row">
         <th class="ProjectDetailTable__head">応募案件</th>
         <td class="ProjectDetailTable__body">
-            @foreach ($response->getUser()->project_app as $project)
+            @foreach ($response->getUser()->project_app as $key => $project)
                 <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}<br></a>
                 <p>面談予定日：{{ ViewHelper::YmdReplace($project->pivot->interview_date ?? '未定' )}}</p>
                 <hr class="Horizontal">
@@ -49,6 +49,13 @@
     <tr class="ProjectDetailTable__row">
         <th class="ProjectDetailTable__head">営業開始月</th>
         <td class="ProjectDetailTable__body">{{ ViewHelper::YmdReplace($response->getUser()->operation_start_month ?? '' )}}</td>
+        <th class="ProjectDetailTable__head">ステータス</th>
+        <td class="ProjectDetailTable__body">
+            @foreach ($response->getUser()->project_status as $project)
+                <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? ''}}<br></a>
+                <p>ステータス：{{ ViewHelper::Status($project->pivot->status ?? '未定' )}}</p>
+            @endforeach
+        </td>
     </tr>
     </tbody>
 </table>

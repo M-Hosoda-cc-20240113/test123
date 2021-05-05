@@ -25,9 +25,4 @@ interface ApplicationRepositoryInterface
      * @param UpdateUserAdminParameter $parameter
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter): void;
-
-    /**
-     * @return array
-     */
-    public function fetchWithStatus(): array;
 }
