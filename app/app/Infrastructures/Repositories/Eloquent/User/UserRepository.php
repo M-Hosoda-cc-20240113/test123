@@ -122,6 +122,7 @@ class UserRepository implements UserRepositoryInterface
         $user->levels()->detach();
         $user->project_app()->detach();
         $user->project_assign()->detach();
+        $user->project_status()->detach();
         $user->delete();
     }
 

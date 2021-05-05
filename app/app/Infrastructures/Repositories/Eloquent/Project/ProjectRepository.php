@@ -206,6 +206,9 @@ class ProjectRepository implements ProjectRepositoryInterface
     public function delete(DeleteProjectParameter $parameter): void
     {
         $project = Project::findOrFail($parameter->getProjectId());
+        $project->user_app()->detach();
+        $project->user_assign()->detach();
+        $project->user_status()->detach();
         $project->delete();
     }
 
@@ -228,11 +231,11 @@ class ProjectRepository implements ProjectRepositoryInterface
         $arr = join(",", $skill_ids);
         $target_ids = \DB::select(\DB::raw("(
             SELECT p.id FROM projects AS p
-            INNER JOIN 
+            INNER JOIN
             (
                 SELECT rps.project_id, count(*) AS s
                 FROM rel_projects_skills AS rps
-                WHERE rps.skill_id IN (". $arr .")   
+                WHERE rps.skill_id IN (". $arr .")
                 GROUP BY rps.project_id
                 HAVING s = $length
             ) AS summary
@@ -255,11 +258,11 @@ class ProjectRepository implements ProjectRepositoryInterface
         $arr = join(",", $position_ids);
         $target_ids = \DB::select(\DB::raw("(
             SELECT p.id FROM projects AS p
-            INNER JOIN 
+            INNER JOIN
             (
                 SELECT rpp.project_id, count(*) AS s
                 FROM rel_positions_projects AS rpp
-                WHERE rpp.position_id IN (". $arr .")   
+                WHERE rpp.position_id IN (". $arr .")
                 GROUP BY rpp.project_id
                 HAVING s = $length
             ) AS summary

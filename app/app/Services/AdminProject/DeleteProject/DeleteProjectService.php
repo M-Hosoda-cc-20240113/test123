@@ -6,6 +6,10 @@ namespace App\Services\AdminProject\DeleteProject;
 
 use App\Services\Project\ProjectRepositoryInterface;
 
+/**
+ * Class DeleteProjectService
+ * @package App\Services\AdminProject\DeleteProject
+ */
 class DeleteProjectService
 {
     /**

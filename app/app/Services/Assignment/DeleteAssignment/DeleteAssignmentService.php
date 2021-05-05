@@ -5,8 +5,15 @@ namespace App\Services\Assignment\DeleteAssignment;
 
 use App\Services\Assignment\AssignmentRepositoryInterface;
 
+/**
+ * Class DeleteAssignmentService
+ * @package App\Services\Assignment\DeleteAssignment
+ */
 class DeleteAssignmentService
 {
+    /**
+     * @var AssignmentRepositoryInterface
+     */
     private $assignment_repository;
 
     /**
