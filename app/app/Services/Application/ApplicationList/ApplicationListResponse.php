@@ -3,7 +3,6 @@
 namespace App\Services\Application\ApplicationList;
 
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 
 class ApplicationListResponse
 {

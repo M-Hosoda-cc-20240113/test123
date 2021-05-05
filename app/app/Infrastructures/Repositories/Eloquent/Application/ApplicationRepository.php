@@ -4,7 +4,6 @@ namespace App\Infrastructures\Repositories\Eloquent\Application;
 
 use App\Models\Application;
 use App\Models\Status;
-use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Application\ApplicationRepositoryInterface;
 use Illuminate\Support\Collection;
@@ -63,13 +62,12 @@ class ApplicationRepository implements ApplicationRepositoryInterface
             ->orderBy('user_id')
             ->get()
             ->toArray();
-        $statuses = Status::whereNotIn('status',[3])
+        $statuses = Status::whereNotIn('status', [3])
             ->orderBy('user_id')
             ->select('status')
             ->get()
             ->toArray();
-        foreach ($applications as $key => $application)
-        {
+        foreach ($applications as $key => $application) {
             $application_with_status[] = array_merge($application, $statuses[$key]);
         }
         return collect($application_with_status);

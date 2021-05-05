@@ -24,9 +24,9 @@ class ApplicationController extends Controller
     {
         $response = new ApplicationListResponse();
 
-        $application = $application_list_service->exec();
+        $applications = $application_list_service->exec();
 
-        $response->setApplications($application);
+        $response->setApplications($applications);
 
         return view('admin.pages.application.list.list', ['response' => $response]);
     }
