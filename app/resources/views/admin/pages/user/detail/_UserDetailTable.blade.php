@@ -21,7 +21,7 @@
     <tr class="ProjectDetailTable__row">
         <th class="ProjectDetailTable__head">応募案件</th>
         <td class="ProjectDetailTable__body">
-            @foreach ($response->getUser()->project_app as $key => $project)
+            @foreach ($response->getUser()->project_app as $project)
                 <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}<br></a>
                 <p>面談予定日：{{ ViewHelper::YmdReplace($project->pivot->interview_date ?? '未定' )}}</p>
                 <hr class="Horizontal">

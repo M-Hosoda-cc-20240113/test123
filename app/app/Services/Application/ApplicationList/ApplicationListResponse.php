@@ -12,8 +12,6 @@ class ApplicationListResponse
   private $applications;
 
     /**
-     * Get the value of applications
-     *
      * @return LengthAwarePaginator
      */
     public function getApplications(): LengthAwarePaginator
@@ -21,9 +19,6 @@ class ApplicationListResponse
         return $this->applications;
     }
 
-    /**
-     * Set the value of applications
-     *
     /**
      * @param LengthAwarePaginator $applications
      * @return ApplicationListResponse

@@ -10,7 +10,7 @@
         <div class="l-main">
             @if(Auth::check())
                 <form class="" action="{{ route('front.project.app') }}"
-                      method="post">
+                      method="POST">
                     {{csrf_field()}}
                     <div class="p-mainItem">
                         <h2 class="p-level2Heading">{{ $response->getProject()->name ?? '' }}</h2>
