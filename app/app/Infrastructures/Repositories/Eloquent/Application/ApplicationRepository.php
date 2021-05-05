@@ -3,6 +3,7 @@
 namespace App\Infrastructures\Repositories\Eloquent\Application;
 
 use App\Models\Application;
+use App\Models\Status;
 use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Application\ApplicationRepositoryInterface;
@@ -30,6 +31,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface
      */
     public function create($project_id, $user): void
     {
+        $user->project_status()->syncWithoutDetaching($project_id);
         $user->project_app()->syncWithoutDetaching($project_id);
     }
 
@@ -44,7 +46,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface
                 $application = Application::where('user_id', $parameter->getUserId())
                     ->where('project_id', $project_id)
                     ->firstOrFail();
-                $application->interview_date = $parameter->getInterviewDate()[$key] ?? '';
+                $application->interview_date = $parameter->getInterviewDate()[$key] ?? null;
                 $application->save();
             }
         }

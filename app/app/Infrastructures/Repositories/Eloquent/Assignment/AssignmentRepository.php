@@ -5,6 +5,7 @@ namespace App\Infrastructures\Repositories\Eloquent\Assignment;
 use App\Models\Application;
 use App\Models\Assignment;
 use App\Models\Project;
+use App\Models\Status;
 use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Assignment\AssignmentRepositoryInterface;
@@ -41,6 +42,12 @@ class AssignmentRepository implements AssignmentRepositoryInterface
             ->where('project_id', $parameter->getProjectId())
             ->delete();
 
+        $status = Status::where('user_id', $parameter->getUserId())
+            ->where('project_id', $parameter->getProjectId())
+            ->firstOrFail();
+        $status->status = 3;
+        $status->save();
+
         $user = User::findOrFail($parameter->getUserId());
         $user->is_working = 1;
         $user->save();
@@ -66,8 +73,8 @@ class AssignmentRepository implements AssignmentRepositoryInterface
             $assignment = Assignment::where('user_id', $parameter->getUserId())
                 ->where('project_id', $parameter->getProjectAssignId())
                 ->firstOrFail();
-            $assignment->assignment_start_date = $parameter->getAssignmentStartDate() ?? '';
-            $assignment->assignment_end_date = $parameter->getAssignmentEndDate() ?? '';
+            $assignment->assignment_start_date = $parameter->getAssignmentStartDate() ?? null;
+            $assignment->assignment_end_date = $parameter->getAssignmentEndDate() ?? null;
             $assignment->save();
         }
     }

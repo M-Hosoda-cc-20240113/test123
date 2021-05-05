@@ -33,6 +33,7 @@
                 <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? ''}}<br></a>
                 <p>稼働開始日：{{ ViewHelper::YmdReplace($project->pivot->assignment_start_date ?? '未定' )}}</p>
                 <p>稼働終了日：{{ ViewHelper::YmdReplace($project->pivot->assignment_end_date ?? '未定' )}}</p>
+                <hr class="Horizontal">
             @endforeach
         </td>
     </tr>
@@ -40,15 +41,23 @@
         <th class="ProjectDetailTable__head">スキルレベル</th>
         <td class="ProjectDetailTable__body">
             @foreach ($response->getRelLevelSkillUser() as $LevelSkill)
-                @include('atoms.Tag', ['text' => $LevelSkill->name.'（'.$LevelSkill->level.'）', 'class' => 'mg-5'])
+                <span class="c-label u-mt-5 u-mr-10">{{ $LevelSkill->name }}（{{ $LevelSkill->level }})</span>
             @endforeach
         </td>
-        <th class="ProjectDetailTable__head">備考欄</th>
-        <td class="ProjectDetailTable__body">{{ $response->getUser()->remarks ?? '' }}</td>
+        <th class="ProjectDetailTable__head">ステータス</th>
+        <td class="ProjectDetailTable__body">
+            @foreach ($response->getUser()->project_status as $project)
+                <a href="{{ route('project.detail', ['project_id' => $project->id] )}}">{{ $project->name ?? ''}}<br></a>
+                <p>ステータス：{{ ViewHelper::Status($project->pivot->status ?? '未定' )}}</p>
+                <hr class="Horizontal">
+            @endforeach
+        </td>
     </tr>
     <tr class="ProjectDetailTable__row">
         <th class="ProjectDetailTable__head">営業開始月</th>
         <td class="ProjectDetailTable__body">{{ ViewHelper::YmdReplace($response->getUser()->operation_start_month ?? '' )}}</td>
+        <th class="ProjectDetailTable__head">備考欄</th>
+        <td class="ProjectDetailTable__body">{{ $response->getUser()->remarks ?? '' }}</td>
     </tr>
     </tbody>
 </table>

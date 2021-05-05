@@ -501,7 +501,7 @@ img {
   margin-left: auto;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 90px;
+  padding-bottom: 10%;
 }
 
 @media screen and (max-width: 768px) {

@@ -43,7 +43,7 @@ class AssignmentController extends Controller
         $user_project = DB::transaction(function () use ($register_assignment_service, $parameter) {
             return $register_assignment_service->exec($parameter);
         });
-        \Slack::send($user_project['user_name'] . "は" . $user_project['project_name'] . "にアサインしました。");
+//        \Slack::send($user_project['user_name'] . "は" . $user_project['project_name'] . "にアサインしました。");
         return redirect()->route('application.list');
     }
 }

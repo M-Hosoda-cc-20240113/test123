@@ -3,6 +3,7 @@
     <tr class="RegularTable__headRow">
         <th class="RegularTable__headRowItem">案件名</th>
         <th class="RegularTable__headRowItem">ユーザー名</th>
+        <th class="RegularTable__headRowItem">ステータス</th>
         <th class="RegularTable__headRowItem">応募日時</th>
         <th class="RegularTable__headRowItem">面談予定日</th>
         <th class="RegularTable__headRowItem">アサイン</th>
@@ -10,7 +11,7 @@
     </thead>
 
     <tbody class="RegularTable__body">
-    @foreach ($response->getApplications() as $application)
+    @foreach ($response->getApplications()['applications'] as $key => $application)
         <tr class="RegularTable__bodyRow" data-href="">
             <td class="RegularTable__bodyRowItem">
                 <a class="d-block w-100"
@@ -20,6 +21,9 @@
                 <a class="d-block w-100"
                    href="{{ route('user.detail', ['user_id' => $application->users->id] )}}">{{ $application->users->sei ?? ''  }}
                     &nbsp;{{ $application->users->mei ?? '' }}</a>
+            </td>
+            <td class="RegularTable__bodyRowItem">
+                {{ ViewHelper::Status( $response->getApplications()['statuses'][$key]->status ?? '' )}}<br>
             </td>
             <td class="RegularTable__bodyRowItem">
                 {{ ViewHelper::YmdReplace( $application->created_at ?? '' )}}<br>
