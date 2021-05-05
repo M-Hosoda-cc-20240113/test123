@@ -7,6 +7,10 @@ use App\Services\Application\ApplicationList\ApplicationListService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+/**
+ * Class ApplicationController
+ * @package App\Http\Controllers\Admin\Application
+ */
 class ApplicationController extends Controller
 {
     /**

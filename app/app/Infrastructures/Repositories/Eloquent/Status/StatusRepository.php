@@ -13,7 +13,6 @@ class StatusRepository implements StatusRepositoryInterface
 {
     /**
      * {@inheritDoc}
-     * @return Collection
      */
     public function all(): Collection
     {
@@ -24,7 +23,7 @@ class StatusRepository implements StatusRepositoryInterface
     }
 
     /**
-     * @param UpdateUserAdminParameter $parameter
+     * {@inheritDoc}
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter): void
     {
