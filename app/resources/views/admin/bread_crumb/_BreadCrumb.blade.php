@@ -1,4 +1,4 @@
-<ol class="BreadCrumb mb-20">
+<ol class="p-breadCrumb mb-20">
     {{-- ユーザーリスト  --}}
     @if(url()->current() === route('user.list'))
         <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
