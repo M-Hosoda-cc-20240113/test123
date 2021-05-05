@@ -16,7 +16,7 @@ class AssignmentListService
     /**
      * @var AssignmentRepositoryInterface
      */
-    private $assignment_reopsitory;
+    private $assignment_repository;
 
     /**
      * @var PaginatorService
@@ -32,7 +32,7 @@ class AssignmentListService
         AssignmentRepositoryInterface $assignment_reopsitory,
         PaginatorService $paginator_service
     ) {
-        $this->assignment_reopsitory = $assignment_reopsitory;
+        $this->assignment_repository = $assignment_reopsitory;
         $this->paginator_service = $paginator_service;
     }
 
@@ -41,7 +41,7 @@ class AssignmentListService
      */
     public function exec(): LengthAwarePaginator
     {
-        $assignments = $this->assignment_reopsitory->all();
+        $assignments = $this->assignment_repository->all();
         return $this->paginator_service->paginate($assignments);
     }
 }
