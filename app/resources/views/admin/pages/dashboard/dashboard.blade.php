@@ -26,7 +26,9 @@
                         </div>
                     </div>
                     <div class="p-counter u-mt-0">
-                        <p class="c-text--bold p-counter__title">未営業</p>
+                        <p class="c-text--bold p-counter__title c-tooltip">未営業
+                            <span class="c-tooltip__text--up">今月営業月だがまだ未営業の人数</span>
+                        </p>
                         <div class="p-counter__countWrap">
                             <span class="p-counter__count">{{ $response->getNotOpenCounts() ?? 0 }}</span><span>件</span>
                         </div>
