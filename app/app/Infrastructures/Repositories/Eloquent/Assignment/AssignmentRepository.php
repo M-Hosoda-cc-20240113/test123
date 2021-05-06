@@ -11,6 +11,7 @@ use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Assignment\AssignmentRepositoryInterface;
 use App\Services\Assignment\DeleteAssignment\DeleteAssignmentParameter;
 use App\Services\Assignment\RegisterAssignment\RegisterAssignmentParameter;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -96,5 +97,16 @@ class AssignmentRepository implements AssignmentRepositoryInterface
             ->firstOrFail();
         $user->is_working = 0;
         $user->save();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function assignUserCounts(): int
+    {
+        $now = CarbonImmutable::now();
+        $add_start_of_month = $now->addMonths(1)->startOfMonth();
+        $add_end_of_month = $now->addMonths(1)->endOfMonth();
+        return Assignment::whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])->count();
     }
 }
