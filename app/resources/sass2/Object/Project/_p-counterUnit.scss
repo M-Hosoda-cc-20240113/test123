@@ -1,0 +1,29 @@
+.p-counterUnit {
+  display: flex;
+  flex-flow: row wrap;
+
+  .p-counter {
+    padding: 0 40px;
+    border-right: 1px solid $muted-light-color;
+  }
+
+  $this: &;
+
+  &--col2 {
+    @extend #{$this};
+
+    .p-counter {
+      @include max-screen($breakpoint-pc) {
+        margin-top: 10px;
+        width: 50%;
+        white-space: nowrap;
+      }
+    }
+
+    & > .p-counter:nth-of-type(2n) {
+      @include max-screen($breakpoint-pc) {
+        border-right: none;
+      }
+    }
+  }
+}
