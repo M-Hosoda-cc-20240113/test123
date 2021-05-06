@@ -13,6 +13,7 @@
     @endcomponent
     <div class="l-container">
         <div class="l-main">
+            @include('admin.bread_crumb._BreadCrumb')
             <div class="p-mainItem">
                 <h2 class="p-level2Heading">{{ $response->getProject()->name ?? '' }}{{ $response->getProject()->decided ? '※応募終了' : '' }}</h2>
                 @include('admin.pages.project.detail._ProjectDetailTable', ['response' => $response])
