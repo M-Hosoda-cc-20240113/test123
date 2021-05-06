@@ -37,4 +37,13 @@ class StatusRepository implements StatusRepositoryInterface
             }
         }
     }
+
+    /**
+     * {@inheritDoc}
+     * 0：未営業、1：面談待ち、2：結果待ち、3：稼働済み
+     */
+    public function statusNotOpenUserCounts(): int
+    {
+        return Status::where('status',0)->count();
+    }
 }

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -139,7 +140,17 @@ class UserRepository implements UserRepositoryInterface
         $user->operation_start_month = $parameter->getOperationStartMonth() ?? null;
         $user->remarks = $parameter->getRemarks() ?? null;
         $user->save();
-
         return $user;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function thisMonthOperationCounts(): ?int
+    {
+        $now = CarbonImmutable::now();
+        $start_of_month = $now->startOfMonth();
+        $end_of_month = $now->endOfMonth();
+        return User::whereBetween('operation_start_month', [$start_of_month, $end_of_month])->count();
     }
 }
