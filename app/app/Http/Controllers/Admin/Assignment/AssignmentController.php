@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin\Assignment;
 use App\Http\Requests\Admin\Assignment\RegisterAssignmentRequest;
 use App\Services\Assignment\AssignmentList\AssignmentListResponse;
 use App\Services\Assignment\AssignmentList\AssignmentListService;
+use App\Services\Assignment\DeleteAssignment\DeleteAssignmentParameter;
+use App\Services\Assignment\DeleteAssignment\DeleteAssignmentService;
 use App\Services\Assignment\RegisterAssignment\RegisterAssignmentParameter;
 use App\Services\Assignment\RegisterAssignment\RegisterAssignmentService;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AssignmentController extends Controller
@@ -45,5 +48,23 @@ class AssignmentController extends Controller
         });
 //        \Slack::send($user_project['user_name'] . "は" . $user_project['project_name'] . "にアサインしました。");
         return redirect()->route('application.list');
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Services\Assignment\DeleteAssignment\DeleteAssignmentService $delete_assignment_service
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
+     */
+    public function delete(Request $request, DeleteAssignmentService $delete_assignment_service)
+    {
+        $parameter = new DeleteAssignmentParameter();
+        $parameter->setUserId($request->user_id);
+        $parameter->setProjectId($request->project_id);
+        DB::transaction(function () use ($delete_assignment_service, $parameter) {
+            return $delete_assignment_service->exec($parameter);
+        });
+
+        return redirect()->route('assignment.list');
     }
 }

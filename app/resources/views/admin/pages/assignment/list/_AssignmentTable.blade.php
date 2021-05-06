@@ -5,6 +5,7 @@
         <th class="p-table__headRowItem">ユーザー名</th>
         <th class="p-table__headRowItem">稼働開始日</th>
         <th class="p-table__headRowItem">稼働終了日</th>
+        <th class="p-table__headRowItem"></th>
     </tr>
     </thead>
 
@@ -25,6 +26,14 @@
             </td>
             <td class="p-table__bodyRowItem">
                 {{ ViewHelper::YmdReplace( $assignment->assignment_end_date ?? '未定' )}}<br>
+            </td>
+            <td class="RegularTable__bodyRowItem--textCenter">
+                <form action="{{ route('assignment.delete') }}" method="post">
+                    {{ @csrf_field() }}
+                    <input type="hidden" name="user_id" value="{{ $assignment->users->id }}">
+                    <input type="hidden" name="project_id" value="{{  $assignment->projects->id }}">
+                    <button type="submit" id="alert_button" class="c-button u-m0a" style="background-color: coral">削除</button>
+                </form>
             </td>
         </tr>
     @endforeach
