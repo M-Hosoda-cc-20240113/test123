@@ -12,13 +12,13 @@ use Illuminate\Support\Collection;
 interface AgentRepositoryInterface
 {
     /**
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function all(): Collection;
 
     /**
      * 新規エージェント登録
-     * @param \App\Services\Agent\CreateAgent\CreateAgentParameter $parameter
+     * @param CreateAgentParameter $parameter
      */
     public function create(CreateAgentParameter $parameter): void;
 }

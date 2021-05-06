@@ -13,7 +13,6 @@ class AgentRepository implements AgentRepositoryInterface
 
     /**
      * @inheritDoc
-     * @return \Illuminate\Support\Collection
      */
     public function all(): Collection
     {
@@ -22,7 +21,6 @@ class AgentRepository implements AgentRepositoryInterface
 
     /**
      * @inheritDoc
-     *
      */
     public function create(CreateAgentParameter $parameter): void
     {

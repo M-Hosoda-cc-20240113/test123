@@ -5,6 +5,10 @@ namespace App\Services\Agent\CreateAgent;
 
 use App\Services\Agent\AgentRepositoryInterface;
 
+/**
+ * Class CreateAgentService
+ * @package App\Services\Agent\CreateAgent
+ */
 class CreateAgentService
 {
     /**
