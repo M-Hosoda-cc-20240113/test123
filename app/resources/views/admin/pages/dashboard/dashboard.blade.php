@@ -1,3 +1,8 @@
+@php
+    /**
+     * @var \App\Services\AdminDashboard\FetchDashboard\FetchDashboardResponse $response
+     */
+@endphp
 @extends('admin.layout')
 
 @section('title', 'ダッシュボード|Aegis')
@@ -17,19 +22,31 @@
                     <div class="p-counter u-mt-0">
                         <p class="c-text--bold p-counter__title">今月営業開始</p>
                         <div class="p-counter__countWrap">
-                            <span class="p-counter__count">0</span><span>件</span>
+                            <span class="p-counter__count">{{ $response->getUserOperationCounts() ?? 0 }}</span><span>件</span>
                         </div>
                     </div>
                     <div class="p-counter u-mt-0">
                         <p class="c-text--bold p-counter__title">未営業</p>
                         <div class="p-counter__countWrap">
+                            <span class="p-counter__count">{{ $response->getNotOpenCounts() ?? 0 }}</span><span>件</span>
+                        </div>
+                    </div>
+                    <div class="p-counter u-mt-0">
+                        <p class="c-text--bold p-counter__title">新規稼働件数</p>
+                        <div class="p-counter__countWrap">
+                            <span class="p-counter__count">{{ $response->getAssignCounts() ?? 0 }}</span><span>件</span>
+                        </div>
+                    </div>
+                    <div class="p-counter u-mt-0">
+                        <p class="c-text--bold p-counter__title">既存稼働件数</p>
+                        <div class="p-counter__countWrap">
                             <span class="p-counter__count">0</span><span>件</span>
                         </div>
                     </div>
                     <div class="p-counter">
-                        <p class="c-text--bold p-counter__title">テスト</p>
+                        <p class="c-text--bold p-counter__title">今月面談件数</p>
                         <div class="p-counter__countWrap">
-                            <span class="p-counter__count">0</span><span>件</span>
+                            <span class="p-counter__count">{{ $response->getInterviewCounts() ?? 0}}</span><span>件</span>
                         </div>
                     </div>
                 </div>

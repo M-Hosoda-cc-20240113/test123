@@ -6,13 +6,13 @@ use App\Models\Application;
 use App\Models\Status;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Application\ApplicationRepositoryInterface;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Collection;
 
 class ApplicationRepository implements ApplicationRepositoryInterface
 {
     /**
      * @inheritDoc
-     * @return Collection
      */
     public function all(): Collection
     {
@@ -24,9 +24,6 @@ class ApplicationRepository implements ApplicationRepositoryInterface
 
     /**
      * @inheritDoc
-     * @param $project_id
-     * @param $user
-     * @return void
      */
     public function create($project_id, $user): void
     {
@@ -36,7 +33,6 @@ class ApplicationRepository implements ApplicationRepositoryInterface
 
     /**
      * @inheritDoc
-     * @param UpdateUserAdminParameter $parameter
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter): void
     {
@@ -52,7 +48,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @inheritDoc
      */
     public function fetchWithStatus(): Collection
     {
@@ -71,5 +67,16 @@ class ApplicationRepository implements ApplicationRepositoryInterface
             $application_with_status[] = array_merge($application, $statuses[$key]);
         }
         return collect($application_with_status);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function InterviewNumberCounts(): int
+    {
+        $now = CarbonImmutable::now();
+        $start_of_month = $now->startOfMonth();
+        $end_of_month = $now->endOfMonth();
+        return Application::whereBetween('interview_date',[$start_of_month,$end_of_month])->count();
     }
 }

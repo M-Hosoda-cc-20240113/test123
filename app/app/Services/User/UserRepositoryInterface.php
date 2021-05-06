@@ -74,4 +74,10 @@ interface UserRepositoryInterface
      * @return mixed
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter);
+
+
+    /**
+     * @return int|null
+     */
+    public function thisMonthOperationCounts(): ?int;
 }

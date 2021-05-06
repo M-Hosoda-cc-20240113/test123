@@ -26,5 +26,13 @@ interface ApplicationRepositoryInterface
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter): void;
 
-    public function fetchWithStatus();
+    /**
+     * @return Collection
+     */
+    public function fetchWithStatus(): Collection;
+
+    /**
+     * @return int
+     */
+    public function InterviewNumberCounts(): int;
 }

@@ -18,4 +18,9 @@ interface StatusRepositoryInterface
      * @param UpdateUserAdminParameter $parameter
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter): void;
+
+    /**
+     * @return int
+     */
+    public function statusNotOpenNumberCounts(): int;
 }
