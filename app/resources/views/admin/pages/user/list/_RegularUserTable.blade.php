@@ -9,10 +9,11 @@
       <th class="p-table__headRowItem">氏名</th>
       <th class="p-table__headRowItem">登録日</th>
       <th class="p-table__headRowItem">稼働中</th>
+      <th class="p-table__headRowItem">新規</th>
+      <th class="p-table__headRowItem">営業開始月</th>
       <th class="p-table__headRowItem">電話番号</th>
       <th class="p-table__headRowItem">生年月日&nbsp;(年齢)</th>
       <th class="p-table__headRowItem">備考欄</th>
-      <th class="p-table__headRowItem">営業開始月</th>
     </tr>
   </thead>
 
@@ -22,10 +23,11 @@
       <td class="p-table__bodyRowItem">{{ $user->sei ?? '' }}&#160;{{ $user->mei ?? '' }}</td>
       <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($user->created_at ?? '' )}}</td>
       <td class="p-table__bodyRowItem--textCenter">{{ $user->is_working ? '◎' : '-'}}</td>
+      <td class="p-table__bodyRowItem--textCenter">{{ $user->is_new ? '◎' : '-'}}</td>
+      <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($user->operation_start_month ?? '' )}}</td>
       <td class="p-table__bodyRowItem">{{ $user->tel ?? '' }}</td>
       <td class="p-table__bodyRowItem">{{ ViewHelper::BirthdayReplace($user->birthday ?? '')}}（{{ ViewHelper::CountAge($user->birthday ?? '')}}）</td>
       <td class="p-table__bodyRowItem">{{ $user->remarks ?? '' }}</td>
-      <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($user->operation_start_month ?? '' )}}</td>
     </tr>
     @endforeach
   </tbody>

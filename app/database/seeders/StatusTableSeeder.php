@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Application;
 use App\Models\Status;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Seeder;
@@ -60,6 +61,37 @@ class StatusTableSeeder extends Seeder
             'user_id'    => 4,
             'project_id'    => 13,
             'status'     => 3,
+            'created_at' => $now
+        ]);
+
+        Status::create([
+            'user_id'    => 5,
+            'project_id'    => 13,
+            'created_at' => $now
+        ]);
+
+        Status::create([
+            'user_id'    => 6,
+            'project_id'    => 3,
+            'created_at' => $now
+        ]);
+
+        Status::create([
+            'user_id'    => 7,
+            'project_id'    => 5,
+            'created_at' => $now
+        ]);
+
+        Status::create([
+            'user_id'    => 8,
+            'project_id'    => 7,
+            'created_at' => $now
+        ]);
+
+        Status::create([
+            'user_id'    => 9,
+            'project_id'    => 8,
+            'status'    => 3,
             'created_at' => $now
         ]);
     }

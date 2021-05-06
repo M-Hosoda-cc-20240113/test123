@@ -15,11 +15,12 @@
         <div class="l-main">
             @include('admin.bread_crumb._BreadCrumb')
             <div class="p-mainItem">
-                <h2 class="p-level2Heading">{{ $response->getUser()->sei  }}&nbsp;{{ $response->getUser()->mei }}</h2>
+                <h2 class="p-level2Heading">{{ $response->getUser()->sei  }}&nbsp;{{ $response->getUser()->mei }}{{ $response->getUser()->is_new ? '※新規ユーザー' : '' }}</h2>
                 @include('admin.pages.user.detail._UserDetailTable', ['response' => $response])
                 <a class="c-button u-db u-w-30-pc u-m0a u-mt-20" href="{{ route('user.edit.form', ['user_id' => $response->getUser()->id]) }}">編集</a>
             </div>
         </div>
+        @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 m0a', 'link' => route('user.edit.form', ['user_id' => $response->getUser()->id])] )
     </div>
     @include('admin.footer.footer')
 @endsection

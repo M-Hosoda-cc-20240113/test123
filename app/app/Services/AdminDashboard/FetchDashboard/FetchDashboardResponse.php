@@ -31,6 +31,11 @@ class FetchDashboardResponse
     private $assign_counts;
 
     /**
+     * @var int|null
+     */
+    private $new_assign_counts;
+
+    /**
      * @return int|null
      */
     public function getUserOperationCounts(): ?int
@@ -102,4 +107,21 @@ class FetchDashboardResponse
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
+    public function getNewAssignCounts(): ?int
+    {
+        return $this->new_assign_counts;
+    }
+
+    /**
+     * @param int|null $new_assign_counts
+     * @return FetchDashboardResponse
+     */
+    public function setNewAssignCounts(?int $new_assign_counts): FetchDashboardResponse
+    {
+        $this->new_assign_counts = $new_assign_counts;
+        return $this;
+    }
 }
