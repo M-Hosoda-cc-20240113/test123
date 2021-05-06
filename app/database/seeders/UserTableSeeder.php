@@ -19,6 +19,11 @@ class UserTableSeeder extends Seeder
         $email3 = 'saburo@example.com';
         $email4 = 'siro@example.com';
         $email5 = 'kumakura@example.com';
+        $email6 = 'test1@example.com';
+        $email7 = 'test2@example.com';
+        $email8 = 'test3@example.com';
+        $email9 = 'test4@example.com';
+        $email10 = 'test5@example.com';
 
         User::create([
             'sei'               => "田中" ,
@@ -81,6 +86,86 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'remarks'           => "特になし",
             'operation_start_month' => 20211201,
+            'created_at'        => $now
+        ]);
+
+        User::create([
+            'sei'               => "テスト" ,
+            'sei_kana'          => "テスト",
+            'mei'               => "ユーザー１" ,
+            'mei_kana'          => "ユーザーイチ",
+            'email'             => $email6,
+            'email_hash'        => hash(config('app.hash_email.algo'), $email6 . config('app.hash_email.salt')),
+            'tel'               => '07034563245',
+            'birthday'          => '19910216',
+            'password'          => bcrypt('test1234'),
+            'is_working'        => 0,
+            'is_new'            => 1,
+            'remarks'           => "特になし",
+            'operation_start_month' => 20211001,
+            'created_at'        => $now
+        ]);
+
+        User::create([
+            'sei'               => "テスト" ,
+            'sei_kana'          => "テスト",
+            'mei'               => "ユーザー２" ,
+            'mei_kana'          => "ユーザーニ",
+            'email'             => $email7,
+            'email_hash'        => hash(config('app.hash_email.algo'), $email7 . config('app.hash_email.salt')),
+            'tel'               => '07123463245',
+            'birthday'          => '19890216',
+            'password'          => bcrypt('test1234'),
+            'is_working'        => 0,
+            'is_new'            => 1,
+            'remarks'           => "特になし",
+            'created_at'        => $now
+        ]);
+
+        User::create([
+            'sei'               => "テスト" ,
+            'sei_kana'          => "テスト",
+            'mei'               => "ユーザー３" ,
+            'mei_kana'          => "ユーザーサン",
+            'email'             => $email8,
+            'email_hash'        => hash(config('app.hash_email.algo'), $email8 . config('app.hash_email.salt')),
+            'tel'               => '07034123445',
+            'birthday'          => '19900216',
+            'password'          => bcrypt('test1234'),
+            'is_working'        => 0,
+            'remarks'           => "特になし",
+            'operation_start_month' => 20210701,
+            'created_at'        => $now
+        ]);
+
+        User::create([
+            'sei'               => "テスト" ,
+            'sei_kana'          => "テスト",
+            'mei'               => "ユーザー４" ,
+            'mei_kana'          => "ユーザーヨン",
+            'email'             => $email9,
+            'email_hash'        => hash(config('app.hash_email.algo'), $email9 . config('app.hash_email.salt')),
+            'tel'               => '07034561234',
+            'birthday'          => '19880216',
+            'password'          => bcrypt('test1234'),
+            'is_working'        => 0,
+            'remarks'           => "特になし",
+            'created_at'        => $now
+        ]);
+
+        User::create([
+            'sei'               => "テスト" ,
+            'sei_kana'          => "テスト",
+            'mei'               => "ユーザー５" ,
+            'mei_kana'          => "ユーザーゴ",
+            'email'             => $email10,
+            'email_hash'        => hash(config('app.hash_email.algo'), $email10 . config('app.hash_email.salt')),
+            'tel'               => '07031235432',
+            'birthday'          => '19950216',
+            'password'          => bcrypt('test1234'),
+            'is_working'        => 0,
+            'is_new'            => 1,
+            'remarks'           => "特になし",
             'created_at'        => $now
         ]);
 
