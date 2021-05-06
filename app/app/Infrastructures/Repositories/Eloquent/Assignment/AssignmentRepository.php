@@ -107,8 +107,8 @@ class AssignmentRepository implements AssignmentRepositoryInterface
         $now = CarbonImmutable::now();
         $add_start_of_month = $now->addMonths(1)->startOfMonth();
         $add_end_of_month = $now->addMonths(1)->endOfMonth();
-        return Assignment::join('users','users.id','=','assignments.user_id')
-            ->where('users.is_new',0)
+        return Assignment::join('users', 'users.id', '=', 'assignments.user_id')
+            ->where('users.is_new', 0)
             ->whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])
             ->count();
     }
@@ -121,8 +121,8 @@ class AssignmentRepository implements AssignmentRepositoryInterface
         $now = CarbonImmutable::now();
         $add_start_of_month = $now->addMonths(1)->startOfMonth();
         $add_end_of_month = $now->addMonths(1)->endOfMonth();
-        return Assignment::join('users','users.id','=','assignments.user_id')
-            ->where('users.is_new',1)
+        return Assignment::join('users', 'users.id', '=', 'assignments.user_id')
+            ->where('users.is_new', 1)
             ->whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])
             ->count();
     }
