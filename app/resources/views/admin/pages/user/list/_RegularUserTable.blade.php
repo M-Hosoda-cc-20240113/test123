@@ -10,7 +10,7 @@
       <th class="p-table__headRowItem">登録日</th>
       <th class="p-table__headRowItem">稼働中</th>
       <th class="p-table__headRowItem">新規</th>
-        <th class="p-table__headRowItem">営業開始月</th>
+      <th class="p-table__headRowItem">営業開始月</th>
       <th class="p-table__headRowItem">電話番号</th>
       <th class="p-table__headRowItem">生年月日&nbsp;(年齢)</th>
       <th class="p-table__headRowItem">備考欄</th>
