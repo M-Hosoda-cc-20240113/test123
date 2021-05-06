@@ -3,8 +3,13 @@
 namespace App\Services\Station\StationList;
 
 use App\Models\Station;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
+/**
+ * Class StationListResponse
+ * @package App\Services\Station\StationList
+ */
 class StationListResponse
 {
   /**
@@ -12,12 +17,12 @@ class StationListResponse
    */
   private $stations;
 
-  /**
-   * Get the value of projects
-   *
-   * @return  Station[]
-   */
-  public function getStations()
+    /**
+     * Get the value of projects
+     *
+     * @return LengthAwarePaginator
+     */
+  public function getStations(): LengthAwarePaginator
   {
     return $this->stations;
   }
@@ -25,13 +30,12 @@ class StationListResponse
     /**
      * Set the value of projects
      *
-     * @param \Illuminate\Support\Collection $stations
-     * @return  self
+     * @param LengthAwarePaginator $stations
+     * @return StationListResponse
      */
-  public function setStations(Collection $stations)
+  public function setStations(LengthAwarePaginator $stations): StationListResponse
   {
     $this->stations = $stations;
-
     return $this;
   }
 }

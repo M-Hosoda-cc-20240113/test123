@@ -4,7 +4,12 @@
 namespace App\Services\Agent\AgentList;
 
 use App\Models\Agent;
+use Illuminate\Pagination\LengthAwarePaginator;
 
+/**
+ * Class AgentListResponse
+ * @package App\Services\Agent\AgentList
+ */
 class AgentListResponse
 {
     /**
@@ -13,17 +18,18 @@ class AgentListResponse
     private $agents;
 
     /**
-     * @return \App\Models\Agent[]
+     * @return LengthAwarePaginator
      */
-    public function getAgents()
+    public function getAgents(): LengthAwarePaginator
     {
         return $this->agents;
     }
 
     /**
-     * @param \App\Models\Agent[] $agents
+     * @param LengthAwarePaginator $agents
+     * @return AgentListResponse
      */
-    public function setAgents($agents)
+    public function setAgents(LengthAwarePaginator $agents): AgentListResponse
     {
         $this->agents = $agents;
         return $this;
