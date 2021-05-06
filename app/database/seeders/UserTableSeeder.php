@@ -69,6 +69,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 1,
             'remarks'           => "",
+            'is_new'            => 1,
             'operation_start_month' => 20211001,
             'created_at'        => $now
         ]);

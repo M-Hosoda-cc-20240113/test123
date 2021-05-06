@@ -48,5 +48,29 @@ class ApplicationTableSeeder extends Seeder
             'project_id'    => 15,
             'created_at' => $now
         ]);
+
+        Application::create([
+            'user_id'    => 5,
+            'project_id'    => 13,
+            'created_at' => $now
+        ]);
+
+        Application::create([
+            'user_id'    => 6,
+            'project_id'    => 3,
+            'created_at' => $now
+        ]);
+
+        Application::create([
+            'user_id'    => 7,
+            'project_id'    => 5,
+            'created_at' => $now
+        ]);
+
+        Application::create([
+            'user_id'    => 8,
+            'project_id'    => 7,
+            'created_at' => $now
+        ]);
     }
 }

@@ -35,4 +35,9 @@ interface AssignmentRepositoryInterface
      * @return int
      */
     public function assignUserCounts(): int;
+
+    /**
+     * @return int
+     */
+    public function assignNewUserCounts(): int;
 }
