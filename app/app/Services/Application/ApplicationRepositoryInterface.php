@@ -34,5 +34,5 @@ interface ApplicationRepositoryInterface
     /**
      * @return int
      */
-    public function InterviewNumberCounts(): int;
+    public function interviewUserCounts(): int;
 }

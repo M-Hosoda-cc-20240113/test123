@@ -22,5 +22,5 @@ interface StatusRepositoryInterface
     /**
      * @return int
      */
-    public function statusNotOpenNumberCounts(): int;
+    public function statusNotOpenUserCounts(): int;
 }

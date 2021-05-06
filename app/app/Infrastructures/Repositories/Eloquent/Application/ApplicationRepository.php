@@ -72,7 +72,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function InterviewNumberCounts(): int
+    public function interviewUserCounts(): int
     {
         $now = CarbonImmutable::now();
         $start_of_month = $now->startOfMonth();

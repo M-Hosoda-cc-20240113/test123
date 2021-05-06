@@ -60,10 +60,10 @@ class FetchDashboardService
     public function exec(): FetchDashboardResponse
     {
         $response = new FetchDashboardResponse;
-        $interview_counts = $this->application_repository->InterviewNumberCounts();
+        $interview_counts = $this->application_repository->interviewUserCounts();
         $user_operation_counts = $this->user_repository->thisMonthOperationCounts();
-        $not_open_counts = $this->status_repository->statusNotOpenNumberCounts();
-        $assign_counts = $this->assignment_repository->assignNumberCounts();
+        $not_open_counts = $this->status_repository->statusNotOpenUserCounts();
+        $assign_counts = $this->assignment_repository->assignUserCounts();
 
         $response->setUserOperationCounts($user_operation_counts);
         $response->setInterviewCounts($interview_counts);

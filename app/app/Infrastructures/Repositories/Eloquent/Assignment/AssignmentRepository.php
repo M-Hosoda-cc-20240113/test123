@@ -102,7 +102,7 @@ class AssignmentRepository implements AssignmentRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function assignNumberCounts(): int
+    public function assignUserCounts(): int
     {
         $now = CarbonImmutable::now();
         $add_start_of_month = $now->addMonths(1)->startOfMonth();
