@@ -6,7 +6,7 @@
     @component('front.header.header', ['href' => route('front.index')])
         @include('front.header._link_login_logout')
     @endcomponent
-    <div class="Container mt-30">
+    <div class="l-container">
       <div class="Login">
         <img class="Login__logo" src="{{ asset('images/logo/aegis.svg') }}" alt="">
         <p class="Login__topText">ログイン画面</p>

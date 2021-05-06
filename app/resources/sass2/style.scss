@@ -28,6 +28,7 @@
 @import "Object/Component/c-input2";
 @import "Object/Component/c-icon";
 @import "Object/Component/c-select";
+@import "Object/Component/c-tooltip";
 
 // ==========================================================================
 // Project
@@ -49,12 +50,14 @@
 @import "Object/Project/p-formGroup";
 @import "Object/Project/p-searchBox";
 @import "Object/Project/p-register";
-@import "Object/Project/p-projectDetailTable";
+@import "Object/Project/p-itemDetailTable";
 @import "Object/Project/p-paginator";
 @import "Object/Project/p-table";
 @import "Object/Project/p-breadCrumb";
 @import "Object/Project/p-counterUnit";
 @import "Object/Project/p-counter";
+@import "Object/Project/p-inputGroup";
+@import "Object/Project/p-inputGroupUnit";
 
 // ==========================================================================
 // Utility

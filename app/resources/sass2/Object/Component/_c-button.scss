@@ -23,4 +23,11 @@
       background-color: $secondary-dark-color;
     }
   }
+  &--warning {
+    @extend #{$this};
+    background-color: $warning-color;
+    &:focus, &:hover {
+      background-color: $warning-dark-color;
+    }
+  }
 }

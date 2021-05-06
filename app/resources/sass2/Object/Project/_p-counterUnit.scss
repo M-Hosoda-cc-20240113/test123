@@ -13,6 +13,7 @@
     @extend #{$this};
 
     .p-counter {
+      width: 33%;
       @include max-screen($breakpoint-pc) {
         margin-top: 10px;
         width: 50%;
@@ -20,6 +21,14 @@
       }
     }
 
+    // psで3カラム目は右ボーダーを消す
+    & > .p-counter:nth-of-type(3n) {
+      @include min-screen($breakpoint-pc) {
+        border-right: none;
+      }
+    }
+
+    // spで2カラムの時は右ボーダーを消す
     & > .p-counter:nth-of-type(2n) {
       @include max-screen($breakpoint-pc) {
         border-right: none;
