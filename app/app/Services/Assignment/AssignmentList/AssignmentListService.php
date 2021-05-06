@@ -25,14 +25,14 @@ class AssignmentListService
 
     /**
      * AssignmentListService constructor.
-     * @param \App\Services\Assignment\AssignmentRepositoryInterface $assignment_reopsitory
+     * @param \App\Services\Assignment\AssignmentRepositoryInterface $assignment_repository
      * @param \App\Services\Pagination\PaginatorService $paginator_service
      */
     public function __construct(
-        AssignmentRepositoryInterface $assignment_reopsitory,
+        AssignmentRepositoryInterface $assignment_repository,
         PaginatorService $paginator_service
     ) {
-        $this->assignment_repository = $assignment_reopsitory;
+        $this->assignment_repository = $assignment_repository;
         $this->paginator_service = $paginator_service;
     }
 

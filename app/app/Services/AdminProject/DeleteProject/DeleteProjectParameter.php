@@ -4,6 +4,10 @@
 namespace App\Services\AdminProject\DeleteProject;
 
 
+/**
+ * Class DeleteProjectParameter
+ * @package App\Services\AdminProject\DeleteProject
+ */
 class DeleteProjectParameter
 {
     /**

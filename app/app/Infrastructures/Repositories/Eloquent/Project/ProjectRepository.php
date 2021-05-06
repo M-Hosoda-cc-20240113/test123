@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Collection;
 class ProjectRepository implements ProjectRepositoryInterface
 {
     /**
-     *for Front
      * @inheritDoc
      */
     public function all(): Collection
@@ -32,7 +31,6 @@ class ProjectRepository implements ProjectRepositoryInterface
     }
 
     /**
-     * for Front
      * @inheritDoc
      */
     public function findWithUsersThroughApplicationOrAssignment(int $project_id): Project
@@ -46,10 +44,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     }
 
     /**
-     * for Admin
      * @inheritDoc
-     * @param int $project_id
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      */
     public function findWithUsersAndAgentThroughApplicationOrAssignment(int $project_id): Project
     {
@@ -64,7 +59,6 @@ class ProjectRepository implements ProjectRepositoryInterface
 
     /**
      * @inheritDoc
-     * @throws \Throwable
      */
     public function create(CreateProjectParameter $parameter): Project
     {
@@ -95,8 +89,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     }
 
     /**
-     * @param UpdateProjectParameter $parameter
-     * @return \App\Models\Project
+     * @inheritDoc
      */
     public function update(UpdateProjectParameter $parameter): Project
     {
@@ -174,8 +167,7 @@ class ProjectRepository implements ProjectRepositoryInterface
 
 
     /**
-     * @param ProjectDisplayToggleParameter $parameter
-     * @return \App\Models\Project|void
+     * @inheritDoc
      */
     public function close(ProjectDisplayToggleParameter $parameter): Project
     {
@@ -186,8 +178,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     }
 
     /**
-     * @param ProjectDisplayToggleParameter $parameter
-     * @return \App\Models\Project
+     * @inheritDoc
      */
     public function open(ProjectDisplayToggleParameter $parameter): Project
     {
@@ -200,17 +191,18 @@ class ProjectRepository implements ProjectRepositoryInterface
 
     /**
      * @inheritDoc
-     * @param DeleteProjectParameter $parameter
-     * @throws \Exception
      */
     public function delete(DeleteProjectParameter $parameter): void
     {
         $project = Project::findOrFail($parameter->getProjectId());
+        $project->user_app()->detach();
+        $project->user_assign()->detach();
+        $project->user_status()->detach();
         $project->delete();
     }
 
     /**
-     * @return array
+     * @inheritDoc
      */
     public function fetchAppAssignProjectId(): array
     {
@@ -228,11 +220,11 @@ class ProjectRepository implements ProjectRepositoryInterface
         $arr = join(",", $skill_ids);
         $target_ids = \DB::select(\DB::raw("(
             SELECT p.id FROM projects AS p
-            INNER JOIN 
+            INNER JOIN
             (
                 SELECT rps.project_id, count(*) AS s
                 FROM rel_projects_skills AS rps
-                WHERE rps.skill_id IN (". $arr .")   
+                WHERE rps.skill_id IN (". $arr .")
                 GROUP BY rps.project_id
                 HAVING s = $length
             ) AS summary
@@ -255,11 +247,11 @@ class ProjectRepository implements ProjectRepositoryInterface
         $arr = join(",", $position_ids);
         $target_ids = \DB::select(\DB::raw("(
             SELECT p.id FROM projects AS p
-            INNER JOIN 
+            INNER JOIN
             (
                 SELECT rpp.project_id, count(*) AS s
                 FROM rel_positions_projects AS rpp
-                WHERE rpp.position_id IN (". $arr .")   
+                WHERE rpp.position_id IN (". $arr .")
                 GROUP BY rpp.project_id
                 HAVING s = $length
             ) AS summary

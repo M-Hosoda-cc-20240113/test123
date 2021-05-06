@@ -1,6 +1,6 @@
 @php
     /**
-     * @var \App\Services\Agent\AgentList\AgentListResponse $response
+     * @var \App\Services\Station\StationList\StationListResponse $response
      */
 @endphp
 
@@ -15,6 +15,7 @@
     <div class="l-container">
         @include('admin.bread_crumb._BreadCrumb')
         @include('admin.pages.station.list._RegularTable', ['response' => $response])
+        {{ $response->getStations()->links('components.paginator') }}
         <a href="{{ route('station.create.form') }}" class="c-button u-db u-m0a u-mt-30 u-w-30-pc">新規登録する</a>
     </div>
 

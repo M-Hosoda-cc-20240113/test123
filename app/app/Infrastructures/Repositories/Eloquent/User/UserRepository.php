@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
+/**
+ * Class UserRepository
+ * @package App\Infrastructures\Repositories\Eloquent\User
+ */
 class UserRepository implements UserRepositoryInterface
 {
 
@@ -122,6 +126,7 @@ class UserRepository implements UserRepositoryInterface
         $user->levels()->detach();
         $user->project_app()->detach();
         $user->project_assign()->detach();
+        $user->project_status()->detach();
         $user->delete();
     }
 
