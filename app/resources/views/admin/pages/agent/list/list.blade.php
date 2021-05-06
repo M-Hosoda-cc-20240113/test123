@@ -15,6 +15,7 @@
     <div class="Container mt-30">
         @include('admin.bread_crumb._BreadCrumb')
         @include('admin.pages.agent.list._RegularTable', ['response' => $response])
+        {{ $response->getAgents()->links('components.paginator') }}
         <a href="{{ route('agent.create.form') }}" class="c-button u-db u-m0a u-mt-30 u-w-30-pc">新規登録する</a>
     </div>
     @include('admin.footer.footer')

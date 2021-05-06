@@ -12,7 +12,7 @@ class AssignmentListResponse
     private $assignments;
 
     /**
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @return LengthAwarePaginator
      */
     public function getAssignments(): LengthAwarePaginator
     {
@@ -20,7 +20,7 @@ class AssignmentListResponse
     }
 
     /**
-     * @param \Illuminate\Pagination\LengthAwarePaginator $assignments
+     * @param LengthAwarePaginator $assignments
      * @return AssignmentListResponse
      */
     public function setAssignments(LengthAwarePaginator $assignments): AssignmentListResponse
