@@ -96,6 +96,7 @@ class AssignmentRepository implements AssignmentRepositoryInterface
         $user = User::where('id', $parameter->getUserId())
             ->firstOrFail();
         $user->is_working = 0;
+        $user->is_new = 0;
         $user->save();
     }
 

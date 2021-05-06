@@ -15,7 +15,7 @@ class PaginatorService
     /**
      * int 1ページの表示件数(デフォルト)
      */
-    const PER_PAGE = 2;
+    const PER_PAGE = 10;
 
     /**
      * @var PaginatorInterface
