@@ -28,6 +28,7 @@ class AgentRepository implements AgentRepositoryInterface
     {
         $agent = new Agent();
         $agent->name = $parameter->getName();
+        $agent->tel = $parameter->getTel() ?? '';
         $agent->save();
     }
 }
