@@ -6,6 +6,10 @@ namespace App\Services\Agent\AgentList;
 use App\Models\Agent;
 use Illuminate\Pagination\LengthAwarePaginator;
 
+/**
+ * Class AgentListResponse
+ * @package App\Services\Agent\AgentList
+ */
 class AgentListResponse
 {
     /**

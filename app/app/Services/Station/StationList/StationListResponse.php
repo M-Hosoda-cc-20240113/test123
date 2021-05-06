@@ -6,6 +6,10 @@ use App\Models\Station;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
+/**
+ * Class StationListResponse
+ * @package App\Services\Station\StationList
+ */
 class StationListResponse
 {
   /**
