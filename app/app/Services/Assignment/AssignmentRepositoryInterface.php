@@ -30,4 +30,9 @@ interface AssignmentRepositoryInterface
      * @param \App\Services\Assignment\DeleteAssignment\DeleteAssignmentParameter $parameter
      */
     public function delete(DeleteAssignmentParameter $parameter): void;
+
+    /**
+     * @return int
+     */
+    public function assignUserCounts(): int;
 }
