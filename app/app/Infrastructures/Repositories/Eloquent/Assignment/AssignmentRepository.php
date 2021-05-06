@@ -108,7 +108,7 @@ class AssignmentRepository implements AssignmentRepositoryInterface
         $add_start_of_month = $now->addMonths(1)->startOfMonth();
         $add_end_of_month = $now->addMonths(1)->endOfMonth();
         return Assignment::join('users','users.id','=','assignments.user_id')
-            ->where('users.is_new',1)
+            ->where('users.is_new',0)
             ->whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])
             ->count();
     }
@@ -122,7 +122,7 @@ class AssignmentRepository implements AssignmentRepositoryInterface
         $add_start_of_month = $now->addMonths(1)->startOfMonth();
         $add_end_of_month = $now->addMonths(1)->endOfMonth();
         return Assignment::join('users','users.id','=','assignments.user_id')
-            ->where('users.is_new',0)
+            ->where('users.is_new',1)
             ->whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])
             ->count();
     }
