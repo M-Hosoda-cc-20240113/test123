@@ -37,7 +37,7 @@
                 </div>
                 {{--  営業開始月  --}}
 
-                <div class="p-register__row">
+                <div class="p-register__row--spColumn">
                     <span class="p-register__title c-text--bold">ステータス</span>
                     <div class="p-register__itemWrap">
                         @foreach($response->getUser()->project_status as $project)
@@ -57,7 +57,7 @@
                 </div>
                 {{--  ステータス  --}}
 
-                <div class="p-register__row">
+                <div class="p-register__row--spColumn">
                     <span class="p-register__title c-text--bold">面談予定日</span>
                     <div class="p-register__itemWrap">
                     @foreach($response->getUser()->project_app as $project)
@@ -72,7 +72,6 @@
                     @endforeach
                     </div>
                 </div>
-
                 {{--  面談予定日  --}}
 
                 <div class="p-register__row--spColumn">

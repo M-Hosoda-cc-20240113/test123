@@ -15,6 +15,11 @@
         @include max-screen($breakpoint-pc) {
           flex-flow: column wrap;
         }
+        .p-register__title {
+            @include max-screen($breakpoint-pc) {
+              align-self: inherit;
+            }
+        }
         .p-register__itemWrap {
           @include max-screen($breakpoint-pc) {
             width: 100%;
