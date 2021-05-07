@@ -1,0 +1,32 @@
+.p-button {
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.04) 0 3px 1px;
+  padding: 10px 10px;
+  border-radius: 3px;
+  color: $light-color;
+  background: $primary-color;
+  height: auto;
+  width: 100%;
+
+  &:focus, &:hover {
+    background-color: $primary-dark-color;
+    color: $light-color;
+  }
+
+  &__icon {
+    margin-right: 10px;
+    width: 50px;
+    height: auto;
+    padding: 5px;
+    filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+  }
+
+  &__boxTitle {
+    font-size: 20px
+  }
+
+  &__boxText {
+    font-size: 14px;
+  }
+}

@@ -20,7 +20,6 @@
                 <a class="c-button u-db u-w-30-pc u-m0a u-mt-20" href="{{ route('user.edit.form', ['user_id' => $response->getUser()->id]) }}">編集</a>
             </div>
         </div>
-        @include('atoms.RegularBtn', ['text' => '編集', 'class' => 'w-30 m0a', 'link' => route('user.edit.form', ['user_id' => $response->getUser()->id])] )
     </div>
     @include('admin.footer.footer')
 @endsection

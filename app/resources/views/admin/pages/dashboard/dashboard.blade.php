@@ -54,7 +54,39 @@
                 </div>
                 {{--   各種ステータス   --}}
 
+                <h2 class="p-level2Heading u-mt-20">クイックアクション</h2>
+
+                <div class="p-flex--col2">
+                    <a href="{{ route('project.create.form') }}" class="p-button p-flex__item">
+                        <img class="p-button__icon" src="images/icons/icon_file.svg" alt="">
+                        <div class="p-button__box">
+                            <h2 class="p-button__boxTitle">案件追加</h2>
+                            <p class="p-button__boxText">案件の登録処理を行います</p>
+                        </div>
+                    </a>
+                    {{--   案件追加   --}}
+
+                    <a href="{{ route('agent.create.form') }}" class="p-button p-flex__item">
+                        <img class="p-button__icon" src="images/icons/icon_building.svg" alt="">
+                        <div class="p-button__box">
+                            <h2 class="p-button__boxTitle">案件元追加</h2>
+                            <p class="p-button__boxText">案件元の登録処理を行います</p>
+                        </div>
+                    </a>
+                    {{--   案件元追加   --}}
+
+                    <a href="{{ route('station.create.form') }}" class="p-button p-flex__item">
+                        <img class="p-button__icon" src="images/icons/icon_train.svg" alt="">
+                        <div class="p-button__box">
+                            <h2 class="p-button__boxTitle">駅追加</h2>
+                            <p class="p-button__boxText">駅の登録処理を行います</p>
+                        </div>
+                    </a>
+                    {{--   駅追加   --}}
+                </div>
+
             </div>
+            {{--    p-mainItem   --}}
         </div>
     </div>
 
