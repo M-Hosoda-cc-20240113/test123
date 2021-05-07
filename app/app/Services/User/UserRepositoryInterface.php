@@ -77,7 +77,7 @@ interface UserRepositoryInterface
 
 
     /**
-     * @return int|null
+     * @return Collection|null
      */
-    public function thisMonthOperationCounts(): ?int;
+    public function fetchThisMonthOperation(): ?Collection;
 }

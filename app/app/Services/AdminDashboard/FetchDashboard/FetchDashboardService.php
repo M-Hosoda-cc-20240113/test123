@@ -60,17 +60,17 @@ class FetchDashboardService
     public function exec(): FetchDashboardResponse
     {
         $response = new FetchDashboardResponse;
-        $interview_counts = $this->application_repository->interviewUserCounts();
-        $user_operation_counts = $this->user_repository->thisMonthOperationCounts();
-        $not_open_counts = $this->status_repository->notOpenUserCounts();
-        $assign_new_counts = $this->assignment_repository->newUserCounts();
-        $assign_counts = $this->assignment_repository->userCounts();
+        $fetch_interview_user = $this->application_repository->fetchInterviewUser();
+        $fetch_user_operation = $this->user_repository->fetchThisMonthOperation();
+        $fetch_not_open_user = $this->status_repository->fetchNotOpenUser();
+        $fetch_assign_new_user = $this->assignment_repository->fetchNewUser();
+        $fetch_assign_user = $this->assignment_repository->fetchUser();
 
-        $response->setUserOperationCounts($user_operation_counts);
-        $response->setInterviewCounts($interview_counts);
-        $response->setNotOpenCounts($not_open_counts);
-        $response->setNewAssignCounts($assign_new_counts);
-        $response->setAssignCounts($assign_counts);
+        $response->setFetchUserOperation($fetch_user_operation);
+        $response->setFetchInterview($fetch_interview_user);
+        $response->setFetchNotOpen($fetch_not_open_user);
+        $response->setFetchNewAssignUser($fetch_assign_new_user);
+        $response->setFetchAssignUser($fetch_assign_user);
 
         return $response;
     }

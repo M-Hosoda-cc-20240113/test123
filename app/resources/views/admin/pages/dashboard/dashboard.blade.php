@@ -22,7 +22,7 @@
                     <div class="p-counter u-mt-0">
                         <p class="c-text--bold p-counter__title">今月営業開始</p>
                         <div class="p-counter__countWrap">
-                            <span class="p-counter__count">{{ $response->getUserOperationCounts() ?? 0 }}</span><span>件</span>
+                            <span class="p-counter__count">{{ $response->getFetchUserOperation()->count() ?? 0 }}</span><span>件</span>
                         </div>
                     </div>
                     <div class="p-counter u-mt-0">
@@ -30,25 +30,25 @@
                             <span class="c-tooltip__text--up">今月営業月だがまだ未営業の人数</span>
                         </p>
                         <div class="p-counter__countWrap">
-                            <span class="p-counter__count">{{ $response->getNotOpenCounts() ?? 0 }}</span><span>件</span>
+                            <span class="p-counter__count">{{ $response->getFetchNotOpen()->count() ?? 0 }}</span><span>件</span>
                         </div>
                     </div>
                     <div class="p-counter">
                         <p class="c-text--bold p-counter__title">新規稼働件数</p>
                         <div class="p-counter__countWrap">
-                            <span class="p-counter__count">{{ $response->getNewAssignCounts() ?? 0 }}</span><span>件</span>
+                            <span class="p-counter__count">{{ $response->getFetchNewAssignUser()->count() ?? 0 }}</span><span>件</span>
                         </div>
                     </div>
                     <div class="p-counter u-mt-10-pc">
                         <p class="c-text--bold p-counter__title">既存稼働件数</p>
                         <div class="p-counter__countWrap">
-                            <span class="p-counter__count">{{ $response->getAssignCounts() ?? 0 }}</span><span>件</span>
+                            <span class="p-counter__count">{{ $response->getFetchAssignUser()->count() ?? 0 }}</span><span>件</span>
                         </div>
                     </div>
                     <div class="p-counter u-mt-10-pc">
                         <p class="c-text--bold p-counter__title">今月面談件数</p>
                         <div class="p-counter__countWrap">
-                            <span class="p-counter__count">{{ $response->getInterviewCounts() ?? 0}}</span><span>件</span>
+                            <span class="p-counter__count">{{ $response->getFetchInterview()->count() ?? 0}}</span><span>件</span>
                         </div>
                     </div>
                 </div>

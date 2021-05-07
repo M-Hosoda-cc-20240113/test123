@@ -20,7 +20,7 @@ interface StatusRepositoryInterface
     public function updateAdmin(UpdateUserAdminParameter $parameter): void;
 
     /**
-     * @return int
+     * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function notOpenUserCounts(): int;
+    public function fetchNotOpenUser(): Collection;
 }

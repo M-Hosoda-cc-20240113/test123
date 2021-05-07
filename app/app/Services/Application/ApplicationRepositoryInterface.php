@@ -32,7 +32,7 @@ interface ApplicationRepositoryInterface
     public function fetchWithStatus(): Collection;
 
     /**
-     * @return int
+     * @return Collection
      */
-    public function interviewUserCounts(): int;
+    public function fetchInterviewUser(): Collection;
 }
