@@ -7,37 +7,38 @@
         @include('front.header._link_login_logout')
     @endcomponent
     <div class="l-container">
-      <div class="Login">
-        <img class="Login__logo" src="{{ asset('images/logo/aegis.svg') }}" alt="">
-        <p class="Login__topText">ログイン画面</p>
-        <form action="{{ route('login') }}" method="POST">
-          {{ csrf_field() }}
-          @error('email')
-          <p class="Login_error">{{ $message }}</p>
-          @enderror
-          <div class="LoginIconInput">
-            <div class="IconInput">
-              <img src="{{ asset('images/icons/icon_lock.png') }}">
-              <input name="email" type="text" placeholder="example.email.com">
-            </div>
-          </div>
-          <div class="LoginIconInput">
-            <div class="IconInput">
-              <img src="{{ asset('images/icons/icon_mail.png') }}">
-              <input name="password" type="password" placeholder="パスワードを入力">
-            </div>
-            <p class="LoginIconInput__caption">半角英数字8文字以上</p>
-          </div>
-            <div>
-                @include('atoms.RegularCheckbox', ['class' => 'mr-10 mb-10 w-200px', 'text' => __('Remember me'), 'id' => 'remember_me', 'name' => 'remember'])
-            </div>
-          <button type="submit" class="RegularBtn">ログイン</button>
-        </form>
-        <div class="Login__footWrap">
-          <a class="RegularLink" href="/">パスワードを忘れた方へ</a>
-          <a class="RegularLink" href="/">ユーザー登録</a>
+        <div class="l-main">
+            <img class="u-m0a u-w-30-pc" src="{{ asset('images/logo/aegis.svg') }}" alt="">
+            <p class="c-text--center u-mt-20">ログイン画面</p>
+            <form action="{{ route('login') }}" method="post">
+                {{ csrf_field() }}
+                @error('email')
+                <p class="c-text--warning">{{ $message }}</p>
+                @enderror
+
+                <div class="p-iconInput u-mt-30 u-w-40-pc u-m0a">
+                    <img src="{{ asset('images/icons/icon_lock.png') }}">
+                    <input name="email" type="text" placeholder="example.email.com">
+                </div>
+
+                <div class="p-iconInput u-mt-20 u-w-40-pc u-m0a">
+                    <img src="{{ asset('images/icons/icon_mail.png') }}">
+                    <input name="password" type="password" placeholder="パスワードを入力">
+                </div>
+                <p class="c-text--muted u-w-40-pc u-m0a u-mt-5">半角英数字8文字以上</p>
+                <div class="u-w-40-pc u-m0a u-mt-20">
+                    <label class="p-checkbox"><span class="c-text--muted u-fs-14">ログイン状態を保持する</span>
+                        <input value="" name="remember" type="checkbox">
+                        <div class="p-checkbox__indicator"></div>
+                    </label>
+                </div>
+                <button type="submit" class="c-button u-w-30-pc u-db u-m0a u-mt-20">ログイン</button>
+                <div class="u-mt-20 u-m0a u-w-40-pc u-border-top u-pt-20">
+                    <a class="c-text--primary u-mr-20" href="">パスワードを忘れた方</a>
+                    <a class="c-text--primary" href="">ユーザー登録</a>
+                </div>
+            </form>
         </div>
-      </div>
     </div>
 
     @include('front.footer.footer')
