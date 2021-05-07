@@ -1,1 +1,1 @@
-@include('atoms.RegularBtn', ['text' => '新規登録', 'class' => 'w-20 mr-10', 'link' => route('register')])
+<a class="p-header__textLink" href="{{ route('register') }}">新規登録</a>

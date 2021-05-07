@@ -1,6 +1,6 @@
 @auth
   <li class="d-flex">
-    <a class="Header__textLink" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+    <a class="p-header__textLink" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
       <span>ログアウト</span>
     </a>
     <form id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -10,5 +10,5 @@
 @endauth
 @guest
   @include('front.header._link_signup')
-  <a class="Header__textLink" href="{{ route('login') }}">ログイン</a>
+  <a class="p-header__textLink" href="{{ route('login') }}">ログイン</a>
 @endguest

@@ -1,17 +1,20 @@
 .p-header {
+  width: 100%;
+  justify-content: center;
+  border-bottom: 1px solid $muted-lighter-color;
+  &__loginWrap {
     width: 100%;
-    background-color: $muted-lightest-color;
-    border-bottom: 1px solid $muted-lighter-color;
-    &__container {
-        display: flex;
-        padding: 20px;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        max-width: $content-max-width;
-        margin: 0 auto;
+    max-width: $content-max-width;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  &__textLink {
+    padding: 10px;
+    align-self: center;
+    color: $dark-color;
+    &:hover {
+      color: $muted-color;
     }
-    &__logo {
-      width: 100px;
-    }
+  }
 }

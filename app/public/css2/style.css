@@ -904,22 +904,26 @@ img {
 
 .p-header {
   width: 100%;
-  background-color: #f4f7f8;
+  justify-content: center;
   border-bottom: 1px solid #dfe4e7;
 }
 
-.p-header__container {
-  display: flex;
-  padding: 20px;
-  align-items: center;
-  justify-content: space-between;
+.p-header__loginWrap {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
-.p-header__logo {
-  width: 100px;
+.p-header__textLink {
+  padding: 10px;
+  align-self: center;
+  color: #333333;
+}
+
+.p-header__textLink:hover {
+  color: #88889f;
 }
 
 .p-nav__list {
@@ -1788,6 +1792,30 @@ img {
   border-left: 1px solid #cdcddf;
   padding: 0 15px;
   border-radius: 0 3px 3px 0;
+}
+
+.p-header {
+  width: 100%;
+  justify-content: center;
+  border-bottom: 1px solid #dfe4e7;
+}
+
+.p-header__loginWrap {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.p-header__textLink {
+  padding: 10px;
+  align-self: center;
+  color: #333333;
+}
+
+.p-header__textLink:hover {
+  color: #88889f;
 }
 
 .u-db {
