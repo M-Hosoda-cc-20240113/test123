@@ -1,0 +1,29 @@
+.p-button {
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.04) 0 3px 1px;
+  padding: 25px 15px;
+  border-radius: 4px;
+  color: $light-color;
+  background: $primary-color;
+  max-width: 350px;
+  height: 120px;
+  width: 100%;
+
+  &:hover {
+    background-color: rgb(135, 190, 235);
+  }
+
+  &__icon {
+    margin-right: 10px;
+    width: 50px;
+  }
+
+  &__boxTitle {
+    font-size: 24px;
+  }
+
+  &__boxText {
+    font-size: 16px;
+  }
+}
