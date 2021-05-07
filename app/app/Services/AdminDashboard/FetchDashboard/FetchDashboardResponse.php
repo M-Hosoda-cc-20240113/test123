@@ -3,125 +3,122 @@
 
 namespace App\Services\AdminDashboard\FetchDashboard;
 
-
-use App\Services\Application\ApplicationRepositoryInterface;
-use App\Services\Assignment\AssignmentRepositoryInterface;
-use App\Services\Status\StatusRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class FetchDashboardResponse
 {
     /**
-     * @var int|null
+     * @var Collection|null
      */
-    private $user_operation_counts;
+    private $fetch_user_operation;
 
     /**
-     * @var int|null
+     * @var Collection|null
      */
-    private $interview_counts;
+    private $fetch_interview;
 
     /**
-     * @var int|null
+     * @var Collection|null
      */
-    private $not_open_counts;
+    private $fetch_not_open;
 
     /**
-     * @var int|null
+     * @var Collection|null
      */
-    private $assign_counts;
+    private $fetch_assign_user;
 
     /**
-     * @var int|null
+     * @var Collection|null
      */
-    private $new_assign_counts;
+    private $fetch_new_assign_user;
 
     /**
-     * @return int|null
+     * @return Collection|null
      */
-    public function getUserOperationCounts(): ?int
+    public function getFetchUserOperation(): ?Collection
     {
-        return $this->user_operation_counts;
+        return $this->fetch_user_operation;
     }
 
     /**
-     * @param int|null $user_operation_counts
+     * @param Collection|null $fetch_user_operation
      * @return FetchDashboardResponse
      */
-    public function setUserOperationCounts(?int $user_operation_counts): FetchDashboardResponse
-    {
-        $this->user_operation_counts = $user_operation_counts;
+    public function setFetchUserOperation(?Collection $fetch_user_operation
+    ): FetchDashboardResponse {
+        $this->fetch_user_operation = $fetch_user_operation;
         return $this;
     }
 
     /**
-     * @return int|null
+     * @return Collection|null
      */
-    public function getInterviewCounts(): ?int
+    public function getFetchInterview(): ?Collection
     {
-        return $this->interview_counts;
+        return $this->fetch_interview;
     }
 
     /**
-     * @param int|null $interview_counts
+     * @param Collection|null $fetch_interview
      * @return FetchDashboardResponse
      */
-    public function setInterviewCounts(?int $interview_counts): FetchDashboardResponse
-    {
-        $this->interview_counts = $interview_counts;
+    public function setFetchInterview(?Collection $fetch_interview
+    ): FetchDashboardResponse {
+        $this->fetch_interview = $fetch_interview;
         return $this;
     }
 
     /**
-     * @return int|null
+     * @return Collection|null
      */
-    public function getNotOpenCounts(): ?int
+    public function getFetchNotOpen(): ?Collection
     {
-        return $this->not_open_counts;
+        return $this->fetch_not_open;
     }
 
     /**
-     * @param int|null $not_open_counts
+     * @param Collection|null $fetch_not_open
      * @return FetchDashboardResponse
      */
-    public function setNotOpenCounts(?int $not_open_counts): FetchDashboardResponse
+    public function setFetchNotOpen(?Collection $fetch_not_open): FetchDashboardResponse
     {
-        $this->not_open_counts = $not_open_counts;
+        $this->fetch_not_open = $fetch_not_open;
         return $this;
     }
 
     /**
-     * @return int|null
+     * @return Collection|null
      */
-    public function getAssignCounts(): ?int
+    public function getFetchAssignUser(): ?Collection
     {
-        return $this->assign_counts;
+        return $this->fetch_assign_user;
     }
 
     /**
-     * @param int|null $assign_counts
+     * @param Collection|null $fetch_assign_user
      * @return FetchDashboardResponse
      */
-    public function setAssignCounts(?int $assign_counts): FetchDashboardResponse
-    {
-        $this->assign_counts = $assign_counts;
+    public function setFetchAssignUser(?Collection $fetch_assign_user
+    ): FetchDashboardResponse {
+        $this->fetch_assign_user = $fetch_assign_user;
         return $this;
     }
 
     /**
-     * @return int|null
+     * @return Collection|null
      */
-    public function getNewAssignCounts(): ?int
+    public function getFetchNewAssignUser(): ?Collection
     {
-        return $this->new_assign_counts;
+        return $this->fetch_new_assign_user;
     }
 
     /**
-     * @param int|null $new_assign_counts
+     * @param Collection|null $fetch_new_assign_user
      * @return FetchDashboardResponse
      */
-    public function setNewAssignCounts(?int $new_assign_counts): FetchDashboardResponse
-    {
-        $this->new_assign_counts = $new_assign_counts;
+    public function setFetchNewAssignUser(?Collection $fetch_new_assign_user
+    ): FetchDashboardResponse {
+        $this->fetch_new_assign_user = $fetch_new_assign_user;
         return $this;
     }
 }

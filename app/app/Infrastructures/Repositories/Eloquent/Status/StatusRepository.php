@@ -5,8 +5,10 @@ namespace App\Infrastructures\Repositories\Eloquent\Status;
 
 
 use App\Models\Status;
+use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Status\StatusRepositoryInterface;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
 
 class StatusRepository implements StatusRepositoryInterface
@@ -42,8 +44,17 @@ class StatusRepository implements StatusRepositoryInterface
      * {@inheritDoc}
      * 0：未営業、1：面談待ち、2：結果待ち、3：稼働済み
      */
-    public function notOpenUserCounts(): int
+    public function fetchNotOpenUser(): Collection
     {
-        return Status::where('status',0)->count();
+        $now = CarbonImmutable::now();
+        $start_of_month = $now->startOfMonth();
+        $end_of_month = $now->endOfMonth();
+        return Status::whereIn('user_id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('users')
+                ->select('id')
+                ->whereBetween('operation_start_month', [$start_of_month, $end_of_month]);
+        })->with('users')
+            ->where('status', 0)
+            ->get();
     }
 }

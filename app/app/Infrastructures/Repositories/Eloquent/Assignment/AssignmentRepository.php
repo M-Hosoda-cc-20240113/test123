@@ -103,28 +103,34 @@ class AssignmentRepository implements AssignmentRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function userCounts(): int
+    public function fetchUser(): Collection
     {
         $now = CarbonImmutable::now();
         $add_start_of_month = $now->addMonths(1)->startOfMonth();
         $add_end_of_month = $now->addMonths(1)->endOfMonth();
-        return Assignment::join('users', 'users.id', '=', 'assignments.user_id')
-            ->where('users.is_new', 0)
-            ->whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])
-            ->count();
+        return Assignment::whereIn('user_id', function ($query) {
+            $query->from('users')
+                ->select('id')
+                ->where('is_new',0);
+        })->whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])
+            ->with('users')
+            ->get();
     }
 
     /**
      * @inheritDoc
      */
-    public function newUserCounts(): int
+    public function fetchNewUser(): Collection
     {
         $now = CarbonImmutable::now();
         $add_start_of_month = $now->addMonths(1)->startOfMonth();
         $add_end_of_month = $now->addMonths(1)->endOfMonth();
-        return Assignment::join('users', 'users.id', '=', 'assignments.user_id')
-            ->where('users.is_new', 1)
-            ->whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])
-            ->count();
+        return Assignment::whereIn('user_id', function ($query) {
+            $query->from('users')
+                ->select('id')
+                ->where('is_new',1);
+        })->whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])
+            ->with('users')
+            ->get();
     }
 }

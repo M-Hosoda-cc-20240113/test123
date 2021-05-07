@@ -32,12 +32,12 @@ interface AssignmentRepositoryInterface
     public function delete(DeleteAssignmentParameter $parameter): void;
 
     /**
-     * @return int
+     * @return Collection
      */
-    public function userCounts(): int;
+    public function fetchUser(): Collection;
 
     /**
-     * @return int
+     * @return Collection
      */
-    public function newUserCounts(): int;
+    public function fetchNewUser(): Collection;
 }
