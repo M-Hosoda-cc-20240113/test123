@@ -146,11 +146,11 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function thisMonthOperationCounts(): ?int
+    public function fetchThisMonthOperation(): ?Collection
     {
         $now = CarbonImmutable::now();
         $start_of_month = $now->startOfMonth();
         $end_of_month = $now->endOfMonth();
-        return User::whereBetween('operation_start_month', [$start_of_month, $end_of_month])->count();
+        return User::whereBetween('operation_start_month', [$start_of_month, $end_of_month])->get();
     }
 }

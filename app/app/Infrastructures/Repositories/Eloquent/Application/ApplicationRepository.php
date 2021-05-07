@@ -72,11 +72,13 @@ class ApplicationRepository implements ApplicationRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function interviewUserCounts(): int
+    public function fetchInterviewUser(): Collection
     {
         $now = CarbonImmutable::now();
         $start_of_month = $now->startOfMonth();
         $end_of_month = $now->endOfMonth();
-        return Application::whereBetween('interview_date',[$start_of_month,$end_of_month])->count();
+        return Application::with('users')
+            ->whereBetween('interview_date', [$start_of_month, $end_of_month])
+            ->get();
     }
 }
