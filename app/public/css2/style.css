@@ -1548,13 +1548,12 @@ img {
   border: 1px solid #cdcddf;
 }
 
-.p-table__headRowItem, .p-table__headRowItem--edit {
+.p-table__headRowItem, .p-table__headRowItem--edit, .p-table__headRowItem--soart {
   padding: 8px;
   background-position: center right 5%;
   background-repeat: no-repeat;
   cursor: pointer;
-  background-image: url("/image/common/sort-solid.svg");
-  background-size: 8px;
+  background-size: 16px;
   font-size: 12px;
   width: 1px;
   white-space: nowrap;
@@ -1562,6 +1561,10 @@ img {
 
 .p-table__headRowItem--edit {
   background-image: none;
+}
+
+.p-table__headRowItem--soart {
+  background-image: url(/../images/icons/icon_soart.svg);
 }
 
 .p-table__bodyRow {

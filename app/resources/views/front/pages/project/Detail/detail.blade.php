@@ -16,24 +16,26 @@
                         <h2 class="p-level2Heading">{{ $response->getProject()->name ?? '' }}</h2>
                         <input type="hidden" name="project_id" value={{ $response->getProject()->id }}>
                         @include('front.pages.project.detail._ProjectDetailTable', ['response' => $response])
+
+                        @if(Auth::getUser()->is_apply($response->getProject()->id))
+                            <p class="mt-20 ta-center fs-12">※応募済みです。担当営業からの連絡をお待ちください。</p>
+                        @elseif(Auth::getUser()->is_assign($response->getProject()->id))
+                            <p class="mt-20 ta-center fs-12">※稼働中です。ご連絡は担当営業にお願いいたします。</p>
+                        @else
+                            <button class="c-button u-db u-w-30-pc u-m0a u-mt-20" type="submit">応募する</button>
+                            <p class="c-text--center u-mt-20">※クリックで応募が完了します。担当営業が2営業日以内に電話で連絡いたします。</p>
+                        @endif
                     </div>
-                    @if(Auth::getUser()->is_apply($response->getProject()->id))
-                        <p class="mt-20 ta-center fs-12">※応募済みです。担当営業からの連絡をお待ちください。</p>
-                    @elseif(Auth::getUser()->is_assign($response->getProject()->id))
-                        <p class="mt-20 ta-center fs-12">※稼働中です。ご連絡は担当営業にお願いいたします。</p>
-                    @else
-                        <button class="RegularBtn w-30 m0a" type="submit">応募する</button>
-                        <p class="mt-20 ta-center fs-12">※クリックで応募が完了します。担当営業が2営業日以内に電話で連絡いたします。</p>
-                    @endif
                 </form>
             @else
                 <div class="p-mainItem">
                     <p class="p-level2Heading">{{ $response->getProject()->name ?? '' }}</p>
                     @include('front.pages.project.detail._ProjectDetailTable', ['response' => $response])
+
+                    <a href="{{ route('register', ['project_id' => $response->getProject()] )}}"
+                       class="c-button u-db u-m0a u-mt-30 u-w-30-pc">新規登録して応募する</a>
+                    <p class="mt-20 ta-center fs-12">※新規登録で応募が完了します。担当営業が2営業日以内に電話で連絡いたします。</p>
                 </div>
-                <a href="{{ route('register', ['project_id' => $response->getProject()] )}}"
-                   class="c-button u-db u-m0a u-mt-30 u-w-30-pc">新規登録して応募する</a>
-                <p class="mt-20 ta-center fs-12">※新規登録で応募が完了します。担当営業が2営業日以内に電話で連絡いたします。</p>
             @endif
         </div>
     </div>
