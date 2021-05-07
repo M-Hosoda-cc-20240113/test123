@@ -2,28 +2,31 @@
   display: flex;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.04) 0 3px 1px;
-  padding: 25px 15px;
-  border-radius: 4px;
+  padding: 10px 10px;
+  border-radius: 3px;
   color: $light-color;
   background: $primary-color;
-  max-width: 350px;
-  height: 120px;
+  height: auto;
   width: 100%;
 
-  &:hover {
-    background-color: rgb(135, 190, 235);
+  &:focus, &:hover {
+    background-color: $primary-dark-color;
+    color: $light-color;
   }
 
   &__icon {
     margin-right: 10px;
     width: 50px;
+    height: auto;
+    padding: 5px;
+    filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
   }
 
   &__boxTitle {
-    font-size: 24px;
+    font-size: 20px
   }
 
   &__boxText {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
