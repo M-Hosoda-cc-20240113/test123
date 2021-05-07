@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Agent;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -15,18 +16,19 @@ class AgentTableSeeder extends Seeder
     public function run()
     {
         $companies = [
-            '株式会社LiNew',
-            'パッション株式会社',
-            'インフィック株式会社',
-            'Amazon.inc',
-            'Apple.inc'
+            '株式会社LiNew' => '0123342353',
+            'パッション株式会社' => '0125423353',
+            'Amazon.inc' => '0135423353',
+            'インフィック株式会社' => '07022423534',
+            'Apple.inc' => '07023433534',
         ];
         $now = Carbon::now();
-        foreach ($companies as $company) {
+        foreach ($companies as $company => $number) {
             Agent::create([
-                'name'       => $company,
-                'created_at' => $now
-            ]);  
+                'name' => $company,
+                'tel' => $number,
+                'created_at' => $now,
+            ]);
         }
     }
 }

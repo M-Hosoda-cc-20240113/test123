@@ -30,7 +30,8 @@ class Agent extends Model
     use HasFactory;
 
     protected $fillable = [
-      'name',
+        'name',
+        'tel',
     ];
 
     /**
