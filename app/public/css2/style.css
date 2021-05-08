@@ -1818,6 +1818,10 @@ img {
   color: #88889f;
 }
 
+.p-image--gray {
+  filter: invert(40%) sepia(0%) saturate(11%) hue-rotate(143deg) brightness(101%) contrast(93%);
+}
+
 .u-db {
   display: block !important;
 }

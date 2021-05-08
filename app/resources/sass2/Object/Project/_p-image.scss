@@ -1,0 +1,5 @@
+.p-image {
+  &--gray {
+    filter: invert(40%) sepia(0%) saturate(11%) hue-rotate(143deg) brightness(101%) contrast(93%);
+  }
+}
