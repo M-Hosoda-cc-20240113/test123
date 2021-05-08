@@ -13,7 +13,7 @@
             <form action="{{ route('login') }}" method="post">
                 {{ csrf_field() }}
                 @error('email')
-                <p class="c-text--warning">{{ $message }}</p>
+                <p class="c-text--warning u-w-40-pc u-m0a">{{ $message }}</p>
                 @enderror
 
                 <div class="p-iconInput u-mt-30 u-w-40-pc u-m0a">

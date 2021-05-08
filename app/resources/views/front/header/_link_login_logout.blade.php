@@ -1,6 +1,6 @@
 @auth
   <li class="u-df">
-    <a class="p-header__textLink u-df" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+    <a class="p-header__textLink" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
       <img class="p-image--gray" src="{{ asset('images/icons/icon_logout.svg') }}" alt="">
       <span class="u-as-center">ログアウト</span>
     </a>
