@@ -22,8 +22,11 @@
     &:hover {
       color: $muted-color;
     }
-    @include max-screen($breakpoint-pc)  {
-      display: none;
+    span {
+      display: block;
+      @include max-screen($breakpoint-pc) {
+        display: none;
+      }
     }
   }
 }

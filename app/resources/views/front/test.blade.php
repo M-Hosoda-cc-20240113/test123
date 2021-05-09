@@ -16,4 +16,13 @@
             <span></span>
         </div>
     </div>
+    <nav class="c-nav">
+        <ul>
+            <li><a href="#">メニュー1</a></li>
+            <li><a href="#">メニュー2</a></li>
+            <li><a href="#">メニュー3</a></li>
+            <li><a href="#">メニュー4</a></li>
+            <li><a href="#">メニュー5</a></li>
+        </ul>
+    </nav>
 @endsection

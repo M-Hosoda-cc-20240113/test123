@@ -22,6 +22,7 @@
     @include max-screen($breakpoint-pc) {
       height: 15px;
       width: 15px;
+      top: 2px;
     }
     &::after {
       display: block;

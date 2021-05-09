@@ -1,5 +1,5 @@
-import {CopyFragment} from '../CopyFragment';
+import {Drawer} from '../Drawer';
 
 export function test() {
-  new CopyFragment(10, true);
+  new Drawer(document.querySelector('.c-drawer'));
 }
