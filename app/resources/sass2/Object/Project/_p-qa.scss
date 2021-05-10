@@ -1,0 +1,66 @@
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.p-qa {
+  position: relative;
+  background: $light-color;
+  border: 1px solid $light-color;
+
+  &__question {
+    padding: 5px 15px;
+    margin: 0 !important;
+  }
+
+  &__questionIcon {
+    color: $warning-color;
+    font-weight: bold;
+    margin-right: 15px;
+    @include max-screen($breakpoint-pc) {
+      margin-right: 5px;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+
+    &:after {
+      content: '▼' !important;
+      display: block;
+      text-align: center;
+      top: 0;
+      left: 0;
+      margin-left: 0;
+      margin-top: 0;
+      color: $primary-color;
+    }
+    $this: &;
+    &--open {
+      @extend #{$this};
+    }
+    &--close {
+      @extend #{$this};
+      &:after {
+        content: '▲' !important;
+      }
+    }
+  }
+
+  &__answer {
+    background: $light-color;
+    margin: 0 !important;
+    padding: 10px 15px;
+    display: none;
+
+    &.js-active {
+      display: block;
+      animation: show 0.5s linear 0s;
+    }
+  }
+}
