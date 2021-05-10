@@ -24,13 +24,15 @@
             </ul>
         </div>
         <div class="l-main">
-            <h2 class="p-level2Heading">メールアドレス変更</h2>
-            <p class="c-text u-mt-20">変更したいメールアドレスへ再設定の案内を送ります。</p>
-            <form action="{{ route('email.sendEmail') }}" method="post">
-                {{ csrf_field() }}
-                <input class="c-input--light" type="email" placeholder="メールアドレス入力欄" name="email">
-                <button type="submit" class="c-button u-mt-20">案内メールを送信</button>
-            </form>
+            <div class="p-mainItem">
+                <h2 class="p-level2Heading">メールアドレス変更</h2>
+                <p class="c-text u-mt-20">変更したいメールアドレスへ再設定の案内を送ります。</p>
+                <form action="{{ route('email.sendEmail') }}" method="post">
+                    {{ csrf_field() }}
+                    <input class="c-input--light" type="email" placeholder="メールアドレス入力欄" name="email">
+                    <button type="submit" class="c-button u-mt-20">案内メールを送信</button>
+                </form>
+            </div>
         </div>
     </div>
 

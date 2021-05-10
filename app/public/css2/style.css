@@ -502,7 +502,7 @@ img {
   margin-left: auto;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 90px;
+  padding-bottom: 140px;
 }
 
 @media screen and (max-width: 768px) {
@@ -929,6 +929,7 @@ img {
   padding: 20px;
   box-shadow: 0 3px 5.7px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
+  background-color: #ffffff;
 }
 
 .p-card__title {
@@ -1047,6 +1048,7 @@ img {
   border-top: 0;
   flex-flow: row wrap;
   justify-content: flex-start;
+  background-color: #ffffff;
 }
 
 .p-checkboxUnit__item {
