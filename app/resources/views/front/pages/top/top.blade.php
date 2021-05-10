@@ -22,7 +22,9 @@
             @endforeach
         @endif
 
-        <ul class="p-searchTab">
+        <img src="{{ asset('/images/hero/hero_01.png') }}" alt="">
+
+        <ul class="p-searchTab u-mt-20">
             <li class="p-searchTab__item js-tab is-active">スキル<span class="u-dn-sp">でさがす</span></li>
             <li class="p-searchTab__item js-tab">ポジション<span class="u-dn-sp">でさがす</span></li>
             <li class="p-searchTab__item js-tab">最寄り駅<span class="u-dn-sp">でさがす</span></li>
