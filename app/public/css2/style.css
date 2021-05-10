@@ -1925,6 +1925,7 @@ img {
 .p-qa__question {
   padding: 5px 15px;
   margin: 0 !important;
+  cursor: pointer;
 }
 
 .p-qa__questionIcon {
@@ -1943,6 +1944,7 @@ img {
   position: absolute;
   top: 6px;
   right: 10px;
+  cursor: pointer;
 }
 
 .p-qa__button:after, .p-qa__button--open:after, .p-qa__button--close:after {
