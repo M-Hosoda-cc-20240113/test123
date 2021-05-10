@@ -9,8 +9,10 @@ use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 /**
@@ -160,21 +162,24 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchByKeyWord(array $keywords, array $exclude_ids = []): Collection
     {
-        $query = User::with(['skills', 'levels'])
-            ->where('is_admin', 0)
+        $query = User::where('is_admin', 0)
             ->whereNotIn('id', $exclude_ids);
+
         foreach ($keywords as $keyword) {
             $like_keyword = '%' . $keyword . '%';
-            $query->where('email', 'like', $like_keyword)
-                ->where('sei', 'like', $like_keyword)
-                ->where('sei_kana', 'like', $like_keyword)
-                ->where('mei', 'like', $like_keyword)
-                ->where('mei_kana', 'like', $like_keyword)
-                ->where('tel', 'like', $like_keyword)
-                ->where('birthday', 'like', $like_keyword)
-                ->where('birthday', 'like', $like_keyword);
+            $query->where(static function (Builder $query) use ($like_keyword) {
+                $query->where('email_hash', 'like', $like_keyword)
+                    ->orWhere('sei', 'like', $like_keyword)
+                    ->orWhere('sei_kana', 'like', $like_keyword)
+                    ->orWhere('mei', 'like', $like_keyword)
+                    ->orWhere('mei_kana', 'like', $like_keyword)
+                    ->orWhere('tel', 'like', $like_keyword)
+                    ->orWhere('operation_start_month', 'like', $like_keyword)
+                    ->orWhere('remarks', 'like', $like_keyword)
+                    ->orWhere('birthday', 'like', $like_keyword);
+            });
         }
-
+        dd($query->get());
         return $query->get();
     }
 
@@ -183,15 +188,25 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchBySkillIds(array $skill_ids, array $exclude_ids = []): Collection
     {
-        $query = User::where('is_admin', 0)
-            ->whereNotIn('id', $exclude_ids);
-        foreach ($skill_ids as $skill_id) {
-            $query->whereIn('skills', function ($query, $skill_id) {
-                $query->where('id', $skill_id);
-            });
-        }
-        return $query->get();
+        $length = count($skill_ids);
+        $arr = join(",", $skill_ids);
+        $target_ids = \DB::select(\DB::raw("(
+            SELECT u.id FROM users AS u
+            INNER JOIN
+            (
+                SELECT lsu.user_id, count(*) AS s
+                FROM rel_levels_skills_users AS lsu
+                WHERE lsu.skill_id IN (" . $arr . ")
+                GROUP BY lsu.user_id
+                HAVING s = $length
+            ) AS summary
+            ON u.id = summary.user_id
+        )"));
 
+        return User::where('is_admin', 0)
+            ->whereNotIn('id', $exclude_ids)
+            ->whereIn('id', array_column($target_ids, 'id'))
+            ->get();
     }
 
     /**
@@ -199,14 +214,26 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchByLevelIds(array $level_ids, array $exclude_ids = []): Collection
     {
-        $query = User::where('is_admin', 0)
-            ->whereNotIn('id', $exclude_ids);
-        foreach ($level_ids as $level_id) {
-            $query->whereIn('skills', function ($query, $level_id) {
-                $query->where('id', $level_id);
-            });
-        }
-        return $query->get();
+        $length = count($level_ids);
+        $arr = join(",", $level_ids);
+        $target_ids = \DB::select(\DB::raw("(
+            SELECT u.id FROM users AS u
+            INNER JOIN
+            (
+                SELECT lsu.user_id, count(*) AS s
+                FROM rel_levels_skills_users AS lsu
+                WHERE lsu.level_id IN (" . $arr . ")
+                GROUP BY lsu.user_id
+                HAVING s = $length
+            ) AS summary
+            ON u.id = summary.user_id
+        )"));
+
+        return User::with('levels')
+            ->where('is_admin', 0)
+            ->whereNotIn('id', $exclude_ids)
+            ->whereIn('id', array_column($target_ids, 'id'))
+            ->get();
     }
 
     /**
@@ -226,7 +253,7 @@ class UserRepository implements UserRepositoryInterface
     public function fetchByNotNewUser($not_new_user, array $exclude_ids = []): Collection
     {
         return User::where('is_admin', 0)
-            ->where('is_new', "!=",  $not_new_user)
+            ->where('is_new', "!=", $not_new_user)
             ->whereNotIn('id', $exclude_ids)
             ->get();
     }
@@ -237,7 +264,7 @@ class UserRepository implements UserRepositoryInterface
     public function fetchByIsWorking($is_working, array $exclude_ids = []): Collection
     {
         return User::where('is_admin', 0)
-            ->where('is_working',  $is_working)
+            ->where('is_working', $is_working)
             ->whereNotIn('id', $exclude_ids)
             ->get();
     }
@@ -248,7 +275,7 @@ class UserRepository implements UserRepositoryInterface
     public function fetchByIsNotWorking($is_not_working, array $exclude_ids = []): Collection
     {
         return User::where('is_admin', 0)
-            ->where('is_working', "!=",  $is_not_working)
+            ->where('is_working', "!=", $is_not_working)
             ->whereNotIn('id', $exclude_ids)
             ->get();
     }

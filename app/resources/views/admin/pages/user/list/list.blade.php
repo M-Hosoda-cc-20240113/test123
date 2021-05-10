@@ -30,41 +30,42 @@
             {{--checkbox--}}
             <div class="p-checkboxUnit js-tab_content">
                 <label class="p-checkbox p-checkboxUnit__item">新規
-                    <input value=1 name="new_user" type="checkbox" @if(!\Route::is('user.search') && old('new_user') == $LevelSkills->getSearchedNewUser()){{ 'checked' }}@endif>
+                    <input value=1 name="new_user" type="checkbox" @if(request()->input('new_user')){{ 'checked' }}@endif>
                     <div class="p-checkbox__indicator"></div>
                 </label>
                 <label class="p-checkbox p-checkboxUnit__item">既存
-                    <input value=1 name="not_new_user" type="checkbox" @if(!\Route::is('user.search') && old('not_new_user') == $LevelSkills->getSearchedNotNewUser()){{ 'checked' }}@endif>
+                    <input value=1 name="not_new_user" type="checkbox" @if(request()->input('not_new_user')){{ 'checked' }}@endif>
                     <div class="p-checkbox__indicator"></div>
                 </label>
                 <label class="p-checkbox p-checkboxUnit__item">稼働中
-                    <input value=1 name="is_working" type="checkbox" @if(!\Route::is('user.search') && old('is_working') == $LevelSkills->getSearchedIsWorking()){{ 'checked' }}@endif>
+                    <input value=1 name="is_working" type="checkbox" @if(request()->input('is_working')){{ 'checked' }}@endif>
                     <div class="p-checkbox__indicator"></div>
                 </label>
                 <label class="p-checkbox p-checkboxUnit__item">待機中
-                    <input value=1 name="is_not_working" type="checkbox" @if(!\Route::is('user.search') && old('is_not_working') == $LevelSkills->getSearchedIsNotWorking()){{ 'checked' }}@endif>
+                    <input value=1 name="is_not_working" type="checkbox" @if(request()->input('is_not_working')){{ 'checked' }}@endif>
                     <div class="p-checkbox__indicator"></div>
                 </label>
             </div>
 
-            <div class="p-checkboxUnit js-tab_content">
-                @foreach($LevelSkills->getSkills() as $skill)
-                    <label class="p-checkbox p-checkboxUnit__item">{{ $skill->name }}
-                        <input value="{{ $skill->id }}" name="skill_ids[]" type="checkbox" @if(!\Route::is('user.search') && in_array($skill->id, $LevelSkills->getSearchedSkillIds())){{ 'checked' }}@endif>
-                        <div class="p-checkbox__indicator"></div>
-                    </label>
-                @endforeach
-            </div>
-            {{--  skills  --}}
+{{--            <div class="p-checkboxUnit js-tab_content">--}}
+{{--                @foreach($LevelSkills->getSkills() as $skill)--}}
+{{--                    <label class="p-checkbox p-checkboxUnit__item">{{ $skill->name }}--}}
+{{--                        <input value="{{ $skill->id }}" name="skill_ids[]" type="checkbox" @if(\Route::is('user.search') && in_array($skill->id, $LevelSkills->getSearchedSkillIds())){{ 'checked' }}@endif>--}}
+{{--                        <div class="p-checkbox__indicator"></div>--}}
+{{--                    </label>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--            --}}{{--  skills  --}}
 
-            <div class="p-checkboxUnit js-tab_content">
-                @foreach($LevelSkills->getLevels() as $level)
-                    <label class="p-checkbox p-checkboxUnit__item">{{ $level->level }}
-                        <input value="{{ $level->id }}" name="position_ids[]" type="checkbox" @if(!\Route::is('user.search') && in_array($level->id, $LevelSkills->getSearchedLevelIds())){{ 'checked' }}@endif>
-                        <div class="p-checkbox__indicator"></div>
-                    </label>
-                @endforeach
-            </div>
+{{--            <div class="p-checkboxUnit js-tab_content">--}}
+{{--                @foreach($LevelSkills->getLevels() as $level)--}}
+{{--                    <label class="p-checkbox p-checkboxUnit__item">{{ $level->level }}--}}
+{{--                        <input value="{{ $level->id }}" name="level_ids[]" type="checkbox" @if(\Route::is('user.search') && in_array($level->id, $LevelSkills->getSearchedLevelIds())){{ 'checked' }}@endif>--}}
+{{--                        <div class="p-checkbox__indicator"></div>--}}
+{{--                    </label>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+
             {{--  positions  --}}
             {{--checkbox--}}
 
@@ -83,10 +84,10 @@
             {{--operation_start_month--}}
 
             {{--keyword--}}
-            <div class="p-searchBox u-mt-20">
-                <input name="keyword" class="c-input p-searchBox__input js-search_input" type="text" value="{{ old('keyword') }}"
-                       placeholder="フリーワード">
-            </div>
+{{--            <div class="p-searchBox u-mt-20">--}}
+{{--                <input name="keyword" class="c-input p-searchBox__input js-search_input" type="text" value="{{ old('keyword') }}"--}}
+{{--                       placeholder="フリーワード">--}}
+{{--            </div>--}}
             {{--keyword--}}
             <button type="submit"
                     class="c-button--secondary p-searchBox__button js-project_search u-db u-m0a u-w-15-pc u-mt-30 js-project_search">
@@ -102,6 +103,9 @@
         {{--  検索ボタン（dashboard連動）  --}}
         @include('admin.pages.user.list._RegularUserTable', ['response' => $response])
         {{ $response->getUsers()->links('components.paginator') }}
+        @if($response->getUsers()->count() === 0)
+            <p class="u-text--center mt-30 u-fs-20">関連するユーザーが見つかりませんでした。</p>
+        @endif
     </div>
 
     @include('admin.footer.footer')
