@@ -24,8 +24,10 @@
             </ul>
         </div>
         <div class="l-main">
-            <h2 class="p-level2Heading">パスワード変更</h2>
-            <p class="c-text u-mt-20">入力いただいたアドレスへ、変更のご案内をお送りしました。</p>
+            <div class="p-mainItem">
+                <h2 class="p-level2Heading">パスワード変更</h2>
+                <p class="c-text u-mt-20">入力いただいたアドレスへ、変更のご案内をお送りしました。</p>
+            </div>
         </div>
     </div>
 

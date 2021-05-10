@@ -43,7 +43,7 @@ export class TabContentsLink {
      */
     onClick(e, index) {
         this.contentsAllHide();
-        this.toggleTabActive(e);
+        this.toggleTabActive(e, index);
         this.contents[index].style.display = "flex";
     }
 
@@ -59,11 +59,12 @@ export class TabContentsLink {
     /**
      * 
      * @param {Event} e
+     * @param {number} index
      */
-    toggleTabActive(e) {
+    toggleTabActive(e, index) {
       this.tabs.forEach((tab)=>{
           tab.classList.remove('is-active');
       });
-      e.target.classList.add('is-active');
+      this.tabs[index].classList.add('is-active');
     }
 }

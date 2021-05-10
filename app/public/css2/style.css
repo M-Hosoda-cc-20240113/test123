@@ -502,7 +502,7 @@ img {
   margin-left: auto;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 90px;
+  padding-bottom: 140px;
 }
 
 @media screen and (max-width: 768px) {
@@ -929,6 +929,7 @@ img {
   padding: 20px;
   box-shadow: 0 3px 5.7px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
+  background-color: #ffffff;
 }
 
 .p-card__title {
@@ -1047,6 +1048,7 @@ img {
   border-top: 0;
   flex-flow: row wrap;
   justify-content: flex-start;
+  background-color: #ffffff;
 }
 
 .p-checkboxUnit__item {
@@ -1903,6 +1905,73 @@ img {
 
 .p-image--gray {
   filter: invert(40%) sepia(0%) saturate(11%) hue-rotate(143deg) brightness(101%) contrast(93%);
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.p-qa {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.p-qa__question {
+  padding: 5px 15px;
+  margin: 0 !important;
+  cursor: pointer;
+}
+
+.p-qa__questionIcon {
+  color: #F9627D;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .p-qa__questionIcon {
+    margin-right: 5px;
+  }
+}
+
+.p-qa__button, .p-qa__button--open, .p-qa__button--close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.p-qa__button:after, .p-qa__button--open:after, .p-qa__button--close:after {
+  content: '▼' !important;
+  display: block;
+  text-align: center;
+  top: 0;
+  left: 0;
+  margin-left: 0;
+  margin-top: 0;
+  color: #42b5d1;
+}
+
+.p-qa__button--close:after {
+  content: '▲' !important;
+}
+
+.p-qa__answer {
+  background: #ffffff;
+  margin: 0 !important;
+  padding: 10px 15px;
+  display: none;
+}
+
+.p-qa__answer.js-active {
+  display: block;
+  animation: show 0.5s linear 0s;
 }
 
 .u-db {
