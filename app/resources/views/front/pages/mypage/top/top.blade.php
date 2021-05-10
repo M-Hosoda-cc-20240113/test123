@@ -60,6 +60,12 @@
 
         <p class="p-level2Heading u-mb-5">スキル</p>
         <div class="u-mb-30">
+          @if($response->getRelLevelSkillUser()->count() === 0 )
+            <p class="c-text">
+              スキルが登録されていません。
+              <a class="c-text--primary" href="{{ route('front.user.skill.form') }}">こちら</a>から登録をお願いします。
+           </p>
+          @endif
           @foreach($response->getRelLevelSkillUser() as $level_skill)
             <span class="c-label u-mt-5 u-mr-10">{{ $level_skill->name }}（{{ $level_skill->level }})</span>
           @endforeach
@@ -68,6 +74,9 @@
 
         <p class="p-level2Heading">応募案件</p>
         <div class="u-mb-30">
+          @if($response->getUser()->project_app->count() === 0 )
+            <p class="c-text">応募していません。</p>
+          @endif
           @foreach($response->getUser()->project_app as $project)
             <a class="c-text--bold u-dib u-mt-10 u-indent-1" href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
                 <p class="u-indent">面談予定日：{{ ViewHelper::YmdReplace($project->pivot->interview_date ?? '未定' )}}</p>
@@ -77,6 +86,9 @@
 
         <p class="p-level2Heading">稼働案件</p>
         <div class="u-mb-30">
+          @if($response->getUser()->project_assign->count() === 0 )
+              <p class="c-text">稼働していません。</p>
+          @endif
           @foreach($response->getUser()->project_assign as $project)
             <a class="c-text--bold u-dib u-mt-10 u-indent-1" href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
                 <p>稼働開始日：{{ ViewHelper::YmdReplace($project->pivot->assignment_start_date ?? '未定' )}}</p>

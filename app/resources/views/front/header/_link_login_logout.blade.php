@@ -11,5 +11,6 @@
 @endauth
 @guest
   @include('front.header._link_signup')
-  <a class="p-header__textLink" href="{{ route('login') }}">ログイン</a>
+  <img class="p-image--gray" src="{{ asset('images/icons/icon_login.svg') }}" alt="">
+  <a class="p-header__textLink u-pl-0" href="{{ route('login') }}">ログイン</a>
 @endguest
