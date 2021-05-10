@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-use App\Services\AdminUser\UserRepositoryInterface;
+use App\Services\User\UserRepositoryInterface;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 

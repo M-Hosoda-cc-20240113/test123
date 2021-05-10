@@ -73,4 +73,4 @@ Route::namespace('Application')->prefix('application')->group(function () {
 // TODO リリース前に削除
 Route::get('/test', function () {
     return view('front.test');
-});
+})->name('front.test');

@@ -110,6 +110,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./resources/js/front/Drawer.js":
+/*!**************************************!*\
+  !*** ./resources/js/front/Drawer.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Drawer\": () => (/* binding */ Drawer)\n/* harmony export */ });\nclass Drawer {\n  /**\n   * @param {HTMLElement} drawer\n   */\n  constructor(drawer) {\n    this.drawer = drawer;\n    this.setEvent();\n  }\n\n  /**\n   * initialize\n   */\n  init() {\n\n  }\n\n  /**\n   *  set event\n   */\n  setEvent() {\n    this.drawer.addEventListener('click', (e) => {\n      this.onClick(e);\n    });\n  }\n\n  /**\n   *\n   * @param {MouseEvent} e\n   */\n  onClick(e) {\n    this.toggleDrawer(e.currentTarget);\n  }\n\n  /**\n   * @param {HTMLElement} e\n   */\n  toggleDrawer(e) {\n    e.classList.toggle('js-active');\n  }\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvZnJvbnQvRHJhd2VyLmpzP2YyYjkiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFPO0FBQ1A7QUFDQSxhQUFhLFlBQVk7QUFDekI7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxLQUFLO0FBQ0w7O0FBRUE7QUFDQTtBQUNBLGFBQWEsV0FBVztBQUN4QjtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBLGFBQWEsWUFBWTtBQUN6QjtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwiZmlsZSI6Ii4vcmVzb3VyY2VzL2pzL2Zyb250L0RyYXdlci5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjbGFzcyBEcmF3ZXIge1xuICAvKipcbiAgICogQHBhcmFtIHtIVE1MRWxlbWVudH0gZHJhd2VyXG4gICAqL1xuICBjb25zdHJ1Y3RvcihkcmF3ZXIpIHtcbiAgICB0aGlzLmRyYXdlciA9IGRyYXdlcjtcbiAgICB0aGlzLnNldEV2ZW50KCk7XG4gIH1cblxuICAvKipcbiAgICogaW5pdGlhbGl6ZVxuICAgKi9cbiAgaW5pdCgpIHtcblxuICB9XG5cbiAgLyoqXG4gICAqICBzZXQgZXZlbnRcbiAgICovXG4gIHNldEV2ZW50KCkge1xuICAgIHRoaXMuZHJhd2VyLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgKGUpID0+IHtcbiAgICAgIHRoaXMub25DbGljayhlKTtcbiAgICB9KTtcbiAgfVxuXG4gIC8qKlxuICAgKlxuICAgKiBAcGFyYW0ge01vdXNlRXZlbnR9IGVcbiAgICovXG4gIG9uQ2xpY2soZSkge1xuICAgIHRoaXMudG9nZ2xlRHJhd2VyKGUuY3VycmVudFRhcmdldCk7XG4gIH1cblxuICAvKipcbiAgICogQHBhcmFtIHtIVE1MRWxlbWVudH0gZVxuICAgKi9cbiAgdG9nZ2xlRHJhd2VyKGUpIHtcbiAgICBlLmNsYXNzTGlzdC50b2dnbGUoJ2pzLWFjdGl2ZScpO1xuICB9XG59XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/front/Drawer.js\n");
+
+/***/ }),
+
 /***/ "./resources/js/front/TabContentsLink.js":
 /*!***********************************************!*\
   !*** ./resources/js/front/TabContentsLink.js ***!
@@ -136,7 +146,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"test\": () => (/* binding */ test)\n/* harmony export */ });\n/* harmony import */ var _CopyFragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../CopyFragment */ \"./resources/js/front/CopyFragment.js\");\n\n\nfunction test() {\n  new _CopyFragment__WEBPACK_IMPORTED_MODULE_0__.CopyFragment(10, true);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvZnJvbnQvcGFnZXMvdGVzdC5qcz9mY2RmIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O0FBQTZDOztBQUV0QztBQUNQLE1BQU0sdURBQVk7QUFDbEIiLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvZnJvbnQvcGFnZXMvdGVzdC5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29weUZyYWdtZW50fSBmcm9tICcuLi9Db3B5RnJhZ21lbnQnO1xuXG5leHBvcnQgZnVuY3Rpb24gdGVzdCgpIHtcbiAgbmV3IENvcHlGcmFnbWVudCgxMCwgdHJ1ZSk7XG59XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/front/pages/test.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"test\": () => (/* binding */ test)\n/* harmony export */ });\n/* harmony import */ var _Drawer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Drawer */ \"./resources/js/front/Drawer.js\");\n\n\nfunction test() {\n  new _Drawer__WEBPACK_IMPORTED_MODULE_0__.Drawer(document.querySelector('.c-drawer'));\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvZnJvbnQvcGFnZXMvdGVzdC5qcz9mY2RmIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O0FBQWlDOztBQUUxQjtBQUNQLE1BQU0sMkNBQU07QUFDWiIsImZpbGUiOiIuL3Jlc291cmNlcy9qcy9mcm9udC9wYWdlcy90ZXN0LmpzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtEcmF3ZXJ9IGZyb20gJy4uL0RyYXdlcic7XG5cbmV4cG9ydCBmdW5jdGlvbiB0ZXN0KCkge1xuICBuZXcgRHJhd2VyKGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5jLWRyYXdlcicpKTtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/front/pages/test.js\n");
 
 /***/ }),
 

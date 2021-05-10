@@ -26,7 +26,7 @@
   @section('head')
   @show
 </head>
-<body date-route-name="{{ \Route::currentRouteName() }}">
+<body data-route-name="{{ \Route::currentRouteName() }}">
 @section('body')
 @show 
 

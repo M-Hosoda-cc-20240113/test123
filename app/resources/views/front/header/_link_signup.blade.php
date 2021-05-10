@@ -1,1 +1,2 @@
-@include('atoms.RegularBtn', ['text' => '新規登録', 'class' => 'w-20 mr-10', 'link' => route('register')])
+<img class="p-image--gray" src="{{ asset('images/icons/icon_register.svg') }}" alt="">
+<a class="p-header__textLink u-mr-10 u-pl-5" href="{{ route('register') }}">新規登録</a>
