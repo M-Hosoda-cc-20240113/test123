@@ -3,7 +3,10 @@
 @section('title', '500|Aegis')
 
 @section('body')
-    @include('errors.header.header')
+    @component('front.header.header', ['href' => route('front.index')])
+        @include('front.header._link_mypage')
+        @include('front.header._link_login_logout')
+    @endcomponent
     <div class="Container mt-30">
         <a href="hoge">@include('atoms.Tag', ['component' => 'Tag--link', 'text' => "500 | Server Error", 'class' => 'mr-5 mb-5'])</a>
     </div>

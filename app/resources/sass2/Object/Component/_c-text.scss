@@ -12,8 +12,16 @@
     @extend #{$this};
     text-align: center;
   }
+  &--primary {
+    @extend #{$this};
+    color: $primary-color;
+  }
   &--warning {
     @extend #{$this};
     color: $warning-color;
+  }
+  &--muted {
+    @extend #{$this};
+    color: $muted-color;
   }
 }
