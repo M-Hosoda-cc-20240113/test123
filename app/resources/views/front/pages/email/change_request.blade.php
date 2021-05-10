@@ -28,11 +28,6 @@
             <p class="c-text u-mt-20">変更したいメールアドレスへ再設定の案内を送ります。</p>
             <form action="{{ route('email.sendEmail') }}" method="post">
                 {{ csrf_field() }}
-                <input class="" type="email">
-                <button type="submit" class="RegularBtn w-30">案内メールを送信</button>
-            </form>
-            <form action="{{ route('password.email') }}" method="post">
-                {{ csrf_field() }}
                 <input class="c-input--light" type="email" placeholder="メールアドレス入力欄" name="email">
                 <button type="submit" class="c-button u-mt-20">案内メールを送信</button>
             </form>
