@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
+use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
@@ -152,5 +153,117 @@ class UserRepository implements UserRepositoryInterface
         $start_of_month = $now->startOfMonth();
         $end_of_month = $now->endOfMonth();
         return User::whereBetween('operation_start_month', [$start_of_month, $end_of_month])->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByKeyWord(array $keywords, array $exclude_ids = []): Collection
+    {
+        $query = User::with(['skills', 'levels'])
+            ->where('is_admin', 0)
+            ->whereNotIn('id', $exclude_ids);
+        foreach ($keywords as $keyword) {
+            $like_keyword = '%' . $keyword . '%';
+            $query->where('email', 'like', $like_keyword)
+                ->where('sei', 'like', $like_keyword)
+                ->where('sei_kana', 'like', $like_keyword)
+                ->where('mei', 'like', $like_keyword)
+                ->where('mei_kana', 'like', $like_keyword)
+                ->where('tel', 'like', $like_keyword)
+                ->where('birthday', 'like', $like_keyword)
+                ->where('birthday', 'like', $like_keyword);
+        }
+
+        return $query->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchBySkillIds(array $skill_ids, array $exclude_ids = []): Collection
+    {
+        $query = User::where('is_admin', 0)
+            ->whereNotIn('id', $exclude_ids);
+        foreach ($skill_ids as $skill_id) {
+            $query->whereIn('skills', function ($query, $skill_id) {
+                $query->where('id', $skill_id);
+            });
+        }
+        return $query->get();
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByLevelIds(array $level_ids, array $exclude_ids = []): Collection
+    {
+        $query = User::where('is_admin', 0)
+            ->whereNotIn('id', $exclude_ids);
+        foreach ($level_ids as $level_id) {
+            $query->whereIn('skills', function ($query, $level_id) {
+                $query->where('id', $level_id);
+            });
+        }
+        return $query->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByNewUser($new_user, array $exclude_ids = []): Collection
+    {
+        return User::where('is_admin', 0)
+            ->where('is_new', $new_user)
+            ->whereNotIn('id', $exclude_ids)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByNotNewUser($not_new_user, array $exclude_ids = []): Collection
+    {
+        return User::where('is_admin', 0)
+            ->where('is_new', "!=",  $not_new_user)
+            ->whereNotIn('id', $exclude_ids)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByIsWorking($is_working, array $exclude_ids = []): Collection
+    {
+        return User::where('is_admin', 0)
+            ->where('is_working',  $is_working)
+            ->whereNotIn('id', $exclude_ids)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByIsNotWorking($is_not_working, array $exclude_ids = []): Collection
+    {
+        return User::where('is_admin', 0)
+            ->where('is_working', "!=",  $is_not_working)
+            ->whereNotIn('id', $exclude_ids)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByOperationStartMonth(string $operation_start_month, array $exclude_ids = []): Collection
+    {
+        $operation_date = new CarbonImmutable($operation_start_month);
+        $start_of_month = $operation_date->startOfMonth();
+        $end_of_month = $operation_date->endOfMonth();
+        return User::where('is_admin', 0)
+            ->whereNotIn('id', $exclude_ids)
+            ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
+            ->get();
     }
 }

@@ -80,4 +80,60 @@ interface UserRepositoryInterface
      * @return Collection|null
      */
     public function fetchThisMonthOperation(): ?Collection;
+
+    /**
+     * @param array $keywords
+     * @param array $exclude_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByKeyWord(array $keywords, array $exclude_ids = []): Collection;
+
+    /**
+     * @param array $skill_ids
+     * @param array $exclude_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchBySkillIds(array $skill_ids, array $exclude_ids): Collection;
+
+    /**
+     * @param array $level_ids
+     * @param array $exclude_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByLevelIds(array $level_ids, array $exclude_ids): Collection;
+
+    /**
+     * @param $new_user
+     * @param array $exclude_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByNewUser($new_user, array $exclude_ids): Collection;
+
+    /**
+     * @param $not_new_user
+     * @param array $exclude_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByNotNewUser($not_new_user, array $exclude_ids): Collection;
+
+    /**
+     * @param $is_working
+     * @param array $exclude_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByIsWorking($is_working, array $exclude_ids): Collection;
+
+    /**
+     * @param $is_not_working
+     * @param array $exclude_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByIsNotWorking($is_not_working, array $exclude_ids): Collection;
+
+    /**
+     * @param string $operation_start_month
+     * @param array $exclude_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByOperationStartMonth(string $operation_start_month, array $exclude_ids): Collection;
 }
