@@ -7,7 +7,7 @@
   padding-right: 20px;
 
   // footer相殺分
-  padding-bottom: 90px;
+  padding-bottom: 140px;
   @include max-screen($breakpoint-pc) {
     max-width: $content-min-width;
     padding-left: 10px;

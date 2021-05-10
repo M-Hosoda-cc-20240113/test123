@@ -2,6 +2,7 @@
   padding: 20px;
   box-shadow: 0 3px 5.7px rgba(0,0,0,0.15);
   border-radius: 3px;
+  background-color: $light-color;
   $this: &;
   &__title {
     min-height: 50px;
