@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\User\UpdateAdminUserRequest;
 use App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillService;
 use App\Services\AdminUser\SearchUser\SearchUserFetchLevelSkillService;
 use App\Services\AdminUser\SearchUser\SearchUserParameter;
-use App\Services\AdminUser\SearchUser\SearchUserResponse;
 use App\Services\AdminUser\SearchUser\SearchUserService;
 use App\Services\AdminUser\ShowEditUserForm\ShowEditUserFormService;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
@@ -27,6 +26,7 @@ class UserController extends Controller
      * Admin user list
      *
      * @param \App\Services\AdminUser\UserList\UserListService $user_list_service
+     * @param \App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillService $level_skill_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function list(
@@ -103,13 +103,13 @@ class UserController extends Controller
     /**
      * @param Request $request
      * @param SearchUserService $search_user_service
-     * @param SearchUserFetchLevelSkillService $search_user_fetch_level_skill_service
+     * @param FetchLevelSkillService $level_skill_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function search(
         Request $request,
         SearchUserService $search_user_service,
-        SearchUserFetchLevelSkillService $search_user_fetch_level_skill_service
+        FetchLevelSkillService $level_skill_service
     ) {
         $parameter = new SearchUserParameter();
         if (isset($request->new_user)) {
@@ -145,7 +145,7 @@ class UserController extends Controller
         }
 
         $response = $search_user_service->search($parameter);
-        $LevelSkills = $search_user_fetch_level_skill_service->exec($parameter);
+        $LevelSkills = $level_skill_service->exec($parameter);
         return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
     }
 

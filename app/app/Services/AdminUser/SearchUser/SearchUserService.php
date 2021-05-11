@@ -7,6 +7,7 @@ use App\Services\AdminUser\UserList\UserListResponse;
 use App\Services\Pagination\PaginatorService;
 use App\Services\User\UserRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Class SearchUserService
@@ -27,7 +28,7 @@ class SearchUserService
     /**
      * SearchUserService constructor.
      * @param UserRepositoryInterface $user_repository
-     * @param \App\Services\Pagination\PaginatorService $paginator_service
+     * @param PaginatorService $paginator_service
      */
     public function __construct(UserRepositoryInterface $user_repository, PaginatorService $paginator_service)
     {
@@ -37,9 +38,9 @@ class SearchUserService
 
     /**
      * @param SearchUserParameter $parameter
-     * @return UserListResponse
+     * @return LengthAwarePaginator
      */
-    public function search(SearchUserParameter $parameter): UserListResponse
+    public function search(SearchUserParameter $parameter): LengthAwarePaginator
     {
         $search_results = [];
         $searched_ids = [];
@@ -48,6 +49,9 @@ class SearchUserService
         if ($parameter->hasKeyword()) {
             $result = $this->user_repository->fetchByKeyWord($parameter->cutKeywordByMaxLength()->explodeKeyword());
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            if ($searched_ids) {
+                $search_results = [];
+            }
             $search_results[] = $result;
         }
 
@@ -55,6 +59,9 @@ class SearchUserService
         if ($parameter->hasSkill()) {
             $result = $this->user_repository->fetchBySkillIds($parameter->getSkillIds(), $searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            if ($searched_ids) {
+                $search_results = [];
+            }
             $search_results[] = $result;
         }
 
@@ -62,41 +69,56 @@ class SearchUserService
         if ($parameter->hasLevel()) {
             $result = $this->user_repository->fetchByLevelIds($parameter->getLevelIds(), $searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            if ($searched_ids) {
+                $search_results = [];
+            }
             $search_results[] = $result;
         }
 
         // 新規ユーザー検索
         if ($parameter->getNewUser()) {
-            $result = $this->user_repository->fetchByNewUser($parameter->getNewUser(), $searched_ids);
+            $result = $this->user_repository->fetchByNewUser($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            if ($searched_ids) {
+                $search_results = [];
+            }
             $search_results[] = $result;
         }
 
         // 既存ユーザー検索
         if ($parameter->getNotNewUser()) {
-            $result = $this->user_repository->fetchByNotNewUser($parameter->getNotNewUser(), $searched_ids);
+            $result = $this->user_repository->fetchByNotNewUser($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            if ($searched_ids) {
+                $search_results = [];
+            }
             $search_results[] = $result;
         }
 
         // 稼働済みユーザー検索
         if ($parameter->getIsWorking()) {
-            $result = $this->user_repository->fetchByIsWorking($parameter->getIsWorking(), $searched_ids);
+            $result = $this->user_repository->fetchByIsWorking($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            if ($searched_ids) {
+                $search_results = [];
+            }
             $search_results[] = $result;
         }
 
         // 未稼働ユーザー検索
         if ($parameter->getIsNotWorking()) {
-            $result = $this->user_repository->fetchByIsNotWorking($parameter->getIsNotWorking(), $searched_ids);
+            $result = $this->user_repository->fetchByIsNotWorking($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            if ($searched_ids) {
+                $search_results = [];
+            }
             $search_results[] = $result;
         }
 
         // 営業月検索
         if ($parameter->getOperationStartMonth()) {
             $result = $this->user_repository->fetchByOperationStartMonth($parameter->getOperationStartMonth(), $searched_ids);
-            if ($searched_ids){
+            if ($searched_ids) {
                 $search_results = [];
             }
             $search_results[] = $result;
@@ -107,6 +129,7 @@ class SearchUserService
             $result = $this->user_repository->all();
             $search_results[] = $result;
         }
+
         $users = $this->getResultMerged($search_results);
         $response = new UserListResponse();
         $response->setUsers($this->paginator_service->paginate($users));
@@ -122,7 +145,7 @@ class SearchUserService
     private function getResultMerged(array $search_results): \Illuminate\Support\Collection
     {
         $merged = collect();
-        foreach($search_results as $search_result) {
+        foreach ($search_results as $search_result) {
             $merged = $merged->merge($search_result);
         }
         return $merged;

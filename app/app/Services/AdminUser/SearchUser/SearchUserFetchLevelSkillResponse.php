@@ -24,39 +24,19 @@ class SearchUserFetchLevelSkillResponse
     private $levels;
 
     /**
-     * @var int[]|array
+     * @var
      */
-    private $searched_skill_ids;
+    private $searched_skills;
 
     /**
-     * @var int[]|array
+     * @var
      */
-    private $searched_level_ids;
+    private $searched_levels;
 
     /**
-     * @var int|string
+     * @var Collection|null
      */
-    private $searched_new_user;
-
-    /**
-     * @var int|string
-     */
-    private $searched_not_new_user;
-
-    /**
-     * @var int|string
-     */
-    private $searched_is_working;
-
-    /**
-     * @var int|string
-     */
-    private $searched_is_not_working;
-
-    /**
-     * @var string
-     */
-    private $searched_operation_start_month;
+    private $rel_level_skill;
 
     /**
      * @return Collection
@@ -95,128 +75,56 @@ class SearchUserFetchLevelSkillResponse
     }
 
     /**
-     * @return array|int[]
+     * @return mixed
      */
-    public function getSearchedSkillIds(): array
+    public function getSearchedSkills()
     {
-        return $this->searched_skill_ids;
+        return $this->searched_skills;
     }
 
     /**
-     * @param array|int[] $searched_skill_ids
+     * @param mixed $searched_skills
      * @return SearchUserFetchLevelSkillResponse
      */
-    public function setSearchedSkillIds(array $searched_skill_ids): SearchUserFetchLevelSkillResponse
+    public function setSearchedSkills($searched_skills): SearchUserFetchLevelSkillResponse
     {
-        $this->searched_skill_ids = $searched_skill_ids;
+        $this->searched_skills = $searched_skills;
         return $this;
     }
 
     /**
-     * @return array|int[]
+     * @return mixed
      */
-    public function getSearchedLevelIds(): array
+    public function getSearchedLevels()
     {
-        return $this->searched_level_ids;
+        return $this->searched_levels;
     }
 
     /**
-     * @param array|int[] $searched_level_ids
+     * @param mixed $searched_levels
      * @return SearchUserFetchLevelSkillResponse
      */
-    public function setSearchedLevelIds(array $searched_level_ids): SearchUserFetchLevelSkillResponse
+    public function setSearchedLevels($searched_levels): SearchUserFetchLevelSkillResponse
     {
-        $this->searched_level_ids = $searched_level_ids;
+        $this->searched_levels = $searched_levels;
         return $this;
     }
 
     /**
-     * @return int|string
+     * @return Collection|null
      */
-    public function getSearchedNewUser()
+    public function getRelLevelSkill(): ?Collection
     {
-        return $this->searched_new_user;
+        return $this->rel_level_skill;
     }
 
     /**
-     * @param int|string $searched_new_user
+     * @param \Illuminate\Database\Eloquent\Collection|null $rel_level_skill
      * @return SearchUserFetchLevelSkillResponse
      */
-    public function setSearchedNewUser($searched_new_user): SearchUserFetchLevelSkillResponse
+    public function setRelLevelSkill(?Collection $rel_level_skill): SearchUserFetchLevelSkillResponse
     {
-        $this->searched_new_user = $searched_new_user;
-        return $this;
-    }
-
-    /**
-     * @return int|string
-     */
-    public function getSearchedNotNewUser()
-    {
-        return $this->searched_not_new_user;
-    }
-
-    /**
-     * @param int|string $searched_not_new_user
-     * @return SearchUserFetchLevelSkillResponse
-     */
-    public function setSearchedNotNewUser($searched_not_new_user): SearchUserFetchLevelSkillResponse
-    {
-        $this->searched_not_new_user = $searched_not_new_user;
-        return $this;
-    }
-
-    /**
-     * @return int|string
-     */
-    public function getSearchedIsWorking()
-    {
-        return $this->searched_is_working;
-    }
-
-    /**
-     * @param int|string $searched_is_working
-     * @return SearchUserFetchLevelSkillResponse
-     */
-    public function setSearchedIsWorking($searched_is_working): SearchUserFetchLevelSkillResponse
-    {
-        $this->searched_is_working = $searched_is_working;
-        return $this;
-    }
-
-    /**
-     * @return int|string
-     */
-    public function getSearchedIsNotWorking()
-    {
-        return $this->searched_is_not_working;
-    }
-
-    /**
-     * @param int|string $searched_is_not_working
-     * @return SearchUserFetchLevelSkillResponse
-     */
-    public function setSearchedIsNotWorking($searched_is_not_working): SearchUserFetchLevelSkillResponse
-    {
-        $this->searched_is_not_working = $searched_is_not_working;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSearchedOperationStartMonth(): string
-    {
-        return $this->searched_operation_start_month;
-    }
-
-    /**
-     * @param string $searched_operation_start_month
-     * @return SearchUserFetchLevelSkillResponse
-     */
-    public function setSearchedOperationStartMonth(string $searched_operation_start_month): SearchUserFetchLevelSkillResponse
-    {
-        $this->searched_operation_start_month = $searched_operation_start_month;
+        $this->rel_level_skill = $rel_level_skill;
         return $this;
     }
 }

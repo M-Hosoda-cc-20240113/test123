@@ -1,6 +1,6 @@
 @php
     /**
-     * @var \App\Services\AdminUser\SearchUser\SearchUserFetchLevelSkillResponse $LevelSkills
+     * @var \App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillResponse $LevelSkills
      */
 @endphp
 
@@ -51,19 +51,23 @@
             {{--checkbox--}}
             <div class="p-checkboxUnit js-tab_content">
                 <label class="p-checkbox p-checkboxUnit__item">新規
-                    <input value=1 name="new_user" type="checkbox" @if(request()->input('new_user')){{ 'checked' }}@endif>
+                    <input value=1 name="new_user"
+                           type="checkbox" @if(request()->input('new_user')){{ 'checked' }}@endif>
                     <div class="p-checkbox__indicator"></div>
                 </label>
                 <label class="p-checkbox p-checkboxUnit__item">既存
-                    <input value=1 name="not_new_user" type="checkbox" @if(request()->input('not_new_user')){{ 'checked' }}@endif>
+                    <input value=1 name="not_new_user"
+                           type="checkbox" @if(request()->input('not_new_user')){{ 'checked' }}@endif>
                     <div class="p-checkbox__indicator"></div>
                 </label>
                 <label class="p-checkbox p-checkboxUnit__item">稼働中
-                    <input value=1 name="is_working" type="checkbox" @if(request()->input('is_working')){{ 'checked' }}@endif>
+                    <input value=1 name="is_working"
+                           type="checkbox" @if(request()->input('is_working')){{ 'checked' }}@endif>
                     <div class="p-checkbox__indicator"></div>
                 </label>
                 <label class="p-checkbox p-checkboxUnit__item">待機中
-                    <input value=1 name="is_not_working" type="checkbox" @if(request()->input('is_not_working')){{ 'checked' }}@endif>
+                    <input value=1 name="is_not_working"
+                           type="checkbox" @if(request()->input('is_not_working')){{ 'checked' }}@endif>
                     <div class="p-checkbox__indicator"></div>
                 </label>
             </div>
@@ -71,32 +75,36 @@
 
             {{--Level Skill--}}
             <div class="p-formGroupUnit--2col u-ff-column js-parent">
-                <div class="p-formGroupUnit--2col__title">
-                    <p class="c-text">スキル</p>
-                    <p class="c-text u-pl-15">経験</p>
-                </div>
+                @foreach($LevelSkills->getRelLevelSkill() as $searched_skill_id => $searched_level_id)
+                    @if ($loop->first)
+                        <div class="p-formGroupUnit--2col__title">
+                            <p class="c-text">スキル</p>
+                            <p class="c-text u-pl-15">経験</p>
+                        </div>
+                    @endif
                     <div class="p-formGroupUnit--2col__itemForSkill js-content js-remove">
                         <label class="p-formGroupUnit--2col__label" for="">
                             <select name="skill_ids[]" id="skill_id" class="c-input">
-                                <option value="">選択してください</option>
+                                <option value="0">選択してください</option>
                                 @foreach($LevelSkills->getSkills() as $skill)
                                     <option
-                                        value="{{ $skill->id }}" @if(old('skill_ids[]') == $skill->id) selected @endif>{{ $skill->name }}</option>
+                                        value="{{ $skill->id }}" {{ $searched_skill_id === $skill->id ? 'selected' : '' }}>{{ $skill->name }}</option>
                                 @endforeach
                             </select>
                         </label>
 
                         <label class="p-formGroupUnit--2col__label--after" for="">
                             <select name="level_ids[]" id="" class="c-input">
-                                <option value="">選択してください</option>
+                                <option value="0">選択してください</option>
                                 @foreach($LevelSkills->getLevels() as $level)
                                     <option
-                                        value="{{ $level->id }}" @if(old('skill_ids[]') == $skill->id) selected @endif>{{ $level->level }}</option>
+                                        value="{{ $level->id }}" {{ $searched_level_id === $level->id ? 'selected' : '' }}>{{ $level->level }}</option>
                                 @endforeach
                             </select>
                         </label>
                     </div>
-                    {{--    itemForSkill      --}}
+                @endforeach
+                {{--    itemForSkill      --}}
                 <img class="c-icon--clickable u-m0a js-add" src="/images/icons/icon_add.png" alt="">
             </div>
             {{--Level Skill--}}
@@ -116,10 +124,10 @@
             {{--operation_start_month--}}
 
             {{--keyword--}}
-{{--            <div class="p-searchBox u-mt-20">--}}
-{{--                <input name="keyword" class="c-input p-searchBox__input js-search_input" type="text" value="{{ old('keyword') }}"--}}
-{{--                       placeholder="フリーワード">--}}
-{{--            </div>--}}
+            {{--            <div class="p-searchBox u-mt-20">--}}
+            {{--                <input name="keyword" class="c-input p-searchBox__input js-search_input" type="text" value="{{ old('keyword') }}"--}}
+            {{--                       placeholder="フリーワード">--}}
+            {{--            </div>--}}
             {{--keyword--}}
             <button type="submit"
                     class="c-button--secondary p-searchBox__button js-project_search u-db u-m0a u-w-15-pc u-mt-30 js-project_search">

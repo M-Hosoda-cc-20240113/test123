@@ -193,8 +193,13 @@ class UserRepository implements UserRepositoryInterface
         $user_id = RelLevelSkillUser::whereIn('skill_id', $skill_ids)
             ->select('user_id')
             ->get()->toArray();
+        if ($exclude_ids){
+            return User::where('is_admin', 0)
+                ->whereIn('id', $exclude_ids)
+                ->whereIn('id', $user_id)
+                ->get();
+        }
         return User::where('is_admin', 0)
-            ->whereNotIn('id', $exclude_ids)
             ->whereIn('id', $user_id)
             ->get();
     }
@@ -204,11 +209,16 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchByLevelIds(array $level_ids, array $exclude_ids = []): Collection
     {
-        $user_id = RelLevelSkillUser::where('skill_id', $level_ids[0])
+        $user_id = RelLevelSkillUser::where('level_id', $level_ids[0])
             ->select('user_id')
-            ->get();
+            ->get()->toArray();
+        if ($exclude_ids){
+            return User::where('is_admin', 0)
+                ->whereIn('id', $exclude_ids)
+                ->whereIn('id', $user_id)
+                ->get();
+        }
         return User::where('is_admin', 0)
-            ->whereNotIn('id', $exclude_ids)
             ->whereIn('id', $user_id)
             ->get();
     }
@@ -216,44 +226,64 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByNewUser($new_user, array $exclude_ids = []): Collection
+    public function fetchByNewUser(array $exclude_ids = []): Collection
     {
+        if ($exclude_ids){
+            return User::where('is_admin', 0)
+                ->where('is_new', 1)
+                ->whereIn('id', $exclude_ids)
+                ->get();
+        }
         return User::where('is_admin', 0)
-            ->where('is_new', $new_user)
-            ->whereNotIn('id', $exclude_ids)
+            ->where('is_new', 1)
             ->get();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function fetchByNotNewUser($not_new_user, array $exclude_ids = []): Collection
+    public function fetchByNotNewUser(array $exclude_ids = []): Collection
     {
+        if ($exclude_ids){
+            return User::where('is_admin', 0)
+                ->where('is_new', 0)
+                ->whereIn('id', $exclude_ids)
+                ->get();
+        }
         return User::where('is_admin', 0)
-            ->where('is_new', "!=", $not_new_user)
-            ->whereNotIn('id', $exclude_ids)
+            ->where('is_new', 0)
             ->get();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function fetchByIsWorking($is_working, array $exclude_ids = []): Collection
+    public function fetchByIsWorking(array $exclude_ids = []): Collection
     {
+        if ($exclude_ids){
+            return User::where('is_admin', 0)
+                ->where('is_working', 1)
+                ->whereIn('id', $exclude_ids)
+                ->get();
+        }
         return User::where('is_admin', 0)
-            ->where('is_working', $is_working)
-            ->whereNotIn('id', $exclude_ids)
+            ->where('is_working', 1)
             ->get();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function fetchByIsNotWorking($is_not_working, array $exclude_ids = []): Collection
+    public function fetchByIsNotWorking(array $exclude_ids = []): Collection
     {
+        if ($exclude_ids){
+            return User::where('is_admin', 0)
+                ->where('is_working', 0)
+                ->whereIn('id', $exclude_ids)
+                ->get();
+        }
         return User::where('is_admin', 0)
-            ->where('is_working', "!=", $is_not_working)
-            ->whereNotIn('id', $exclude_ids)
+            ->where('is_working', 0)
             ->get();
     }
 

@@ -5,6 +5,7 @@ namespace App\Services\AdminUser\SearchUser;
 
 
 use App\Services\Level\LevelRepositoryInterface;
+use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
 use App\Services\Skill\SkillRepositoryInterface;
 
 /**
@@ -24,17 +25,27 @@ class SearchUserFetchLevelSkillService
     private $level_repository;
 
     /**
-     * FetchLevelSkillService constructor.
-     * @param SkillRepositoryInterface $skill_repository
-     * @param LevelRepositoryInterface $level_repository
+     * @var RelLevelSkillUSerRepositoryInterface
      */
-    public function __construct(
+    private $rel_revel_skill_user_repository;
+
+    /**
+     * SearchUserFetchLevelSkillService constructor.
+     * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
+     * @param \App\Services\Level\LevelRepositoryInterface $level_repository
+     * @param \App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
+     */
+    public function
+    __construct(
         SkillRepositoryInterface $skill_repository,
-        LevelRepositoryInterface $level_repository)
-    {
+        LevelRepositoryInterface $level_repository,
+        RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
+    ) {
         $this->skill_repository = $skill_repository;
         $this->level_repository = $level_repository;
+        $this->rel_revel_skill_user_repository = $rel_revel_skill_user_repository;
     }
+
 
     /**
      * @param SearchUserParameter $parameter
@@ -45,15 +56,15 @@ class SearchUserFetchLevelSkillService
         $response = new SearchUserFetchLevelSkillResponse;
         $skills = $this->skill_repository->all();
         $levels = $this->level_repository->all();
+        $rel_level_skill = $this->rel_revel_skill_user_repository->fetchByLevelIdAndSkillId($parameter->getLevelIds(),$parameter->getSkillIds());
+//        $searched_skill = $this->skill_repository->fetchBySkillId($parameter->getLevelIds());
+//        $searched_level = $this->level_repository->fetchByLevelId($parameter->getSkillIds());
         $response->setSkills($skills);
         $response->setLevels($levels);
-        $response->setSearchedLevelIds($parameter->getLevelIds());
-        $response->setSearchedSkillIds($parameter->getSkillIds());
-        $response->setSearchedNewUser($parameter->getNewUser());
-        $response->setSearchedNotNewUser($parameter->getNotNewUser());
-        $response->setSearchedIsWorking($parameter->getIsWorking());
-        $response->setSearchedIsNotWorking($parameter->getIsNotWorking());
-        $response->setSearchedOperationStartMonth($parameter->getOperationStartMonth());
+        dd($rel_level_skill);
+        $response->setRelLevelSkill($rel_level_skill);
+//        $response->setSearchedLevels($searched_skill);
+//        $response->setSearchedSkills($searched_level);
         return $response;
     }
 }

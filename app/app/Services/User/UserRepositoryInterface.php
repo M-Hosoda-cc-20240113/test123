@@ -103,32 +103,28 @@ interface UserRepositoryInterface
     public function fetchByLevelIds(array $level_ids, array $exclude_ids): Collection;
 
     /**
-     * @param $new_user
      * @param array $exclude_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByNewUser($new_user, array $exclude_ids): Collection;
+    public function fetchByNewUser(array $exclude_ids): Collection;
 
     /**
-     * @param $not_new_user
      * @param array $exclude_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByNotNewUser($not_new_user, array $exclude_ids): Collection;
+    public function fetchByNotNewUser(array $exclude_ids): Collection;
 
     /**
-     * @param $is_working
      * @param array $exclude_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByIsWorking($is_working, array $exclude_ids): Collection;
+    public function fetchByIsWorking(array $exclude_ids): Collection;
 
     /**
-     * @param $is_not_working
      * @param array $exclude_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByIsNotWorking($is_not_working, array $exclude_ids): Collection;
+    public function fetchByIsNotWorking(array $exclude_ids): Collection;
 
     /**
      * @param string $operation_start_month
