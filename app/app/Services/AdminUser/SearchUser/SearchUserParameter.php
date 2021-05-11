@@ -208,7 +208,13 @@ class SearchUserParameter
      */
     public function hasSkill(): bool
     {
-        return count($this->getSkillIds()) > 0;
+        $count = [];
+        foreach ($this->getSkillIds() as $skill_id){
+            if ($skill_id) {
+                $count[] = $skill_id;
+            }
+        }
+        return count($count) > 0;
     }
 
     /**
@@ -216,7 +222,13 @@ class SearchUserParameter
      */
     public function hasLevel(): bool
     {
-        return count($this->getLevelIds()) > 0;
+        $count = [];
+        foreach ($this->getLevelIds() as $skill_id){
+            if ($skill_id) {
+                $count[] = $skill_id;
+            }
+        }
+        return count($count) > 0;
     }
 
     /**

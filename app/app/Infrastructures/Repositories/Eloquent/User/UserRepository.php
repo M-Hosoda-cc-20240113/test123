@@ -3,6 +3,7 @@
 namespace App\Infrastructures\Repositories\Eloquent\User;
 
 use App\Mail\RegisterMail;
+use App\Models\RelLevelSkillUser;
 use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
@@ -183,29 +184,18 @@ class UserRepository implements UserRepositoryInterface
         return $query->get();
     }
 
+
     /**
      * {@inheritDoc}
      */
     public function fetchBySkillIds(array $skill_ids, array $exclude_ids = []): Collection
     {
-        $length = count($skill_ids);
-        $arr = join(",", $skill_ids);
-        $target_ids = \DB::select(\DB::raw("(
-            SELECT u.id FROM users AS u
-            INNER JOIN
-            (
-                SELECT lsu.user_id, count(*) AS s
-                FROM rel_levels_skills_users AS lsu
-                WHERE lsu.skill_id IN (" . $arr . ")
-                GROUP BY lsu.user_id
-                HAVING s = $length
-            ) AS summary
-            ON u.id = summary.user_id
-        )"));
-
+        $user_id = RelLevelSkillUser::whereIn('skill_id', $skill_ids)
+            ->select('user_id')
+            ->get()->toArray();
         return User::where('is_admin', 0)
             ->whereNotIn('id', $exclude_ids)
-            ->whereIn('id', array_column($target_ids, 'id'))
+            ->whereIn('id', $user_id)
             ->get();
     }
 
@@ -214,25 +204,12 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchByLevelIds(array $level_ids, array $exclude_ids = []): Collection
     {
-        $length = count($level_ids);
-        $arr = join(",", $level_ids);
-        $target_ids = \DB::select(\DB::raw("(
-            SELECT u.id FROM users AS u
-            INNER JOIN
-            (
-                SELECT lsu.user_id, count(*) AS s
-                FROM rel_levels_skills_users AS lsu
-                WHERE lsu.level_id IN (" . $arr . ")
-                GROUP BY lsu.user_id
-                HAVING s = $length
-            ) AS summary
-            ON u.id = summary.user_id
-        )"));
-
-        return User::with('levels')
-            ->where('is_admin', 0)
+        $user_id = RelLevelSkillUser::where('skill_id', $level_ids[0])
+            ->select('user_id')
+            ->get();
+        return User::where('is_admin', 0)
             ->whereNotIn('id', $exclude_ids)
-            ->whereIn('id', array_column($target_ids, 'id'))
+            ->whereIn('id', $user_id)
             ->get();
     }
 
@@ -288,8 +265,13 @@ class UserRepository implements UserRepositoryInterface
         $operation_date = new CarbonImmutable($operation_start_month);
         $start_of_month = $operation_date->startOfMonth();
         $end_of_month = $operation_date->endOfMonth();
+        if ($exclude_ids){
+            return User::where('is_admin', 0)
+                ->whereIn('id', $exclude_ids)
+                ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
+                ->get();
+        }
         return User::where('is_admin', 0)
-            ->whereNotIn('id', $exclude_ids)
             ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
             ->get();
     }

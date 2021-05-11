@@ -93,10 +93,12 @@ class SearchUserService
             $search_results[] = $result;
         }
 
-        // 未稼働ユーザー検索
+        // 営業月検索
         if ($parameter->getOperationStartMonth()) {
             $result = $this->user_repository->fetchByOperationStartMonth($parameter->getOperationStartMonth(), $searched_ids);
-            $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            if ($searched_ids){
+                $search_results = [];
+            }
             $search_results[] = $result;
         }
 
@@ -105,7 +107,6 @@ class SearchUserService
             $result = $this->user_repository->all();
             $search_results[] = $result;
         }
-
         $users = $this->getResultMerged($search_results);
         $response = new UserListResponse();
         $response->setUsers($this->paginator_service->paginate($users));

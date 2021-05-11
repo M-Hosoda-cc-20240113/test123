@@ -136,4 +136,5 @@ interface UserRepositoryInterface
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function fetchByOperationStartMonth(string $operation_start_month, array $exclude_ids): Collection;
+
 }

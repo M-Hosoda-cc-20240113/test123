@@ -15,6 +15,8 @@ use App\Services\AdminUser\UpdateUser\UpdateUserService;
 use App\Services\AdminUser\UserList\UserListResponse;
 use App\Services\AdminUser\UserList\UserListService;
 use App\Services\AdminUser\UserDetail\UserDetailService;
+use App\Services\AdminUser\UserStatus\UserStatusResponse;
+use App\Services\AdminUser\UserStatus\UserStatusService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -109,7 +111,6 @@ class UserController extends Controller
         SearchUserService $search_user_service,
         SearchUserFetchLevelSkillService $search_user_fetch_level_skill_service
     ) {
-//        dd($request);
         $parameter = new SearchUserParameter();
         if (isset($request->new_user)) {
             $parameter->setNewUser($request->new_user);
@@ -145,6 +146,15 @@ class UserController extends Controller
 
         $response = $search_user_service->search($parameter);
         $LevelSkills = $search_user_fetch_level_skill_service->exec($parameter);
+        return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
+    }
+
+    public function template(Request $request, UserStatusService $user_status_service, FetchLevelSkillService $level_skill_service)
+    {
+        $response = new UserStatusResponse();
+        $users = $user_status_service->exec($request->status);
+        $response->setUsers($users);
+        $LevelSkills = $level_skill_service->exec();
         return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
     }
 }
