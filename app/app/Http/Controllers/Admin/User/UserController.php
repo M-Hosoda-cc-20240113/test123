@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\UpdateAdminUserRequest;
 use App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillService;
-use App\Services\AdminUser\SearchUser\SearchUserFetchLevelSkillService;
 use App\Services\AdminUser\SearchUser\SearchUserParameter;
 use App\Services\AdminUser\SearchUser\SearchUserService;
 use App\Services\AdminUser\ShowEditUserForm\ShowEditUserFormService;
@@ -138,10 +137,6 @@ class UserController extends Controller
 
         if (isset($request->level_ids)) {
             $parameter->setLevelIds($request->level_ids);
-        }
-
-        if (isset($request->keyword)) {
-            $parameter->setKeyword($request->keyword);
         }
 
         $response = $search_user_service->search($parameter);

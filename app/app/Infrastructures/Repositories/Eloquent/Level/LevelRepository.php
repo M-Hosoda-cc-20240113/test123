@@ -21,13 +21,4 @@ class LevelRepository implements LevelRepositoryInterface
     {
         return Level::all();
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function fetchByLevelId($level_ids): Collection
-    {
-        return Level::whereIn('id', $level_ids)
-            ->get();
-    }
 }

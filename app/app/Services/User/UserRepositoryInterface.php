@@ -82,13 +82,6 @@ interface UserRepositoryInterface
     public function fetchThisMonthOperation(): ?Collection;
 
     /**
-     * @param array $keywords
-     * @param array $exclude_ids
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function fetchByKeyWord(array $keywords, array $exclude_ids = []): Collection;
-
-    /**
      * @param array $skill_ids
      * @param array $exclude_ids
      * @return \Illuminate\Database\Eloquent\Collection

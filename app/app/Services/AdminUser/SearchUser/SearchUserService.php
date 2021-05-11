@@ -40,28 +40,16 @@ class SearchUserService
      * @param SearchUserParameter $parameter
      * @return LengthAwarePaginator
      */
-    public function search(SearchUserParameter $parameter): LengthAwarePaginator
+    public function search(SearchUserParameter $parameter)
     {
         $search_results = [];
         $searched_ids = [];
-
-        // キーワード検索
-        if ($parameter->hasKeyword()) {
-            $result = $this->user_repository->fetchByKeyWord($parameter->cutKeywordByMaxLength()->explodeKeyword());
-            $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
-            if ($searched_ids) {
-                $search_results = [];
-            }
-            $search_results[] = $result;
-        }
 
         // スキル検索
         if ($parameter->hasSkill()) {
             $result = $this->user_repository->fetchBySkillIds($parameter->getSkillIds(), $searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
-            if ($searched_ids) {
-                $search_results = [];
-            }
+            $search_results = [];
             $search_results[] = $result;
         }
 
@@ -69,9 +57,7 @@ class SearchUserService
         if ($parameter->hasLevel()) {
             $result = $this->user_repository->fetchByLevelIds($parameter->getLevelIds(), $searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
-            if ($searched_ids) {
-                $search_results = [];
-            }
+            $search_results = [];
             $search_results[] = $result;
         }
 
@@ -79,9 +65,7 @@ class SearchUserService
         if ($parameter->getNewUser()) {
             $result = $this->user_repository->fetchByNewUser($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
-            if ($searched_ids) {
-                $search_results = [];
-            }
+            $search_results = [];
             $search_results[] = $result;
         }
 
@@ -89,9 +73,7 @@ class SearchUserService
         if ($parameter->getNotNewUser()) {
             $result = $this->user_repository->fetchByNotNewUser($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
-            if ($searched_ids) {
-                $search_results = [];
-            }
+            $search_results = [];
             $search_results[] = $result;
         }
 
@@ -99,9 +81,7 @@ class SearchUserService
         if ($parameter->getIsWorking()) {
             $result = $this->user_repository->fetchByIsWorking($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
-            if ($searched_ids) {
-                $search_results = [];
-            }
+            $search_results = [];
             $search_results[] = $result;
         }
 
@@ -109,24 +89,22 @@ class SearchUserService
         if ($parameter->getIsNotWorking()) {
             $result = $this->user_repository->fetchByIsNotWorking($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
-            if ($searched_ids) {
-                $search_results = [];
-            }
+            $search_results = [];
             $search_results[] = $result;
         }
 
         // 営業月検索
         if ($parameter->getOperationStartMonth()) {
-            $result = $this->user_repository->fetchByOperationStartMonth($parameter->getOperationStartMonth(), $searched_ids);
-            if ($searched_ids) {
-                $search_results = [];
-            }
+            $result = $this->user_repository->fetchByOperationStartMonth($parameter->getOperationStartMonth(),
+                $searched_ids);
+            $search_results = [];
             $search_results[] = $result;
         }
 
         // 検索条件がない時
-        if (!$parameter->hasKeyword() && !$parameter->hasSkill() && !$parameter->hasLevel() && !$parameter->getNewUser() && !$parameter->getNotNewUser() && !$parameter->getIsWorking() && !$parameter->getIsNotWorking() && !$parameter->getOperationStartMonth()) {
+        if (!$parameter->hasSkill() && !$parameter->hasLevel() && !$parameter->getNewUser() && !$parameter->getNotNewUser() && !$parameter->getIsWorking() && !$parameter->getIsNotWorking() && !$parameter->getOperationStartMonth()) {
             $result = $this->user_repository->all();
+            $search_results = [];
             $search_results[] = $result;
         }
 

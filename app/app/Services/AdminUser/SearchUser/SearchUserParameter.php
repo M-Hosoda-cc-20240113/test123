@@ -47,11 +47,6 @@ class SearchUserParameter
     private $operation_start_month = '';
 
     /**
-     * @var string
-     */
-    private $keyword = '';
-
-    /**
      * @return array|null
      */
     public function getSkillIds(): ?array
@@ -178,32 +173,6 @@ class SearchUserParameter
     }
 
     /**
-     * @return string
-     */
-    public function getKeyword(): ?string
-    {
-        return $this->keyword;
-    }
-
-    /**
-     * @param string $keyword
-     * @return SearchUserParameter
-     */
-    public function setKeyword(string $keyword): SearchUserParameter
-    {
-        $this->keyword = $keyword;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasKeyword(): bool
-    {
-        return count($this->explodeKeyword()) > 0;
-    }
-
-    /**
      * @return bool
      */
     public function hasSkill(): bool
@@ -229,27 +198,6 @@ class SearchUserParameter
             }
         }
         return count($count) > 0;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function explodeKeyword(): array
-    {
-        $converted = trim(mb_convert_kana($this->keyword, 's'));
-        if ($converted === '') {
-            return [];
-        }
-        return explode(' ', $converted);
-    }
-
-    /**
-     * @return $this
-     */
-    public function cutKeywordByMaxLength(): SearchUserParameter
-    {
-        $this->keyword = mb_substr($this->keyword, 0, self::MAX_KEYWORD_LENGTH, 'utf-8');
-        return $this;
     }
 
     /**

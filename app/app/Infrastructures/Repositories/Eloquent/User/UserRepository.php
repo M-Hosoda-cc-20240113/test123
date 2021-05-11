@@ -8,12 +8,10 @@ use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
-use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 /**
@@ -156,32 +154,6 @@ class UserRepository implements UserRepositoryInterface
         $start_of_month = $now->startOfMonth();
         $end_of_month = $now->endOfMonth();
         return User::whereBetween('operation_start_month', [$start_of_month, $end_of_month])->get();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function fetchByKeyWord(array $keywords, array $exclude_ids = []): Collection
-    {
-        $query = User::where('is_admin', 0)
-            ->whereNotIn('id', $exclude_ids);
-
-        foreach ($keywords as $keyword) {
-            $like_keyword = '%' . $keyword . '%';
-            $query->where(static function (Builder $query) use ($like_keyword) {
-                $query->where('email_hash', 'like', $like_keyword)
-                    ->orWhere('sei', 'like', $like_keyword)
-                    ->orWhere('sei_kana', 'like', $like_keyword)
-                    ->orWhere('mei', 'like', $like_keyword)
-                    ->orWhere('mei_kana', 'like', $like_keyword)
-                    ->orWhere('tel', 'like', $like_keyword)
-                    ->orWhere('operation_start_month', 'like', $like_keyword)
-                    ->orWhere('remarks', 'like', $like_keyword)
-                    ->orWhere('birthday', 'like', $like_keyword);
-            });
-        }
-        dd($query->get());
-        return $query->get();
     }
 
 

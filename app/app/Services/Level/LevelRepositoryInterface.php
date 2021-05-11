@@ -17,10 +17,4 @@ interface LevelRepositoryInterface
      * @return Level[]|Collection
      */
     public function all():Collection;
-
-    /**
-     * @param array $level_ids
-     * @return Collection
-     */
-    public function fetchByLevelId(array $level_ids):Collection;
 }
