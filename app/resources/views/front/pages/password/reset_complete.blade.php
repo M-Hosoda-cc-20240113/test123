@@ -7,6 +7,14 @@
     @include('front.header._link_mypage')
     @include('front.header._link_login_logout')
   @endcomponent
+
+  <nav class="p-drawerContents">
+      <ul>
+          <li>@include('front.header._link_mypage')</li>
+          <li class="u-mt-10">@include('front.header._link_login_logout')</li>
+      </ul>
+  </nav>
+
   <div class="l-container">
       <div class="l-main">
           <p class="c-text--center">パスワードの再設定が完了しました。<br class="u-dn-pc">新しいパスワードでログインしてください。</p>

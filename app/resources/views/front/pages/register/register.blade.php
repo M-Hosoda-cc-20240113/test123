@@ -8,6 +8,13 @@
     @include('front.header._link_login_logout')
   @endcomponent
 
+  <nav class="p-drawerContents">
+    <ul>
+      <li>@include('front.header._link_mypage')</li>
+      <li class="u-mt-10">@include('front.header._link_login_logout')</li>
+    </ul>
+  </nav>
+
   <div class="l-container">
     <h2 class="p-level2Heading">新規登録情報入力（必須）</h2>
 

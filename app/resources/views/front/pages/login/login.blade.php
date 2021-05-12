@@ -6,6 +6,13 @@
     @component('front.header.header', ['href' => route('front.index')])
         @include('front.header._link_login_logout')
     @endcomponent
+
+    <nav class="p-drawerContents">
+        <ul>
+            <li class="u-mt-10">@include('front.header._link_login_logout')</li>
+        </ul>
+    </nav>
+
     <div class="l-container">
         <div class="l-main">
             <img class="u-m0a u-w-30-pc u-mt-60" src="{{ asset('images/logo/aegis.svg') }}" alt="">

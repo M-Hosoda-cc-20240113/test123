@@ -2021,6 +2021,9 @@ img {
 @media screen and (max-width: 768px) {
   .p-drawerContents a {
     display: flex;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px;
   }
 }
 

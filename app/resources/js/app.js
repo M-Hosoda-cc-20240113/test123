@@ -1,6 +1,9 @@
 // route config
 import {routes} from './route';
 
+// common.js
+import {common} from './common';
+
 // admin
 import { project_detail } from "./admin/pages/project_detail";
 import { project_list } from "./admin/pages/project_list";
@@ -29,3 +32,6 @@ if (route_name === routes.assign_list) assign_list();
 if (route_name === routes.index || route_name === routes.project_search) index();
 if (route_name === routes.user_skill_edit) user_skill_edit();
 if (route_name === routes.test) test();
+
+// 全ページ共通で動かす
+common();
