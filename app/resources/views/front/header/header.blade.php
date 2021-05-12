@@ -4,5 +4,12 @@
             <img src="{{ asset('images/logo/aegis.svg') }}" alt="aegisのロゴ" class="">
         </a>
         {{ $slot ?? '' }}
+
+        <div class="c-drawer--gray u-as-center u-mr-10 u-dn-pc" id="">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        {{--   ドロワー   --}}
     </div>
 </header>
