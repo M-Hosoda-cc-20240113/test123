@@ -1923,6 +1923,10 @@ img {
   filter: invert(40%) sepia(0%) saturate(11%) hue-rotate(143deg) brightness(101%) contrast(93%);
 }
 
+.p-image--white {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
 @keyframes show {
   from {
     opacity: 0;
@@ -1994,7 +1998,6 @@ img {
   position: absolute;
   left: -30%;
   z-index: 998;
-  color: #005c9c;
   background: rgba(66, 181, 209, 0.9);
   width: 30%;
   height: 100%;
@@ -2013,6 +2016,27 @@ img {
 
 .p-drawerContents.js-active {
   left: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .p-drawerContents a {
+    display: flex;
+  }
+}
+
+.p-drawerContents a img {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.p-drawerContents a span {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .p-drawerContents a span {
+    display: block;
+  }
 }
 
 .u-db {

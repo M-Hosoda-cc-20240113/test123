@@ -13,10 +13,3 @@
         {{--   ドロワー   --}}
     </div>
 </header>
-<nav class="p-drawerContents">
-    <ul>
-        <li><a class="c-text" href="#">メニュー1</a></li>
-        <li class="u-mt-10"><a class="c-text" href="#">メニュー2</a></li>
-        <li class="u-mt-10"><a class="c-text u-mt-20" href="#">メニュー3</a></li>
-    </ul>
-</nav>

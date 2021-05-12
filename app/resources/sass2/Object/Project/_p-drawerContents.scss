@@ -2,7 +2,6 @@
   position: absolute;
   left: -30%;
   z-index: 998;
-  color: #005c9c;
   background: rgba($primary-color, .9);
   width: 30%;
   height: 100%;
@@ -16,5 +15,21 @@
   }
   &.js-active {
     left: 0;
+  }
+
+  a {
+    @include max-screen($breakpoint-pc) {
+      display: flex;
+    }
+    img {
+      filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+    }
+    span {
+      color: $light-color;
+      font-weight: bold;
+      @include max-screen($breakpoint-pc) {
+        display: block;
+      }
+    }
   }
 }

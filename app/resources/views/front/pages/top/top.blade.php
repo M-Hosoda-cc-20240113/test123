@@ -14,6 +14,13 @@
         @include('front.header._link_login_logout')
     @endcomponent
 
+    <nav class="p-drawerContents">
+        <ul>
+            <li>@include('front.header._link_mypage')</li>
+            <li class="u-mt-10">@include('front.header._link_login_logout')</li>
+        </ul>
+    </nav>
+
     <div class="l-container">
         @if($errors->all())
             <p class="c-text--bold u-mt-20">検索条件が不正です。</p>
