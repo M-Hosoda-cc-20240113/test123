@@ -15,6 +15,9 @@
   &--primary {
     @extend #{$this};
     color: $primary-color;
+    &:hover,&:active {
+      color: $primary-color;
+    }
   }
   &--warning {
     @extend #{$this};

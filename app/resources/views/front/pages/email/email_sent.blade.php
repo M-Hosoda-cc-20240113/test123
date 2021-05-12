@@ -12,15 +12,18 @@
         <ul>
             <li>@include('front.header._link_mypage')</li>
             <li>@include('front.header._link_login_logout')</li>
+            @auth
             <li><a href="{{ route('front.user.edit') }}">ユーザー情報編集</a> </li>
             <li><a href="{{ route('password.request') }}">パスワード変更</a> </li>
             <li><a href="{{ route('email.request') }}">メールアドレス変更</a> </li>
             <li><a href="{{ route('front.user.skill.form') }}">スキル編集</a></li>
             <li><a href="{{ route('front.user.delete.form') }}">退会</a></li>
+            @endauth
         </ul>
     </nav>
 
-    <div class="l-container--2col">
+    <div class="l-container--2col @guest u-jc-center @endguest">
+        @auth
         <div class="l-sidebar u-dn-sp">
             <ul class="p-list {{ $class ?? '' }}">
                 <li class="c-text p-list__item--header">メニュー</li>
@@ -36,6 +39,7 @@
                                             href="{{ route('front.user.delete.form') }}">退会</a></li>
             </ul>
         </div>
+        @endauth
         <div class="l-main">
             <div class="p-mainItem">
                 <h2 class="p-level2Heading">メールアドレス変更</h2>

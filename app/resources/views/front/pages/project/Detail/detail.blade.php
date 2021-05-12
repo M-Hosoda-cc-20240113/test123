@@ -44,9 +44,6 @@
                        class="c-button u-db u-m0a u-mt-30 u-w-30-pc">新規登録して応募する</a>
                     <p class="mt-20 ta-center fs-12">※新規登録で応募が完了します。担当営業が2営業日以内に電話で連絡いたします。</p>
                 </div>
-                <a href="{{ route('register', ['project_id' => $response->getProject()] )}}"
-                   class="c-button u-db u-m0a u-mt-30 u-w-15-pc">新規登録して応募する</a>
-                <p class="mt-20 ta-center fs-12">※新規登録で応募が完了します。担当営業が2営業日以内に電話で連絡いたします。</p>
             @endif
         </div>
     </div>

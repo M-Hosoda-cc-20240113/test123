@@ -615,6 +615,10 @@ img {
   color: #42b5d1;
 }
 
+.c-text--primary:hover, .c-text--primary:active {
+  color: #42b5d1;
+}
+
 .c-text--warning {
   color: #F9627D;
 }
@@ -2060,6 +2064,10 @@ img {
 
 .u-ff-row {
   flex-flow: row wrap;
+}
+
+.u-jc-center {
+  justify-content: center;
 }
 
 .u-as-center {
