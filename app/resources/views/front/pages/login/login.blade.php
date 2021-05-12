@@ -41,8 +41,8 @@
                 </div>
                 <button type="submit" class="c-button u-w-40-pc u-db u-m0a u-mt-20">ログイン</button>
                 <div class="u-mt-20 u-m0a u-w-40-pc u-border-top u-pt-20">
-                    <a class="c-text--primary u-mr-20" href="">パスワードを忘れた方</a>
-                    <a class="c-text--primary" href="">ユーザー登録</a>
+                    <a class="c-text--primary u-mr-20" href="{{ route('password.request') }}">パスワードを忘れた方</a>
+                    <a class="c-text--primary" href="{{ route('register') }}">ユーザー登録</a>
                 </div>
             </form>
         </div>
