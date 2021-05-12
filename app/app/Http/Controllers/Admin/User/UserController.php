@@ -144,6 +144,12 @@ class UserController extends Controller
         return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param UserStatusService $user_status_service
+     * @param FetchLevelSkillService $level_skill_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function dashboardStatus(
         Request $request,
         UserStatusService $user_status_service,
