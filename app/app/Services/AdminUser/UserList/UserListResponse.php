@@ -25,7 +25,7 @@ class UserListResponse
 
     /**
      * @param \Illuminate\Pagination\LengthAwarePaginator $users
-     * @return $this
+     * @return UserListResponse
      */
     public function setUsers(LengthAwarePaginator $users): UserListResponse
     {

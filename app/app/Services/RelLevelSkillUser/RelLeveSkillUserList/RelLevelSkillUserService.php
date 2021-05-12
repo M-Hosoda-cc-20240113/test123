@@ -13,6 +13,10 @@ class RelLevelSkillUserService
      */
     private $relLevelSKillUser_repository;
 
+    /**
+     * RelLevelSkillUserService constructor.
+     * @param RelLevelSkillUserRepositoryInterface $relLevelSKillUser_repository
+     */
     public function __construct(
         RelLevelSkillUserRepositoryInterface $relLevelSKillUser_repository
     ) {

@@ -123,7 +123,7 @@
                 </div>
                 {{--  備考欄  --}}
 
-                <button type="submit" class="c-button u-db u-m0a u-w-30-pc u-mb-20">登録</button>
+                <button type="submit" class="c-button u-db u-m0a u-w-15-pc u-mb-20">登録</button>
             </form>
             {{--  p-register  --}}
         </div>

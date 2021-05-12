@@ -8,11 +8,11 @@ use Illuminate\Support\Collection;
 
 class SkillRepository implements SkillRepositoryInterface
 {
-  /**
-   * {@inheritDoc}
-   */
-  public function all(): Collection
-  {
-    return Skill::all();
-  }
+    /**
+     * {@inheritDoc}
+     */
+    public function all(): Collection
+    {
+        return Skill::all();
+    }
 }

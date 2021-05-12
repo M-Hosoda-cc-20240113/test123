@@ -47,5 +47,51 @@ class RelLevelSkillUserTableSeeder extends Seeder
                 'created_at' => $now
             ]);
         }
+
+        for ($i=2; $i < 5; $i++) {
+            RelLevelSkillUser::create([
+                'user_id'    => 5,
+                'skill_id'    => $i,
+                'level_id' => 1,
+                'created_at' => $now
+            ]);
+        }
+
+        for ($i=3; $i < 8; $i++) {
+            RelLevelSkillUser::create([
+                'user_id'    => 6,
+                'skill_id'    => $i,
+                'level_id' => 3,
+                'created_at' => $now
+            ]);
+        }
+
+        for ($i=7; $i < 9; $i++) {
+            RelLevelSkillUser::create([
+                'user_id'    => 7,
+                'skill_id'    => $i,
+                'level_id' => 2,
+                'created_at' => $now
+            ]);
+        }
+
+        for ($i=1; $i < 3; $i++) {
+            RelLevelSkillUser::create([
+                'user_id'    => 8,
+                'skill_id'    => $i,
+                'level_id' => 1,
+                'created_at' => $now
+            ]);
+        }
+
+        for ($i=13; $i < 17; $i++) {
+            RelLevelSkillUser::create([
+                'user_id'    => 9,
+                'skill_id'    => $i,
+                'level_id' => 2,
+                'created_at' => $now
+            ]);
+        }
+
     }
 }
