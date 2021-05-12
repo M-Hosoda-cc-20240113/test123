@@ -83,47 +83,47 @@ interface UserRepositoryInterface
 
     /**
      * @param array $skill_ids
-     * @param array $exclude_ids
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchBySkillIds(array $skill_ids, array $exclude_ids): Collection;
+    public function fetchBySkillIds(array $skill_ids, array $searched_ids): Collection;
 
     /**
      * @param array $level_ids
-     * @param array $exclude_ids
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByLevelIds(array $level_ids, array $exclude_ids): Collection;
+    public function fetchByLevelIds(array $level_ids, array $searched_ids): Collection;
 
     /**
-     * @param array $exclude_ids
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByNewUser(array $exclude_ids): Collection;
+    public function fetchByNewUser(array $searched_ids): Collection;
 
     /**
-     * @param array $exclude_ids
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByNotNewUser(array $exclude_ids): Collection;
+    public function fetchByNotNewUser(array $searched_ids): Collection;
 
     /**
-     * @param array $exclude_ids
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByIsWorking(array $exclude_ids): Collection;
+    public function fetchByIsWorking(array $searched_ids): Collection;
 
     /**
-     * @param array $exclude_ids
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByIsNotWorking(array $exclude_ids): Collection;
+    public function fetchByIsNotWorking(array $searched_ids): Collection;
 
     /**
      * @param string $operation_start_month
-     * @param array $exclude_ids
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByOperationStartMonth(string $operation_start_month, array $exclude_ids): Collection;
+    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids): Collection;
 
 }

@@ -160,14 +160,14 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchBySkillIds(array $skill_ids, array $exclude_ids = []): Collection
+    public function fetchBySkillIds(array $skill_ids, array $searched_ids = []): Collection
     {
         $user_id = RelLevelSkillUser::whereIn('skill_id', $skill_ids)
             ->select('user_id')
             ->get()->toArray();
-        if ($exclude_ids){
+        if ($searched_ids){
             return User::where('is_admin', 0)
-                ->whereIn('id', $exclude_ids)
+                ->whereIn('id', $searched_ids)
                 ->whereIn('id', $user_id)
                 ->get();
         }
@@ -179,14 +179,14 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByLevelIds(array $level_ids, array $exclude_ids = []): Collection
+    public function fetchByLevelIds(array $level_ids, array $searched_ids = []): Collection
     {
         $user_id = RelLevelSkillUser::where('level_id', $level_ids[0])
             ->select('user_id')
             ->get()->toArray();
-        if ($exclude_ids){
+        if ($searched_ids){
             return User::where('is_admin', 0)
-                ->whereIn('id', $exclude_ids)
+                ->whereIn('id', $searched_ids)
                 ->whereIn('id', $user_id)
                 ->get();
         }
@@ -198,12 +198,12 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByNewUser(array $exclude_ids = []): Collection
+    public function fetchByNewUser(array $searched_ids = []): Collection
     {
-        if ($exclude_ids){
+        if ($searched_ids){
             return User::where('is_admin', 0)
                 ->where('is_new', 1)
-                ->whereIn('id', $exclude_ids)
+                ->whereIn('id', $searched_ids)
                 ->get();
         }
         return User::where('is_admin', 0)
@@ -214,12 +214,12 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByNotNewUser(array $exclude_ids = []): Collection
+    public function fetchByNotNewUser(array $searched_ids = []): Collection
     {
-        if ($exclude_ids){
+        if ($searched_ids){
             return User::where('is_admin', 0)
                 ->where('is_new', 0)
-                ->whereIn('id', $exclude_ids)
+                ->whereIn('id', $searched_ids)
                 ->get();
         }
         return User::where('is_admin', 0)
@@ -230,12 +230,12 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByIsWorking(array $exclude_ids = []): Collection
+    public function fetchByIsWorking(array $searched_ids = []): Collection
     {
-        if ($exclude_ids){
+        if ($searched_ids){
             return User::where('is_admin', 0)
                 ->where('is_working', 1)
-                ->whereIn('id', $exclude_ids)
+                ->whereIn('id', $searched_ids)
                 ->get();
         }
         return User::where('is_admin', 0)
@@ -246,12 +246,12 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByIsNotWorking(array $exclude_ids = []): Collection
+    public function fetchByIsNotWorking(array $searched_ids = []): Collection
     {
-        if ($exclude_ids){
+        if ($searched_ids){
             return User::where('is_admin', 0)
                 ->where('is_working', 0)
-                ->whereIn('id', $exclude_ids)
+                ->whereIn('id', $searched_ids)
                 ->get();
         }
         return User::where('is_admin', 0)
@@ -262,14 +262,14 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByOperationStartMonth(string $operation_start_month, array $exclude_ids = []): Collection
+    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids = []): Collection
     {
         $operation_date = new CarbonImmutable($operation_start_month);
         $start_of_month = $operation_date->startOfMonth();
         $end_of_month = $operation_date->endOfMonth();
-        if ($exclude_ids){
+        if ($searched_ids){
             return User::where('is_admin', 0)
-                ->whereIn('id', $exclude_ids)
+                ->whereIn('id', $searched_ids)
                 ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
                 ->get();
         }

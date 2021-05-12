@@ -56,8 +56,7 @@ class FetchLevelSkillService
         $response = new FetchLevelSkillResponse;
         $skills = $this->skill_repository->all();
         $levels = $this->level_repository->all();
-        if($parameter)
-        {
+        if ($parameter) {
             $rel_level_skill = $this->rel_revel_skill_user_repository->fetchByLevelIdAndSkillId($parameter->getLevelIds() ?? [], $parameter->getSkillIds() ?? []);
         }
         $response->setRelLevelSkill($rel_level_skill ?? []);
