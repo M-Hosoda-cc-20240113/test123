@@ -18,9 +18,4 @@ interface StatusRepositoryInterface
      * @param UpdateUserAdminParameter $parameter
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter): void;
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function fetchNotOpenUser(): Collection;
 }

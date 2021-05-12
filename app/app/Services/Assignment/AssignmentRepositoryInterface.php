@@ -30,14 +30,4 @@ interface AssignmentRepositoryInterface
      * @param \App\Services\Assignment\DeleteAssignment\DeleteAssignmentParameter $parameter
      */
     public function delete(DeleteAssignmentParameter $parameter): void;
-
-    /**
-     * @return Collection
-     */
-    public function fetchUser(): Collection;
-
-    /**
-     * @return Collection
-     */
-    public function fetchNewUser(): Collection;
 }
