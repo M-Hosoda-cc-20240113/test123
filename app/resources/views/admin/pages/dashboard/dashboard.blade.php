@@ -18,15 +18,16 @@
         <div class="l-main">
             <div class="p-mainItem">
                 <h2 class="p-level2Heading">各種ステータス</h2>
+                <form action="{{ route('user.status') }}" method="get">
                 <div class="p-counterUnit--col2">
                     <div class="p-counter u-mt-0">
-                        <p class="c-text--bold p-counter__title">今月営業開始</p>
+                        <p class="c-text--bold p-counter__title"><button type="submit" name="status" class="" value="1">今月営業開始</button></p>
                         <div class="p-counter__countWrap">
                             <span class="p-counter__count">{{ $response->getFetchUserOperation()->count() ?? 0 }}</span><span>件</span>
                         </div>
                     </div>
                     <div class="p-counter u-mt-0">
-                        <p class="c-text--bold p-counter__title c-tooltip">未営業
+                        <p class="c-text--bold p-counter__title c-tooltip"><button type="submit" name="status" class="" value="2">未営業</button>
                             <span class="c-tooltip__text--up">今月営業月だがまだ未営業の人数</span>
                         </p>
                         <div class="p-counter__countWrap">
@@ -34,7 +35,7 @@
                         </div>
                     </div>
                     <div class="p-counter">
-                        <p class="c-text--bold p-counter__title c-tooltip">新規稼働件数
+                        <p class="c-text--bold p-counter__title c-tooltip"><button type="submit" name="status" class="" value="3">新規稼働件数</button>
                             <span class="c-tooltip__text--up">新規で今月稼働する人数</span>
                         </p>
                         <div class="p-counter__countWrap">
@@ -42,7 +43,7 @@
                         </div>
                     </div>
                     <div class="p-counter u-mt-10-pc">
-                        <p class="c-text--bold p-counter__title c-tooltip">既存稼働件数
+                        <p class="c-text--bold p-counter__title c-tooltip"><button type="submit" name="status" class="" value="4">既存稼働件数</button>
                             <span class="c-tooltip__text--up">既存で今月稼働する人数</span>
                         </p>
                         <div class="p-counter__countWrap">
@@ -50,12 +51,13 @@
                         </div>
                     </div>
                     <div class="p-counter u-mt-10-pc">
-                        <p class="c-text--bold p-counter__title">今月面談件数</p>
+                        <p class="c-text--bold p-counter__title"><button type="submit" name="status" class="" value="5">今月面談件数</button></p>
                         <div class="p-counter__countWrap">
                             <span class="p-counter__count">{{ $response->getFetchInterview()->count() ?? 0}}</span><span>件</span>
                         </div>
                     </div>
                 </div>
+                </form>
                 {{--   各種ステータス   --}}
 
                 <h2 class="p-level2Heading u-mt-20">クイックアクション</h2>
