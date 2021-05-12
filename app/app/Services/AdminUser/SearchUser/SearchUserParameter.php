@@ -47,6 +47,11 @@ class SearchUserParameter
     private $operation_start_month = '';
 
     /**
+     * @var string
+     */
+    private $status = '';
+
+    /**
      * @return array|null
      */
     public function getSkillIds(): ?array
@@ -212,5 +217,23 @@ class SearchUserParameter
             $arr2[] = (int) $v;
         }
         return $arr2;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     * @return SearchUserParameter
+     */
+    public function setStatus(string $status): SearchUserParameter
+    {
+        $this->status = $status;
+        return $this;
     }
 }

@@ -130,23 +130,23 @@ interface UserRepositoryInterface
      * @param string $today
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchNotOpenUserOfThisMonth(string $today): Collection;
+    public function fetchNotOpenUserOfThisMonth(string $today, array $searched_ids): Collection;
 
     /**
      * @param string $today
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchNewUserOfThisMonth(string $today): Collection;
+    public function fetchNewUserOfThisMonth(string $today, array $searched_ids): Collection;
 
     /**
      * @param string $today
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchNotNewUserOfThisMonth(string $today): Collection;
+    public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids): Collection;
 
     /**
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchInterviewUserOfThisMonth(string $today): Collection;
+    public function fetchInterviewUserOfThisMonth(string $today, array $searched_ids): Collection;
 
 }

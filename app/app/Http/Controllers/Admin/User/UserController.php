@@ -141,29 +141,12 @@ class UserController extends Controller
             $parameter->setLevelIds($request->level_ids);
         }
 
+        if (isset($request->status)) {
+            $parameter->setStatus($request->status);
+        }
+
         $response = $search_user_service->search($parameter);
         $LevelSkills = $level_skill_service->exec($parameter);
-        return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
-    }
-
-    /**
-     * @param \App\Http\Requests\Admin\User\DashboardRequest $request
-     * @param UserStatusService $user_status_service
-     * @param FetchLevelSkillService $level_skill_service
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function dashboardStatus(
-        DashboardRequest $request,
-        UserStatusService $user_status_service,
-        FetchLevelSkillService $level_skill_service
-    ) {
-        $response = new UserListResponse();
-
-        $users = $user_status_service->exec($request->status);
-
-        $response->setUsers($users);
-
-        $LevelSkills = $level_skill_service->exec();
         return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
     }
 }

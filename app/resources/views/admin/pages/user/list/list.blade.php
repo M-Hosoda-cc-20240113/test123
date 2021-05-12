@@ -126,16 +126,14 @@
                     class="c-button--secondary p-searchBox__button js-project_search u-db u-m0a u-w-15-pc u-mt-30 js-project_search">
                 検索
             </button>
-        </form>
         <div class="p-searchBox">
-            <form action="{{ route('user.status') }}" method="get">
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="1">今月営業開始</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="2">未営業</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="3">新規稼働</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="4">既存稼働</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="5">今月面談</button>
-            </form>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-15" value="1">今月営業開始</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-15" value="2">未営業</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-15" value="3">新規稼働</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-15" value="4">既存稼働</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-15" value="5">今月面談</button>
         </div>
+        </form>
         {{--  検索ボタン（dashboard連動）  --}}
         @include('admin.pages.user.list._RegularUserTable', ['response' => $response])
         {{ $response->getUsers()->links('components.paginator') }}

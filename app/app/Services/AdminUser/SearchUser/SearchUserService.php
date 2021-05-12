@@ -6,6 +6,7 @@ namespace App\Services\AdminUser\SearchUser;
 use App\Services\AdminUser\UserList\UserListResponse;
 use App\Services\Pagination\PaginatorService;
 use App\Services\User\UserRepositoryInterface;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -93,6 +94,39 @@ class SearchUserService
             $search_results[] = $result;
         }
 
+        //ダッシュボードのステータス
+        if ($parameter->getStatus()) {
+            $today = CarbonImmutable::today();
+            $status = $parameter->getStatus();
+            switch ($status) {
+                //今月営業月
+                case 1:
+                    $result = $this->user_repository->fetchByOperationStartMonth($today, $searched_ids);
+                    break;
+                //未営業
+                case 2:
+                    $result = $this->user_repository->fetchNotOpenUserOfThisMonth($today, $searched_ids);
+                    break;
+                //新規稼働
+                case 3:
+                    $result = $this->user_repository->fetchNewUserOfThisMonth($today, $searched_ids);
+                    break;
+                //既存稼働
+                case 4:
+                    $result = $this->user_repository->fetchNotNewUserOfThisMonth($today, $searched_ids);
+                    break;
+                //今月面談
+                case 5:
+                    $result = $this->user_repository->fetchInterviewUserOfThisMonth($today, $searched_ids);
+                    break;
+                default:
+                    $result = $this->user_repository->all();
+            }
+            $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            $search_results = [];
+            $search_results[] = $result;
+        }
+
         // 営業月検索
         if ($parameter->getOperationStartMonth()) {
             $result = $this->user_repository->fetchByOperationStartMonth($parameter->getOperationStartMonth(),
@@ -102,7 +136,7 @@ class SearchUserService
         }
 
         // 検索条件がない時
-        if (!$parameter->hasSkill() && !$parameter->hasLevel() && !$parameter->getNewUser() && !$parameter->getNotNewUser() && !$parameter->getIsWorking() && !$parameter->getIsNotWorking() && !$parameter->getOperationStartMonth()) {
+        if (!$parameter->hasSkill() && !$parameter->hasLevel() && !$parameter->getNewUser() && !$parameter->getNotNewUser() && !$parameter->getIsWorking() && !$parameter->getIsNotWorking() && !$parameter->getOperationStartMonth() && !$parameter->getStatus()) {
             $result = $this->user_repository->all();
             $search_results = [];
             $search_results[] = $result;
