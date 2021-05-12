@@ -1,7 +1,0 @@
-.p-inputGroupUnit{
-  display: flex;
-  flex-flow: row;
-  @include max-screen($breakpoint-pc) {
-    flex-flow: column;
-  }
-}
