@@ -289,7 +289,7 @@ class UserRepository implements UserRepositoryInterface
         return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
             $query->from('statuses')
                 ->select('user_id')
-                ->where('status',0);
+                ->where('status', 0);
         })->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
             ->get();
     }
@@ -306,7 +306,7 @@ class UserRepository implements UserRepositoryInterface
             $query->from('assignments')
                 ->select('user_id')
                 ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
-        })->where('is_new',1)
+        })->where('is_new', 1)
             ->get();
     }
 
@@ -318,12 +318,11 @@ class UserRepository implements UserRepositoryInterface
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
-        // TODO: Implement fetchByNotNewUserOfThisMonth() method.
         return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
             $query->from('assignments')
                 ->select('user_id')
                 ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
-        })->where('is_new',1)
+        })->where('is_new', 1)
             ->get();
     }
 
@@ -335,7 +334,7 @@ class UserRepository implements UserRepositoryInterface
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
-         return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
             $query->from('applications')
                 ->select('user_id')
                 ->whereBetween('interview_date', [$start_of_month, $end_of_month]);

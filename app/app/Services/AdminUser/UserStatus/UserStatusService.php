@@ -9,7 +9,6 @@ use App\Services\Assignment\AssignmentRepositoryInterface;
 use App\Services\Pagination\PaginatorService;
 use App\Services\Status\StatusRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
-use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -62,6 +61,7 @@ class UserStatusService
     {
         $today = CarbonImmutable::today();
         switch ($status) {
+            //今月営業月
             case 1:
                 $users = $this->user_repository->fetchByOperationStartMonth($today);
                 break;
