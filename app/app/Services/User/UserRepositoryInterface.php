@@ -126,17 +126,27 @@ interface UserRepositoryInterface
      */
     public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids): Collection;
 
-    public function fetchByOperationStartThisMonth(): Collection;
+    /**
+     * @param string $today
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchNotOpenUserOfThisMonth(string $today): Collection;
 
-    public function fetchNotOpenUserOfThisMonth(): Collection;
+    /**
+     * @param string $today
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchNewUserOfThisMonth(string $today): Collection;
 
-    public function fetchNewUserOfThisMonth(): Collection;
-
-    public function fetchByNotNewUserOfThisMonth(): Collection;
+    /**
+     * @param string $today
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchNotNewUserOfThisMonth(string $today): Collection;
 
     /**
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchInterviewUserOfThisMonth(): Collection;
+    public function fetchInterviewUserOfThisMonth(string $today): Collection;
 
 }

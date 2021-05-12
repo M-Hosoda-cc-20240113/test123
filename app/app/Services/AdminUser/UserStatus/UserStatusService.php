@@ -10,6 +10,7 @@ use App\Services\Pagination\PaginatorService;
 use App\Services\Status\StatusRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserStatusService
@@ -59,26 +60,26 @@ class UserStatusService
      */
     public function exec($status): LengthAwarePaginator
     {
-        $today = Carbon::today();
+        $today = CarbonImmutable::today();
         switch ($status) {
             case 1:
                 $users = $this->user_repository->fetchByOperationStartMonth($today);
                 break;
             //未営業
             case 2:
-                $users = $this->user_repository->fetchNotOpenUserOfThisMonth();
+                $users = $this->user_repository->fetchNotOpenUserOfThisMonth($today);
                 break;
             //新規稼働
             case 3:
-                $users = $this->user_repository->fetchNewUserOfThisMonth();
+                $users = $this->user_repository->fetchNewUserOfThisMonth($today);
                 break;
             //既存稼働
             case 4:
-                $users = $this->user_repository->fetchByNotNewUserOfThisMonth();
+                $users = $this->user_repository->fetchNotNewUserOfThisMonth($today);
                 break;
             //今月面談
             case 5:
-                $users = $this->user_repository->fetchInterviewUserOfThisMonth();
+                $users = $this->user_repository->fetchInterviewUserOfThisMonth($today);
                 break;
             default:
                 $users = $this->user_repository->all();

@@ -34,13 +34,17 @@
                         </div>
                     </div>
                     <div class="p-counter">
-                        <p class="c-text--bold p-counter__title">新規稼働件数</p>
+                        <p class="c-text--bold p-counter__title c-tooltip">新規稼働件数
+                            <span class="c-tooltip__text--up">新規で今月稼働する人数</span>
+                        </p>
                         <div class="p-counter__countWrap">
                             <span class="p-counter__count">{{ $response->getFetchNewAssignUser()->count() ?? 0 }}</span><span>件</span>
                         </div>
                     </div>
                     <div class="p-counter u-mt-10-pc">
-                        <p class="c-text--bold p-counter__title">既存稼働件数</p>
+                        <p class="c-text--bold p-counter__title c-tooltip">既存稼働件数
+                            <span class="c-tooltip__text--up">既存で今月稼働する人数</span>
+                        </p>
                         <div class="p-counter__countWrap">
                             <span class="p-counter__count">{{ $response->getFetchAssignUser()->count() ?? 0 }}</span><span>件</span>
                         </div>

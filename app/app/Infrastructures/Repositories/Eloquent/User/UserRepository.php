@@ -8,12 +8,10 @@ use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
-use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use function React\Promise\all;
 
 /**
  * Class UserRepository
@@ -281,57 +279,60 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritDoc}
+     * status: 0：未営業、1：面談待ち、2：結果待ち、3：稼働済み
      */
-    public function fetchByOperationStartThisMonth(): Collection
+    public function fetchNotOpenUserOfThisMonth(string $today): Collection
     {
-        // TODO: Implement fetchByOperationStartThisMonth() method.
-        $today = CarbonImmutable::today();
+        $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
-        return User::where('is_admin', 0)
-            ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('statuses')
+                ->select('user_id')
+                ->where('status',0);
+        })->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
             ->get();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function fetchNotOpenUserOfThisMonth(): Collection
+    public function fetchNewUserOfThisMonth(string $today): Collection
     {
-        // TODO: Implement fetchNotOpenUserOfThisMonth() method.
-        $today = CarbonImmutable::today();
+        $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('assignments')
+                ->select('user_id')
+                ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
+        })->where('is_new',1)
+            ->get();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function fetchNewUserOfThisMonth(): Collection
+    public function fetchNotNewUserOfThisMonth(string $today): Collection
     {
-        // TODO: Implement fetchNewUserOfThisMonth() method.
-        $today = CarbonImmutable::today();
+        $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function fetchByNotNewUserOfThisMonth(): Collection
-    {
         // TODO: Implement fetchByNotNewUserOfThisMonth() method.
-        $today = CarbonImmutable::today();
-        $start_of_month = $today->startOfMonth();
-        $end_of_month = $today->endOfMonth();
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('assignments')
+                ->select('user_id')
+                ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
+        })->where('is_new',1)
+            ->get();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function fetchInterviewUserOfThisMonth(): Collection
+    public function fetchInterviewUserOfThisMonth(string $today): Collection
     {
-        $today = CarbonImmutable::today();
+        $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
          return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
