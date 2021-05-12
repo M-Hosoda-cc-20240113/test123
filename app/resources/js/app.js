@@ -26,6 +26,7 @@ if (route_name === routes.project_create) project_create();
 if (route_name === routes.project_edit) project_edit();
 if (route_name === routes.user_list) user_list();
 if (route_name === routes.user_search) user_list();
+if (route_name === routes.user_status) user_list();
 if (route_name === routes.assign_list) assign_list();
 
 // front
