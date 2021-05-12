@@ -1,0 +1,20 @@
+.p-drawerContents {
+  position: absolute;
+  left: -30%;
+  z-index: 998;
+  color: #005c9c;
+  background: rgba($primary-color, .9);
+  width: 30%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+  @include max-screen($breakpoint-pc) {
+    left: -90%;
+    width: 70%;
+  }
+  &.js-active {
+    left: 0;
+  }
+}

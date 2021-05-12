@@ -19,6 +19,9 @@
     align-self: center;
     color: $dark-color;
     display: flex;
+    @include max-screen($breakpoint-pc) {
+      display: none;
+    }
     &:hover {
       color: $muted-color;
     }

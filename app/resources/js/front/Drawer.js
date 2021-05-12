@@ -1,9 +1,11 @@
 export class Drawer {
   /**
    * @param {HTMLElement} drawer
+   * @param {HTMLElement} content
    */
-  constructor(drawer) {
+  constructor(drawer, content) {
     this.drawer = drawer;
+    this.content = content;
     this.setEvent();
   }
 
@@ -36,5 +38,6 @@ export class Drawer {
    */
   toggleDrawer(e) {
     e.classList.toggle('js-active');
+    this.content.classList.toggle('js-active');
   }
 }
