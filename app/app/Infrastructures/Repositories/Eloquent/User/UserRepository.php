@@ -3,11 +3,13 @@
 namespace App\Infrastructures\Repositories\Eloquent\User;
 
 use App\Mail\RegisterMail;
+use App\Models\RelLevelSkillUser;
 use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
 use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -152,5 +154,127 @@ class UserRepository implements UserRepositoryInterface
         $start_of_month = $now->startOfMonth();
         $end_of_month = $now->endOfMonth();
         return User::whereBetween('operation_start_month', [$start_of_month, $end_of_month])->get();
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchBySkillIds(array $skill_ids, array $searched_ids = []): Collection
+    {
+        $user_id = RelLevelSkillUser::whereIn('skill_id', $skill_ids)
+            ->select('user_id')
+            ->get()->toArray();
+        if ($searched_ids){
+            return User::where('is_admin', 0)
+                ->whereIn('id', $searched_ids)
+                ->whereIn('id', $user_id)
+                ->get();
+        }
+        return User::where('is_admin', 0)
+            ->whereIn('id', $user_id)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByLevelIds(array $level_ids, array $searched_ids = []): Collection
+    {
+        $user_id = RelLevelSkillUser::where('level_id', $level_ids[0])
+            ->select('user_id')
+            ->get()->toArray();
+        if ($searched_ids){
+            return User::where('is_admin', 0)
+                ->whereIn('id', $searched_ids)
+                ->whereIn('id', $user_id)
+                ->get();
+        }
+        return User::where('is_admin', 0)
+            ->whereIn('id', $user_id)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByNewUser(array $searched_ids = []): Collection
+    {
+        if ($searched_ids){
+            return User::where('is_admin', 0)
+                ->where('is_new', 1)
+                ->whereIn('id', $searched_ids)
+                ->get();
+        }
+        return User::where('is_admin', 0)
+            ->where('is_new', 1)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByNotNewUser(array $searched_ids = []): Collection
+    {
+        if ($searched_ids){
+            return User::where('is_admin', 0)
+                ->where('is_new', 0)
+                ->whereIn('id', $searched_ids)
+                ->get();
+        }
+        return User::where('is_admin', 0)
+            ->where('is_new', 0)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByIsWorking(array $searched_ids = []): Collection
+    {
+        if ($searched_ids){
+            return User::where('is_admin', 0)
+                ->where('is_working', 1)
+                ->whereIn('id', $searched_ids)
+                ->get();
+        }
+        return User::where('is_admin', 0)
+            ->where('is_working', 1)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByIsNotWorking(array $searched_ids = []): Collection
+    {
+        if ($searched_ids){
+            return User::where('is_admin', 0)
+                ->where('is_working', 0)
+                ->whereIn('id', $searched_ids)
+                ->get();
+        }
+        return User::where('is_admin', 0)
+            ->where('is_working', 0)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids = []): Collection
+    {
+        $operation_date = new CarbonImmutable($operation_start_month);
+        $start_of_month = $operation_date->startOfMonth();
+        $end_of_month = $operation_date->endOfMonth();
+        if ($searched_ids){
+            return User::where('is_admin', 0)
+                ->whereIn('id', $searched_ids)
+                ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
+                ->get();
+        }
+        return User::where('is_admin', 0)
+            ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
+            ->get();
     }
 }

@@ -80,4 +80,50 @@ interface UserRepositoryInterface
      * @return Collection|null
      */
     public function fetchThisMonthOperation(): ?Collection;
+
+    /**
+     * @param array $skill_ids
+     * @param array $searched_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchBySkillIds(array $skill_ids, array $searched_ids): Collection;
+
+    /**
+     * @param array $level_ids
+     * @param array $searched_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByLevelIds(array $level_ids, array $searched_ids): Collection;
+
+    /**
+     * @param array $searched_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByNewUser(array $searched_ids): Collection;
+
+    /**
+     * @param array $searched_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByNotNewUser(array $searched_ids): Collection;
+
+    /**
+     * @param array $searched_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByIsWorking(array $searched_ids): Collection;
+
+    /**
+     * @param array $searched_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByIsNotWorking(array $searched_ids): Collection;
+
+    /**
+     * @param string $operation_start_month
+     * @param array $searched_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids): Collection;
+
 }

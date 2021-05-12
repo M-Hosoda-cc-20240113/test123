@@ -5,6 +5,7 @@ export const routes = {
   project_detail: "project.detail",
   project_edit: 'project.edit.form',
   user_list: 'user.list',
+  user_search: 'user.search',
   assign_list: 'assignment.list',
 
   // front

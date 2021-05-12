@@ -269,7 +269,7 @@
                 </div>
                 {{--  案件特徴  --}}
 
-                <button type="submit" class="c-button u-db u-m0a u-mb-20 u-w-30-pc">登録</button>
+                <button type="submit" class="c-button u-db u-m0a u-mb-20 u-w-15-pc">登録</button>
             </form>
         </div>
         {{--  p-register  --}}

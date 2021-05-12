@@ -4,12 +4,17 @@ namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\UpdateAdminUserRequest;
+use App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillService;
+use App\Services\AdminUser\SearchUser\SearchUserParameter;
+use App\Services\AdminUser\SearchUser\SearchUserService;
 use App\Services\AdminUser\ShowEditUserForm\ShowEditUserFormService;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserService;
 use App\Services\AdminUser\UserList\UserListResponse;
 use App\Services\AdminUser\UserList\UserListService;
 use App\Services\AdminUser\UserDetail\UserDetailService;
+use App\Services\AdminUser\UserStatus\UserStatusResponse;
+use App\Services\AdminUser\UserStatus\UserStatusService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,24 +25,29 @@ class UserController extends Controller
      * Admin user list
      *
      * @param \App\Services\AdminUser\UserList\UserListService $user_list_service
+     * @param \App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillService $level_skill_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function list(UserListService $user_list_service)
-    {
+    public function list(
+        UserListService $user_list_service,
+        FetchLevelSkillService $level_skill_service
+    ) {
         $response = new UserListResponse();
 
         $users = $user_list_service->exec();
 
         $response->setUsers($users);
 
-        return view('admin.pages.user.list.list', ['response' => $response]);
+        $LevelSkills = $level_skill_service->exec();
+
+        return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
     }
 
     /**
      *
      * Admin user detail
      *
-     * @param \App\Services\AdminUser\UserDetail\UserDetailService $user_detail_service
+     * @param UserDetailService $user_detail_service
      * @param int $user_id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -82,7 +92,7 @@ class UserController extends Controller
         $parameter->setAssignmentEndDate($request->assignment_end_date ?? null);
         $parameter->setRemarks($request->remarks ?? null);
 
-        $user = DB::transaction(function () use ($update_user_service, $parameter){
+        $user = DB::transaction(function () use ($update_user_service, $parameter) {
             return $update_user_service->exec($parameter);
         });
 
@@ -90,12 +100,56 @@ class UserController extends Controller
     }
 
     /**
-     *
-     * Admin user delete
-     * @var array
+     * @param Request $request
+     * @param SearchUserService $search_user_service
+     * @param FetchLevelSkillService $level_skill_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function delete()
+    public function search(
+        Request $request,
+        SearchUserService $search_user_service,
+        FetchLevelSkillService $level_skill_service
+    ) {
+        $parameter = new SearchUserParameter();
+        if (isset($request->new_user)) {
+            $parameter->setNewUser($request->new_user);
+        }
+
+        if (isset($request->not_new_user)) {
+            $parameter->setNotNewUser($request->not_new_user);
+        }
+
+        if (isset($request->is_working)) {
+            $parameter->setIsWorking($request->is_working);
+        }
+
+        if (isset($request->is_not_working)) {
+            $parameter->setIsNotWorking($request->is_not_working);
+        }
+
+        if (isset($request->operation_start_month)) {
+            $parameter->setOperationStartMonth($request->operation_start_month);
+        }
+
+        if (isset($request->skill_ids)) {
+            $parameter->setSkillIds($request->skill_ids);
+        }
+
+        if (isset($request->level_ids)) {
+            $parameter->setLevelIds($request->level_ids);
+        }
+
+        $response = $search_user_service->search($parameter);
+        $LevelSkills = $level_skill_service->exec($parameter);
+        return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
+    }
+
+    public function template(Request $request, UserStatusService $user_status_service, FetchLevelSkillService $level_skill_service)
     {
-        return 'Users delete';
+        $response = new UserStatusResponse();
+        $users = $user_status_service->exec($request->status);
+        $response->setUsers($users);
+        $LevelSkills = $level_skill_service->exec();
+        return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
     }
 }

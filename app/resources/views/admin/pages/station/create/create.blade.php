@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="c-button u-db u-m0a u-mt-30 u-w-30-pc">新規登録</button>
+                <button type="submit" class="c-button u-db u-m0a u-mt-30 u-w-15-pc">新規登録</button>
             </form>
         </div>
     </div>

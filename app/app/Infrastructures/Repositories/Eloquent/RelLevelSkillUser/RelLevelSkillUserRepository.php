@@ -4,14 +4,17 @@
 namespace App\Infrastructures\Repositories\Eloquent\RelLevelSkillUser;
 
 
+use App\Models\Level;
 use App\Models\RelLevelSkillUser;
+use App\Models\Skill;
 use App\Services\RelLevelSkillUser\RelLevelSkillUserRepositoryInterface;
 use App\Services\User\EditSkill\UpdateSkillParameter;
+use Illuminate\Database\Eloquent\Collection;
 
 class RelLevelSkillUserRepository implements RelLevelSkillUserRepositoryInterface
 {
     /**
-     *
+     * {@inheritDoc}
      */
     public function fetchByUserId(int $user_id): \Illuminate\Support\Collection
     {
@@ -22,7 +25,7 @@ class RelLevelSkillUserRepository implements RelLevelSkillUserRepositoryInterfac
     }
 
     /**
-     * @param \App\Services\User\EditSkill\UpdateSkillParameter $parameter
+     * {@inheritDoc}
      */
     public function create(UpdateSkillParameter $parameter): void
     {
@@ -39,12 +42,18 @@ class RelLevelSkillUserRepository implements RelLevelSkillUserRepositoryInterfac
     }
 
     /**
-     * @param $user_id
-     * @return void 削除した件数
-     * @throws \Exception
+     * {@inheritDoc}
      */
     public function deleteByUserId($user_id): void
     {
         RelLevelSkillUser::where('user_id', $user_id)->delete();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByLevelIdAndSkillId(array $level_ids, array $skill_ids): array
+    {
+        return array_combine($skill_ids,$level_ids);
     }
 }
