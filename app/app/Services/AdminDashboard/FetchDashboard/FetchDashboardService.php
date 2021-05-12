@@ -8,6 +8,7 @@ use App\Services\Application\ApplicationRepositoryInterface;
 use App\Services\Assignment\AssignmentRepositoryInterface;
 use App\Services\Status\StatusRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
+use Carbon\CarbonImmutable;
 
 /**
  * Class FetchDashboardService
@@ -59,9 +60,10 @@ class FetchDashboardService
      */
     public function exec(): FetchDashboardResponse
     {
+        $today = CarbonImmutable::today();
         $response = new FetchDashboardResponse;
-        $fetch_interview_user = $this->application_repository->fetchInterviewUser();
-        $fetch_user_operation = $this->user_repository->fetchThisMonthOperation();
+        $fetch_interview_user = $this->user_repository->fetchInterviewUserOfThisMonth();
+        $fetch_user_operation = $this->user_repository->fetchByOperationStartMonth($today);
         $fetch_not_open_user = $this->status_repository->fetchNotOpenUser();
         $fetch_assign_new_user = $this->assignment_repository->fetchNewUser();
         $fetch_assign_user = $this->assignment_repository->fetchUser();

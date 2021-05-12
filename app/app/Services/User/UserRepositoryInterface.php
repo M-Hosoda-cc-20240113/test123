@@ -126,4 +126,17 @@ interface UserRepositoryInterface
      */
     public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids): Collection;
 
+    public function fetchByOperationStartThisMonth(): Collection;
+
+    public function fetchNotOpenUserOfThisMonth(): Collection;
+
+    public function fetchNewUserOfThisMonth(): Collection;
+
+    public function fetchByNotNewUserOfThisMonth(): Collection;
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchInterviewUserOfThisMonth(): Collection;
+
 }
