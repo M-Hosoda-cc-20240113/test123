@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\DashboardRequest;
+use App\Http\Requests\Admin\User\SearchUserRequest;
 use App\Http\Requests\Admin\User\UpdateAdminUserRequest;
 use App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillService;
 use App\Services\AdminUser\SearchUser\SearchUserParameter;
@@ -100,13 +102,13 @@ class UserController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param \App\Http\Requests\Admin\User\SearchUserRequest $request
      * @param SearchUserService $search_user_service
      * @param FetchLevelSkillService $level_skill_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function search(
-        Request $request,
+        SearchUserRequest $request,
         SearchUserService $search_user_service,
         FetchLevelSkillService $level_skill_service
     ) {
@@ -145,13 +147,13 @@ class UserController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\Admin\User\DashboardRequest $request
      * @param UserStatusService $user_status_service
      * @param FetchLevelSkillService $level_skill_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function dashboardStatus(
-        Request $request,
+        DashboardRequest $request,
         UserStatusService $user_status_service,
         FetchLevelSkillService $level_skill_service
     ) {

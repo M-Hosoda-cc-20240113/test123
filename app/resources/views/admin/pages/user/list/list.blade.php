@@ -85,7 +85,7 @@
                     <div class="p-formGroupUnit--2col__itemForSkill js-content js-remove">
                         <label class="p-formGroupUnit--2col__label" for="">
                             <select name="skill_ids[]" id="skill_id" class="c-input">
-                                <option value="0">選択してください</option>
+                                <option value="">選択してください</option>
                                 @foreach($LevelSkills->getSkills() as $skill)
                                     <option
                                         value="{{ $skill->id }}" {{ $searched_skill_id === $skill->id ? 'selected' : '' }}>{{ $skill->name }}</option>
@@ -95,7 +95,7 @@
 
                         <label class="p-formGroupUnit--2col__label--after" for="">
                             <select name="level_ids[]" id="" class="c-input">
-                                <option value="0">選択してください</option>
+                                <option value="">選択してください</option>
                                 @foreach($LevelSkills->getLevels() as $level)
                                     <option
                                         value="{{ $level->id }}" {{ $searched_level_id === $level->id ? 'selected' : '' }}>{{ $level->level }}</option>
