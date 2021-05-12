@@ -1998,7 +1998,7 @@ img {
   position: absolute;
   left: -30%;
   z-index: 998;
-  background: rgba(66, 181, 209, 0.9);
+  background: linear-gradient(90deg, #020024 0%, #4bc1c1 0%, #42b5d1 100%);
   width: 30%;
   height: 100%;
   padding: 30px;
