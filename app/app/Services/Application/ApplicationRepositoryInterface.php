@@ -31,8 +31,4 @@ interface ApplicationRepositoryInterface
      */
     public function fetchWithStatus(): Collection;
 
-    /**
-     * @return Collection
-     */
-    public function fetchInterviewUser(): Collection;
 }

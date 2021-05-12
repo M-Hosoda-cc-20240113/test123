@@ -144,11 +144,23 @@ class UserController extends Controller
         return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
     }
 
-    public function template(Request $request, UserStatusService $user_status_service, FetchLevelSkillService $level_skill_service)
-    {
-        $response = new UserStatusResponse();
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param UserStatusService $user_status_service
+     * @param FetchLevelSkillService $level_skill_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function dashboardStatus(
+        Request $request,
+        UserStatusService $user_status_service,
+        FetchLevelSkillService $level_skill_service
+    ) {
+        $response = new UserListResponse();
+
         $users = $user_status_service->exec($request->status);
+
         $response->setUsers($users);
+
         $LevelSkills = $level_skill_service->exec();
         return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
     }

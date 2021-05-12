@@ -16,7 +16,6 @@ class IndexController extends Controller
         $this->middleware('is_admin');
     }
 
-
     /**
      * Admin Dashboard
      *

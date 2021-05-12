@@ -35,7 +35,7 @@ Route::namespace('Index')->group(function () {
  */
 Route::namespace('User')->prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'list'])->name('user.list');
-    Route::get('/template', [UserController::class, 'template'])->name('user.template');
+    Route::get('/status', [UserController::class, 'dashboardStatus'])->name('user.status');
     Route::get('/search', [UserController::class, 'search'])->name('user.search');
     Route::get('/{user_id}', [UserController::class, 'detail'])->name('user.detail');
     Route::get('/{user_id}/edit', [UserController::class, 'showEditForm'])->name('user.edit.form');

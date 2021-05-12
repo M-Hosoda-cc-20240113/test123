@@ -126,4 +126,27 @@ interface UserRepositoryInterface
      */
     public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids): Collection;
 
+    /**
+     * @param string $today
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchNotOpenUserOfThisMonth(string $today): Collection;
+
+    /**
+     * @param string $today
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchNewUserOfThisMonth(string $today): Collection;
+
+    /**
+     * @param string $today
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchNotNewUserOfThisMonth(string $today): Collection;
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchInterviewUserOfThisMonth(string $today): Collection;
+
 }

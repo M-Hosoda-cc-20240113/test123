@@ -9,7 +9,6 @@ use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
 use Carbon\CarbonImmutable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -165,7 +164,7 @@ class UserRepository implements UserRepositoryInterface
         $user_id = RelLevelSkillUser::whereIn('skill_id', $skill_ids)
             ->select('user_id')
             ->get()->toArray();
-        if ($searched_ids){
+        if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->whereIn('id', $searched_ids)
                 ->whereIn('id', $user_id)
@@ -184,7 +183,7 @@ class UserRepository implements UserRepositoryInterface
         $user_id = RelLevelSkillUser::where('level_id', $level_ids[0])
             ->select('user_id')
             ->get()->toArray();
-        if ($searched_ids){
+        if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->whereIn('id', $searched_ids)
                 ->whereIn('id', $user_id)
@@ -200,7 +199,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchByNewUser(array $searched_ids = []): Collection
     {
-        if ($searched_ids){
+        if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->where('is_new', 1)
                 ->whereIn('id', $searched_ids)
@@ -216,7 +215,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchByNotNewUser(array $searched_ids = []): Collection
     {
-        if ($searched_ids){
+        if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->where('is_new', 0)
                 ->whereIn('id', $searched_ids)
@@ -232,7 +231,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchByIsWorking(array $searched_ids = []): Collection
     {
-        if ($searched_ids){
+        if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->where('is_working', 1)
                 ->whereIn('id', $searched_ids)
@@ -248,7 +247,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchByIsNotWorking(array $searched_ids = []): Collection
     {
-        if ($searched_ids){
+        if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->where('is_working', 0)
                 ->whereIn('id', $searched_ids)
@@ -267,7 +266,7 @@ class UserRepository implements UserRepositoryInterface
         $operation_date = new CarbonImmutable($operation_start_month);
         $start_of_month = $operation_date->startOfMonth();
         $end_of_month = $operation_date->endOfMonth();
-        if ($searched_ids){
+        if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->whereIn('id', $searched_ids)
                 ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
@@ -276,5 +275,69 @@ class UserRepository implements UserRepositoryInterface
         return User::where('is_admin', 0)
             ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
             ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     * status: 0：未営業、1：面談待ち、2：結果待ち、3：稼働済み
+     */
+    public function fetchNotOpenUserOfThisMonth(string $today): Collection
+    {
+        $today = new CarbonImmutable($today);
+        $start_of_month = $today->startOfMonth();
+        $end_of_month = $today->endOfMonth();
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('statuses')
+                ->select('user_id')
+                ->where('status', 0);
+        })->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchNewUserOfThisMonth(string $today): Collection
+    {
+        $today = new CarbonImmutable($today);
+        $start_of_month = $today->startOfMonth();
+        $end_of_month = $today->endOfMonth();
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('assignments')
+                ->select('user_id')
+                ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
+        })->where('is_new', 1)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchNotNewUserOfThisMonth(string $today): Collection
+    {
+        $today = new CarbonImmutable($today);
+        $start_of_month = $today->startOfMonth();
+        $end_of_month = $today->endOfMonth();
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('assignments')
+                ->select('user_id')
+                ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
+        })->where('is_new', 1)
+            ->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchInterviewUserOfThisMonth(string $today): Collection
+    {
+        $today = new CarbonImmutable($today);
+        $start_of_month = $today->startOfMonth();
+        $end_of_month = $today->endOfMonth();
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('applications')
+                ->select('user_id')
+                ->whereBetween('interview_date', [$start_of_month, $end_of_month]);
+        })->get();
     }
 }

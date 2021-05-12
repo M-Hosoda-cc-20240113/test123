@@ -99,38 +99,4 @@ class AssignmentRepository implements AssignmentRepositoryInterface
         $user->is_new = 0;
         $user->save();
     }
-
-    /**
-     * @inheritDoc
-     */
-    public function fetchUser(): Collection
-    {
-        $now = CarbonImmutable::now();
-        $add_start_of_month = $now->addMonths(1)->startOfMonth();
-        $add_end_of_month = $now->addMonths(1)->endOfMonth();
-        return Assignment::whereIn('user_id', function ($query) {
-            $query->from('users')
-                ->select('id')
-                ->where('is_new',0);
-        })->whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])
-            ->with('users')
-            ->get();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function fetchNewUser(): Collection
-    {
-        $now = CarbonImmutable::now();
-        $add_start_of_month = $now->addMonths(1)->startOfMonth();
-        $add_end_of_month = $now->addMonths(1)->endOfMonth();
-        return Assignment::whereIn('user_id', function ($query) {
-            $query->from('users')
-                ->select('id')
-                ->where('is_new',1);
-        })->whereBetween('assignment_start_date', [$add_start_of_month, $add_end_of_month])
-            ->with('users')
-            ->get();
-    }
 }

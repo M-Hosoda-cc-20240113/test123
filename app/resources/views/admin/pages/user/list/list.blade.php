@@ -122,24 +122,18 @@
                 </div>
             </div>
             {{--operation_start_month--}}
-
-            {{--keyword--}}
-            {{--            <div class="p-searchBox u-mt-20">--}}
-            {{--                <input name="keyword" class="c-input p-searchBox__input js-search_input" type="text" value="{{ old('keyword') }}"--}}
-            {{--                       placeholder="フリーワード">--}}
-            {{--            </div>--}}
-            {{--keyword--}}
             <button type="submit"
                     class="c-button--secondary p-searchBox__button js-project_search u-db u-m0a u-w-15-pc u-mt-30 js-project_search">
                 検索
             </button>
         </form>
         <div class="p-searchBox">
-            <form action="{{ route('user.template') }}" method="get">
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="1">未営業</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="2">新規稼働</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="3">既存稼働</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="4">今月面談</button>
+            <form action="{{ route('user.status') }}" method="get">
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="1">今月営業開始</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="2">未営業</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="3">新規稼働</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="4">既存稼働</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="5">今月面談</button>
             </form>
         </div>
         {{--  検索ボタン（dashboard連動）  --}}

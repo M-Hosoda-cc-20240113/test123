@@ -39,22 +39,4 @@ class StatusRepository implements StatusRepositoryInterface
             }
         }
     }
-
-    /**
-     * {@inheritDoc}
-     * 0：未営業、1：面談待ち、2：結果待ち、3：稼働済み
-     */
-    public function fetchNotOpenUser(): Collection
-    {
-        $now = CarbonImmutable::now();
-        $start_of_month = $now->startOfMonth();
-        $end_of_month = $now->endOfMonth();
-        return Status::whereIn('user_id', function ($query) use ($start_of_month, $end_of_month) {
-            $query->from('users')
-                ->select('id')
-                ->whereBetween('operation_start_month', [$start_of_month, $end_of_month]);
-        })->with('users')
-            ->where('status', 0)
-            ->get();
-    }
 }

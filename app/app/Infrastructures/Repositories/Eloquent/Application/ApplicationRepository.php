@@ -68,17 +68,4 @@ class ApplicationRepository implements ApplicationRepositoryInterface
         }
         return collect($application_with_status);
     }
-
-    /**
-     * @inheritDoc
-     */
-    public function fetchInterviewUser(): Collection
-    {
-        $now = CarbonImmutable::now();
-        $start_of_month = $now->startOfMonth();
-        $end_of_month = $now->endOfMonth();
-        return Application::with('users')
-            ->whereBetween('interview_date', [$start_of_month, $end_of_month])
-            ->get();
-    }
 }
