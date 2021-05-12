@@ -281,12 +281,21 @@ class UserRepository implements UserRepositoryInterface
      * {@inheritDoc}
      * status: 0：未営業、1：面談待ち、2：結果待ち、3：稼働済み
      */
-    public function fetchNotOpenUserOfThisMonth(string $today): Collection
+    public function fetchNotOpenUserOfThisMonth(string $today, array $searched_ids = []): Collection
     {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
-        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+        if ($searched_ids) {
+            return User::whereIn('id', function ($query) {
+                $query->from('statuses')
+                    ->select('user_id')
+                    ->where('status', 0);
+            })->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
+                ->whereIn('id', $searched_ids)
+                ->get();
+        }
+        return User::whereIn('id', function ($query) {
             $query->from('statuses')
                 ->select('user_id')
                 ->where('status', 0);
@@ -297,11 +306,20 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchNewUserOfThisMonth(string $today): Collection
+    public function fetchNewUserOfThisMonth(string $today, array $searched_ids = []): Collection
     {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
+        if ($searched_ids) {
+            return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+                $query->from('assignments')
+                    ->select('user_id')
+                    ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
+            })->where('is_new', 1)
+                ->whereIn('id', $searched_ids)
+                ->get();
+        }
         return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
             $query->from('assignments')
                 ->select('user_id')
@@ -313,27 +331,45 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchNotNewUserOfThisMonth(string $today): Collection
+    public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids = []): Collection
     {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
+        if ($searched_ids) {
+            return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+                $query->from('assignments')
+                    ->select('user_id')
+                    ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
+            })->where('is_new', 0)
+                ->whereIn('id', $searched_ids)
+                ->get();
+        }
         return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
             $query->from('assignments')
                 ->select('user_id')
                 ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
-        })->where('is_new', 1)
+        })->where('is_new', 0)
             ->get();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function fetchInterviewUserOfThisMonth(string $today): Collection
+    public function fetchInterviewUserOfThisMonth(string $today, array $searched_ids = []): Collection
     {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
+        if ($searched_ids) {
+            return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+                $query->from('applications')
+                    ->select('user_id')
+                    ->whereBetween('interview_date', [$start_of_month, $end_of_month]);
+            })->whereIn('id', $searched_ids)
+                ->get();
+        }
+
         return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
             $query->from('applications')
                 ->select('user_id')

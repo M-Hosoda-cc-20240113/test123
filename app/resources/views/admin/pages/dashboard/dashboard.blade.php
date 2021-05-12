@@ -18,7 +18,7 @@
         <div class="l-main">
             <div class="p-mainItem">
                 <h2 class="p-level2Heading">各種ステータス</h2>
-                <form action="{{ route('user.status') }}" method="get">
+                <form action="{{ route('user.search') }}" method="get">
                 <div class="p-counterUnit--col2">
                     <div class="p-counter u-mt-0">
                         <p class="c-text--bold p-counter__title"><button type="submit" name="status" value="1">今月営業開始</button></p>

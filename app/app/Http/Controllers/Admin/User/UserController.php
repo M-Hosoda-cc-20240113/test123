@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\DashboardRequest;
+use App\Http\Requests\Admin\User\SearchUserRequest;
 use App\Http\Requests\Admin\User\UpdateAdminUserRequest;
 use App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillService;
 use App\Services\AdminUser\SearchUser\SearchUserParameter;
@@ -100,13 +102,13 @@ class UserController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param \App\Http\Requests\Admin\User\SearchUserRequest $request
      * @param SearchUserService $search_user_service
      * @param FetchLevelSkillService $level_skill_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function search(
-        Request $request,
+        SearchUserRequest $request,
         SearchUserService $search_user_service,
         FetchLevelSkillService $level_skill_service
     ) {
@@ -139,29 +141,12 @@ class UserController extends Controller
             $parameter->setLevelIds($request->level_ids);
         }
 
+        if (isset($request->status)) {
+            $parameter->setStatus($request->status);
+        }
+
         $response = $search_user_service->search($parameter);
         $LevelSkills = $level_skill_service->exec($parameter);
-        return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
-    }
-
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param UserStatusService $user_status_service
-     * @param FetchLevelSkillService $level_skill_service
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function dashboardStatus(
-        Request $request,
-        UserStatusService $user_status_service,
-        FetchLevelSkillService $level_skill_service
-    ) {
-        $response = new UserListResponse();
-
-        $users = $user_status_service->exec($request->status);
-
-        $response->setUsers($users);
-
-        $LevelSkills = $level_skill_service->exec();
         return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
     }
 }
