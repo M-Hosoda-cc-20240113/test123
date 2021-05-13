@@ -50,27 +50,27 @@
           {{ @csrf_field() }}
           <div class="p-formGroupUnit--2col">
             <div class="p-formGroup p-formGroupUnit--2col__item--left">
-              <span class="">姓</span>
+              <span class="c-text">姓</span>
               <input name="sei" type="text" class="c-input2" value="{{ $response->getUser()->sei }}">
             </div>
             <div class="p-formGroup p-formGroupUnit--2col__item">
-              <span class="">名</span>
+              <span class="c-text">名</span>
               <input name="mei" type="text" class="c-input2" value="{{ $response->getUser()->mei }}">
             </div>
             <div class="p-formGroup p-formGroupUnit--2col__item--left">
-              <span class="">セイ</span>
+              <span class="c-text">セイ</span>
               <input name="sei_kana" type="text" class="c-input2" value="{{ $response->getUser()->sei_kana }}">
             </div>
             <div class="p-formGroup p-formGroupUnit--2col__item">
-              <span class="">メイ</span>
+              <span class="c-text">メイ</span>
               <input name="mei_kana" type="text" class="c-input2" value="{{ $response->getUser()->mei_kana }}">
             </div>
             <div class="p-formGroup p-formGroupUnit--2col__item--left">
-              <span class="">電話番号</span>
+              <span class="c-text">電話番号</span>
               <input name="tel" type="number" class="c-input2" value="{{ $response->getUser()->tel }}">
             </div>
             <div class="p-formGroup p-formGroupUnit--2col__item">
-              <span class="">生年月日</span>
+              <span class="c-text">生年月日</span>
               <input name="birthday" type="number" class="c-input2" value="{{ $response->getUser()->birthday }}">
             </div>
           </div>
