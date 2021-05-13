@@ -1,7 +1,7 @@
-import {Table} from '../Table';
+import { Table } from '../Table'
 
-const table = document.querySelector('table');
+const table = document.querySelector('table')
 
 export function project_list() {
-  new Table(table);
+  new Table(table)
 }

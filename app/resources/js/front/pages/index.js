@@ -1,14 +1,14 @@
-import {TabContentsLink} from '../TabContentsLink';
-import {FAQ} from '../FAQ';
+import { TabContentsLink } from '../TabContentsLink'
+import { FAQ } from '../FAQ'
 
 export function index() {
   /**
    * コンテンツとタブのリンク
    */
-  new TabContentsLink();
+  new TabContentsLink()
 
   /**
    * FAQイベント
    */
-  new FAQ();
+  new FAQ()
 }
