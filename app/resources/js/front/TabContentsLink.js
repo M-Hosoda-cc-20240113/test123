@@ -1,7 +1,7 @@
 /**
  * タブとコンテンツを紐付ける機能
  * usage
- * 1.全てのタブにtab-jsクラスをつける
+ * 1.全てのタブにjs-tabクラスをつける
  * 2.全てのコンテンツにjs-tab_contentをつける
  */
 export class TabContentsLink {
