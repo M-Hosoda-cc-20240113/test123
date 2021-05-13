@@ -21,7 +21,14 @@ class FetchTopService
   private $position_repository;
   private $station_repository;
 
-  public function __construct(
+    /**
+     * FetchTopService constructor.
+     * @param \App\Services\Project\ProjectRepositoryInterface $project_repository
+     * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
+     * @param \App\Services\Position\PositionRepositoryInterface $position_repository
+     * @param \App\Services\Station\StationRepositoryInterface $station_repository
+     */
+    public function __construct(
     ProjectRepositoryInterface $project_repository,
     SkillRepositoryInterface $skill_repository,
     PositionRepositoryInterface $position_repository,
@@ -33,7 +40,10 @@ class FetchTopService
     $this->station_repository = $station_repository;
   }
 
-  public function exec(): \App\Services\Top\FetchTopData\FetchTopResponse
+    /**
+     * @return FetchTopResponse
+     */
+    public function exec(): \App\Services\Top\FetchTopData\FetchTopResponse
   {
     $response = new FetchTopResponse();
     $projects = $this->project_repository->fetchCanApply();

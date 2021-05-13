@@ -3,16 +3,11 @@
 namespace App\Http\Controllers\Front\Project;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Front\CreateApplicationRequest;
 use App\Http\Requests\Front\SearchProjectRequest;
-use App\Services\Application\ApplyProjectService\ApplyProjectService;
-use App\Services\Application\ProjectApplication\ProjectApplicationService;
 use App\Services\Project\ProjectDetail\ProjectDetailResponse;
 use App\Services\Project\ProjectDetail\ProjectDetailService;
 use App\Services\Project\SearchProject\SearchProjectParameter;
 use App\Services\Project\SearchProject\SearchProjectService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ProjectController
@@ -71,6 +66,6 @@ class ProjectController extends Controller
         }
 
         $response = $search_project_service->search($parameter);
-        return view('front.pages.top.top', ['response' => $response]);
+        return view('front.pages.top.top', ['response' => $response[0], 'project_response' => $response[1]]);
     }
 }
