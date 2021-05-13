@@ -136,7 +136,7 @@
         </form>
         {{--  検索ボタン（dashboard連動）  --}}
         @include('admin.pages.user.list._RegularUserTable', ['response' => $response])
-        {{ $response->getUsers()->links('components.paginator') }}
+        {{ $response->getUsers()->appends(request()->query())->links('components.paginator') }}
         @if($response->getUsers()->count() === 0)
             <p class="u-text--center mt-30 u-fs-20">関連するユーザーが見つかりませんでした。</p>
         @endif
