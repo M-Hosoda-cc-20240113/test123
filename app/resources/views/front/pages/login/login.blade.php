@@ -15,7 +15,7 @@
 
     <div class="l-container">
         <div class="l-main">
-            <img class="u-m0a u-w-30-pc u-mt-60" src="{{ asset('images/logo/aegis.svg') }}" alt="">
+            <img class="u-db u-m0a u-w-30-pc u-mt-60" src="{{ asset('images/logo/aegis.svg') }}" alt="">
             <p class="c-text--center u-mt-20">ログイン画面</p>
             <form action="{{ route('login') }}" method="post">
                 {{ csrf_field() }}

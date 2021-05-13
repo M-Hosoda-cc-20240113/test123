@@ -22,14 +22,13 @@
   @endif
   @section('stylesheet')
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}" media="all">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css2/style.css') }}" media="all">
   @show
   @section('head')
   @show
 </head>
 <body data-route-name="{{ \Route::currentRouteName() }}">
 @section('body')
-@show 
+@show
 
 @section('script')
   <script src="{{ asset('/js/bundle.js') }}" type="text/javascript"></script>
