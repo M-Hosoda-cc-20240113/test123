@@ -46,7 +46,7 @@
                 <p class="c-text u-mt-20">メールアドレスへパスワード変更の案内を送ります。</p>
                 <form action="{{ route('password.email') }}" method="post">
                     {{ csrf_field() }}
-                    <input class="c-input--light" type="email" placeholder="メールアドレス入力欄" name="email">
+                    <input class="c-input--light u-mt-10" type="email" placeholder="メールアドレス入力欄" name="email">
                     <button type="submit" class="c-button u-mt-20">案内メールを送信</button>
                 </form>
             </div>

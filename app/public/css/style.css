@@ -1988,6 +1988,7 @@ img {
   position: relative;
   background: #ffffff;
   border: 1px solid #ffffff;
+  font-size: 1.4rem;
 }
 
 .p-qa__question {
