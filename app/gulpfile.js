@@ -12,7 +12,7 @@ gulp.task('sass', ()=>{
 
 //監視タスク
 gulp.task('sass-watch',()=>{
-    gulp.watch('./resources/sass2/**/*.scss', gulp.task('sass'));
+    gulp.watch('./resources/styleGuide/assets/sass/**/*.scss', gulp.task('sass'));
 });
 
 //デフォルトタスク
