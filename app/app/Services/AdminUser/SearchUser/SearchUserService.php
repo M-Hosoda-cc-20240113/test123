@@ -3,8 +3,10 @@
 
 namespace App\Services\AdminUser\SearchUser;
 
-use App\Services\AdminUser\UserList\UserListResponse;
+use App\Services\Level\LevelRepositoryInterface;
 use App\Services\Pagination\PaginatorService;
+use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
+use App\Services\Skill\SkillRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
@@ -27,21 +29,47 @@ class SearchUserService
     private $paginator_service;
 
     /**
-     * SearchUserService constructor.
-     * @param UserRepositoryInterface $user_repository
-     * @param PaginatorService $paginator_service
+     * @var SkillRepositoryInterface
      */
-    public function __construct(UserRepositoryInterface $user_repository, PaginatorService $paginator_service)
-    {
+    private $skill_repository;
+
+    /**
+     * @var LevelRepositoryInterface
+     */
+    private $level_repository;
+
+    /**
+     * @var RelLevelSkillUSerRepositoryInterface
+     */
+    private $rel_revel_skill_user_repository;
+
+    /**
+     * SearchUserService constructor.
+     * @param \App\Services\User\UserRepositoryInterface $user_repository
+     * @param \App\Services\Pagination\PaginatorService $paginator_service
+     * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
+     * @param \App\Services\Level\LevelRepositoryInterface $level_repository
+     * @param \App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
+     */
+    public function __construct(
+        UserRepositoryInterface $user_repository,
+        PaginatorService $paginator_service,
+        SkillRepositoryInterface $skill_repository,
+        LevelRepositoryInterface $level_repository,
+        RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
+    ) {
         $this->user_repository = $user_repository;
         $this->paginator_service = $paginator_service;
+        $this->skill_repository = $skill_repository;
+        $this->level_repository = $level_repository;
+        $this->rel_revel_skill_user_repository = $rel_revel_skill_user_repository;
     }
 
     /**
      * @param SearchUserParameter $parameter
-     * @return LengthAwarePaginator
+     * @return SearchUserResponse
      */
-    public function search(SearchUserParameter $parameter)
+    public function search(SearchUserParameter $parameter): SearchUserResponse
     {
         $search_results = [];
         $searched_ids = [];
@@ -143,7 +171,14 @@ class SearchUserService
         }
 
         $users = $this->getResultMerged($search_results);
-        $response = new UserListResponse();
+        $skills = $this->skill_repository->all();
+        $levels = $this->level_repository->all();
+        $rel_level_skill = [];
+        $response = new SearchUserResponse();
+        $response->setUserCounts($users->count());
+        $response->setSkills($skills);
+        $response->setLevels($levels);
+        $response->setRelLevelSkill($rel_level_skill ?? []);
         $response->setUsers($this->paginator_service->paginate($users));
         return $response;
     }

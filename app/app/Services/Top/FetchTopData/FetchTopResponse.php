@@ -6,6 +6,7 @@ use App\Models\Position;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\Station;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
 /**
@@ -15,7 +16,7 @@ use Illuminate\Support\Collection;
 class FetchTopResponse
 {
     /**
-     * @var Project[]|Collection
+     * @var LengthAwarePaginator
      */
     private $projects;
 
@@ -50,26 +51,28 @@ class FetchTopResponse
     private $searched_station_ids;
 
     /**
+     * @var int
+     */
+    private $project_counts;
+
+    /**
      * Get the value of projects
      *
-     * @return  Project[]|Collection
+     * @return LengthAwarePaginator
      */
-    public function getProjects(): Collection
+    public function getProjects(): LengthAwarePaginator
     {
         return $this->projects;
     }
 
     /**
      * Set the value of projects
-     *
-     * @param Collection $projects
-     *
-     * @return  self
+     * @param LengthAwarePaginator $projects
+     * @return FetchTopResponse
      */
-    public function setProjects(Collection $projects): FetchTopResponse
+    public function setProjects(LengthAwarePaginator $projects): FetchTopResponse
     {
         $this->projects = $projects;
-
         return $this;
     }
 
@@ -195,6 +198,24 @@ class FetchTopResponse
     public function setSearchedStationIds(array $searched_station_ids): FetchTopResponse
     {
         $this->searched_station_ids = $searched_station_ids;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getProjectCounts(): int
+    {
+        return $this->project_counts;
+    }
+
+    /**
+     * @param int $project_counts
+     * @return FetchTopResponse
+     */
+    public function setProjectCounts(int $project_counts): FetchTopResponse
+    {
+        $this->project_counts = $project_counts;
         return $this;
     }
 }

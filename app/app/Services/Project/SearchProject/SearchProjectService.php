@@ -4,6 +4,8 @@
 namespace App\Services\Project\SearchProject;
 
 
+use App\Services\AdminProject\ProjectList\ProjectListResponse;
+use App\Services\Pagination\PaginatorService;
 use App\Services\Position\PositionRepositoryInterface;
 use App\Services\Project\ProjectRepositoryInterface;
 use App\Services\Skill\SkillRepositoryInterface;
@@ -38,27 +40,35 @@ class SearchProjectService
     private $station_repository;
 
     /**
+     * @var PaginatorService
+     */
+    private $paginator_service;
+
+    /**
      * SearchProjectService constructor.
      * @param \App\Services\Project\ProjectRepositoryInterface $project_repository
      * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
      * @param \App\Services\Position\PositionRepositoryInterface $position_repository
      * @param \App\Services\Station\StationRepositoryInterface $station_repository
+     * @param \App\Services\Pagination\PaginatorService $paginator_service
      */
     public function __construct(
         ProjectRepositoryInterface $project_repository,
         SkillRepositoryInterface $skill_repository,
         PositionRepositoryInterface $position_repository,
-        StationRepositoryInterface $station_repository
+        StationRepositoryInterface $station_repository,
+        PaginatorService $paginator_service
     ) {
         $this->project_repository = $project_repository;
         $this->skill_repository = $skill_repository;
         $this->position_repository = $position_repository;
         $this->station_repository = $station_repository;
+        $this->paginator_service = $paginator_service;
     }
 
     /**
-     * @param \App\Services\Project\SearchProject\SearchProjectParameter $parameter
-     * @return \App\Services\Top\FetchTopData\FetchTopResponse
+     * @param SearchProjectParameter $parameter
+     * @return FetchTopResponse
      */
     public function search(SearchProjectParameter $parameter): FetchTopResponse
     {
@@ -102,16 +112,16 @@ class SearchProjectService
         $skills = $this->skill_repository->all();
         $positions = $this->position_repository->all();
         $stations = $this->station_repository->all();
-
+        $projects = $this->getResultMerged($search_results);
         $response = new FetchTopResponse();
-        $response->setProjects($this->getResultMerged($search_results));
+        $response->setProjects($this->paginator_service->paginate($projects, 6));
+        $response->setProjectCounts($projects->count());
         $response->setSkills($skills);
         $response->setPositions($positions);
         $response->setStations($stations);
         $response->setSearchedSkillIds($parameter->getSkillIds());
         $response->setSearchedPositionIds($parameter->getPositionIds());
         $response->setSearchedStationIds($parameter->getStationIds());
-
         return $response;
     }
 
@@ -124,7 +134,7 @@ class SearchProjectService
     private function getResultMerged(array $search_results): \Illuminate\Support\Collection
     {
         $merged = collect();
-        foreach($search_results as $search_result) {
+        foreach ($search_results as $search_result) {
             $merged = $merged->merge($search_result);
         }
         return $merged;
