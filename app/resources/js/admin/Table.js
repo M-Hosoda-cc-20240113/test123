@@ -1,24 +1,24 @@
 export class Table {
   /**
-   * @param {HTMLTableElement} table 
+   * @param {HTMLTableElement} table
    */
   constructor(table) {
-    this.table = table;
-    this.setEvent();
+    this.table = table
+    this.setEvent()
   }
 
   setEvent() {
     this.table.querySelectorAll('tbody tr').forEach((el) => {
-      el.addEventListener("click", (e) => {
-        this.jumpToOherPage(e);
-      });
-    });
+      el.addEventListener('click', (e) => {
+        this.jumpToOherPage(e)
+      })
+    })
   }
 
   /**
-   * @param {MouseEvent} e 
+   * @param {MouseEvent} e
    */
   jumpToOherPage(e) {
-    window.location.href = e.target.parentElement.getAttribute('data-href');
+    window.location.href = e.target.parentElement.getAttribute('data-href')
   }
 }
