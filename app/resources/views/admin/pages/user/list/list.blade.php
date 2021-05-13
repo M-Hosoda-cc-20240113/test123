@@ -85,7 +85,7 @@
                     <div class="p-formGroupUnit--2col__itemForSkill js-content js-remove">
                         <label class="p-formGroupUnit--2col__label" for="">
                             <select name="skill_ids[]" id="skill_id" class="c-input">
-                                <option value="0">選択してください</option>
+                                <option value="">選択してください</option>
                                 @foreach($LevelSkills->getSkills() as $skill)
                                     <option
                                         value="{{ $skill->id }}" {{ $searched_skill_id === $skill->id ? 'selected' : '' }}>{{ $skill->name }}</option>
@@ -95,7 +95,7 @@
 
                         <label class="p-formGroupUnit--2col__label--after" for="">
                             <select name="level_ids[]" id="" class="c-input">
-                                <option value="0">選択してください</option>
+                                <option value="">選択してください</option>
                                 @foreach($LevelSkills->getLevels() as $level)
                                     <option
                                         value="{{ $level->id }}" {{ $searched_level_id === $level->id ? 'selected' : '' }}>{{ $level->level }}</option>
@@ -126,19 +126,17 @@
                     class="c-button--secondary p-searchBox__button js-project_search u-db u-m0a u-w-15-pc u-mt-30 js-project_search">
                 検索
             </button>
-        </form>
         <div class="p-searchBox">
-            <form action="{{ route('user.status') }}" method="get">
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="1">今月営業開始</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="2">未営業</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="3">新規稼働</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="4">既存稼働</button>
-                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-30" value="5">今月面談</button>
-            </form>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-15" value="1">今月営業開始</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-15" value="2">未営業</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-15" value="3">新規稼働</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-15" value="4">既存稼働</button>
+                <button type="submit" name="status" class="c-button u-m0a u-mt-30 u-w-15" value="5">今月面談</button>
         </div>
+        </form>
         {{--  検索ボタン（dashboard連動）  --}}
         @include('admin.pages.user.list._RegularUserTable', ['response' => $response])
-        {{ $response->getUsers()->links('components.paginator') }}
+        {{ $response->getUsers()->appends(request()->query())->links('components.paginator') }}
         @if($response->getUsers()->count() === 0)
             <p class="u-text--center mt-30 u-fs-20">関連するユーザーが見つかりませんでした。</p>
         @endif
