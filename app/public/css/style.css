@@ -1736,6 +1736,7 @@ img {
   margin: 0;
   padding: 0;
   list-style: none;
+  font-size: 1.4rem;
 }
 
 .p-breadCrumb li {
@@ -1749,7 +1750,7 @@ img {
 .p-breadCrumb li:after {
   /* ▶を表示*/
   content: ">";
-  padding: 0 0.2em;
+  padding: 0 0.3em;
   color: #42b5d1;
 }
 
@@ -1764,7 +1765,6 @@ img {
   text-decoration: none;
   color: #ffffff;
   background: #42b5d1;
-  font-size: 0.9em;
 }
 
 .p-breadCrumb li a:hover {

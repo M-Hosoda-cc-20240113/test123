@@ -12,7 +12,18 @@
     @component('admin.header.header', ['href' => route('front.index')])
         @include('admin.header._link_login_logout')
     @endcomponent
-    <div class="Container mt-30">
+
+    <nav class="p-drawerContents">
+        <ul>
+            <li class="u-mt-10">@include('front.header._link_login_logout')</li>
+            <li class="u-mt-10"><a href="{{ route('user.list') }}">ユーザー一覧</a></li>
+            <li class="u-mt-10"><a href="{{ route('project.list') }}">案件一覧</a></li>
+            <li class="u-mt-10"><a href="{{ route('application.list') }}">応募状況一覧</a></li>
+            <li class="u-mt-10"><a href="{{ route('assignment.list') }}">稼働状況一覧</a></li>
+        </ul>
+    </nav>
+
+    <div class="l-container">
         @include('admin.bread_crumb._BreadCrumb')
         @if($errors->all())
             <p class="c-text--bold u-mt-20">検索条件が不正です。</p>
@@ -20,8 +31,8 @@
                 <p class="c-text--warning">{{ $error }}</p>
             @endforeach
         @endif
-        <ul class="p-searchTab">
-            <li class="p-searchTab__item js-tab is-active"><span class="u-dn-sp">ユーザーカテゴリー</span></li>
+        <ul class="p-searchTab u-mt-20">
+            <li class="p-searchTab__item u-w-60-sp js-tab is-active"><span>ユーザーカテゴリー</span></li>
         </ul>
 
         <template id="skill_row">
