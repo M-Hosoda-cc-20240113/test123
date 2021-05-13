@@ -67,10 +67,10 @@ class SearchProjectService
     }
 
     /**
-     * @param \App\Services\Project\SearchProject\SearchProjectParameter $parameter
-     * @return array
+     * @param SearchProjectParameter $parameter
+     * @return FetchTopResponse
      */
-    public function search(SearchProjectParameter $parameter): array
+    public function search(SearchProjectParameter $parameter): FetchTopResponse
     {
         $search_results = [];
         $searched_ids = [];
@@ -112,18 +112,17 @@ class SearchProjectService
         $skills = $this->skill_repository->all();
         $positions = $this->position_repository->all();
         $stations = $this->station_repository->all();
-        $project = $this->getResultMerged($search_results);
-        $project_response = new ProjectListResponse();
+        $projects = $this->getResultMerged($search_results);
         $response = new FetchTopResponse();
-        $response->setProjects($project);
+        $response->setProjects($this->paginator_service->paginate($projects, 6));
+        $response->setProjectCounts($projects->count());
         $response->setSkills($skills);
         $response->setPositions($positions);
         $response->setStations($stations);
         $response->setSearchedSkillIds($parameter->getSkillIds());
         $response->setSearchedPositionIds($parameter->getPositionIds());
         $response->setSearchedStationIds($parameter->getStationIds());
-        $project_response->setProjects($this->paginator_service->paginate($project, 6));
-        return [$response, $project_response];
+        return $response;
     }
 
     /**

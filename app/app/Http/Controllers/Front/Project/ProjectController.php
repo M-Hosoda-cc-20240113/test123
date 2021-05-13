@@ -66,6 +66,7 @@ class ProjectController extends Controller
         }
 
         $response = $search_project_service->search($parameter);
-        return view('front.pages.top.top', ['response' => $response[0], 'project_response' => $response[1]]);
+
+        return view('front.pages.top.top', ['response' => $response]);
     }
 }

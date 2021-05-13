@@ -86,17 +86,17 @@
             </div>
         </form>
 
-        <p class="c-text u-mt-20">案件数：<span class="c-text--bold">{{ $response->getProjects()->count() }}</span>件</p>
+        <p class="c-text u-mt-20">案件数：<span class="c-text--bold">{{ $response->getProjectCounts() }}</span>件</p>
 
         <div class="p-cardUnit--col3 u-mt-30">
-            @foreach($project_response->getProjects() as $project)
+            @foreach($response->getProjects() as $project)
                 @include('organisms.ProjectCard', $project)
             @endforeach
         </div>
-            {{ $project_response->getProjects()->appends(request()->query())->links('components.paginator') }}
+            {{ $response->getProjects()->appends(request()->query())->links('components.paginator') }}
         {{-- p-cardUnit--col3 --}}
 
-        @if($project_response->getProjects()->count() === 0)
+        @if($response->getProjectCounts() === 0)
             <p class="u-text--center mt-30 u-fs-20">関連する求人・案件が見つかりませんでした。</p>
         @endif
 

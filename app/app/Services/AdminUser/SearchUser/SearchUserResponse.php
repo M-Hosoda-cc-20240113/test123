@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Services\AdminUser\UserList;
 
+namespace App\Services\AdminUser\SearchUser;
+
+
+use App\Services\AdminUser\UserList\UserListResponse;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-/**
- * Class UserListResponse
- * @package App\Services\User\UserList
- */
-class UserListResponse
+class SearchUserResponse
 {
     /**
      * @var LengthAwarePaginator
@@ -45,10 +44,10 @@ class UserListResponse
     }
 
     /**
-     * @param \Illuminate\Pagination\LengthAwarePaginator $users
-     * @return UserListResponse
+     * @param LengthAwarePaginator $users
+     * @return SearchUserResponse
      */
-    public function setUsers(LengthAwarePaginator $users): UserListResponse
+    public function setUsers(LengthAwarePaginator $users): SearchUserResponse
     {
         $this->users = $users;
         return $this;
@@ -64,9 +63,9 @@ class UserListResponse
 
     /**
      * @param \Illuminate\Database\Eloquent\Collection $skills
-     * @return UserListResponse
+     * @return SearchUserResponse
      */
-    public function setSkills(Collection $skills): UserListResponse
+    public function setSkills(Collection $skills): SearchUserResponse
     {
         $this->skills = $skills;
         return $this;
@@ -82,9 +81,9 @@ class UserListResponse
 
     /**
      * @param \Illuminate\Database\Eloquent\Collection $levels
-     * @return UserListResponse
+     * @return SearchUserResponse
      */
-    public function setLevels(Collection $levels): UserListResponse
+    public function setLevels(Collection $levels): SearchUserResponse
     {
         $this->levels = $levels;
         return $this;
@@ -100,9 +99,9 @@ class UserListResponse
 
     /**
      * @param array|\Illuminate\Database\Eloquent\Collection $rel_level_skill
-     * @return UserListResponse
+     * @return SearchUserResponse
      */
-    public function setRelLevelSkill($rel_level_skill)
+    public function setRelLevelSkill($rel_level_skill): SearchUserResponse
     {
         $this->rel_level_skill = $rel_level_skill;
         return $this;
@@ -118,9 +117,9 @@ class UserListResponse
 
     /**
      * @param int $user_counts
-     * @return UserListResponse
+     * @return SearchUserResponse
      */
-    public function setUserCounts(int $user_counts): UserListResponse
+    public function setUserCounts(int $user_counts): SearchUserResponse
     {
         $this->user_counts = $user_counts;
         return $this;
