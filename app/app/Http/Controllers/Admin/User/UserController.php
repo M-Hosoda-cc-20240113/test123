@@ -3,20 +3,15 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\User\DashboardRequest;
 use App\Http\Requests\Admin\User\SearchUserRequest;
 use App\Http\Requests\Admin\User\UpdateAdminUserRequest;
-use App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillService;
 use App\Services\AdminUser\SearchUser\SearchUserParameter;
 use App\Services\AdminUser\SearchUser\SearchUserService;
 use App\Services\AdminUser\ShowEditUserForm\ShowEditUserFormService;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserService;
-use App\Services\AdminUser\UserList\UserListResponse;
 use App\Services\AdminUser\UserList\UserListService;
 use App\Services\AdminUser\UserDetail\UserDetailService;
-use App\Services\AdminUser\UserStatus\UserStatusResponse;
-use App\Services\AdminUser\UserStatus\UserStatusService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,22 +22,12 @@ class UserController extends Controller
      * Admin user list
      *
      * @param \App\Services\AdminUser\UserList\UserListService $user_list_service
-     * @param \App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillService $level_skill_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function list(
-        UserListService $user_list_service,
-        FetchLevelSkillService $level_skill_service
-    ) {
-        $response = new UserListResponse();
-
-        $users = $user_list_service->exec();
-
-        $response->setUsers($users);
-
-        $LevelSkills = $level_skill_service->exec();
-
-        return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
+    public function list(UserListService $user_list_service)
+    {
+        $response = $user_list_service->exec();
+        return view('admin.pages.user.list.list', ['response' => $response]);
     }
 
     /**
@@ -104,13 +89,11 @@ class UserController extends Controller
     /**
      * @param \App\Http\Requests\Admin\User\SearchUserRequest $request
      * @param SearchUserService $search_user_service
-     * @param FetchLevelSkillService $level_skill_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function search(
         SearchUserRequest $request,
-        SearchUserService $search_user_service,
-        FetchLevelSkillService $level_skill_service
+        SearchUserService $search_user_service
     ) {
         $parameter = new SearchUserParameter();
         if (isset($request->new_user)) {
@@ -144,9 +127,7 @@ class UserController extends Controller
         if (isset($request->status)) {
             $parameter->setStatus($request->status);
         }
-
         $response = $search_user_service->search($parameter);
-        $LevelSkills = $level_skill_service->exec($parameter);
-        return view('admin.pages.user.list.list', ['response' => $response, 'LevelSkills' => $LevelSkills]);
+        return view('admin.pages.user.list.list', ['response' => $response]);
     }
 }

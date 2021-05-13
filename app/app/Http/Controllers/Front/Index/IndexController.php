@@ -23,8 +23,8 @@ class IndexController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(FetchTopService $fetch_top_data_service)
-     {
+    {
         $response = $fetch_top_data_service->exec();
         return view('front.pages.top.top', ['response' => $response]);
-     }
+    }
 }
