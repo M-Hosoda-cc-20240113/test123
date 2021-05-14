@@ -49,7 +49,7 @@ export class CopyFragment {
   onClick(e, index) {
     switch (e.target) {
       case this.add_button:
-        if (this.count > 9) return
+        if (this.count > this.copy_limit - 1) return
         this.insertFragment(this.createFragment())
         this.isLimit()
         break

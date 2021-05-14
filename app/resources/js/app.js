@@ -51,9 +51,6 @@ switch (route_name) {
   case routes.user_skill_edit:
     user_skill_edit()
     break
-  case routes.test:
-    test()
-    break
   case routes.user_delete:
     user_delete()
     break

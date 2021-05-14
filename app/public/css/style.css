@@ -1573,6 +1573,7 @@ img {
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
+  font-size: 1.4rem;
 }
 
 .p-itemDetailTable__row {

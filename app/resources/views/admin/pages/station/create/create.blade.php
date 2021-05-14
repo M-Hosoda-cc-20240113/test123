@@ -19,54 +19,59 @@
 
     <div class="l-container">
         @include('admin.bread_crumb._BreadCrumb')
-        <h2 class="p-level2Heading">新規駅名登録</h2>
+        <div class="l-main u-mt-20">
+            <div class="p-mainItem">
+                <h2 class="p-level2Heading">新規駅名登録</h2>
 
-        @if($errors->all())
-            <p class="c-text--bold u-mt-20">以下のエラーを修正してください</p>
-            @foreach($errors->all() as $error)
-                <p class="c-text--warning">{{ $error }}</p>
-            @endforeach
-        @endif
+                @if($errors->all())
+                    <p class="c-text--bold u-mt-20">以下のエラーを修正してください</p>
+                    @foreach($errors->all() as $error)
+                        <p class="c-text--warning">{{ $error }}</p>
+                    @endforeach
+                @endif
 
-        <div class="p-register u-mt-30">
-            <form action="{{ route('station.create') }}" method="post">
-                {{ @csrf_field() }}
-                {{--   p-userRegisterRow   --}}
+                <div class="p-register u-mt-30">
+                    <form action="{{ route('station.create') }}" method="post">
+                        {{ @csrf_field() }}
+                        {{--   p-userRegisterRow   --}}
 
-                <div class="p-register__row">
-                    <span class="p-register__title c-text--bold">駅名</span>
-                    <div class="p-register__itemWrap">
-                        <div class="p-register__item u-w-50-pc">
-                            <input class="c-input"
-                                   type="text"
-                                   placeholder="東京"
-                                   name="name"
-                                   value="{{ old('name') }}">
-                            <span class="c-text u-as-center u-pl-10">駅</span>
+                        <div class="p-register__row">
+                            <span class="p-register__title c-text--bold">駅名</span>
+                            <div class="p-register__itemWrap">
+                                <div class="p-register__item u-w-50-pc">
+                                    <input class="c-input"
+                                           type="text"
+                                           placeholder="東京"
+                                           name="name"
+                                           value="{{ old('name') }}">
+                                    <span class="c-text u-as-center u-pl-10">駅</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                {{--   p-userRegisterRow   --}}
+                        {{--   p-userRegisterRow   --}}
 
-                <div class="p-register__row">
-                    <span class="p-register__title c-text--bold">エリア名</span>
-                    <div class="p-register__itemWrap">
-                        <div class="p-register__item u-w-50-pc">
-                            <input class="c-input"
-                                   list="area"
-                                   name="area_name"
-                                   type="text">
-                            <datalist id="area">
-                                @foreach($response->getAreas() as $area)
-                                    <option value={{ $area->name }}>
-                                @endforeach
-                            </datalist>
+                        <div class="p-register__row">
+                            <span class="p-register__title c-text--bold">エリア名</span>
+                            <div class="p-register__itemWrap">
+                                <div class="p-register__item u-w-50-pc">
+                                    <input class="c-input"
+                                           list="area"
+                                           name="area_name"
+                                           type="text">
+                                    <datalist id="area">
+                                        @foreach($response->getAreas() as $area)
+                                            <option value={{ $area->name }}>
+                                        @endforeach
+                                    </datalist>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <button type="submit" class="c-button u-db u-m0a u-mt-30 u-w-15-pc">新規登録</button>
+                    </form>
                 </div>
-                <button type="submit" class="c-button u-db u-m0a u-mt-30 u-w-15-pc">新規登録</button>
-            </form>
+                {{--    p-register    --}}
+            </div>
         </div>
     </div>
     @include('admin.footer.footer')

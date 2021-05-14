@@ -148,7 +148,7 @@
         @include('admin.pages.user.list._RegularUserTable', ['response' => $response])
         {{ $response->getUsers()->appends(request()->query())->links('components.paginator') }}
         @if($response->getUserCounts() === 0)
-            <p class="u-text--center mt-30 u-fs-20">関連するユーザーが見つかりませんでした。</p>
+            <p class="u-text--center u-mt-20 u-fs-20">関連するユーザーが見つかりませんでした。</p>
         @endif
     </div>
 
