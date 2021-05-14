@@ -68,9 +68,3 @@ Route::namespace('Project')->prefix('project')->group(function () {
 Route::namespace('Application')->prefix('application')->group(function () {
     Route::post('/project', [ApplicationController::class, 'createApplication'])->name('front.project.app');
 });
-
-// viewテスト用のルーティング
-// TODO リリース前に削除
-Route::get('/test', function () {
-    return view('front.test');
-})->name('front.test');

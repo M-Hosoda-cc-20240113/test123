@@ -27,12 +27,12 @@
             <td class="p-table__bodyRowItem">
                 {{ ViewHelper::YmdReplace( $assignment->assignment_end_date ?? '未定' )}}<br>
             </td>
-            <td class="RegularTable__bodyRowItem--textCenter">
+            <td class="p-table__bodyRowItem--textCenter">
                 <form action="{{ route('assignment.delete') }}" method="post">
                     {{ @csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $assignment->users->id }}">
                     <input type="hidden" name="project_id" value="{{  $assignment->projects->id }}">
-                    <button type="submit" id="alert_button" class="c-button u-m0a" style="background-color: coral">削除</button>
+                    <button type="submit" id="alert_button" class="c-button--warning">削除</button>
                 </form>
             </td>
         </tr>

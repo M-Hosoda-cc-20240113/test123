@@ -12,5 +12,5 @@ export const routes = {
   index: 'front.index',
   user_skill_edit: 'front.user.skill.form',
   project_search: 'front.project.search',
-  test: 'front.test',
+  user_delete: 'front.user.delete.form',
 }
