@@ -36,9 +36,9 @@ class RegisterUserRequest extends FormRequest
             'sei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'mei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'birthday'  => ['required', 'integer', 'digits:8'],
-            'tel'       => ['required', 'digits_between:8,11', 'unique:users,tel'],
+            'tel'       => ['required', 'digits_between:8,11'],
             'tel_hash'  => [Rule::unique('users', 'tel_hash')->whereNull('deleted_at')],
-            'email'     => ['required', 'email', "unique:users,email", Rule::unique('users', 'email')->whereNull('deleted_at')],
+            'email'     => ['required', 'email'],
             'email_hash'=> [Rule::unique('users', 'email_hash')->whereNull('deleted_at')],
             'password'  => ['required', 'regex:/^[a-zA-Z0-9]+$/', 'min:8', 'max:30'],
         ];
