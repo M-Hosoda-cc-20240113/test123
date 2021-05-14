@@ -3,6 +3,7 @@
 namespace App\Services\User;
 
 use App\Models\User;
+use App\Services\User\RegisterUser\RegisterUserParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use Illuminate\Database\Eloquent\Collection;
@@ -47,6 +48,13 @@ interface UserRepositoryInterface
      * @throws \Throwable
      */
     public function update(UpdateUserParameter $parameter): void;
+
+
+    /**
+     * @param RegisterUserParameter $parameter
+     * @return User
+     */
+    public function register(RegisterUserParameter $parameter): User;
 
     /**
      * @param string $email

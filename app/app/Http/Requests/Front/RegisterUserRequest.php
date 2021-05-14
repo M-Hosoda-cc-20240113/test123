@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class RegisterUserRequest extends FormRequest
 {
@@ -23,14 +25,21 @@ class RegisterUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $user_email = hash(config('app.hash_email.algo'), $this->input('email') . config('app.hash_email.salt'));
+        $user_tel = hash(config('app.hash_email.algo'), $this->input('tel') . config('app.hash_email.salt'));
+        $this->merge(['email_hash' => $user_email]);
+        $this->merge(['tel_hash' => $user_tel]);
+
         return [
             'sei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
             'mei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
             'sei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'mei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'birthday'  => ['required', 'integer', 'digits:8'],
-            'tel'       => ['required', 'digits_between:8,11', 'unique:users'],
-            'email'     => ['required', 'email', 'unique:users'],
+            'tel'       => ['required', 'digits_between:8,11', 'unique:users,tel'],
+            'tel_hash'  => [Rule::unique('users', 'tel_hash')->whereNull('deleted_at')],
+            'email'     => ['required', 'email', "unique:users,email", Rule::unique('users', 'email')->whereNull('deleted_at')],
+            'email_hash'=> [Rule::unique('users', 'email_hash')->whereNull('deleted_at')],
             'password'  => ['required', 'regex:/^[a-zA-Z0-9]+$/', 'min:8', 'max:30'],
         ];
     }
