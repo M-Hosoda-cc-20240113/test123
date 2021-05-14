@@ -1,7 +1,7 @@
 export class FAQ {
   constructor() {
-    this.questions = document.querySelectorAll('.p-qa__question');
-    this.setEvent();
+    this.questions = document.querySelectorAll('.p-qa__question')
+    this.setEvent()
   }
 
   /**
@@ -10,10 +10,9 @@ export class FAQ {
   setEvent() {
     this.questions.forEach((item, index) => {
       item.addEventListener('click', (e) => {
-        this.onClick(e, index);
-      });
-    });
-
+        this.onClick(e, index)
+      })
+    })
   }
 
   /**
@@ -22,8 +21,9 @@ export class FAQ {
    * @param {number} index
    */
   onClick(e, index) {
-    const answer = this.questions[index].parentNode.querySelector('.p-qa__answer');
-    answer.classList.toggle('js-active');
-    answer.previousElementSibling.classList.toggle('p-qa__button--close');
+    const answer =
+      this.questions[index].parentNode.querySelector('.p-qa__answer')
+    answer.classList.toggle('js-active')
+    answer.previousElementSibling.classList.toggle('p-qa__button--close')
   }
 }

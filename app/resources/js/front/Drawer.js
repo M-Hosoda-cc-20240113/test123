@@ -4,25 +4,23 @@ export class Drawer {
    * @param {HTMLElement} content
    */
   constructor(drawer, content) {
-    this.drawer = drawer;
-    this.content = content;
-    this.setEvent();
+    this.drawer = drawer
+    this.content = content
+    this.setEvent()
   }
 
   /**
    * initialize
    */
-  init() {
-
-  }
+  init() {}
 
   /**
    *  set event
    */
   setEvent() {
     this.drawer.addEventListener('click', (e) => {
-      this.onClick(e);
-    });
+      this.onClick(e)
+    })
   }
 
   /**
@@ -30,14 +28,14 @@ export class Drawer {
    * @param {MouseEvent} e
    */
   onClick(e) {
-    this.toggleDrawer(e.currentTarget);
+    this.toggleDrawer(e.currentTarget)
   }
 
   /**
    * @param {HTMLElement} e
    */
   toggleDrawer(e) {
-    e.classList.toggle('js-active');
-    this.content.classList.toggle('js-active');
+    e.classList.toggle('js-active')
+    this.content.classList.toggle('js-active')
   }
 }

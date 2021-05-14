@@ -9,37 +9,36 @@
  */
 export class CopyFragment {
   constructor(index = 0, copy_limit = 10, delete_btn_is_after_el = false) {
-    this.template = document.querySelectorAll('template')[index];
-    this.parent = document.querySelectorAll('.js-parent')[index];
-    this.add_button = document.querySelectorAll('.js-add')[index];
-    this.remove_button = this.parent.querySelectorAll('.js-remove');
-    this.copy_limit = copy_limit;
-    this.delete_btn_is_after_el = delete_btn_is_after_el;
-    this.count = this.parent.querySelectorAll('.js-content').length;
+    this.template = document.querySelectorAll('template')[index]
+    this.parent = document.querySelectorAll('.js-parent')[index]
+    this.add_button = document.querySelectorAll('.js-add')[index]
+    this.remove_button = this.parent.querySelectorAll('.js-remove')
+    this.copy_limit = copy_limit
+    this.delete_btn_is_after_el = delete_btn_is_after_el
+    this.count = this.parent.querySelectorAll('.js-content').length
 
-    this.init();
-    this.setEvent();
+    this.init()
+    this.setEvent()
   }
 
   /**
    * initialize
    */
-  init() {
-  }
+  init() {}
 
   /**
    * setEvent
    */
   setEvent() {
     this.add_button.addEventListener('click', (e) => {
-      this.onClick(e);
-    });
+      this.onClick(e)
+    })
 
     this.parent.querySelectorAll('.js-remove').forEach((item, index) => {
       item.addEventListener('click', (e) => {
-        this.onClick(e, index);
-      });
-    });
+        this.onClick(e, index)
+      })
+    })
   }
 
   /**
@@ -50,13 +49,13 @@ export class CopyFragment {
   onClick(e, index) {
     switch (e.target) {
       case this.add_button:
-        if (this.count > 9) return;
-        this.insertFragment(this.createFragment());
-        this.isLimit();
-        break;
+        if (this.count > 9) return
+        this.insertFragment(this.createFragment())
+        this.isLimit()
+        break
       case this.remove_button[index]:
-        this.removeSelf(e);
-        break;
+        this.removeSelf(e)
+        break
     }
   }
 
@@ -65,10 +64,10 @@ export class CopyFragment {
    * @returns {DocumentFragment} fragment
    */
   createFragment() {
-    const fragment = document.createDocumentFragment();
-    const clone = document.importNode(this.template.content, true);
-    fragment.appendChild(clone);
-    return fragment;
+    const fragment = document.createDocumentFragment()
+    const clone = document.importNode(this.template.content, true)
+    fragment.appendChild(clone)
+    return fragment
   }
 
   /**
@@ -76,17 +75,22 @@ export class CopyFragment {
    * @param {DocumentFragment} fragment
    */
   insertFragment(fragment) {
-    this.parent.insertBefore(fragment, this.add_button);
-    this.count++;
+    this.parent.insertBefore(fragment, this.add_button)
+    this.count++
     if (this.delete_btn_is_after_el) {
-      this.parent.querySelectorAll('.js-content')[this.count - 1].addEventListener('click', (e) => {
-        this.removeSelf(e);
-      });
+      this.parent
+        .querySelectorAll('.js-content')
+        [this.count - 1].addEventListener('click', (e) => {
+          this.removeSelf(e)
+        })
       return
     }
-    this.parent.querySelectorAll('.js-content')[this.count - 1].querySelector('.js-remove').addEventListener('click', (e) => {
-      this.removeSelf(e);
-    });
+    this.parent
+      .querySelectorAll('.js-content')
+      [this.count - 1].querySelector('.js-remove')
+      .addEventListener('click', (e) => {
+        this.removeSelf(e)
+      })
   }
 
   /**
@@ -97,15 +101,15 @@ export class CopyFragment {
     // 擬似要素clickで削除する時
     if (this.delete_btn_is_after_el) {
       if (e.offsetX > e.target.offsetWidth) {
-        e.target.parentNode.removeChild(e.target);
+        e.target.parentNode.removeChild(e.target)
       }
-      this.count--;
-      this.isLimit();
-      return;
+      this.count--
+      this.isLimit()
+      return
     }
-    e.target.parentNode.remove();
-    this.count--;
-    this.isLimit();
+    e.target.parentNode.remove()
+    this.count--
+    this.isLimit()
   }
 
   /**
@@ -113,7 +117,7 @@ export class CopyFragment {
    */
   isLimit() {
     this.count >= this.copy_limit
-        ? this.add_button.style.opacity = 0.5
-        : this.add_button.style.opacity = 1;
+      ? (this.add_button.style.opacity = 0.5)
+      : (this.add_button.style.opacity = 1)
   }
 }
