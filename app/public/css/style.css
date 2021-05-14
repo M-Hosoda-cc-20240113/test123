@@ -566,7 +566,7 @@ img {
   width: 100%;
 }
 
-.c-button, .c-button--secondary, .c-button--warning {
+.c-button, .c-button--secondary, .c-button--warning, .c-button--disabled {
   width: 100%;
   display: inline-block;
   max-width: 100%;
@@ -581,7 +581,7 @@ img {
   transition: .25s;
 }
 
-.c-button:focus, .c-button--secondary:focus, .c-button--warning:focus, .c-button:hover, .c-button--secondary:hover, .c-button--warning:hover {
+.c-button:focus, .c-button--secondary:focus, .c-button--warning:focus, .c-button--disabled:focus, .c-button:hover, .c-button--secondary:hover, .c-button--warning:hover, .c-button--disabled:hover {
   background-color: #2c99b4;
   color: #ffffff;
 }
@@ -600,6 +600,14 @@ img {
 
 .c-button--warning:focus, .c-button--warning:hover {
   background-color: #d44961;
+}
+
+.c-button--disabled {
+  background-color: #cdcddf;
+}
+
+.c-button--disabled:focus, .c-button--disabled:hover {
+  background-color: #cdcddf;
 }
 
 .c-text, .c-text--bold, .c-text--center, .c-text--primary, .c-text--warning, .c-text--muted {

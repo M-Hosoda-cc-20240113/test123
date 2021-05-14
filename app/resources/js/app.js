@@ -15,7 +15,7 @@ import { assign_list } from './admin/pages/assign_list'
 // front
 import { index } from './front/pages/index'
 import { user_skill_edit } from './front/pages/user_skill_edit'
-import { test } from './front/pages/test'
+import { user_delete } from './front/pages/user_delete';
 
 const route_name = document.querySelector('body').dataset.routeName
 
@@ -53,6 +53,9 @@ switch (route_name) {
     break
   case routes.test:
     test()
+    break
+  case routes.user_delete:
+    user_delete()
     break
   default:
     break
