@@ -52,11 +52,11 @@
                     <p class="c-text--warning c-text--bold c-text--center u-mt-30">退会後は登録内容の確認ができなくなり、<br class="u-dn-pc">取得したポイントは破棄されます。</p>
                     <div class="u-db u-m0a u-w-180px u-mt-30">
                         <label class="p-checkbox p-checkboxUnit__item u-db u-m0a">確認しました。
-                            <input type="checkbox" name="withdraw-confirm" value="confirm"/>
+                            <input class="js-confirm-checkbox" type="checkbox" name="withdraw-confirm" value="confirm"/>
                             <div class="p-checkbox__indicator"></div>
                         </label>
                     </div>
-                    <button type="submit" class="c-button u-db u-m0a u-mt-20">退会する</button>
+                    <button type="submit" disabled="true" class="c-button--warning c-button--disabled u-db u-m0a u-mt-20 js-confirm-button">退会する</button>
                 </form>
             </div>
         </div>
