@@ -91,7 +91,7 @@ class SearchUserService
         }
 
         // 新規ユーザー検索
-        if ($parameter->getNewUser()) {
+        if ($parameter->getNewUser() === '1') {
             $result = $this->user_repository->fetchByNewUser($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results = [];
@@ -99,7 +99,7 @@ class SearchUserService
         }
 
         // 既存ユーザー検索
-        if ($parameter->getNotNewUser()) {
+        if ($parameter->getNewUser() === '2') {
             $result = $this->user_repository->fetchByNotNewUser($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results = [];
@@ -107,7 +107,7 @@ class SearchUserService
         }
 
         // 稼働済みユーザー検索
-        if ($parameter->getIsWorking()) {
+        if ($parameter->getIsWorking() === "1") {
             $result = $this->user_repository->fetchByIsWorking($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results = [];
@@ -115,7 +115,7 @@ class SearchUserService
         }
 
         // 未稼働ユーザー検索
-        if ($parameter->getIsNotWorking()) {
+        if ($parameter->getIsWorking() === "2") {
             $result = $this->user_repository->fetchByIsNotWorking($searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results = [];
