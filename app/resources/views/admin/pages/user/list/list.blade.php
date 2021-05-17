@@ -23,10 +23,13 @@
         </ul>
     </nav>
 
+    <div class="c-modal js-modal"></div>
+
     <div class="l-container">
         @include('admin.bread_crumb._BreadCrumb')
         <div class="l-main">
-            <div class="p-mainItem u-mt-20">
+            <div class="p-mainItem c-modal__content js-modal-content u-mt-20">
+                <span class="c-modal__closeButtoon js-modal-close-button">×</span>
                 @if($errors->all())
                     <p class="c-text--bold u-mt-20">検索条件が不正です。</p>
                     @foreach($errors->all() as $error)
@@ -134,8 +137,8 @@
             </div>
         </template>
         {{--   テンプレート    --}}
-
-        <p class="c-text u-mt-20">ユーザー数：<span class="c-text--bold">{{ $response->getUserCounts() }}</span>件</p>
+        <span class="c-text u-mt-20">ユーザー数：<span class="c-text--bold">{{ $response->getUserCounts() }}</span>件</span>
+        <span class="c-button--secondary u-ml-10 u-w-auto u-mt-20 js-modal-button">検索フィルター</span>
         @include('admin.pages.user.list._RegularUserTable', ['response' => $response])
         {{ $response->getUsers()->appends(request()->query())->links('components.paginator') }}
         @if($response->getUserCounts() === 0)
