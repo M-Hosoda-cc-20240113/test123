@@ -7,6 +7,9 @@ export const routes = {
   user_list: 'user.list',
   user_search: 'user.search',
   assign_list: 'assignment.list',
+  position_list: 'position.list',
+  skill_list: 'skill.list',
+  level_list: 'level.list',
 
   // front
   index: 'front.index',

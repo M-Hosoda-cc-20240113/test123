@@ -1,17 +1,25 @@
-<table class="RegularTable">
-  <thead class="RegularTable__head">
-    <tr class="RegularTable__headRow">
-      <th class="RegularTable__headRowItem">ポジション名</th>
-      <th class="RegularTable__headRowItem">登録日時</th>
+<table class="p-table">
+    <thead class="p-table__head">
+    <tr class="p-table__headRow">
+        <th class="p-table__headRowItem">ポジション名</th>
+        <th class="p-table__headRowItem">登録日時</th>
+        <th class="p-table__headRowItem"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody class="RegularTable__body">
+    <tbody class="p-table__body">
     @foreach ($response->getPositions() as $position)
-    <tr class="RegularTable__bodyRow" data-href="">
-      <td class="RegularTable__bodyRowItem">{{ $position->name }}</td>
-      <td class="RegularTable__bodyRowItem">{{ $position->created_at }}</td>
-    </tr>
+        <tr class="p-table__bodyRow" data-href="">
+            <td class="p-table__bodyRowItem">{{ $position->name }}</td>
+            <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($position->created_at ?? '' )}}</td>
+            <td class="p-table__bodyRowItem--textCenter">
+                <form action="{{ route('position.delete') }}" method="post">
+                    {{ @csrf_field() }}
+                    <input type="hidden" name="position_id" value="{{ $position->id }}">
+                    <button type="submit" id="alert_button" class="c-button--warning u-w-35">削除</button>
+                </form>
+            </td>
+        </tr>
     @endforeach
-  </tbody>
+    </tbody>
 </table>

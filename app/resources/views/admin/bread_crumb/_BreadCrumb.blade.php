@@ -68,4 +68,43 @@
         <li><a href="{{ route('station.list') }}"><span>駅名一覧</span></a></li>
         <li><a href="{{ route('station.create') }}"><span>新規駅名登録</span></a></li>
     @endif
+
+    {{-- ポジションリスト --}}
+    @if(url()->current() === route('position.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('position.list') }}"><span>ポジション一覧</span></a></li>
+    @endif
+
+    {{-- ポジション新規登録 --}}
+    @if(url()->current() === route('position.createForm'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('position.list') }}"><span>ポジション一覧</span></a></li>
+        <li><a href="{{ route('position.createForm') }}"><span>ポジション新規登録</span></a></li>
+    @endif
+
+    {{-- スキルリスト --}}
+    @if(url()->current() === route('skill.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('skill.list') }}"><span>スキル一覧</span></a></li>
+    @endif
+
+    {{-- スキル新規登録 --}}
+    @if(url()->current() === route('skill.create'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('skill.list') }}"><span>スキル一覧</span></a></li>
+        <li><a href="{{ route('skill.createForm') }}"><span>スキル新規登録</span></a></li>
+    @endif
+
+    {{-- レベルリスト --}}
+    @if(url()->current() === route('level.list'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('level.list') }}"><span>レベル一覧</span></a></li>
+    @endif
+
+    {{-- レベル新規登録 --}}
+    @if(url()->current() === route('level.create'))
+        <li><a href="{{ route('admin.index') }}"><span>ホーム</span></a></li>
+        <li><a href="{{ route('level.list') }}"><span>レベル一覧</span></a></li>
+        <li><a href="{{ route('level.createForm') }}"><span>レベル新規登録</span></a></li>
+    @endif
 </ol>

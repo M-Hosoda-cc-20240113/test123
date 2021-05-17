@@ -5,6 +5,8 @@ namespace App\Infrastructures\Repositories\Eloquent\Level;
 
 
 use App\Models\Level;
+use App\Services\Level\CreateLevel\CreateLevelParameter;
+use App\Services\Level\DeleteLevel\DeleteLevelParameter;
 use App\Services\Level\LevelRepositoryInterface;
 use Illuminate\Support\Collection;
 
@@ -20,5 +22,24 @@ class LevelRepository implements LevelRepositoryInterface
     public function all(): Collection
     {
         return Level::all();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function create(CreateLevelParameter $parameter): void
+    {
+        $level = new Level();
+        $level->level = $parameter->getLevel();
+        $level->save();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function delete(DeleteLevelParameter $parameter): void
+    {
+        $level = Level::findOrFail($parameter->getLevelId());
+        $level->delete();
     }
 }

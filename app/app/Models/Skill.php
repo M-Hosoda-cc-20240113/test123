@@ -32,6 +32,10 @@ class Skill extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     /**
      *
      * Users Table relation

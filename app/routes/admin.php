@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Agent\AgentController;
+use App\Http\Controllers\Admin\Level\LevelController;
 use App\Http\Controllers\Admin\Station\StationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Index\IndexController;
@@ -70,10 +71,23 @@ Route::namespace('Station')->prefix('station')->group(function () {
 
 Route::namespace('Skill')->prefix('skills')->group(function () {
     Route::get('/', [SkillController::class, 'list'])->name('skill.list');
+    Route::get('/createForm', [SkillController::class, 'createForm'])->name('skill.createForm');
+    Route::post('/create', [SkillController::class, 'create'])->name('skill.create');
+    Route::post('/delete', [SkillController::class, 'delete'])->name('skill.delete');
+});
+
+Route::namespace('Level')->prefix('levels')->group(function () {
+    Route::get('/', [LevelController::class, 'list'])->name('level.list');
+    Route::get('/createForm', [LevelController::class, 'createForm'])->name('level.createForm');
+    Route::post('/create', [LevelController::class, 'create'])->name('level.create');
+    Route::post('/delete', [LevelController::class, 'delete'])->name('level.delete');
 });
 
 Route::namespace('Position')->prefix('positions')->group(function () {
     Route::get('/', [PositionController::class, 'list'])->name('position.list');
+    Route::get('/createForm', [PositionController::class, 'createForm'])->name('position.createForm');
+    Route::post('/create', [PositionController::class, 'create'])->name('position.create');
+    Route::post('/delete', [PositionController::class, 'delete'])->name('position.delete');
 });
 
 Route::namespace('Application')->prefix('applications')->group(function () {

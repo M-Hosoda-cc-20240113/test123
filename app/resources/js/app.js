@@ -11,6 +11,9 @@ import {project_create} from './admin/pages/project_create'
 import {project_edit} from './admin/pages/project_edit'
 import {user_list} from './admin/pages/user_list'
 import {assign_list} from './admin/pages/assign_list'
+import {position_list} from './admin/pages/position_list'
+import {skill_list} from './admin/pages/skill_list'
+import {level_list} from './admin/pages/level_list'
 
 // front
 import {index} from './front/pages/index'
@@ -41,6 +44,15 @@ switch (route_name) {
         break
     case routes.assign_list:
         assign_list()
+        break
+    case routes.position_list:
+        position_list()
+        break
+    case routes.skill_list:
+        skill_list()
+        break
+    case routes.level_list:
+        level_list()
         break
     default:
         break

@@ -3,8 +3,8 @@
 
 namespace App\Services\Level;
 
-
-use App\Models\Level;
+use App\Services\Level\CreateLevel\CreateLevelParameter;
+use App\Services\Level\DeleteLevel\DeleteLevelParameter;
 use Illuminate\Support\Collection;
 
 /**
@@ -14,7 +14,19 @@ use Illuminate\Support\Collection;
 interface LevelRepositoryInterface
 {
     /**
-     * @return Level[]|Collection
+     * @return Collection
      */
     public function all():Collection;
+
+    /**
+     * @param CreateLevelParameter $parameter
+     * @return void
+     */
+    public function create(CreateLevelParameter $parameter):void;
+
+    /**
+     * @param DeleteLevelParameter $parameter
+     * @return void
+     */
+    public function delete(DeleteLevelParameter $parameter):void;
 }
