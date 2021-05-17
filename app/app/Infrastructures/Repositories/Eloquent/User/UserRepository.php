@@ -39,6 +39,14 @@ class UserRepository implements UserRepositoryInterface
         return hash(config('app.hash_email.algo'), $email . config('app.hash_email.salt'));
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function makeTelHash(string $tel): string
+    {
+        return hash(config('app.hash_email.algo'), $tel . config('app.hash_email.salt'));
+    }
+
 
     /**
      * {@inheritdoc}
@@ -108,6 +116,13 @@ class UserRepository implements UserRepositoryInterface
         return User::where('email_hash', $this->makeEmailHash($email))->first();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function findByTel(string $tel): ?User
+    {
+        return User::where('tel_hash', $this->makeTelHash($tel))->first();
+    }
 
     /**
      * {@inheritdoc}

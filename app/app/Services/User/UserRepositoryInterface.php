@@ -28,6 +28,14 @@ interface UserRepositoryInterface
     public static function makeEmailHash(string $email): string;
 
     /**
+     * 電話番号のhashを生成
+     *
+     * @param string $tel
+     * @return string
+     */
+    public function makeTelHash(string $tel): string;
+
+    /**
      * メールアドレスのハッシュからユーザーを取得
      *
      * @param string $email_hash
@@ -35,6 +43,17 @@ interface UserRepositoryInterface
      */
     public function findByEmailHash(string $email_hash): User;
 
+    /**
+     * @param string $email
+     * @return User
+     */
+    public function findByEmail(string $email): ?User;
+
+
+    /**
+     * 電話番号からユーザーを取得
+     */
+    public function findByTel(string $tel): ?User;
 
     /**
      * ユーザー情報取得
@@ -57,12 +76,6 @@ interface UserRepositoryInterface
     public function register(RegisterUserParameter $parameter): User;
 
     /**
-     * @param string $email
-     * @return User
-     */
-    public function findByEmail(string $email): ?User;
-
-    /**
      * メールアドレス変更
      *
      * @param User $user
@@ -82,7 +95,6 @@ interface UserRepositoryInterface
      * @return mixed
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter);
-
 
     /**
      * @return Collection|null

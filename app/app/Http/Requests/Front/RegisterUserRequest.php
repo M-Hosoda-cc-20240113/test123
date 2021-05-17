@@ -2,9 +2,12 @@
 
 namespace App\Http\Requests\Front;
 
-use App\Models\User;
+use App\Rules\HalfWidthLowerCase;
+use App\Rules\HalfWidthNumber;
+use App\Rules\HalfWidthUpperCase;
+use App\Rules\InUsersByEmail;
+use App\Rules\InUsersByTel;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class RegisterUserRequest extends FormRequest
 {
@@ -25,22 +28,23 @@ class RegisterUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        $user_email = hash(config('app.hash_email.algo'), $this->input('email') . config('app.hash_email.salt'));
-        $user_tel = hash(config('app.hash_email.algo'), $this->input('tel') . config('app.hash_email.salt'));
-        $this->merge(['email_hash' => $user_email]);
-        $this->merge(['tel_hash' => $user_tel]);
-
         return [
             'sei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
             'mei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
             'sei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'mei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'birthday'  => ['required', 'integer', 'digits:8'],
-            'tel'       => ['required', 'digits_between:8,11'],
-            'tel_hash'  => [Rule::unique('users', 'tel_hash')->whereNull('deleted_at')],
-            'email'     => ['required', 'email'],
-            'email_hash'=> [Rule::unique('users', 'email_hash')->whereNull('deleted_at')],
-            'password'  => ['required', 'regex:/^[a-zA-Z0-9]+$/', 'min:8', 'max:30'],
+            'tel'       => ['required', 'digits_between:8,11', new InUsersByTel($this->input('tel'))],
+            'email'     => ['required', 'email', new InUsersByEmail($this->input('email'))],
+            'password'  => [
+                'required',
+                'string',
+                'min:8',
+                'max:255',
+                new HalfWidthLowerCase(),
+                new HalfWidthUpperCase(),
+                new HalfWidthNumber(),
+            ],
         ];
     }
 
