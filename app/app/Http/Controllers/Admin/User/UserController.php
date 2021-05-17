@@ -96,20 +96,20 @@ class UserController extends Controller
         SearchUserService $search_user_service
     ) {
         $parameter = new SearchUserParameter();
-        if (isset($request->new_user)) {
-            $parameter->setNewUser($request->new_user);
+        if (isset($request->is_new) && $request->is_new === "1") {
+            $parameter->setNewUser($request->is_new);
         }
 
-        if (isset($request->not_new_user)) {
-            $parameter->setNotNewUser($request->not_new_user);
+        if (isset($request->is_new) && $request->is_new === "2") {
+            $parameter->setNewUser($request->is_new);
         }
 
-        if (isset($request->is_working)) {
+        if (isset($request->is_working) && $request->is_working === "1") {
             $parameter->setIsWorking($request->is_working);
         }
 
-        if (isset($request->is_not_working)) {
-            $parameter->setIsNotWorking($request->is_not_working);
+        if (isset($request->is_working) && $request->is_working === "2") {
+            $parameter->setIsWorking($request->is_working);
         }
 
         if (isset($request->operation_start_month)) {

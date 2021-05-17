@@ -32,10 +32,8 @@ class SearchUserRequest extends FormRequest
         $levels = Level::all();
         $level_ids = $levels->pluck('id')->toArray();
         return [
-            'new_user'                   => ['nullable','integer'],
-            'not_new_user'               => ['nullable','integer'],
+            'is_new'                   => ['nullable','integer'],
             'is_working'                 => ['nullable','integer'],
-            'is_not_working'             => ['nullable','integer'],
             'operation_start_month'      => ['nullable','string'],
             'status'                     => ['nullable','integer', 'between:1,5'],
             'skill_ids'                  => ['array'],
@@ -51,10 +49,8 @@ class SearchUserRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'new_user.integer'              => '新規:予期せぬ値が入力されました',
-            'not_new_user.integer'          => '既存:予期せぬ値が入力されました',
+            'is_new.integer'                => '新規:予期せぬ値が入力されました',
             'is_working.integer'            => '稼働中:予期せぬ値が入力されました',
-            'is_not_working.integer'        => '待機中:予期せぬ値が入力されました',
             'operation_start_month.string'  => '営業開始月:予期せぬ値が入力されました',
             'status.required'               => 'ステータス:予期せぬ値が入力されました',
             'status.integer'                => 'ステータス:予期せぬ値が入力されました',

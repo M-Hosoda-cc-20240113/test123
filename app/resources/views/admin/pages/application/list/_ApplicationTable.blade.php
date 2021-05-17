@@ -1,3 +1,8 @@
+@php
+/**
+ * @var \App\Services\Application\ApplicationList\ApplicationListResponse $response
+ */
+@endphp
 <table class="p-table">
     <thead class="p-table__head">
     <tr class="p-table__headRow">
@@ -12,7 +17,7 @@
 
     <tbody class="p-table__body">
     @foreach ($response->getApplications() as $key => $application)
-        <tr class="p-table__bodyRow" data-href="">
+        <tr class="p-table__bodyRow @if($application['status'] === 2) js-button-active @endif" data-href="">
             <td class="p-table__bodyRowItem">
                 <a class="d-block w-100"
                    href="{{ route('project.detail', ['project_id' => $application['projects']['id']] )}}">{{ $application['projects']['name'] ?? '' }}</a>
@@ -36,7 +41,7 @@
                     {{ @csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $application['users']['id'] }}">
                     <input type="hidden" name="project_id" value="{{ $application['projects']['id'] }}">
-                    <button type="submit" class="c-button u-m0a">確定</button>
+                    <button type="submit" disabled class="c-button c-button--disabled u-m0a">確定</button>
                 </form>
             </td>
         </tr>
