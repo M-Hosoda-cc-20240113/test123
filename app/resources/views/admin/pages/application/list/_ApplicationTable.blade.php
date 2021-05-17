@@ -41,7 +41,7 @@
                     {{ @csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $application['users']['id'] }}">
                     <input type="hidden" name="project_id" value="{{ $application['projects']['id'] }}">
-                    <button type="submit" class="c-button u-m0a">確定</button>
+                    <button type="submit" disabled class="c-button c-button--disabled u-m0a">確定</button>
                 </form>
             </td>
         </tr>
