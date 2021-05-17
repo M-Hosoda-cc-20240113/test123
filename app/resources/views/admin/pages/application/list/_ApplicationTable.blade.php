@@ -1,3 +1,8 @@
+@php
+/**
+ * @var \App\Services\Application\ApplicationList\ApplicationListResponse $response
+ */
+@endphp
 <table class="p-table">
     <thead class="p-table__head">
     <tr class="p-table__headRow">
@@ -12,7 +17,7 @@
 
     <tbody class="p-table__body">
     @foreach ($response->getApplications() as $key => $application)
-        <tr class="p-table__bodyRow" data-href="">
+        <tr class="p-table__bodyRow @if($application['status'] === 2) js-button-active @endif" data-href="">
             <td class="p-table__bodyRowItem">
                 <a class="d-block w-100"
                    href="{{ route('project.detail', ['project_id' => $application['projects']['id']] )}}">{{ $application['projects']['name'] ?? '' }}</a>
