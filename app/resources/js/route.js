@@ -7,6 +7,7 @@ export const routes = {
   user_list: 'user.list',
   user_search: 'user.search',
   assign_list: 'assignment.list',
+  application_list: 'application.list',
 
   // front
   index: 'front.index',
