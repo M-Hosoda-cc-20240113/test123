@@ -39,9 +39,9 @@
                 <div class="p-register">
                     <form action="{{ route('project.create') }}" method="post">
                         {{ @csrf_field() }}
-                        <div class="p-register__row">
-                            <span class="p-register__title c-text--bold">会社名<span class="c-label">必須</span></span>
-                            <div class="p-register__itemWrap">
+                        <div class="p-register__row--spColumn u-mt-20">
+                            <span class="p-register__title c-text--bold">会社名<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+                            <div class="p-register__itemWrap u-mt-10-sp">
                                 <div class="p-register__item u-w-50-pc">
                                     <label for="" class="c-select">
                                         <select name="agent_id" id="">
@@ -173,13 +173,13 @@
                         <div class="p-register__row">
                             <span class="p-register__title c-text--bold">単価</span>
                             <div class="p-register__itemWrap--2col u-ff-row">
-                                <div class="p-register__item u-w-25-pc u-w-50-sp">
+                                <div class="p-register__item u-w-25-pc">
                                     <input name="min_unit_price" value="{{ old('min_unit_price') }}" type="text"
                                            class="c-input"><span class="u-as-center u-pl-10 u-w-70px">〜</span>
                                 </div>
-                                <div class="p-register__item u-w-25-pc u-w-50-sp">
+                                <div class="p-register__item u-w-25-pc u-mt-10-sp">
                                     <input name="max_unit_price" value="{{ old('maz_unit_price') }}" type="text"
-                                           class="c-input"><span class="u-as-center u-pl-10 u-w-70px">万円</span>
+                                           class="c-input"><span class="u-as-center u-pl-10 u-w-70px">万円</span><span class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
                                 </div>
                             </div>
                         </div>
