@@ -210,7 +210,7 @@
                         <div class="p-register__row">
                             <span class="p-register__title c-text--bold">精算幅</span>
                             <div class="p-register__itemWrap--2col u-ff-row">
-                                <div class="p-register__item u-w-25-pc u-w-50-sp">
+                                <div class="p-register__item u-w-25-pc">
                                     <input type="text"
                                            class="c-input"
                                            name="min_operation_time"
@@ -218,20 +218,20 @@
                                            placeholder="160">
                                     <span class="u-as-center u-pl-10 u-w-70px">〜</span>
                                 </div>
-                                <div class="p-register__item u-w-25-pc u-w-50-sp">
+                                <div class="p-register__item u-w-25-pc u-mt-10-sp">
                                     <input type="text"
                                            class="c-input"
                                            name="max_operation_time"
                                            value="{{ old('max_operationo_time') }}"
                                            placeholder="200">
-                                    <span class="u-as-center u-pl-10 u-w-70px">時間</span>
+                                    <span class="u-as-center u-pl-10 u-w-70px">時間</span><span class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
                                 </div>
                             </div>
                         </div>
                         {{--  精算幅  --}}
 
                         <div class="p-register__row--spColumn">
-                            <p class="p-register__title c-text--bold u-w-100-sp">案件内容</p>
+                            <p class="p-register__title c-text--bold u-w-100-sp">案件内容<span class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span></p>
                             <div class="p-register__itemWrap">
                                 <div class="p-register__item">
                             <textarea class="c-input--light"
