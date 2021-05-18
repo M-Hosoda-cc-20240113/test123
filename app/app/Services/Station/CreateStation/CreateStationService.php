@@ -23,10 +23,10 @@ class CreateStationService
     }
 
     /**
-     * @param $parameter
+     * @param CreateStationParameter $parameter
      */
-    public function exec($parameter)
+    public function exec(CreateStationParameter $parameter)
     {
-        return $this->station_repository->create($parameter);
+        $this->station_repository->create($parameter);
     }
 }

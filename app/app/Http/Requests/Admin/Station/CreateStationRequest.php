@@ -24,7 +24,7 @@ class CreateStationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required','string','max:20','unique:stations'],
+            'name' => ['required','string','max:20','unique:stations,name'],
             'area_name' => ['required','string','max:20'],
         ];
     }

@@ -25,9 +25,9 @@
 
     <div class="l-container">
         @include('admin.bread_crumb._BreadCrumb')
+        <a href="{{ route('agent.create.form') }}" class="c-button u-db u-mt-20 u-w-20-pc">新規登録する</a>
         @include('admin.pages.agent.list._RegularTable', ['response' => $response])
         {{ $response->getAgents()->links('components.paginator') }}
-        <a href="{{ route('agent.create.form') }}" class="c-button u-db u-m0a u-mt-30 u-w-15-pc">新規登録する</a>
     </div>
     @include('admin.footer.footer')
 @endsection

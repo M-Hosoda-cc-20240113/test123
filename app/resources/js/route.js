@@ -11,6 +11,8 @@ export const routes = {
   skill_list: 'skill.list',
   level_list: 'level.list',
   application_list: 'application.list',
+  station_list: 'station.list',
+  agent_list: 'agent.list',
 
   // front
   index: 'front.index',
