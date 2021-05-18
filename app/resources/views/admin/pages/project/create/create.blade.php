@@ -40,7 +40,7 @@
                     <form action="{{ route('project.create') }}" method="post">
                         {{ @csrf_field() }}
                         <div class="p-register__row">
-                            <span class="p-register__title c-text--bold">会社名</span>
+                            <span class="p-register__title c-text--bold">会社名<span class="c-label">必須</span></span>
                             <div class="p-register__itemWrap">
                                 <div class="p-register__item u-w-50-pc">
                                     <label for="" class="c-select">
