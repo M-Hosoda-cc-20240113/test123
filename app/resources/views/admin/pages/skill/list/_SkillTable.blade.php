@@ -1,16 +1,24 @@
-<table class="RegularTable">
-  <thead class="RegularTable__head">
-    <tr class="RegularTable__headRow">
-      <th class="RegularTable__headRowItem">スキル名</th>
-      <th class="RegularTable__headRowItem">登録日時</th>
+<table class="p-table">
+  <thead class="p-table__head">
+    <tr class="p-table__headRow">
+      <th class="p-table__headRowItem">スキル名</th>
+      <th class="p-table__headRowItem">登録日時</th>
+      <th class="p-table__headRowItem"></th>
     </tr>
   </thead>
 
-  <tbody class="RegularTable__body">
+  <tbody class="p-table__body">
     @foreach ($response->getSkills() as $skill)
-    <tr class="RegularTable__bodyRow" data-href="">
-      <td class="RegularTable__bodyRowItem">{{ $skill->name }}</td>
-      <td class="RegularTable__bodyRowItem">{{ $skill->created_at }}</td>
+    <tr class="p-table__bodyRow" data-href="">
+      <td class="p-table__bodyRowItem">{{ $skill->name }}</td>
+      <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($skill->created_at ?? '')}}</td>
+        <td class="p-table__bodyRowItem--textCenter">
+            <form action="{{ route('skill.delete') }}" method="post">
+                {{ @csrf_field() }}
+                <input type="hidden" name="skill_id" value="{{ $skill->id }}">
+                <button type="submit" id="alert_button" class="c-button--warning u-w-35">削除</button>
+            </form>
+        </td>
     </tr>
     @endforeach
   </tbody>

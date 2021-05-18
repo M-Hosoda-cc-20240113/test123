@@ -2,28 +2,28 @@
 
 namespace App\Services\Skill\SkillList;
 
-use App\Models\Skill;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class SkillListResponse
 {
   /**
-   * @var Skill[]
+   * @var LengthAwarePaginator
    */
   private $skills;
 
     /**
-     * @return \App\Models\Skill[]
+     * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public function getSkills(): array
+    public function getSkills(): LengthAwarePaginator
     {
         return $this->skills;
     }
 
     /**
-     * @param \App\Models\Skill[] $skills
+     * @param LengthAwarePaginator $skills
+     * @return SkillListResponse
      */
-    public function setSkills(array $skills): SkillListResponse
+    public function setSkills(LengthAwarePaginator $skills): SkillListResponse
     {
         $this->skills = $skills;
         return $this;

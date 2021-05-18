@@ -29,10 +29,15 @@ class Position extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     /**
-     * 
+     *
      * Projects Table relation
-     * @var array
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function projects(): BelongsToMany
     {

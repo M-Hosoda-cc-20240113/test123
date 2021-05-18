@@ -1,7 +1,7 @@
 @php
-/**
- * @var \App\Services\Admin\Skill\SkillList\SkillListResponse $response
- */
+    /**
+     * @var \App\Services\Skill\SkillList\SkillListResponse $response
+     */
 @endphp
 
 @extends('admin.layout')
@@ -10,8 +10,11 @@
 
 @section('body')
     @include('admin.header.header')
-    <div class="Container mt-30">
-      @include('admin.pages.skill.list._SkillTable', ['response' => $response])
+    <div class="l-container">
+        @include('admin.bread_crumb._BreadCrumb')
+        <a href="{{ route('skill.createForm') }}" class="c-button p-flex__item u-w-20 u-mt-15">新規登録</a>
+        @include('admin.pages.skill.list._SkillTable', ['response' => $response])
+        {{ $response->getSkills()->links('components.paginator') }}
     </div>
 
     @include('admin.footer.footer')
