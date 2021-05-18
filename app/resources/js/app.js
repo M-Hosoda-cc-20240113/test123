@@ -15,6 +15,8 @@ import {position_list} from './admin/pages/position_list';
 import {skill_list} from './admin/pages/skill_list';
 import {level_list} from './admin/pages/level_list';
 import {application_list} from './admin/pages/application_list';
+import {station_list} from './admin/pages/station_list';
+import {agent_list} from './admin/pages/agent_list';
 
 // front
 import {index} from './front/pages/index';
@@ -25,55 +27,61 @@ const route_name = document.querySelector('body').dataset.routeName;
 
 // admin
 switch (route_name) {
-  case routes.project_detail:
-    project_detail();
-    break;
-  case routes.project_list:
-    project_list();
-    break;
-  case routes.project_create:
-    project_create();
-    break;
-  case routes.project_edit:
-    project_edit();
-    break;
-  case routes.user_list:
-  case routes.user_search:
-    user_list();
-    break;
-  case routes.assign_list:
-    assign_list();
-    break;
-  case routes.position_list:
-    position_list();
-    break;
-  case routes.skill_list:
-    skill_list();
-    break;
-  case routes.level_list:
-    level_list();
-    break;
-  case routes.application_list:
-    application_list();
-    break;
-  default:
-    break;
+    case routes.project_detail:
+        project_detail();
+        break;
+    case routes.project_list:
+        project_list();
+        break;
+    case routes.project_create:
+        project_create();
+        break;
+    case routes.project_edit:
+        project_edit();
+        break;
+    case routes.user_list:
+    case routes.user_search:
+        user_list();
+        break;
+    case routes.assign_list:
+        assign_list();
+        break;
+    case routes.position_list:
+        position_list();
+        break;
+    case routes.skill_list:
+        skill_list();
+        break;
+    case routes.level_list:
+        level_list();
+        break;
+    case routes.application_list:
+        application_list();
+        break;
+    case routes.station_list:
+        station_list();
+        break;
+    case routes.agent_list:
+        agent_list();
+        break;
+    default:
+        break;
 }
 
 // front
 switch (route_name) {
-  case routes.index:
-  case routes.project_search:
-    index();
-    break;
-  case routes.user_skill_edit:
-    user_skill_edit();
-    break;
-  case routes.user_delete:
-    user_delete();
-    break;
-  default:
-    break;
+    case routes.index:
+    case routes.project_search:
+        index();
+        break;
+    case routes.user_skill_edit:
+        user_skill_edit();
+        break;
+    case routes.user_delete:
+        user_delete();
+        break;
+    default:
+        break;
 }
 
 // 全ページ共通で動かす
