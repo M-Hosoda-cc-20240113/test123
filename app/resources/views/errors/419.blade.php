@@ -17,5 +17,5 @@
         <h2 class="p-level2Heading">419エラー</h2>
         <p class="c-text">ページの有効期限が切れました。</p>
     </div>
-    @include('errors.footer.footer')
+    @include('front.footer.footer')
 @endsection

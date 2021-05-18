@@ -17,5 +17,5 @@
         <h2 class="p-level2Heading">内部エラー</h2>
         <p class="c-text">サービス内でエラーが発生しました。恐れ入りますがマイページから再アクセスをお願いします。</p>
     </div>
-    @include('errors.footer.footer')
+    @include('front.footer.footer')
 @endsection

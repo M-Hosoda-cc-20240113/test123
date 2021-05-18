@@ -17,5 +17,5 @@
         <h2 class="p-level2Heading">403エラー</h2>
         <p class="c-text">閲覧権限がありません</p>
     </div>
-    @include('errors.footer.footer')
+    @include('front.footer.footer')
 @endsection
