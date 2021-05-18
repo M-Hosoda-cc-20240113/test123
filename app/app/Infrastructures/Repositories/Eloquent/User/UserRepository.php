@@ -6,6 +6,7 @@ use App\Mail\RegisterMail;
 use App\Models\RelLevelSkillUser;
 use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
+use App\Services\User\RegisterUser\RegisterUserParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
 use Carbon\CarbonImmutable;
@@ -36,6 +37,14 @@ class UserRepository implements UserRepositoryInterface
     public static function makeEmailHash(string $email): string
     {
         return hash(config('app.hash_email.algo'), $email . config('app.hash_email.salt'));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function makeTelHash(string $tel): string
+    {
+        return hash(config('app.hash_email.algo'), $tel . config('app.hash_email.salt'));
     }
 
 
@@ -82,19 +91,19 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function register(array $request)
+    public function register(RegisterUserParameter $parameter): User
     {
-        Mail::to($request['email'])->send(new RegisterMail($request));
         return User::create([
-            'sei' => $request['sei'],
-            'mei' => $request['mei'],
-            'sei_kana' => $request['sei_kana'],
-            'mei_kana' => $request['mei_kana'],
-            'birthday' => $request['birthday'],
-            'tel' => $request['tel'],
-            'email' => $request['email'],
-            'email_hash' => hash(config('app.hash_email.algo'), $request['email'] . config('app.hash_email.salt')),
-            'password' => bcrypt($request['password']),
+            'sei' => $parameter->getSei(),
+            'mei' => $parameter->getMei(),
+            'sei_kana' => $parameter->getSeiKana(),
+            'mei_kana' => $parameter->getMeiKana(),
+            'birthday' => $parameter->getBirthday(),
+            'tel' => $parameter->getTel(),
+            'tel_hash' => hash(config('app.hash_email.algo'), $parameter->getTel() . config('app.hash_email.salt')),
+            'email' => $parameter->getEmail(),
+            'email_hash' => hash(config('app.hash_email.algo'), $parameter->getEmail() . config('app.hash_email.salt')),
+            'password' => bcrypt($parameter->getPassword()),
         ]);
     }
 
@@ -107,6 +116,13 @@ class UserRepository implements UserRepositoryInterface
         return User::where('email_hash', $this->makeEmailHash($email))->first();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function findByTel(string $tel): ?User
+    {
+        return User::where('tel_hash', $this->makeTelHash($tel))->first();
+    }
 
     /**
      * {@inheritdoc}

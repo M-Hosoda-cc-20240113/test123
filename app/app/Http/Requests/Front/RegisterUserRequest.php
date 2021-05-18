@@ -2,6 +2,11 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Rules\HalfWidthLowerCase;
+use App\Rules\HalfWidthNumber;
+use App\Rules\HalfWidthUpperCase;
+use App\Rules\InUsersByEmail;
+use App\Rules\InUsersByTel;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterUserRequest extends FormRequest
@@ -29,9 +34,17 @@ class RegisterUserRequest extends FormRequest
             'sei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'mei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'birthday'  => ['required', 'integer', 'digits:8'],
-            'tel'       => ['required', 'digits_between:8,11', 'unique:users'],
-            'email'     => ['required', 'email', 'unique:users'],
-            'password'  => ['required', 'regex:/^[a-zA-Z0-9]+$/', 'min:8', 'max:30'],
+            'tel'       => ['required', 'digits_between:8,11', new InUsersByTel($this->input('tel'))],
+            'email'     => ['required', 'email', new InUsersByEmail($this->input('email'))],
+            'password'  => [
+                'required',
+                'string',
+                'min:8',
+                'max:255',
+                new HalfWidthLowerCase(),
+                new HalfWidthUpperCase(),
+                new HalfWidthNumber(),
+            ],
         ];
     }
 
