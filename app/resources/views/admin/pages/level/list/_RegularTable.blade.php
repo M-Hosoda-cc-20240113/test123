@@ -16,7 +16,7 @@
                 <form action="{{ route('level.delete') }}" method="post">
                     {{ @csrf_field() }}
                     <input type="hidden" name="level_id" value="{{ $level->id }}">
-                    <button type="submit" id="alert_button" class="c-button--warning u-w-35">削除</button>
+                    <button type="submit" class="c-button--warning u-w-35 js-alert-button">削除</button>
                 </form>
             </td>
         </tr>
