@@ -657,7 +657,7 @@ img {
   background-color: #606089;
 }
 
-.c-label {
+.c-label, .c-label--rounded, .c-label--warning {
   font-size: 1.4rem;
   color: #4bc1c1;
   padding: 5px 10px;
@@ -665,6 +665,15 @@ img {
   display: inline-block;
   text-decoration: none;
   border: 1px solid #4bc1c1;
+}
+
+.c-label--rounded {
+  border-radius: 15px;
+}
+
+.c-label--warning {
+  color: #F9627D;
+  border-color: #F9627D;
 }
 
 .c-input, .c-input--light {
