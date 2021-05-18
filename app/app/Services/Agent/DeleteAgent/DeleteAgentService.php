@@ -6,7 +6,7 @@ namespace App\Services\Agent\DeleteAgent;
 
 use App\Services\Agent\AgentRepositoryInterface;
 
-class DeleteAgentService extends \App\Services\Agent\DeleteAgent\DeleteAgentParameter
+class DeleteAgentService
 {
     /**
      * @var AgentRepositoryInterface
