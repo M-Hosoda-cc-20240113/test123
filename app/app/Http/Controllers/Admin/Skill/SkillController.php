@@ -21,7 +21,9 @@ class SkillController extends Controller
     /**
      *
      * Admin skill list
-     * @var array
+     *
+     * @param \App\Services\Skill\SkillList\SkillListService $skill_list_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function list(SkillListService $skill_list_service)
     {

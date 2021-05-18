@@ -1,8 +1,11 @@
-import { Alert } from '../Alert'
+import {Alert} from '../Alert';
+import {config_message} from '../../config_message';
 
 export function skill_list() {
-    const alert_button = document.querySelector('#alert_button')
-    const delete_message = '本当に削除しますか？'
+  const alert_buttons = document.querySelectorAll('.js-alert-button');
+  const delete_message = config_message.delete_alert;
 
-    new Alert(alert_button, delete_message)
+  alert_buttons.forEach((button) => {
+    new Alert(button, delete_message);
+  });
 }
