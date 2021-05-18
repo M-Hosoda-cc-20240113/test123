@@ -10,6 +10,7 @@ export const routes = {
   position_list: 'position.list',
   skill_list: 'skill.list',
   level_list: 'level.list',
+  application_list: 'application.list',
 
   // front
   index: 'front.index',

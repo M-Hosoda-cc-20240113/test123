@@ -1,8 +1,8 @@
 // route config
-import {routes} from './route'
+import {routes} from './route';
 
 // common.js
-import {common} from './common'
+import {common} from './common';
 
 // admin
 import {project_detail} from './admin/pages/project_detail'
@@ -14,13 +14,14 @@ import {assign_list} from './admin/pages/assign_list'
 import {position_list} from './admin/pages/position_list'
 import {skill_list} from './admin/pages/skill_list'
 import {level_list} from './admin/pages/level_list'
+import {application_list} from './admin/pages/application_list';
 
 // front
-import {index} from './front/pages/index'
-import {user_skill_edit} from './front/pages/user_skill_edit'
+import {index} from './front/pages/index';
+import {user_skill_edit} from './front/pages/user_skill_edit';
 import {user_delete} from './front/pages/user_delete';
 
-const route_name = document.querySelector('body').dataset.routeName
+const route_name = document.querySelector('body').dataset.routeName;
 
 // admin
 switch (route_name) {
@@ -54,27 +55,30 @@ switch (route_name) {
     case routes.level_list:
         level_list()
         break
+    case routes.application_list:
+        application_list();
+        break;
     default:
         break
 }
 
 // front
 switch (route_name) {
-    case routes.index:
-        index()
-        break
-    case routes.project_search:
-        index()
-        break
-    case routes.user_skill_edit:
-        user_skill_edit()
-        break
-    case routes.user_delete:
-        user_delete()
-        break
-    default:
-        break
+  case routes.index:
+    index();
+    break;
+  case routes.project_search:
+    index();
+    break;
+  case routes.user_skill_edit:
+    user_skill_edit();
+    break;
+  case routes.user_delete:
+    user_delete();
+    break;
+  default:
+    break;
 }
 
 // 全ページ共通で動かす
-common()
+common();
