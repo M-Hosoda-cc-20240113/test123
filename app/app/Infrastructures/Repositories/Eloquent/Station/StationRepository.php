@@ -6,6 +6,7 @@ use App\Http\Requests\Admin\Station\CreateStationRequest;
 use App\Models\Area;
 use App\Models\Station;
 use App\Services\Station\CreateStation\CreateStationParameter;
+use App\Services\Station\DeleteStation\DeleteStationParameter;
 use App\Services\Station\StationRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -31,5 +32,12 @@ class StationRepository implements StationRepositoryInterface
         $station->name = $parameter->getName();
         $station->area_id =  $area->id;
         $station->save();
+    }
+
+    public function delete(DeleteStationParameter $parameter): Station
+    {
+        $station = Station::findOrFail($parameter->getStationId());
+        $station->delete();
+        return $station;
     }
 }

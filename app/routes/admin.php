@@ -61,12 +61,14 @@ Route::namespace('Agent')->prefix('agent')->group(function () {
     Route::get('/', [AgentController::class, 'list'])->name('agent.list');
     Route::get('/create', [AgentController::class, 'showCreateForm'])->name('agent.create.form');
     Route::post('/create', [AgentController::class, 'create'])->name('agent.create');
+    Route::post('/delete', [AgentController::class, 'delete'])->name('agent.delete');
 });
 
 Route::namespace('Station')->prefix('station')->group(function () {
     Route::get('/', [StationController::class, 'list'])->name('station.list');
     Route::get('/create', [StationController::class, 'showCreateForm'])->name('station.create.form');
     Route::post('/create', [StationController::class, 'create'])->name('station.create');
+    Route::post('/delete', [StationController::class, 'delete'])->name('station.delete');
 });
 
 Route::namespace('Skill')->prefix('skills')->group(function () {

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Services\Station\CreateStation;
+namespace App\Services\Station\DeleteStation;
 
 
 use App\Services\Station\StationRepositoryInterface;
 
-class CreateStationService
+class DeleteStationService
 {
     /**
      * @var StationRepositoryInterface
@@ -23,10 +23,10 @@ class CreateStationService
     }
 
     /**
-     * @param CreateStationParameter $parameter
-     */
-    public function exec(CreateStationParameter $parameter)
+     * @param \App\Services\Station\DeleteStation\DeleteStationParameter $parameter
+s     */
+    public function exec(DeleteStationParameter $parameter)
     {
-        $this->station_repository->create($parameter);
+        $this->station_repository->delete($parameter);
     }
 }

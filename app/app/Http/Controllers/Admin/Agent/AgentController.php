@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin\Agent;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Agent\CreateAgentRequest;
+use App\Http\Requests\Admin\Agent\DeleteAgentRequest;
+use App\Services\Agent\DeleteAgent\DeleteAgentParameter;
+use App\Services\Agent\DeleteAgent\DeleteAgentService;
 use App\Services\Agent\AgentList\AgentListResponse;
 use App\Services\Agent\AgentList\AgentListService;
 use App\Services\Agent\CreateAgent\CreateAgentParameter;
 use App\Services\Agent\CreateAgent\CreateAgentService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AgentController extends Controller
@@ -52,6 +54,24 @@ class AgentController extends Controller
         DB::transaction(function () use ($create_agent_service ,$parameter) {
             $create_agent_service->exec($parameter);
         });
+        return redirect()->route('agent.list');
+    }
+
+    /**
+     * @param DeleteAgentRequest $request
+     * @param DeleteAgentService $delete_agent_service
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
+     */
+    public function delete(DeleteAgentRequest $request, DeleteAgentService $delete_agent_service)
+    {
+        $parameter = new DeleteAgentParameter();
+        $parameter->setAgentId($request->agent_id);
+
+        DB::transaction(function () use ($delete_agent_service ,$parameter) {
+            $delete_agent_service->exec($parameter);
+        });
+
         return redirect()->route('agent.list');
     }
 }

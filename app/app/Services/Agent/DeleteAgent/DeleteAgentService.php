@@ -1,15 +1,12 @@
 <?php
 
 
-namespace App\Services\Agent\CreateAgent;
+namespace App\Services\Agent\DeleteAgent;
+
 
 use App\Services\Agent\AgentRepositoryInterface;
 
-/**
- * Class CreateAgentService
- * @package App\Services\Agent\CreateAgent
- */
-class CreateAgentService
+class DeleteAgentService extends \App\Services\Agent\DeleteAgent\DeleteAgentParameter
 {
     /**
      * @var AgentRepositoryInterface
@@ -17,7 +14,7 @@ class CreateAgentService
     private $agent_repository;
 
     /**
-     * CreateAgentService constructor.
+     * DeleteAgentService constructor.
      * @param AgentRepositoryInterface $agent_repository
      */
     public function __construct(AgentRepositoryInterface $agent_repository)
@@ -26,10 +23,10 @@ class CreateAgentService
     }
 
     /**
-     * @param CreateAgentParameter $parameter
+     * @param DeleteAgentParameter $parameter
      */
-    public function exec(CreateAgentParameter $parameter)
+    public function exec(DeleteAgentParameter $parameter)
     {
-        $this->agent_repository->create($parameter);
+        $this->agent_repository->delete($parameter);
     }
 }
