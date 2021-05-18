@@ -657,7 +657,7 @@ img {
   background-color: #606089;
 }
 
-.c-label, .c-label--rounded, .c-label--warning {
+.c-label, .c-label--rounded, .c-label--warning, .c-label--sm {
   font-size: 1.4rem;
   color: #4bc1c1;
   padding: 5px 10px;
@@ -674,6 +674,10 @@ img {
 .c-label--warning {
   color: #F9627D;
   border-color: #F9627D;
+}
+
+.c-label--sm {
+  font-size: 1.1rem;
 }
 
 .c-input, .c-input--light {
