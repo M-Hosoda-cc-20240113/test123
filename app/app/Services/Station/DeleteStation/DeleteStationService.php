@@ -6,6 +6,10 @@ namespace App\Services\Station\DeleteStation;
 
 use App\Services\Station\StationRepositoryInterface;
 
+/**
+ * Class DeleteStationService
+ * @package App\Services\Station\DeleteStation
+ */
 class DeleteStationService
 {
     /**
@@ -15,7 +19,7 @@ class DeleteStationService
 
     /**
      * CreateStationService constructor.
-     * @param \App\Services\Station\StationRepositoryInterface $station_repository
+     * @param StationRepositoryInterface $station_repository
      */
     public function __construct(StationRepositoryInterface $station_repository)
     {
@@ -23,7 +27,7 @@ class DeleteStationService
     }
 
     /**
-     * @param \App\Services\Station\DeleteStation\DeleteStationParameter $parameter
+     * @param DeleteStationParameter $parameter
 s     */
     public function exec(DeleteStationParameter $parameter)
     {

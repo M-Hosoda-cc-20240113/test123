@@ -20,7 +20,7 @@
           <form action="{{ route('agent.delete') }}" method="post">
               {{ @csrf_field() }}
               <input type="hidden" name="agent_id" value="{{ $agent->id }}">
-              <button type="submit" class="js-alert-button c-button--warning ">削除</button>
+              <button type="submit" class="c-button--warning js-alert-button">削除</button>
           </form>
       </td>
     </tr>

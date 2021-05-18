@@ -4,6 +4,10 @@
 namespace App\Services\Station\DeleteStation;
 
 
+/**
+ * Class DeleteStationParameter
+ * @package App\Services\Station\DeleteStation
+ */
 class DeleteStationParameter
 {
     /**

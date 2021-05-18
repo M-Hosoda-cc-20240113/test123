@@ -6,6 +6,10 @@ namespace App\Services\Agent\DeleteAgent;
 
 use App\Services\Agent\AgentRepositoryInterface;
 
+/**
+ * Class DeleteAgentService
+ * @package App\Services\Agent\DeleteAgent
+ */
 class DeleteAgentService
 {
     /**

@@ -4,6 +4,10 @@
 namespace App\Services\Agent\DeleteAgent;
 
 
+/**
+ * Class DeleteAgentParameter
+ * @package App\Services\Agent\DeleteAgent
+ */
 class DeleteAgentParameter
 {
     /**
