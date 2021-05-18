@@ -103,14 +103,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Custom Validation Attributes
+    | カスタムバリデーション属性名
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
+    | 以下の言語行は、例えば"email"の代わりに「メールアドレス」のように、
+    | 読み手にフレンドリーな表現でプレースホルダーを置き換えるために指定する
+    | 言語行です。これはメッセージをよりきれいに表示するために役に立ちます。
     |
     */
-
-    'attributes' => [],
+    'attributes' => [
+        'sei' => '姓',
+        'sei_kana' => '姓(カナ)',
+        'mei' => '名',
+        'mei_kana' => '名(カナ)',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'tel' => '電話番号',
+        'birthday' => '誕生日',
+    ],
 ];

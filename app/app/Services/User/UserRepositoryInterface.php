@@ -3,6 +3,7 @@
 namespace App\Services\User;
 
 use App\Models\User;
+use App\Services\User\RegisterUser\RegisterUserParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use Illuminate\Database\Eloquent\Collection;
@@ -27,6 +28,14 @@ interface UserRepositoryInterface
     public static function makeEmailHash(string $email): string;
 
     /**
+     * 電話番号のhashを生成
+     *
+     * @param string $tel
+     * @return string
+     */
+    public function makeTelHash(string $tel): string;
+
+    /**
      * メールアドレスのハッシュからユーザーを取得
      *
      * @param string $email_hash
@@ -34,6 +43,17 @@ interface UserRepositoryInterface
      */
     public function findByEmailHash(string $email_hash): User;
 
+    /**
+     * @param string $email
+     * @return User
+     */
+    public function findByEmail(string $email): ?User;
+
+
+    /**
+     * 電話番号からユーザーを取得
+     */
+    public function findByTel(string $tel): ?User;
 
     /**
      * ユーザー情報取得
@@ -48,11 +68,12 @@ interface UserRepositoryInterface
      */
     public function update(UpdateUserParameter $parameter): void;
 
+
     /**
-     * @param string $email
+     * @param RegisterUserParameter $parameter
      * @return User
      */
-    public function findByEmail(string $email): ?User;
+    public function register(RegisterUserParameter $parameter): User;
 
     /**
      * メールアドレス変更
@@ -74,7 +95,6 @@ interface UserRepositoryInterface
      * @return mixed
      */
     public function updateAdmin(UpdateUserAdminParameter $parameter);
-
 
     /**
      * @return Collection|null

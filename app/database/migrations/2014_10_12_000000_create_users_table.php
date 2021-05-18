@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('mei');
             $table->string('mei_kana');
             $table->string('tel')->unique();
+            $table->string('tel_hash')->unique();
             $table->string('birthday');
             $table->integer('points')->default(5000);
             $table->tinyInteger('is_receive_notification_mail')->default(1);  //メンションメールを受け取るか
