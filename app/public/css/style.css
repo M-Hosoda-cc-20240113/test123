@@ -1755,7 +1755,7 @@ img {
   transition: 0.3s;
 }
 
-.p-table {
+.p-table, .p-table--short {
   width: 100%;
   max-width: 960px;
   margin: 20px auto 0;
@@ -1763,9 +1763,15 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .p-table {
+  .p-table, .p-table--short {
     display: block;
     overflow-x: scroll;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .p-table--short {
+    display: table;
   }
 }
 
