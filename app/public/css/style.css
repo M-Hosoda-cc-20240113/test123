@@ -665,6 +665,7 @@ img {
   display: inline-block;
   text-decoration: none;
   border: 1px solid #4bc1c1;
+  white-space: nowrap;
 }
 
 .c-label--rounded {
