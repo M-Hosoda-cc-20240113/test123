@@ -513,7 +513,7 @@ img {
 
 @media screen and (max-width: 768px) {
   .l-container, .l-container--2col {
-    max-width: 320px;
+    max-width: 768px;
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -657,7 +657,7 @@ img {
   background-color: #606089;
 }
 
-.c-label {
+.c-label, .c-label--rounded, .c-label--warning, .c-label--sm {
   font-size: 1.4rem;
   color: #4bc1c1;
   padding: 5px 10px;
@@ -665,6 +665,20 @@ img {
   display: inline-block;
   text-decoration: none;
   border: 1px solid #4bc1c1;
+  white-space: nowrap;
+}
+
+.c-label--rounded {
+  border-radius: 15px;
+}
+
+.c-label--warning {
+  color: #F9627D;
+  border-color: #F9627D;
+}
+
+.c-label--sm {
+  font-size: 1.1rem;
 }
 
 .c-input, .c-input--light {
@@ -1755,7 +1769,7 @@ img {
   transition: 0.3s;
 }
 
-.p-table {
+.p-table, .p-table--short {
   width: 100%;
   max-width: 960px;
   margin: 20px auto 0;
@@ -1763,9 +1777,15 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .p-table {
+  .p-table, .p-table--short {
     display: block;
     overflow-x: scroll;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .p-table--short {
+    display: table;
   }
 }
 

@@ -42,7 +42,7 @@
                 <form action="{{ route('project.delete') }}" method="POST">
                     {{ @csrf_field() }}
                     <input type="hidden" name="project_id" value="{{ $response->getProject()->id }}">
-                    <button type="submit" class="c-button--warning u-db u-m0a u-w-30-pc u-mt-10" id="alert_button">削除</button>
+                    <button type="submit" class="c-button--warning u-db u-m0a u-w-30-pc u-mt-10 js-alert-button">削除</button>
                 </form>
                 {{--   削除  --}}
             </div>
