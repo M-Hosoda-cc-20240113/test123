@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Admin\Station;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Station\CreateStationRequest;
+use App\Http\Requests\Admin\Station\DeleteStationRequest;
 use App\Services\Area\AreaList\AreaListResponse;
 use App\Services\Area\AreaList\AreaListService;
 use App\Services\Station\CreateStation\CreateStationParameter;
 use App\Services\Station\CreateStation\CreateStationService;
+use App\Services\Station\DeleteStation\DeleteStationParameter;
+use App\Services\Station\DeleteStation\DeleteStationService;
 use App\Services\Station\StationList\StationListResponse;
 use App\Services\Station\StationList\StationListService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StationController extends Controller
@@ -58,6 +60,24 @@ class StationController extends Controller
         DB::transaction(function () use ($create_station_service, $parameter) {
             $create_station_service->exec($parameter);
         });
+        return redirect()->route('station.list');
+    }
+
+    /**
+     * @param DeleteStationRequest $request
+     * @param DeleteStationService $delete_station_service
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
+     */
+    public function delete(DeleteStationRequest $request, DeleteStationService $delete_station_service)
+    {
+        $parameter = new DeleteStationParameter();
+        $parameter->setStationId($request->station_id);
+
+        DB::transaction(function () use ($delete_station_service ,$parameter) {
+            $delete_station_service->exec($parameter);
+        });
+
         return redirect()->route('station.list');
     }
 }

@@ -6,6 +6,7 @@ namespace App\Infrastructures\Repositories\Eloquent\Agent;
 use App\Models\Agent;
 use App\Services\Agent\AgentRepositoryInterface;
 use App\Services\Agent\CreateAgent\CreateAgentParameter;
+use App\Services\Agent\DeleteAgent\DeleteAgentParameter;
 use Illuminate\Support\Collection;
 
 class AgentRepository implements AgentRepositoryInterface
@@ -28,5 +29,15 @@ class AgentRepository implements AgentRepositoryInterface
         $agent->name = $parameter->getName();
         $agent->tel = $parameter->getTel() ?? '';
         $agent->save();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function delete(DeleteAgentParameter $parameter): Agent
+    {
+        $agent = Agent::findOrFail($parameter->getAgentId());
+        $agent->delete();
+        return $agent;
     }
 }

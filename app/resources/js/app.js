@@ -15,6 +15,8 @@ import {position_list} from './admin/pages/position_list';
 import {skill_list} from './admin/pages/skill_list';
 import {level_list} from './admin/pages/level_list';
 import {application_list} from './admin/pages/application_list';
+import {station_list} from './admin/pages/station_list';
+import {agent_list} from './admin/pages/agent_list';
 
 // front
 import {index} from './front/pages/index';
@@ -55,6 +57,12 @@ switch (route_name) {
     break;
   case routes.application_list:
     application_list();
+    break;
+  case routes.station_list:
+    station_list();
+    break;
+  case routes.agent_list:
+    agent_list();
     break;
   default:
     break;
