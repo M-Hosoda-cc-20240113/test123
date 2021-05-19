@@ -120,5 +120,6 @@ return [
         'password' => 'パスワード',
         'tel' => '電話番号',
         'birthday' => '誕生日',
+        'password_confirmation' => 'パスワード確認欄'
     ],
 ];
