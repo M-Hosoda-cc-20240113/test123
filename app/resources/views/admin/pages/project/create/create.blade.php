@@ -73,9 +73,9 @@
                         </div>
                         {{--  最寄り駅  --}}
 
-                        <div class="p-register__row">
-                            <span class="p-register__title c-text--bold">案件名</span>
-                            <div class="p-register__itemWrap">
+                        <div class="p-register__row--spColumn">
+                            <span class="p-register__title c-text--bold">案件名<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+                            <div class="p-register__itemWrap u-mt-10-sp">
                                 <div class="p-register__item u-w-50-pc">
                                     <input name="name" class="c-input" type="text" value="{{ old('name') }}"
                                            placeholder="大規模総合ECサイト開発">

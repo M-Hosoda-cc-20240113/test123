@@ -21,3 +21,4 @@ Aegisより、メールアドレス変更に関するご案内です。
 ▼ログインページのアドレス▼
 {{ route('login') }}
 
+@include('front.emails.footer')

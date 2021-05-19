@@ -17,5 +17,5 @@
         <h2 class="p-level2Heading">404エラー</h2>
         <p class="c-text">ページが存在しません</p>
     </div>
-    @include('errors.footer.footer')
+    @include('front.footer.footer')
 @endsection

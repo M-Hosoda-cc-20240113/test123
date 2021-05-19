@@ -17,5 +17,5 @@
         <h2 class="p-level2Heading">401エラー</h2>
         <p class="c-text">アクセス権限がないまたは認証エラーです</p>
     </div>
-    @include('errors.footer.footer')
+    @include('front.footer.footer')
 @endsection

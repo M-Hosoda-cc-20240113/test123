@@ -192,6 +192,7 @@ return [
         App\Providers\SlackServiceProvider::class,
         App\Providers\PaginatorServiceProvider::class,
         App\Providers\StatusServiceProvider::class,
+        App\Providers\NotificationRegisterUserServiceProvider::class,
     ],
 
     /*

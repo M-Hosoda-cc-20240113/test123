@@ -42,7 +42,7 @@
                         $instance->bootstrapWith($bootstrappers);
         }
                     /**
-         * Register a callback to run after loading the environment.
+         * RegisterUser a callback to run after loading the environment.
          *
          * @param \Closure $callback
          * @return void 
@@ -54,7 +54,7 @@
                         $instance->afterLoadingEnvironment($callback);
         }
                     /**
-         * Register a callback to run before a bootstrapper.
+         * RegisterUser a callback to run before a bootstrapper.
          *
          * @param string $bootstrapper
          * @param \Closure $callback
@@ -67,7 +67,7 @@
                         $instance->beforeBootstrapping($bootstrapper, $callback);
         }
                     /**
-         * Register a callback to run after a bootstrapper.
+         * RegisterUser a callback to run after a bootstrapper.
          *
          * @param string $bootstrapper
          * @param \Closure $callback
@@ -395,7 +395,7 @@
                         return $instance->runningUnitTests();
         }
                     /**
-         * Register all of the configured providers.
+         * RegisterUser all of the configured providers.
          *
          * @return void 
          * @static 
@@ -406,7 +406,7 @@
                         $instance->registerConfiguredProviders();
         }
                     /**
-         * Register a service provider with the application.
+         * RegisterUser a service provider with the application.
          *
          * @param \Illuminate\Support\ServiceProvider|string $provider
          * @param bool $force
@@ -478,7 +478,7 @@
                         $instance->loadDeferredProvider($service);
         }
                     /**
-         * Register a deferred provider and service.
+         * RegisterUser a deferred provider and service.
          *
          * @param string $provider
          * @param string|null $service
@@ -538,7 +538,7 @@
                         $instance->boot();
         }
                     /**
-         * Register a new boot listener.
+         * RegisterUser a new boot listener.
          *
          * @param callable $callback
          * @return void 
@@ -550,7 +550,7 @@
                         $instance->booting($callback);
         }
                     /**
-         * Register a new "booted" listener.
+         * RegisterUser a new "booted" listener.
          *
          * @param callable $callback
          * @return void 
@@ -710,7 +710,7 @@
                         $instance->abort($code, $message, $headers);
         }
                     /**
-         * Register a terminating callback with the application.
+         * RegisterUser a terminating callback with the application.
          *
          * @param callable|string $callback
          * @return \Illuminate\Foundation\Application 
@@ -884,7 +884,7 @@
                         return $instance->isLocale($locale);
         }
                     /**
-         * Register the core class aliases in the container.
+         * RegisterUser the core class aliases in the container.
          *
          * @return void 
          * @static 
@@ -983,7 +983,7 @@
                         return $instance->isAlias($name);
         }
                     /**
-         * Register a binding with the container.
+         * RegisterUser a binding with the container.
          *
          * @param string $abstract
          * @param \Closure|string|null $concrete
@@ -1049,7 +1049,7 @@
                         $instance->addContextualBinding($concrete, $abstract, $implementation);
         }
                     /**
-         * Register a binding if it hasn't already been registered.
+         * RegisterUser a binding if it hasn't already been registered.
          *
          * @param string $abstract
          * @param \Closure|string|null $concrete
@@ -1063,7 +1063,7 @@
                         $instance->bindIf($abstract, $concrete, $shared);
         }
                     /**
-         * Register a shared binding in the container.
+         * RegisterUser a shared binding in the container.
          *
          * @param string $abstract
          * @param \Closure|string|null $concrete
@@ -1076,7 +1076,7 @@
                         $instance->singleton($abstract, $concrete);
         }
                     /**
-         * Register a shared binding if it hasn't already been registered.
+         * RegisterUser a shared binding if it hasn't already been registered.
          *
          * @param string $abstract
          * @param \Closure|string|null $concrete
@@ -1103,7 +1103,7 @@
                         $instance->extend($abstract, $closure);
         }
                     /**
-         * Register an existing instance as shared in the container.
+         * RegisterUser an existing instance as shared in the container.
          *
          * @param string $abstract
          * @param mixed $instance
@@ -1264,7 +1264,7 @@
                         return $instance->build($concrete);
         }
                     /**
-         * Register a new before resolving callback for all types.
+         * RegisterUser a new before resolving callback for all types.
          *
          * @param \Closure|string $abstract
          * @param \Closure|null $callback
@@ -1277,7 +1277,7 @@
                         $instance->beforeResolving($abstract, $callback);
         }
                     /**
-         * Register a new resolving callback.
+         * RegisterUser a new resolving callback.
          *
          * @param \Closure|string $abstract
          * @param \Closure|null $callback
@@ -1290,7 +1290,7 @@
                         $instance->resolving($abstract, $callback);
         }
                     /**
-         * Register a new after resolving callback for all types.
+         * RegisterUser a new after resolving callback for all types.
          *
          * @param \Closure|string $abstract
          * @param \Closure|null $callback
@@ -1465,7 +1465,7 @@
                         $instance->terminate($input, $status);
         }
                     /**
-         * Register a Closure based command with the application.
+         * RegisterUser a Closure based command with the application.
          *
          * @param string $signature
          * @param \Closure $callback
@@ -1478,7 +1478,7 @@
                         return $instance->command($signature, $callback);
         }
                     /**
-         * Register the given command with the console application.
+         * RegisterUser the given command with the console application.
          *
          * @param \Symfony\Component\Console\Command\Command $command
          * @return void 
@@ -1647,7 +1647,7 @@
                         $instance->setDefaultDriver($name);
         }
                     /**
-         * Register a new callback based request guard.
+         * RegisterUser a new callback based request guard.
          *
          * @param string $driver
          * @param callable $callback
@@ -1683,7 +1683,7 @@
                         return $instance->resolveUsersUsing($userResolver);
         }
                     /**
-         * Register a custom driver creator Closure.
+         * RegisterUser a custom driver creator Closure.
          *
          * @param string $driver
          * @param \Closure $callback
@@ -1696,7 +1696,7 @@
                         return $instance->extend($driver, $callback);
         }
                     /**
-         * Register a custom provider creator Closure.
+         * RegisterUser a custom provider creator Closure.
          *
          * @param string $name
          * @param \Closure $callback
@@ -1930,7 +1930,7 @@
                         return $instance->logoutOtherDevices($password, $attribute);
         }
                     /**
-         * Register an authentication attempt event listener.
+         * RegisterUser an authentication attempt event listener.
          *
          * @param mixed $callback
          * @return void 
@@ -2158,7 +2158,7 @@
                         $instance->setProvider($provider);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -2261,7 +2261,7 @@
                         return $instance->stripParentheses($expression);
         }
                     /**
-         * Register a custom Blade compiler.
+         * RegisterUser a custom Blade compiler.
          *
          * @param callable $compiler
          * @return void 
@@ -2284,7 +2284,7 @@
                         return $instance->getExtensions();
         }
                     /**
-         * Register an "if" statement directive.
+         * RegisterUser an "if" statement directive.
          *
          * @param string $name
          * @param callable $callback
@@ -2310,7 +2310,7 @@
                         return $instance->check($name, ...$parameters);
         }
                     /**
-         * Register a class-based component alias directive.
+         * RegisterUser a class-based component alias directive.
          *
          * @param string $class
          * @param string|null $alias
@@ -2324,7 +2324,7 @@
                         $instance->component($class, $alias, $prefix);
         }
                     /**
-         * Register an array of class-based components.
+         * RegisterUser an array of class-based components.
          *
          * @param array $components
          * @param string $prefix
@@ -2348,7 +2348,7 @@
                         return $instance->getClassComponentAliases();
         }
                     /**
-         * Register a class-based component namespace.
+         * RegisterUser a class-based component namespace.
          *
          * @param string $namespace
          * @param string $prefix
@@ -2372,7 +2372,7 @@
                         return $instance->getClassComponentNamespaces();
         }
                     /**
-         * Register a component alias directive.
+         * RegisterUser a component alias directive.
          *
          * @param string $path
          * @param string|null $alias
@@ -2385,7 +2385,7 @@
                         $instance->aliasComponent($path, $alias);
         }
                     /**
-         * Register an include alias directive.
+         * RegisterUser an include alias directive.
          *
          * @param string $path
          * @param string|null $alias
@@ -2398,7 +2398,7 @@
                         $instance->include($path, $alias);
         }
                     /**
-         * Register an include alias directive.
+         * RegisterUser an include alias directive.
          *
          * @param string $path
          * @param string|null $alias
@@ -2411,7 +2411,7 @@
                         $instance->aliasInclude($path, $alias);
         }
                     /**
-         * Register a handler for custom directives.
+         * RegisterUser a handler for custom directives.
          *
          * @param string $name
          * @param callable $handler
@@ -2436,7 +2436,7 @@
                         return $instance->getCustomDirectives();
         }
                     /**
-         * Register a new precompiler.
+         * RegisterUser a new precompiler.
          *
          * @param callable $precompiler
          * @return void 
@@ -2597,7 +2597,7 @@
      */ 
         class Broadcast {
                     /**
-         * Register the routes for handling broadcast authentication and sockets.
+         * RegisterUser the routes for handling broadcast authentication and sockets.
          *
          * @param array|null $attributes
          * @return void 
@@ -2704,7 +2704,7 @@
                         $instance->purge($name);
         }
                     /**
-         * Register a custom driver creator Closure.
+         * RegisterUser a custom driver creator Closure.
          *
          * @param string $driver
          * @param \Closure $callback
@@ -3200,7 +3200,7 @@
                         $instance->purge($name);
         }
                     /**
-         * Register a custom driver creator Closure.
+         * RegisterUser a custom driver creator Closure.
          *
          * @param string $driver
          * @param \Closure $callback
@@ -3631,7 +3631,7 @@
                         $instance->offsetUnset($key);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -4046,7 +4046,7 @@
                         return $instance->flushQueuedCookies();
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -4428,7 +4428,7 @@
                         return $instance->availableDrivers();
         }
                     /**
-         * Register an extension connection resolver.
+         * RegisterUser an extension connection resolver.
          *
          * @param string $name
          * @param callable $resolver
@@ -4739,7 +4739,7 @@
                         $instance->logQuery($query, $bindings, $time);
         }
                     /**
-         * Register a database query listener with the connection.
+         * RegisterUser a database query listener with the connection.
          *
          * @param \Closure $callback
          * @return void 
@@ -5184,7 +5184,7 @@
                         return $instance->withTablePrefix($grammar);
         }
                     /**
-         * Register a connection resolver.
+         * RegisterUser a connection resolver.
          *
          * @param string $driver
          * @param \Closure $callback
@@ -5289,7 +5289,7 @@
      */ 
         class Event {
                     /**
-         * Register an event listener with the dispatcher.
+         * RegisterUser an event listener with the dispatcher.
          *
          * @param \Closure|string|array $events
          * @param \Closure|string|array|null $listener
@@ -5326,7 +5326,7 @@
                         return $instance->hasWildcardListeners($eventName);
         }
                     /**
-         * Register an event and payload to be fired later.
+         * RegisterUser an event and payload to be fired later.
          *
          * @param string $event
          * @param array $payload
@@ -5351,7 +5351,7 @@
                         $instance->flush($event);
         }
                     /**
-         * Register an event subscriber with the dispatcher.
+         * RegisterUser an event subscriber with the dispatcher.
          *
          * @param object|string $subscriber
          * @return void 
@@ -5402,7 +5402,7 @@
                         return $instance->getListeners($eventName);
         }
                     /**
-         * Register an event listener with the dispatcher.
+         * RegisterUser an event listener with the dispatcher.
          *
          * @param \Closure|string $listener
          * @param bool $wildcard
@@ -5463,7 +5463,7 @@
                         return $instance->setQueueResolver($resolver);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -6130,7 +6130,7 @@
                         return $instance->cleanDirectory($directory);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -6227,7 +6227,7 @@
                         return $instance->policy($class, $policy);
         }
                     /**
-         * Register a callback to run before all Gate checks.
+         * RegisterUser a callback to run before all Gate checks.
          *
          * @param callable $callback
          * @return \Illuminate\Auth\Access\Gate 
@@ -6239,7 +6239,7 @@
                         return $instance->before($callback);
         }
                     /**
-         * Register a callback to run after all Gate checks.
+         * RegisterUser a callback to run after all Gate checks.
          *
          * @param callable $callback
          * @return \Illuminate\Auth\Access\Gate 
@@ -6557,7 +6557,7 @@
                         return $instance->driver($driver);
         }
                     /**
-         * Register a custom driver creator Closure.
+         * RegisterUser a custom driver creator Closure.
          *
          * @param string $driver
          * @param \Closure $callback
@@ -6680,7 +6680,7 @@
                         return $instance->sequence($responses);
         }
                     /**
-         * Register a stub callable that will intercept requests and be able to return stub responses.
+         * RegisterUser a stub callable that will intercept requests and be able to return stub responses.
          *
          * @param callable|array $callback
          * @return \Illuminate\Http\Client\Factory 
@@ -6692,7 +6692,7 @@
                         return $instance->fake($callback);
         }
                     /**
-         * Register a response sequence for the given URL pattern.
+         * RegisterUser a response sequence for the given URL pattern.
          *
          * @param string $url
          * @return \Illuminate\Http\Client\ResponseSequence 
@@ -6812,7 +6812,7 @@
                         return $instance->recorded($callback);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -7108,7 +7108,7 @@
                         $instance->setParsedKey($key, $parsed);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -7225,7 +7225,7 @@
                         $instance->setDefaultDriver($name);
         }
                     /**
-         * Register a custom driver creator Closure.
+         * RegisterUser a custom driver creator Closure.
          *
          * @param string $driver
          * @param \Closure $callback
@@ -7463,7 +7463,7 @@
                         $instance->purge($name);
         }
                     /**
-         * Register a custom transport creator Closure.
+         * RegisterUser a custom transport creator Closure.
          *
          * @param string $driver
          * @param \Closure $callback
@@ -7829,7 +7829,7 @@
                         return $instance->driver($driver);
         }
                     /**
-         * Register a custom driver creator Closure.
+         * RegisterUser a custom driver creator Closure.
          *
          * @param string $driver
          * @param \Closure $callback
@@ -7982,7 +7982,7 @@
                         return $instance->hasSent($notifiable, $notification);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -8078,7 +8078,7 @@
      */ 
         class Queue {
                     /**
-         * Register an event listener for the before job event.
+         * RegisterUser an event listener for the before job event.
          *
          * @param mixed $callback
          * @return void 
@@ -8090,7 +8090,7 @@
                         $instance->before($callback);
         }
                     /**
-         * Register an event listener for the after job event.
+         * RegisterUser an event listener for the after job event.
          *
          * @param mixed $callback
          * @return void 
@@ -8102,7 +8102,7 @@
                         $instance->after($callback);
         }
                     /**
-         * Register an event listener for the exception occurred job event.
+         * RegisterUser an event listener for the exception occurred job event.
          *
          * @param mixed $callback
          * @return void 
@@ -8114,7 +8114,7 @@
                         $instance->exceptionOccurred($callback);
         }
                     /**
-         * Register an event listener for the daemon queue loop.
+         * RegisterUser an event listener for the daemon queue loop.
          *
          * @param mixed $callback
          * @return void 
@@ -8126,7 +8126,7 @@
                         $instance->looping($callback);
         }
                     /**
-         * Register an event listener for the failed job event.
+         * RegisterUser an event listener for the failed job event.
          *
          * @param mixed $callback
          * @return void 
@@ -8138,7 +8138,7 @@
                         $instance->failing($callback);
         }
                     /**
-         * Register an event listener for the daemon queue stopping.
+         * RegisterUser an event listener for the daemon queue stopping.
          *
          * @param mixed $callback
          * @return void 
@@ -8529,7 +8529,7 @@
                         return $instance->getJobExpiration($job);
         }
                     /**
-         * Register a callback to be executed when creating job payloads.
+         * RegisterUser a callback to be executed when creating job payloads.
          *
          * @param callable|null $callback
          * @return void 
@@ -8780,7 +8780,7 @@
                         $instance->setSession($session);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -10752,7 +10752,7 @@
                         return $instance->dump($keys);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -11047,7 +11047,7 @@
                         return $instance->redirectToIntended($default, $status, $headers, $secure);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -11098,7 +11098,7 @@
      */ 
         class Route {
                     /**
-         * Register a new GET route with the router.
+         * RegisterUser a new GET route with the router.
          *
          * @param string $uri
          * @param array|string|callable|null $action
@@ -11111,7 +11111,7 @@
                         return $instance->get($uri, $action);
         }
                     /**
-         * Register a new POST route with the router.
+         * RegisterUser a new POST route with the router.
          *
          * @param string $uri
          * @param array|string|callable|null $action
@@ -11124,7 +11124,7 @@
                         return $instance->post($uri, $action);
         }
                     /**
-         * Register a new PUT route with the router.
+         * RegisterUser a new PUT route with the router.
          *
          * @param string $uri
          * @param array|string|callable|null $action
@@ -11137,7 +11137,7 @@
                         return $instance->put($uri, $action);
         }
                     /**
-         * Register a new PATCH route with the router.
+         * RegisterUser a new PATCH route with the router.
          *
          * @param string $uri
          * @param array|string|callable|null $action
@@ -11150,7 +11150,7 @@
                         return $instance->patch($uri, $action);
         }
                     /**
-         * Register a new DELETE route with the router.
+         * RegisterUser a new DELETE route with the router.
          *
          * @param string $uri
          * @param array|string|callable|null $action
@@ -11163,7 +11163,7 @@
                         return $instance->delete($uri, $action);
         }
                     /**
-         * Register a new OPTIONS route with the router.
+         * RegisterUser a new OPTIONS route with the router.
          *
          * @param string $uri
          * @param array|string|callable|null $action
@@ -11176,7 +11176,7 @@
                         return $instance->options($uri, $action);
         }
                     /**
-         * Register a new route responding to all verbs.
+         * RegisterUser a new route responding to all verbs.
          *
          * @param string $uri
          * @param array|string|callable|null $action
@@ -11189,7 +11189,7 @@
                         return $instance->any($uri, $action);
         }
                     /**
-         * Register a new Fallback route with the router.
+         * RegisterUser a new Fallback route with the router.
          *
          * @param array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
@@ -11228,7 +11228,7 @@
                         return $instance->permanentRedirect($uri, $destination);
         }
                     /**
-         * Register a new route that returns a view.
+         * RegisterUser a new route that returns a view.
          *
          * @param string $uri
          * @param string $view
@@ -11244,7 +11244,7 @@
                         return $instance->view($uri, $view, $data, $status, $headers);
         }
                     /**
-         * Register a new route with the given verbs.
+         * RegisterUser a new route with the given verbs.
          *
          * @param array|string $methods
          * @param string $uri
@@ -11258,7 +11258,7 @@
                         return $instance->match($methods, $uri, $action);
         }
                     /**
-         * Register an array of resource controllers.
+         * RegisterUser an array of resource controllers.
          *
          * @param array $resources
          * @param array $options
@@ -11285,7 +11285,7 @@
                         return $instance->resource($name, $controller, $options);
         }
                     /**
-         * Register an array of API resource controllers.
+         * RegisterUser an array of API resource controllers.
          *
          * @param array $resources
          * @param array $options
@@ -11476,7 +11476,7 @@
                         $instance->substituteImplicitBindings($route);
         }
                     /**
-         * Register a route matched event listener.
+         * RegisterUser a route matched event listener.
          *
          * @param string|callable $callback
          * @return void 
@@ -11499,7 +11499,7 @@
                         return $instance->getMiddleware();
         }
                     /**
-         * Register a short-hand name for a middleware.
+         * RegisterUser a short-hand name for a middleware.
          *
          * @param string $name
          * @param string $class
@@ -11535,7 +11535,7 @@
                         return $instance->getMiddlewareGroups();
         }
                     /**
-         * Register a group of middleware.
+         * RegisterUser a group of middleware.
          *
          * @param string $name
          * @param array $middleware
@@ -11602,7 +11602,7 @@
                         $instance->bind($key, $binder);
         }
                     /**
-         * Register a model binder for a wildcard.
+         * RegisterUser a model binder for a wildcard.
          *
          * @param string $key
          * @param string $class
@@ -11908,7 +11908,7 @@
                         return $instance->setContainer($container);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -12239,7 +12239,7 @@
                         return $instance->disableForeignKeyConstraints();
         }
                     /**
-         * Register a custom Doctrine mapping type.
+         * RegisterUser a custom Doctrine mapping type.
          *
          * @param string $class
          * @param string $name
@@ -12368,7 +12368,7 @@
                         return $instance->driver($driver);
         }
                     /**
-         * Register a custom driver creator Closure.
+         * RegisterUser a custom driver creator Closure.
          *
          * @param string $driver
          * @param \Closure $callback
@@ -13086,7 +13086,7 @@
                         $instance->purge($name);
         }
                     /**
-         * Register a custom driver creator Closure.
+         * RegisterUser a custom driver creator Closure.
          *
          * @param string $driver
          * @param \Closure $callback
@@ -13992,7 +13992,7 @@
                         return $instance->setRootControllerNamespace($rootNamespace);
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -14067,7 +14067,7 @@
                         return $instance->validate($data, $rules, $messages, $customAttributes);
         }
                     /**
-         * Register a custom validator extension.
+         * RegisterUser a custom validator extension.
          *
          * @param string $rule
          * @param \Closure|string $extension
@@ -14081,7 +14081,7 @@
                         $instance->extend($rule, $extension, $message);
         }
                     /**
-         * Register a custom implicit validator extension.
+         * RegisterUser a custom implicit validator extension.
          *
          * @param string $rule
          * @param \Closure|string $extension
@@ -14095,7 +14095,7 @@
                         $instance->extendImplicit($rule, $extension, $message);
         }
                     /**
-         * Register a custom dependent validator extension.
+         * RegisterUser a custom dependent validator extension.
          *
          * @param string $rule
          * @param \Closure|string $extension
@@ -14109,7 +14109,7 @@
                         $instance->extendDependent($rule, $extension, $message);
         }
                     /**
-         * Register a custom validator message replacer.
+         * RegisterUser a custom validator message replacer.
          *
          * @param string $rule
          * @param \Closure|string $replacer
@@ -14418,7 +14418,7 @@
                         return $instance->replaceNamespace($namespace, $hints);
         }
                     /**
-         * Register a valid view extension and its engine.
+         * RegisterUser a valid view extension and its engine.
          *
          * @param string $extension
          * @param string $engine
@@ -14580,7 +14580,7 @@
                         return $instance->getShared();
         }
                     /**
-         * Register a custom macro.
+         * RegisterUser a custom macro.
          *
          * @param string $name
          * @param object|callable $macro
@@ -14677,7 +14677,7 @@
                         $instance->endSlot();
         }
                     /**
-         * Register a view creator event.
+         * RegisterUser a view creator event.
          *
          * @param array|string $views
          * @param \Closure|string $callback
@@ -14690,7 +14690,7 @@
                         return $instance->creator($views, $callback);
         }
                     /**
-         * Register multiple view composers via an array.
+         * RegisterUser multiple view composers via an array.
          *
          * @param array $composers
          * @return array 
@@ -14702,7 +14702,7 @@
                         return $instance->composers($composers);
         }
                     /**
-         * Register a view composer event.
+         * RegisterUser a view composer event.
          *
          * @param array|string $views
          * @param \Closure|string $callback
@@ -15408,7 +15408,7 @@ namespace  {
             }
              
                 /**
-             * Register a new global scope.
+             * RegisterUser a new global scope.
              *
              * @param string $identifier
              * @param \Illuminate\Database\Eloquent\Scope|\Closure $scope
@@ -15880,7 +15880,7 @@ namespace  {
             }
              
                 /**
-             * Register a replacement for the default delete function.
+             * RegisterUser a replacement for the default delete function.
              *
              * @param \Closure $callback
              * @return void 
@@ -18499,7 +18499,7 @@ namespace  {
             }
              
                 /**
-             * Register a custom macro.
+             * RegisterUser a custom macro.
              *
              * @param string $name
              * @param object|callable $macro
