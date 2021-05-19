@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class RelProjectSkillServiceProvider extends ServiceProvider
 {
     /**
-     * RegisterUser services.
+     * Register services.
      *
      * @return void
      */

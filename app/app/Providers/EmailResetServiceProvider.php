@@ -12,7 +12,7 @@ use Illuminate\Support\ServiceProvider;
 class EmailResetServiceProvider extends ServiceProvider
 {
     /**
-     * RegisterUser services.
+     * Register services.
      *
      * @return void
      */

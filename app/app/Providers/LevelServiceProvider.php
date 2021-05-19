@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 class LevelServiceProvider extends ServiceProvider
 {
     /**
-     * RegisterUser services.
+     * Register services.
      *
      * @return void
      */

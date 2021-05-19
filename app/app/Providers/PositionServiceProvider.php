@@ -9,7 +9,7 @@ use App\Services\Project\PositionRepositoryInterface;
 class PositionServiceProvider extends ServiceProvider
 {
     /**
-     * RegisterUser services.
+     * Register services.
      *
      * @return void
      */

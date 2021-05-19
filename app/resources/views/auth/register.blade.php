@@ -76,7 +76,7 @@
                 </a>
 
                 <x-button class="ml-4">
-                    {{ __('RegisterUser') }}
+                    {{ __('Register') }}
                 </x-button>
             </div>
         </form>

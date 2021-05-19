@@ -17,7 +17,7 @@ class AuthServiceProvider extends ServiceProvider
     ];
 
     /**
-     * RegisterUser any authentication / authorization services.
+     * Register any authentication / authorization services.
      *
      * @return void
      */

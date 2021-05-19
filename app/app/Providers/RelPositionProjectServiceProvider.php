@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class RelPositionProjectServiceProvider extends ServiceProvider
 {
     /**
-     * RegisterUser services.
+     * Register services.
      *
      * @return void
      */

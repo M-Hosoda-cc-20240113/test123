@@ -22,7 +22,7 @@ if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
 
 /*
 |--------------------------------------------------------------------------
-| RegisterUser The Auto Loader
+| Register The Auto Loader
 |--------------------------------------------------------------------------
 |
 | Composer provides a convenient, automatically generated class loader for

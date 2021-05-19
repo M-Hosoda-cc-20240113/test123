@@ -17,16 +17,11 @@ class ProjectController extends Controller
 {
 
     /**
-     * @var string
-     */
-    protected $redirectToLogin = '/login';
-
-    /**
      * ProjectController constructor.
      */
     public function __construct()
     {
-        $this->middleware(['guest', 'is_not_admin']);
+        $this->middleware(['is_not_admin']);
     }
 
     /**

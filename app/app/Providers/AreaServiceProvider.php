@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class AreaServiceProvider extends ServiceProvider
 {
     /**
-     * RegisterUser services.
+     * Register services.
      *
      * @return void
      */
