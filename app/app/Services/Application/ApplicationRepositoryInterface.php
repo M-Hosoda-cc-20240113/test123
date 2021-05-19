@@ -3,6 +3,7 @@
 namespace App\Services\Application;
 
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
+use App\Services\Application\ApplyProjectService\ApplyProjectParameter;
 use Illuminate\Support\Collection;
 
 interface ApplicationRepositoryInterface
@@ -15,11 +16,10 @@ interface ApplicationRepositoryInterface
 
     /**
      * 案件応募
-     * @param $project_id
-     * @param \App\Services\Application\　 $user
+     * @param ApplyProjectParameter $parameter
      * @return void
      */
-    public function create($project_id,　$user): void;
+    public function create(ApplyProjectParameter $parameter): void;
 
     /**
      * @param UpdateUserAdminParameter $parameter

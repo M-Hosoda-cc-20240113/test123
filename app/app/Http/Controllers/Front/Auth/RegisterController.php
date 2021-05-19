@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\RegisterUserRequest;
+use App\Services\Application\ApplyProjectService\ApplyProjectParameter;
 use App\Services\Application\ApplyProjectService\ApplyProjectService;
 use App\Services\Notification\RegisterUser\NotificationRegisterUserParameter;
 use App\Services\Notification\RegisterUser\NotificationRegisterUserServiceInterface;
@@ -102,7 +103,10 @@ class RegisterController extends Controller
         });
 
         if (!empty($request->project_id)) {
-            $apply_project_service->exec($request->project_id, $user);
+            $parameter = new ApplyProjectParameter();
+            $parameter->setProjectId($request->project_id);
+            $parameter->setUser($user);
+            $apply_project_service->exec($parameter);
         }
 
         $notification_parameter = new NotificationRegisterUserParameter();

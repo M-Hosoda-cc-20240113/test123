@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\Status;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Application\ApplicationRepositoryInterface;
+use App\Services\Application\ApplyProjectService\ApplyProjectParameter;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Collection;
 
@@ -25,8 +26,10 @@ class ApplicationRepository implements ApplicationRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function create($project_id, $user): void
+    public function create(ApplyProjectParameter $parameter): void
     {
+        $user = $parameter->getUser();
+        $project_id[] = $parameter->getProjectId();
         $user->project_status()->syncWithoutDetaching($project_id);
         $user->project_app()->syncWithoutDetaching($project_id);
     }
