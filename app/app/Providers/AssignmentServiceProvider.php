@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class AssignmentServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
+     * RegisterUser services.
      *
      * @return void
      */

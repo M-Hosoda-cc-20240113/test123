@@ -9,7 +9,7 @@ use App\Services\Skill\SkillRepositoryInterface;
 class SkillServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
+     * RegisterUser services.
      *
      * @return void
      */

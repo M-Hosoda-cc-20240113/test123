@@ -4,21 +4,21 @@ namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\RegisterUserRequest;
-use App\Mail\RegisterMail;
 use App\Services\Application\ApplyProjectService\ApplyProjectService;
+use App\Services\Notification\RegisterUser\NotificationRegisterUserParameter;
+use App\Services\Notification\RegisterUser\NotificationRegisterUserServiceInterface;
 use App\Services\User\RegisterUser\RegisterUserParameter;
 use App\Services\User\RegisterUser\RegisterUserService;
 use App\Http\Controllers\Traits\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Register Controller
+    | RegisterUser Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles the registration of new users as well as their
@@ -75,15 +75,17 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param \App\Http\Requests\Front\RegisterUserRequest $request
-     * @param \App\Services\Application\ApplyProjectService\ApplyProjectService $apply_project_service
      * @param \App\Services\User\RegisterUser\RegisterUserService $register_user_service
+     * @param \App\Services\Application\ApplyProjectService\ApplyProjectService $apply_project_service
+     * @param \App\Services\Notification\RegisterUser\NotificationRegisterUserServiceInterface $notification_register_user_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Throwable
      */
     public function register(
         RegisterUserRequest $request,
         RegisterUserService $register_user_service,
-        ApplyProjectService $apply_project_service
+        ApplyProjectService $apply_project_service,
+        NotificationRegisterUserServiceInterface $notification_register_user_service
     ) {
         $parameter = new RegisterUserParameter();
         $parameter->setSei($request->sei);
@@ -102,7 +104,11 @@ class RegisterController extends Controller
         if (!empty($request->project_id)) {
             $apply_project_service->exec($request->project_id, $user);
         }
-        Mail::to($request['email'])->send(new RegisterMail($request));
+
+        $notification_parameter = new NotificationRegisterUserParameter();
+        $notification_parameter->setSendUser($user);
+        $notification_register_user_service->send($notification_parameter);
+
         $this->guard()->login($user);
         return redirect($this->redirectTo);
     }

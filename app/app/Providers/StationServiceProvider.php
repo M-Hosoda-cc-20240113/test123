@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class StationServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
+     * RegisterUser services.
      *
      * @return void
      */

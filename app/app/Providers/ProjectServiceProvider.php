@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 class ProjectServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
+     * RegisterUser services.
      *
      * @return void
      */

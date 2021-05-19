@@ -1494,7 +1494,7 @@
       /* MODERN-ONLY:START */
       // We remove this piece of code from the legacy build.
       // In IE11, we have already defined our helpers at this point.
-      // Register custom magic properties.
+      // RegisterUser custom magic properties.
 
 
       Object.entries(Alpine.magicProperties).forEach(([name, callback]) => {
@@ -1517,7 +1517,7 @@
         this.pauseReactivity = true;
         initReturnedCallback = this.evaluateReturnExpression(this.$el, initExpression);
         this.pauseReactivity = false;
-      } // Register all our listeners and set all our attribute bindings.
+      } // RegisterUser all our listeners and set all our attribute bindings.
       // If we're cloning a component, the third parameter ensures no duplicate
       // event listeners are registered (the mutation observer will take care of them)
 

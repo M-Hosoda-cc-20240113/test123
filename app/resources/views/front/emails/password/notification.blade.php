@@ -6,3 +6,5 @@ Aegisより、パスワード再設定のご案内です。
 
 ▼再設定手続きのアドレス▼
 {{ $reset_url }}
+
+@include('front.emails.footer')

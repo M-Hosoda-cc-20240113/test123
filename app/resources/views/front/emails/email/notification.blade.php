@@ -14,5 +14,4 @@ Aegisより、メールアドレス変更のご案内です。
 ▼変更完了アドレス▼
 {{ route('email.reset', ['token' => $email_reset->token, 'email_hash' => $user->email_hash]) }}
 
-サービス運営会社：株式会社Carecon
-サービスページ： {{ route('front.index') }}
+@include('front.emails.footer')

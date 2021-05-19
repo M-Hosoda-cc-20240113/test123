@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 class PaginatorServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
+     * RegisterUser services.
      *
      * @return void
      */
