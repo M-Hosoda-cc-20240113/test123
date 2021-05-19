@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Front\Application\ApplicationController;
+use App\Http\Controllers\Front\Email\EmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\Index\IndexController;
 use App\Http\Controllers\Front\Home\HomeController;
@@ -40,9 +41,9 @@ Route::namespace('User')->prefix('users')->group(function () {
 });
 
 Route::namespace('Email')->prefix('email')->group(function () {
-    Route::get('reset', 'EmailController@showEditForm')->name('email.request');
-    Route::post('sendEmail', 'EmailController@sendChangeEmail')->name('email.sendEmail');
-    Route::get('reset/{token}/{email_hash}', 'EmailController@changeEmail')->name('email.reset');
+    Route::get('reset', [EmailController::class, 'showEditForm'])->name('email.request');
+    Route::post('sendEmail', [EmailController::class, 'sendChangeEmail'])->name('email.sendEmail');
+    Route::get('reset/{token}/{email_hash}', [EmailController::class, 'changeEmail'])->name('email.reset');
 });
 
 Route::namespace("Auth")->group(function () {

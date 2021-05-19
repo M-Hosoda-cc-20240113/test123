@@ -7,14 +7,6 @@ use App\Services\AdminDashboard\FetchDashboard\FetchDashboardService;
 
 class IndexController extends Controller
 {
-    /**
-     * IndexController constructor
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('is_admin');
-    }
 
     /**
      * Admin Dashboard
