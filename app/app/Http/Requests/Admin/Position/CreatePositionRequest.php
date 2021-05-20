@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Admin\Position;
 
-use App\Models\Position;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePositionRequest extends FormRequest

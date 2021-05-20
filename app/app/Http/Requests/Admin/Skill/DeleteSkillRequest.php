@@ -29,7 +29,7 @@ class DeleteSkillRequest extends FormRequest
         $skills = Skill::all();
         $skill_ids = $skills->pluck('id')->toArray();
         return [
-            'skill_id' => ['required',  Rule::in($skill_ids)],
+            'skill_id' => ['required', Rule::in($skill_ids)],
         ];
     }
 
