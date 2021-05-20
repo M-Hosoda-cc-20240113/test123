@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Admin\Assignment;
 
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class RegisterAssignmentRequest extends FormRequest
 {
@@ -23,9 +26,14 @@ class RegisterAssignmentRequest extends FormRequest
      */
     public function rules(): array
     {
+        $users = User::all();
+        $user_ids = $users->pluck('id')->toArray();
+
+        $projects = Project::all();
+        $project_ids = $projects->pluck('id')->toArray();
         return [
-            'user_id' => ['integer'],
-            'project_id' => ['integer'],
+            'user_id' => ['integer', Rule::in($user_ids)],
+            'project_id' => ['integer', Rule::in($project_ids)],
         ];
     }
 

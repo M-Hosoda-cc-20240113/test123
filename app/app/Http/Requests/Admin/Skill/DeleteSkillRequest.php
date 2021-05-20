@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Admin\Skill;
 
+use App\Models\Skill;
+use App\Models\Station;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class DeleteSkillRequest extends FormRequest
 {
@@ -21,10 +24,12 @@ class DeleteSkillRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
+        $skills = Skill::all();
+        $skill_ids = $skills->pluck('id')->toArray();
         return [
-            'skill_id' => ['required'],
+            'skill_id' => ['required',  Rule::in($skill_ids)],
         ];
     }
 

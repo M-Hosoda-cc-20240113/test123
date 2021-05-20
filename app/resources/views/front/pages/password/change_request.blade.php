@@ -44,6 +44,11 @@
             <div class="p-mainItem">
                 <h2 class="p-level2Heading">パスワード変更</h2>
                 <p class="c-text u-mt-20">メールアドレスへパスワード変更の案内を送ります。</p>
+                @if($errors->any())
+                    @foreach($errors->all() as $error)
+                        <p class="c-text--warning">{{ $error }}</p>
+                    @endforeach
+                @endif
                 <form action="{{ route('password.email') }}" method="post">
                     {{ csrf_field() }}
                     <input class="c-input--light u-mt-10" type="email" placeholder="メールアドレス入力欄" name="email">

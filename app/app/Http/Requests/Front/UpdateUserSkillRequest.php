@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Models\Skill;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UpdateUserSkillRequest extends FormRequest
 {
@@ -24,11 +26,15 @@ class UpdateUserSkillRequest extends FormRequest
      */
     public function rules(): array
     {
+        $skills = Skill::all();
+        $skill_ids = $skills->pluck('id')->toArray();
+        $levels = Level::all();
+        $level_ids = $levels->pluck('id')->toArray();
         return [
-            'skill_ids' => ['array','max:10'],
-            'level_ids' => ['array','max:10'],
-            'skill_ids.*' => ['integer','digits_between:1,3'],
-            'level_ids.*' => ['integer','digits_between:1,3'],
+            'skill_ids' => ['array', 'max:10'],
+            'level_ids' => ['array', 'max:10'],
+            'skill_ids.*' => ['integer', Rule::in($skill_ids)],
+            'level_ids.*' => ['integer', Rule::in($level_ids)],
         ];
     }
 }

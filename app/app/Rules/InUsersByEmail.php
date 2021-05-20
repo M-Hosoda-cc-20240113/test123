@@ -27,9 +27,9 @@ class InUsersByEmail implements Rule
      */
     public function passes($attribute, $value)
     {
-        $user_reposiory = resolve(UserRepositoryInterface::class);
+        $user_repository = resolve(UserRepositoryInterface::class);
 
-        $user = $user_reposiory->findByEmail($this->email);
+        $user = $user_repository->findByEmail($this->email);
 
         // 存在するときはtrue
         return is_null($user);
@@ -40,8 +40,8 @@ class InUsersByEmail implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
-        return 'そのメールアドレスはすでに使われています';
+        return 'このメールアドレスは既に使用されています。';
     }
 }

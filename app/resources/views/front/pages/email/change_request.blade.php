@@ -44,6 +44,11 @@
             <div class="p-mainItem">
                 <h2 class="p-level2Heading">メールアドレス変更</h2>
                 <p class="c-text u-mt-20">変更したいメールアドレスへ再設定の案内を送ります。</p>
+                @if($errors->any())
+                    @foreach($errors->all() as $error)
+                        <p class="c-text--warning">{{ $error }}</p>
+                    @endforeach
+                @endif
                 <form action="{{ route('email.sendEmail') }}" method="post">
                     {{ csrf_field() }}
                     <input class="c-input--light u-mt-10" type="email" placeholder="メールアドレス入力欄" name="email">
