@@ -83,7 +83,7 @@ class UserController extends Controller
             return $update_user_service->exec($parameter);
         });
 
-        return redirect()->route('user.detail', ['user_id' => $user->id]);;
+        return redirect()->route('user.detail', ['user_id' => $user->id]);
     }
 
     /**
