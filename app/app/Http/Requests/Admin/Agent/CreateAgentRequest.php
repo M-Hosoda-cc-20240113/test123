@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Admin\Agent;
 
-use App\Rules\InUsersByTel;
+use App\Rules\InAgentsByTel;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateAgentRequest extends FormRequest
