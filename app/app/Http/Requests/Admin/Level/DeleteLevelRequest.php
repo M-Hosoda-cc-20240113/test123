@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Level;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class DeleteLevelRequest extends FormRequest
 {
@@ -23,8 +24,10 @@ class DeleteLevelRequest extends FormRequest
      */
     public function rules()
     {
+        $levels = Level::all();
+        $level_ids = $levels->pluck('id')->toArray();
         return [
-            'level_id' => ['required'],
+            'level_id' => ['required', Rule::in($level_ids)],
         ];
     }
 

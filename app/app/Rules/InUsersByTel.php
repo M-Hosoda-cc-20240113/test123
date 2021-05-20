@@ -40,8 +40,8 @@ class InUsersByTel implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
-        return 'その電話番号はすでに使われています';
+        return 'この電話番号は既に使用されています。';
     }
 }
