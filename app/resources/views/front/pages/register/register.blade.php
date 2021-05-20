@@ -14,7 +14,7 @@
         <div class="l-main">
             <div class="p-mainItem">
 
-                <h2 class="p-level2Heading">新規登録情報入力（必須）</h2>
+                <h2 class="p-level2Heading">新規登録情報入力<span class="c-text--warning">（全項目必須）</span></h2>
 
                 @if($errors->all())
                     <p class="c-text--bold u-mt-20">以下のエラーを修正してください</p>
@@ -98,7 +98,7 @@
                         </div>
                         {{--   p-userRegisterRow   --}}
 
-                        <div class="p-userRegister__row">
+                        <div class="p-userRegister__row u-mb-5">
                             <span class="c-text--bold p-userRegister__title u-mb-5-sp">パスワード</span>
                             <div class="p-userRegister__inputUnitWrap">
                                 <div class="p-userRegister__inputUnit--single u-w-50-pc">
@@ -108,9 +108,10 @@
                                 </div>
                             </div>
                         </div>
+                        <p class="c-text u-fs-12">半角8文字以上、英字大文字、英字小文字、数字を全て含むパスワードを入力してください。</p>
                         {{--   p-userRegisterRow   --}}
                         <input type="hidden" name="project_id" value="{{ $project_id ?? '' }}">
-                        @include('atoms.Button', ['text' => '新規登録', 'class' => 'u-w-200px u-db u-m0a'])
+                        <button class="c-button u-db u-w-30-pc u-m0a u-mt-20">新規登録</button>
                     </form>
                 </div>
             </div>

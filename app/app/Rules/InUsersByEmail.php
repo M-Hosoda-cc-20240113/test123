@@ -31,7 +31,7 @@ class InUsersByEmail implements Rule
 
         $user = $user_repository->findByEmail($this->email);
 
-        // 存在するときはtrue
+        // 存在しない時はtrue
         return is_null($user);
     }
 

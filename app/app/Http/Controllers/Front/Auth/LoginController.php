@@ -78,6 +78,18 @@ class LoginController extends Controller
     }
 
     /**
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        $request->session()->invalidate();
+
+        return  redirect('/login');
+    }
+
+    /**
      * @param Request $request
      * @return array
      */
