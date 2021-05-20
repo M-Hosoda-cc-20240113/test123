@@ -31,7 +31,7 @@
                 <p class="c-text--muted u-w-40-pc u-m0a u-mt-5">半角英数字8文字以上</p>
                 <div class="u-w-40-pc u-m0a u-mt-20">
                     <label class="p-checkbox"><span class="c-text--muted u-fs-14">ログイン状態を保持する</span>
-                        <input value="" name="remember" type="checkbox">
+                        <input checked="checked" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
                         <div class="p-checkbox__indicator"></div>
                     </label>
                 </div>
