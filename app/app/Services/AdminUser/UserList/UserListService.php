@@ -36,30 +36,22 @@ class UserListService
     private $level_repository;
 
     /**
-     * @var RelLevelSkillUSerRepositoryInterface
-     */
-    private $rel_revel_skill_user_repository;
-
-    /**
      * UserListService constructor.
      * @param \App\Services\User\UserRepositoryInterface $user_repository
      * @param \App\Services\Pagination\PaginatorService $paginator_service
      * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
      * @param \App\Services\Level\LevelRepositoryInterface $level_repository
-     * @param \App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
      */
     public function __construct(
         UserRepositoryInterface $user_repository,
         PaginatorService $paginator_service,
         SkillRepositoryInterface $skill_repository,
-        LevelRepositoryInterface $level_repository,
-        RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
+        LevelRepositoryInterface $level_repository
     ) {
         $this->user_repository = $user_repository;
         $this->paginator_service = $paginator_service;
         $this->skill_repository = $skill_repository;
         $this->level_repository = $level_repository;
-        $this->rel_revel_skill_user_repository = $rel_revel_skill_user_repository;
     }
 
     /**

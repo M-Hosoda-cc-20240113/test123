@@ -46,6 +46,6 @@ class SamePasswordAsBefore implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return '変更前と同じパスワードです';
     }
 }

@@ -29,26 +29,4 @@ class HomeController extends Controller
         $response = $user_page_service->exec();
         return view('front.pages.mypage.top.top', ['response' => $response]);
     }
-
-    /**
-     *
-     * Front user基本情報 編集
-     *
-     * @return string
-     */
-    public function edit(): string
-    {
-        return 'Hoge MyPage Edit';
-    }
-
-    /**
-     *
-     * Front user基本情報 編集
-     *
-     * @return string
-     */
-    public function skill(): string
-    {
-        return 'Hoge MyPage Skill';
-    }
 }
