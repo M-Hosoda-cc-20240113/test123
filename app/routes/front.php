@@ -27,8 +27,6 @@ Route::namespace('Index')->group(function () {
 });
 Route::namespace('Home')->prefix('mypage')->middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home.mypage');
-    Route::get('/users/edit', [HomeController::class, 'edit'])->name('home.mypage.edit');
-    Route::get('/skills/edit', [HomeController::class, 'skill'])->name('home.mypage.skill.edit');
 });
 
 Route::namespace('User')->prefix('users')->group(function () {

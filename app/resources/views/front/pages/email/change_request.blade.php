@@ -24,21 +24,7 @@
 
     <div class="l-container--2col @guest u-jc-center @endguest">
         @auth
-        <div class="l-sidebar u-dn-sp">
-            <ul class="p-list {{ $class ?? '' }}">
-                <li class="c-text p-list__item--header">メニュー</li>
-                <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('front.user.edit') }}">ユーザー情報編集</a>
-                </li>
-                <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('password.request') }}">パスワード変更</a>
-                </li>
-                <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('email.request') }}">メールアドレス変更</a>
-                </li>
-                <li class="p-list__item"><a class="c-text p-list__itemInner"
-                                            href="{{ route('front.user.skill.form') }}">スキル編集</a></li>
-                <li class="p-list__item"><a class="c-text p-list__itemInner"
-                                            href="{{ route('front.user.delete.form') }}">退会</a></li>
-            </ul>
-        </div>
+          @include('front.pages.mypage._sidebar')
         @endauth
         <div class="l-main">
             <div class="p-mainItem">
