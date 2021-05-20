@@ -17,6 +17,7 @@ class CreateAgentsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('tel')->unique()->nullable();
+            $table->string('tel_hash')->unique()->nullable();
             $table->timestamps();
         });
     }
