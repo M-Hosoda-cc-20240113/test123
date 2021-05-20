@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin\Agent;
 
+use App\Rules\InUsersByTel;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateAgentRequest extends FormRequest
@@ -25,7 +26,7 @@ class CreateAgentRequest extends FormRequest
     {
         return [
             'name' => ['required','string','max:40','unique:agents'],
-            'tel'  => ['regex:/^[0-9]{2,4}[0-9]{2,4}[0-9]{3,4}$/','digits_between:8,11', 'unique:agents','nullable'],
+            'tel'  => ['regex:/^[0-9]{2,4}[0-9]{2,4}[0-9]{3,4}$/','digits_between:8,11', new InAgentsByTel($this->input('tel')),'nullable'],
         ];
     }
 

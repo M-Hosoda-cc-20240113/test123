@@ -27,6 +27,7 @@ class AgentTableSeeder extends Seeder
             Agent::create([
                 'name' => $company,
                 'tel' => $number,
+                'tel_hash' => hash(config('app.hash_email.algo'), $number . config('app.hash_email.salt')),
                 'created_at' => $now,
             ]);
         }
