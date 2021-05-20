@@ -24,17 +24,10 @@ use App\Http\Controllers\TestController;
 |
 */
 Route::group(['middleware' => ['auth', 'is_admin']], function () {
-    /**
-     * Admin top
-     * @var array
-     */
     Route::namespace('Index')->group(function () {
         Route::get('/', [IndexController::class, 'index'])->name('admin.index');
     });
-    /**
-     * Admin Users
-     * @var array
-     */
+
     Route::namespace('User')->prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'list'])->name('user.list');
         Route::get('/search', [UserController::class, 'search'])->name('user.search');
@@ -43,10 +36,7 @@ Route::group(['middleware' => ['auth', 'is_admin']], function () {
         Route::post('/edit', [UserController::class, 'edit'])->name('user.edit');
         Route::post('/delete', [UserController::class, 'delete'])->name('user.delete');
     });
-    /**
-     * Admin Projects
-     * @var array
-     */
+
     Route::namespace('Project')->prefix('projects')->group(function () {
         Route::get('/', [ProjectController::class, 'list'])->name('project.list');
         Route::get('/create', [ProjectController::class, 'showCreateForm'])->name('project.create.form');

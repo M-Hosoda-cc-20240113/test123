@@ -39,9 +39,9 @@
                 <div class="p-register">
                     <form action="{{ route('project.create') }}" method="post">
                         {{ @csrf_field() }}
-                        <div class="p-register__row--spColumn u-mt-20">
-                            <span class="p-register__title c-text--bold">会社名<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
-                            <div class="p-register__itemWrap u-mt-10-sp">
+                        <div class="p-register__row u-mt-20">
+                            <span class="p-register__title c-text--bold">会社名</span>
+                            <div class="p-register__itemWrap">
                                 <div class="p-register__item u-w-50-pc">
                                     <label for="" class="c-select">
                                         <select name="agent_id" id="">

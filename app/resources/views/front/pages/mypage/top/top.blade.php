@@ -13,35 +13,14 @@
     @include('front.header._link_login_logout')
   @endcomponent
 
-  <nav class="p-drawerContents">
-    <ul>
-      <li>@include('front.header._link_mypage')</li>
-      <li>@include('front.header._link_login_logout')</li>
-      <li><a href="{{ route('front.user.edit') }}">ユーザー情報編集</a> </li>
-      <li><a href="{{ route('password.request') }}">パスワード変更</a> </li>
-      <li><a href="{{ route('email.request') }}">メールアドレス変更</a> </li>
-      <li><a href="{{ route('front.user.skill.form') }}">スキル編集</a></li>
-      <li><a href="{{ route('front.user.delete.form') }}">退会</a></li>
-    </ul>
-  </nav>
+  @include('front.pages._drawer_contents')
 
   <div class="l-container--2col">
-    <div class="l-sidebar u-dn-sp">
-      <ul class="p-list {{ $class ?? '' }}">
-        <li class="c-text p-list__item--header">メニュー</li>
-        <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('front.user.edit') }}">ユーザー情報編集</a> </li>
-        <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('password.request') }}">パスワード変更</a> </li>
-        <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('email.request') }}">メールアドレス変更</a> </li>
-        <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('front.user.skill.form') }}">スキル編集</a></li>
-        <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('front.user.delete.form') }}">退会</a></li>
-      </ul>
-    </div>
-    {{--  l-sidebar  --}}
-
+    @include('front.pages.mypage._sidebar')
     <div class="l-main">
       <div class="p-mainItem">
         <p class="p-level2Heading">ユーザー情報</p>
-        <table class="p-sideColumnTable u-mb-30">
+        <table class="p-sideColumnTable @if(!$response->getUser()->is_admin) u-mb-30 @endif">
           <tbody>
           <tr>
             <th>氏名</th>
@@ -49,7 +28,8 @@
           </tr>
           <tr>
             <th>フリガナ</th>
-            <td>{{ $response->getUser()->sei_kana ?? '' }}&#160;{{ $response->getUser()->mei_kana ?? '' }}</td>
+            <td>{{ $response->getUser()->sei_kana ?? '' }}
+              &#160;{{ $response->getUser()->mei_kana ?? '' }}</td>
           </tr>
           <tr>
             <th>メールアドレス</th>
@@ -63,52 +43,62 @@
             <th>生年月日</th>
             <td>{{ ViewHelper::BirthdayReplace($response->getUser()->birthday ?? '' )}}</td>
           </tr>
-          <tr>
+
+          @if(!$response->getUser()->is_admin)
+            <tr>
               <th>保有ポイント</th>
               <td>{{ $response->getUser()->points ?? '' }} pt</td>
-          </tr>
+            </tr>
+          @endif
           </tbody>
         </table>
         {{--   ユーザー情報   --}}
 
-        <p class="p-level2Heading u-mb-5">スキル</p>
-        <div class="u-mb-30">
-          @if($response->getRelLevelSkillUser()->count() === 0 )
-            <p class="c-text">
-              スキルが登録されていません。
-              <a class="c-text--primary" href="{{ route('front.user.skill.form') }}">こちら</a>から登録をお願いします。
-           </p>
-          @endif
-          @foreach($response->getRelLevelSkillUser() as $level_skill)
-            <span class="c-label u-mt-5 u-mr-10">{{ $level_skill->name }}（{{ $level_skill->level }})</span>
-          @endforeach
-        </div>
-        {{--  スキル  --}}
+        @if(!$response->getUser()->is_admin)
+          <p class="p-level2Heading u-mb-5">スキル</p>
+          <div class="u-mb-30">
+            @if($response->getRelLevelSkillUser()->count() === 0 )
+              <p class="c-text">
+                スキルが登録されていません。
+                <a class="c-text--primary" href="{{ route('front.user.skill.form') }}">こちら</a>から登録をお願いします。
+              </p>
+            @endif
+            @foreach($response->getRelLevelSkillUser() as $level_skill)
+              <span class="c-label u-mt-5 u-mr-10">{{ $level_skill->name }}（{{ $level_skill->level }})</span>
+            @endforeach
+          </div>
+          {{--  スキル  --}}
 
-        <p class="p-level2Heading">応募案件</p>
-        <div class="u-mb-30">
-          @if($response->getUser()->project_app->count() === 0 )
-            <p class="c-text">応募していません。</p>
-          @endif
-          @foreach($response->getUser()->project_app as $project)
-            <a class="c-text--bold u-dib u-mt-10 u-indent-1" href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
-            <p class="c-text u-indent">面談予定日：{{ ViewHelper::YmdReplace($project->pivot->interview_date ?? '未定' )}}</p>
-          @endforeach
-        </div>
-        {{--  応募案件  --}}
+          <p class="p-level2Heading">応募案件</p>
+          <div class="u-mb-30">
+            @if($response->getUser()->project_app->count() === 0 )
+              <p class="c-text">応募していません。</p>
+            @endif
+            @foreach($response->getUser()->project_app as $project)
+              <a class="c-text--bold u-dib u-mt-10 u-indent-1"
+                 href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
+              <p class="c-text u-indent">
+                面談予定日：{{ ViewHelper::YmdReplace($project->pivot->interview_date ?? '未定' )}}</p>
+            @endforeach
+          </div>
+          {{--  応募案件  --}}
 
-        <p class="p-level2Heading">稼働案件</p>
-        <div class="u-mb-30">
-          @if($response->getUser()->project_assign->count() === 0 )
+          <p class="p-level2Heading">稼働案件</p>
+          <div class="u-mb-30">
+            @if($response->getUser()->project_assign->count() === 0 )
               <p class="c-text">稼働していません。</p>
-          @endif
-          @foreach($response->getUser()->project_assign as $project)
-            <a class="c-text--bold u-dib u-mt-10 u-indent-1" href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
-            <p class="c-text">稼働開始日：{{ ViewHelper::YmdReplace($project->pivot->assignment_start_date ?? '未定' )}}</p>
-            <p class="c-text">稼働終了日：{{ ViewHelper::YmdReplace($project->pivot->assignment_end_date ?? '未定' )}}</p>
-          @endforeach
-        </div>
-        {{--  応募案件  --}}
+            @endif
+            @foreach($response->getUser()->project_assign as $project)
+              <a class="c-text--bold u-dib u-mt-10 u-indent-1"
+                 href="{{ route('front.project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
+              <p class="c-text">
+                稼働開始日：{{ ViewHelper::YmdReplace($project->pivot->assignment_start_date ?? '未定' )}}</p>
+              <p class="c-text">
+                稼働終了日：{{ ViewHelper::YmdReplace($project->pivot->assignment_end_date ?? '未定' )}}</p>
+            @endforeach
+          </div>
+          {{--  応募案件  --}}
+        @endif
       </div>
       {{--   p-mainItem   --}}
     </div>

@@ -7,11 +7,7 @@
         @include('front.header._link_login_logout')
     @endcomponent
 
-    <nav class="p-drawerContents">
-        <ul>
-            <li class="u-mt-10">@include('front.header._link_login_logout')</li>
-        </ul>
-    </nav>
+    @include('front.pages._drawer_contents')
 
     <div class="l-container">
         <div class="l-main">
@@ -25,7 +21,7 @@
 
                 <div class="p-iconInput u-mt-30 u-w-40-pc u-m0a">
                     <img src="{{ asset('images/icons/icon_lock.png') }}">
-                    <input name="email" type="text" placeholder="example.email.com">
+                    <input name="email" type="text" placeholder="example@email.com">
                 </div>
 
                 <div class="p-iconInput u-mt-20 u-w-40-pc u-m0a">
