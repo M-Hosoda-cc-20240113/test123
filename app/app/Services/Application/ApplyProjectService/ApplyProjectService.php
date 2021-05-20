@@ -13,6 +13,10 @@ class ApplyProjectService
      */
     private $application_repository;
 
+    /**
+     * ApplyProjectService constructor.
+     * @param ApplicationRepositoryInterface $application_repository
+     */
     public function __construct(
         ApplicationRepositoryInterface $application_repository
     ) {
@@ -20,11 +24,10 @@ class ApplyProjectService
     }
 
     /**
-     * @param int $project_id
-     * @param $user
+     * @param ApplyProjectParameter $parameter
      */
-    public function exec(int $project_id, $user)
+    public function exec(ApplyProjectParameter $parameter)
     {
-        $this->application_repository->create($project_id, $user);
+        $this->application_repository->create($parameter);
     }
 }
