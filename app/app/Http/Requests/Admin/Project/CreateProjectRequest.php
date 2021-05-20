@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Admin\Project;
 
+use App\Models\Position;
+use App\Models\Skill;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreateProjectRequest extends FormRequest
 {
@@ -23,6 +26,11 @@ class CreateProjectRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $skills = Skill::all();
+        $skill_ids = $skills->pluck('id')->toArray();
+        $positions = Position::all();
+        $position_id = $positions->pluck('id')->toArray();
         return [
             'name'                  => ['required','string','max:100'],
             'agent_id'              => ['nullable','integer'],
@@ -38,6 +46,10 @@ class CreateProjectRequest extends FormRequest
             'work_end'              => ['nullable','string','max:6'],
             'weekly_attendance'     => ['nullable','integer','between:1,5'],
             'feature'               => ['nullable','string','max:500'],
+            'skill_ids' => ['array', 'max:10'],
+            'position_ids' => ['array', 'max:10'],
+            'skill_ids.*' => ['integer', Rule::in($skill_ids)],
+            'position_ids.*' => ['integer', Rule::in($position_id)],
         ];
     }
     public function  messages(): array
@@ -49,12 +61,12 @@ class CreateProjectRequest extends FormRequest
             'agent_id.integer'              => '予期せぬ値が入力されました',
             'station_id.integer'            => '予期せぬ値が入力されました',
             'min_unit_price.integer'        => '半角数字で入力してください。',
-            'max_unit_price.required'       => '最高単価は必須項目です。',
+            'max_unit_price.required'       => '最高単価は必須です。',
             'max_unit_price.integer'        => '半角数字で入力してください。',
             'min_operation_time.integer'    => '半角数字で入力してください',
-            'max_operation_time.required'   => '最高精算幅は必須項目です。',
+            'max_operation_time.required'   => '最高精算幅は必須です。',
             'max_operation_time.integer'    => '半角数字で入力してください。',
-            'description.required'          => '案件内容は必須項目です。',
+            'description.required'          => '案件内容は必須です。',
             'description.string'            => '予期せぬ値が入力されました。',
             'description.max'               => '500文字以上は入力できません。',
             'required_condition.string'     => '予期せぬ値が入力されました。',
