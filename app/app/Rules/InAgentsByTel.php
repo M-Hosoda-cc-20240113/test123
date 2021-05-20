@@ -2,10 +2,11 @@
 
 namespace App\Rules;
 
+use App\Services\Agent\AgentRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
 use Illuminate\Contracts\Validation\Rule;
 
-class InUsersByTel implements Rule
+class InAgentsByTel implements Rule
 {
     protected $tel;
 
@@ -28,11 +29,11 @@ class InUsersByTel implements Rule
      */
     public function passes($attribute, $value)
     {
-        $user_repository = resolve(UserRepositoryInterface::class);
+        $agent_repository = resolve(AgentRepositoryInterface::class);
 
-        $user = $user_repository->findByTel($this->tel);
+        $agent = $agent_repository->findByTel($this->tel);
 
-        return is_null($user);
+        return is_null($agent);
     }
 
     /**
@@ -42,6 +43,6 @@ class InUsersByTel implements Rule
      */
     public function message(): string
     {
-        return 'この電話番号は既に使用されています。';
+        return 'この電話番号はすでに使われています';
     }
 }

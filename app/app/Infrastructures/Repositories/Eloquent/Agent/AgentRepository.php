@@ -28,6 +28,7 @@ class AgentRepository implements AgentRepositoryInterface
         $agent = new Agent();
         $agent->name = $parameter->getName();
         $agent->tel = $parameter->getTel() ?? '';
+        $agent->tel_hash = hash(config('app.hash_email.algo'), $parameter->getTel() . config('app.hash_email.salt'));
         $agent->save();
     }
 
@@ -39,5 +40,21 @@ class AgentRepository implements AgentRepositoryInterface
         $agent = Agent::findOrFail($parameter->getAgentId());
         $agent->delete();
         return $agent;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function makeTelHash(string $tel): string
+    {
+        return hash(config('app.hash_email.algo'), $tel . config('app.hash_email.salt'));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function findByTel(string $tel): ?Agent
+    {
+        return Agent::where('tel_hash', $this->makeTelHash($tel))->first();
     }
 }

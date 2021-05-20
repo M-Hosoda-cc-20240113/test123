@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin\Project;
 
+use App\Models\Project;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProjectDisplayToggleRequest extends FormRequest
 {
@@ -23,8 +25,10 @@ class ProjectDisplayToggleRequest extends FormRequest
      */
     public function rules(): array
     {
+        $projects = Project::all();
+        $project_ids = $projects->pluck('id')->toArray();
         return [
-            'project_id' => ['integer'],
+            'project_id' => ['integer', Rule::in($project_ids)],
         ];
     }
 

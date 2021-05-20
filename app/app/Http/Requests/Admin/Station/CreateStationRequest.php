@@ -29,7 +29,7 @@ class CreateStationRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
           'name.required'      => '駅名を入力してください。',
