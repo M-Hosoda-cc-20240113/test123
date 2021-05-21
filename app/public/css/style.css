@@ -2275,6 +2275,14 @@ img {
   align-self: center;
 }
 
+.u-dn {
+  display: none;
+}
+
+.u-dn-sp {
+  display: block;
+}
+
 @media screen and (max-width: 768px) {
   .u-dn-sp {
     display: none;
