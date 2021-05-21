@@ -24,6 +24,7 @@ import {register} from './front/pages/register';
 import {index} from './front/pages/index';
 import {user_skill_edit} from './front/pages/user_skill_edit';
 import {user_delete} from './front/pages/user_delete';
+import {user_edit} from './front/pages/user_edit';
 
 const route_name = document.querySelector('body').dataset.routeName;
 
@@ -84,6 +85,9 @@ switch (route_name) {
     break;
   case routes.user_skill_edit:
     user_skill_edit();
+    break;
+  case routes.user_edit:
+    user_edit();
     break;
   case routes.user_delete:
     user_delete();
