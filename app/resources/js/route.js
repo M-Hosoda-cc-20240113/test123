@@ -15,7 +15,9 @@ export const routes = {
   agent_list: 'agent.list',
 
   // front
+  login: 'login',
   index: 'front.index',
+  register: 'register',
   user_skill_edit: 'front.user.skill.form',
   project_search: 'front.project.search',
   user_delete: 'front.user.delete.form',

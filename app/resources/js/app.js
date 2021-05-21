@@ -19,6 +19,8 @@ import {station_list} from './admin/pages/station_list';
 import {agent_list} from './admin/pages/agent_list';
 
 // front
+import {login} from './front/pages/login';
+import {register} from './front/pages/register';
 import {index} from './front/pages/index';
 import {user_skill_edit} from './front/pages/user_skill_edit';
 import {user_delete} from './front/pages/user_delete';
@@ -70,9 +72,15 @@ switch (route_name) {
 
 // front
 switch (route_name) {
+  case routes.login:
+    login();
+    break;
   case routes.index:
   case routes.project_search:
     index();
+    break;
+  case routes.register:
+    register();
     break;
   case routes.user_skill_edit:
     user_skill_edit();
