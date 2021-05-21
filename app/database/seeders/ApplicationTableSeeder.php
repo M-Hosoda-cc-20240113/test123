@@ -19,21 +19,21 @@ class ApplicationTableSeeder extends Seeder
         Application::create([
             'user_id'    => 1,
             'project_id'    => 2,
-            'interview_date' => $now->addDays(15),
+            'interview_date' => $now->addDays(2),
             'created_at' => $now
         ]);
 
         Application::create([
             'user_id'    => 2,
             'project_id'    => 1,
-            'interview_date' => $now->addDays(13),
+            'interview_date' => $now->addDays(3),
             'created_at' => $now
         ]);
 
         Application::create([
             'user_id'    => 4,
             'project_id'    => 10,
-            'interview_date' => $now->addDays(16),
+            'interview_date' => $now->subDay(4),
             'created_at' => $now
         ]);
 
@@ -46,12 +46,14 @@ class ApplicationTableSeeder extends Seeder
         Application::create([
             'user_id'    => 1,
             'project_id'    => 15,
+            'interview_date' => $now->subDay(3),
             'created_at' => $now
         ]);
 
         Application::create([
             'user_id'    => 5,
             'project_id'    => 13,
+            'interview_date' => $now->addDays(2),
             'created_at' => $now
         ]);
 

@@ -44,9 +44,13 @@
                             <p class="c-text--bold">新規・既存</p>
                             <label class="c-select" for="">
                                 <select name="is_new" id="">
-                                    <option value=""  {{ request()->input('is_new') === "" ? 'selected' : '' }}>選択してください</option>
-                                    <option value="1" {{ request()->input('is_new') === '1' ? 'selected' : '' }}>新規</option>
-                                    <option value="2" {{ request()->input('is_new') === '2' ? 'selected' : '' }}>既存</option>
+                                    <option value="" {{ request()->input('is_new') === "" ? 'selected' : '' }}>
+                                        選択してください
+                                    </option>
+                                    <option value="1" {{ request()->input('is_new') === '1' ? 'selected' : '' }}>新規
+                                    </option>
+                                    <option value="0" {{ request()->input('is_new') === '0' ? 'selected' : '' }}>既存
+                                    </option>
                                 </select>
                             </label>
                         </div>
@@ -54,23 +58,34 @@
                             <p class="c-text--bold">稼働中・待機中</p>
                             <label class="c-select" for="">
                                 <select name="is_working" id="">
-                                    <option value=""  {{ request()->input('is_working') === '' ? "selected" : '' }}>選択してください</option>
-                                    <option value="1" {{ request()->input('is_working') === '1' ? "selected" : '' }}>稼働中</option>
-                                    <option value="2" {{ request()->input('is_working') === '2' ? "selected" : '' }}>待機中</option>
+                                    <option value="" {{ request()->input('is_working') === '' ? "selected" : '' }}>
+                                        選択してください
+                                    </option>
+                                    <option value="1" {{ request()->input('is_working') === '1' ? "selected" : '' }}>
+                                        稼働中
+                                    </option>
+                                    <option value="2" {{ request()->input('is_working') === '2' ? "selected" : '' }}>
+                                        待機中
+                                    </option>
                                 </select>
                             </label>
                         </div>
                     </div>
                     <div class="p-formGroup u-mt-30 u-w-50-pc u-pr-30pc">
-                        <p class="c-text--bold">ステータス(今月)</p>
+                        <p class="c-text--bold">ステータス</p>
                         <label class="c-select" for="">
                             <select name="status" id="">
-                                <option value=""  {{ request()->input('status') === '' ? 'selected' : '' }}>選択してください</option>
-                                <option value="1" {{ request()->input('status') === "1" ? "selected" : '' }}>営業開始</option>
-                                <option value="2" {{ request()->input('status') === "2" ? "selected" : '' }}>未営業</option>
-                                <option value="3" {{ request()->input('status') === "3" ? "selected" : '' }}>新規稼働</option>
-                                <option value="4" {{ request()->input('status') === "4" ? "selected" : '' }}>既存稼働</option>
-                                <option value="5" {{ request()->input('status') === "5" ? "selected" : '' }}>面談</option>
+                                <option value="" {{ request()->input('status') === '' ? 'selected' : '' }}>
+                                    選択してください
+                                </option>
+                                <option value="0" {{ request()->input('status') === "0" ? "selected" : '' }}>未営業
+                                </option>
+                                <option value="1" {{ request()->input('status') === "1" ? "selected" : '' }}>面談待ち
+                                </option>
+                                <option value="2" {{ request()->input('status') === "2" ? "selected" : '' }}>結果待ち
+                                </option>
+                                <option value="3" {{ request()->input('status') === "3" ? "selected" : '' }}>稼働済み
+                                </option>
                             </select>
                         </label>
                     </div>
@@ -93,7 +108,7 @@
                                     <option value="">選択してください</option>
                                     @foreach($response->getLevels() as $level)
                                         <option
-                                                value="{{ $level->id }}">{{ $level->level }}</option>
+                                            value="{{ $level->id }}">{{ $level->level }}</option>
                                     @endforeach
                                 </select>
                             </label>
@@ -103,12 +118,26 @@
                     </div>
                     {{--Level Skill--}}
 
-                    <div class="p-formGroup">
-                        <span class="c-text--bold">営業開始月</span>
-                        <input class="c-input u-w-50-pc u-mt-5" name="operation_start_month" type="date" value="{{ request()->input('operation_start_month') }}">
+                    <div class="p-formGroupUnit--2col">
+                        <div class="p-formGroup p-formGroupUnit--2col__item--left u-pr-30pc">
+                            <p class="c-text--bold">営業開始月</p>
+                            <input class="c-input u-mt-5" name="operation_start_month" type="date"
+                                   value="{{ request()->input('operation_start_month') }}">
+                        </div>
+                        <div class="p-formGroup p-formGroupUnit--2col__item--left u-pr-30pc">
+                            <p class="c-text--bold">面談予定月</p>
+                            <input class="c-input u-mt-5" name="interview_month" type="date"
+                                   value="{{ request()->input('interview_month') }}">
+                        </div>
                     </div>
-                    {{-- 営業開始月 --}}
+                    {{-- 営業開始月・面談予定月 --}}
 
+                    <div class="p-formGroup u-mt-20">
+                        <span class="c-text--bold">稼働月</span>
+                        <input class="c-input u-w-45-pc u-mt-5" name="assign_month" type="date"
+                               value="{{ request()->input('assign_month') }}">
+                    </div>
+                    {{-- 稼働月 --}}
                     <button type="submit" class="c-button u-mt-20 u-db u-w-30-pc u-m0a">検索</button>
                     {{--  検索ボタン（dashboard連動）  --}}
                 </form>

@@ -49,7 +49,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
-            'operation_start_month' => 20210701,
+            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
@@ -84,7 +84,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 1,
             'remarks'           => "",
             'is_new'            => 0,
-            'operation_start_month' => 20211001,
+            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
@@ -101,7 +101,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
-            'operation_start_month' => 20211201,
+            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
@@ -154,7 +154,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
-            'operation_start_month' => 20210701,
+            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
