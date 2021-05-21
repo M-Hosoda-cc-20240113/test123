@@ -8,7 +8,7 @@
     @endcomponent
 
     @include('front.pages._drawer_contents')
-
+    <div class="c-modal u-db"></div>
     <div class="l-container">
         <div class="l-main">
             <img class="u-db u-m0a u-w-30-pc u-mt-60" src="{{ asset('images/logo/aegis.svg') }}" alt="">
