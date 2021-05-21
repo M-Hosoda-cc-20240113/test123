@@ -86,7 +86,7 @@ class UserController extends Controller
         UpdateUserSkillRequest $request,
         UpdateSkillService $update_skill_service,
         DeleteSkillService $delete_skill_service
-    ) {
+    ): RedirectResponse {
         $user_id = Auth::id();
         $parameter = new UpdateSkillParameter();
         $parameter->setUserId($user_id);

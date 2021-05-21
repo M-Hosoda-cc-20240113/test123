@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Models\Level;
 use App\Models\Skill;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
