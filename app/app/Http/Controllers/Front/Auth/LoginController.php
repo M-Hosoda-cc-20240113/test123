@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Front\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\AuthenticatesUsers;
 use App\Infrastructures\Repositories\Eloquent\User\UserRepository;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -26,6 +24,12 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
+    // ログイン試行回数（回）
+    protected $maxAttempts = 10;
+
+    // ログインロック時間（分）
+    protected $decayMinutes = 5;
 
     /**
      * Create a new controller instance.
@@ -69,6 +73,18 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        $request->session()->invalidate();
+
+        return  redirect('/login');
     }
 
     /**

@@ -4,7 +4,6 @@
 namespace App\Services\Project\SearchProject;
 
 
-use App\Services\AdminProject\ProjectList\ProjectListResponse;
 use App\Services\Pagination\PaginatorService;
 use App\Services\Position\PositionRepositoryInterface;
 use App\Services\Project\ProjectRepositoryInterface;

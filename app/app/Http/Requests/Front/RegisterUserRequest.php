@@ -31,8 +31,8 @@ class RegisterUserRequest extends FormRequest
         return [
             'sei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
             'mei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
-            'sei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
-            'mei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
+            'sei_kana'  => ['required', 'string', 'max:50', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
+            'mei_kana'  => ['required', 'string', 'max:50', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'birthday'  => ['required', 'integer', 'digits:8'],
             'tel'       => ['required', 'digits_between:8,11', new InUsersByTel($this->input('tel'))],
             'email'     => ['required', 'email', new InUsersByEmail($this->input('email'))],
