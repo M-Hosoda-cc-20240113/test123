@@ -91,6 +91,9 @@ return [
         'address' => env('MAIL_FOR_NOREPLY_FROM_ADDRESS', 'noreply@aegis.jp'),
         'name' => env('MAIL_FOR_NOREPLY_FROM_NAME', 'Aegis運営'),
     ],
+    'contact_to' => [
+        'address_list' => array_map('trim', explode(',', env('MAIL_FOR_CONTACT_TO_ADDRESS_LIST', 'info@aegis-freelance.jp'))),
+    ],
 
     /*
     |--------------------------------------------------------------------------
