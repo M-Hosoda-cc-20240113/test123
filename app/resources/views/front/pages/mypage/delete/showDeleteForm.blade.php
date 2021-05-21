@@ -11,6 +11,7 @@
     @endcomponent
 
     @include('front.pages._drawer_contents')
+    @include('front.pages._loader')
 
     <div class="l-container--2col">
         @include('front.pages.mypage._sidebar')
@@ -32,7 +33,7 @@
                             <div class="p-checkbox__indicator"></div>
                         </label>
                     </div>
-                    <button type="submit" disabled="true" class="c-button--warning c-button--disabled u-db u-m0a u-mt-20 js-confirm-button">退会する</button>
+                    <button type="submit" disabled="true" class="c-button--warning c-button--disabled u-db u-m0a u-mt-20 js-confirm-button js-loading-button">退会する</button>
                 </form>
             </div>
         </div>
