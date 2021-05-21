@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Front\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\AuthenticatesUsers;
 use App\Infrastructures\Repositories\Eloquent\User\UserRepository;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
