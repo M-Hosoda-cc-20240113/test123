@@ -12,7 +12,6 @@ use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserService;
 use App\Services\AdminUser\UserList\UserListService;
 use App\Services\AdminUser\UserDetail\UserDetailService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -95,13 +94,8 @@ class UserController extends Controller
         SearchUserRequest $request,
         SearchUserService $search_user_service
     ) {
-//        dd($request);
         $parameter = new SearchUserParameter();
-        if (isset($request->is_new) && $request->is_new === "1") {
-            $parameter->setNewUser($request->is_new);
-        }
-
-        if (isset($request->is_new) && $request->is_new === "0") {
+        if (isset($request->is_new)) {
             $parameter->setNewUser($request->is_new);
         }
 

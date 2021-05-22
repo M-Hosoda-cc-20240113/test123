@@ -5,12 +5,9 @@ namespace App\Services\AdminUser\SearchUser;
 
 use App\Services\Level\LevelRepositoryInterface;
 use App\Services\Pagination\PaginatorService;
-use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
 use App\Services\Skill\SkillRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
-use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Class SearchUserService
@@ -39,30 +36,22 @@ class SearchUserService
     private $level_repository;
 
     /**
-     * @var RelLevelSkillUSerRepositoryInterface
-     */
-    private $rel_revel_skill_user_repository;
-
-    /**
      * SearchUserService constructor.
      * @param \App\Services\User\UserRepositoryInterface $user_repository
      * @param \App\Services\Pagination\PaginatorService $paginator_service
      * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
      * @param \App\Services\Level\LevelRepositoryInterface $level_repository
-     * @param \App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
      */
     public function __construct(
         UserRepositoryInterface $user_repository,
         PaginatorService $paginator_service,
         SkillRepositoryInterface $skill_repository,
-        LevelRepositoryInterface $level_repository,
-        RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
+        LevelRepositoryInterface $level_repository
     ) {
         $this->user_repository = $user_repository;
         $this->paginator_service = $paginator_service;
         $this->skill_repository = $skill_repository;
         $this->level_repository = $level_repository;
-        $this->rel_revel_skill_user_repository = $rel_revel_skill_user_repository;
     }
 
     /**
@@ -158,7 +147,7 @@ class SearchUserService
         }
 
         // 検索条件がない時
-        if (!$parameter->hasSkill() && !$parameter->hasLevel() && !$parameter->getNewUser() && !$parameter->getNotNewUser() && !$parameter->getIsWorking() && !$parameter->getIsNotWorking() && !$parameter->getOperationStartMonth() && !$parameter->getStatus() && !$parameter->getInterviewMonth() && !$parameter->getAssignMonth()) {
+        if (!$parameter->hasSkill() && !$parameter->hasLevel() && $parameter->getNewUser() == null && !$parameter->getNotNewUser() && !$parameter->getIsWorking() && !$parameter->getIsNotWorking() && !$parameter->getOperationStartMonth() && !$parameter->getStatus() && !$parameter->getInterviewMonth() && !$parameter->getAssignMonth()) {
             $result = $this->user_repository->all();
             $search_results = [];
             $search_results[] = $result;

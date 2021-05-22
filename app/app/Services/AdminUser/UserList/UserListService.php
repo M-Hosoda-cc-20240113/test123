@@ -4,10 +4,8 @@ namespace App\Services\AdminUser\UserList;
 
 use App\Services\Level\LevelRepositoryInterface;
 use App\Services\Pagination\PaginatorService;
-use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
 use App\Services\Skill\SkillRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Class UserListService
