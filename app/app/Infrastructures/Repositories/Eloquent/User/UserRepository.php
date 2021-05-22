@@ -429,4 +429,24 @@ class UserRepository implements UserRepositoryInterface
                 ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
         })->get();
     }
+
+    public function fetchInterviewedUserOfThisMonth(string $interview_month, array $searched_ids = []): Collection
+    {
+        $month = new CarbonImmutable($interview_month);
+        $start_of_month = $month->startOfMonth();
+        if ($searched_ids) {
+            return User::whereIn('id', function ($query) use ($start_of_month, $month) {
+                $query->from('applications')
+                    ->select('user_id')
+                    ->whereBetween('interview_date', [$start_of_month, $month]);
+            })->whereIn('id', $searched_ids)
+                ->get();
+        }
+
+        return User::whereIn('id', function ($query) use ($start_of_month, $month) {
+            $query->from('applications')
+                ->select('user_id')
+                ->whereBetween('interview_date', [$start_of_month, $month]);
+        })->get();
+    }
 }

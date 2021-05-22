@@ -168,11 +168,11 @@ interface UserRepositoryInterface
     public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids): Collection;
 
     /**
-     * @param string $today
+     * @param string $interview_month
      * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchInterviewedUserOfThisMonth(string $today, array $searched_ids = []): Collection;
+    public function fetchInterviewedUserOfThisMonth(string $interview_month, array $searched_ids = []): Collection;
 
     /**
      * @param string $status

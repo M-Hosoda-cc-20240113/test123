@@ -94,12 +94,14 @@
                             <p class="c-text--bold">スキル</p>
                             <p class="c-text--bold u-pl-15">経験</p>
                         </div>
+{{--                        @php $skill_ids_count[] = count(request()->input('skill_ids')) @endphp--}}
+                        @for($i=0; $i<$response->getCountSkillLevel(); $i++)
                         <div class="p-formGroupUnit--2col__itemForSkill js-content js-remove">
                             <label class="p-formGroupUnit--2col__label" for="">
                                 <select name="skill_ids[]" id="skill_id" class="c-input">
                                     <option value="">選択してください</option>
                                     @foreach($response->getSkills() as $skill)
-                                        <option value="{{ $skill->id }}">{{ $skill->name }}</option>
+                                        <option value="{{ $skill->id }}" {{ request()->input('skill_ids')[$i] == $skill->id ? 'selected' : '' }}>{{ $skill->name }}</option>
                                     @endforeach
                                 </select>
                             </label>
@@ -108,11 +110,12 @@
                                     <option value="">選択してください</option>
                                     @foreach($response->getLevels() as $level)
                                         <option
-                                            value="{{ $level->id }}">{{ $level->level }}</option>
+                                            value="{{ $level->id }}" {{ request()->input('level_ids')[$i] == $level->id ? 'selected' : '' }}>{{ $level->level }}</option>
                                     @endforeach
                                 </select>
                             </label>
                         </div>
+                        @endfor
                         {{--    itemForSkill      --}}
                         <img class="c-icon--clickable u-m0a js-add" src="/images/icons/icon_add.png" alt="">
                     </div>

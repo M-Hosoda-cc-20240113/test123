@@ -101,7 +101,7 @@ class UserController extends Controller
             $parameter->setNewUser($request->is_new);
         }
 
-        if (isset($request->is_new) && $request->is_new === "2") {
+        if (isset($request->is_new) && $request->is_new === "0") {
             $parameter->setNewUser($request->is_new);
         }
 
@@ -131,6 +131,7 @@ class UserController extends Controller
 
         if (isset($request->skill_ids)) {
             $parameter->setSkillIds($request->skill_ids);
+
         }
 
         if (isset($request->level_ids)) {

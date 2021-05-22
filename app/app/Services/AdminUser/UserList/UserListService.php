@@ -63,7 +63,7 @@ class UserListService
         $skills = $this->skill_repository->all();
         $levels = $this->level_repository->all();
         $response = new UserListResponse();
-        $response->setRelLevelSkill($rel_level_skill ?? []);
+        $response->setCountSkillLevel( 0);
         $response->setSkills($skills);
         $response->setLevels($levels);
         $response->setUsers($this->paginator_service->paginate($users));

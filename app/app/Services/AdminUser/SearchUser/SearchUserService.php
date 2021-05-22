@@ -73,13 +73,13 @@ class SearchUserService
     {
         $search_results = [];
         $searched_ids = [];
-
         // スキル検索
         if ($parameter->hasSkill()) {
             $result = $this->user_repository->fetchBySkillIds($parameter->getSkillIds(), $searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results = [];
             $search_results[] = $result;
+            $count_skill = count($parameter->getSkillIds());
         }
 
         // レベル検索
@@ -88,6 +88,7 @@ class SearchUserService
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results = [];
             $search_results[] = $result;
+            $count_level = count($parameter->getSkillIds());
         }
 
         // 新規ユーザー検索
@@ -166,12 +167,12 @@ class SearchUserService
         $users = $this->getResultMerged($search_results);
         $skills = $this->skill_repository->all();
         $levels = $this->level_repository->all();
-        $rel_level_skill = [];
+        $count_level_skill = max($count_skill ?? 0, $count_level ?? 0);
         $response = new SearchUserResponse();
         $response->setUserCounts($users->count());
         $response->setSkills($skills);
         $response->setLevels($levels);
-        $response->setRelLevelSkill($rel_level_skill ?? []);
+        $response->setCountSkillLevel($count_level_skill ?? 0);
         $response->setUsers($this->paginator_service->paginate($users));
         return $response;
     }
