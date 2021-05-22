@@ -29,7 +29,7 @@ class NotificationChangeEmail implements NotificationChangeEmailServiceInterface
      */
     public function sendMail(User $user, EmailReset $email_reset)
     {
-       \Mail::to($user->email)->send(new ChangeEmailNotification($user, $email_reset));
+       \Mail::to($email_reset->wanna_change_email)->send(new ChangeEmailNotification($user, $email_reset));
     }
 
 }

@@ -19,9 +19,14 @@ import {station_list} from './admin/pages/station_list';
 import {agent_list} from './admin/pages/agent_list';
 
 // front
+import {login} from './front/pages/login';
+import {register} from './front/pages/register';
 import {index} from './front/pages/index';
 import {user_skill_edit} from './front/pages/user_skill_edit';
 import {user_delete} from './front/pages/user_delete';
+import {user_edit} from './front/pages/user_edit';
+import {password_change} from './front/pages/password_change';
+import {email_change} from './front/pages/email_change';
 
 const route_name = document.querySelector('body').dataset.routeName;
 
@@ -64,21 +69,32 @@ switch (route_name) {
   case routes.agent_list:
     agent_list();
     break;
-  default:
-    break;
-}
 
-// front
-switch (route_name) {
+  // front
+  case routes.login:
+    login();
+    break;
   case routes.index:
   case routes.project_search:
     index();
     break;
+  case routes.register:
+    register();
+    break;
   case routes.user_skill_edit:
     user_skill_edit();
     break;
+  case routes.user_edit:
+    user_edit();
+    break;
   case routes.user_delete:
     user_delete();
+    break;
+  case routes.password_change:
+    password_change();
+    break;
+  case routes.email_change:
+    email_change();
     break;
   default:
     break;

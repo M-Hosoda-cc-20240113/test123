@@ -14,6 +14,7 @@
     @endcomponent
 
     @include('front.pages._drawer_contents')
+    @include('front.pages._loader')
 
     <div class="l-container--2col">
         @include('front.pages.mypage._sidebar')
@@ -86,7 +87,7 @@
                         @endforeach
                         <img class="c-icon--clickable u-m0a js-add" src="/images/icons/icon_add.png" alt="">
                     </div>
-                    <button type="submit" class="c-button u-db u-m0a u-mt-20">更新する</button>
+                    <button type="submit" class="c-button u-db u-m0a u-mt-20 js-loading-button">更新する</button>
                 </form>
             </div>
 

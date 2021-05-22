@@ -125,7 +125,6 @@ class UserController extends Controller
 
         if (isset($request->skill_ids)) {
             $parameter->setSkillIds($request->skill_ids);
-
         }
 
         if (isset($request->level_ids)) {
