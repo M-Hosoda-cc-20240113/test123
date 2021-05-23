@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Front\Application\ApplicationController;
+use App\Http\Controllers\Front\Contact\ContactController;
 use App\Http\Controllers\Front\Email\EmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\Index\IndexController;
@@ -59,11 +60,16 @@ Route::namespace('Auth')->prefix('password')->group(function () {
     Route::get('reset/{token}/{email_hash}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 });
 
-Route::namespace('Project')->prefix('project')->group(function () {
+Route::namespace('Project')->prefix('projects')->group(function () {
     Route::get('/search', [ProjectController::class, 'search'])->name('front.project.search');
     Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('front.project.detail');
 });
 
 Route::namespace('Application')->prefix('application')->group(function () {
     Route::post('/project', [ApplicationController::class, 'createApplication'])->name('front.project.app');
+});
+
+Route::namespace('Contact')->prefix('contact')->group(function () {
+    Route::get('input', [ContactController::class, 'showContactForm'])->name('contact.input');
+    Route::get('thanks', [ContactController::class, 'sendForm'])->name('contact.thanks');
 });
