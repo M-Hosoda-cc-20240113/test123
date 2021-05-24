@@ -135,9 +135,9 @@
                     </div>
                     {{-- 営業開始月・面談予定月 --}}
 
-                    <div class="p-formGroup u-mt-20">
+                    <div class="p-formGroup u-mt-30 u-w-50-pc u-pr-30pc">
                         <span class="c-text--bold">稼働月</span>
-                        <input class="c-input u-w-45-pc u-mt-5" name="assign_month" type="date"
+                        <input class="c-input" name="assign_month" type="date"
                                value="{{ request()->input('assign_month') }}">
                     </div>
                     {{-- 稼働月 --}}
