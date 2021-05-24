@@ -3,6 +3,7 @@
     <li class="c-text p-list__item--header">メニュー</li>
     <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('password.request') }}">パスワード変更</a></li>
     <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('email.request') }}">メールアドレス変更</a></li>
+    <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('contact.input') }}">お問い合わせ</a></li>
     @auth
     <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('front.user.edit') }}">ユーザー情報編集</a></li>
     @if(!Auth::getUser()->is_admin)
