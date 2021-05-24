@@ -147,7 +147,7 @@ class SearchUserService
         }
 
         // 検索条件がない時
-        if (!$parameter->hasSkill() && !$parameter->hasLevel() && $parameter->getNewUser() == null && !$parameter->getNotNewUser() && !$parameter->getIsWorking() && !$parameter->getIsNotWorking() && !$parameter->getOperationStartMonth() && !$parameter->getStatus() && !$parameter->getInterviewMonth() && !$parameter->getAssignMonth()) {
+        if (!$parameter->hasSkill() && !$parameter->hasLevel() && $parameter->getNewUser() == null && !$parameter->getNotNewUser() && !$parameter->getIsWorking() && !$parameter->getIsNotWorking() && !$parameter->getOperationStartMonth() && $parameter->getStatus() == null && !$parameter->getInterviewMonth() && !$parameter->getAssignMonth()) {
             $result = $this->user_repository->all();
             $search_results = [];
             $search_results[] = $result;
