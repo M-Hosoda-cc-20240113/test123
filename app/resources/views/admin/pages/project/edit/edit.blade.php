@@ -46,7 +46,8 @@
                                         <select name="agent_id" id="">
                                             <option value="">選択してください</option>
                                             @foreach($response->getAgents() as $agent)
-                                                <option value={{ $agent->id ?? ''}} {{ $response->getProject()->agent->id === $agent->id ? 'selected' : '' }}>{{ $agent->name ?? ''}}</option>
+                                                @php /** @var \App\Models\Agent $agent */ @endphp
+                                                <option value={{ $agent->id ?? ''}} {{ $response->getProject()->agent->id ?? '' === $agent->id }}>{{ $agent->name ?? ''}}</option>
                                             @endforeach
                                         </select>
                                     </label>
@@ -63,7 +64,7 @@
                                         <select name="station_id" id="">
                                             <option value="">選択してください</option>
                                             @foreach($response->getStations() as $station)
-                                                <option value={{ $station->id ?? ''}} {{ $response->getProject()->station->id === $station->id ? 'selected' : '' }}>{{ $station->name ?? ''}}</option>
+                                                <option value={{ $station->id ?? ''}} {{ $response->getProject()->station->id ?? '' === $station->id ? 'selected' : '' }}>{{ $station->name ?? ''}}</option>
                                             @endforeach
                                         </select>
                                     </label>
