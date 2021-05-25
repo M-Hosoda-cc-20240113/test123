@@ -23,12 +23,12 @@ class CreateProjectParameter
     /**
      * @var int|null
      */
-    private $agent;
+    private $agent_id;
 
     /**
      * @var int|null
      */
-    private $station;
+    private $station_id;
 
     /**
      * 最小案件単価
@@ -361,36 +361,36 @@ class CreateProjectParameter
     /**
      * @return int|null
      */
-    public function getAgent(): ?int
+    public function getAgentId(): ?int
     {
-        return $this->agent;
+        return $this->agent_id;
     }
 
     /**
-     * @param int|null $agent
+     * @param int|null $agent_id
      * @return CreateProjectParameter
      */
-    public function setAgent(?int $agent): CreateProjectParameter
+    public function setAgentId(?int $agent_id): CreateProjectParameter
     {
-        $this->agent = $agent;
+        $this->agent_id = $agent_id;
         return $this;
     }
 
     /**
      * @return int|null
      */
-    public function getStation(): ?int
+    public function getStationId(): ?int
     {
-        return $this->station;
+        return $this->station_id;
     }
 
     /**
-     * @param int|null $station
+     * @param int|null $station_id
      * @return CreateProjectParameter
      */
-    public function setStation(?int $station): CreateProjectParameter
+    public function setStationId(?int $station_id): CreateProjectParameter
     {
-        $this->station = $station;
+        $this->station_id = $station_id;
         return $this;
     }
 

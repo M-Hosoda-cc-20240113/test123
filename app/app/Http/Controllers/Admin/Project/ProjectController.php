@@ -86,8 +86,8 @@ class ProjectController extends Controller
     ) {
         $parameter = new CreateProjectParameter();
 
-        $parameter->setAgent($request->agent_id);
-        $parameter->setStation($request->station_id);
+        $parameter->setAgentId($request->agent_id);
+        $parameter->setStationId($request->station_id);
         $parameter->setName($request->name);
         $parameter->setMinUnitPrice($request->min_unit_price);
         $parameter->setMaxUnitPrice($request->max_unit_price);
