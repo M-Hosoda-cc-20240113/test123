@@ -34,7 +34,7 @@
                         {{ @csrf_field() }}
                         <div class="p-register__row u-mt-20">
                             <span class="p-register__title c-text--bold">会社名</span>
-                            <div class="p-register__itemWrap">
+                            <div class="p-register__itemWrap--2col">
                                 <div class="p-register__item u-w-50-pc">
                                     <label for="" class="c-select">
                                         <select name="agent_id" id="">
@@ -45,13 +45,16 @@
                                         </select>
                                     </label>
                                 </div>
+                                <div class="p-register__item u-w-50-pc u-as-center u-mt-10-sp">
+                                    <p class="c-text u-pl-10 u-w-100">登録は<a target="_blank" class="c-text--bold" href="{{ route('agent.create.form') }}">こちら<img class="p-image--gray" src="{{ asset('images/icons/icon_external_link.svg') }}" alt=""></a></p>
+                                </div>
                             </div>
                         </div>
                         {{--  エージェント  --}}
 
                         <div class="p-register__row">
                             <span class="p-register__title c-text--bold">最寄り駅</span>
-                            <div class="p-register__itemWrap">
+                            <div class="p-register__itemWrap--2col">
                                 <div class="p-register__item u-w-50-pc">
                                     <label for="" class="c-select">
                                         <select name="station_id" id="">
@@ -61,6 +64,9 @@
                                             @endforeach
                                         </select>
                                     </label>
+                                </div>
+                                <div class="p-register__item u-w-50-pc u-as-center u-mt-10-sp">
+                                    <p class="c-text u-pl-10 u-w-100">登録は<a target="_blank" class="c-text--bold" href="{{ route('station.create.form') }}">こちら<img class="p-image--gray" src="{{ asset('images/icons/icon_external_link.svg') }}" alt=""></a></p>
                                 </div>
                             </div>
                         </div>
