@@ -31,7 +31,6 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('is_admin')->default(0);        //管理者権限
             $table->tinyInteger('is_new')->default(1);          //新規:1か既存:0か
             $table->string('remarks')->nullable();                    //備考欄
-            $table->date('operation_start_month')->nullable();        //営業開始月
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
