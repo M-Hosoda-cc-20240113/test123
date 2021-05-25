@@ -67,7 +67,7 @@ class CreateProjectParameter
     /**
      * 必須条件
      *
-     * @var string
+     * @var string|null
      */
     private $required_condition;
 
@@ -255,23 +255,18 @@ class CreateProjectParameter
     }
 
     /**
-     * Get 必須条件
-     *
-     * @return  string
+     * @return string|null
      */
-    public function getRequiredCondition(): string
+    public function getRequiredCondition(): ?string
     {
         return $this->required_condition;
     }
 
     /**
-     * Set 必須条件
-     *
-     * @param string $required_condition 必須条件
-     *
-     * @return  self
+     * @param string|null $required_condition
+     * @return CreateProjectParameter
      */
-    public function setRequiredCondition(string $required_condition): CreateProjectParameter
+    public function setRequiredCondition(?string $required_condition): CreateProjectParameter
     {
         $this->required_condition = $required_condition;
         return $this;
