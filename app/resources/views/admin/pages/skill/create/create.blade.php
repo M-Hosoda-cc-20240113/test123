@@ -4,6 +4,7 @@
 
 @section('body')
     @component('admin.header.header', ['href' => route('front.index')])
+        @include('admin.header._link_mypage')
         @include('admin.header._link_login_logout')
     @endcomponent
     <div class="l-container">
