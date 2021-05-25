@@ -10,7 +10,9 @@ services:
     working_dir: /aegis
 
   php:
-    build: ./infra/php
+    build:
+      context: .
+      dockerfile: ./infra/php/Dockerfile
     tty: true
     stdin_open: true
     volumes:

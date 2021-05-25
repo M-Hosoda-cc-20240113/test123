@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: aegis-prod-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "aegis-prod" # 取得していた固定IP名を設定
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: aegis-prod-service  # ↑でデプロイしたserviceのname
+              servicePort: 80
