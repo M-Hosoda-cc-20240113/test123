@@ -178,7 +178,7 @@
                                            class="c-input"><span class="u-as-center u-pl-10 u-w-70px">〜</span>
                                 </div>
                                 <div class="p-register__item u-w-25-pc u-mt-10-sp">
-                                    <input name="max_unit_price" value="{{ old('maz_unit_price') }}" type="text"
+                                    <input name="max_unit_price" value="{{ old('max_unit_price') }}" type="text"
                                            class="c-input"><span class="u-as-center u-pl-10 u-w-70px">万円</span><span class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
                                 </div>
                             </div>

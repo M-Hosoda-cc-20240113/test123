@@ -48,8 +48,8 @@ class CreateProjectRequest extends FormRequest
             'feature'               => ['nullable','string','max:500'],
             'skill_ids' => ['array', 'max:10'],
             'position_ids' => ['array', 'max:10'],
-            'skill_ids.*' => ['integer', Rule::in($skill_ids)],
-            'position_ids.*' => ['integer', Rule::in($position_id)],
+            'skill_ids.*' => ['nullable', 'integer', Rule::in($skill_ids)],
+            'position_ids.*' => ['nullable', 'integer', Rule::in($position_id)],
         ];
     }
     public function  messages(): array
