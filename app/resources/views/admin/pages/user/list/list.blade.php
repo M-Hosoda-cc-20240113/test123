@@ -124,7 +124,7 @@
                         <div class="p-formGroup p-formGroupUnit--2col__item--left u-pr-30pc">
                             <p class="c-text--bold">営業開始月</p>
                             <input class="c-input u-mt-5" name="operation_start_month" type="date"
-                                   value="{{ request()->input('operation_start_month') }}" pattern="\d{4}-\d{2}">
+                                   value="{{ request()->input('operation_start_month') }}">
                         </div>
                         <div class="p-formGroup p-formGroupUnit--2col__item--left u-pr-30pc">
                             <p class="c-text--bold">面談予定月</p>
