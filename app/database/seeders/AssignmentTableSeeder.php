@@ -19,7 +19,7 @@ class AssignmentTableSeeder extends Seeder
         Assignment::create([
             'user_id' => 3,
             'project_id' => 6,
-            'assignment_start_date' => $now,
+            'assignment_start_date' => $now->addMonth(1),
             'created_at' => $now
         ]);
 

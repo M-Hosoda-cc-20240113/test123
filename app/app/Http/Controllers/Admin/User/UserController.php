@@ -12,6 +12,7 @@ use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserService;
 use App\Services\AdminUser\UserList\UserListService;
 use App\Services\AdminUser\UserDetail\UserDetailService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -95,7 +96,11 @@ class UserController extends Controller
         SearchUserService $search_user_service
     ) {
         $parameter = new SearchUserParameter();
-        if (isset($request->is_new)) {
+        if (isset($request->is_new) && $request->is_new === "1") {
+            $parameter->setNewUser($request->is_new);
+        }
+
+        if (isset($request->is_new) && $request->is_new === "2") {
             $parameter->setNewUser($request->is_new);
         }
 
@@ -107,20 +112,8 @@ class UserController extends Controller
             $parameter->setIsWorking($request->is_working);
         }
 
-        if (isset($request->status)) {
-            $parameter->setStatus($request->status);
-        }
-
         if (isset($request->operation_start_month)) {
             $parameter->setOperationStartMonth($request->operation_start_month);
-        }
-
-        if (isset($request->interview_month)) {
-            $parameter->setInterviewMonth($request->interview_month);
-        }
-
-        if (isset($request->assign_month)) {
-            $parameter->setAssignMonth($request->assign_month);
         }
 
         if (isset($request->skill_ids)) {
@@ -131,6 +124,9 @@ class UserController extends Controller
             $parameter->setLevelIds($request->level_ids);
         }
 
+        if (isset($request->status)) {
+            $parameter->setStatus($request->status);
+        }
         $response = $search_user_service->search($parameter);
         return view('admin.pages.user.list.list', ['response' => $response]);
     }

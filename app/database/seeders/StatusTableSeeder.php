@@ -20,7 +20,7 @@ class StatusTableSeeder extends Seeder
         Status::create([
             'user_id'    => 1,
             'project_id'    => 2,
-            'status' => 2,
+            'status' => 1,
             'created_at' => $now
         ]);
 
@@ -34,7 +34,7 @@ class StatusTableSeeder extends Seeder
         Status::create([
             'user_id'    => 4,
             'project_id'    => 10,
-            'status' => 2,
+            'status' => 1,
             'created_at' => $now
         ]);
 
@@ -67,7 +67,6 @@ class StatusTableSeeder extends Seeder
         Status::create([
             'user_id'    => 5,
             'project_id'    => 13,
-            'status'     => 1,
             'created_at' => $now
         ]);
 
