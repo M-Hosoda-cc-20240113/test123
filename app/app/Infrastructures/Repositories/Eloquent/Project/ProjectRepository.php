@@ -94,8 +94,8 @@ class ProjectRepository implements ProjectRepositoryInterface
     public function update(UpdateProjectParameter $parameter): Project
     {
         $project = Project::findOrFail($parameter->getProjectId());
-        $project->agent_id = $parameter->getAgent();
-        $project->station_id = $parameter->getStation();
+        $project->agent_id = $parameter->getAgentId();
+        $project->station_id = $parameter->getStationId();
         $project->name = $parameter->getName();
         $project->min_unit_price = $parameter->getMinUnitPrice();
         $project->max_unit_price = $parameter->getMaxUnitPrice();
