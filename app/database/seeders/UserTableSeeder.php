@@ -49,7 +49,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
-            'operation_start_month' => 20210701,
+            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
@@ -84,7 +84,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 1,
             'remarks'           => "",
             'is_new'            => 0,
-            'operation_start_month' => 20211001,
+            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
@@ -99,9 +99,9 @@ class UserTableSeeder extends Seeder
             'tel_hash'          => hash(config('app.hash_email.algo'), $tel4 . config('app.hash_email.salt')),
             'birthday'          => '19970116',
             'password'          => bcrypt('test1234'),
-            'is_working'        => 0,
+            'is_working'        => 1,
             'remarks'           => "特になし",
-            'operation_start_month' => 20211201,
+            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
@@ -154,7 +154,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
-            'operation_start_month' => 20210701,
+            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
@@ -185,7 +185,7 @@ class UserTableSeeder extends Seeder
             'tel_hash'          => hash(config('app.hash_email.algo'), $tel9 . config('app.hash_email.salt')),
             'birthday'          => '19950216',
             'password'          => bcrypt('test1234'),
-            'is_working'        => 0,
+            'is_working'        => 1,
             'is_new'            => 0,
             'remarks'           => "特になし",
             'created_at'        => $now

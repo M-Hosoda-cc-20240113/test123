@@ -20,6 +20,12 @@ class FetchDashboardResponse
     /**
      * @var Collection|null
      */
+    private $fetch_interviewed;
+
+
+    /**
+     * @var Collection|null
+     */
     private $fetch_not_open;
 
     /**
@@ -119,6 +125,24 @@ class FetchDashboardResponse
     public function setFetchNewAssignUser(?Collection $fetch_new_assign_user
     ): FetchDashboardResponse {
         $this->fetch_new_assign_user = $fetch_new_assign_user;
+        return $this;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection|null
+     */
+    public function getFetchInterviewed(): ?Collection
+    {
+        return $this->fetch_interviewed;
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Collection|null $fetch_interviewed
+     * @return FetchDashboardResponse
+     */
+    public function setFetchInterviewed(?Collection $fetch_interviewed): FetchDashboardResponse
+    {
+        $this->fetch_interviewed = $fetch_interviewed;
         return $this;
     }
 }
