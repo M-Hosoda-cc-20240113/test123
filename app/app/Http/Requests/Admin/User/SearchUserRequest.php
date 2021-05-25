@@ -32,10 +32,10 @@ class SearchUserRequest extends FormRequest
         $levels = Level::all();
         $level_ids = $levels->pluck('id')->toArray();
         return [
-            'is_new'                     => ['nullable','integer'],
+            'is_new'                   => ['nullable','integer'],
             'is_working'                 => ['nullable','integer'],
             'operation_start_month'      => ['nullable','string'],
-            'status'                     => ['nullable','integer', 'between:0,4'],
+            'status'                     => ['nullable','integer', 'between:1,5'],
             'skill_ids'                  => ['array'],
             'skill_ids.*'                => ['nullable','int', Rule::in($skill_ids) ],
             'level_ids'                  => ['array'],
