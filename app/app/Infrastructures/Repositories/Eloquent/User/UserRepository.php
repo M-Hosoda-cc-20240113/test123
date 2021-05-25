@@ -391,6 +391,9 @@ class UserRepository implements UserRepositoryInterface
         })->get();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function fetchByStatus(string $status, array $searched_ids = []): Collection
     {
         if ($searched_ids) {
@@ -408,6 +411,10 @@ class UserRepository implements UserRepositoryInterface
                 ->where('status', $status);
         })->get();
     }
+
+    /**
+     * {@inheritDoc}
+     */
     public function fetchByAssignMonth(string $assign_month, array $searched_ids = []): Collection
     {
         $month = new CarbonImmutable($assign_month);
@@ -428,6 +435,9 @@ class UserRepository implements UserRepositoryInterface
         })->get();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function fetchInterviewedUserOfThisMonth(string $interview_month, array $searched_ids = []): Collection
     {
         $month = new CarbonImmutable($interview_month);

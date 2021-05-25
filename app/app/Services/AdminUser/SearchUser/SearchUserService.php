@@ -158,12 +158,12 @@ class SearchUserService
         $users = $this->getResultMerged($search_results);
         $skills = $this->skill_repository->all();
         $levels = $this->level_repository->all();
-        $count_level_skill = max($count_skill ?? 0, $count_level ?? 0);
+        $max_count = max($count_skill ?? 0, $count_level ?? 0);   // レベルかスキルの検索条件が空でも表示させるため。
         $response = new SearchUserResponse();
         $response->setUserCounts($users->count());
         $response->setSkills($skills);
         $response->setLevels($levels);
-        $response->setCountSkillLevel($count_level_skill ?? 0);
+        $response->setCountLevelSkill($max_count ?? 0);
         $response->setUsers($this->paginator_service->paginate($users));
         return $response;
     }

@@ -29,7 +29,7 @@ class UserListResponse
     /**
      * @var int
      */
-    private $count_skill_level;
+    private $count_level_skill;
 
     /**
      * @var int
@@ -93,18 +93,18 @@ class UserListResponse
     /**
      * @return int
      */
-    public function getCountSkillLevel(): int
+    public function getCountLevelSkill(): int
     {
-        return $this->count_skill_level;
+        return $this->count_level_skill;
     }
 
     /**
-     * @param int $count_skill_level
+     * @param int $count_level_skill
      * @return UserListResponse
      */
-    public function setCountSkillLevel(int $count_skill_level): UserListResponse
+    public function setCountLevelSkill(int $count_level_skill): UserListResponse
     {
-        $this->count_skill_level = $count_skill_level;
+        $this->count_level_skill = $count_level_skill;
         return $this;
     }
 

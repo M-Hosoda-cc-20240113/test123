@@ -28,7 +28,7 @@ class SearchUserResponse
     /**
      * @var int
      */
-    private $count_skill_level;
+    private $count_level_skill;
 
     /**
      * @var int
@@ -92,18 +92,18 @@ class SearchUserResponse
     /**
      * @return int
      */
-    public function getCountSkillLevel(): int
+    public function getCountLevelSkill(): int
     {
-        return $this->count_skill_level;
+        return $this->count_level_skill;
     }
 
     /**
-     * @param int $count_skill_level
+     * @param int $count_level_skill
      * @return SearchUserResponse
      */
-    public function setCountSkillLevel(int $count_skill_level): SearchUserResponse
+    public function setCountLevelSkill(int $count_level_skill): SearchUserResponse
     {
-        $this->count_skill_level = $count_skill_level;
+        $this->count_level_skill = $count_level_skill;
         return $this;
     }
 

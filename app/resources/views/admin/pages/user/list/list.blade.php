@@ -1,6 +1,6 @@
 @php
     /**
-     * @var \App\Services\AdminUser\FetchLevelSkill\FetchLevelSkillResponse $LevelSkills
+     * @var App\Services\AdminUser\UserList\UserListResponse $response
      */
 @endphp
 
@@ -94,7 +94,7 @@
                             <p class="c-text--bold">スキル</p>
                             <p class="c-text--bold u-pl-15">経験</p>
                         </div>
-                        @for($i=0; $i<$response->getCountSkillLevel(); $i++)
+                        @for($i=0; $i<$response->getCountLevelSkill(); $i++)
                         <div class="p-formGroupUnit--2col__itemForSkill js-content js-remove">
                             <label class="p-formGroupUnit--2col__label" for="">
                                 <select name="skill_ids[]" id="skill_id" class="c-input">
@@ -124,7 +124,7 @@
                         <div class="p-formGroup p-formGroupUnit--2col__item--left u-pr-30pc">
                             <p class="c-text--bold">営業開始月</p>
                             <input class="c-input u-mt-5" name="operation_start_month" type="date"
-                                   value="{{ request()->input('operation_start_month') }}">
+                                   value="{{ request()->input('operation_start_month') }}" pattern="\d{4}-\d{2}">
                         </div>
                         <div class="p-formGroup p-formGroupUnit--2col__item--left u-pr-30pc">
                             <p class="c-text--bold">面談予定月</p>
