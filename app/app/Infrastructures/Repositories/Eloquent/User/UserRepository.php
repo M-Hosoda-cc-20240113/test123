@@ -2,7 +2,6 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\User;
 
-use App\Mail\RegisterMail;
 use App\Models\RelLevelSkillUser;
 use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
@@ -10,9 +9,9 @@ use App\Services\User\RegisterUser\RegisterUserParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
 use Carbon\CarbonImmutable;
+use Carbon\Traits\Creator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
 /**
  * Class UserRepository
@@ -372,11 +371,29 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchInterviewUserOfThisMonth(string $today, array $searched_ids = []): Collection
+    public function fetchByStatus(string $status, array $searched_ids = []): Collection
     {
-        $today = new CarbonImmutable($today);
-        $start_of_month = $today->startOfMonth();
-        $end_of_month = $today->endOfMonth();
+        if ($searched_ids) {
+            return User::whereIn('id', function ($query) use ($status) {
+                $query->from('statuses')
+                    ->select('user_id')
+                    ->where('status', $status);
+            })->whereIn('id', $searched_ids)
+                ->get();
+        }
+
+        return User::whereIn('id', function ($query) use ($status) {
+            $query->from('statuses')
+                ->select('user_id')
+                ->where('status', $status);
+        })->get();
+    }
+
+    public function fetchByInterviewMonth(string $interview_month, array $searched_ids = []): Collection
+    {
+        $month = new CarbonImmutable($interview_month);
+        $start_of_month = $month->startOfMonth();
+        $end_of_month = $month->endOfMonth();
         if ($searched_ids) {
             return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
                 $query->from('applications')
@@ -390,6 +407,46 @@ class UserRepository implements UserRepositoryInterface
             $query->from('applications')
                 ->select('user_id')
                 ->whereBetween('interview_date', [$start_of_month, $end_of_month]);
+        })->get();
+    }
+
+    public function fetchByAssignMonth(string $assign_month, array $searched_ids = []): Collection
+    {
+        $month = new CarbonImmutable($assign_month);
+        $start_of_month = $month->startOfMonth();
+        $end_of_month = $month->endOfMonth();
+        if ($searched_ids) {
+            return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+                $query->from('assignments')
+                    ->select('user_id')
+                    ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
+            })->whereIn('id', $searched_ids)
+                ->get();
+        }
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('assignments')
+                ->select('user_id')
+                ->whereBetween('assignment_start_date', [$start_of_month, $end_of_month]);
+        })->get();
+    }
+
+    public function fetchInterviewedUserOfThisMonth(string $interview_month, array $searched_ids = []): Collection
+    {
+        $month = new CarbonImmutable($interview_month);
+        $start_of_month = $month->startOfMonth();
+        if ($searched_ids) {
+            return User::whereIn('id', function ($query) use ($start_of_month, $month) {
+                $query->from('applications')
+                    ->select('user_id')
+                    ->whereBetween('interview_date', [$start_of_month, $month]);
+            })->whereIn('id', $searched_ids)
+                ->get();
+        }
+
+        return User::whereIn('id', function ($query) use ($start_of_month, $month) {
+            $query->from('applications')
+                ->select('user_id')
+                ->whereBetween('interview_date', [$start_of_month, $month]);
         })->get();
     }
 }

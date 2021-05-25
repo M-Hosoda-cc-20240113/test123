@@ -49,6 +49,16 @@ class SearchUserParameter
     /**
      * @var string
      */
+    private $assign_month = '';
+
+    /**
+     * @var string
+     */
+    private $interview_month = '';
+
+    /**
+     * @var string
+     */
     private $status = '';
 
     /**
@@ -234,6 +244,42 @@ class SearchUserParameter
     public function setStatus(string $status): SearchUserParameter
     {
         $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAssignMonth(): string
+    {
+        return $this->assign_month;
+    }
+
+    /**
+     * @param string $assign_month
+     * @return SearchUserParameter
+     */
+    public function setAssignMonth(string $assign_month): SearchUserParameter
+    {
+        $this->assign_month = $assign_month;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInterviewMonth(): string
+    {
+        return $this->interview_month;
+    }
+
+    /**
+     * @param string $interview_month
+     * @return SearchUserParameter
+     */
+    public function setInterviewMonth(string $interview_month): SearchUserParameter
+    {
+        $this->interview_month = $interview_month;
         return $this;
     }
 }

@@ -26,9 +26,9 @@ class SearchUserResponse
     private $levels;
 
     /**
-     * @var Collection|array
+     * @var int
      */
-    private $rel_level_skill;
+    private $count_skill_level;
 
     /**
      * @var int
@@ -90,20 +90,20 @@ class SearchUserResponse
     }
 
     /**
-     * @return array|\Illuminate\Database\Eloquent\Collection
+     * @return int
      */
-    public function getRelLevelSkill()
+    public function getCountSkillLevel(): int
     {
-        return $this->rel_level_skill;
+        return $this->count_skill_level;
     }
 
     /**
-     * @param array|\Illuminate\Database\Eloquent\Collection $rel_level_skill
+     * @param int $count_skill_level
      * @return SearchUserResponse
      */
-    public function setRelLevelSkill($rel_level_skill): SearchUserResponse
+    public function setCountSkillLevel(int $count_skill_level): SearchUserResponse
     {
-        $this->rel_level_skill = $rel_level_skill;
+        $this->count_skill_level = $count_skill_level;
         return $this;
     }
 

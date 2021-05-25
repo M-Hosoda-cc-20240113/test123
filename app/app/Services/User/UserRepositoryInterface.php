@@ -148,25 +148,50 @@ interface UserRepositoryInterface
 
     /**
      * @param string $today
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function fetchNotOpenUserOfThisMonth(string $today, array $searched_ids): Collection;
 
     /**
      * @param string $today
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function fetchNewUserOfThisMonth(string $today, array $searched_ids): Collection;
 
     /**
      * @param string $today
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids): Collection;
 
     /**
+     * @param string $interview_month
+     * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchInterviewUserOfThisMonth(string $today, array $searched_ids): Collection;
+    public function fetchInterviewedUserOfThisMonth(string $interview_month, array $searched_ids = []): Collection;
 
+    /**
+     * @param string $status
+     * @param array $searched_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByStatus(string $status, array $searched_ids = []): Collection;
+
+    /**
+     * @param string $interview_month
+     * @param array $searched_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByInterviewMonth(string $interview_month, array $searched_ids = []): Collection;
+
+    /**
+     * @param string $assign_month
+     * @param array $searched_ids
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function fetchByAssignMonth(string $assign_month, array $searched_ids = []): Collection;
 }
