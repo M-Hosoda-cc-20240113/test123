@@ -27,9 +27,9 @@ class UserListResponse
     private $levels;
 
     /**
-     * @var Collection|array
+     * @var int
      */
-    private $rel_level_skill;
+    private $count_skill_level;
 
     /**
      * @var int
@@ -91,20 +91,20 @@ class UserListResponse
     }
 
     /**
-     * @return array|\Illuminate\Database\Eloquent\Collection
+     * @return int
      */
-    public function getRelLevelSkill()
+    public function getCountSkillLevel(): int
     {
-        return $this->rel_level_skill;
+        return $this->count_skill_level;
     }
 
     /**
-     * @param array|\Illuminate\Database\Eloquent\Collection $rel_level_skill
+     * @param int $count_skill_level
      * @return UserListResponse
      */
-    public function setRelLevelSkill($rel_level_skill)
+    public function setCountSkillLevel(int $count_skill_level): UserListResponse
     {
-        $this->rel_level_skill = $rel_level_skill;
+        $this->count_skill_level = $count_skill_level;
         return $this;
     }
 

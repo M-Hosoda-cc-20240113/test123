@@ -12,7 +12,6 @@ use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserService;
 use App\Services\AdminUser\UserList\UserListService;
 use App\Services\AdminUser\UserDetail\UserDetailService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -96,11 +95,7 @@ class UserController extends Controller
         SearchUserService $search_user_service
     ) {
         $parameter = new SearchUserParameter();
-        if (isset($request->is_new) && $request->is_new === "1") {
-            $parameter->setNewUser($request->is_new);
-        }
-
-        if (isset($request->is_new) && $request->is_new === "2") {
+        if (isset($request->is_new)) {
             $parameter->setNewUser($request->is_new);
         }
 
@@ -122,6 +117,13 @@ class UserController extends Controller
 
         if (isset($request->level_ids)) {
             $parameter->setLevelIds($request->level_ids);
+        }
+        if (isset($request->interview_month)) {
+            $parameter->setInterviewMonth($request->interview_month);
+        }
+
+        if (isset($request->assign_month)) {
+            $parameter->setAssignMonth($request->assign_month);
         }
 
         if (isset($request->status)) {
