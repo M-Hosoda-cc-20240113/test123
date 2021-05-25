@@ -96,7 +96,7 @@ class UserTableSeeder extends Seeder
             'tel_hash'          => hash(config('app.hash_email.algo'), $tel4 . config('app.hash_email.salt')),
             'birthday'          => '19970116',
             'password'          => bcrypt('test1234'),
-            'is_working'        => 0,
+            'is_working'        => 1,
             'remarks'           => "特になし",
             'created_at'        => $now
         ]);
@@ -128,7 +128,6 @@ class UserTableSeeder extends Seeder
             'tel'               => $tel6,
             'tel_hash'          => hash(config('app.hash_email.algo'), $tel6 . config('app.hash_email.salt')),
             'birthday'          => '19890216',
-            'tel_hash'          => hash(config('app.hash_email.algo'), $email . config('app.hash_email.salt')),
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'is_new'            => 0,
@@ -179,7 +178,7 @@ class UserTableSeeder extends Seeder
             'tel_hash'          => hash(config('app.hash_email.algo'), $tel9 . config('app.hash_email.salt')),
             'birthday'          => '19950216',
             'password'          => bcrypt('test1234'),
-            'is_working'        => 0,
+            'is_working'        => 1,
             'is_new'            => 0,
             'remarks'           => "特になし",
             'created_at'        => $now
