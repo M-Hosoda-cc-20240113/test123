@@ -18,11 +18,11 @@
     <tbody class="p-table__body">
     @foreach ($response->getApplications() as $key => $application)
         <tr class="p-table__bodyRow @if($application['status'] === 2) js-button-active @endif" data-href="">
-            <td class="p-table__bodyRowItem">
+            <td class="p-table__bodyRowItem--clickable p-table__bodyRowItem">
                 <a class="d-block w-100"
                    href="{{ route('project.detail', ['project_id' => $application['projects']['id']] )}}">{{ $application['projects']['name'] ?? '' }}</a>
             </td>
-            <td class="p-table__bodyRowItem">
+            <td class="p-table__bodyRowItem--clickable p-table__bodyRowItem--nowrap">
                 <a class="d-block w-100"
                    href="{{ route('user.detail', ['user_id' => $application['users']['id']] )}}">{{ $application['users']['sei'] ?? ''  }}
                     &nbsp;{{ $application['users']['mei'] ?? '' }}</a>

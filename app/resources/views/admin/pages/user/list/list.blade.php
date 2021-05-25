@@ -146,6 +146,7 @@
                 </form>
             </div>
         </div>
+        {{--  モーダルコンテンツ  --}}
 
         <template id="skill_row">
             <div class="p-formGroupUnit--2col__itemForSkill js-content js-remove">

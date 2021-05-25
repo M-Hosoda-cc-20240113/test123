@@ -1813,17 +1813,17 @@ img {
   background-image: url(/../images/icons/icon_soart.svg);
 }
 
-.p-table__bodyRow {
+.p-table__bodyRow, .p-table__bodyRow--clickable {
   border: 1px solid #cdcddf;
   background-color: #ffffff;
 }
 
-.p-table__bodyRow:hover {
+.p-table__bodyRow--clickable:hover {
   background-color: #dfe4e7;
   cursor: pointer;
 }
 
-.p-table__bodyRowItem, .p-table__bodyRowItem--textCenter {
+.p-table__bodyRowItem, .p-table__bodyRowItem--clickable, .p-table__bodyRowItem--textCenter, .p-table__bodyRowItem--nowrap {
   padding: 8px;
   font-size: 13px;
   border-color: inherit;
@@ -1831,8 +1831,27 @@ img {
   vertical-align: middle;
 }
 
+.p-table__bodyRowItem--clickable {
+  height: 0;
+}
+
+.p-table__bodyRowItem--clickable:hover {
+  cursor: pointer;
+  background-color: #dfe4e7;
+}
+
+.p-table__bodyRowItem--clickable a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .p-table__bodyRowItem--textCenter {
   text-align: center;
+}
+
+.p-table__bodyRowItem--nowrap {
+  white-space: nowrap;
 }
 
 .p-table__bodyRowItemInner {
