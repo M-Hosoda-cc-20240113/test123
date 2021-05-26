@@ -10,6 +10,7 @@
 
 @section('body')
     @component('admin.header.header', ['href' => route('front.index')])
+        @include('admin.header._link_mypage')
         @include('admin.header._link_login_logout')
     @endcomponent
 
@@ -146,6 +147,7 @@
                 </form>
             </div>
         </div>
+        {{--  モーダルコンテンツ  --}}
 
         <template id="skill_row">
             <div class="p-formGroupUnit--2col__itemForSkill js-content js-remove">

@@ -12,11 +12,11 @@
     <tbody class="p-table__body">
     @foreach ($response->getAssignments() as $assignment)
         <tr class="p-table__bodyRow" data-href="">
-            <td class="p-table__bodyRowItem">
+            <td class="p-table__bodyRowItem--clickable">
                 <a class="d-block w-100"
                    href="{{ route('project.detail', ['project_id' => $assignment->projects->id] )}}">{{ $assignment->projects->name ?? ''}}</a>
             </td>
-            <td class="p-table__bodyRowItem">
+            <td class="p-table__bodyRowItem--clickable">
                 <a class="d-block w-100"
                    href="{{ route('user.detail', ['user_id' => $assignment->users->id] )}}">{{ $assignment->projects->sei }}
                     &nbsp;{{ $assignment->users->mei ?? ''}}</a>
