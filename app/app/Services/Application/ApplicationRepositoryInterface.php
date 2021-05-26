@@ -4,6 +4,7 @@ namespace App\Services\Application;
 
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Application\ApplyProjectService\ApplyProjectParameter;
+use App\Services\Application\DeleteApplication\DeleteApplicationParameter;
 use Illuminate\Support\Collection;
 
 interface ApplicationRepositoryInterface
@@ -31,4 +32,8 @@ interface ApplicationRepositoryInterface
      */
     public function fetchWithStatus(): Collection;
 
+    /**
+     * @param DeleteApplicationParameter $parameter
+     */
+    public function delete(DeleteApplicationParameter $parameter): void;
 }
