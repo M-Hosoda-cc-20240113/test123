@@ -3,6 +3,7 @@
 namespace App\Services\User;
 
 use App\Models\User;
+use App\Services\AdminUser\SearchUser\SearchUserParameter;
 use App\Services\User\RegisterUser\RegisterUserParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
@@ -148,10 +149,11 @@ interface UserRepositoryInterface
 
     /**
      * @param string $today
+     * @param int $status
      * @param array $searched_ids
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Support\Collection
      */
-    public function fetchNotOpenUserOfThisMonth(string $today, array $searched_ids): Collection;
+    public function fetchByOperationStartMonthAndStatus(string $today, int $status, array $searched_ids): \Illuminate\Support\Collection;
 
     /**
      * @param string $today
@@ -166,14 +168,6 @@ interface UserRepositoryInterface
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids): Collection;
-
-
-    /**
-     * @param string $interview_month
-     * @param array $searched_ids
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function fetchInterviewedUserOfThisMonth(string $interview_month, array $searched_ids = []): Collection;
 
     /**
      * @param string $status
@@ -195,4 +189,12 @@ interface UserRepositoryInterface
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function fetchByAssignMonth(string $assign_month, array $searched_ids = []): Collection;
+
+    /**
+     * @param string $today
+     * @param int $status
+     * @param array $searched_ids
+     * @return \Illuminate\Support\Collection
+     */
+    public function fetchByInterviewMonthAndStatus(string $today, int $status, array $searched_ids): \Illuminate\Support\Collection;
 }

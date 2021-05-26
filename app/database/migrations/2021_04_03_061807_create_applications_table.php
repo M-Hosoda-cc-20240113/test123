@@ -18,9 +18,10 @@ class CreateApplicationsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('project_id')->unsigned();
             $table->date("interview_date")->nullable();
+            $table->date('operation_start_month')->nullable();        //営業開始月
             $table->timestamp('updated_at')->useCurrent();
             $table->timestamp('created_at')->useCurrent();
-            $table->date('operation_start_month')->nullable();        //営業開始月
+
             //外部キーの設定
             $table->foreign('user_id')
                         ->references('id')

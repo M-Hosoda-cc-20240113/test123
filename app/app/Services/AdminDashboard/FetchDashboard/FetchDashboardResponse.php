@@ -77,7 +77,7 @@ class FetchDashboardResponse
     /**
      * @return Collection|null
      */
-    public function getFetchNotOpen(): ?Collection
+    public function getFetchNotOpen(): ?\Illuminate\Support\Collection
     {
         return $this->fetch_not_open;
     }
@@ -86,7 +86,7 @@ class FetchDashboardResponse
      * @param Collection|null $fetch_not_open
      * @return FetchDashboardResponse
      */
-    public function setFetchNotOpen(?Collection $fetch_not_open): FetchDashboardResponse
+    public function setFetchNotOpen(?\Illuminate\Support\Collection $fetch_not_open): FetchDashboardResponse
     {
         $this->fetch_not_open = $fetch_not_open;
         return $this;
@@ -131,7 +131,7 @@ class FetchDashboardResponse
     /**
      * @return \Illuminate\Database\Eloquent\Collection|null
      */
-    public function getFetchInterviewed(): ?Collection
+    public function getFetchInterviewed(): ?\Illuminate\Support\Collection
     {
         return $this->fetch_interviewed;
     }
@@ -140,7 +140,7 @@ class FetchDashboardResponse
      * @param \Illuminate\Database\Eloquent\Collection|null $fetch_interviewed
      * @return FetchDashboardResponse
      */
-    public function setFetchInterviewed(?Collection $fetch_interviewed): FetchDashboardResponse
+    public function setFetchInterviewed(?\Illuminate\Support\Collection $fetch_interviewed): FetchDashboardResponse
     {
         $this->fetch_interviewed = $fetch_interviewed;
         return $this;

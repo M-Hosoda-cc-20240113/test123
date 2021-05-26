@@ -11,6 +11,7 @@
         <th class="p-table__headRowItem">ステータス</th>
         <th class="p-table__headRowItem">応募日時</th>
         <th class="p-table__headRowItem">面談予定日</th>
+        <th class="p-table__headRowItem">営業予定月</th>
         <th class="p-table__headRowItem">アサイン</th>
     </tr>
     </thead>
@@ -35,6 +36,9 @@
             </td>
             <td class="p-table__bodyRowItem">
                 {{ ViewHelper::YmdReplace( $application['interview_date'] ?? '未定' )}}<br>
+            </td>
+            <td class="p-table__bodyRowItem">
+                {{ ViewHelper::YmdReplace( $application['operation_start_month'] ?? '未定' )}}<br>
             </td>
             <td class="p-table__bodyRowItem--textCenter">
                 <form action="{{ route('assignment.register') }}" method="post">

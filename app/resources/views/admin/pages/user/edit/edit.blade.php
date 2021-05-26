@@ -37,15 +37,19 @@
                       {{ @csrf_field() }}
                       <input type="hidden" name="user_id" value="{{ $response->getUser()->id }}">
 
-                      <div class="p-register__row u-mt-20">
+                      <div class="p-register__row--spColumn">
                           <span class="p-register__title c-text--bold">営業開始月</span>
-                          <div class="p-register__itemWrap u-ff-row">
-                              <div class="p-register__item u-w-50-pc">
-                                  <input type="date"
-                                         class="c-input"
-                                         name="operation_start_month"
-                                         value="{{ $response->getUser()->operation_start_month ?? '' }}">
-                              </div>
+                          <div class="p-register__itemWrap">
+                              @foreach($response->getUser()->project_app as $project)
+                                  <div class="p-register__item u-ff-column u-mt-30">
+                                      <span class="c-text--bold">{{ $project->name }}</span>
+                                      <input type="hidden" name="project_operation_ids[]" value="{{ $project->id }}">
+                                      <input type="date"
+                                             class="c-input u-w-50-pc"
+                                             name="operation_start_month[]"
+                                             value="{{ $project->pivot->operation_start_month ?? '' }}">
+                                  </div>
+                              @endforeach
                           </div>
                       </div>
                       {{--  営業開始月  --}}

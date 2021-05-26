@@ -25,7 +25,9 @@ class UserRepository implements UserRepositoryInterface
      */
     public function all(): Collection
     {
-        return User::where('is_admin', 0)->get();
+        return User::where('is_admin', 0)
+            ->with('project_app')
+            ->get();
     }
 
 
@@ -152,7 +154,6 @@ class UserRepository implements UserRepositoryInterface
     public function updateAdmin(UpdateUserAdminParameter $parameter): User
     {
         $user = User::findOrFail($parameter->getUserId());
-        $user->operation_start_month = $parameter->getOperationStartMonth() ?? null;
         $user->remarks = $parameter->getRemarks() ?? null;
         $user->save();
         return $user;
@@ -283,11 +284,19 @@ class UserRepository implements UserRepositoryInterface
         if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->whereIn('id', $searched_ids)
-                ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
-                ->get();
+                ->whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+                    $query->from('applications')
+                        ->select('user_id')
+                        ->whereNotNull('operation_start_month')
+                        ->whereBetween('operation_start_month', [$start_of_month, $end_of_month]);
+                })->get();
         }
-        return User::where('is_admin', 0)
-            ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('applications')
+                ->select('user_id')
+                ->whereNotNull('operation_start_month')
+                ->whereBetween('operation_start_month', [$start_of_month, $end_of_month]);
+        })->where('is_admin', 0)
             ->get();
     }
 
@@ -295,26 +304,52 @@ class UserRepository implements UserRepositoryInterface
      * {@inheritDoc}
      * status: 0：未営業、1：面談待ち、2：結果待ち、3：稼働済み
      */
-    public function fetchNotOpenUserOfThisMonth(string $today, array $searched_ids = []): Collection
-    {
+    public function fetchByOperationStartMonthAndStatus(
+        string $today,
+        int $status,
+        array $searched_ids = []
+    ): \Illuminate\Support\Collection {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
         if ($searched_ids) {
-            return User::whereIn('id', function ($query) {
-                $query->from('statuses')
-                    ->select('user_id')
-                    ->where('status', 0);
-            })->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
-                ->whereIn('id', $searched_ids)
+            $status_users = User::join('statuses', 'users.id', '=', 'statuses.user_id')
+                ->where('statuses.status', '=', $status)
+                ->whereIn('users.id', $searched_ids)
+                ->select('users.*', 'statuses.project_id')
                 ->get();
+            $app_users = User::join('applications', 'users.id', '=', 'applications.user_id')
+                ->whereBetween('applications.operation_start_month', [$start_of_month, $end_of_month])
+                ->whereIn('users.id', $searched_ids)
+                ->select('users.*', 'applications.project_id')
+                ->get();
+            $array_merged = [];
+            foreach ($app_users as $app_user) {
+                foreach ($status_users as $status_user) {
+                    if ($app_user['project_id'] === $status_user['project_id'] && $app_user['id'] === $status_user['id']) {
+                        array_push($array_merged, $app_user);
+                    }
+                }
+            }
+            return collect($array_merged);
         }
-        return User::whereIn('id', function ($query) {
-            $query->from('statuses')
-                ->select('user_id')
-                ->where('status', 0);
-        })->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
-            ->get();
+        $status_users = User::join('statuses', 'users.id', '=', 'statuses.user_id')
+            ->where('statuses.status', '=', $status)
+            ->select('users.*', 'statuses.project_id')
+            ->get()->toArray();
+        $app_users = User::join('applications', 'users.id', '=', 'applications.user_id')
+            ->whereBetween('applications.operation_start_month', [$start_of_month, $end_of_month])
+            ->select('users.*', 'applications.project_id')
+            ->get()->toArray();
+        $array_merged = [];
+        foreach ($app_users as $app_user) {
+            foreach ($status_users as $status_user) {
+                if ($app_user['project_id'] === $status_user['project_id'] && $app_user['id'] === $status_user['id']) {
+                    array_push($array_merged, $app_user);
+                }
+            }
+        }
+        return collect($array_merged);
     }
 
     /**
@@ -438,23 +473,51 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchInterviewedUserOfThisMonth(string $interview_month, array $searched_ids = []): Collection
-    {
-        $month = new CarbonImmutable($interview_month);
-        $start_of_month = $month->startOfMonth();
+    public function fetchByInterviewMonthAndStatus(
+        string $today,
+        int $status,
+        array $searched_ids = []
+    ): \Illuminate\Support\Collection {
+        $today = new CarbonImmutable($today);
+        $start_of_month = $today->startOfMonth();
+        $end_of_month = $today->endOfMonth();
         if ($searched_ids) {
-            return User::whereIn('id', function ($query) use ($start_of_month, $month) {
-                $query->from('applications')
-                    ->select('user_id')
-                    ->whereBetween('interview_date', [$start_of_month, $month]);
-            })->whereIn('id', $searched_ids)
+            $status_users = User::join('statuses', 'users.id', '=', 'statuses.user_id')
+                ->where('statuses.status', '=', $status)
+                ->whereIn('users.id', $searched_ids)
+                ->select('users.*', 'statuses.project_id')
                 ->get();
+            $app_users = User::join('applications', 'users.id', '=', 'applications.user_id')
+                ->whereBetween('applications.interview_date', [$start_of_month, $end_of_month])
+                ->whereIn('users.id', $searched_ids)
+                ->select('users.*', 'applications.project_id')
+                ->get();
+            $array_merged = [];
+            foreach ($app_users as $app_user) {
+                foreach ($status_users as $status_user) {
+                    if ($app_user['project_id'] === $status_user['project_id'] && $app_user['id'] === $status_user['id']) {
+                        array_push($array_merged, $app_user);
+                    }
+                }
+            }
+            return collect($array_merged);
         }
-
-        return User::whereIn('id', function ($query) use ($start_of_month, $month) {
-            $query->from('applications')
-                ->select('user_id')
-                ->whereBetween('interview_date', [$start_of_month, $month]);
-        })->get();
+        $status_users = User::join('statuses', 'users.id', '=', 'statuses.user_id')
+            ->where('statuses.status', '=', $status)
+            ->select('users.*', 'statuses.project_id')
+            ->get()->toArray();
+        $app_users = User::join('applications', 'users.id', '=', 'applications.user_id')
+            ->whereBetween('applications.interview_date', [$start_of_month, $end_of_month])
+            ->select('users.*', 'applications.project_id')
+            ->get()->toArray();
+        $array_merged = [];
+        foreach ($app_users as $app_user) {
+            foreach ($status_users as $status_user) {
+                if ($app_user['project_id'] === $status_user['project_id'] && $app_user['id'] === $status_user['id']) {
+                    array_push($array_merged, $app_user);
+                }
+            }
+        }
+        return collect($array_merged);
     }
 }
