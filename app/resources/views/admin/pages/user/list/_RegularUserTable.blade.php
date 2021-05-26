@@ -18,8 +18,8 @@
 
   <tbody class="p-table__body">
     @foreach ($response->getUsers() as $user)
-    <tr class="p-table__bodyRow" data-href="{{ route('user.detail', ['user_id' => $user->id]) }}">
-      <td class="p-table__bodyRowItem">{{ $user->sei ?? '' }}&#160;{{ $user->mei ?? '' }}</td>
+    <tr class="p-table__bodyRow--clickable" data-href="{{ route('user.detail', ['user_id' => $user->id]) }}">
+      <td class="p-table__bodyRowItem--nowrap">{{ $user->sei ?? '' }}&#160;{{ $user->mei ?? '' }}</td>
       <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($user->created_at ?? '' )}}</td>
       <td class="p-table__bodyRowItem--textCenter">{{ $user->is_working ? '◎' : '-'}}</td>
       <td class="p-table__bodyRowItem--textCenter">{{ $user->is_new ? '◎' : '-'}}</td>

@@ -10,18 +10,11 @@
 
 @section('body')
     @component('admin.header.header', ['href' => route('front.index')])
+        @include('admin.header._link_mypage')
         @include('admin.header._link_login_logout')
     @endcomponent
 
-    <nav class="p-drawerContents">
-        <ul>
-            <li class="u-mt-10">@include('front.header._link_login_logout')</li>
-            <li class="u-mt-10"><a href="{{ route('user.list') }}">ユーザー一覧</a></li>
-            <li class="u-mt-10"><a href="{{ route('project.list') }}">案件一覧</a></li>
-            <li class="u-mt-10"><a href="{{ route('application.list') }}">応募状況一覧</a></li>
-            <li class="u-mt-10"><a href="{{ route('assignment.list') }}">稼働状況一覧</a></li>
-        </ul>
-    </nav>
+    @include('admin.pages._drawer_contents')
 
     <div class="l-container">
         @include('admin.bread_crumb._BreadCrumb')
@@ -41,7 +34,7 @@
                         {{ @csrf_field() }}
                         <div class="p-register__row u-mt-20">
                             <span class="p-register__title c-text--bold">会社名</span>
-                            <div class="p-register__itemWrap">
+                            <div class="p-register__itemWrap--2col">
                                 <div class="p-register__item u-w-50-pc">
                                     <label for="" class="c-select">
                                         <select name="agent_id" id="">
@@ -52,13 +45,16 @@
                                         </select>
                                     </label>
                                 </div>
+                                <div class="p-register__item u-w-50-pc u-as-center u-mt-10-sp">
+                                    <p class="c-text u-pl-10 u-w-100">登録は<a target="_blank" class="c-text--bold" href="{{ route('agent.create.form') }}">こちら<img class="p-image--gray" src="{{ asset('images/icons/icon_external_link.svg') }}" alt=""></a></p>
+                                </div>
                             </div>
                         </div>
                         {{--  エージェント  --}}
 
                         <div class="p-register__row">
                             <span class="p-register__title c-text--bold">最寄り駅</span>
-                            <div class="p-register__itemWrap">
+                            <div class="p-register__itemWrap--2col">
                                 <div class="p-register__item u-w-50-pc">
                                     <label for="" class="c-select">
                                         <select name="station_id" id="">
@@ -68,6 +64,9 @@
                                             @endforeach
                                         </select>
                                     </label>
+                                </div>
+                                <div class="p-register__item u-w-50-pc u-as-center u-mt-10-sp">
+                                    <p class="c-text u-pl-10 u-w-100">登録は<a target="_blank" class="c-text--bold" href="{{ route('station.create.form') }}">こちら<img class="p-image--gray" src="{{ asset('images/icons/icon_external_link.svg') }}" alt=""></a></p>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +177,7 @@
                                            class="c-input"><span class="u-as-center u-pl-10 u-w-70px">〜</span>
                                 </div>
                                 <div class="p-register__item u-w-25-pc u-mt-10-sp">
-                                    <input name="max_unit_price" value="{{ old('maz_unit_price') }}" type="text"
+                                    <input name="max_unit_price" value="{{ old('max_unit_price') }}" type="text"
                                            class="c-input"><span class="u-as-center u-pl-10 u-w-70px">万円</span><span class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
                                 </div>
                             </div>

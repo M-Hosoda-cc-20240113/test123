@@ -48,8 +48,8 @@ class CreateProjectRequest extends FormRequest
             'feature'               => ['nullable','string','max:500'],
             'skill_ids' => ['array', 'max:10'],
             'position_ids' => ['array', 'max:10'],
-            'skill_ids.*' => ['integer', Rule::in($skill_ids)],
-            'position_ids.*' => ['integer', Rule::in($position_id)],
+            'skill_ids.*' => ['nullable', 'integer', Rule::in($skill_ids)],
+            'position_ids.*' => ['nullable', 'integer', Rule::in($position_id)],
         ];
     }
     public function  messages(): array
@@ -60,12 +60,6 @@ class CreateProjectRequest extends FormRequest
             'name.max'                      => '100文字以上の案件名は登録できません。',
             'agent_id.integer'              => '予期せぬ値が入力されました',
             'station_id.integer'            => '予期せぬ値が入力されました',
-            'min_unit_price.integer'        => '半角数字で入力してください。',
-            'max_unit_price.required'       => '最高単価は必須です。',
-            'max_unit_price.integer'        => '半角数字で入力してください。',
-            'min_operation_time.integer'    => '半角数字で入力してください',
-            'max_operation_time.required'   => '最高精算幅は必須です。',
-            'max_operation_time.integer'    => '半角数字で入力してください。',
             'description.required'          => '案件内容は必須です。',
             'description.string'            => '予期せぬ値が入力されました。',
             'description.max'               => '500文字以上は入力できません。',

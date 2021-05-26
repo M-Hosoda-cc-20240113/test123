@@ -21,18 +21,19 @@ class CreateProjectParameter
     private $name;
 
     /**
-     * @var Agent
+     * @var int|null
      */
-    private $agent;
+    private $agent_id;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $station;
+    private $station_id;
+
     /**
      * 最小案件単価
      *
-     * @var int
+     * @var int|null
      */
     private $min_unit_price;
 
@@ -46,7 +47,7 @@ class CreateProjectParameter
     /**
      * 最小稼働時間
      *
-     * @var int
+     * @var int|null
      */
     private $min_operation_time;
 
@@ -67,28 +68,28 @@ class CreateProjectParameter
     /**
      * 必須条件
      *
-     * @var string
+     * @var string|null
      */
     private $required_condition;
 
     /**
      * 尚可条件
      *
-     * @var string
+     * @var string|null
      */
     private $better_condition;
 
     /**
      * 勤務開始時間
      *
-     * @var string
+     * @var string|null
      */
     private $work_start;
 
     /**
      * 勤務終了時間
      *
-     * @var string
+     * @var string|null
      */
     private $work_end;
 
@@ -102,7 +103,7 @@ class CreateProjectParameter
     /**
      * 特徴
      *
-     * @var string
+     * @var string|null
      */
     private $feature;
 
@@ -140,23 +141,18 @@ class CreateProjectParameter
     }
 
     /**
-     * Get 最小案件単価
-     *
-     * @return  int
+     * @return int|null
      */
-    public function getMinUnitPrice(): int
+    public function getMinUnitPrice(): ?int
     {
         return $this->min_unit_price;
     }
 
     /**
-     * Set 最小案件単価
-     *
-     * @param int $min_unit_price 最小案件単価
-     *
-     * @return  self
+     * @param int|null $min_unit_price
+     * @return CreateProjectParameter
      */
-    public function setMinUnitPrice(int $min_unit_price): CreateProjectParameter
+    public function setMinUnitPrice(?int $min_unit_price): CreateProjectParameter
     {
         $this->min_unit_price = $min_unit_price;
         return $this;
@@ -186,23 +182,18 @@ class CreateProjectParameter
     }
 
     /**
-     * Get 最小稼働時間
-     *
-     * @return  int
+     * @return int|null
      */
-    public function getMinOperationTime(): int
+    public function getMinOperationTime(): ?int
     {
         return $this->min_operation_time;
     }
 
     /**
-     * Set 最小稼働時間
-     *
-     * @param int $min_operation_time 最小稼働時間
-     *
-     * @return  self
+     * @param int|null $min_operation_time
+     * @return CreateProjectParameter
      */
-    public function setMinOperationTime(int $min_operation_time): CreateProjectParameter
+    public function setMinOperationTime(?int $min_operation_time): CreateProjectParameter
     {
         $this->min_operation_time = $min_operation_time;
         return $this;
@@ -255,92 +246,72 @@ class CreateProjectParameter
     }
 
     /**
-     * Get 必須条件
-     *
-     * @return  string
+     * @return string|null
      */
-    public function getRequiredCondition(): string
+    public function getRequiredCondition(): ?string
     {
         return $this->required_condition;
     }
 
     /**
-     * Set 必須条件
-     *
-     * @param string $required_condition 必須条件
-     *
-     * @return  self
+     * @param string|null $required_condition
+     * @return CreateProjectParameter
      */
-    public function setRequiredCondition(string $required_condition): CreateProjectParameter
+    public function setRequiredCondition(?string $required_condition): CreateProjectParameter
     {
         $this->required_condition = $required_condition;
         return $this;
     }
 
     /**
-     * Get 尚可条件
-     *
-     * @return  string
+     * @return string|null
      */
-    public function getBetterCondition(): string
+    public function getBetterCondition(): ?string
     {
         return $this->better_condition;
     }
 
     /**
-     * Set 尚可条件
-     *
-     * @param string $better_condition 尚可条件
-     *
-     * @return  self
+     * @param string|null $better_condition
+     * @return CreateProjectParameter
      */
-    public function setBetterCondition(string $better_condition): CreateProjectParameter
+    public function setBetterCondition(?string $better_condition): CreateProjectParameter
     {
         $this->better_condition = $better_condition;
         return $this;
     }
 
     /**
-     * Get 勤務開始時間
-     *
-     * @return  string
+     * @return string|null
      */
-    public function getWorkStart(): string
+    public function getWorkStart(): ?string
     {
         return $this->work_start;
     }
 
     /**
-     * Set 勤務開始時間
-     *
-     * @param string $work_start 勤務開始時間
-     *
-     * @return  self
+     * @param string|null $work_start
+     * @return CreateProjectParameter
      */
-    public function setWorkStart(string $work_start): CreateProjectParameter
+    public function setWorkStart(?string $work_start): CreateProjectParameter
     {
         $this->work_start = $work_start;
         return $this;
     }
 
     /**
-     * Get 勤務終了時間
-     *
-     * @return  string
+     * @return string|null
      */
-    public function getWorkEnd(): string
+    public function getWorkEnd(): ?string
     {
         return $this->work_end;
     }
 
     /**
-     * Set 勤務終了時間
-     *
-     * @param string $work_end 勤務終了時間
-     *
-     * @return  self
+     * @param string|null $work_end
+     * @return CreateProjectParameter
      */
-    public function setWorkEnd(string $work_end): CreateProjectParameter
+    public function setWorkEnd(?string $work_end): CreateProjectParameter
     {
         $this->work_end = $work_end;
         return $this;
@@ -370,61 +341,56 @@ class CreateProjectParameter
     }
 
     /**
-     * Get 特徴
-     *
-     * @return  string
+     * @return string|null
      */
-    public function getFeature(): string
+    public function getFeature(): ?string
     {
         return $this->feature;
     }
 
     /**
-     * Set 特徴
-     *
-     * @param string $feature 特徴
-     *
-     * @return  self
+     * @param string|null $feature
+     * @return CreateProjectParameter
      */
-    public function setFeature(string $feature): CreateProjectParameter
+    public function setFeature(?string $feature): CreateProjectParameter
     {
         $this->feature = $feature;
         return $this;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getAgent(): int
+    public function getAgentId(): ?int
     {
-        return $this->agent;
+        return $this->agent_id;
     }
 
     /**
-     * @param int $agent
-     * @return \App\Services\AdminProject\CreateProject\CreateProjectParameter
+     * @param int|null $agent_id
+     * @return CreateProjectParameter
      */
-    public function setAgent(int $agent): CreateProjectParameter
+    public function setAgentId(?int $agent_id): CreateProjectParameter
     {
-        $this->agent = $agent;
+        $this->agent_id = $agent_id;
         return $this;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getStation(): int
+    public function getStationId(): ?int
     {
-        return $this->station;
+        return $this->station_id;
     }
 
     /**
-     * @param int $station
-     * @return \App\Services\AdminProject\CreateProject\CreateProjectParameter
+     * @param int|null $station_id
+     * @return CreateProjectParameter
      */
-    public function setStation(int $station): CreateProjectParameter
+    public function setStationId(?int $station_id): CreateProjectParameter
     {
-        $this->station = $station;
+        $this->station_id = $station_id;
         return $this;
     }
 

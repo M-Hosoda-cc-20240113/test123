@@ -120,6 +120,14 @@ return [
         'password' => 'パスワード',
         'tel' => '電話番号',
         'birthday' => '誕生日',
-        'password_confirmation' => 'パスワード確認欄'
-    ],
+        'password_confirmation' => 'パスワード確認欄',
+        'position_ids.*' => 'ポジション',
+        'position_ids' => 'ポジション',
+        'skill_ids' => 'スキル',
+        'skill_ids.*' => 'スキル',
+        'min_unit_price' => '最低単価',
+        'max_unit_price' => '最高単価',
+        'min_operation_time' => '最低精算幅',
+        'max_operation_time' => '最高精算幅',
+    ]
 ];
