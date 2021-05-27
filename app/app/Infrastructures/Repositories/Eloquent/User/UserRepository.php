@@ -10,6 +10,7 @@ use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -21,11 +22,12 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
-     * @return Collection
      */
     public function all(): Collection
     {
-        return User::where('is_admin', 0)->get();
+        return User::where('is_admin', 0)
+            ->with('project_app')
+            ->get();
     }
 
 
@@ -152,23 +154,10 @@ class UserRepository implements UserRepositoryInterface
     public function updateAdmin(UpdateUserAdminParameter $parameter): User
     {
         $user = User::findOrFail($parameter->getUserId());
-        $user->operation_start_month = $parameter->getOperationStartMonth() ?? null;
         $user->remarks = $parameter->getRemarks() ?? null;
         $user->save();
         return $user;
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function fetchThisMonthOperation(): ?Collection
-    {
-        $now = CarbonImmutable::now();
-        $start_of_month = $now->startOfMonth();
-        $end_of_month = $now->endOfMonth();
-        return User::whereBetween('operation_start_month', [$start_of_month, $end_of_month])->get();
-    }
-
 
     /**
      * {@inheritDoc}
@@ -275,7 +264,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids = []): Collection
+    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids = []): SupportCollection
     {
         $operation_date = new CarbonImmutable($operation_start_month);
         $start_of_month = $operation_date->startOfMonth();
@@ -283,11 +272,19 @@ class UserRepository implements UserRepositoryInterface
         if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->whereIn('id', $searched_ids)
-                ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
-                ->get();
+                ->whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+                    $query->from('applications')
+                        ->select('user_id')
+                        ->whereNotNull('operation_start_month')
+                        ->whereBetween('operation_start_month', [$start_of_month, $end_of_month]);
+                })->get();
         }
-        return User::where('is_admin', 0)
-            ->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('applications')
+                ->select('user_id')
+                ->whereNotNull('operation_start_month')
+                ->whereBetween('operation_start_month', [$start_of_month, $end_of_month]);
+        })->where('is_admin', 0)
             ->get();
     }
 
@@ -295,32 +292,39 @@ class UserRepository implements UserRepositoryInterface
      * {@inheritDoc}
      * status: 0：未営業、1：面談待ち、2：結果待ち、3：稼働済み
      */
-    public function fetchNotOpenUserOfThisMonth(string $today, array $searched_ids = []): Collection
-    {
+    public function fetchByOperationStartMonthAndStatus(
+        string $today,
+        int $status,
+        array $searched_ids = []
+    ): SupportCollection {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
-        if ($searched_ids) {
-            return User::whereIn('id', function ($query) {
-                $query->from('statuses')
-                    ->select('user_id')
-                    ->where('status', 0);
-            })->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
-                ->whereIn('id', $searched_ids)
-                ->get();
-        }
-        return User::whereIn('id', function ($query) {
-            $query->from('statuses')
-                ->select('user_id')
-                ->where('status', 0);
-        })->whereBetween('operation_start_month', [$start_of_month, $end_of_month])
+        $status_users = User::join('statuses', 'users.id', '=', 'statuses.user_id')
+            ->where('statuses.status', '=', $status)
+            ->whereIn('users.id', $searched_ids)
+            ->select('users.*', 'statuses.project_id')
             ->get();
+        $app_users = User::join('applications', 'users.id', '=', 'applications.user_id')
+            ->whereBetween('applications.operation_start_month', [$start_of_month, $end_of_month])
+            ->whereIn('users.id', $searched_ids)
+            ->select('users.*', 'applications.project_id')
+            ->get();
+        $array_merged = [];
+        foreach ($app_users as $app_user) {
+            foreach ($status_users as $status_user) {
+                if ($app_user['project_id'] === $status_user['project_id'] && $app_user['id'] === $status_user['id']) {
+                    array_push($array_merged, $app_user);
+                }
+            }
+        }
+        return collect($array_merged);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function fetchNewUserOfThisMonth(string $today, array $searched_ids = []): Collection
+    public function fetchNewUserOfThisMonth(string $today, array $searched_ids = []): SupportCollection
     {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
@@ -345,7 +349,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids = []): Collection
+    public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids = []): SupportCollection
     {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
@@ -370,7 +374,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByInterviewMonth(string $interview_month, array $searched_ids = []): Collection
+    public function fetchByInterviewMonth(string $interview_month, array $searched_ids = []): SupportCollection
     {
         $month = new CarbonImmutable($interview_month);
         $start_of_month = $month->startOfMonth();
@@ -394,7 +398,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByStatus(string $status, array $searched_ids = []): Collection
+    public function fetchByStatus(string $status, array $searched_ids = []): SupportCollection
     {
         if ($searched_ids) {
             return User::whereIn('id', function ($query) use ($status) {
@@ -415,7 +419,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByAssignMonth(string $assign_month, array $searched_ids = []): Collection
+    public function fetchByAssignMonth(string $assign_month, array $searched_ids = []): SupportCollection
     {
         $month = new CarbonImmutable($assign_month);
         $start_of_month = $month->startOfMonth();
@@ -438,23 +442,32 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchInterviewedUserOfThisMonth(string $interview_month, array $searched_ids = []): Collection
-    {
-        $month = new CarbonImmutable($interview_month);
-        $start_of_month = $month->startOfMonth();
-        if ($searched_ids) {
-            return User::whereIn('id', function ($query) use ($start_of_month, $month) {
-                $query->from('applications')
-                    ->select('user_id')
-                    ->whereBetween('interview_date', [$start_of_month, $month]);
-            })->whereIn('id', $searched_ids)
-                ->get();
+    public function fetchByInterviewMonthAndStatus(
+        string $today,
+        int $status,
+        array $searched_ids = []
+    ): SupportCollection {
+        $today = new CarbonImmutable($today);
+        $start_of_month = $today->startOfMonth();
+        $end_of_month = $today->endOfMonth();
+        $status_users = User::join('statuses', 'users.id', '=', 'statuses.user_id')
+            ->where('statuses.status', '=', $status)
+            ->whereIn('users.id', $searched_ids)
+            ->select('users.*', 'statuses.project_id')
+            ->get();
+        $app_users = User::join('applications', 'users.id', '=', 'applications.user_id')
+            ->whereBetween('applications.interview_date', [$start_of_month, $end_of_month])
+            ->whereIn('users.id', $searched_ids)
+            ->select('users.*', 'applications.project_id')
+            ->get();
+        $array_merged = [];
+        foreach ($app_users as $app_user) {
+            foreach ($status_users as $status_user) {
+                if ($app_user['project_id'] === $status_user['project_id'] && $app_user['id'] === $status_user['id']) {
+                    array_push($array_merged, $app_user);
+                }
+            }
         }
-
-        return User::whereIn('id', function ($query) use ($start_of_month, $month) {
-            $query->from('applications')
-                ->select('user_id')
-                ->whereBetween('interview_date', [$start_of_month, $month]);
-        })->get();
+        return collect($array_merged);
     }
 }

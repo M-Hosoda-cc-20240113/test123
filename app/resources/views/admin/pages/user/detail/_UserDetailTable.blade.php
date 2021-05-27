@@ -66,7 +66,16 @@
     </tr>
     <tr class="p-itemDetailTable__row">
         <th class="p-itemDetailTable__head">営業開始月</th>
-        <td class="p-itemDetailTable__body">{{ ViewHelper::YmdReplace($response->getUser()->operation_start_month ?? '' )}} </td>
+        <td class="p-itemDetailTable__body">
+            {{ ViewHelper::YmdReplace($response->getUser()->operation_start_month ?? '' )}}
+            @if($response->getUser()->project_app->count() === 0)
+                <p>予定していません</p>
+            @endif
+            @foreach ($response->getUser()->project_app as $project)
+                <a class="c-text--bold u-dib u-mt-10 u-indent-1" href="{{ route('project.detail', ['project_id' => $project->id] )}}">・{{ $project->name ?? ''}}</a>
+                <p class="u-indent">{{ ViewHelper::YmdReplace($project->pivot->operation_start_month ?? '未定' )}}</p>
+            @endforeach
+        </td>
         <th class="p-itemDetailTable__head">備考欄</th>
         <td class="p-itemDetailTable__body">{{ $response->getUser()->remarks ?? '' }}</td>
     </tr>
