@@ -133,3 +133,8 @@ spec:
                 secretKeyRef:
                   key: HASH_ACCOUNT_SALT
                   name: aegis-prod-secret
+            - name: APP_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: APP_KEY
+                  name: aegis-prod-secret
