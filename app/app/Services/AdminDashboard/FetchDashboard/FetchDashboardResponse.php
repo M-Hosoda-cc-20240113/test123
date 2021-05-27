@@ -4,6 +4,7 @@
 namespace App\Services\AdminDashboard\FetchDashboard;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 
 class FetchDashboardResponse
 {
@@ -75,18 +76,18 @@ class FetchDashboardResponse
     }
 
     /**
-     * @return Collection|null
+     * @return \Illuminate\Support\Collection|null
      */
-    public function getFetchNotOpen(): ?Collection
+    public function getFetchNotOpen(): ?SupportCollection
     {
         return $this->fetch_not_open;
     }
 
     /**
-     * @param Collection|null $fetch_not_open
+     * @param \Illuminate\Support\Collection|null $fetch_not_open
      * @return FetchDashboardResponse
      */
-    public function setFetchNotOpen(?Collection $fetch_not_open): FetchDashboardResponse
+    public function setFetchNotOpen(?SupportCollection $fetch_not_open): FetchDashboardResponse
     {
         $this->fetch_not_open = $fetch_not_open;
         return $this;
@@ -129,18 +130,18 @@ class FetchDashboardResponse
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Collection|null
+     * @return \Illuminate\Support\Collection|null
      */
-    public function getFetchInterviewed(): ?Collection
+    public function getFetchInterviewed(): ?SupportCollection
     {
         return $this->fetch_interviewed;
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Collection|null $fetch_interviewed
+     * @param \Illuminate\Support\Collection|null $fetch_interviewed
      * @return FetchDashboardResponse
      */
-    public function setFetchInterviewed(?Collection $fetch_interviewed): FetchDashboardResponse
+    public function setFetchInterviewed(?SupportCollection $fetch_interviewed): FetchDashboardResponse
     {
         $this->fetch_interviewed = $fetch_interviewed;
         return $this;

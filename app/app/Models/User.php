@@ -143,7 +143,7 @@ class User extends Authenticatable
     public function project_app(): BelongsToMany
     {
         return $this->belongsToMany(Project::class, 'applications', 'user_id', 'project_id')
-            ->withPivot('created_at', 'interview_date');
+            ->withPivot('created_at', 'interview_date', 'operation_start_month');
     }
 
     /**

@@ -34,9 +34,9 @@ class FetchDashboardService
         $today = CarbonImmutable::today();
         $response = new FetchDashboardResponse;
         $fetch_interview_user = $this->user_repository->fetchByInterviewMonth($today);
-        $fetch_interviewed_user = $this->user_repository->fetchInterviewedUserOfThisMonth($today);
+        $fetch_interviewed_user = $this->user_repository->fetchByInterviewMonthAndStatus($today, 2);
         $fetch_user_operation = $this->user_repository->fetchByOperationStartMonth($today);
-        $fetch_not_open_user = $this->user_repository->fetchNotOpenUserOfThisMonth($today);
+        $fetch_not_open_user = $this->user_repository->fetchByOperationStartMonthAndStatus($today, 0);
         $fetch_assign_new_user = $this->user_repository->fetchNewUserOfThisMonth($today);
         $fetch_assign_user = $this->user_repository->fetchNotNewUserOfThisMonth($today);
 
