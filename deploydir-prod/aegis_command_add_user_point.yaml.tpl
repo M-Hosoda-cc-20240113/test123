@@ -5,6 +5,8 @@ metadata:
 spec:
   schedule: "00 0 1 * *" # UTCのため注意が必要
   startingDeadlineSeconds: 100
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
