@@ -48,7 +48,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface
                 $application->save();
             }
         }
-        if(!empty($parameter->getProjectOperationIds())) {
+        if (!empty($parameter->getProjectOperationIds())) {
             foreach ($parameter->getProjectOperationIds() as $key => $project_id) {
                 $application = Application::where('user_id', $parameter->getUserId())
                     ->where('project_id', $project_id)

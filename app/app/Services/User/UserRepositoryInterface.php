@@ -3,11 +3,11 @@
 namespace App\Services\User;
 
 use App\Models\User;
-use App\Services\AdminUser\SearchUser\SearchUserParameter;
 use App\Services\User\RegisterUser\RegisterUserParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 
 /**
  * Interface UserRepositoryInterface
@@ -98,11 +98,6 @@ interface UserRepositoryInterface
     public function updateAdmin(UpdateUserAdminParameter $parameter);
 
     /**
-     * @return Collection|null
-     */
-    public function fetchThisMonthOperation(): ?Collection;
-
-    /**
      * @param array $skill_ids
      * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
@@ -143,9 +138,9 @@ interface UserRepositoryInterface
     /**
      * @param string $operation_start_month
      * @param array $searched_ids
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Support\Collection
      */
-    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids): Collection;
+    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids): SupportCollection;
 
     /**
      * @param string $today
@@ -153,42 +148,42 @@ interface UserRepositoryInterface
      * @param array $searched_ids
      * @return \Illuminate\Support\Collection
      */
-    public function fetchByOperationStartMonthAndStatus(string $today, int $status, array $searched_ids): \Illuminate\Support\Collection;
+    public function fetchByOperationStartMonthAndStatus(string $today, int $status, array $searched_ids): SupportCollection;
 
     /**
      * @param string $today
      * @param array $searched_ids
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Support\Collection
      */
-    public function fetchNewUserOfThisMonth(string $today, array $searched_ids): Collection;
+    public function fetchNewUserOfThisMonth(string $today, array $searched_ids): SupportCollection;
 
     /**
      * @param string $today
      * @param array $searched_ids
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Support\Collection
      */
-    public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids): Collection;
+    public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids): SupportCollection;
 
     /**
      * @param string $status
      * @param array $searched_ids
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Support\Collection
      */
-    public function fetchByStatus(string $status, array $searched_ids = []): Collection;
+    public function fetchByStatus(string $status, array $searched_ids = []): SupportCollection;
 
     /**
      * @param string $interview_month
      * @param array $searched_ids
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Support\Collection
      */
-    public function fetchByInterviewMonth(string $interview_month, array $searched_ids = []): Collection;
+    public function fetchByInterviewMonth(string $interview_month, array $searched_ids = []): SupportCollection;
 
     /**
      * @param string $assign_month
      * @param array $searched_ids
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Support\Collection
      */
-    public function fetchByAssignMonth(string $assign_month, array $searched_ids = []): Collection;
+    public function fetchByAssignMonth(string $assign_month, array $searched_ids = []): SupportCollection;
 
     /**
      * @param string $today
@@ -196,5 +191,5 @@ interface UserRepositoryInterface
      * @param array $searched_ids
      * @return \Illuminate\Support\Collection
      */
-    public function fetchByInterviewMonthAndStatus(string $today, int $status, array $searched_ids): \Illuminate\Support\Collection;
+    public function fetchByInterviewMonthAndStatus(string $today, int $status, array $searched_ids): SupportCollection;
 }

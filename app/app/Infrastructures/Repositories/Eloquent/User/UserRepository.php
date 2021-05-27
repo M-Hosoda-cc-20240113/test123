@@ -10,6 +10,7 @@ use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UserRepositoryInterface;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -21,7 +22,6 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
-     * @return Collection
      */
     public function all(): Collection
     {
@@ -162,18 +162,6 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchThisMonthOperation(): ?Collection
-    {
-        $now = CarbonImmutable::now();
-        $start_of_month = $now->startOfMonth();
-        $end_of_month = $now->endOfMonth();
-        return User::whereBetween('operation_start_month', [$start_of_month, $end_of_month])->get();
-    }
-
-
-    /**
-     * {@inheritDoc}
-     */
     public function fetchBySkillIds(array $skill_ids, array $searched_ids = []): Collection
     {
         $user_id = RelLevelSkillUser::whereIn('skill_id', $skill_ids)
@@ -276,7 +264,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids = []): Collection
+    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids = []): SupportCollection
     {
         $operation_date = new CarbonImmutable($operation_start_month);
         $start_of_month = $operation_date->startOfMonth();
@@ -308,7 +296,7 @@ class UserRepository implements UserRepositoryInterface
         string $today,
         int $status,
         array $searched_ids = []
-    ): \Illuminate\Support\Collection {
+    ): SupportCollection {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
@@ -336,7 +324,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchNewUserOfThisMonth(string $today, array $searched_ids = []): Collection
+    public function fetchNewUserOfThisMonth(string $today, array $searched_ids = []): SupportCollection
     {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
@@ -361,7 +349,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids = []): Collection
+    public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids = []): SupportCollection
     {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
@@ -386,7 +374,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByInterviewMonth(string $interview_month, array $searched_ids = []): Collection
+    public function fetchByInterviewMonth(string $interview_month, array $searched_ids = []): SupportCollection
     {
         $month = new CarbonImmutable($interview_month);
         $start_of_month = $month->startOfMonth();
@@ -410,7 +398,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByStatus(string $status, array $searched_ids = []): Collection
+    public function fetchByStatus(string $status, array $searched_ids = []): SupportCollection
     {
         if ($searched_ids) {
             return User::whereIn('id', function ($query) use ($status) {
@@ -431,7 +419,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByAssignMonth(string $assign_month, array $searched_ids = []): Collection
+    public function fetchByAssignMonth(string $assign_month, array $searched_ids = []): SupportCollection
     {
         $month = new CarbonImmutable($assign_month);
         $start_of_month = $month->startOfMonth();
@@ -458,7 +446,7 @@ class UserRepository implements UserRepositoryInterface
         string $today,
         int $status,
         array $searched_ids = []
-    ): \Illuminate\Support\Collection {
+    ): SupportCollection {
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
