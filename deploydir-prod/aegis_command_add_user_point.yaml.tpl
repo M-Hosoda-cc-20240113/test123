@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
             - name: aegis-prod-php
-              image: asia.gcr.io/GOOGLE_CLOUD_PROJECT/aegis_prod_php:COMMIT_SHA
+              image: asia.gcr.io/GOOGLE_CLOUD_PROJECT/aegis_php:COMMIT_SHA
               args:
                 - /bin/sh
                 - -c
