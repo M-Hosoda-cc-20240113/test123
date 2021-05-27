@@ -1,7 +1,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: add_user_point
+  name: add-user-point
 spec:
   schedule: "* * * * *" # UTCのため注意が必要
   jobTemplate:
