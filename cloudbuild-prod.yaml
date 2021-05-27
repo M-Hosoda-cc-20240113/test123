@@ -39,7 +39,11 @@ steps:
       - '-c'
       - |
         sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" deploydir-prod/deploy.yaml.tpl | \
-        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > deploydir-prod/deploy.yaml
+        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > deploydir-prod/deploy.yaml \
+        sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" deploydir-prod/aegis_butch_add_user_points.yaml.tpl | \
+        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > aegis_butch_add_user_points.yaml \
+        sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" deploydir-prod/aegis_butch_force_delete_user.yaml.tpl | \
+        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > aegis_butch_force_delete_user.yaml \
   - name: 'gcr.io/cloud-builders/kubectl'
     id: Deploy
     waitFor: ['Generate manifest']

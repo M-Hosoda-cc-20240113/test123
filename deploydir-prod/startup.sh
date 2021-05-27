@@ -9,6 +9,8 @@ php artisan key:generate
 php artisan storage:link
 # storageディレクトリの権限変更
 chmod -R 777 storage/
+mkdir -p storage/framework/sessions
+mkdir -p storage/framework/views
 # migration実行
 php artisan migrate
 # キャッシュクリア
