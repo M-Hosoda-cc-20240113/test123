@@ -1,4 +1,4 @@
-FROM aegis-base-php:latest
+FROM  asia.gcr.io/aegisapp/aegis-base-php
 COPY ./deploydir-prod/docker/php/php.ini /usr/local/etc/php/php.ini
 COPY ./app /var/www/app
 COPY ./deploydir-prod/startup.sh /usr/local/bin/startup.sh
