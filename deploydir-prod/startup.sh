@@ -10,7 +10,7 @@ php artisan storage:link
 # storageディレクトリの権限変更
 mkdir -p storage/framework/sessions
 mkdir -p storage/framework/views
-chmod -R 777 storage/
+yes | chmod -R 777 storage/
 # migration実行
 php artisan migrate
 # キャッシュクリア
