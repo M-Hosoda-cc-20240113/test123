@@ -1,6 +1,6 @@
 @extends('front.layout')
 
-@section('title', 'トップページ|Aegis')
+@section('title', 'パスワード再設定|Aegis')
 
 @section('body')
     @component('front.header.header', ['href' => route('front.index')])
