@@ -33,7 +33,7 @@ steps:
       - 'asia.gcr.io/$PROJECT_ID/aegis_nginx:$SHORT_SHA'
   - name: 'gcr.io/cloud-builders/gcloud'
     id: Generate manifest
-    waitFor: ['Push nginx', 'Push php-fpm', 'Push invoice-client']
+    waitFor: ['Push nginx', 'Push php-fpm']
     entrypoint: /bin/sh
     args:
       - '-c'
