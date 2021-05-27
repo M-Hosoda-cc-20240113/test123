@@ -10,4 +10,4 @@ data:
   MAIL_PASSWORD: "null"
   MAIL_ENCRYPTION: "null"
   TZ: "Asia/Tokyo"
-  APP_DEBUG: "false"
+  APP_DEBUG: "true"

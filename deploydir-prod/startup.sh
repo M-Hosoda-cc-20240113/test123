@@ -4,6 +4,7 @@ cd /var/www/app/
 cp -f .env.example .env
 composer self-update
 composer install --no-dev
+php artisan key:generate
 #シンボリックリンクの作成
 php artisan storage:link
 # storageディレクトリの権限変更
@@ -16,18 +17,15 @@ php artisan config:clear
 # 環境変数で.envを置換
 sed -i \
     -e "/^APP_DEBUG=.*/c APP_DEBUG=${APP_DEBUG}" \
-    -e "/^APP_URL=.*/c APP_URL=${APP_URL}" \
-    -e "/^APP_KEY=.*/c APP_KEY=${APP_KEY}" \
-    -e "/^DB_CONNECTION=.*/c DB_CONNECTION=${DB_CONNECTION}" \
     -e "/^DB_HOST=.*/c DB_HOST=${DB_HOST}" \
     -e "/^DB_PORT=.*/c DB_PORT=${DB_PORT}" \
     -e "/^DB_DATABASE=.*/c DB_DATABASE=${DB_DATABASE}" \
     -e "/^DB_USERNAME=.*/c DB_USERNAME=${DB_USERNAME}" \
     -e "/^DB_PASSWORD=.*/c DB_PASSWORD=${DB_PASSWORD}" \
-    -e "/^HASH_EMAIL_ALGO=.*/c HASH_EMAIL_ALGO=${HASH_EMAIL_ALGO}"\
-    -e "/^HASH_EMAIL_SALT=.*/c HASH_EMAIL_SALT=${HASH_EMAIL_SALT}"\
-    -e "/^HASH_ACCOUNT_ALGO=.*/c HASH_ACCOUNT_ALGO=${HASH_ACCOUNT_ALGO}"\
-    -e "/^HASH_ACCOUNT_SALT=.*/c HASH_ACCOUNT_SALT=${HASH_ACCOUNT_SALT}"\
+    -e "/^HASH_EMAIL_ALGO=.*/c HASH_EMAIL_ALGO=${HASH_EMAIL_ALGO}" \
+    -e "/^HASH_EMAIL_SALT=.*/c HASH_EMAIL_SALT=${HASH_EMAIL_SALT}" \
+    -e "/^HASH_ACCOUNT_ALGO=.*/c HASH_ACCOUNT_ALGO=${HASH_ACCOUNT_ALGO}" \
+    -e "/^HASH_ACCOUNT_SALT=.*/c HASH_ACCOUNT_SALT=${HASH_ACCOUNT_SALT}" \
     /var/www/app/.env
 # envにtokenのブラックリスト化後の保持期間を追記。以下を参照
 # https://qiita.com/yh1224/items/bd00e85d5c53350e93ca

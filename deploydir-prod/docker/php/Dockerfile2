@@ -1,10 +1,9 @@
 FROM aegis-base-php:latest
+COPY ./deploydir-prod/docker/php/php.ini /usr/local/etc/php/php.ini
 COPY ./app /var/www/app
-
 COPY ./deploydir-prod/startup.sh /usr/local/bin/startup.sh
 WORKDIR /var/www/app
 RUN chown -R www-data:www-data . \
     && chmod 777 /usr/local/bin/startup.sh \
     && chmod -R 775 /var/www/app
 CMD ["/usr/local/bin/startup.sh","php-fpm","-F"]\
-

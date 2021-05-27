@@ -29,14 +29,14 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
         - name: aegis-prod-nginx
-          image: asia.gcr.io/aegisapp/aegis_nginx:latest    # Container Resistoryにプッシュしたイメージを使用する
+          image: asia.gcr.io/aegisapp/aegis_nginx:COMMIT_SHA    # Container Resistoryにプッシュしたイメージを使用する
           ports:
             - containerPort: 80
           resources:
             requests:
               cpu: 50m
         - name: aegis-prod-php
-          image: asia.gcr.io/aegisapp/aegis_php:latest
+          image: asia.gcr.io/aegisapp/aegis_php:COMMIT_SHA
           ports:
             - containerPort: 9000
           resources:
@@ -103,3 +103,28 @@ spec:
                 configMapKeyRef:
                   key: TZ
                   name: aegis-prod-config
+            - name: APP_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  key: APP_DEBUG
+                  name: aegis-prod-config
+            - name: HASH_EMAIL_ALGO
+              valueFrom:
+                secretKeyRef:
+                  key: HASH_EMAIL_ALGO
+                  name: aegis-prod-secret
+            - name: HASH_EMAIL_SALT
+              valueFrom:
+                secretKeyRef:
+                  key: HASH_EMAIL_SALT
+                  name: aegis-prod-secret
+            - name: HASH_ACCOUNT_ALGO
+              valueFrom:
+                secretKeyRef:
+                  key: HASH_ACCOUNT_ALGO
+                  name: aegis-prod-secret
+            - name: HASH_ACCOUNT_SALT
+              valueFrom:
+                secretKeyRef:
+                  key: HASH_ACCOUNT_SALT
+                  name: aegis-prod-secret

@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: aegis-prod-certificate    # なんでもよいのでわかりやすい名前　例)プロジェクト名-certificate
+spec:
+  domains:
+  - aegis-freelance.jp  # ここに利用するドメインを入力

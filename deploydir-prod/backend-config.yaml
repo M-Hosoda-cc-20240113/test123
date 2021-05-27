@@ -9,3 +9,6 @@ spec:
       includeHost: true
       includeProtocol: true
       includeQueryString: false
+  sessionAffinity:
+    affinityType: "GENERATED_COOKIE" # cookieを利用する場合はGENERATED_COOKIE、IPを使用する場合はCLIENT_IP cookie推奨
+    affinityCookieTtlSec: 86400 # cookieの場合はクッキーのライフタイムを設定(秒)
