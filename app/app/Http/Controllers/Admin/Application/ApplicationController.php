@@ -47,7 +47,7 @@ class ApplicationController extends Controller
         $parameter->setProjectId($request->project_id);
 
         DB::transaction(function () use ($delete_application_service, $parameter) {
-            return $delete_application_service->exec($parameter);
+            $delete_application_service->exec($parameter);
         });
 
         return redirect()->route('application.list');
