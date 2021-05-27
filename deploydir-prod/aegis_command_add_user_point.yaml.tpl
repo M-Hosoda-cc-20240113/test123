@@ -3,7 +3,8 @@ kind: CronJob
 metadata:
   name: add-user-point
 spec:
-  schedule: "* * * * *" # UTCのため注意が必要
+  schedule: "00 0 1 * *" # UTCのため注意が必要
+  startingDeadlineSeconds: 100
   jobTemplate:
     spec:
       template:
