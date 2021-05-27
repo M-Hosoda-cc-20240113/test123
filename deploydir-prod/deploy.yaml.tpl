@@ -108,6 +108,11 @@ spec:
                 configMapKeyRef:
                   key: APP_DEBUG
                   name: aegis-prod-config
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  key: APP_ENV
+                  name: aegis-prod-config
             - name: HASH_EMAIL_ALGO
               valueFrom:
                 secretKeyRef:

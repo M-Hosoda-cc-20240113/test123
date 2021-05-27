@@ -19,6 +19,7 @@ php artisan config:clear
 # 環境変数で.envを置換
 sed -i \
     -e "/^APP_DEBUG=.*/c APP_DEBUG=${APP_DEBUG}" \
+    -e "/^APP_ENV=.*/c APP_ENV=${APP_ENV}" \
     -e "/^DB_HOST=.*/c DB_HOST=${DB_HOST}" \
     -e "/^DB_PORT=.*/c DB_PORT=${DB_PORT}" \
     -e "/^DB_DATABASE=.*/c DB_DATABASE=${DB_DATABASE}" \
