@@ -21,7 +21,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface
     {
         return Application::with('users')
             ->with('projects')
-            ->orderBy('user_id')
+            ->orderBy('created_at')
             ->get();
     }
 
@@ -50,6 +50,16 @@ class ApplicationRepository implements ApplicationRepositoryInterface
                 $application->save();
             }
         }
+        if (!empty($parameter->getProjectOperationIds())) {
+            foreach ($parameter->getProjectOperationIds() as $key => $project_id) {
+                $application = Application::where('user_id', $parameter->getUserId())
+                    ->where('project_id', $project_id)
+                    ->firstOrFail();
+                $application->operation_start_month = $parameter->getOperationStartMonth()[$key] ?? null;
+                $application->save();
+            }
+        }
+
     }
 
     /**

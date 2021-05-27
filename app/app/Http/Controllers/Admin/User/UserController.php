@@ -71,6 +71,7 @@ class UserController extends Controller
         $parameter->setStatuses($request->statuses ?? null);
         $parameter->setProjectStatusIds($request->project_status_ids ?? null);
         $parameter->setOperationStartMonth($request->operation_start_month ?? null);
+        $parameter->setProjectOperationIds($request->project_operation_ids ?? null);
         $parameter->setInterviewDate($request->interview_dates ?? null);
         $parameter->setProjectInterviewIds($request->project_interview_ids ?? null);
         $parameter->setProjectAssignId($request->project_assign_id ?? null);

@@ -49,7 +49,6 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
-            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
@@ -66,7 +65,6 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
-            'operation_start_month' => 20210901,
             'created_at'        => $now
         ]);
 
@@ -84,7 +82,6 @@ class UserTableSeeder extends Seeder
             'is_working'        => 1,
             'remarks'           => "",
             'is_new'            => 0,
-            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
@@ -101,7 +98,6 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 1,
             'remarks'           => "特になし",
-            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 
@@ -119,7 +115,6 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'is_new'            => 0,
             'remarks'           => "特になし",
-            'operation_start_month' => 20211001,
             'created_at'        => $now
         ]);
 
@@ -133,7 +128,6 @@ class UserTableSeeder extends Seeder
             'tel'               => $tel6,
             'tel_hash'          => hash(config('app.hash_email.algo'), $tel6 . config('app.hash_email.salt')),
             'birthday'          => '19890216',
-            'tel_hash'          => hash(config('app.hash_email.algo'), $email . config('app.hash_email.salt')),
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'is_new'            => 0,
@@ -154,7 +148,6 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
-            'operation_start_month' => 20210501,
             'created_at'        => $now
         ]);
 

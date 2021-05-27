@@ -33,10 +33,15 @@ class UpdateUserAdminParameter
     /**
      * @var int[]|array
      */
+    private $project_operation_ids;
+
+    /**
+     * @var int[]|array
+     */
     private $statuses;
 
     /**
-     * @var string
+     * @var string|array
      */
     private $operation_start_month;
 
@@ -132,6 +137,23 @@ class UpdateUserAdminParameter
         return $this;
     }
 
+    /**
+     * @return array|int[]
+     */
+    public function getProjectOperationIds(): ?array
+    {
+        return $this->project_operation_ids;
+    }
+
+    /**
+     * @param array|int[] $project_operation_ids
+     * @return UpdateUserAdminParameter
+     */
+    public function setProjectOperationIds(?array $project_operation_ids): UpdateUserAdminParameter
+    {
+        $this->project_operation_ids = $project_operation_ids;
+        return $this;
+    }
 
     /**
      * @return array|null
@@ -152,18 +174,18 @@ class UpdateUserAdminParameter
     }
 
     /**
-     * @return string|null
+     * @return array|string
      */
-    public function getOperationStartMonth(): ?string
+    public function getOperationStartMonth(): ?array
     {
         return $this->operation_start_month;
     }
 
     /**
-     * @param string|null $operation_start_month
+     * @param array|null $operation_start_month
      * @return UpdateUserAdminParameter
      */
-    public function setOperationStartMonth(?string $operation_start_month): UpdateUserAdminParameter
+    public function setOperationStartMonth(?array $operation_start_month): UpdateUserAdminParameter
     {
         $this->operation_start_month = $operation_start_month;
         return $this;
