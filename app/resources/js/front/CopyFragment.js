@@ -24,7 +24,12 @@ export class CopyFragment {
   /**
    * initialize
    */
-  init() {}
+  init() {
+    if (this.count === 0) {
+      this.insertFragment(this.createFragment())
+      this.isLimit()
+    }
+  }
 
   /**
    * setEvent
@@ -44,9 +49,9 @@ export class CopyFragment {
   /**
    * onClick
    * @param {Event} e
-   * @param {int} index
+   * @param {int|null} index
    */
-  onClick(e, index) {
+  onClick(e, index = null) {
     switch (e.target) {
       case this.add_button:
         if (this.count > this.copy_limit - 1) return

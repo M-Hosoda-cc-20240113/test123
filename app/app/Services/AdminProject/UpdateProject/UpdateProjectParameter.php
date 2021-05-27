@@ -22,14 +22,14 @@ class UpdateProjectParameter
     private $name;
 
     /**
-     * @var Agent
+     * @var int|null
      */
-    private $agent;
+    private $agent_id;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $station;
+    private $station_id;
     /**
      * 最小案件単価
      *
@@ -154,39 +154,39 @@ class UpdateProjectParameter
         return $this;
     }
 
-    /**
-     * @return int
+    /*
+     * @return int|null
      */
-    public function getAgent(): int
+    public function getAgentId(): ?int
     {
-        return $this->agent;
+        return $this->agent_id;
     }
 
     /**
-     * @param int|null $agent
+     * @param int|null $agent_id
      * @return UpdateProjectParameter
      */
-    public function setAgent(?int $agent): UpdateProjectParameter
+    public function setAgentId(?int $agent_id): UpdateProjectParameter
     {
-        $this->agent = $agent;
+        $this->agent_id = $agent_id;
         return $this;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getStation(): int
+    public function getStationId(): ?int
     {
-        return $this->station;
+        return $this->station_id;
     }
 
     /**
-     * @param int|null $station
+     * @param int|null $station_id
      * @return UpdateProjectParameter
      */
-    public function setStation(?int $station): UpdateProjectParameter
+    public function setStationId(?int $station_id): UpdateProjectParameter
     {
-        $this->station = $station;
+        $this->station_id = $station_id;
         return $this;
     }
 

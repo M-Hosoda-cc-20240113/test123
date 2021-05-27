@@ -9,7 +9,10 @@
 @section('title', 'スキル一覧|Aegis')
 
 @section('body')
-    @include('admin.header.header')
+    @component('admin.header.header', ['href' => route('front.index')])
+        @include('admin.header._link_mypage')
+        @include('admin.header._link_login_logout')
+    @endcomponent
 
     <nav class="p-drawerContents">
         <ul>

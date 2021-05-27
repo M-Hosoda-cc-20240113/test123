@@ -9,18 +9,11 @@
 
 @section('body')
     @component('admin.header.header', ['href' => route('front.index')])
-        @include('front.header._link_login_logout')
+        @include('admin.header._link_mypage')
+        @include('admin.header._link_login_logout')
     @endcomponent
 
-    <nav class="p-drawerContents">
-        <ul>
-            <li class="u-mt-10">@include('front.header._link_login_logout')</li>
-            <li class="u-mt-10"><a href="{{ route('user.list') }}">ユーザー一覧</a></li>
-            <li class="u-mt-10"><a href="{{ route('project.list') }}">案件一覧</a></li>
-            <li class="u-mt-10"><a href="{{ route('application.list') }}">応募状況一覧</a></li>
-            <li class="u-mt-10"><a href="{{ route('assignment.list') }}">稼働状況一覧</a></li>
-        </ul>
-    </nav>
+    @include('admin.pages._drawer_contents')
 
     <div class="l-container--2col">
         <div class="l-sidebar">
@@ -28,47 +21,83 @@
         </div>
         <div class="l-main">
             <div class="p-mainItem">
-                <h2 class="p-level2Heading">各種ステータス</h2>
-                <form action="{{ route('user.search') }}" method="get">
+                <h2 class="p-level2Heading">営業進捗（{{ \Carbon\Carbon::today()->month }}月）</h2>
                 <div class="p-counterUnit--col2">
                     <div class="p-counter u-mt-0">
-                        <p class="c-text--bold p-counter__title"><button type="submit" name="status" value="1">今月営業開始</button></p>
-                        <div class="p-counter__countWrap">
-                            <span class="p-counter__count">{{ $response->getFetchUserOperation()->count() ?? 0 }}</span><span>件</span>
-                        </div>
+                        <form action="{{ route('user.search') }}" method="get">
+                            <input type="hidden" name="operation_start_month"
+                                   value="{{ \Carbon\Carbon::today()->format("Y-m-d") }}">
+                            <p class="c-text--bold p-counter__title">
+                                <button type="submit">今月営業開始</button>
+                            </p>
+                            <div class="p-counter__countWrap">
+                                <span
+                                    class="p-counter__count">{{ $response->getFetchUserOperation()->count() ?? 0 }}</span><span>件</span>
+                            </div>
+                        </form>
                     </div>
                     <div class="p-counter u-mt-0">
-                        <p class="c-text--bold p-counter__title c-tooltip"><button type="submit" name="status" value="2">未営業</button>
-                            <span class="c-tooltip__text--up">今月営業月だがまだ未営業の人数</span>
-                        </p>
-                        <div class="p-counter__countWrap">
-                            <span class="p-counter__count">{{ $response->getFetchNotOpen()->count() ?? 0 }}</span><span>件</span>
-                        </div>
+                        <form action="{{ route('user.search') }}" method="get">
+                            <input type="hidden" name="operation_start_month"
+                                   value="{{ \Carbon\Carbon::today()->format("Y-m-d") }}">
+                            <input type="hidden" name="status" value="0">
+                            <p class="c-text--bold p-counter__title c-tooltip">
+                                <button type="submit">未営業</button>
+                                <span class="c-tooltip__text--up">今月営業月だがまだ未営業の人数</span>
+                            </p>
+                            <div class="p-counter__countWrap">
+                                <span
+                                    class="p-counter__count">{{ $response->getFetchNotOpen()->count() ?? 0 }}</span><span>件</span>
+                            </div>
+                        </form>
                     </div>
                     <div class="p-counter">
-                        <p class="c-text--bold p-counter__title c-tooltip"><button type="submit" name="status" value="3">新規稼働件数</button>
-                            <span class="c-tooltip__text--up">新規で今月稼働する人数</span>
-                        </p>
-                        <div class="p-counter__countWrap">
-                            <span class="p-counter__count">{{ $response->getFetchNewAssignUser()->count() ?? 0 }}</span><span>件</span>
-                        </div>
+                        <form action="{{ route('user.search') }}" method="get">
+                            <input type="hidden" name="assign_month"
+                                   value="{{ \Carbon\Carbon::today()->format("Y-m-d") }}">
+                            <input type="hidden" name="is_new" value="1">
+
+                            <p class="c-text--bold p-counter__title c-tooltip">
+                                <button type="submit">新規稼働件数</button>
+                                <span class="c-tooltip__text--up">新規で今月稼働する人数</span>
+                            </p>
+                            <div class="p-counter__countWrap">
+                                <span
+                                    class="p-counter__count">{{ $response->getFetchNewAssignUser()->count() ?? 0 }}</span><span>件</span>
+                            </div>
+                        </form>
                     </div>
                     <div class="p-counter u-mt-10-pc">
-                        <p class="c-text--bold p-counter__title c-tooltip"><button type="submit" name="status" value="4">既存稼働件数</button>
-                            <span class="c-tooltip__text--up">既存で今月稼働する人数</span>
-                        </p>
-                        <div class="p-counter__countWrap">
-                            <span class="p-counter__count">{{ $response->getFetchAssignUser()->count() ?? 0 }}</span><span>件</span>
-                        </div>
+                        <form action="{{ route('user.search') }}" method="get">
+                            <input type="hidden" name="assign_month"
+                                   value="{{ \Carbon\Carbon::today()->format("Y-m-d") }}">
+                            <input type="hidden" name="is_new" value="0">
+                            <p class="c-text--bold p-counter__title c-tooltip">
+                                <button type="submit">既存稼働件数</button>
+                                <span class="c-tooltip__text--up">既存で今月稼働する人数</span>
+                            </p>
+                            <div class="p-counter__countWrap">
+                                <span
+                                    class="p-counter__count">{{ $response->getFetchAssignUser()->count() ?? 0 }}</span><span>件</span>
+                            </div>
+                        </form>
                     </div>
                     <div class="p-counter u-mt-10-pc">
-                        <p class="c-text--bold p-counter__title"><button type="submit" name="status" value="5">今月面談件数</button></p>
-                        <div class="p-counter__countWrap">
-                            <span class="p-counter__count">{{ $response->getFetchInterview()->count() ?? 0}}</span><span>件</span>
-                        </div>
+                        <form action="{{ route('user.search') }}" method="get">
+                            <input type="hidden" name="interview_month"
+                                   value="{{ \Carbon\Carbon::today()->format("Y-m-d") }}">
+                            <input type="hidden" name="status" value="1">
+                            <p class="c-text--bold p-counter__title c-tooltip">
+                                <button type="submit">今月面談件数</button>
+                                <span class="c-tooltip__text--up">面談済/面談総数</span>
+                            </p>
+                            <div class="p-counter__countWrap">
+                                <span
+                                    class="p-counter__count">{{ $response->getFetchInterviewed()->count() ?? 0 }}/{{ $response->getFetchInterview()->count() ?? 0}}</span><span>件</span>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                </form>
                 {{--   各種ステータス   --}}
 
                 <h2 class="p-level2Heading u-mt-20">クイックアクション</h2>

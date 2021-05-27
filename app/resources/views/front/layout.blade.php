@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  @include('gtm._gtm_head')
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta charset="utf-8">
   <link rel="SHORTCUT ICON" href="/assets/images/favicon.ico">
@@ -27,6 +28,7 @@
   @show
 </head>
 <body data-route-name="{{ \Route::currentRouteName() }}">
+@include('gtm._gtm_body')
 @section('body')
 @show 
 

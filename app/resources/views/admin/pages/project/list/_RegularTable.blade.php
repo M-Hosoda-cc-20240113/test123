@@ -9,7 +9,7 @@
 
     <tbody class="p-table__body">
     @foreach ($response->getProjects() as $project)
-        <tr class="p-table__bodyRow"
+        <tr class="p-table__bodyRow--clickable"
             data-href="{{ route('project.detail', ['project_id' => $project->id])}}">
             <td class="p-table__bodyRowItem">{{ $project->name ?? ''}}</td>
             <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($project->created_at ?? '' )}}</td>
