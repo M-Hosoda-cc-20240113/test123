@@ -49,7 +49,7 @@ class UserController extends Controller
      * @return RedirectResponse
      * @throws \Throwable
      */
-    public function edit(UpdateUserRequest $request, UpdateUserService $update_user_service): string
+    public function edit(UpdateUserRequest $request, UpdateUserService $update_user_service)
     {
         $parameter = new UpdateUserParameter();
         $parameter->setUser(Auth::user());
@@ -60,7 +60,9 @@ class UserController extends Controller
         $parameter->setTel($request->tel);
         $parameter->setBirthday($request->birthday);
 
-        $update_user_service->exec($parameter);
+        DB::transaction(function () use ($update_user_service, $parameter) {
+            $update_user_service->exec($parameter);
+        });
 
         return redirect()->route('home.mypage');
     }
@@ -110,12 +112,11 @@ class UserController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\Front\DeleteUserRequest $request
      * @param \App\Services\User\DeleteUser\DeleteUserService $delete_user_service
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function delete(DeleteUserRequest $request, DeleteUserService $delete_user_service)
+    public function delete(DeleteUserService $delete_user_service)
     {
         $user_id = Auth::id();
         DB::transaction(function () use ($delete_user_service, $user_id) {

@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Admin\Position;
+namespace App\Http\Requests\Admin\User;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CreatePositionRequest extends FormRequest
+class DeleteUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +25,10 @@ class CreatePositionRequest extends FormRequest
      */
     public function rules(): array
     {
+        $users = User::all();
+        $user_ids = $users->pluck('id')->toArray();
         return [
-            'name' => ['required', 'unique:positions,name', 'string', 'max:20'],
+            'user_id' => ['required', 'integer', Rule::in($user_ids)],
         ];
     }
 
@@ -34,10 +38,7 @@ class CreatePositionRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required'        => 'ポジション名を入力してください。',
-            'name.unique'          => 'このポジションはすでに存在しています。',
-            'name.string'          => '正しく入力してください。',
-            'name.max'             => 'ポジション名が長すぎます。',
+            'user_id.required' => 'ユーザーIDが取得できませんでした。',
         ];
     }
 }

@@ -66,6 +66,11 @@ class UpdateUserAdminParameter
     private $remarks;
 
     /**
+     * @var int
+     */
+    private $points;
+
+    /**
      * @return int
      */
     public function getUserId(): int
@@ -263,5 +268,21 @@ class UpdateUserAdminParameter
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getPoints(): int
+    {
+        return $this->points;
+    }
 
+    /**
+     * @param int $points
+     * @return UpdateUserAdminParameter
+     */
+    public function setPoints(int $points): UpdateUserAdminParameter
+    {
+        $this->points = $points;
+        return $this;
+    }
 }

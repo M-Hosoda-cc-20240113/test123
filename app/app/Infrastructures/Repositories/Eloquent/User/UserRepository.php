@@ -139,7 +139,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function delete(int $user_id): void
     {
-        $user = User::findOrFail($user_id);
+        $user = User::where('is_admin', '=', 0)->findOrFail($user_id);
         $user->skills()->detach();
         $user->levels()->detach();
         $user->project_app()->detach();
@@ -155,6 +155,7 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = User::findOrFail($parameter->getUserId());
         $user->remarks = $parameter->getRemarks() ?? null;
+        $user->points = $parameter->getPoints() ?? 0;
         $user->save();
         return $user;
     }
@@ -264,8 +265,10 @@ class UserRepository implements UserRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids = []): SupportCollection
-    {
+    public function fetchByOperationStartMonth(
+        string $operation_start_month,
+        array $searched_ids = []
+    ): SupportCollection {
         $operation_date = new CarbonImmutable($operation_start_month);
         $start_of_month = $operation_date->startOfMonth();
         $end_of_month = $operation_date->endOfMonth();

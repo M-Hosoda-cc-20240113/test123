@@ -34,6 +34,7 @@ class UpdateAdminUserRequest extends FormRequest
             'assignment_start_date'     => ['nullable', 'string'],
             'assignment_end_date'       => ['nullable', 'string'],
             'remarks'                   => ['nullable', 'string'],
+            'points'                    => ['nullable', 'integer'],
         ];
     }
 
@@ -51,6 +52,7 @@ class UpdateAdminUserRequest extends FormRequest
             'assignment_start_date.string'  => '稼働開始日が取得できませんでした。',
             'assignment_end_date.string'    => '稼働終了日が取得できませんでした。',
             'remarks.string'                => '備考欄に予期せぬ値が入力されました。',
+            'points.integer'                => 'イージスポイントは半角英数字で入力してください。',
         ];
     }
 }
