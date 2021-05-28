@@ -84,6 +84,7 @@ Route::group(['middleware' => ['auth', 'is_admin']], function () {
 
     Route::namespace('Application')->prefix('applications')->group(function () {
         Route::get('/', [ApplicationController::class, 'list'])->name('application.list');
+        Route::post('/delete', [ApplicationController::class, 'delete'])->name('application.delete');
     });
 
     Route::namespace('Assignment')->prefix('assignments')->group(function () {

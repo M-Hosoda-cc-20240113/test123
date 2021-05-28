@@ -13,6 +13,7 @@
         <th class="p-table__headRowItem">面談予定日</th>
         <th class="p-table__headRowItem">営業予定月</th>
         <th class="p-table__headRowItem">アサイン</th>
+        <th class="p-table__headRowItem"></th>
     </tr>
     </thead>
 
@@ -46,6 +47,14 @@
                     <input type="hidden" name="user_id" value="{{ $application['users']['id'] }}">
                     <input type="hidden" name="project_id" value="{{ $application['projects']['id'] }}">
                     <button type="submit" disabled class="c-button c-button--disabled u-m0a">確定</button>
+                </form>
+            </td>
+            <td class="p-table__bodyRowItem--textCenter">
+                <form action="{{ route('application.delete') }}" method="post">
+                    {{ @csrf_field() }}
+                    <input type="hidden" name="user_id" value="{{ $application['users']['id'] }}">
+                    <input type="hidden" name="project_id" value="{{  $application['projects']['id'] }}">
+                    <button type="submit" class="c-button--warning js-alert-button">応募取り消し</button>
                 </form>
             </td>
         </tr>

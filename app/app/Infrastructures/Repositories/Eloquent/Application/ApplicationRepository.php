@@ -4,10 +4,11 @@ namespace App\Infrastructures\Repositories\Eloquent\Application;
 
 use App\Models\Application;
 use App\Models\Status;
+use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Application\ApplicationRepositoryInterface;
 use App\Services\Application\ApplyProjectService\ApplyProjectParameter;
-use Carbon\CarbonImmutable;
+use App\Services\Application\DeleteApplication\DeleteApplicationParameter;
 use Illuminate\Support\Collection;
 
 class ApplicationRepository implements ApplicationRepositoryInterface
@@ -80,5 +81,14 @@ class ApplicationRepository implements ApplicationRepositoryInterface
             $application_with_status[] = array_merge($application, $statuses[$key]);
         }
         return collect($application_with_status);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function delete(DeleteApplicationParameter $parameter): void
+    {
+        User::findOrFail($parameter->getUserId())->project_app()->detach($parameter->getProjectId());
+        User::findOrFail($parameter->getUserId())->project_status()->detach($parameter->getProjectId());
     }
 }
