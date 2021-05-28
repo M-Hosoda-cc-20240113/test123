@@ -139,7 +139,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function delete(int $user_id): void
     {
-        $user = User::findOrFail($user_id);
+        $user = User::where('is_admin','=',0)->findOrFail($user_id);
         $user->skills()->detach();
         $user->levels()->detach();
         $user->project_app()->detach();

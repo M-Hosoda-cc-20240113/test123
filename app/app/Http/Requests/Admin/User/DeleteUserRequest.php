@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin\User;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class DeleteUserRequest extends FormRequest
 {
@@ -23,8 +25,10 @@ class DeleteUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $users = User::all();
+        $user_ids = $users->pluck('id')->toArray();
         return [
-            'user_id' => ['required', 'integer'],
+            'user_id' => ['required', 'integer', Rule::in($user_ids)],
         ];
     }
 

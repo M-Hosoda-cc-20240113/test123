@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\DeleteUserRequest;
 use App\Http\Requests\Admin\User\SearchUserRequest;
 use App\Http\Requests\Admin\User\UpdateAdminUserRequest;
-use App\Services\AdminUser\DeleteUSer\DeleteUserParameter;
-use App\Services\AdminUser\DeleteUSer\DeleteUserService;
+use App\Services\AdminUser\DeleteUser\DeleteUserParameter;
+use App\Services\AdminUser\DeleteUser\DeleteUserService;
 use App\Services\AdminUser\SearchUser\SearchUserParameter;
 use App\Services\AdminUser\SearchUser\SearchUserService;
 use App\Services\AdminUser\ShowEditUserForm\ShowEditUserFormService;
@@ -131,7 +131,7 @@ class UserController extends Controller
 
     /**
      * @param \App\Http\Requests\Admin\User\DeleteUserRequest $request
-     * @param \App\Services\AdminUser\DeleteUSer\DeleteUserService $delete_user_service
+     * @param \App\Services\AdminUser\DeleteUser\DeleteUserService $delete_user_service
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */

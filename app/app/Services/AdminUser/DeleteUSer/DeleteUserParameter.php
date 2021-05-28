@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services\AdminUser\DeleteUSer;
+namespace App\Services\AdminUser\DeleteUser;
 
 
 /**
