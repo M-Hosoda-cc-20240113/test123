@@ -78,6 +78,7 @@ class UserController extends Controller
         $parameter->setAssignmentStartDate($request->assignment_start_date ?? null);
         $parameter->setAssignmentEndDate($request->assignment_end_date ?? null);
         $parameter->setRemarks($request->remarks ?? null);
+        $parameter->setPoints($request->points ?? 0);
 
         $user = DB::transaction(function () use ($update_user_service, $parameter) {
             return $update_user_service->exec($parameter);
