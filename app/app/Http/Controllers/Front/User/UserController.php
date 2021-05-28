@@ -112,12 +112,11 @@ class UserController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\Front\DeleteUserRequest $request
      * @param \App\Services\User\DeleteUser\DeleteUserService $delete_user_service
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function delete(DeleteUserRequest $request, DeleteUserService $delete_user_service)
+    public function delete(DeleteUserService $delete_user_service)
     {
         $user_id = Auth::id();
         DB::transaction(function () use ($delete_user_service, $user_id) {
