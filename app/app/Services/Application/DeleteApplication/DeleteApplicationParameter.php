@@ -8,12 +8,12 @@ namespace App\Services\Application\DeleteApplication;
 class DeleteApplicationParameter
 {
     /**
-     * @var int|[]
+     * @var int
      */
     private $user_id;
 
     /**
-     * @var int|[]
+     * @var int
      */
     private $project_id;
 
