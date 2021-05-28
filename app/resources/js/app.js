@@ -10,6 +10,7 @@ import {project_list} from './admin/pages/project_list';
 import {project_create} from './admin/pages/project_create';
 import {project_edit} from './admin/pages/project_edit';
 import {user_list} from './admin/pages/user_list';
+import {user_detail} from './admin/pages/user_detail';
 import {assign_list} from './admin/pages/assign_list';
 import {position_list} from './admin/pages/position_list';
 import {skill_list} from './admin/pages/skill_list';
@@ -47,6 +48,9 @@ switch (route_name) {
   case routes.user_list:
   case routes.user_search:
     user_list();
+    break;
+  case routes.user_detail:
+    user_detail();
     break;
   case routes.assign_list:
     assign_list();
