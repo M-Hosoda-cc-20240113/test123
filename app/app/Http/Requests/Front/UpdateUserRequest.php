@@ -31,7 +31,7 @@ class UpdateUserRequest extends FormRequest
             'sei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'mei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'birthday'  => ['required', 'integer', 'digits:8'],
-            'tel'       => ['required', 'digits_between:8,11', new InUsersByTel($this->input('tel'))],
+            'tel'       => ['required', 'digits_between:8,11'],
         ];
     }
 }
