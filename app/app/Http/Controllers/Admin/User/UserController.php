@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\DeleteUserRequest;
 use App\Http\Requests\Admin\User\SearchUserRequest;
 use App\Http\Requests\Admin\User\UpdateAdminUserRequest;
+use App\Services\AdminUser\DeleteUSer\DeleteUserParameter;
+use App\Services\AdminUser\DeleteUSer\DeleteUserService;
 use App\Services\AdminUser\SearchUser\SearchUserParameter;
 use App\Services\AdminUser\SearchUser\SearchUserService;
 use App\Services\AdminUser\ShowEditUserForm\ShowEditUserFormService;
@@ -17,9 +20,6 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     /**
-     *
-     * Admin user list
-     *
      * @param \App\Services\AdminUser\UserList\UserListService $user_list_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -30,9 +30,6 @@ class UserController extends Controller
     }
 
     /**
-     *
-     * Admin user detail
-     *
      * @param UserDetailService $user_detail_service
      * @param int $user_id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -55,9 +52,6 @@ class UserController extends Controller
     }
 
     /**
-     *
-     * Admin user edit
-     *
      * @param \App\Http\Requests\Admin\User\UpdateAdminUserRequest $request
      * @param \App\Services\AdminUser\UpdateUser\UpdateUserService $update_user_service
      * @return \Illuminate\Http\RedirectResponse
@@ -133,5 +127,21 @@ class UserController extends Controller
         }
         $response = $search_user_service->search($parameter);
         return view('admin.pages.user.list.list', ['response' => $response]);
+    }
+
+    /**
+     * @param \App\Http\Requests\Admin\User\DeleteUserRequest $request
+     * @param \App\Services\AdminUser\DeleteUSer\DeleteUserService $delete_user_service
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
+     */
+    public function delete(DeleteUserRequest $request, DeleteUserService $delete_user_service)
+    {
+        $parameter = new DeleteUserParameter();
+        $parameter->setUserId($request->user_id);
+        DB::transaction(function () use ($delete_user_service, $parameter) {
+            $delete_user_service->exec($parameter);
+        });
+        return redirect()->route('user.list');
     }
 }

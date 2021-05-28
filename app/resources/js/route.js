@@ -6,6 +6,7 @@ export const routes = {
   project_edit: 'project.edit.form',
   user_list: 'user.list',
   user_search: 'user.search',
+  user_detail: 'user.detail',
   assign_list: 'assignment.list',
   position_list: 'position.list',
   skill_list: 'skill.list',
