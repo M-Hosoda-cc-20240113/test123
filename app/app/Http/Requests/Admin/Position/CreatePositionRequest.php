@@ -24,7 +24,7 @@ class CreatePositionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'unique:positions,name', 'string', 'max:100'],
+            'name' => ['required', 'unique:positions,name', 'string', 'max:20'],
         ];
     }
 
