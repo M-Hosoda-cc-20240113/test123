@@ -15,7 +15,10 @@ use Illuminate\Database\Eloquent\Collection;
  */
 interface ProjectRepositoryInterface
 {
-    public function all();
+    /**
+     * @return Collection
+     */
+    public function all(): Collection;
 
     /**
      * プロジェクト新規登録（Admin）
@@ -34,7 +37,7 @@ interface ProjectRepositoryInterface
     /**
      * プロジェクト詳細（Front）
      * @param int $project_id
-     * @return Project
+     * @return \App\Models\Project
      */
     public function findWithUsersThroughApplicationOrAssignment(int $project_id): Project;
 
@@ -45,11 +48,11 @@ interface ProjectRepositoryInterface
      */
     public function findWithUsersAndAgentThroughApplicationOrAssignment(int $project_id): Project;
 
-    /**
-     * 応募できるプロジェクトを取得
-     */
-    public function fetchCanApply();
 
+    /**
+     * @return Collection
+     */
+    public function fetchCanApply(): Collection;
 
     /**
      * 応募終了処理

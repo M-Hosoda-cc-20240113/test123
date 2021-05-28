@@ -125,7 +125,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function fetchCanApply()
+    public function fetchCanApply(): Collection
     {
         return Project::with('station')
             ->with('positions')
