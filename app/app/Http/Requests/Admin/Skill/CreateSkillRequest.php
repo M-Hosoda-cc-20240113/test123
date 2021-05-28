@@ -24,7 +24,7 @@ class CreateSkillRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'unique:skills,name', 'string', 'max:100'],
+            'name' => ['required', 'unique:skills,name', 'string', 'max:20'],
         ];
     }
 

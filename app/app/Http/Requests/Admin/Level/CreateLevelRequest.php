@@ -24,7 +24,7 @@ class CreateLevelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'level' => ['required', 'unique:levels,level', 'string', 'max:100'],
+            'level' => ['required', 'unique:levels,level', 'string', 'max:20'],
         ];
     }
 

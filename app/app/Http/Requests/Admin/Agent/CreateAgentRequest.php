@@ -42,7 +42,7 @@ class CreateAgentRequest extends FormRequest
             'name.string' => '予期せぬ値が入力されました。',
             'name.max40' => '会社名が長すぎます。',
             'name.unique' => 'この会社名はすでに使われています。。',
-            'tel.regex' => '正しい番号を入力してください。',
+            'tel.regex' => '電話番号は半角英数字で入力してください。',
             'tel.digits_between' => '電話番号は8-11桁で入力してください。',
             'tel.unique' => 'この電話番号はすでに使われています。',
         ];
