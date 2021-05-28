@@ -155,6 +155,7 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = User::findOrFail($parameter->getUserId());
         $user->remarks = $parameter->getRemarks() ?? null;
+        $user->points = $parameter->getPoints() ?? 0;
         $user->save();
         return $user;
     }
