@@ -49,7 +49,7 @@ class UserController extends Controller
      * @return RedirectResponse
      * @throws \Throwable
      */
-    public function edit(UpdateUserRequest $request, UpdateUserService $update_user_service): string
+    public function edit(UpdateUserRequest $request, UpdateUserService $update_user_service)
     {
         $parameter = new UpdateUserParameter();
         $parameter->setUser(Auth::user());
