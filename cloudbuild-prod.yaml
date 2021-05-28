@@ -1,0 +1,54 @@
+timeout: 1200s
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Build php-fpm
+    args:
+      - build
+      - -t
+      - asia.gcr.io/$PROJECT_ID/aegis_php:$SHORT_SHA
+      - -f
+      - deploydir-prod/docker/php/Dockerfile2
+      - .
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Push php-fpm
+    waitFor: ['Build php-fpm']
+    args:
+      - 'push'
+      - 'asia.gcr.io/$PROJECT_ID/aegis_php:$SHORT_SHA'
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Build nginx
+    waitFor: ['-']
+    args:
+      - build
+      - -t
+      - asia.gcr.io/$PROJECT_ID/aegis_nginx:$SHORT_SHA
+      - -f
+      - deploydir-prod/docker/nginx/Dockerfile
+      - .
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Push nginx
+    waitFor: ['Build nginx']
+    args:
+      - 'push'
+      - 'asia.gcr.io/$PROJECT_ID/aegis_nginx:$SHORT_SHA'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: Generate manifest
+    waitFor: ['Push nginx', 'Push php-fpm']
+    entrypoint: /bin/sh
+    args:
+      - '-c'
+      - |
+        sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" deploydir-prod/deploy.yaml.tpl | \
+        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > deploydir-prod/deploy.yaml
+        sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" deploydir-prod/aegis_command_add_user_point.yaml.tpl | \
+        sed "s/COMMIT_SHA/${SHORT_SHA}/g" > deploydir-prod/aegis_command_add_user_point.yaml
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: Deploy
+    waitFor: ['Generate manifest']
+    args:
+      - 'apply'
+      - '-f'
+      - 'deploydir-prod'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=asia-northeast1-a'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=aegis-pro-cluster'
