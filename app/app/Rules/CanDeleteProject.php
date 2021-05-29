@@ -43,6 +43,6 @@ class CanDeleteProject implements Rule
      */
     public function message(): string
     {
-        return trans('validation.delete_project');
+        return 'この案件は稼働しているユーザーがいるため削除できません。';
     }
 }

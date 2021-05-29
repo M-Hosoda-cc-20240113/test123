@@ -77,6 +77,11 @@ interface ProjectRepositoryInterface
     public function fetchByKeyWord(array $keywords, array $exclude_ids = []);
 
     /**
+     * @return array
+     */
+    public function fetchAppAssignProjectId(): array;
+
+    /**
      * スキル検索
      * @param int[]|array $skill_ids
      * @param int[]|array $exclude_ids
