@@ -19,6 +19,11 @@
         <div class="l-main">
             @include('admin.bread_crumb._BreadCrumb')
             <div class="p-mainItem u-mt-20">
+                @if($errors->all())
+                    @foreach($errors->all() as $error)
+                        <p class="c-text--warning">{{ $error }}</p>
+                    @endforeach
+                @endif
                 <h2 class="p-level2Heading">{{ $response->getProject()->name ?? '' }}{{ $response->getProject()->decided ? '※応募終了' : '' }}</h2>
                 @include('admin.pages.project.detail._ProjectDetailTable', ['response' => $response])
 

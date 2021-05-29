@@ -53,7 +53,7 @@
                         {{--  エージェント  --}}
 
                         <div class="p-register__row">
-                            <span class="p-register__title c-text--bold">最寄り駅</span>
+                            <span class="p-register__title c-text--bold">最寄り駅<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
                             <div class="p-register__itemWrap--2col">
                                 <div class="p-register__item u-w-50-pc">
                                     <label for="" class="c-select">
@@ -150,7 +150,7 @@
                         </template>
 
                         <div class="p-register__row">
-                            <span class="p-register__title c-text--bold">スキル</span>
+                            <span class="p-register__title c-text--bold">スキル<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
                             <div class="u-w-70-pc u-w-70-sp">
                                 <div class="p-register__itemWrap u-w-90-sp u-w-50-pc js-parent">
                                     <div class="p-register__item--trash js-content js-remove">
@@ -221,7 +221,7 @@
                                     <input type="text"
                                            class="c-input"
                                            name="max_operation_time"
-                                           value="{{ old('max_operationo_time') }}"
+                                           value="{{ old('max_operation_time') }}"
                                            placeholder="200">
                                     <span class="u-as-center u-pl-10 u-w-70px">時間</span><span class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
                                 </div>

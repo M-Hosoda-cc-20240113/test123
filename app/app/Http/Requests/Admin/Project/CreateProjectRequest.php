@@ -34,7 +34,7 @@ class CreateProjectRequest extends FormRequest
         return [
             'name'                  => ['required','string','max:100'],
             'agent_id'              => ['nullable','integer'],
-            'station_id'            => ['nullable','integer'],
+            'station_id'            => ['required','integer'],
             'min_unit_price'        => ['nullable','integer'],
             'max_unit_price'        => ['required','integer'],
             'min_operation_time'    => ['nullable','integer'],
@@ -46,9 +46,9 @@ class CreateProjectRequest extends FormRequest
             'work_end'              => ['nullable','string','max:6'],
             'weekly_attendance'     => ['nullable','integer','between:1,5'],
             'feature'               => ['nullable','string','max:500'],
-            'skill_ids' => ['array', 'max:10'],
+            'skill_ids' => ['required', 'array', 'max:10'],
             'position_ids' => ['array', 'max:10'],
-            'skill_ids.*' => ['nullable', 'integer', Rule::in($skill_ids)],
+            'skill_ids.*' => ['required', 'integer', Rule::in($skill_ids)],
             'position_ids.*' => ['nullable', 'integer', Rule::in($position_id)],
         ];
     }
@@ -59,6 +59,7 @@ class CreateProjectRequest extends FormRequest
             'name.string'                   => '案件名に文字列以外が入力されました。',
             'name.max'                      => '100文字以上の案件名は登録できません。',
             'agent_id.integer'              => '予期せぬ値が入力されました',
+            'station_id.required'           => '駅名は必須です。',
             'station_id.integer'            => '予期せぬ値が入力されました',
             'description.required'          => '案件内容は必須です。',
             'description.string'            => '予期せぬ値が入力されました。',
@@ -75,6 +76,8 @@ class CreateProjectRequest extends FormRequest
             'weekly_attendance.between'     => '5以上の値は入力できません',
             'feature.string'                => '案件名に文字列以外が入力されました',
             'feature.max'                   => '500文字以上は入力できません',
+            'skill_ids.required'            => 'スキルは必須です。',
+            'skill_ids.*.required'          => 'スキルは必須です。',
         ];
     }
 }

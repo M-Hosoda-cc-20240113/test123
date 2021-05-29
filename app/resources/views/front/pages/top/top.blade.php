@@ -78,7 +78,7 @@
 
         <div class="p-cardUnit--col3 u-mt-30">
             @foreach($response->getProjects() as $project)
-                @include('organisms.ProjectCard', $project)
+                @include('front.pages.top._ProjectCard', $project)
             @endforeach
         </div>
             {{ $response->getProjects()->appends(request()->query())->links('components.paginator') }}

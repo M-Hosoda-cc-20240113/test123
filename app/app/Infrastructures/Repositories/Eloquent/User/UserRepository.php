@@ -303,14 +303,33 @@ class UserRepository implements UserRepositoryInterface
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
+        if ($searched_ids) {
+            $status_users = User::join('statuses', 'users.id', '=', 'statuses.user_id')
+                ->where('statuses.status', '=', $status)
+                ->whereIn('users.id', $searched_ids)
+                ->select('users.*', 'statuses.project_id')
+                ->get();
+            $app_users = User::join('applications', 'users.id', '=', 'applications.user_id')
+                ->whereBetween('applications.operation_start_month', [$start_of_month, $end_of_month])
+                ->whereIn('users.id', $searched_ids)
+                ->select('users.*', 'applications.project_id')
+                ->get();
+            $array_merged = [];
+            foreach ($app_users as $app_user) {
+                foreach ($status_users as $status_user) {
+                    if ($app_user['project_id'] === $status_user['project_id'] && $app_user['id'] === $status_user['id']) {
+                        array_push($array_merged, $app_user);
+                    }
+                }
+            }
+            return collect($array_merged);
+        }
         $status_users = User::join('statuses', 'users.id', '=', 'statuses.user_id')
             ->where('statuses.status', '=', $status)
-            ->whereIn('users.id', $searched_ids)
             ->select('users.*', 'statuses.project_id')
             ->get();
         $app_users = User::join('applications', 'users.id', '=', 'applications.user_id')
             ->whereBetween('applications.operation_start_month', [$start_of_month, $end_of_month])
-            ->whereIn('users.id', $searched_ids)
             ->select('users.*', 'applications.project_id')
             ->get();
         $array_merged = [];
@@ -453,14 +472,33 @@ class UserRepository implements UserRepositoryInterface
         $today = new CarbonImmutable($today);
         $start_of_month = $today->startOfMonth();
         $end_of_month = $today->endOfMonth();
+        if ($searched_ids) {
+            $status_users = User::join('statuses', 'users.id', '=', 'statuses.user_id')
+                ->where('statuses.status', '=', $status)
+                ->whereIn('users.id', $searched_ids)
+                ->select('users.*', 'statuses.project_id')
+                ->get();
+            $app_users = User::join('applications', 'users.id', '=', 'applications.user_id')
+                ->whereBetween('applications.interview_date', [$start_of_month, $end_of_month])
+                ->whereIn('users.id', $searched_ids)
+                ->select('users.*', 'applications.project_id')
+                ->get();
+            $array_merged = [];
+            foreach ($app_users as $app_user) {
+                foreach ($status_users as $status_user) {
+                    if ($app_user['project_id'] === $status_user['project_id'] && $app_user['id'] === $status_user['id']) {
+                        array_push($array_merged, $app_user);
+                    }
+                }
+            }
+            return collect($array_merged);
+        }
         $status_users = User::join('statuses', 'users.id', '=', 'statuses.user_id')
             ->where('statuses.status', '=', $status)
-            ->whereIn('users.id', $searched_ids)
             ->select('users.*', 'statuses.project_id')
             ->get();
         $app_users = User::join('applications', 'users.id', '=', 'applications.user_id')
             ->whereBetween('applications.interview_date', [$start_of_month, $end_of_month])
-            ->whereIn('users.id', $searched_ids)
             ->select('users.*', 'applications.project_id')
             ->get();
         $array_merged = [];

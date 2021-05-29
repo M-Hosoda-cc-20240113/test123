@@ -15,7 +15,10 @@ use Illuminate\Database\Eloquent\Collection;
  */
 interface ProjectRepositoryInterface
 {
-    public function all();
+    /**
+     * @return Collection
+     */
+    public function all(): Collection;
 
     /**
      * プロジェクト新規登録（Admin）
@@ -27,7 +30,7 @@ interface ProjectRepositoryInterface
     /**
      * プロジェクト更新機能（Admin）
      * @param \App\Services\AdminProject\UpdateProject\UpdateProjectParameter $parameter
-     * @return \App\Models\Project
+     * @return Project
      */
     public function update(UpdateProjectParameter $parameter):Project;
 
@@ -41,27 +44,27 @@ interface ProjectRepositoryInterface
     /**
      * プロジェクト詳細（Admin）
      * @param int $project_id
-     * @return \App\Models\Project
+     * @return Project
      */
     public function findWithUsersAndAgentThroughApplicationOrAssignment(int $project_id): Project;
 
-    /**
-     * 応募できるプロジェクトを取得
-     */
-    public function fetchCanApply();
 
+    /**
+     * @return Collection
+     */
+    public function fetchCanApply(): Collection;
 
     /**
      * 応募終了処理
      * @param ProjectDisplayToggleParameter $parameter
-     * @return \App\Models\Project
+     * @return Project
      */
     public function close(ProjectDisplayToggleParameter $parameter): Project;
 
     /**
      * 応募開始処理
      * @param ProjectDisplayToggleParameter $parameter
-     * @return \App\Models\Project
+     * @return Project
      */
     public function open(ProjectDisplayToggleParameter $parameter): Project;
 
@@ -72,6 +75,11 @@ interface ProjectRepositoryInterface
      * @return Project[]|Collection
      */
     public function fetchByKeyWord(array $keywords, array $exclude_ids = []);
+
+    /**
+     * @return array
+     */
+    public function fetchAppAssignProjectId(): array;
 
     /**
      * スキル検索

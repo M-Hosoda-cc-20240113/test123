@@ -43,14 +43,14 @@ class ApplicationTableSeeder extends Seeder
         Application::create([
             'user_id'    => 2,
             'project_id'    => 11,
-            'operation_start_month' => 20210501,
+            'operation_start_month' => 20210601,
             'created_at' => $now
         ]);
 
         Application::create([
             'user_id'    => 1,
             'project_id'    => 15,
-            'operation_start_month' => 20210501,
+            'operation_start_month' => 20210601,
             'interview_date' => $now->subDay(3),
             'created_at' => $now
         ]);

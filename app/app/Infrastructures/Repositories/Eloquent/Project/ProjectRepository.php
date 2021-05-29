@@ -78,12 +78,11 @@ class ProjectRepository implements ProjectRepositoryInterface
         $project->weekly_attendance = $parameter->getWeeklyAttendance();
         $project->feature = $parameter->getFeature();
         $project->save();
-
-        foreach ($parameter->getSkillIds() as $skill) {
-            $project->skills()->syncWithoutDetaching($skill);
+        if ($parameter->getSkillIds()[0] !== null) {
+            $project->skills()->syncWithoutDetaching($parameter->getSkillIds());
         }
-        foreach ($parameter->getPositionIds() as $position) {
-            $project->positions()->syncWithoutDetaching($position);
+        if ($parameter->getPositionIds()[0] !== null) {
+            $project->positions()->syncWithoutDetaching($parameter->getPositionIds());
         }
         return $project;
     }
@@ -109,13 +108,11 @@ class ProjectRepository implements ProjectRepositoryInterface
         $project->weekly_attendance = $parameter->getWeeklyAttendance();
         $project->feature = $parameter->getFeature();
         $project->save();
-
-        foreach ($parameter->getSkillIds() as $skill) {
-            $project->skills()->syncWithoutDetaching($skill);
+        if ($parameter->getSkillIds()[0] !== null) {
+            $project->skills()->syncWithoutDetaching($parameter->getSkillIds());
         }
-
-        foreach ($parameter->getPositionIds() as $position) {
-            $project->positions()->syncWithoutDetaching($position);
+        if ($parameter->getPositionIds()[0] !== null) {
+            $project->positions()->syncWithoutDetaching($parameter->getPositionIds());
         }
 
         return $project;
@@ -125,7 +122,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function fetchCanApply()
+    public function fetchCanApply(): Collection
     {
         return Project::with('station')
             ->with('positions')

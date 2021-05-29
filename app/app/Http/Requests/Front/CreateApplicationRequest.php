@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Models\Project;
 use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\CanApply;
+use Illuminate\Validation\Rule;
 
 class CreateApplicationRequest extends FormRequest
 {
@@ -25,8 +27,10 @@ class CreateApplicationRequest extends FormRequest
      */
     public function rules(): array
     {
+        $project = Project::all();
+        $project_ids = $project->pluck('id')->toArray();
         return [
-            'project_id' => ['integer',new CanApply($this->input('project_id'))],
+            'project_id' => ['integer',new CanApply($this->input('project_id'), Rule::in($project_ids))],
         ];
     }
 
