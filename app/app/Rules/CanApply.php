@@ -44,6 +44,6 @@ class CanApply implements Rule
      */
     public function message(): string
     {
-        return '予期せぬ値が入力されました。';
+        return 'この案件は応募できません。';
     }
 }
