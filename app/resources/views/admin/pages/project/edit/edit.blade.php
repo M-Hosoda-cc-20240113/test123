@@ -49,7 +49,7 @@
                         {{--  エージェント  --}}
 
                         <div class="p-register__row">
-                            <span class="p-register__title c-text--bold">最寄り駅</span>
+                            <span class="p-register__title c-text--bold">最寄り駅<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
                             <div class="p-register__itemWrap">
                                 <div class="p-register__item u-w-50-pc">
                                     <label for="" class="c-select">
@@ -66,7 +66,7 @@
                         {{--  最寄り駅  --}}
 
                         <div class="p-register__row">
-                            <span class="p-register__title c-text--bold">案件名</span>
+                            <span class="p-register__title c-text--bold">案件名<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
                             <div class="p-register__itemWrap">
                                 <div class="p-register__item u-w-50-pc">
                                     <input name="name" class="c-input" type="text" value="{{  $response->getProject()->name ?? '' }}">
@@ -142,7 +142,7 @@
                         </template>
 
                         <div class="p-register__row">
-                            <span class="p-register__title c-text--bold">スキル</span>
+                            <span class="p-register__title c-text--bold">スキル<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
                             <div class="u-w-70-pc u-w-70-sp">
                                 <div class="p-register__itemWrap u-w-90-sp u-w-50-pc js-parent">
                                     @foreach($response->getProject()->skills as $key => $projectSkill)
@@ -178,7 +178,7 @@
                                            value="{{ $response->getProject()->max_unit_price ?? '' }}"
                                            type="text"
                                            class="c-input">
-                                    <span class="u-as-center u-pl-10 u-w-70px">万円</span>
+                                    <span class="u-as-center u-pl-10 u-w-70px">万円</span><span class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
                                 </div>
                             </div>
                         </div>
@@ -223,14 +223,14 @@
                                            name="max_operation_time"
                                            value="{{ $response->getProject()->max_operation_time ?? '' }}"
                                            placeholder="200">
-                                    <span class="u-as-center u-pl-10 u-w-70px">時間</span>
+                                    <span class="u-as-center u-pl-10 u-w-70px">時間</span><span class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
                                 </div>
                             </div>
                         </div>
                         {{--  精算幅  --}}
 
                         <div class="p-register__row--spColumn">
-                            <p class="p-register__title c-text--bold u-w-100-sp">案件内容</p>
+                            <p class="p-register__title c-text--bold u-w-100-sp">案件内容<span class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span></p>
                             <div class="p-register__itemWrap">
                                 <div class="p-register__item">
                             <textarea class="c-input--light"
