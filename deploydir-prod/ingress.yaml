@@ -5,10 +5,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "aegis-prod" # 取得していた固定IP名を設定
     networking.gke.io/managed-certificates: aegis-prod-certificate # example-certificateを1で作成したcertificateのnameにする
+    networking.gke.io/v1beta1.FrontendConfig: "my-frontend-config" # httpsにredirectする設定
 spec:
-  redirectToHttps:
-    enabled: true
-    responseCodeName: MOVED_PERMANENTLY_DEFAULT
   rules:
     - http:
         paths:
