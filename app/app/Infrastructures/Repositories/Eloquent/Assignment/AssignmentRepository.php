@@ -40,10 +40,8 @@ class AssignmentRepository implements AssignmentRepositoryInterface
         $assignment->user_id = $parameter->getUserId();
         $assignment->project_id = $parameter->getProjectId();
         $assignment->save();
-
-        Application::where('user_id', $parameter->getUserId())
-            ->where('project_id', $parameter->getProjectId())
-            ->delete();
+        
+        User::findOrFail($parameter->getUserId())->project_app()->detach($parameter->getProjectId());
 
         $status = Status::where('user_id', $parameter->getUserId())
             ->where('project_id', $parameter->getProjectId())
