@@ -2,7 +2,12 @@
 
 namespace App\Http\Requests\Admin\Project;
 
+use App\Models\Agent;
+use App\Models\Position;
+use App\Models\Skill;
+use App\Models\Station;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProjectRequest extends FormRequest
 {
@@ -11,7 +16,7 @@ class UpdateProjectRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -23,10 +28,19 @@ class UpdateProjectRequest extends FormRequest
      */
     public function rules(): array
     {
+        $skills = Skill::all();
+        $skill_ids = $skills->pluck('id')->toArray();
+        $positions = Position::all();
+        $position_id = $positions->pluck('id')->toArray();
+
+        $agents = Agent::all();
+        $agent_ids = $agents->pluck('id')->toArray();
+        $stations = Station::all();
+        $station_ids = $stations->pluck('id')->toArray();
         return [
-            'name'                  => ['required', 'string', 'max:100'],
-            'agent_id'              => ['nullable', 'integer'],
-            'station_id'            => ['nullable', 'integer'],
+            'name'                  => ['required', 'string', 'max:50'],
+            'agent_id'              => ['nullable', 'integer', Rule::in($agent_ids)],
+            'station_id'            => ['required', 'integer', Rule::in($station_ids)],
             'min_unit_price'        => ['nullable', 'integer'],
             'max_unit_price'        => ['required', 'integer'],
             'min_operation_time'    => ['nullable', 'integer'],
@@ -34,10 +48,14 @@ class UpdateProjectRequest extends FormRequest
             'description'           => ['required', 'string', 'max:500'],
             'required_condition'    => ['nullable', 'string', 'max:500'],
             'better_condition'      => ['nullable', 'string', 'max:500'],
-            'work_start'            => ['nullable', 'string', 'max:6'],
-            'work_end'              => ['nullable', 'string', 'max:6'],
+            'work_start'            => ['nullable', 'string', 'max:5'],
+            'work_end'              => ['nullable', 'string', 'max:5'],
             'weekly_attendance'     => ['nullable', 'integer', 'between:1,5'],
             'feature'               => ['nullable', 'string', 'max:500'],
+            'skill_ids'             => ['required', 'array', 'max:10'],
+            'position_ids'          => ['array', 'max:10'],
+            'skill_ids.*'           => ['required', 'integer', Rule::in($skill_ids)],
+            'position_ids.*'        => ['nullable', 'integer', Rule::in($position_id)],
         ];
     }
 
@@ -51,6 +69,7 @@ class UpdateProjectRequest extends FormRequest
             'name.string'                   => '案件名に文字列以外が入力されました。',
             'name.max'                      => '100文字以上の案件名は登録できません。',
             'agent_id.integer'              => '予期せぬ値が入力されました（案件元会社名）',
+            'station_id.required'           => '駅名は必須です。',
             'station_id.integer'            => '予期せぬ値が入力されました（駅名）',
             'min_unit_price.integer'        => '最低単価は半角数字で入力してください。',
             'max_unit_price.required'       => '最高単価は必須です。',
@@ -73,6 +92,8 @@ class UpdateProjectRequest extends FormRequest
             'weekly_attendance.between'     => '5以上の値は入力できません（出勤回数）',
             'feature.string'                => '案件特徴に文字列以外が入力されました',
             'feature.max'                   => '500文字以上は入力できません（案件特徴）',
+            'skill_ids.required'            => 'スキルは必須です。',
+            'skill_ids.*.required'          => 'スキルは必須です。',
         ];
     }
 }

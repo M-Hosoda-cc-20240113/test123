@@ -86,12 +86,8 @@ class AssignmentRepository implements AssignmentRepositoryInterface
      */
     public function delete(DeleteAssignmentParameter $parameter): void
     {
-        Assignment::where('user_id', $parameter->getUserId())
-            ->where('project_id', $parameter->getProjectId())
-            ->delete();
-        Status::where('user_id', $parameter->getUserId())
-            ->where('project_id', $parameter->getProjectId())
-            ->delete();
+        User::findOrFail($parameter->getUserId())->project_assign()->detach($parameter->getProjectId());
+        User::findOrFail($parameter->getUserId())->project_status()->detach($parameter->getProjectId());
 
         $user = User::where('id', $parameter->getUserId())
             ->firstOrFail();
