@@ -41,18 +41,17 @@
                             <p class="c-text--center u-mt-20">※クリックで応募が完了します。担当営業が2営業日以内に電話で連絡いたします。</p>
                         </form>
                     @endif
-            </div>
-            @else
-                <div class="p-mainItem">
+                @else
                     <p class="p-level2Heading">{{ $response->getProject()->name ?? '' }}</p>
                     @include('front.pages.project.detail._ProjectDetailTable', ['response' => $response])
 
                     <a href="{{ route('register', ['project_id' => $response->getProject()] )}}"
                        class="c-button u-db u-m0a u-mt-30 u-w-30-pc">新規登録して応募する</a>
                     <p class="u-mt-20 u-text--center u-fs-12">※新規登録で応募が完了します。担当営業が2営業日以内に電話で連絡いたします。</p>
-                </div>
-            @endif
+                @endif
+            </div>
         </div>
     </div>
+
     @include('front.footer.footer')
 @endsection
