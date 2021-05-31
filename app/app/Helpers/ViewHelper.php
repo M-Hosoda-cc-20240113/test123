@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use App\Services\Project\ProjectRepositoryInterface;
 use DateTime;
 use Illuminate\Support\HtmlString;
 
@@ -114,17 +113,7 @@ class ViewHelper
                 break;
         }
         return $status;
-    }
 
-    /**
-     * @param int|null $project_id
-     * @return bool
-     */
-    public function can_apply(int $project_id = null): bool
-    {
-        $project_repository = resolve(ProjectRepositoryInterface::class);
-        $project_ids = array_column($project_repository->fetchAppAssignProjectId(),'project_id');
-        return !in_array($project_id, $project_ids);
     }
 }
 
