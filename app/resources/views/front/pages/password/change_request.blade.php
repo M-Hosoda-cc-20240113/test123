@@ -33,9 +33,9 @@
         </div>
     </div>
 
-    @if(!Auth::getUser()->is_admin)
-        @include('front.footer.footer')
-    @else
+    @if(Auth::getUser()->is_admin ?? false)
         @include('admin.footer.footer')
+    @else
+        @include('front.footer.footer')
     @endif
 @endsection
