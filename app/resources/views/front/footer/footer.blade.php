@@ -2,9 +2,7 @@
     <footer class="p-footer">
         <div class="p-footer__linkWrap">
             <a href="" class="p-footer__textLink">Aegis利用規約</a>
-            @if(!Auth::getUser()->is_admin)
             <a href="{{ route('contact.input') }}" class="p-footer__textLink">お問い合わせ</a>
-            @endif
             <a href="https://care-con.co.jp/" class="p-footer__textLink">運営会社</a>
             <a href="" class="p-footer__textLink">個人情報保護方針</a>
         </div>
