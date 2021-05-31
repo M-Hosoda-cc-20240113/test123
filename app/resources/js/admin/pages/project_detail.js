@@ -10,5 +10,5 @@ export function project_detail() {
   const delete_message = config_message.delete_alert;
   if (app_table) new Table(app_table);
   if (assign_table) new Table(assign_table);
-  new Alert(alert_button, delete_message);
+  if (alert_button) new Alert(alert_button, delete_message);
 }
