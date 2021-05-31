@@ -22,5 +22,9 @@
         </div>
     </div>
 
-    @include('front.footer.footer')
+    @if(!Auth::getUser()->is_admin)
+        @include('front.footer.footer')
+    @else
+        @include('admin.footer.footer')
+    @endif
 @endsection

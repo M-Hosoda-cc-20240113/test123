@@ -15,5 +15,9 @@
         <a href="{{ route('login') }}" class="c-button u-db u-m0a u-w-30-pc u-mt-20">ログイン</a>
     </div>
 
-    @include('front.footer.footer')
+    @if(!Auth::getUser()->is_admin)
+        @include('front.footer.footer')
+    @else
+        @include('admin.footer.footer')
+    @endif
 @endsection
