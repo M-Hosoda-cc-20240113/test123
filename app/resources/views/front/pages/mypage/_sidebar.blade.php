@@ -12,8 +12,7 @@
             </li>
             <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('front.user.skill.form') }}">スキル編集</a>
             </li>
-            <li class="p-list__item"><a class="c-text p-list__itemInner"
-                                        href="{{ route('front.user.delete.form') }}">退会</a></li>
+            <li class="p-list__item"><a class="c-text p-list__itemInner" href="{{ route('front.user.delete.form') }}">退会</a></li>
         @endif
     </ul>
 </div>
