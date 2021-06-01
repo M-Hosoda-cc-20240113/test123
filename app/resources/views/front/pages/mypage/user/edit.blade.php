@@ -9,6 +9,7 @@
 
 @section('body')
   @component('front.header.header', ['href' => route('front.index')])
+    @include('front.header._link_admin_top')
     @include('front.header._link_mypage')
     @include('front.header._link_login_logout')
   @endcomponent
@@ -41,11 +42,13 @@
             </div>
             <div class="p-formGroup p-formGroupUnit--2col__item--left">
               <span class="c-text">セイ</span>
-              <input name="sei_kana" type="text" class="c-input2" value="{{ $response->getUser()->sei_kana }}">
+              <input name="sei_kana" type="text" class="c-input2"
+                     value="{{ $response->getUser()->sei_kana }}">
             </div>
             <div class="p-formGroup p-formGroupUnit--2col__item">
               <span class="c-text">メイ</span>
-              <input name="mei_kana" type="text" class="c-input2" value="{{ $response->getUser()->mei_kana }}">
+              <input name="mei_kana" type="text" class="c-input2"
+                     value="{{ $response->getUser()->mei_kana }}">
             </div>
             <div class="p-formGroup p-formGroupUnit--2col__item--left">
               <span class="c-text">電話番号</span>
@@ -53,7 +56,8 @@
             </div>
             <div class="p-formGroup p-formGroupUnit--2col__item">
               <span class="c-text">生年月日</span>
-              <input name="birthday" type="number" class="c-input2" value="{{ $response->getUser()->birthday }}">
+              <input name="birthday" type="number" class="c-input2"
+                     value="{{ $response->getUser()->birthday }}">
             </div>
           </div>
 
@@ -65,9 +69,9 @@
     {{--  l-main  --}}
   </div>
 
-  @if(!Auth::getUser()->is_admin)
-      @include('front.footer.footer')
+  @if(!Auth::getUser()->is_admin ?? true)
+    @include('front.footer.footer')
   @else
-      @include('admin.footer.footer')
+    @include('admin.footer.footer')
   @endif
 @endsection
