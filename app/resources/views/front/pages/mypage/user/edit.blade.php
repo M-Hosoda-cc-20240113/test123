@@ -69,7 +69,7 @@
         {{--  l-main  --}}
     </div>
 
-    @if(!Auth::getUser()->is_admin)
+    @if(!Auth::getUser()->is_admin ?? true)
         @include('front.footer.footer')
     @else
         @include('admin.footer.footer')

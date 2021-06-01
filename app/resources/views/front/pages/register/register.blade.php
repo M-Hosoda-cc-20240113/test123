@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="c-text u-fs-12">半角8文字以上、英字大文字、英字小文字、数字を全て含むパスワードを入力してください。</p>
+                        <p class="c-text u-fs-12">半角英数字8文字以上で大文字を1つ以上含むパスワードを入力してください。</p>
                         {{--   p-userRegisterRow   --}}
                         <input type="hidden" name="project_id" value="{{ $project_id ?? '' }}">
                         <button class="c-button u-db u-w-30-pc u-m0a u-mt-20 js-loading-button gtm-register">新規登録</button>
