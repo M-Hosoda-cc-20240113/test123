@@ -4,7 +4,6 @@ use App\Http\Controllers\Front\Application\ApplicationController;
 use App\Http\Controllers\Front\Contact\ContactController;
 use App\Http\Controllers\Front\Email\EmailController;
 use App\Http\Controllers\Front\Feature\FeatureController;
-use App\Http\Controllers\StaticController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\Index\IndexController;
 use App\Http\Controllers\Front\Home\HomeController;
