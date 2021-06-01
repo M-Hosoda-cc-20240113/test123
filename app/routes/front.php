@@ -76,6 +76,6 @@ Route::namespace('Contact')->prefix('contact')->group(function () {
 });
 
 Route::namespace('Feature')->prefix('feature')->group(function () {
-    Route::get('/userPolicy', [FeatureController::class, 'showUserPolicy'])->name('user.policy');
-    Route::get('/privacy', [FeatureController::class, 'showPrivacyPolicy'])->name('user.privacy.policy');
+    Route::get('/userPolicy', [FeatureController::class, 'showUserPolicy'])->name('feature.policy');
+    Route::get('/privacy', [FeatureController::class, 'showPrivacyPolicy'])->name('feature.privacy.policy');
 });
