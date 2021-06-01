@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -168,5 +169,16 @@ class Project extends Model
     public function station(): BelongsTo
     {
         return $this->BelongsTo(Station::class, 'station_id', 'id');
+    }
+
+    /**
+     * @param int $project_id
+     * @return bool
+     */
+    public static function can_delete(int $project_id): bool
+    {
+        $project_repository = resolve(ProjectRepositoryInterface::class);
+        $project_ids = array_column($project_repository->fetchAppAssignProjectId(),'project_id');
+        return !in_array($project_id, $project_ids);
     }
 }
