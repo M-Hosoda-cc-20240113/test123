@@ -12,7 +12,7 @@ class IndexController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('is_not_admin');
+//        $this->middleware('is_not_admin');
     }
 
     /**

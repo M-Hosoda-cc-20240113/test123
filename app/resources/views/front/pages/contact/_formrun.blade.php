@@ -7,7 +7,7 @@
 <form class="formrun" action="https://form.run/api/v1/r/frzv3ab5jrd83ayr2qsfbr2h" method="post">
   <!-- ↓自由に要素を追加・編集することができます -->
   <p class="c-text u-mt-20">お名前<span class="c-label--sm c-label--warning u-ml-10">必須</span></p>
-  <input class="c-input u-mt-5" name="お名前" type="text" placeholder="お名前入力欄">
+  <input class="c-input u-mt-5" name="お名前" value="{{ $response->getUser()->sei ?? '' }}&#160;{{ $response->getUser()->mei ?? '' }}" type="text" placeholder="お名前入力欄">
   {{-- お名前 --}}
 
   <p class="c-text u-mt-20">メールアドレス<span class="c-label--sm c-label--warning u-ml-10">必須</span></p>

@@ -3,7 +3,8 @@
 @section('title', '新規レベル登録|Aegis')
 
 @section('body')
-    @component('admin.header.header', ['href' => route('front.index')])
+    @component('admin.header.header', ['href' => route('admin.index')])
+        @include('admin.header._link_front_top')
         @include('admin.header._link_mypage')
         @include('admin.header._link_login_logout')
     @endcomponent
