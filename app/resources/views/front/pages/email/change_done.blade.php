@@ -3,22 +3,22 @@
 @section('title', 'メールアドレス変更|Aegis')
 
 @section('body')
-    @component('front.header.header', ['href' => route('front.index')])
-        @include('front.header._link_admin_top')
-        @include('front.header._link_mypage')
-        @include('front.header._link_login_logout')
-    @endcomponent
+  @component('front.header.header', ['href' => route('front.index')])
+    @include('front.header._link_admin_top')
+    @include('front.header._link_mypage')
+    @include('front.header._link_login_logout')
+  @endcomponent
 
-    @include('front.pages._drawer_contents')
+  @include('front.pages._drawer_contents')
 
-    <div class="l-container">
-        <p class="c-text--center">メールアドレスの変更が完了しました。</p>
-        <a href="{{ route('login') }}" class="c-button u-db u-m0a u-w-30-pc u-mt-20">ログイン</a>
-    </div>
+  <div class="l-container">
+    <p class="c-text--center">メールアドレスの変更が完了しました。</p>
+    <a href="{{ route('login') }}" class="c-button u-db u-m0a u-w-30-pc u-mt-20">ログイン</a>
+  </div>
 
-    @if(!Auth::getUser()->is_admin)
-        @include('front.footer.footer')
-    @else
-        @include('admin.footer.footer')
-    @endif
+  @if(!Auth::getUser()->is_admin)
+    @include('front.footer.footer')
+  @else
+    @include('admin.footer.footer')
+  @endif
 @endsection
