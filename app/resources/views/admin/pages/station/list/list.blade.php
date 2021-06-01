@@ -14,9 +14,10 @@
         @include('admin.header._link_mypage')
         @include('admin.header._link_login_logout')
     @endcomponent
+    @include('admin.pages._drawer_contents')
     <div class="l-container">
         @include('admin.bread_crumb._BreadCrumb')
-        <a href="{{ route('station.create.form') }}" class="c-button u-db u-mt-20 u-w-20-pc">新規登録する</a>
+        <a href="{{ route('station.create.form') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録する</a>
         @include('admin.pages.station.list._RegularTable', ['response' => $response])
         {{ $response->getStations()->links('components.paginator') }}
     </div>

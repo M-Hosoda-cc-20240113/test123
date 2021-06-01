@@ -19,7 +19,7 @@
 
     <div class="l-container">
         @include('admin.bread_crumb._BreadCrumb')
-        <a href="{{ route('position.createForm') }}" class="c-button p-flex__item u-w-20 u-mt-15">新規登録</a>
+        <a href="{{ route('position.createForm') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録</a>
         @include('admin.pages.position.list._PositionTable', ['response' => $response])
         {{ $response->getPositions()->links('components.paginator') }}
     </div>

@@ -13,7 +13,6 @@
         @include('admin.header._link_mypage')
         @include('admin.header._link_login_logout')
     @endcomponent
-
     @include('admin.pages._drawer_contents')
 
     <div class="l-container--2col">
