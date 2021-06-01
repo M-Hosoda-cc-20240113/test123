@@ -3,6 +3,7 @@
 use App\Http\Controllers\Front\Application\ApplicationController;
 use App\Http\Controllers\Front\Contact\ContactController;
 use App\Http\Controllers\Front\Email\EmailController;
+use App\Http\Controllers\Front\Feature\FeatureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\Index\IndexController;
 use App\Http\Controllers\Front\Home\HomeController;
@@ -72,4 +73,9 @@ Route::namespace('Application')->prefix('application')->group(function () {
 Route::namespace('Contact')->prefix('contact')->group(function () {
     Route::get('input', [ContactController::class, 'showContactForm'])->name('contact.input');
     Route::get('thanks', [ContactController::class, 'sendForm'])->name('contact.thanks');
+});
+
+Route::namespace('Feature')->prefix('feature')->group(function () {
+    Route::get('/userPolicy', [FeatureController::class, 'showUserPolicy'])->name('feature.policy');
+    Route::get('/privacy', [FeatureController::class, 'showPrivacyPolicy'])->name('feature.privacy.policy');
 });
