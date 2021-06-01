@@ -25,57 +25,57 @@ use App\Http\Controllers\Front\User\UserController;
 |
 */
 Route::namespace('Index')->group(function () {
-  Route::get('/', [IndexController::class, 'index'])->name('front.index');
+    Route::get('/', [IndexController::class, 'index'])->name('front.index');
 });
 Route::namespace('Home')->prefix('mypage')->middleware(['auth'])->group(function () {
-  Route::get('/', [HomeController::class, 'index'])->name('home.mypage');
+    Route::get('/', [HomeController::class, 'index'])->name('home.mypage');
 });
 
 Route::namespace('User')->prefix('users')->group(function () {
-  Route::get('/edit', [UserController::class, 'showEditForm'])->name('front.user.edit');
-  Route::post('/edit', [UserController::class, 'edit']);
-  Route::get('/skills/edit', [UserController::class, 'showEditSkillForm'])->name('front.user.skill.form');
-  Route::post('/skills/edit', [UserController::class, 'skillEdit'])->name('front.user.skill.edit');
-  Route::get('/leave', [UserController::class, 'showDeleteForm'])->name('front.user.delete.form');
-  Route::post('/delete', [UserController::class, 'delete'])->name('front.user.delete');
+    Route::get('/edit', [UserController::class, 'showEditForm'])->name('front.user.edit');
+    Route::post('/edit', [UserController::class, 'edit']);
+    Route::get('/skills/edit', [UserController::class, 'showEditSkillForm'])->name('front.user.skill.form');
+    Route::post('/skills/edit', [UserController::class, 'skillEdit'])->name('front.user.skill.edit');
+    Route::get('/leave', [UserController::class, 'showDeleteForm'])->name('front.user.delete.form');
+    Route::post('/delete', [UserController::class, 'delete'])->name('front.user.delete');
 });
 
 Route::namespace('Email')->prefix('email')->group(function () {
-  Route::get('reset', [EmailController::class, 'showEditForm'])->name('email.request');
-  Route::post('sendEmail', [EmailController::class, 'sendChangeEmail'])->name('email.sendEmail');
-  Route::get('reset/{token}/{email_hash}', [EmailController::class, 'changeEmail'])->name('email.reset');
+    Route::get('reset', [EmailController::class, 'showEditForm'])->name('email.request');
+    Route::post('sendEmail', [EmailController::class, 'sendChangeEmail'])->name('email.sendEmail');
+    Route::get('reset/{token}/{email_hash}', [EmailController::class, 'changeEmail'])->name('email.reset');
 });
 
 Route::namespace("Auth")->group(function () {
-  Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-  Route::post('register', [RegisterController::class, 'register'])->name('auth.register');
-  Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-  Route::post('login', [LoginController::class, 'login']);
-  Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [RegisterController::class, 'register'])->name('auth.register');
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 Route::namespace('Auth')->prefix('password')->group(function () {
-  Route::get('reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-  Route::post('reset', [ResetPasswordController::class, 'reset']);
-  Route::post('email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-  Route::get('reset/{token}/{email_hash}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::get('reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('reset', [ResetPasswordController::class, 'reset']);
+    Route::post('email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('reset/{token}/{email_hash}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 });
 
 Route::namespace('Project')->prefix('projects')->group(function () {
-  Route::get('/search', [ProjectController::class, 'search'])->name('front.project.search');
-  Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('front.project.detail');
+    Route::get('/search', [ProjectController::class, 'search'])->name('front.project.search');
+    Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('front.project.detail');
 });
 
 Route::namespace('Application')->prefix('application')->group(function () {
-  Route::post('/project', [ApplicationController::class, 'createApplication'])->name('front.project.app');
+    Route::post('/project', [ApplicationController::class, 'createApplication'])->name('front.project.app');
 });
 
 Route::namespace('Contact')->prefix('contact')->group(function () {
-  Route::get('input', [ContactController::class, 'showContactForm'])->name('contact.input');
-  Route::get('thanks', [ContactController::class, 'sendForm'])->name('contact.thanks');
+    Route::get('input', [ContactController::class, 'showContactForm'])->name('contact.input');
+    Route::get('thanks', [ContactController::class, 'sendForm'])->name('contact.thanks');
 });
 
 Route::namespace('Feature')->prefix('feature')->group(function () {
-  Route::get('/userPolicy', [FeatureController::class, 'showUserPolicy'])->name('user.policy');
-  Route::get('/privacy', [FeatureController::class, 'showPrivacyPolicy'])->name('user.privacy.policy');
+    Route::get('/userPolicy', [FeatureController::class, 'showUserPolicy'])->name('user.policy');
+    Route::get('/privacy', [FeatureController::class, 'showPrivacyPolicy'])->name('user.privacy.policy');
 });
