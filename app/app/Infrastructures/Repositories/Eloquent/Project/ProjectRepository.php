@@ -282,7 +282,7 @@ class ProjectRepository implements ProjectRepositoryInterface
             ->get();
     }
 
-    public function csvCreate(csvCreateProjectParameter $parameter): void
+    public function csvCreate(CsvCreateProjectParameter $parameter): void
     {
         $project = new Project();
         $project->agent_id = $parameter->getAgentId();

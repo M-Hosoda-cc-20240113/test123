@@ -10,7 +10,7 @@ use App\Services\Project\ProjectRepositoryInterface;
  * Class csvCreateProjectService
  * @package App\Services\AdminProject\csvCreateProject
  */
-class csvCreateProjectService
+class CsvCreateProjectService
 {
     /**
      * @var ProjectRepositoryInterface
@@ -27,9 +27,9 @@ class csvCreateProjectService
     }
 
     /**
-     * @param \App\Services\AdminProject\csvCreateProject\csvCreateProjectParameter $parameter
+     * @param \App\Services\AdminProject\csvCreateProject\CsvCreateProjectParameter $parameter
      */
-    public function exec(csvCreateProjectParameter $parameter)
+    public function exec(CsvCreateProjectParameter $parameter)
     {
         $this->project_repository->csvCreate($parameter);
     }

@@ -4,7 +4,7 @@ namespace App\Services\Project;
 
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
-use App\Services\AdminProject\csvCreateProject\csvCreateProjectParameter;
+use App\Services\AdminProject\csvCreateProject\CsvCreateProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\ToggleProjectDisplay\ProjectDisplayToggleParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
@@ -112,5 +112,5 @@ interface ProjectRepositoryInterface
     /**
      * @param csvCreateProjectParameter $parameter
      */
-    public function csvCreate(csvCreateProjectParameter $parameter): void;
+    public function csvCreate(CsvCreateProjectParameter $parameter): void;
 }

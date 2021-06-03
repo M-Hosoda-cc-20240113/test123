@@ -4,7 +4,7 @@
 namespace App\Services\AdminProject\csvCreateProject;
 
 
-class csvCreateProjectParameter
+class CsvCreateProjectParameter
 {
     /**
      * @var string
@@ -17,7 +17,7 @@ class csvCreateProjectParameter
     private $agent_id;
 
     /**
-     * @var int|null
+     * @var int
      */
     private $station_id;
 
@@ -125,7 +125,7 @@ class csvCreateProjectParameter
     /**
      * @return int|null
      */
-    public function getStationId(): ?int
+    public function getStationId(): int
     {
         return $this->station_id;
     }
@@ -134,7 +134,7 @@ class csvCreateProjectParameter
      * @param int|null $station_id
      * @return csvCreateProjectParameter
      */
-    public function setStationId(?int $station_id): csvCreateProjectParameter
+    public function setStationId(int $station_id): csvCreateProjectParameter
     {
         $this->station_id = $station_id;
         return $this;

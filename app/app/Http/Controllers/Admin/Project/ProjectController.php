@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\CreateProjectRequest;
-use App\Http\Requests\Admin\Project\csvCreateProjectRequest;
+use App\Http\Requests\Admin\Project\CsvCreateProjectRequest;
 use App\Http\Requests\Admin\Project\DeleteProjectRequest;
 use App\Http\Requests\Admin\Project\ProjectDisplayToggleRequest;
 use App\Http\Requests\Admin\Project\UpdateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
-use App\Services\AdminProject\csvCreateProject\csvCreateProjectParameter;
-use App\Services\AdminProject\csvCreateProject\csvCreateProjectService;
+use App\Services\AdminProject\csvCreateProject\CsvCreateProjectParameter;
+use App\Services\AdminProject\csvCreateProject\CsvCreateProjectService;
 use App\Services\AdminProject\DeletePosition\DeletePositionService;
 use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectService;
@@ -211,17 +211,17 @@ class ProjectController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\Admin\Project\csvCreateProjectRequest $request
-     * @param \App\Services\AdminProject\csvCreateProject\csvCreateProjectService $csv_create_project_service
+     * @param \App\Http\Requests\Admin\Project\CsvCreateProjectRequest $request
+     * @param \App\Services\AdminProject\csvCreateProject\CsvCreateProjectService $csv_create_project_service
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
     public function csvCreate(
-        csvCreateProjectRequest $request,
-        csvCreateProjectService $csv_create_project_service
+        CsvCreateProjectRequest $request,
+        CsvCreateProjectService $csv_create_project_service
     ) {
 
-        $parameter = new csvCreateProjectParameter();
+        $parameter = new CsvCreateProjectParameter();
         // アップロードファイルのファイルパスを取得
         $file_path = $request->file('csv_file')->path();
         // CSV取得
