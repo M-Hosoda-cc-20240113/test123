@@ -22,7 +22,7 @@ class UpdateProjectParameter
     private $name;
 
     /**
-     * @var int|null
+     * @var int
      */
     private $agent_id;
 
@@ -175,7 +175,7 @@ class UpdateProjectParameter
     /**
      * @return int|null
      */
-    public function getStationId(): ?int
+    public function getStationId(): int
     {
         return $this->station_id;
     }
@@ -184,7 +184,7 @@ class UpdateProjectParameter
      * @param int|null $station_id
      * @return UpdateProjectParameter
      */
-    public function setStationId(?int $station_id): UpdateProjectParameter
+    public function setStationId(int $station_id): UpdateProjectParameter
     {
         $this->station_id = $station_id;
         return $this;

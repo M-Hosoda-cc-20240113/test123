@@ -4,6 +4,7 @@ namespace App\Services\Project;
 
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
+use App\Services\AdminProject\csvCreateProject\CsvCreateProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\ToggleProjectDisplay\ProjectDisplayToggleParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
@@ -103,9 +104,13 @@ interface ProjectRepositoryInterface
      */
     public function fetchByStationIds(array $station_ids, array $exclude_ids = []);
 
-
     /**
      * @param DeleteProjectParameter $parameter
      */
     public function delete(DeleteProjectParameter $parameter): void;
+
+    /**
+     * @param csvCreateProjectParameter $parameter
+     */
+    public function csvCreate(CsvCreateProjectParameter $parameter): void;
 }

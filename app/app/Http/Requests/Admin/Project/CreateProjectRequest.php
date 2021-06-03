@@ -59,34 +59,4 @@ class CreateProjectRequest extends FormRequest
             'position_ids.*'        => ['nullable', 'integer', Rule::in($position_id)],
         ];
     }
-
-    public function messages(): array
-    {
-        return [
-            'name.required'             => '案件名は必須です。',
-            'name.unique'               => 'この案件名は既に存在しています。',
-            'name.string'               => '案件名に文字列以外が入力されました。',
-            'name.max'                  => '100文字以上の案件名は登録できません。',
-            'agent_id.integer'          => '予期せぬ値が入力されました',
-            'station_id.required'       => '駅名は必須です。',
-            'station_id.integer'        => '予期せぬ値が入力されました',
-            'description.required'      => '案件内容は必須です。',
-            'description.string'        => '予期せぬ値が入力されました。',
-            'description.max'           => '500文字以上は入力できません。',
-            'required_condition.string' => '予期せぬ値が入力されました。',
-            'required_condition.max'    => '500文字以上は入力できません。',
-            'better_condition.string'   => '予期せぬ値が入力されました',
-            'better_condition.max'      => '500文字以上は入力できません',
-            'work_start.string'         => '時間を入力してください。',
-            'work_start.max'            => '正しい時間を入力してください。',
-            'work_end.string'           => '時間を入力してください。',
-            'work_end.max'              => '正しい時間を入力してください。',
-            'weekly_attendance.integer' => '半角数字で入力してください',
-            'weekly_attendance.between' => '5以上の値は入力できません',
-            'feature.string'            => '案件名に文字列以外が入力されました',
-            'feature.max'               => '500文字以上は入力できません',
-            'skill_ids.required'        => 'スキルは必須です。',
-            'skill_ids.*.required'      => 'スキルは必須です。',
-        ];
-    }
 }

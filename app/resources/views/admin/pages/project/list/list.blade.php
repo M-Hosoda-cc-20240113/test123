@@ -17,6 +17,7 @@
   @include('admin.pages._drawer_contents')
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
+    <span class="c-text u-mt-20">案件数：<span class="c-text--bold">{{ $response->getProjects()->count() ?? 0 }}</span>件</span>
     <a href="{{ route('project.create.form') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録する</a>
     @include('admin.pages.project.list._RegularTable', ['response' => $response])
     {{ $response->getProjects()->links('components.paginator') }}

@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\CreateProjectRequest;
+use App\Http\Requests\Admin\Project\CsvCreateProjectRequest;
 use App\Http\Requests\Admin\Project\DeleteProjectRequest;
 use App\Http\Requests\Admin\Project\ProjectDisplayToggleRequest;
 use App\Http\Requests\Admin\Project\UpdateProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
+use App\Services\AdminProject\csvCreateProject\CsvCreateProjectParameter;
+use App\Services\AdminProject\csvCreateProject\CsvCreateProjectService;
 use App\Services\AdminProject\DeletePosition\DeletePositionService;
 use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectService;
@@ -24,6 +27,7 @@ use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectService;
 use App\Services\AdminProject\DeleteSkill\DeleteSkillService;
 use Illuminate\Support\Facades\DB;
+use SplFileObject;
 
 class ProjectController extends Controller
 {
@@ -85,7 +89,6 @@ class ProjectController extends Controller
         CreateProjectService $create_project_service
     ) {
         $parameter = new CreateProjectParameter();
-
         $parameter->setAgentId($request->agent_id);
         $parameter->setStationId($request->station_id);
         $parameter->setName($request->name);
@@ -169,7 +172,7 @@ class ProjectController extends Controller
         });
         $project_update_id = $project->id;
 
-        return redirect()->route('project.detail', ['project_id' => $project_update_id]);;
+        return redirect()->route('project.detail', ['project_id' => $project_update_id]);
     }
 
     /**
@@ -194,14 +197,68 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function toggle(ProjectDisplayToggleRequest $request, ProjectDisplayToggleService $project_display_toggle_service)
-    {
+    public function toggle(
+        ProjectDisplayToggleRequest $request,
+        ProjectDisplayToggleService $project_display_toggle_service
+    ) {
         $parameter = new ProjectDisplayToggleParameter;
         $parameter->setProjectId($request->project_id);
         DB::transaction(function () use ($project_display_toggle_service, $parameter) {
             $project_display_toggle_service->exec($parameter);
         });
 
+        return redirect()->route('project.list');
+    }
+
+    /**
+     * @param \App\Http\Requests\Admin\Project\CsvCreateProjectRequest $request
+     * @param \App\Services\AdminProject\csvCreateProject\CsvCreateProjectService $csv_create_project_service
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
+     */
+    public function csvCreate(
+        CsvCreateProjectRequest $request,
+        CsvCreateProjectService $csv_create_project_service
+    ) {
+
+        $parameter = new CsvCreateProjectParameter();
+        // アップロードファイルのファイルパスを取得
+        $file_path = $request->file('csv_file')->path();
+        // CSV取得
+        $file = new SplFileObject($file_path);
+        $file->setFlags(
+            SplFileObject::READ_CSV |   // CSVとして行を読み込み
+            SplFileObject::READ_AHEAD |       // 先読み／巻き戻しで読み込み
+            SplFileObject::SKIP_EMPTY |       // 空行を読み飛ばす
+            SplFileObject::DROP_NEW_LINE      // 行末の改行を読み飛ばす
+        );
+        // 一行ずつ処理
+        foreach ($file as $line) {
+            // ヘッダーを取得
+            if (empty($header)) {
+                $header = $line;
+                continue;
+            }
+            $parameter->setAgentId((int)$line[0] === 0 ? null : (int)$line[0]);
+            $parameter->setStationId((int)$line[1]);
+            $parameter->setName($line[2]);
+            $parameter->setMinUnitPrice((int)$line[3] === 0 ? null : (int)$line[3]);
+            $parameter->setMaxUnitPrice((int)$line[4] === 0 ? null : (int)$line[4]);
+            $parameter->setMinOperationTime((int)$line[5] === 0 ? null : (int)$line[5]);
+            $parameter->setMaxOperationTime((int)$line[6] === 0 ? null : (int)$line[6]);
+            $parameter->setDescription($line[7] == "" ? null : $line[7]);
+            $parameter->setRequiredCondition($line[8] == "" ? null : $line[8]);
+            $parameter->setBetterCondition($line[9] == "" ? null : $line[9]);
+            $parameter->setWorkStart($line[10] == "" ? null : $line[10]);
+            $parameter->setWorkEnd($line[11] == "" ? null : $line[11]);
+            $parameter->setWeeklyAttendance((int)$line[12] === 0 ? null : (int)$line[12]);
+            $parameter->setFeature($line[13] == "" ? null : $line[13]);
+            $parameter->setSkillIds(explode(',', $line[14]));
+            $parameter->setPositionIds(explode(',', $line[15]));
+            DB::transaction(function () use ($csv_create_project_service, $parameter) {
+                $csv_create_project_service->exec($parameter);
+            });
+        }
         return redirect()->route('project.list');
     }
 }

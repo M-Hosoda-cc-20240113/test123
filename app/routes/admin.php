@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth', 'is_admin']], function () {
         Route::get('/', [ProjectController::class, 'list'])->name('project.list');
         Route::get('/create', [ProjectController::class, 'showCreateForm'])->name('project.create.form');
         Route::post('/create', [ProjectController::class, 'create'])->name('project.create');
+        Route::post('/csvCreate', [ProjectController::class, 'csvCreate'])->name('project.create.csv');
         Route::get('/{project_id}', [ProjectController::class, 'detail'])->name('project.detail');
         Route::get('/{project_id}/edit', [ProjectController::class, 'showEditForm'])->name('project.edit.form');
         Route::post('/edit', [ProjectController::class, 'edit'])->name('project.edit');

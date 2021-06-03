@@ -1,6 +1,7 @@
 <table class="p-table--short">
     <thead class="p-table__head">
     <tr class="p-table__headRow">
+        <th class="p-table__headRowItem">ID</th>
         <th class="p-table__headRowItem">レベル名</th>
         <th class="p-table__headRowItem">登録日時</th>
         <th class="p-table__headRowItem"></th>
@@ -10,6 +11,7 @@
     <tbody class="p-table__body">
     @foreach ($response->getLevels() as $level)
         <tr class="p-table__bodyRow" data-href="">
+            <td class="p-table__bodyRowItem">{{ $level->id }}</td>
             <td class="p-table__bodyRowItem">{{ $level->level }}</td>
             <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($level->created_at ?? '' )}}</td>
             <td class="p-table__bodyRowItem--textCenter">

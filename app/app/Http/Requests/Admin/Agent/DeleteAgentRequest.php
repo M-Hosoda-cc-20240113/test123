@@ -31,14 +31,4 @@ class DeleteAgentRequest extends FormRequest
             'agent_id' => ['required', Rule::in($agent_ids)],
         ];
     }
-
-    /**
-     * @return string[]
-     */
-    public function messages(): array
-    {
-        return [
-            'agent_id.required' => '案件元会社が取得できません。',
-        ];
-    }
 }

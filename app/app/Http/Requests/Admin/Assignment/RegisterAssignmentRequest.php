@@ -36,15 +36,4 @@ class RegisterAssignmentRequest extends FormRequest
             'project_id' => ['integer', Rule::in($project_ids)],
         ];
     }
-
-    /**
-     * @return string[]
-     */
-    public function messages(): array
-    {
-        return [
-            'user_id.integer' => '予期せぬ値が入力されました',
-            'project_id.integer' => '予期せぬ値が入力されました',
-        ];
-    }
 }
