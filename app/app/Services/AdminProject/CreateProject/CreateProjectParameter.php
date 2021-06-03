@@ -361,7 +361,7 @@ class CreateProjectParameter
     /**
      * @return int|null
      */
-    public function getAgentId(): int
+    public function getAgentId(): ?int
     {
         return $this->agent_id;
     }
@@ -370,7 +370,7 @@ class CreateProjectParameter
      * @param int|null $agent_id
      * @return CreateProjectParameter
      */
-    public function setAgentId(int $agent_id): CreateProjectParameter
+    public function setAgentId(?int $agent_id): CreateProjectParameter
     {
         $this->agent_id = $agent_id;
         return $this;
@@ -379,7 +379,7 @@ class CreateProjectParameter
     /**
      * @return int|null
      */
-    public function getStationId(): ?int
+    public function getStationId(): int
     {
         return $this->station_id;
     }
@@ -388,7 +388,7 @@ class CreateProjectParameter
      * @param int|null $station_id
      * @return CreateProjectParameter
      */
-    public function setStationId(?int $station_id): CreateProjectParameter
+    public function setStationId(int $station_id): CreateProjectParameter
     {
         $this->station_id = $station_id;
         return $this;
