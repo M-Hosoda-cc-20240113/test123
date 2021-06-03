@@ -11,5 +11,6 @@
     <li class="u-mt-10"><a href="{{ route('level.list') }}">レベルマスタ</a></li>
     <li class="u-mt-10"><a href="{{ route('station.list') }}">駅マスタ</a></li>
     <li class="u-mt-10"><a href="{{ route('agent.list') }}">案件元会社マスタ</a></li>
+    <li class="u-mt-10"><a href="https://form.run/teams#">お問い合わせ（form.run）</a></li>
   </ul>
 </nav>
