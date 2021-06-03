@@ -1,9 +1,16 @@
+@php
+  /**
+   * @var \App\Services\AdminProject\ProjectList\ProjectListResponse $response
+   */
+@endphp
 <table class="p-table">
   <thead class="p-table__head">
   <tr class="p-table__headRow">
     <th class="p-table__headRowItem">案件名</th>
-    <th class="p-table__headRowItem">登録日時</th>
+    <th class="p-table__headRowItem">応募人数</th>
+    <th class="p-table__headRowItem">稼働人数</th>
     <th class="p-table__headRowItem">アサイン可否</th>
+    <th class="p-table__headRowItem">登録日時</th>
   </tr>
   </thead>
 
@@ -12,8 +19,10 @@
     <tr class="p-table__bodyRow--clickable"
         data-href="{{ route('project.detail', ['project_id' => $project->id])}}">
       <td class="p-table__bodyRowItem">{{ $project->name ?? ''}}</td>
+      <td class="p-table__bodyRowItem">{{ $project->user_app->count() ?? 0}}</td>
+      <td class="p-table__bodyRowItem">{{ $project->user_assign->count() ?? 0}}</td>
+      <td class="p-table__bodyRowItem">{{ $project->decided ? '否' : '可'}}</td>
       <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($project->created_at ?? '' )}}</td>
-      <td class="p-table__bodyRowItem--textCenter">{{ $project->decided ? '否' : '可'}}</td>
     </tr>
   @endforeach
   </tbody>

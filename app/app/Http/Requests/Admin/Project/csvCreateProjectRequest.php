@@ -80,20 +80,20 @@ class csvCreateProjectRequest extends FormRequest
                 $header = $line;
                 continue;
             }
-            $csv_array[$index]['agent_id'] = (int)$line[0];
+            $csv_array[$index]['agent_id'] = (int)$line[0] === 0 ? null : (int)$line[0];
             $csv_array[$index]['station_id'] = (int)$line[1];
             $csv_array[$index]['name'] = $line[2];
-            $csv_array[$index]['min_unit_price'] = (int)$line[3];
-            $csv_array[$index]['max_unit_price'] = (int)$line[4];
-            $csv_array[$index]['min_operation_time'] = (int)$line[5];
-            $csv_array[$index]['max_operation_time'] = (int)$line[6];
-            $csv_array[$index]['description'] = $line[7];
-            $csv_array[$index]['required_condition'] = $line[8];
-            $csv_array[$index]['better_condition'] = $line[9];
-            $csv_array[$index]['work_start'] = $line[10];
-            $csv_array[$index]['work_end'] = $line[11];
-            $csv_array[$index]['weekly_attendance'] = (int)$line[12];
-            $csv_array[$index]['feature'] = $line[13];
+            $csv_array[$index]['min_unit_price'] = (int)$line[3] === 0 ? null : (int)$line[3];
+            $csv_array[$index]['max_unit_price'] = (int)$line[4] === 0 ? null : (int)$line[4];
+            $csv_array[$index]['min_operation_time'] = (int)$line[5] === 0 ? null : (int)$line[5];
+            $csv_array[$index]['max_operation_time'] = (int)$line[6] === 0 ? null : (int)$line[6];
+            $csv_array[$index]['description'] = $line[7] == "" ? null : $line[7];
+            $csv_array[$index]['required_condition'] = $line[8] == "" ? null : $line[8];
+            $csv_array[$index]['better_condition'] = $line[9] == "" ? null : $line[9];
+            $csv_array[$index]['work_start'] = $line[10] == "" ? null : $line[10];
+            $csv_array[$index]['work_end'] = $line[11] == "" ? null : $line[11];
+            $csv_array[$index]['weekly_attendance'] = (int)$line[12] === 0 ? null : (int)$line[12];
+            $csv_array[$index]['feature'] = $line[13] == "" ? null : $line[13];
             $csv_array[$index]['skill_ids'] = explode(',', $line[14]);
             $csv_array[$index]['position_ids'] = explode(',', $line[15]);
         }

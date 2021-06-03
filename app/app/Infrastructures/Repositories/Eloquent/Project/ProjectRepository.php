@@ -29,6 +29,8 @@ class ProjectRepository implements ProjectRepositoryInterface
         return Project::with('station')
             ->with('positions')
             ->with('skills')
+            ->with('user_app')
+            ->with('user_assign')
             ->get();
     }
 
@@ -223,7 +225,7 @@ class ProjectRepository implements ProjectRepositoryInterface
             (
                 SELECT rps.project_id, count(*) AS s
                 FROM rel_projects_skills AS rps
-                WHERE rps.skill_id IN (". $arr .")
+                WHERE rps.skill_id IN (" . $arr . ")
                 GROUP BY rps.project_id
                 HAVING s = $length
             ) AS summary
@@ -250,7 +252,7 @@ class ProjectRepository implements ProjectRepositoryInterface
             (
                 SELECT rpp.project_id, count(*) AS s
                 FROM rel_positions_projects AS rpp
-                WHERE rpp.position_id IN (". $arr .")
+                WHERE rpp.position_id IN (" . $arr . ")
                 GROUP BY rpp.project_id
                 HAVING s = $length
             ) AS summary
