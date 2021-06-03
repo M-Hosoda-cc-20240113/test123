@@ -21,7 +21,7 @@
       <td class="p-table__bodyRowItem">{{ $project->name ?? ''}}</td>
       <td class="p-table__bodyRowItem">{{ $project->user_app->count() ?? 0}}</td>
       <td class="p-table__bodyRowItem">{{ $project->user_assign->count() ?? 0}}</td>
-      <td class="p-table__bodyRowItem">{{ $project->decided ? '否' : '可'}}</td>
+      <td class="p-table__bodyRowItem">{{ $project->decided ? '×' : '◯'}}</td>
       <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($project->created_at ?? '' )}}</td>
     </tr>
   @endforeach
