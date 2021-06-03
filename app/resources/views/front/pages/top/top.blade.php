@@ -18,13 +18,6 @@
   @include('front.pages._drawer_contents')
 
   <div class="l-container">
-    @if($errors->all())
-      <p class="c-text--bold u-mt-20">検索条件が不正です。</p>
-      @foreach($errors->all() as $error)
-        <p class="c-text--warning">{{ $error }}</p>
-      @endforeach
-    @endif
-
     <img src="{{ asset('/images/hero/hero_02.png') }}" alt="">
 
     <ul class="p-searchTab u-mt-30">
@@ -66,8 +59,13 @@
         @endforeach
       </div>
       {{--  stations  --}}
+      @if($errors->all())
+        @foreach($errors->all() as $error)
+          <p class="c-text--warning">{{ $error }}</p>
+        @endforeach
+      @endif
       <div class="p-searchBox u-mt-20">
-        <input name="keyword" class="c-input--light p-searchBox__input js-search_input" type="text" value=""
+        <input name="keyword" class="c-input--light p-searchBox__input js-search_input" type="text" value="{{ request()->input('keyword') }}"
                placeholder="PHP JavaScript">
         <button type="submit" class="c-button--secondary p-searchBox__button js-project_search"
                 data-search-url="{{ route('front.project.search') }}">検索

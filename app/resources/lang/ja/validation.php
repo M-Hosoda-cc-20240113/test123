@@ -161,5 +161,6 @@ return [
         'station_id' => '駅名',
         'csv_array.*.station_id' => '駅名',
         'csv_file' => 'csvファイル',
+        'keyword' => '検索キーワード',
     ]
 ];

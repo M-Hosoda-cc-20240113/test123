@@ -37,6 +37,7 @@ class SearchProjectRequest extends FormRequest
         $station_ids = $stations->pluck('id')->toArray();
 
         return [
+            'keyword' => ['string', 'max:100'],
             'skill_ids.*' => ['int', Rule::in($skill_ids)],
             'position_ids.*' => ['int', Rule::in($position_ids)],
             'station_ids.*' => ['int', Rule::in($station_ids)]
