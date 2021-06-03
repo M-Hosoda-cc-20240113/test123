@@ -13,7 +13,16 @@ class UserPageResponse
      * @var User
      */
     private $user;
+
+    /**
+     * @var Collection
+     */
     private $RelLevelSkillUser;
+
+    /**
+     * @var Collection
+     */
+    private $notes;
 
     /**
      * @return User
@@ -43,10 +52,29 @@ class UserPageResponse
 
     /**
      * @param  $RelLevelSkillUser
+     * @return UserPageResponse
      */
     public function setRelLevelSkillUser($RelLevelSkillUser): UserPageResponse
     {
         $this->RelLevelSkillUser = $RelLevelSkillUser;
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    /**
+     * @param Collection $notes
+     * @return UserPageResponse
+     */
+    public function setNotes(Collection $notes): UserPageResponse
+    {
+        $this->notes = $notes;
         return $this;
     }
 }
