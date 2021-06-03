@@ -6,12 +6,14 @@ use App\Models\Application;
 use App\Models\Assignment;
 use App\Models\Project;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
+use App\Services\AdminProject\csvCreateProject\csvCreateProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\ToggleProjectDisplay\ProjectDisplayToggleParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ProjectRepository
@@ -276,5 +278,31 @@ class ProjectRepository implements ProjectRepositoryInterface
                 });
             })
             ->get();
+    }
+
+    public function csvCreate(csvCreateProjectParameter $parameter): void
+    {
+        $project = new Project();
+        $project->agent_id = $parameter->getAgentId();
+        $project->station_id = $parameter->getStationId();
+        $project->name = $parameter->getName();
+        $project->min_unit_price = $parameter->getMinUnitPrice();
+        $project->max_unit_price = $parameter->getMaxUnitPrice();
+        $project->min_operation_time = $parameter->getMinOperationTime();
+        $project->max_operation_time = $parameter->getMaxOperationTime();
+        $project->description = $parameter->getDescription();
+        $project->required_condition = $parameter->getRequiredCondition();
+        $project->better_condition = $parameter->getBetterCondition();
+        $project->work_start = $parameter->getWorkStart();
+        $project->work_end = $parameter->getWorkEnd();
+        $project->weekly_attendance = $parameter->getWeeklyAttendance();
+        $project->feature = $parameter->getFeature();
+        $project->save();
+        if ($parameter->getSkillIds()[0] != "") {
+            $project->skills()->syncWithoutDetaching($parameter->getSkillIds());
+        }
+        if ($parameter->getPositionIds()[0] != "") {
+            $project->positions()->syncWithoutDetaching($parameter->getPositionIds());
+        }
     }
 }

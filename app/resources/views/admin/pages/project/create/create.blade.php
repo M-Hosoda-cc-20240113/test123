@@ -17,11 +17,36 @@
 
   @include('admin.pages._drawer_contents')
 
+  <div class="c-modal js-modal"></div>
+
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
+    <div class="p-mainItem c-modal__content js-modal-content">
+      <span class="c-modal__closeButtoon js-modal-close-button">×</span>
+      @if($errors->all())
+        @foreach($errors->all() as $error)
+          <p class="c-text--warning">{{ $error }}</p>
+        @endforeach
+      @endif
+      <h2 class="p-level2Heading">CSV案件一括登録</h2>
+      <form action="{{ route('project.create.csv') }}" method="post" enctype="multipart/form-data">
+        {{ @csrf_field() }}
+        <div class="p-formGroup u-mt-20 u-mb-30">
+          <div class="p-register__itemWrap u-mt-10-sp">
+            <div class="p-register__item u-w-80-pc">
+              <input name="csv_file" class="c-input" type="file" value="{{ old('csv_file') }}"
+                     placeholder="ファイルを選択">
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="c-button u-db u-m0a u-mb-20 u-w-15-pc">登録</button>
+      </form>
+    </div>
+    {{--  CSV登録  --}}
     <div class="l-main u-mt-20">
       <div class="p-mainItem">
-        <h2 class="p-level2Heading">新規案件情報入力</h2>
+        <h2 class="p-level2Heading">新規案件情報入力<span
+              class="c-button--secondary u-ml-10 u-w-auto js-modal-button">CSV一括登録</span></h2>
 
         @if($errors->all())
           <p class="c-text--bold">以下のエラーを修正してください</p>
@@ -49,7 +74,7 @@
                 <div class="p-register__item u-w-50-pc u-as-center u-mt-10-sp">
                   <p class="c-text u-pl-10 u-w-100">登録は<a target="_blank" class="c-text--bold"
                                                           href="{{ route('agent.create.form') }}">こちら<img
-                        class="p-image--gray" src="{{ asset('images/icons/icon_external_link.svg') }}" alt=""></a></p>
+                          class="p-image--gray" src="{{ asset('images/icons/icon_external_link.svg') }}" alt=""></a></p>
                 </div>
               </div>
             </div>
@@ -57,7 +82,7 @@
 
             <div class="p-register__row">
               <span class="p-register__title c-text--bold">最寄り駅<span
-                  class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+                    class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-register__itemWrap--2col">
                 <div class="p-register__item u-w-50-pc">
                   <label for="" class="c-select">
@@ -72,7 +97,7 @@
                 <div class="p-register__item u-w-50-pc u-as-center u-mt-10-sp">
                   <p class="c-text u-pl-10 u-w-100">登録は<a target="_blank" class="c-text--bold"
                                                           href="{{ route('station.create.form') }}">こちら<img
-                        class="p-image--gray" src="{{ asset('images/icons/icon_external_link.svg') }}" alt=""></a></p>
+                          class="p-image--gray" src="{{ asset('images/icons/icon_external_link.svg') }}" alt=""></a></p>
                 </div>
               </div>
             </div>
@@ -80,7 +105,7 @@
 
             <div class="p-register__row--spColumn">
               <span class="p-register__title c-text--bold">案件名<span
-                  class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+                    class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-register__itemWrap u-mt-10-sp">
                 <div class="p-register__item u-w-50-pc">
                   <input name="name" class="c-input" type="text" value="{{ old('name') }}"
@@ -158,7 +183,7 @@
 
             <div class="p-register__row">
               <span class="p-register__title c-text--bold">スキル<span
-                  class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+                    class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="u-w-70-pc u-w-70-sp">
                 <div class="p-register__itemWrap u-w-90-sp u-w-50-pc js-parent">
                   <div class="p-register__item--trash js-content js-remove">
@@ -187,7 +212,7 @@
                 <div class="p-register__item u-w-25-pc u-mt-10-sp">
                   <input name="max_unit_price" value="{{ old('max_unit_price') }}" type="text"
                          class="c-input"><span class="u-as-center u-pl-10 u-w-70px">万円</span><span
-                    class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
+                      class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
                 </div>
               </div>
             </div>
@@ -233,7 +258,7 @@
                          value="{{ old('max_operation_time') }}"
                          placeholder="200">
                   <span class="u-as-center u-pl-10 u-w-70px">時間</span><span
-                    class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
+                      class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span>
                 </div>
               </div>
             </div>
@@ -241,7 +266,7 @@
 
             <div class="p-register__row--spColumn">
               <p class="p-register__title c-text--bold u-w-100-sp">案件内容<span
-                  class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span></p>
+                    class="c-label--warning c-label--rounded c-label--sm u-ml-10 u-as-center">必須</span></p>
               <div class="p-register__itemWrap">
                 <div class="p-register__item">
                             <textarea class="c-input--light"
