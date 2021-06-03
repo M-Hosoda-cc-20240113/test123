@@ -82,6 +82,15 @@ package "Aegis ER図" as aegis_erd {
         updated_at:datetime [NN] (更新日時)
     }
 
+    entity "notes" as notes <お知らせ> {
+            + id:int [PK, AI, UN] (ID)
+            ---
+            title:varchar(255) [NN] (タイトル)
+            contents:text [NN] (内容)
+            created_at:datetime [NN] (登録日時)
+            updated_at:datetime [NN] (更新日時)
+    }
+
     entity "projects" as projects <案件> {
         + id:int [PK, AI, UN] (ID)
         ---
@@ -179,7 +188,7 @@ package "Aegis ER図" as aegis_erd {
             status:int [NN] (申し込み状況)
             created_at:datetime [NN] (登録日時)
             updated_at:datetime [NN] (更新日時)
-        }
+    }
 
 }
 
