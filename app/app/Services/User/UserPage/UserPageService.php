@@ -56,8 +56,6 @@ class UserPageService
         $notes = $this->note_repository->all();
         $response->setNotes($notes);
 
-
-
         return $response;
     }
 }
