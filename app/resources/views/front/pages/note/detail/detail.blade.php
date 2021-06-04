@@ -15,12 +15,13 @@
   @endcomponent
   @include('front.pages._drawer_contents')
   <div class="l-container">
-    <div class="l-main">
+    <div class="l-main u-mb-30">
       <div class="p-mainItem">
         <h2 class="p-level2Heading">{{ $response->getNote()->title ?? '' }}<span class="u-ml-30 u-w-auto">{{ ViewHelper::YmdReplace($response->getNote()->created_at ?? '' )}}</span></h2>
         @include('front.pages.note.detail._NoteDetail', ['response' => $response])
       </div>
     </div>
+    <img src="{{ asset('/images/hero/hero_02.png') }}" alt="">
   </div>
 
   @include('front.footer.footer')
