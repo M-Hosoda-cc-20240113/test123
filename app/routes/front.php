@@ -4,6 +4,7 @@ use App\Http\Controllers\Front\Application\ApplicationController;
 use App\Http\Controllers\Front\Contact\ContactController;
 use App\Http\Controllers\Front\Email\EmailController;
 use App\Http\Controllers\Front\Feature\FeatureController;
+use App\Http\Controllers\Front\Note\NoteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\Index\IndexController;
 use App\Http\Controllers\Front\Home\HomeController;
@@ -78,4 +79,8 @@ Route::namespace('Contact')->prefix('contact')->group(function () {
 Route::namespace('Feature')->prefix('feature')->group(function () {
     Route::get('/userPolicy', [FeatureController::class, 'showUserPolicy'])->name('feature.policy');
     Route::get('/privacy', [FeatureController::class, 'showPrivacyPolicy'])->name('feature.privacy.policy');
+});
+
+Route::namespace('Note')->prefix('note')->group(function () {
+    Route::get('/{note_id}', [NoteController::class, 'detail'])->name('front.note.detail');
 });

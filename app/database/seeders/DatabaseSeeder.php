@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RelProjectSkillTableSeeder::class);
         $this->call(AssignmentTableSeeder::class);
         $this->call(StatusTableSeeder::class);
+        $this->call(NoteTableSeeder::class);
     }
 }

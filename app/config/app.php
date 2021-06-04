@@ -193,6 +193,7 @@ return [
         App\Providers\PaginatorServiceProvider::class,
         App\Providers\StatusServiceProvider::class,
         App\Providers\NotificationRegisterUserServiceProvider::class,
+        App\Providers\NoteServiceProvider::class,
     ],
 
     /*
