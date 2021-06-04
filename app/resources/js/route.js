@@ -15,6 +15,7 @@ export const routes = {
   station_list: 'station.list',
   agent_list: 'agent.list',
   note_list: 'note.list',
+  note_detail: 'note.detail',
 
   // front
   login: 'login',

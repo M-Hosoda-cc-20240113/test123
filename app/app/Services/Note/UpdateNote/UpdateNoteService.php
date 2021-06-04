@@ -1,16 +1,17 @@
 <?php
 
 
-namespace App\Services\Note\DeleteNote;
+namespace App\Services\Note\UpdateNote;
 
 
+use App\Models\Note;
 use App\Services\Note\NoteRepositoryInterface;
 
 /**
- * Class DeleteNoteService
- * @package App\Services\Note\DeleteNote
+ * Class UpdateNoteService
+ * @package App\Services\Note\UpdateNote
  */
-class DeleteNoteService
+class UpdateNoteService
 {
     /**
      * @var NoteRepositoryInterface
@@ -27,10 +28,11 @@ class DeleteNoteService
     }
 
     /**
-     * @param DeleteNoteParameter $parameter
+     * @param UpdateNoteParameter $parameter
+     * @return Note
      */
-    public function exec(DeleteNoteParameter $parameter): void
+    public function exec(UpdateNoteParameter $parameter): Note
     {
-        $this->note_repository->delete($parameter);
+        return $this->note_repository->update($parameter);
     }
 }

@@ -16,5 +16,22 @@
 
   @include('admin.pages._drawer_contents')
 
+  <div class="l-container">
+    <div class="l-main">
+      <div class="p-mainItem">
+        <h2 class="p-level2Heading">{{ $response->getNote()->title ?? '' }}</h2>
+        <p class="u-text u-mt-20 u-fs-16">{{ $response->getNote()->contents ?? '' }}</p>
+        <a class="c-button u-db u-m0a u-w-30-pc u-mt-50"
+           href="{{ route('note.edit.form', ['note_id' => $response->getNote()->id]) }}">編集</a>
+        <form action="{{ route('note.delete') }}" method="post">
+          {{ @csrf_field() }}
+          <input type="hidden" name="note_id" value="{{ $response->getNote()->id }}">
+          <button type="submit" class="c-button--warning u-db u-m0a u-w-30-pc u-mt-20 js-alert-button">削除</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
   @include('admin.footer.footer')
 @endsection

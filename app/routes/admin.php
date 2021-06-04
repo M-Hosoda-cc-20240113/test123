@@ -99,6 +99,8 @@ Route::group(['middleware' => ['auth', 'is_admin']], function () {
         Route::get('/', [NoteController::class, 'list'])->name('note.list');
         Route::get('/create', [NoteController::class, 'showCreateForm'])->name('note.create.form');
         Route::post('/create', [NoteController::class, 'create'])->name('note.create');
+        Route::get('/{note_id}/edit', [NoteController::class, 'showEditForm'])->name('note.edit.form');
+        Route::post('/edit', [NoteController::class, 'edit'])->name('note.edit');
         Route::get('/{note_id}', [NoteController::class, 'detail'])->name('note.detail');
         Route::post('/delete', [NoteController::class, 'delete'])->name('note.delete');
     });

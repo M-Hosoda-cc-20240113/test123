@@ -1,16 +1,13 @@
 <?php
 
 
-namespace App\Services\Note\DeleteNote;
+namespace App\Services\Note\ShowEditNoteForm;
 
 
+use App\Models\Note;
 use App\Services\Note\NoteRepositoryInterface;
 
-/**
- * Class DeleteNoteService
- * @package App\Services\Note\DeleteNote
- */
-class DeleteNoteService
+class ShowEditNoteFormService
 {
     /**
      * @var NoteRepositoryInterface
@@ -27,10 +24,11 @@ class DeleteNoteService
     }
 
     /**
-     * @param DeleteNoteParameter $parameter
+     * @param $note_id
+     * @return Note
      */
-    public function exec(DeleteNoteParameter $parameter): void
+    public function exec($note_id): Note
     {
-        $this->note_repository->delete($parameter);
+        return $this->note_repository->findById($note_id);
     }
 }

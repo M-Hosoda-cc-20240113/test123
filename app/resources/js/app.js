@@ -19,6 +19,7 @@ import {application_list} from './admin/pages/application_list';
 import {station_list} from './admin/pages/station_list';
 import {agent_list} from './admin/pages/agent_list';
 import {note_list} from './admin/pages/note_list';
+import {note_detail} from './admin/pages/note_detail';
 
 // front
 import {login} from './front/pages/login';
@@ -76,6 +77,9 @@ switch (route_name) {
     break;
   case routes.note_list:
     note_list();
+    break;
+  case routes.note_detail:
+    note_detail();
     break;
 
   // front

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Services\Note\AdminNoteDetail;
+namespace App\Services\Note\ShowEditNoteForm;
 
 
 use App\Models\Note;
 
-class NoteDetailResponse
+class ShowEditNoteFormResponse
 {
     /**
      * @var Note
@@ -23,9 +23,9 @@ class NoteDetailResponse
 
     /**
      * @param Note $note
-     * @return NoteDetailResponse
+     * @return ShowEditNoteFormResponse
      */
-    public function setNote(Note $note): NoteDetailResponse
+    public function setNote(Note $note): ShowEditNoteFormResponse
     {
         $this->note = $note;
         return $this;
