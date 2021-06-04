@@ -4,6 +4,10 @@
 namespace App\Services\Note\CreateNote;
 
 
+/**
+ * Class CreateNoteParameter
+ * @package App\Services\Note\CreateNote
+ */
 class CreateNoteParameter
 {
     /**

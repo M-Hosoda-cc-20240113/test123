@@ -4,6 +4,10 @@
 namespace App\Services\Note\DeleteNote;
 
 
+/**
+ * Class DeleteNoteParameter
+ * @package App\Services\Note\DeleteNote
+ */
 class DeleteNoteParameter
 {
     /**

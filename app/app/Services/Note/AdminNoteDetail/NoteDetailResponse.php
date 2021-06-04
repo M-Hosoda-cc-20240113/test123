@@ -6,6 +6,10 @@ namespace App\Services\Note\AdminNoteDetail;
 
 use App\Models\Note;
 
+/**
+ * Class NoteDetailResponse
+ * @package App\Services\Note\AdminNoteDetail
+ */
 class NoteDetailResponse
 {
     /**

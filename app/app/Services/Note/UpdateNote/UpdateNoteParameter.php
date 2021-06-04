@@ -4,6 +4,10 @@
 namespace App\Services\Note\UpdateNote;
 
 
+/**
+ * Class UpdateNoteParameter
+ * @package App\Services\Note\UpdateNote
+ */
 class UpdateNoteParameter
 {
     /**

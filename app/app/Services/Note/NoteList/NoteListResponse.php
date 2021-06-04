@@ -6,6 +6,10 @@ namespace App\Services\Note\NoteList;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 
+/**
+ * Class NoteListResponse
+ * @package App\Services\Note\NoteList
+ */
 class NoteListResponse
 {
     /**

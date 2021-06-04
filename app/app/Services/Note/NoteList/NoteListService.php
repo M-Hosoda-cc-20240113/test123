@@ -8,6 +8,10 @@ use App\Services\Note\NoteRepositoryInterface;
 use App\Services\Pagination\PaginatorService;
 use Illuminate\Pagination\LengthAwarePaginator;
 
+/**
+ * Class NoteListService
+ * @package App\Services\Note\NoteList
+ */
 class NoteListService
 {
     /**

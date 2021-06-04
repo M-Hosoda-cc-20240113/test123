@@ -43,6 +43,9 @@ class NoteRepository implements NoteRepositoryInterface
         return $note;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function update(UpdateNoteParameter $parameter): Note
     {
         $note = Note::findOrFail($parameter->getNoteId());
@@ -52,6 +55,9 @@ class NoteRepository implements NoteRepositoryInterface
         return $note;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function delete(DeleteNoteParameter $parameter): void
     {
         $note = Note::findOrFail($parameter->getNoteId());

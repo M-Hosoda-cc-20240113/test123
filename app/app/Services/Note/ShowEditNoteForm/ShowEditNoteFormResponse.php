@@ -6,6 +6,10 @@ namespace App\Services\Note\ShowEditNoteForm;
 
 use App\Models\Note;
 
+/**
+ * Class ShowEditNoteFormResponse
+ * @package App\Services\Note\ShowEditNoteForm
+ */
 class ShowEditNoteFormResponse
 {
     /**

@@ -7,6 +7,10 @@ namespace App\Services\Note\AdminNoteDetail;
 use App\Models\Note;
 use App\Services\Note\NoteRepositoryInterface;
 
+/**
+ * Class NoteDetailService
+ * @package App\Services\Note\AdminNoteDetail
+ */
 class NoteDetailService
 {
     /**
