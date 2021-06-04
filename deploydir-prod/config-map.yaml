@@ -4,7 +4,6 @@ metadata:
   name: aegis-prod-config
 data:
   MAIL_DRIVER: "smtp"
-  MAIL_HOST: "MAIL_HOST"
   MAIL_PORT: "2525"
   MAIL_USERNAME: "null"
   MAIL_ENCRYPTION: "null"

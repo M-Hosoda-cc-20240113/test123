@@ -73,11 +73,6 @@ spec:
                 configMapKeyRef:
                   key: MAIL_DRIVER
                   name: aegis-prod-config
-            - name: MAIL_HOST
-              valueFrom:
-                configMapKeyRef:
-                  key: MAIL_HOST
-                  name: aegis-prod-config
             - name: MAIL_PORT
               valueFrom:
                 configMapKeyRef:
