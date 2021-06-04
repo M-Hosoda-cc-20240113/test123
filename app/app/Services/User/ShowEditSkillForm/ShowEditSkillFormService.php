@@ -3,7 +3,7 @@
 namespace App\Services\User\ShowEditSkillForm;
 
 use App\Services\Level\LevelRepositoryInterface;
-use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
+use App\Services\RelLevelSkillUser\RelLevelSkillUserRepositoryInterface;
 use App\Services\Skill\SkillRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class ShowEditSkillFormService
 {
     /**
-     * @var RelLevelSkillUSerRepositoryInterface
+     * @var RelLevelSkillUserRepositoryInterface
      */
     private $rel_revel_skill_user_repository;
 
@@ -30,12 +30,12 @@ class ShowEditSkillFormService
 
     /**
      * ShowEditSkillFormService constructor.
-     * @param RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
+     * @param RelLevelSkillUserRepositoryInterface $rel_revel_skill_user_repository
      * @param SkillRepositoryInterface $skill_repository
      * @param LevelRepositoryInterface $level_repository
      */
     public function __construct(
-        RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository,
+        RelLevelSkillUserRepositoryInterface $rel_revel_skill_user_repository,
         SkillRepositoryInterface $skill_repository,
         LevelRepositoryInterface $level_repository
     ) {

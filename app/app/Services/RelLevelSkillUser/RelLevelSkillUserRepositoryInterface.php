@@ -7,7 +7,7 @@ namespace App\Services\RelLevelSkillUser;
 use App\Services\User\EditSkill\UpdateSkillParameter;
 use Illuminate\Database\Eloquent\Collection;
 
-interface RelLevelSkillUSerRepositoryInterface
+interface RelLevelSkillUserRepositoryInterface
 {
     /**
      * @param int $user_id

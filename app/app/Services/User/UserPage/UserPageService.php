@@ -5,7 +5,7 @@ namespace App\Services\User\UserPage;
 
 
 use App\Services\Note\NoteRepositoryInterface;
-use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
+use App\Services\RelLevelSkillUser\RelLevelSkillUserRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +17,7 @@ class UserPageService
     private $user_repository;
 
     /**
-     * @var RelLevelSkillUSerRepositoryInterface
+     * @var RelLevelSkillUserRepositoryInterface
      */
     private $relLevelSKillUser_repository;
 
@@ -29,12 +29,12 @@ class UserPageService
     /**
      * UserPageService constructor.
      * @param \App\Services\User\UserRepositoryInterface $user_repository
-     * @param \App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface $relLevelSKillUser_repository
+     * @param \App\Services\RelLevelSkillUser\RelLevelSkillUserRepositoryInterface $relLevelSKillUser_repository
      * @param \App\Services\Note\NoteRepositoryInterface $note_repository
      */
     public function __construct(
         UserRepositoryInterface $user_repository,
-        RelLevelSkillUSerRepositoryInterface $relLevelSKillUser_repository,
+        RelLevelSkillUserRepositoryInterface $relLevelSKillUser_repository,
         NoteRepositoryInterface $note_repository
     ) {
         $this->user_repository = $user_repository;

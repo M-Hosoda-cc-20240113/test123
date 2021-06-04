@@ -4,6 +4,7 @@
 namespace App\Services\RelLevelSkillUser\RelLeveSkillUserList;
 
 
+use App\Models\RelLevelSkillUser;
 use App\Services\RelLevelSkillUser\RelLevelSkillUserRepositoryInterface;
 
 class RelLevelSkillUserService
@@ -25,9 +26,9 @@ class RelLevelSkillUserService
 
     /**
      * @param int $user_id
-     * @return mixed
+     * @return RelLevelSkillUser
      */
-    public function exec(int $user_id): \App\Models\RelLevelSkillUser
+    public function exec(int $user_id): RelLevelSkillUser
     {
         return $this->relLevelSKillUser_repository->fetchByUserId($user_id);
     }
