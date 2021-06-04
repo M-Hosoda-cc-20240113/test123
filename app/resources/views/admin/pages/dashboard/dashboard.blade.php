@@ -129,6 +129,15 @@
             </div>
           </a>
           {{--   駅追加   --}}
+
+          <a href="{{ route('note.create.form') }}" class="p-button p-flex__item">
+            <img class="p-button__icon" src="images/icons/icon_file.svg" alt="">
+            <div class="p-button__box">
+              <h2 class="p-button__boxTitle">お知らせ追加</h2>
+              <p class="p-button__boxText">お知らせの登録を行います</p>
+            </div>
+          </a>
+          {{--   お知らせ追加   --}}
         </div>
 
       </div>

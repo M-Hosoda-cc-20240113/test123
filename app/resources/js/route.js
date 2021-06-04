@@ -14,6 +14,7 @@ export const routes = {
   application_list: 'application.list',
   station_list: 'station.list',
   agent_list: 'agent.list',
+  note_list: 'note.list',
 
   // front
   login: 'login',
