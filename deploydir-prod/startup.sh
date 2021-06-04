@@ -30,6 +30,7 @@ sed -i \
     -e "/^HASH_EMAIL_SALT=.*/c HASH_EMAIL_SALT=${HASH_EMAIL_SALT}" \
     -e "/^HASH_ACCOUNT_ALGO=.*/c HASH_ACCOUNT_ALGO=${HASH_ACCOUNT_ALGO}" \
     -e "/^HASH_ACCOUNT_SALT=.*/c HASH_ACCOUNT_SALT=${HASH_ACCOUNT_SALT}" \
+    -e "/^MAIL_PASSWORD=.*/c MAIL_PASSWORD=${MAIL_PASSWORD}" \
     /var/www/app/.env
 # envにtokenのブラックリスト化後の保持期間を追記。以下を参照
 # https://qiita.com/yh1224/items/bd00e85d5c53350e93ca
