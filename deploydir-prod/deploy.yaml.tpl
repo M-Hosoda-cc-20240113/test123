@@ -138,3 +138,8 @@ spec:
                 secretKeyRef:
                   key: APP_KEY
                   name: aegis-prod-secret
+            - name: MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: MAIL_PASSWORD
+                  name: aegis-prod-secret
