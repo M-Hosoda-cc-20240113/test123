@@ -17,7 +17,8 @@
   @include('admin.pages._drawer_contents')
 
   <div class="l-container">
-    <div class="l-main">
+    @include('admin.bread_crumb._BreadCrumb')
+    <div class="l-main u-mt-20">
       <div class="p-mainItem">
         <h2 class="p-level2Heading">{{ $response->getNote()->title ?? '' }}</h2>
         <p class="u-text u-mt-20 u-fs-16">{{ $response->getNote()->contents ?? '' }}</p>

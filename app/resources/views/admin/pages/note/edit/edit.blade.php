@@ -16,7 +16,7 @@
 
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
-    <div class="l-main">
+    <div class="l-main u-mt-20">
       <div class="p-mainItem">
 
         <h2 class="p-level2Heading">お知らせ修正</h2>

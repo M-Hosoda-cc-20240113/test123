@@ -8,7 +8,6 @@
     @include('admin.header._link_mypage')
     @include('admin.header._link_login_logout')
   @endcomponent
-  <div class="l-container">
     <div class="l-container">
       @include('admin.bread_crumb._BreadCrumb')
       <div class="l-main u-mt-20">
@@ -53,6 +52,5 @@
         </div>
       </div>
     </div>
-  </div>
   @include('admin.footer.footer')
 @endsection
