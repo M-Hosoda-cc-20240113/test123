@@ -18,5 +18,5 @@ interface NoteRepositoryInterface
      * @param $note_id
      * @return Note
      */
-    public function fetchById($note_id): Note;
+    public function findById($note_id): Note;
 }

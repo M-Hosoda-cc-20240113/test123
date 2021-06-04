@@ -22,7 +22,7 @@ class NoteRepository implements NoteRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function fetchById($note_id): Note
+    public function findById($note_id): Note
     {
         return Note::findOrFail($note_id);
     }
