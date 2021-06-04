@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Agent\AgentController;
 use App\Http\Controllers\Admin\Level\LevelController;
+use App\Http\Controllers\Admin\Note\NoteController;
 use App\Http\Controllers\Admin\Station\StationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Index\IndexController;
@@ -92,5 +93,15 @@ Route::group(['middleware' => ['auth', 'is_admin']], function () {
         Route::get('/', [AssignmentController::class, 'list'])->name('assignment.list');
         Route::post('/register', [AssignmentController::class, 'register'])->name('assignment.register');
         Route::post('/delete', [AssignmentController::class, 'delete'])->name('assignment.delete');
+    });
+
+    Route::namespace('Note')->prefix('note')->group(function () {
+        Route::get('/', [NoteController::class, 'list'])->name('note.list');
+        Route::get('/create', [NoteController::class, 'showCreateForm'])->name('note.create.form');
+        Route::post('/create', [NoteController::class, 'create'])->name('note.create');
+        Route::get('/{note_id}/edit', [NoteController::class, 'showEditForm'])->name('note.edit.form');
+        Route::post('/edit', [NoteController::class, 'edit'])->name('note.edit');
+        Route::get('/{note_id}', [NoteController::class, 'detail'])->name('note.detail');
+        Route::post('/delete', [NoteController::class, 'delete'])->name('note.delete');
     });
 });

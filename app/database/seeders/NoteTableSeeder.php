@@ -37,12 +37,11 @@ class NoteTableSeeder extends Seeder
             'テストお知らせ１６' => 'テストテストテストテストテストテストテストテスト',
             'テストお知らせ１７' => 'testtesttesttesttesttesttesttesttesttest',
         ];
-        $now = Carbon::now();
         foreach ($notes as $title => $contents) {
             Note::create([
                 'title' => $title,
                 'contents' => $contents,
-                'created_at' => $now,
+                'created_at' => Carbon::now(),
             ]);
         }
     }

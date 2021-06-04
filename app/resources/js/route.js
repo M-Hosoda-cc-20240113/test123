@@ -14,6 +14,8 @@ export const routes = {
   application_list: 'application.list',
   station_list: 'station.list',
   agent_list: 'agent.list',
+  note_list: 'note.list',
+  note_detail: 'note.detail',
 
   // front
   login: 'login',
@@ -25,4 +27,4 @@ export const routes = {
   user_edit: 'front.user.edit',
   password_change: 'password.request',
   email_change: 'email.request',
-}
+};

@@ -162,5 +162,7 @@ return [
         'csv_array.*.station_id' => '駅名',
         'csv_file' => 'csvファイル',
         'keyword' => '検索キーワード',
+        'title' => 'お知らせタイトル',
+        'contents' => 'お知らせ詳細',
     ]
 ];
