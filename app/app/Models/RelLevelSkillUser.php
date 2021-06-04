@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * App\Models\RelLevelSkillUser
@@ -35,4 +36,28 @@ class RelLevelSkillUser extends Model
      * @var string
      */
     protected $table = 'rel_levels_skills_users';
+
+    /**
+     * @return BelongsTo
+     */
+    public function user():BelongsTo
+    {
+        return $this->BelongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function skill():BelongsTo
+    {
+        return $this->BelongsTo(Skill::class, 'skill_id', 'id');
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function level():BelongsTo
+    {
+        return $this->BelongsTo(Level::class, 'level_id', 'id');
+    }
 }
