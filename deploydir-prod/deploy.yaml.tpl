@@ -90,9 +90,9 @@ spec:
                   name: aegis-prod-config
             - name: MAIL_PASSWORD
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   key: MAIL_PASSWORD
-                  name: aegis-prod-config
+                  name: aegis-prod-secret
             - name: MAIL_ENCRYPTION
               valueFrom:
                 configMapKeyRef:

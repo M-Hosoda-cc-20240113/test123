@@ -7,7 +7,6 @@ data:
   MAIL_HOST: "MAIL_HOST"
   MAIL_PORT: "2525"
   MAIL_USERNAME: "null"
-  MAIL_PASSWORD: "null"
   MAIL_ENCRYPTION: "null"
   TZ: "Asia/Tokyo"
   APP_DEBUG: "true"
