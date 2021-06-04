@@ -1,9 +1,9 @@
 import {Alert} from '../Alert';
 import {config_message} from '../../config_message';
-import { Table } from '../Table'
+import {Table} from '../Table';
 
-const app_table = document.querySelector('.js-app-table')
-const assign_table = document.querySelector('.js-assign-table')
+const app_table = document.querySelector('.js-app-table');
+const assign_table = document.querySelector('.js-assign-table');
 
 export function project_detail() {
   const alert_button = document.querySelector('.js-alert-button');

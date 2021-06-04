@@ -27,4 +27,4 @@ export const routes = {
   user_edit: 'front.user.edit',
   password_change: 'password.request',
   email_change: 'email.request',
-}
+};

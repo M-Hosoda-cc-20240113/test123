@@ -82,7 +82,7 @@ switch (route_name) {
     note_detail();
     break;
 
-  // front
+    // front
   case routes.login:
     login();
     break;

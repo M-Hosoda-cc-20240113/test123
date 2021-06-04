@@ -5,7 +5,7 @@
 @endphp
 @extends('admin.layout')
 
-@section('title', '案件詳細|Aegis')
+@section('title', 'お知らせ詳細|Aegis')
 
 @section('body')
   @component('admin.header.header', ['href' => route('admin.index')])

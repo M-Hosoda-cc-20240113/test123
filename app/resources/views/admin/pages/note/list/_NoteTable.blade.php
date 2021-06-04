@@ -3,7 +3,7 @@
    * @var \App\Services\Note\NoteList\NoteListResponse $response
    */
 @endphp
-<table class="p-table">
+<table class="p-table--short">
   <thead class="p-table__head">
   <tr class="p-table__headRow">
     <th class="p-table__headRowItem">ID</th>
