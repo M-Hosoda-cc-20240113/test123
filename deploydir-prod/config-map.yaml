@@ -3,10 +3,6 @@ kind: ConfigMap
 metadata:
   name: aegis-prod-config
 data:
-  MAIL_DRIVER: "smtp"
-  MAIL_PORT: "2525"
-  MAIL_USERNAME: "null"
-  MAIL_ENCRYPTION: "null"
   TZ: "Asia/Tokyo"
   APP_DEBUG: "true"
   APP_ENV: "production"
