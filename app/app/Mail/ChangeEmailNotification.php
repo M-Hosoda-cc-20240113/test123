@@ -34,7 +34,7 @@ class ChangeEmailNotification extends Mailable
     {
         return $this
             ->from(config('mail.from_noreply.address'), config('mail.from_noreply.name'))
-            ->subject('【Aegis】登録メールアドレス変更')
+            ->subject('【Aegis】メールアドレス変更')
             ->text('front.emails.email.notification');
     }
 }

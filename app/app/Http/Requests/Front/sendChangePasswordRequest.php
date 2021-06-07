@@ -2,19 +2,19 @@
 
 namespace App\Http\Requests\Front;
 
-use App\Rules\InUsersByEmail;
+use App\Rules\InUsersEmail;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SendChangeEmailRequest extends FormRequest
+class sendChangePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return \Auth::check();
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class SendChangeEmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email', new InUsersByEmail($this->input('email'))],
+            'email' => ['required', 'email', new InUsersEmail($this->input('email'))],
         ];
     }
 }

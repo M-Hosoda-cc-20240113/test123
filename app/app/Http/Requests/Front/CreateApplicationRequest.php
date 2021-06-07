@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Front;
 
 use App\Models\Project;
-use App\Services\Project\ProjectRepositoryInterface;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\CanApply;
 use Illuminate\Validation\Rule;

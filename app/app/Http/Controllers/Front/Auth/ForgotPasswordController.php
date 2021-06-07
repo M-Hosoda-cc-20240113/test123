@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\SendPasswordResetEmails;
+use App\Http\Requests\Front\sendChangePasswordRequest;
 use App\Infrastructures\Repositories\Eloquent\User\UserRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class ForgotPasswordController extends Controller
 {
@@ -36,13 +36,11 @@ class ForgotPasswordController extends Controller
     /**
      * Send a reset link to the given user.
      *
-     * @param Request $request
+     * @param sendChangePasswordRequest $request
      * @return Application|Factory|View
      */
-    public function sendResetLinkEmail(Request $request)
+    public function sendResetLinkEmail(sendChangePasswordRequest $request)
     {
-        $this->validateEmail($request);
-
         $this->broker()->sendResetLink(
             ['email_hash' => UserRepository::makeEmailHash($request->email)]
         );
