@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests\Front;
 
-use App\Models\Project;
+use App\Models\User;
+use App\Rules\InUsersEmail;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\CanApply;
 use Illuminate\Validation\Rule;
 
-class CreateApplicationRequest extends FormRequest
+class sendChangePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,20 +26,20 @@ class CreateApplicationRequest extends FormRequest
      */
     public function rules(): array
     {
-        $project = Project::all();
-        $project_ids = $project->pluck('id')->toArray();
+        $users = User::all();
+        $user_email = $users->pluck('email')->toArray();
         return [
-            'project_id' => ['integer',new CanApply($this->input('project_id'), Rule::in($project_ids))],
+            'email' => ['required', 'email', Rule::in($user_email)],
         ];
     }
 
     /**
-     * @return string[]
+     * @return array
      */
     public function messages(): array
     {
         return [
-            'project_id.integer'     => '予期せぬ値が入力されました',
+            'email.in' => '登録済みのメールアドレスをご利用ください。'
         ];
     }
 }

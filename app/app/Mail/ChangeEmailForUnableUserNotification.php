@@ -36,7 +36,7 @@ class ChangeEmailForUnableUserNotification extends Mailable
     {
         return $this
             ->from(config('mail.from_noreply.address'), config('mail.from_noreply.name'))
-            ->subject('登録メールアドレス変更について(Aegis)')
+            ->subject('【Aegis】メールアドレス変更')
             ->text('front.emails.email.notification_unable_user');
     }
 }

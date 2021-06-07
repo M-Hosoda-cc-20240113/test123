@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Rules\InUsersByEmail;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SendChangeEmailRequest extends FormRequest
@@ -24,7 +25,7 @@ class SendChangeEmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email'
+            'email' => ['required', 'email', new InUsersByEmail($this->input('email'))],
         ];
     }
 }
