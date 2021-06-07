@@ -7,12 +7,13 @@ namespace App\Services\RelLevelSkillUser;
 use App\Services\User\EditSkill\UpdateSkillParameter;
 use Illuminate\Database\Eloquent\Collection;
 
-interface RelLevelSkillUSerRepositoryInterface
+interface RelLevelSkillUserRepositoryInterface
 {
     /**
-     * @return mixed
+     * @param int $user_id
+     * @return Collection
      */
-    public function fetchByUserId(int $user_id);
+    public function fetchByUserId(int $user_id): Collection;
 
 
     /**

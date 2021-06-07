@@ -19,17 +19,26 @@
     <div class="l-main">
       <div class="p-mainItem">
         <h2 class="p-level2Heading">パスワード変更</h2>
-        <p class="c-text u-mt-20">メールアドレスへパスワード変更の案内を送ります。</p>
+        <p class="c-text u-mt-20">登録メールアドレスへパスワード変更の案内を送ります。</p>
         @if($errors->any())
           @foreach($errors->all() as $error)
             <p class="c-text--warning">{{ $error }}</p>
           @endforeach
         @endif
-        <form action="{{ route('password.email') }}" method="post">
-          {{ csrf_field() }}
-          <input class="c-input--light u-mt-10" type="email" placeholder="メールアドレス入力欄" name="email">
-          <button type="submit" class="c-button u-mt-20 js-loading-button">案内メールを送信</button>
-        </form>
+        @if ( Auth::check() )
+          <form action="{{ route('password.email') }}" method="post">
+            {{ csrf_field() }}
+            <input class="c-input--light u-mt-10" type="hidden" name="email" value="{{ Auth::getUser()->email }}">
+            <button type="submit" class="c-button u-mt-20 js-loading-button">案内メールを送信</button>
+          </form>
+        @else
+          <form action="{{ route('password.email') }}" method="post">
+            {{ csrf_field() }}
+            <input class="c-input--light u-mt-10" type="email" placeholder="メールアドレス入力欄" name="email"
+                   value="{{ old("email") }}">
+            <button type="submit" class="c-button u-mt-20 js-loading-button">案内メールを送信</button>
+          </form>
+        @endif
       </div>
     </div>
   </div>

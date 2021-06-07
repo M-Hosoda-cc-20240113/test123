@@ -69,7 +69,7 @@
                                     <select name="skill_ids[]" id="skill_id" class="c-input">
                                         @foreach($response->getSkills() as $skill)
                                             <option
-                                                value="{{ $skill->id }}" {{ $level_skill->name === $skill->name ? 'selected' : '' }}>{{ $skill->name }}</option>
+                                                value="{{ $skill->id }}" {{ $level_skill->skill->name === $skill->name ? 'selected' : '' }}>{{ $skill->name }}</option>
                                         @endforeach
                                     </select>
                                 </label>
@@ -78,7 +78,7 @@
                                     <select name="level_ids[]" id="" class="c-input">
                                         @foreach($response->getLevels() as $level)
                                             <option
-                                                value="{{ $level->id }}" {{ $level_skill->level === $level->level ? 'selected' : '' }}>{{ $level->level }}</option>
+                                                value="{{ $level->id }}" {{ $level_skill->level->level === $level->level ? 'selected' : '' }}>{{ $level->level }}</option>
                                         @endforeach
                                     </select>
                                 </label>

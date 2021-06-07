@@ -38,7 +38,7 @@ class RegisterMail extends Mailable
     {
         return $this
             ->from(config('mail.from_noreply.address'), config('mail.from_noreply.name'))
-            ->subject('登録完了のお知らせ(Aegis)')
+            ->subject('【Aegis】登録完了のお知らせ')
             ->text('front.emails.register.registered');
     }
 }

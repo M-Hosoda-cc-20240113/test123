@@ -27,7 +27,7 @@
         @endif
         <form action="{{ route('email.sendEmail') }}" method="post">
           {{ csrf_field() }}
-          <input class="c-input--light u-mt-10" type="email" placeholder="メールアドレス入力欄" name="email">
+          <input class="c-input--light u-mt-10" type="email" placeholder="メールアドレス入力欄" name="email" value="{{ old('email') }}">
           <button type="submit" class="c-button u-mt-20 js-loading-button">案内メールを送信</button>
         </form>
       </div>

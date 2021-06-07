@@ -77,7 +77,7 @@
             @endif
             @foreach($response->getRelLevelSkillUser() as $level_skill)
               <span
-                  class="c-label u-mt-5 u-mr-10">{{ $level_skill->name }}（{{ $level_skill->level }})</span>
+                  class="c-label u-mt-5 u-mr-10">{{ $level_skill->skill->name }}（{{ $level_skill->level->level }})</span>
             @endforeach
           </div>
           {{--  スキル  --}}
