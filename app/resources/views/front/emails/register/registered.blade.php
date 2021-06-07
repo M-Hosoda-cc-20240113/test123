@@ -3,7 +3,9 @@
  * @var \App\Services\Notification\RegisterUser\NotificationRegisterUserParameter $parameter
  */
 @endphp
-{{ $parameter->getSendUser()->sei }} 様
+{{ $parameter->getSendUser()->sei }} {{ $parameter->getSendUser()->mei }}様
+
+Aegisより、登録完了のご案内です。
 
 ==========================================
 登録ありがとうございます。
