@@ -39,7 +39,7 @@ class sendChangePasswordRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'email.in' => '登録済みのメールアドレスを入力してください。'
+            'email.in' => '登録済みのメールアドレスをご利用ください。'
         ];
     }
 }
