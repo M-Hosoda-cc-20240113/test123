@@ -16,11 +16,12 @@ class RelLevelSkillUserRepository implements RelLevelSkillUserRepositoryInterfac
     /**
      * {@inheritDoc}
      */
-    public function fetchByUserId(int $user_id): \Illuminate\Support\Collection
+    public function fetchByUserId(int $user_id): Collection
     {
-        return RelLevelSkillUser::join('skills', 'rel_levels_skills_users.skill_id', '=', 'skills.id')
-            ->join('levels', 'rel_levels_skills_users.level_id', '=', 'levels.id')
-            ->where('rel_levels_skills_users.user_id', '=', $user_id)
+        return RelLevelSkillUser::with('user')
+            ->with('skill')
+            ->with('level')
+            ->where('user_id', $user_id)
             ->get();
     }
 

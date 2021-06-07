@@ -2,7 +2,7 @@
 
 namespace App\Services\User\EditSkill;
 
-use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
+use App\Services\RelLevelSkillUser\RelLevelSkillUserRepositoryInterface;
 
 /**
  * Class EditSkillService
@@ -11,15 +11,15 @@ use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
 class UpdateSkillService
 {
     /**
-     * @var RelLevelSkillUSerRepositoryInterface
+     * @var RelLevelSkillUserRepositoryInterface
      */
     private $rel_revel_skill_user_repository;
 
     /**
      * EditSkillService constructor.
-     * @param RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository
+     * @param RelLevelSkillUserRepositoryInterface $rel_revel_skill_user_repository
      */
-    public function __construct(RelLevelSkillUSerRepositoryInterface $rel_revel_skill_user_repository)
+    public function __construct(RelLevelSkillUserRepositoryInterface $rel_revel_skill_user_repository)
     {
         $this->rel_revel_skill_user_repository = $rel_revel_skill_user_repository;
     }

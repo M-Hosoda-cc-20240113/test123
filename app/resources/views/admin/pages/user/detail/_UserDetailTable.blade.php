@@ -50,7 +50,7 @@
         <th class="p-itemDetailTable__head">スキルレベル</th>
         <td class="p-itemDetailTable__body">
             @foreach ($response->getRelLevelSkillUser() as $LevelSkill)
-                <span class="c-label u-mt-5 u-mr-10">{{ $LevelSkill->name }}（{{ $LevelSkill->level }})</span>
+                <span class="c-label u-mt-5 u-mr-10">{{ $LevelSkill->skill->name }}（{{ $LevelSkill->level->level }})</span>
             @endforeach
         </td>
         <th class="p-itemDetailTable__head">ステータス</th>
