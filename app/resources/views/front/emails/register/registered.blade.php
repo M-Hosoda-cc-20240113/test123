@@ -3,12 +3,15 @@
  * @var \App\Services\Notification\RegisterUser\NotificationRegisterUserParameter $parameter
  */
 @endphp
+{{ $parameter->getSendUser()->sei }} 様
 
-{{ $parameter->getSendUser()->sei }}　さま
+==========================================
+登録ありがとうございます。
+Aegisのご登録が完了しました。
 
-ご登録が完了しました
+▼ログインはこちら▼
+https://aegis-freelance.jp/login
 
-▼Aegisへのアクセスはこちら▼
-{{ route('login') }}
+==========================================
 
 @include('front.emails.footer')
