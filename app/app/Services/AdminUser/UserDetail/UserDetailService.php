@@ -2,7 +2,7 @@
 
 namespace App\Services\AdminUser\UserDetail;
 
-use App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface;
+use App\Services\RelLevelSkillUser\RelLevelSkillUserRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
 
 class UserDetailService
@@ -12,7 +12,7 @@ class UserDetailService
      */
     private $user_repository;
     /**
-     * @var \App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface
+     * @var \App\Services\RelLevelSkillUser\RelLevelSkillUserRepositoryInterface
      */
     private $relLevelSKillUser_repository;
 

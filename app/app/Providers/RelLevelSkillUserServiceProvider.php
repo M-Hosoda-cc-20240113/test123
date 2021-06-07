@@ -14,7 +14,7 @@ class RelLevelSkillUserServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            \App\Services\RelLevelSkillUser\RelLevelSkillUSerRepositoryInterface::class,
+            \App\Services\RelLevelSkillUser\RelLevelSkillUserRepositoryInterface::class,
             \App\Infrastructures\Repositories\Eloquent\RelLevelSkillUser\RelLevelSkillUserRepository::class
         );
     }
