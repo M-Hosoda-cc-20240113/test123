@@ -19,6 +19,7 @@
 
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
+    <span class="c-text u-mt-20">ポジション数：<span class="c-text--bold">{{ $response->getPositions()->count() ?? 0 }}</span>件</span>
     <a href="{{ route('position.createForm') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録</a>
     @include('admin.pages.position.list._PositionTable', ['response' => $response])
     {{ $response->getPositions()->links('components.paginator') }}

@@ -68,36 +68,11 @@ spec:
                 secretKeyRef:
                   key: DB_PASSWORD
                   name: aegis-prod-secret
-            - name: MAIL_DRIVER
-              valueFrom:
-                configMapKeyRef:
-                  key: MAIL_DRIVER
-                  name: aegis-prod-config
-            - name: MAIL_HOST
-              valueFrom:
-                configMapKeyRef:
-                  key: MAIL_HOST
-                  name: aegis-prod-config
-            - name: MAIL_PORT
-              valueFrom:
-                configMapKeyRef:
-                  key: MAIL_PORT
-                  name: aegis-prod-config
-            - name: MAIL_USERNAME
-              valueFrom:
-                configMapKeyRef:
-                  key: MAIL_USERNAME
-                  name: aegis-prod-config
             - name: MAIL_PASSWORD
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   key: MAIL_PASSWORD
-                  name: aegis-prod-config
-            - name: MAIL_ENCRYPTION
-              valueFrom:
-                configMapKeyRef:
-                  key: MAIL_ENCRYPTION
-                  name: aegis-prod-config
+                  name: aegis-prod-secret
             - name: TZ
               valueFrom:
                 configMapKeyRef:
