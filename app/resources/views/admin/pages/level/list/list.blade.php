@@ -19,6 +19,7 @@
 
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
+    <span class="c-text u-mt-20">レベル数：<span class="c-text--bold">{{ $response->getLevels()->count() ?? 0 }}</span>件</span>
     <a href="{{ route('level.createForm') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録</a>
     @include('admin.pages.level.list._RegularTable', ['response' => $response])
     {{ $response->getLevels()->links('components.paginator') }}
