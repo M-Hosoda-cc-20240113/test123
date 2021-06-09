@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Infrastructures\Notifications\laravel\RegisterUser\NotificationRegisterUserService;
+use App\Infrastructures\Notifications\laravel\plugins\slack_notification_channel\RegisterUser\NotificationRegisterUserService as NotificationRegisterUserBySlack;
+use App\Infrastructures\Notifications\laravel\RegisterUser\NotificationRegisterUserService as NotificationRegisterUserByMail;
 use App\Services\Notification\RegisterUser\NotificationRegisterUserServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,7 +18,20 @@ class NotificationRegisterUserServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             NotificationRegisterUserServiceInterface::class,
-            NotificationRegisterUserService::class
+            function ($app, $notification) {
+                switch ($notification['type']){
+                    case 'mail':
+                        return $app->make(NotificationRegisterUserByMail::class);
+                        break;
+
+                    case 'slack':
+                        return $app->make(NotificationRegisterUserBySlack::class);
+                        break;
+
+                    default:
+                        return $app->make(NotificationRegisterUserByMail::class);
+                }
+            }
         );
     }
 

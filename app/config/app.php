@@ -194,6 +194,8 @@ return [
         App\Providers\StatusServiceProvider::class,
         App\Providers\NotificationRegisterUserServiceProvider::class,
         App\Providers\NoteServiceProvider::class,
+        App\Providers\NotificationAssignUserServiceProvider::class,
+        App\Providers\NotificationApplyUserServiceProvider::class,
     ],
 
     /*

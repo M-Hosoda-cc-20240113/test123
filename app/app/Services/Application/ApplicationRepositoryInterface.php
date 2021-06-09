@@ -2,6 +2,7 @@
 
 namespace App\Services\Application;
 
+use App\Models\Project;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\Application\ApplyProjectService\ApplyProjectParameter;
 use App\Services\Application\DeleteApplication\DeleteApplicationParameter;
@@ -18,9 +19,9 @@ interface ApplicationRepositoryInterface
     /**
      * 案件応募
      * @param ApplyProjectParameter $parameter
-     * @return void
+     * @return Project
      */
-    public function create(ApplyProjectParameter $parameter): void;
+    public function create(ApplyProjectParameter $parameter): Project;
 
     /**
      * @param UpdateUserAdminParameter $parameter
