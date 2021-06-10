@@ -20,16 +20,13 @@ class NotificationRegisterUserServiceProvider extends ServiceProvider
             NotificationRegisterUserServiceInterface::class,
             function ($app, $notification) {
                 switch ($notification['type']){
-                    case 'mail':
-                        return $app->make(NotificationRegisterUserByMail::class);
-                        break;
-
                     case 'slack':
                         return $app->make(NotificationRegisterUserBySlack::class);
                         break;
 
                     default:
                         return $app->make(NotificationRegisterUserByMail::class);
+                        break;
                 }
             }
         );
