@@ -19,7 +19,6 @@
                 @error('email')
                 <p class="c-text--warning u-w-40-pc u-m0a">{{ $message }}</p>
                 @enderror
-
                 <div class="p-iconInput u-mt-30 u-w-40-pc u-m0a">
                     <img src="{{ asset('images/icons/icon_lock.png') }}">
                     <input name="email" type="text" placeholder="example@email.com" value="{{ old('email') }}">

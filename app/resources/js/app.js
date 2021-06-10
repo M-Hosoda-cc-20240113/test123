@@ -30,6 +30,7 @@ import {user_delete} from './front/pages/user_delete';
 import {user_edit} from './front/pages/user_edit';
 import {password_change} from './front/pages/password_change';
 import {email_change} from './front/pages/email_change';
+import {front_project_detail} from './front/pages/project_detail';
 
 const route_name = document.querySelector('body').dataset.routeName;
 
@@ -108,6 +109,8 @@ switch (route_name) {
   case routes.email_change:
     email_change();
     break;
+  case routes.front_project_detail:
+    front_project_detail();
   default:
     break;
 }

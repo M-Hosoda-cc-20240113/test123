@@ -8,6 +8,7 @@
     @endcomponent
 
     @include('front.pages._drawer_contents')
+    @include('front.pages._loader')
 
     <div class="l-container">
         <div class="l-main">
@@ -37,7 +38,7 @@
                             <h2 class="p-level2Heading">{{ $response->getProject()->name ?? '' }}</h2>
                             <input type="hidden" name="project_id" value={{ $response->getProject()->id }}>
                             @include('front.pages.project.detail._ProjectDetailTable', ['response' => $response])
-                            <button class="c-button u-db u-w-30-pc u-m0a u-mt-20" type="submit">応募する</button>
+                            <button class="c-button u-db u-w-30-pc u-m0a u-mt-20 js-loading-button" type="submit">応募する</button>
                             <p class="c-text--center u-mt-20">※クリックで応募が完了します。担当営業が2営業日以内に電話で連絡いたします。</p>
                         </form>
                     @endif
@@ -46,7 +47,7 @@
                     @include('front.pages.project.detail._ProjectDetailTable', ['response' => $response])
 
                     <a href="{{ route('register', ['project_id' => $response->getProject()] )}}"
-                       class="c-button u-db u-m0a u-mt-30 u-w-30-pc">新規登録して応募する</a>
+                       class="c-button u-db u-m0a u-mt-30 u-w-30-pc js-loading-button">新規登録して応募する</a>
                     <p class="u-mt-20 u-text--center u-fs-12">※新規登録で応募が完了します。担当営業が2営業日以内に電話で連絡いたします。</p>
                 @endif
             </div>
