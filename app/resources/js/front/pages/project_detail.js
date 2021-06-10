@@ -1,5 +1,5 @@
 import {Loading} from '../Loading';
 
-export function apply() {
+export function front_project_detail() {
   new Loading();
 }
