@@ -18,6 +18,7 @@
 
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
+    <span class="c-text u-mt-20">お知らせ数：<span class="c-text--bold">{{ $response->getNotes()->count() ?? 0 }}</span>件</span>
     <a href="{{ route('note.create.form') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録</a>
     @include('admin.pages.note.list._NoteTable', ['response' => $response])
     {{ $response->getNotes()->links('components.paginator') }}

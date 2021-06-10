@@ -22,7 +22,7 @@
     @include('admin.bread_crumb._BreadCrumb')
     <div class="l-main">
       <div class="p-mainItem c-modal__content js-modal-content u-mt-20">
-        <span class="c-modal__closeButtoon js-modal-close-button">×</span>
+        <span class="c-modal__closeButton js-modal-close-button">×</span>
         @if($errors->all())
           <p class="c-text--bold u-mt-20">検索条件が不正です。</p>
           @foreach($errors->all() as $error)
