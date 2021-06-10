@@ -19,18 +19,20 @@
   <div class="l-container--2col">
     @include('front.pages.mypage._sidebar')
     <div class="l-main">
-      <div class="p-mainItem u-mb-20">
-        <p class="p-level2Heading">Aegisからのお知らせ</p>
-          <ul>
-            @foreach($response->getNotes()->take(5) as $note)
-              <li>
-                <a class="c-text--bold u-dib u-mt-5 u-mb-5 u-indent-1"
-                   href="{{ route('front.note.detail', ['note_id' => $note->id] )}}">[{{ ViewHelper::YmdReplace($note->created_at ?? today()) }}]  {{ $note->title ?? ''}}</a>
-              </li>
-            @endforeach
-          </ul>
+      <div class="p-news">
+        <ul class="p-news__list">
+          @foreach($response->getNotes()->take(5) as $note)
+            <li class="p-news__item">
+              <a class="p-news__itemInner" href="{{ route('front.note.detail', ['note_id' => $note->id]) }}">
+                <span class="p-news__itemInnerDeco u-mr-10">{{ ViewHelper::YmdReplace($note->created_at ?? today()) }}</span>
+                <span class="Note__itemInnerDeco--txt">{{ $note->title ?? '' }}</span>
+              </a>
+            </li>
+          @endforeach
+        </ul>
       </div>
-      <div class="p-mainItem">
+
+      <div class="p-mainItem u-mt-20">
         <p class="p-level2Heading">ユーザー情報</p>
         <table class="p-sideColumnTable @if(!$response->getUser()->is_admin) u-mb-30 @endif">
           <tbody>
