@@ -13,6 +13,6 @@ class NotificationAssignUser implements NotificationAssignUserServiceInterface
      */
     public function send($parameter)
     {
-        \Slack::send("【Aegis稼働通知】".$parameter->getUserName() . "は" . $parameter->getProjectName() . "にアサインされました。");
+        \Slack::send("【Aegis稼働通知】".$parameter->getUserName() . "さんは" . $parameter->getProjectName() . "にアサインされました。");
     }
 }
