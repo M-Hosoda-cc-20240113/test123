@@ -3,4 +3,4 @@
    * @var \App\Services\Note\NoteDetail\NoteDetailResponse $response
    */
 @endphp
-{{ $response->getNote()->contents ?? '' }}
+<p class="c-text">{{ $response->getNote()->contents ?? '' }}</p>
