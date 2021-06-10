@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\RegisterUserRequest;
 use App\Services\Application\ApplyProjectService\ApplyProjectParameter;
 use App\Services\Application\ApplyProjectService\ApplyProjectService;
+use App\Services\Notification\ApplyUser\NotificationApplyUserParameter;
+use App\Services\Notification\ApplyUser\NotificationApplyUserServiceInterface;
 use App\Services\Notification\RegisterUser\NotificationRegisterUserParameter;
 use App\Services\Notification\RegisterUser\NotificationRegisterUserServiceInterface;
 use App\Services\User\RegisterUser\RegisterUserParameter;
@@ -86,7 +88,7 @@ class RegisterController extends Controller
         RegisterUserRequest $request,
         RegisterUserService $register_user_service,
         ApplyProjectService $apply_project_service,
-        NotificationRegisterUserServiceInterface $notification_register_user_service
+        NotificationApplyUserServiceInterface $notification_apply_user_service
     ) {
         $parameter = new RegisterUserParameter();
         $parameter->setSei($request->sei);
@@ -102,16 +104,26 @@ class RegisterController extends Controller
             return $register_user_service->exec($parameter);
         });
 
+        $notification_parameter = new NotificationRegisterUserParameter();
+        $notification_parameter->setSendUser($user);
+
+        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class,['type'=>'mail']);
+        $notification->send($notification_parameter);
+        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class,['type'=>'slack']);
+        $notification->send($notification_parameter);
+
         if (!empty($request->project_id)) {
             $parameter = new ApplyProjectParameter();
             $parameter->setProjectId($request->project_id);
             $parameter->setUser($user);
-            $apply_project_service->exec($parameter);
+            $project = DB::transaction(function () use ($apply_project_service, $parameter) {
+                return $apply_project_service->exec($parameter);
+            });
+            $notification_apply_parameter = new NotificationApplyUserParameter();
+            $notification_apply_parameter->setUser($user);
+            $notification_apply_parameter->setProjectName($project->name);
+            $notification_apply_user_service->send($notification_apply_parameter);
         }
-
-        $notification_parameter = new NotificationRegisterUserParameter();
-        $notification_parameter->setSendUser($user);
-        $notification_register_user_service->send($notification_parameter);
 
         $this->guard()->login($user);
         return redirect($this->redirectTo);

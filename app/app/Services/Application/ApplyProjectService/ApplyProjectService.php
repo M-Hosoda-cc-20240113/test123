@@ -3,6 +3,7 @@
 
 namespace App\Services\Application\ApplyProjectService;
 
+use App\Models\Project;
 use App\Services\Application\ApplicationRepositoryInterface;
 
 
@@ -25,9 +26,10 @@ class ApplyProjectService
 
     /**
      * @param ApplyProjectParameter $parameter
+     * @return Project
      */
-    public function exec(ApplyProjectParameter $parameter)
+    public function exec(ApplyProjectParameter $parameter): Project
     {
-        $this->application_repository->create($parameter);
+        return $this->application_repository->create($parameter);
     }
 }
