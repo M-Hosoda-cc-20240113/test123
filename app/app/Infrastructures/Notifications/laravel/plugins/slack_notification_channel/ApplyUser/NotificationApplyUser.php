@@ -11,6 +11,6 @@ class NotificationApplyUser implements NotificationApplyUserServiceInterface
 {
     public function send(NotificationApplyUserParameter $parameter)
     {
-        \Slack::send($parameter->getUser()->sei.' '.$parameter->getUser()->mei . " さんは" . $parameter->getProjectName() . "に応募しました。");
+        \Slack::send("【Aegis応募通知】".$parameter->getUser()->sei." ".$parameter->getUser()->mei . " さんは" . $parameter->getProjectName() . "に応募しました。");
     }
 }

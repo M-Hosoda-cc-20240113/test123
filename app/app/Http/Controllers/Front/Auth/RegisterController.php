@@ -104,6 +104,14 @@ class RegisterController extends Controller
             return $register_user_service->exec($parameter);
         });
 
+        $notification_parameter = new NotificationRegisterUserParameter();
+        $notification_parameter->setSendUser($user);
+
+        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class,['type'=>'mail']);
+        $notification->send($notification_parameter);
+        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class,['type'=>'slack']);
+        $notification->send($notification_parameter);
+
         if (!empty($request->project_id)) {
             $parameter = new ApplyProjectParameter();
             $parameter->setProjectId($request->project_id);
@@ -116,15 +124,6 @@ class RegisterController extends Controller
             $notification_apply_parameter->setProjectName($project->name);
             $notification_apply_user_service->send($notification_apply_parameter);
         }
-
-
-        $notification_parameter = new NotificationRegisterUserParameter();
-        $notification_parameter->setSendUser($user);
-
-        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class,['type'=>'mail']);
-        $notification->send($notification_parameter);
-        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class,['type'=>'slack']);
-        $notification->send($notification_parameter);
 
         $this->guard()->login($user);
         return redirect($this->redirectTo);
