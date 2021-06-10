@@ -1,6 +1,6 @@
 @extends('front.layout')
 
-@section('title', '個人情報保護方針|Aegis')
+@section('title', '個人情報保護方針 |【Aegis(イージス)】フリーランス・ITエンジニアのための案件サイト')
 
 @section('body')
   @component('front.header.header', ['href' => route('front.index')])

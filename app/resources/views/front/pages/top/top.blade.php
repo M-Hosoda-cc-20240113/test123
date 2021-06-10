@@ -6,7 +6,7 @@
 
 @extends('front.layout')
 
-@section('title', 'トップページ|Aegis')
+@section('title', '【Aegis(イージス)】フリーランス・ITエンジニアのための案件サイト')
 
 @section('body')
   @component('front.header.header', ['href' => route('front.index')])
@@ -18,7 +18,7 @@
   @include('front.pages._drawer_contents')
 
   <div class="l-container">
-    <img src="{{ asset('/images/hero/hero_02.png') }}" alt="">
+    <img src="{{ asset('/images/hero/hero_02.png') }}" alt="スマートなフリーランス像">
 
     <ul class="p-searchTab u-mt-30">
       <li class="p-searchTab__item js-tab is-active">スキル<span class="u-dn-sp">でさがす</span></li>

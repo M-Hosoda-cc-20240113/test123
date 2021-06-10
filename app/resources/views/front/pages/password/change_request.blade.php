@@ -1,6 +1,6 @@
 @extends('front.layout')
 
-@section('title', 'パスワード再設定|Aegis')
+@section('title', 'パスワード再設定 |【Aegis(イージス)】フリーランス・ITエンジニアのための案件サイト')
 
 @section('body')
   @component('front.header.header', ['href' => route('front.index')])

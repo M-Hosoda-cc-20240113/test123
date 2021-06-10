@@ -5,7 +5,7 @@
 @endphp
 @extends('front.layout')
 
-@section('title', 'ユーザー情報編集|Aegis')
+@section('title', 'スキル編集 |【Aegis(イージス)】フリーランス・ITエンジニアのための案件サイト')
 
 @section('body')
     @component('front.header.header', ['href' => route('front.index')])
