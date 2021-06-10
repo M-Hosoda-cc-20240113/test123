@@ -72,7 +72,7 @@ Route::namespace('Application')->prefix('application')->group(function () {
 });
 
 Route::namespace('Contact')->prefix('contact')->group(function () {
-    Route::get('input', [ContactController::class, 'showContactForm'])->name('contact.input');
+    Route::get('/', [ContactController::class, 'showContactForm'])->name('contact.input');
     Route::get('thanks', [ContactController::class, 'sendForm'])->name('contact.thanks');
 });
 
