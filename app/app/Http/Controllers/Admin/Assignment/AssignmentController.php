@@ -10,6 +10,8 @@ use App\Services\Assignment\DeleteAssignment\DeleteAssignmentService;
 use App\Services\Assignment\RegisterAssignment\RegisterAssignmentParameter;
 use App\Services\Assignment\RegisterAssignment\RegisterAssignmentService;
 use App\Http\Controllers\Controller;
+use App\Services\Notification\AssignUser\NotificationAssignUserParameter;
+use App\Services\Notification\AssignUser\NotificationAssignUserServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -37,8 +39,11 @@ class AssignmentController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function register(RegisterAssignmentRequest $request, RegisterAssignmentService $register_assignment_service)
-    {
+    public function register(
+        RegisterAssignmentRequest $request,
+        RegisterAssignmentService $register_assignment_service,
+        NotificationAssignUserServiceInterface $notification_assign_user_service
+    ) {
         $parameter = new RegisterAssignmentParameter();
         $parameter->setUserId($request->user_id);
         $parameter->setProjectId($request->project_id);
@@ -46,7 +51,12 @@ class AssignmentController extends Controller
         $user_project = DB::transaction(function () use ($register_assignment_service, $parameter) {
             return $register_assignment_service->exec($parameter);
         });
-//        \Slack::send($user_project['user_name'] . "は" . $user_project['project_name'] . "にアサインしました。");
+
+        $notification_parameter = new NotificationAssignUserParameter();
+        $notification_parameter->setUserName($user_project['user_name']);
+        $notification_parameter->setProjectName($user_project['project_name']);
+        $notification_assign_user_service->send($notification_parameter);
+
         return redirect()->route('application.list');
     }
 

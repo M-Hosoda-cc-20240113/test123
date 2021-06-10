@@ -3,6 +3,7 @@
 namespace App\Infrastructures\Repositories\Eloquent\Application;
 
 use App\Models\Application;
+use App\Models\Project;
 use App\Models\Status;
 use App\Models\User;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
@@ -27,12 +28,14 @@ class ApplicationRepository implements ApplicationRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function create(ApplyProjectParameter $parameter): void
+    public function create(ApplyProjectParameter $parameter): Project
     {
         $user = $parameter->getUser();
         $project_id[] = $parameter->getProjectId();
         $user->project_status()->syncWithoutDetaching($project_id);
         $user->project_app()->syncWithoutDetaching($project_id);
+
+        return Project::findOrFail($parameter->getProjectId());
     }
 
     /**

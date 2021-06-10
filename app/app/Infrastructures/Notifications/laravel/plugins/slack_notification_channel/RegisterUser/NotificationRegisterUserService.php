@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructures\Notifications\laravel\RegisterUser;
+namespace App\Infrastructures\Notifications\laravel\plugins\slack_notification_channel\RegisterUser;
 
 use App\Mail\RegisterMail;
 use App\Services\Notification\RegisterUser\NotificationRegisterUserParameter;
@@ -17,6 +17,6 @@ class NotificationRegisterUserService implements NotificationRegisterUserService
      */
     public function send(NotificationRegisterUserParameter $parameter)
     {
-        \Mail::to($parameter->getSendUser()->email)->send(new RegisterMail($parameter));
+        \Slack::send("【Aegis新規登録】 " . $parameter->getSendUser()->sei . " " . $parameter->getSendUser()->mei . "さんがAegisに登録しました。");
     }
 }
