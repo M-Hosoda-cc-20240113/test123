@@ -6,8 +6,9 @@
 
 @extends('front.layout')
 
-@section('title', '【Aegis(イージス)】フリーランス・ITエンジニアのための案件サイト')
+@section('title', config('app.title.aegis_explain'))
 @section('canonical', 'https://aegis-freelance.jp/')
+
 @section('ogp_title', '【Aegis(イージス)】')
 @section('ogp_type', 'website')
 @section('ogp_url', 'https://aegis-freelance.jp/')

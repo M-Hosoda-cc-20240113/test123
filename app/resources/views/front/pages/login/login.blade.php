@@ -1,6 +1,6 @@
 @extends('front.layout')
 
-@section('title', 'ログイン画面 |【Aegis(イージス)】フリーランス・ITエンジニアのための案件サイト')
+@section('title', 'ログイン画面 ｜'.config('app.title.aegis_explain'))
 
 @section('body')
     @component('front.header.header', ['href' => route('front.index')])
