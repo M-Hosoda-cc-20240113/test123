@@ -6,7 +6,18 @@
 
 @extends('front.layout')
 
-@section('title', 'トップページ|Aegis')
+@section('title', config('app.title.aegis_explain'))
+@section('canonical', 'https://aegis-freelance.jp/')
+
+@section('ogp_title', '【Aegis(イージス)】')
+@section('ogp_type', 'website')
+@section('ogp_url', 'https://aegis-freelance.jp/')
+@section('ogp_image', "{{ asset('/images/hero/hero_02.png') }}")
+@section('ogp_site_name', 'Aegis')
+@section('ogp_description', '【Aegis(イージス)】はフリーランス・ITエンジニアのための案件サイトです。meetupや勉強会など様々なイベントも開催しています！')
+@section('ogp_local', 'ja_JP')
+@section('twitter_card', 'summary')
+@section('twitter_creator', '@aegis_freelance')
 
 @section('body')
   @component('front.header.header', ['href' => route('front.index')])
@@ -18,7 +29,7 @@
   @include('front.pages._drawer_contents')
 
   <div class="l-container">
-    <img src="{{ asset('/images/hero/hero_02.png') }}" alt="">
+    <img src="{{ asset('/images/hero/hero_02.png') }}" alt="スマートなフリーランス画像">
 
     <ul class="p-searchTab u-mt-30">
       <li class="p-searchTab__item js-tab is-active">スキル<span class="u-dn-sp">でさがす</span></li>
@@ -65,7 +76,8 @@
         @endforeach
       @endif
       <div class="p-searchBox u-mt-20">
-        <input name="keyword" class="c-input--light p-searchBox__input js-search_input" type="text" value="{{ request()->input('keyword') }}"
+        <input name="keyword" class="c-input--light p-searchBox__input js-search_input" type="text"
+               value="{{ request()->input('keyword') }}"
                placeholder="PHP JavaScript">
         <button type="submit" class="c-button--secondary p-searchBox__button js-project_search"
                 data-search-url="{{ route('front.project.search') }}">検索

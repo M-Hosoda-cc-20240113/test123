@@ -5,7 +5,7 @@
 @endphp
 @extends('front.layout')
 
-@section('title', 'トップページ|Aegis')
+@section('title', 'マイページ ｜'.config('app.title.aegis_explain'))
 
 @section('body')
   @component('front.header.header', ['href' => route('front.index')])

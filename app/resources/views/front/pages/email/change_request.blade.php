@@ -1,6 +1,6 @@
 @extends('front.layout')
 
-@section('title', 'トップページ|Aegis')
+@section('title', 'メールアドレス変更 ｜'.config('app.title.aegis_explain'))
 
 @section('body')
   @component('front.header.header', ['href' => route('front.index')])

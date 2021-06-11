@@ -6,7 +6,7 @@
 
 @extends('front.layout')
 
-@section('title', 'お問い合わせ|Aegis')
+@section('title', 'お問い合わせ ｜'.config('app.title.aegis_explain'))
 @section('head')
   <script src="https://sdk.form.run/js/v2/formrun.js"></script>
 @endsection

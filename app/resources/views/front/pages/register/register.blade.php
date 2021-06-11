@@ -1,6 +1,6 @@
 @extends('front.layout')
 
-@section('title', '新規登録|Aegis')
+@section('title', '新規登録 ｜'.config('app.title.aegis_explain'))
 
 @section('body')
   @component('front.header.header', ['href' => route('front.index')])

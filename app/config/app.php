@@ -279,4 +279,8 @@ return [
         'name' => env('SLACK_NAME'),
         'channel' => env('SLACK_CHANNEL'),
     ],
+
+    'title' => [
+        'aegis_explain' => '【Aegis(イージス)】フリーランス・ITエンジニアのための案件サイト'
+    ],
 ];

@@ -1,6 +1,6 @@
 @extends('front.layout')
 
-@section('title', '個人情報保護方針|Aegis')
+@section('title', '個人情報保護方針 ｜'.config('app.title.aegis_explain'))
 
 @section('body')
   @component('front.header.header', ['href' => route('front.index')])
