@@ -55,7 +55,6 @@
     <meta property="twitter:creator" content="@yield('twitter_creator')">
   @endif
 
-
   @section('stylesheet')
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}" media="all">
   @show

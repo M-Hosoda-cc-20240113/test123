@@ -28,7 +28,7 @@
   @include('front.pages._drawer_contents')
 
   <div class="l-container">
-    <img src="{{ asset('/images/hero/hero_02.png') }}" alt="スマートなフリーランス像">
+    <img src="{{ asset('/images/hero/hero_02.png') }}" alt="スマートなフリーランス画像">
 
     <ul class="p-searchTab u-mt-30">
       <li class="p-searchTab__item js-tab is-active">スキル<span class="u-dn-sp">でさがす</span></li>
