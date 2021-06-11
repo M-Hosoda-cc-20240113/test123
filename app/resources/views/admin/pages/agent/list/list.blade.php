@@ -19,6 +19,7 @@
 
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
+    <span class="c-text u-mt-20">会社数：<span class="c-text--bold">{{ $response->getAgents()->count() ?? 0 }}</span>件</span>
     <a href="{{ route('agent.create.form') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録する</a>
     @include('admin.pages.agent.list._RegularTable', ['response' => $response])
     {{ $response->getAgents()->links('components.paginator') }}
