@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<head prefix="og: http://ogp.me/ns#">
   @include('gtm._gtm_head')
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta charset="utf-8">
@@ -21,6 +21,41 @@
   @hasSection('canonical')
     <link rel="canonical" href="@yield('canonical')">
   @endif
+
+{{-- ogp共通設定 --}}
+  @hasSection('ogp_title')
+    <meta property="og:title" content="@yield('ogp_title')">
+  @endif
+  @hasSection('ogp_type')
+    <meta property="og:type" content="@yield('ogp_type')">
+  @endif
+  @hasSection('ogp_url')
+    <meta property="og:url" content="@yield('ogp_url')">
+  @endif
+  @hasSection('ogp_image')
+    <meta property="og:image" content="@yield('ogp_image')">
+  @endif
+  @hasSection('ogp_site_name')
+    <meta property="og:site_name" content="@yield('ogp_site_name')">
+  @endif
+  @hasSection('ogp_description')
+    <meta property="og:description" content="@yield('ogp_description')">
+  @endif
+  @hasSection('ogp_local')
+    <meta property="og:local" content="@yield('ogp_local')">
+  @endif
+{{-- ogp Twitter設定 --}}
+  @hasSection('twitter_card')
+    <meta property="twitter:card" content="@yield('twitter_card')">
+  @endif
+  @hasSection('twitter_site')
+    <meta property="twitter:site" content="@yield('twitter_site')">
+  @endif
+  @hasSection('twitter_creator')
+    <meta property="twitter:creator" content="@yield('twitter_creator')">
+  @endif
+
+
   @section('stylesheet')
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}" media="all">
   @show
@@ -30,7 +65,7 @@
 <body data-route-name="{{ \Route::currentRouteName() }}">
 @include('gtm._gtm_body')
 @section('body')
-@show 
+@show
 
 @section('script')
   <script src="{{ asset('/js/bundle.js') }}" type="text/javascript"></script>
