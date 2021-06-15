@@ -2,10 +2,9 @@
 
 namespace App\Services\Top\FetchTopData;
 
+use App\Models\Area;
 use App\Models\Position;
-use App\Models\Project;
 use App\Models\Skill;
-use App\Models\Station;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
@@ -31,9 +30,9 @@ class FetchTopResponse
     private $positions;
 
     /**
-     * @var Station[]|Collection
+     * @var Area[]|Collection
      */
-    private $stations;
+    private $areas;
 
     /**
      * @var int[]|array
@@ -48,7 +47,7 @@ class FetchTopResponse
     /**
      * @var int[]|array
      */
-    private $searched_station_ids;
+    private $searched_area_ids;
 
     /**
      * @var int
@@ -124,26 +123,20 @@ class FetchTopResponse
     }
 
     /**
-     * Get the value of stations
-     *
-     * @return  Station[]|Collection
+     * @return Area[]|Collection
      */
-    public function getStations(): Collection
+    public function getAreas()
     {
-        return $this->stations;
+        return $this->areas;
     }
 
     /**
-     * Set the value of stations
-     *
-     * @param Collection $stations
-     *
-     * @return  self
+     * @param Area[]|Collection $areas
+     * @return FetchTopResponse
      */
-    public function setStations(Collection $stations): FetchTopResponse
+    public function setAreas($areas): FetchTopResponse
     {
-        $this->stations = $stations;
-
+        $this->areas = $areas;
         return $this;
     }
 
@@ -186,18 +179,18 @@ class FetchTopResponse
     /**
      * @return array|int[]
      */
-    public function getSearchedStationIds(): array
+    public function getSearchedAreaIds(): array
     {
-        return $this->searched_station_ids;
+        return $this->searched_area_ids;
     }
 
     /**
-     * @param array|int[] $searched_station_ids
+     * @param array|int[] $searched_area_ids
      * @return FetchTopResponse
      */
-    public function setSearchedStationIds(array $searched_station_ids): FetchTopResponse
+    public function setSearchedAreaIds(array $searched_area_ids): FetchTopResponse
     {
-        $this->searched_station_ids = $searched_station_ids;
+        $this->searched_area_ids = $searched_area_ids;
         return $this;
     }
 
