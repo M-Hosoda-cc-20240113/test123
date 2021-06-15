@@ -2,7 +2,6 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\Station;
 
-use App\Http\Requests\Admin\Station\CreateStationRequest;
 use App\Models\Area;
 use App\Models\Station;
 use App\Services\Station\CreateStation\CreateStationParameter;

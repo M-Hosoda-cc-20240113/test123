@@ -60,8 +60,8 @@ class ProjectController extends Controller
             $parameter->setPositionIds($request->position_ids);
         }
 
-        if (isset($request->station_ids)) {
-            $parameter->setStationIds($request->station_ids);
+        if (isset($request->area_ids)) {
+            $parameter->setAreaIds($request->area_ids);
         }
 
         if (isset($request->keyword)) {
