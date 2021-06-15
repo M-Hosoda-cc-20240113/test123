@@ -34,7 +34,7 @@
     <ul class="p-searchTab u-mt-30">
       <li class="p-searchTab__item js-tab is-active">スキル<span class="u-dn-sp">でさがす</span></li>
       <li class="p-searchTab__item js-tab">ポジション<span class="u-dn-sp">でさがす</span></li>
-      <li class="p-searchTab__item js-tab">最寄り駅<span class="u-dn-sp">でさがす</span></li>
+      <li class="p-searchTab__item js-tab">エリア<span class="u-dn-sp">でさがす</span></li>
     </ul>
 
     <form action="{{ route('front.project.search') }}" method="get">
@@ -61,10 +61,10 @@
       {{--  positions  --}}
 
       <div class="p-checkboxUnit js-tab_content">
-        @foreach($response->getStations() as $station)
-          <label class="p-checkbox p-checkboxUnit__item">{{ $station->name }}
-            <input value="{{ $station->id }}" name="station_ids[]"
-                   type="checkbox" @if(!\Route::is('front.index') && in_array($station->id, $response->getSearchedStationIds())){{ 'checked' }}@endif>
+        @foreach($response->getAreas() as $area)
+          <label class="p-checkbox p-checkboxUnit__item">{{ $area->name }}
+            <input value="{{ $area->id }}" name="station_ids[]"
+                   type="checkbox" @if(!\Route::is('front.index') && in_array($area->id, $response->getSearchedAreaIds())){{ 'checked' }}@endif>
             <div class="p-checkbox__indicator"></div>
           </label>
         @endforeach
