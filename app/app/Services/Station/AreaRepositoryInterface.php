@@ -7,7 +7,7 @@ use App\Services\Station\CreateStation\CreateStationParameter;
 use App\Services\Station\DeleteStation\DeleteStationParameter;
 use Illuminate\Database\Eloquent\Collection;
 
-interface StationRepositoryInterface
+interface AreaRepositoryInterface
 {
     /**
      * @return Collection

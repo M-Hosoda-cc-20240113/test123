@@ -14,8 +14,8 @@ class StationServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            \App\Services\Station\StationRepositoryInterface::class,
-            \App\Infrastructures\Repositories\Eloquent\Station\StationRepository::class
+            \App\Services\Station\AreaRepositoryInterface::class,
+            \App\Infrastructures\Repositories\Eloquent\Station\AreaRepository::class
         );
     }
 

@@ -7,7 +7,7 @@ namespace App\Services\AdminProject\ShowCreateProjectForm;
 use App\Services\Agent\AgentRepositoryInterface;
 use App\Services\Position\PositionRepositoryInterface;
 use App\Services\Skill\SkillRepositoryInterface;
-use App\Services\Station\StationRepositoryInterface;
+use App\Services\Station\AreaRepositoryInterface;
 
 class ShowCreateProjectFormService
 {
@@ -23,13 +23,13 @@ class ShowCreateProjectFormService
      * ShowCreateProjectFormService constructor.
      * @param \App\Services\Position\PositionRepositoryInterface $position_repository
      * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
-     * @param \App\Services\Station\StationRepositoryInterface $station_repository
+     * @param \App\Services\Station\AreaRepositoryInterface $station_repository
      * @param \App\Services\Agent\AgentRepositoryInterface $agent_repository
      */
     public function __construct(
         PositionRepositoryInterface $position_repository,
         SkillRepositoryInterface $skill_repository,
-        StationRepositoryInterface $station_repository,
+        AreaRepositoryInterface $station_repository,
         AgentRepositoryInterface $agent_repository
     ) {
         $this->position_repository = $position_repository;

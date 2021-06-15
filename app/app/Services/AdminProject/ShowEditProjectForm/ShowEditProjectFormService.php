@@ -8,7 +8,7 @@ use App\Services\Agent\AgentRepositoryInterface;
 use App\Services\Position\PositionRepositoryInterface;
 use App\Services\Project\ProjectRepositoryInterface;
 use App\Services\Skill\SkillRepositoryInterface;
-use App\Services\Station\StationRepositoryInterface;
+use App\Services\Station\AreaRepositoryInterface;
 
 class ShowEditProjectFormService
 {
@@ -23,14 +23,14 @@ class ShowEditProjectFormService
      * @param ProjectRepositoryInterface $project_repository
      * @param \App\Services\Position\PositionRepositoryInterface $position_repository
      * @param \App\Services\Skill\SkillRepositoryInterface $skill_repository
-     * @param \App\Services\Station\StationRepositoryInterface $station_repository
+     * @param \App\Services\Station\AreaRepositoryInterface $station_repository
      * @param \App\Services\Agent\AgentRepositoryInterface $agent_repository
      */
     public function __construct(
         ProjectRepositoryInterface $project_repository,
         PositionRepositoryInterface $position_repository,
         SkillRepositoryInterface $skill_repository,
-        StationRepositoryInterface $station_repository,
+        AreaRepositoryInterface $station_repository,
         AgentRepositoryInterface $agent_repository
     ) {
         $this->project_repository = $project_repository;

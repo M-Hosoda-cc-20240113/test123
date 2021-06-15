@@ -7,10 +7,10 @@ use App\Models\Area;
 use App\Models\Station;
 use App\Services\Station\CreateStation\CreateStationParameter;
 use App\Services\Station\DeleteStation\DeleteStationParameter;
-use App\Services\Station\StationRepositoryInterface;
+use App\Services\Station\AreaRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
-class StationRepository implements StationRepositoryInterface
+class AreaRepository implements AreaRepositoryInterface
 {
     /**
      * @inheritDoc

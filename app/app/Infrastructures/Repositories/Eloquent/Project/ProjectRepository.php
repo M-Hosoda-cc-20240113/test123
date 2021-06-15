@@ -282,6 +282,22 @@ class ProjectRepository implements ProjectRepositoryInterface
             ->get();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchByAreaIds(array $area_ids, array $exclude_ids = []): Collection
+    {
+        return Project::with(['station', 'positions', 'skills'])
+            ->where('decided', 0)
+            ->whereNotIn('id', $exclude_ids)
+            ->where(static function (Builder $query) use ($area_ids) {
+                $query->whereHas('station', static function (Builder $query) use ($area_ids) {
+                    $query->whereIn('stations.area_id', $area_ids);
+                });
+            })
+            ->get();
+    }
+
     public function csvCreate(CsvCreateProjectParameter $parameter): void
     {
         $project = new Project();

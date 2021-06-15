@@ -28,7 +28,7 @@ class SearchProjectParameter
     /**
      * @var int[]|array
      */
-    private $station_ids = [];
+    private $area_ids = [];
 
     /**
      * @var string
@@ -72,20 +72,20 @@ class SearchProjectParameter
     }
 
     /**
-     * @return array
+     * @return array|int[]
      */
-    public function getStationIds(): array
+    public function getAreaIds(): array
     {
-        return $this->station_ids;
+        return $this->area_ids;
     }
 
     /**
-     * @param array $station_ids
+     * @param array|int[] $area_ids
      * @return SearchProjectParameter
      */
-    public function setStationIds(array $station_ids): SearchProjectParameter
+    public function setAreaIds(array $area_ids): SearchProjectParameter
     {
-        $this->station_ids = $this->toInt($station_ids);
+        $this->area_ids = $area_ids;
         return $this;
     }
 
@@ -134,9 +134,9 @@ class SearchProjectParameter
     /**
      * @return bool
      */
-    public function hasStation(): bool
+    public function hasArea(): bool
     {
-        return count($this->getStationIds()) > 0;
+        return count($this->getAreaIds()) > 0;
     }
 
     /**

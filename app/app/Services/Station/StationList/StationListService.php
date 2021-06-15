@@ -3,7 +3,7 @@
 namespace App\Services\Station\StationList;
 
 use App\Services\Pagination\PaginatorService;
-use App\Services\Station\StationRepositoryInterface;
+use App\Services\Station\AreaRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
@@ -13,7 +13,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class StationListService
 {
     /**
-     * @var StationRepositoryInterface
+     * @var AreaRepositoryInterface
      */
     private $station_repository;
 
@@ -24,11 +24,11 @@ class StationListService
 
     /**
      * StationListService constructor.
-     * @param \App\Services\Station\StationRepositoryInterface $station_repository
+     * @param \App\Services\Station\AreaRepositoryInterface $station_repository
      * @param \App\Services\Pagination\PaginatorService $paginator_service
      */
     public function __construct(
-        StationRepositoryInterface $station_repository,
+        AreaRepositoryInterface $station_repository,
         PaginatorService $paginator_service
     ) {
         $this->station_repository = $station_repository;
