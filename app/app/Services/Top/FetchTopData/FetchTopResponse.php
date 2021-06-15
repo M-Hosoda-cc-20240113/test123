@@ -20,17 +20,17 @@ class FetchTopResponse
     private $projects;
 
     /**
-     * @var Skill[]|Collection
+     * @var Collection
      */
     private $skills;
 
     /**
-     * @var Position[]|Collection
+     * @var Collection
      */
     private $positions;
 
     /**
-     * @var Area[]|Collection
+     * @var Collection
      */
     private $areas;
 
@@ -78,7 +78,7 @@ class FetchTopResponse
     /**
      * Get the value of skills
      *
-     * @return  Skill[]|Collection
+     * @return  Collection
      */
     public function getSkills(): Collection
     {
@@ -102,7 +102,7 @@ class FetchTopResponse
     /**
      * Get the value of positions
      *
-     * @return  Position[]|Collection
+     * @return  Collection
      */
     public function getPositions(): Collection
     {
@@ -123,18 +123,18 @@ class FetchTopResponse
     }
 
     /**
-     * @return Area[]|Collection
+     * @return Collection
      */
-    public function getAreas()
+    public function getAreas():Collection
     {
         return $this->areas;
     }
 
     /**
-     * @param Area[]|Collection $areas
+     * @param Collection $areas
      * @return FetchTopResponse
      */
-    public function setAreas($areas): FetchTopResponse
+    public function setAreas(Collection $areas): FetchTopResponse
     {
         $this->areas = $areas;
         return $this;
