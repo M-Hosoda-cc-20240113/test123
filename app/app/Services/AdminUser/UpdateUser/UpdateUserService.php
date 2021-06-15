@@ -7,7 +7,7 @@ namespace App\Services\AdminUser\UpdateUser;
 use App\Models\User;
 use App\Services\Application\ApplicationRepositoryInterface;
 use App\Services\Assignment\AssignmentRepositoryInterface;
-use App\Services\Station\AreaRepositoryInterface;
+use App\Services\Station\StationRepositoryInterface;
 use App\Services\Status\StatusRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
 

@@ -2,15 +2,14 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\Station;
 
-use App\Http\Requests\Admin\Station\CreateStationRequest;
 use App\Models\Area;
 use App\Models\Station;
 use App\Services\Station\CreateStation\CreateStationParameter;
 use App\Services\Station\DeleteStation\DeleteStationParameter;
-use App\Services\Station\AreaRepositoryInterface;
+use App\Services\Station\StationRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
-class AreaRepository implements AreaRepositoryInterface
+class StationRepository implements StationRepositoryInterface
 {
     /**
      * @inheritDoc
