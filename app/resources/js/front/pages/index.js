@@ -1,5 +1,6 @@
 import { TabContentsLink } from '../TabContentsLink'
 import { FAQ } from '../FAQ'
+import {MoreOpen} from '../MoreOpen';
 
 export function index() {
   /**
@@ -11,4 +12,9 @@ export function index() {
    * FAQイベント
    */
   new FAQ()
+
+  /**
+   * もっと見るボタン
+   */
+  new MoreOpen()
 }
