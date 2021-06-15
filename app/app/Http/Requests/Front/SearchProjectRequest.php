@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Models\Area;
 use App\Models\Position;
 use App\Models\Skill;
 use App\Models\Station;
@@ -33,14 +34,14 @@ class SearchProjectRequest extends FormRequest
         $positions = Position::all();
         $position_ids =$positions->pluck('id')->toArray();
 
-        $stations = Station::all();
-        $station_ids = $stations->pluck('id')->toArray();
+        $areas = Area::all();
+        $area_ids = $areas->pluck('id')->toArray();
 
         return [
             'keyword' => ['nullable', 'string', 'max:100'],
             'skill_ids.*' => ['int', Rule::in($skill_ids)],
             'position_ids.*' => ['int', Rule::in($position_ids)],
-            'station_ids.*' => ['int', Rule::in($station_ids)]
+            'area_ids.*' => ['int', Rule::in($area_ids)]
         ];
     }
 }
