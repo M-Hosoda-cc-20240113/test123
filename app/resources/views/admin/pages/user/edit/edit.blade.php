@@ -18,7 +18,8 @@
     @include('admin.bread_crumb._BreadCrumb')
     <div class="l-main">
       <div class="p-mainItem">
-        <h2 class="p-level2Heading">ユーザー情報編集</h2>
+        <h2 class="p-level2Heading">ユーザー情報編集【  {{ $response->getUser()->sei  }}
+          &nbsp;{{ $response->getUser()->mei }}  {{ $response->getUser()->is_new ? '※新規ユーザー' : '' }}】</h2>
         @if($errors->all())
           <p class="c-text--bold">以下のエラーを修正してください</p>
           @foreach($errors->all() as $error)
@@ -58,7 +59,7 @@
                       <select name="statuses[]" id="">
                         @for($i = 0; $i < 4; $i++)
                           <option
-                            value="{{ $i }}" {{ $i === $project->pivot->status ? 'selected' : '0' }}>{{ ViewHelper::Status($i) }}</option>
+                              value="{{ $i }}" {{ $i === $project->pivot->status ? 'selected' : '0' }}>{{ ViewHelper::Status($i) }}</option>
                         @endfor
                       </select>
                     </label>

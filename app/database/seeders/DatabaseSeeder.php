@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
         $this->call(AreaTableSeeder::class);
         $this->call(StationTableSeeder::class);
         $this->call(ProjectSeeder::class);
-//        $this->call(RelLevelSkillUserTableSeeder::class);
-//        $this->call(ApplicationTableSeeder::class);
+        $this->call(RelLevelSkillUserTableSeeder::class);
+        $this->call(ApplicationTableSeeder::class);
         $this->call(RelPositionProjectTableSeeder::class);
         $this->call(RelProjectSkillTableSeeder::class);
-//        $this->call(AssignmentTableSeeder::class);
-//        $this->call(StatusTableSeeder::class);
-//        $this->call(NoteTableSeeder::class);
+        $this->call(AssignmentTableSeeder::class);
+        $this->call(StatusTableSeeder::class);
+        $this->call(NoteTableSeeder::class);
     }
 }
