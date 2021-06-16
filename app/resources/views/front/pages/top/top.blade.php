@@ -30,7 +30,7 @@
 
   <div class="l-container">
     <a href="">
-      <img src="{{ asset('/images/hero/hero_03.png') }}" alt="スマートなフリーランス画像">
+      <img src="{{ asset('/images/hero/hero_01.png') }}" alt="スマートなフリーランス画像">
     </a>
 
     <ul class="p-searchTab u-mt-30">
