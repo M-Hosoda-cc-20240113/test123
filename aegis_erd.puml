@@ -59,8 +59,6 @@ package "Aegis ER図" as aegis_erd {
         + id:int [PK, AI, UN] (ID)
         ---
         name:varchar(255) [NN, UQ] (スキル名)
-        - tel:varchar(255) [UQ, OD:SETNULL] (電話番号)
-        - tel_hash:varchar(255) [UQ, OD:SETNULL] (電話番号)
         created_at:datetime [NN] (登録日時)
         updated_at:datetime [NN] (更新日時)
     }
