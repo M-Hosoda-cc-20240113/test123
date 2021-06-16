@@ -614,7 +614,7 @@ img {
   background-color: #cdcddf;
 }
 
-.c-text, .c-text--bold, .c-text--center, .c-text--primary, .c-text--warning, .c-text--muted, .c-text--light, .c-text--wp, .c-text--code {
+.c-text, .c-text--bold, .c-text--center, .c-text--primary, .c-text--warning, .c-text--muted, .c-text--light, .c-text--wp, .c-text--code, .c-text--pointer {
   font-size: 1.4rem;
   margin: 0;
   color: #333333;
@@ -664,6 +664,10 @@ img {
   padding: 15px !important;
   line-height: 2rem;
   border-radius: 8px;
+}
+
+.c-text--pointer {
+  cursor: pointer;
 }
 
 .c-tag {
@@ -8308,4 +8312,13 @@ img {
 
 .u-bg-light {
   background-color: #ffffff;
+}
+
+.v-swiper__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-weight: 700;
 }

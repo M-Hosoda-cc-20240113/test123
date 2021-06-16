@@ -38,39 +38,39 @@
     </ul>
 
     <form action="{{ route('front.project.search') }}" method="get">
-      <div class="p-checkboxUnit js-tab_content">
+      <div class="p-checkboxUnit js-tab_content js-open">
         @foreach($response->getSkills() as $skill)
-            <label class="p-checkbox p-checkboxUnit__item js-skill_content">{{ $skill->name }}
+            <label class="p-checkbox p-checkboxUnit__item js-contents">{{ $skill->name }}
               <input value="{{ $skill->id }}" name="skill_ids[]"
                      type="checkbox" @if(!\Route::is('front.index') && in_array($skill->id, $response->getSearchedSkillIds())){{ 'checked' }}@endif>
               <div class="p-checkbox__indicator"></div>
             </label>
         @endforeach
-        <div class="p-news__itemInner u-mt-5 js-more_open">....もっと見る</div>
+          <span class="c-text--pointer c-text--primary u-mt-5 js-more_open">....もっと見る</span>
       </div>
       {{--  skills  --}}
 
-      <div class="p-checkboxUnit js-tab_content">
+      <div class="p-checkboxUnit js-tab_content js-open">
         @foreach($response->getPositions() as $position)
-            <label class="p-checkbox p-checkboxUnit__item js-position_content">{{ $position->name }}
+          <label class="p-checkbox p-checkboxUnit__item js-contents">{{ $position->name }}
               <input value="{{ $position->id }}" name="position_ids[]"
                      type="checkbox" @if(!\Route::is('front.index') && in_array($position->id, $response->getSearchedPositionIds())){{ 'checked' }}@endif>
               <div class="p-checkbox__indicator"></div>
             </label>
         @endforeach
-        <div class="p-news__itemInner u-mt-5 js-more_open">....もっと見る</div>
+          <span class="c-text--pointer c-text--primary u-mt-5 js-more_open">....もっと見る</span>
       </div>
       {{--  positions  --}}
 
-      <div class="p-checkboxUnit js-tab_content">
+      <div class="p-checkboxUnit js-tab_content js-open">
         @foreach($response->getAreas() as $area)
-          <label class="p-checkbox p-checkboxUnit__item js-area_content">{{ $area->name }}
+          <label class="p-checkbox p-checkboxUnit__item js-contents">{{ $area->name }}
             <input value="{{ $area->id }}" name="area_ids[]"
                    type="checkbox" @if(!\Route::is('front.index') && in_array($area->id, $response->getSearchedAreaIds())){{ 'checked' }}@endif>
             <div class="p-checkbox__indicator"></div>
           </label>
         @endforeach
-        <div class="p-news__itemInner u-mt-5 js-more_open">....もっと見る</div>
+          <span class="c-text--pointer c-text--primary u-mt-5 js-more_open">....もっと見る</span>
       </div>
       {{--  areas  --}}
       @if($errors->all())

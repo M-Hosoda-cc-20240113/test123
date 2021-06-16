@@ -26,7 +26,6 @@ export class ConfirmWithCheckbox {
   }
 
   /**
-   *
    * @param {Event} e
    */
   onClick(e) {
