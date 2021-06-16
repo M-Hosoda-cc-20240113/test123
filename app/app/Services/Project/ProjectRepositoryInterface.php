@@ -100,9 +100,16 @@ interface ProjectRepositoryInterface
     /**
      * @param array $station_ids
      * @param array $exclude_ids
-     * @return Project[]|Collection
+     * @return Collection
      */
     public function fetchByStationIds(array $station_ids, array $exclude_ids = []);
+
+    /**
+     * @param array $area_ids
+     * @param array $exclude_ids
+     * @return Collection
+     */
+    public function fetchByAreaIds(array $area_ids, array $exclude_ids = []): Collection;
 
     /**
      * @param DeleteProjectParameter $parameter

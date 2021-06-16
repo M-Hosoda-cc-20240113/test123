@@ -17,7 +17,7 @@ class ProjectSeeder extends Seeder
         $now = Carbon::now();
         Project::create([
             "agent_id"           => 1 ,
-            "station_id"         => 1 ,
+            "station_id"         => 100 ,
             "name"               => "CSタイトルのPS5移植案件・技術検証" ,
             "min_unit_price"     => null ,
             "max_unit_price"     => "85" ,
@@ -35,7 +35,7 @@ class ProjectSeeder extends Seeder
 
         Project::create([
             "agent_id"           => 2 ,
-            "station_id"         => 2 ,
+            "station_id"         => 30 ,
             "name"               => "【PHP】不動産会社向け契約管理システム" ,
             "min_unit_price"     =>  null,
             "max_unit_price"     => "45" ,
@@ -53,7 +53,7 @@ class ProjectSeeder extends Seeder
 
         Project::create([
             "agent_id"           => 3 ,
-            "station_id"         => 4 ,
+            "station_id"         => 55 ,
             "name"               => "大手リラクゼーションサロン業務効率化" ,
             "min_unit_price"     => "60",
             "max_unit_price"     => "75" ,
@@ -71,7 +71,7 @@ class ProjectSeeder extends Seeder
 
         Project::create([
             "agent_id"           => 5 ,
-            "station_id"         => 2 ,
+            "station_id"         => 79 ,
             "name"               => "大規模総合ＥＣサイトの開発業務全般" ,
             "min_unit_price"     => "80",
             "max_unit_price"     => "100" ,
@@ -89,7 +89,7 @@ class ProjectSeeder extends Seeder
 
         Project::create([
             "agent_id"           => 4 ,
-            "station_id"         => 6 ,
+            "station_id"         => 245 ,
             "name"               => "求人ポータルサイトの運用・障害対応業務の及びAWS移管作業" ,
             "min_unit_price"     => "40",
             "max_unit_price"     => "60" ,
@@ -107,7 +107,7 @@ class ProjectSeeder extends Seeder
 
         Project::create([
             "agent_id"           => 1 ,
-            "station_id"         => 5 ,
+            "station_id"         => 200 ,
             "name"               => "【大手コンビニEC 配送システム開発】" ,
             "min_unit_price"     => "60",
             "max_unit_price"     => "70" ,
@@ -125,7 +125,7 @@ class ProjectSeeder extends Seeder
 
         Project::create([
             "agent_id"           => 4 ,
-            "station_id"         => 7 ,
+            "station_id"         => 150 ,
             "name"               => "NW系ユーザー側上流業務支援" ,
             "min_unit_price"     => "80",
             "max_unit_price"     => "95" ,
@@ -142,8 +142,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 2 ,
-            "station_id"         => 3 ,
+            "agent_id"           => 12 ,
+            "station_id"         => 97 ,
             "name"               => "【大手商業施設 POSレジシステム開発】" ,
             "min_unit_price"     => "70",
             "max_unit_price"     => "95" ,
@@ -160,8 +160,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 2 ,
-            "station_id"         => 5 ,
+            "agent_id"           => 15 ,
+            "station_id"         => 45 ,
             "name"               => "スマホアプリ開発" ,
             "min_unit_price"     => "70",
             "max_unit_price"     => "95" ,
@@ -179,7 +179,7 @@ class ProjectSeeder extends Seeder
 
         Project::create([
             "agent_id"           => 5 ,
-            "station_id"         => 1 ,
+            "station_id"         => 64 ,
             "name"               => "大手アパレルメーカーEC案件" ,
             "min_unit_price"     => "70",
             "max_unit_price"     => "95" ,
@@ -196,8 +196,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 1 ,
-            "station_id"         => 8 ,
+            "agent_id"           => 24 ,
+            "station_id"         => 55 ,
             "name"               => "テスト案件#1" ,
             "min_unit_price"     => null,
             "max_unit_price"     => "70" ,
@@ -214,8 +214,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 3 ,
-            "station_id"         => 2 ,
+            "agent_id"           => 8 ,
+            "station_id"         => 134 ,
             "name"               => "テスト案件#2" ,
             "min_unit_price"     => null,
             "max_unit_price"     => "80" ,
@@ -232,8 +232,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 5 ,
-            "station_id"         => 4 ,
+            "agent_id"           => 10 ,
+            "station_id"         => 22 ,
             "name"               => "テスト案件#3" ,
             "min_unit_price"     => null,
             "max_unit_price"     => "90" ,
@@ -250,8 +250,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 5 ,
-            "station_id"         => 3 ,
+            "agent_id"           => 13 ,
+            "station_id"         => 87 ,
             "name"               => "テスト案件#4" ,
             "min_unit_price"     => null,
             "max_unit_price"     => "60" ,
@@ -268,8 +268,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 3 ,
-            "station_id"         => 3 ,
+            "agent_id"           => 28 ,
+            "station_id"         => 59 ,
             "name"               => "テスト案件#5" ,
             "min_unit_price"     => null,
             "max_unit_price"     => "100" ,
@@ -286,8 +286,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 2 ,
-            "station_id"         => 3 ,
+            "agent_id"           => 33 ,
+            "station_id"         => 70 ,
             "name"               => "テスト案件#6" ,
             "min_unit_price"     => null,
             "max_unit_price"     => "75" ,
@@ -304,8 +304,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 2 ,
-            "station_id"         => 2 ,
+            "agent_id"           => 56 ,
+            "station_id"         => 21 ,
             "name"               => "テスト案件#7" ,
             "min_unit_price"     => "55",
             "max_unit_price"     => "85" ,
@@ -322,8 +322,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 1 ,
-            "station_id"         => 3 ,
+            "agent_id"           => 77 ,
+            "station_id"         => 17 ,
             "name"               => "テスト案件#8" ,
             "min_unit_price"     => "75",
             "max_unit_price"     => "90" ,
@@ -340,8 +340,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 2 ,
-            "station_id"         => 4 ,
+            "agent_id"           => 62 ,
+            "station_id"         => 91 ,
             "name"               => "テスト案件#9" ,
             "min_unit_price"     => "35",
             "max_unit_price"     => "55" ,
@@ -358,8 +358,8 @@ class ProjectSeeder extends Seeder
         ]);
 
         Project::create([
-            "agent_id"           => 4 ,
-            "station_id"         => 3 ,
+            "agent_id"           => 54 ,
+            "station_id"         => 178 ,
             "name"               => "テスト案件#10" ,
             "min_unit_price"     => null,
             "max_unit_price"     => "95" ,

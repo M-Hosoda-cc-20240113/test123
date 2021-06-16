@@ -16,11 +16,6 @@ class CreateAgentParameter
     private $name;
 
     /**
-     * @var string
-     */
-    private $tel;
-
-    /**
      * @return string
      */
     public function getName(): string
@@ -37,23 +32,4 @@ class CreateAgentParameter
         $this->name = $name;
         return $this;
     }
-
-    /**
-     * @return string
-     */
-    public function getTel(): ?string
-    {
-        return $this->tel;
-    }
-
-    /**
-     * @param string|null $tel
-     * @return CreateAgentParameter
-     */
-    public function setTel(?string $tel): CreateAgentParameter
-    {
-        $this->tel = $tel;
-        return $this;
-    }
-
 }

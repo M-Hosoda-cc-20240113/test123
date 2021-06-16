@@ -22,7 +22,7 @@
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
     <div class="p-mainItem c-modal__content js-modal-content">
-      <span class="c-modal__closeButtoon js-modal-close-button">×</span>
+      <span class="c-modal__closeButton js-modal-close-button">×</span>
       @if($errors->all())
         @foreach($errors->all() as $error)
           <p class="c-text--warning">{{ $error }}</p>

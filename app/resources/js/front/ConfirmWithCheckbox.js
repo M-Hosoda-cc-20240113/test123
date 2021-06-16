@@ -26,7 +26,6 @@ export class ConfirmWithCheckbox {
   }
 
   /**
-   *
    * @param {Event} e
    */
   onClick(e) {
@@ -34,7 +33,6 @@ export class ConfirmWithCheckbox {
   }
 
   /**
-   *
    * @param {Event} e
    */
   toggleButtonActive(e) {
@@ -44,4 +42,5 @@ export class ConfirmWithCheckbox {
 
     this.button.disabled = !e.target.checked;
   }
+
 }

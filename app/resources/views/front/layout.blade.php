@@ -4,7 +4,6 @@
   @include('gtm._gtm_head')
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta charset="utf-8">
-  <link rel="SHORTCUT ICON" href="/assets/images/favicon.ico">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 

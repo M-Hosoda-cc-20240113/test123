@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Position;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -16,20 +17,30 @@ class PositionSeeder extends Seeder
     {
         $names = [
             'フロントエンドエンジニア',
-            'サーバーサイドエンジニア',
-            'スマホアプリ開発（ネイティブ）エンジニア',
-            'アナリスト（データサイエンティスト）',
+            'バックエンドエンジニア',
+            'webデザイナー',
+            'クラウドエンジニア',
+            'プロジェクトリーダー',
+            'プロジェクトマネージャー',
+            'インフラエンジニア',
+            'ネットワークエンジニア',
             'サーバーエンジニア',
-            '企画・マーケティング',
-            'Webディレクター・プロデューサー',
-            'UI・UXデザイナー'
+            'データベースエンジニア',
+            'セキュリティエンジニア',
+            'プログラマー',
+            'システムエンジニア',
+            'その他のエンジニア',
+            'セールスエンジニア',
+            'テストエンジニア',
+            'ブリッジSE(ブリッジエンジニア)',
+            '組み込みエンジニア(エンベデッドエンジニア)',
         ];
         $now = Carbon::now();
         foreach ($names as $name) {
             Position::create([
-                'name'       => $name,
+                'name' => $name,
                 'created_at' => $now
-            ]);  
+            ]);
         }
     }
 }

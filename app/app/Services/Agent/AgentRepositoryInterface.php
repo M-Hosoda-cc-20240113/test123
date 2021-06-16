@@ -28,17 +28,4 @@ interface AgentRepositoryInterface
      * @return Agent
      */
     public function delete(DeleteAgentParameter $parameter): Agent;
-
-    /**
-     * 電話番号のhashを生成
-     *
-     * @param string $tel
-     * @return string
-     */
-    public function makeTelHash(string $tel): string;
-
-    /**
-     * 電話番号からユーザーを取得
-     */
-    public function findByTel(string $tel): ?Agent;
 }

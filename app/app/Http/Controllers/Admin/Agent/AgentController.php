@@ -49,7 +49,6 @@ class AgentController extends Controller
     {
         $parameter = new CreateAgentParameter();
         $parameter->setName($request->name);
-        $parameter->setTel($request->tel);
 
         DB::transaction(function () use ($create_agent_service ,$parameter) {
             $create_agent_service->exec($parameter);
