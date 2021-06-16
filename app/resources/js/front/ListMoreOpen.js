@@ -5,6 +5,9 @@
  * 2,もっと見るボタンに任意のクラス(more_open)をつける
  * 3,表示したい要素の数(display_count)
  *
+ * @param {HTMLElement} more_open
+ * @param {NodeList} contents
+ * @param {number} display_count
  */
 export class ListMoreOpen {
   constructor(more_open, contents, display_count) {
