@@ -3,7 +3,6 @@
     <tr class="p-table__headRow">
       <th class="p-table__headRowItem">ID</th>
       <th class="p-table__headRowItem">会社名</th>
-      <th class="p-table__headRowItem">電話番号</th>
       <th class="p-table__headRowItem">登録日時</th>
       <th class="p-table__headRowItem"></th>
     </tr>
@@ -14,7 +13,6 @@
     <tr class="p-table__bodyRow">
       <td class="p-table__bodyRowItem">{{ $agent->id ?? ''}}</td>
       <td class="p-table__bodyRowItem">{{ $agent->name ?? ''}}</td>
-      <td class="p-table__bodyRowItem"><a href="tel:{{ $agent->tel }}">{{ $agent->tel ?? ''}}</td>
       <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($agent->created_at ?? '' )}}</td>
       <td class="p-table__bodyRowItem--textCenter">
           <form action="{{ route('agent.delete') }}" method="post">

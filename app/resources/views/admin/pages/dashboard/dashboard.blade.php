@@ -115,7 +115,7 @@
           <a href="{{ route('agent.create.form') }}" class="p-button p-flex__item">
             <img class="p-button__icon" src="images/icons/icon_building.svg" alt="">
             <div class="p-button__box">
-              <h2 class="p-button__boxTitle">案件元追加</h2>
+              <h2 class="p-button__boxTitle">案件元会社追加</h2>
               <p class="p-button__boxText">案件元の登録処理を行います</p>
             </div>
           </a>

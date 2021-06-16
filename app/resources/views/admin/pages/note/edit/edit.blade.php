@@ -19,7 +19,7 @@
     <div class="l-main u-mt-20">
       <div class="p-mainItem">
 
-        <h2 class="p-level2Heading">お知らせ修正</h2>
+        <h2 class="p-level2Heading">お知らせ修正【{{ $response->getNote()->title ?? '' }}】</h2>
         @if($errors->all())
           @foreach($errors->all() as $error)
             <p class="c-text--warning">{{ $error }}</p>

@@ -16,8 +16,6 @@ class CreateAgentsTable extends Migration
         Schema::create('agents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('tel')->unique()->nullable();
-            $table->string('tel_hash')->unique()->nullable();
             $table->timestamps();
         });
     }

@@ -4,9 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Project;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Crypt;
 
 /**
  * App\Models\Agent
@@ -32,8 +30,6 @@ class Agent extends Model
 
     protected $fillable = [
         'name',
-        'tel',
-        'tel_hash',
     ];
 
     /**
@@ -45,22 +41,5 @@ class Agent extends Model
     public function projects(): HasMany
     {
         return $this->hasMany(Project::class);
-    }
-
-    /**
-     * @param $val
-     * @return string
-     */
-    public function getTelAttribute($val): string
-    {
-        return Crypt::decrypt($val);
-    }
-
-    /**
-     * @param $val
-     */
-    public function setTelAttribute($val)
-    {
-        $this->attributes['tel'] = Crypt::encrypt($val);
     }
 }

@@ -18,8 +18,7 @@
     @include('admin.bread_crumb._BreadCrumb')
     <div class="l-main">
       <div class="p-mainItem">
-
-        <h2 class="p-level2Heading">案件情報修正</h2>
+        <h2 class="p-level2Heading">案件情報修正【案件名：{{ $response->getProject()->name ?? '' }}{{ $response->getProject()->decided ? '※応募終了' : '' }}】</h2>
         @if($errors->all())
           <p class="c-text--bold">以下のエラーを修正してください</p>
           @foreach($errors->all() as $error)

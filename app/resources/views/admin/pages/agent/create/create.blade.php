@@ -42,18 +42,6 @@
                 </div>
               </div>
 
-              <div class="p-register__row u-mt-20">
-                <span class="p-register__title c-text--bold">電話番号</span>
-                <div class="p-register__itemWrap">
-                  <div class="p-register__item">
-                    <input class="c-input " type="text"
-                           placeholder="08012341234"
-                           name="tel"
-                           value="{{ old('tel') }}">
-                  </div>
-                </div>
-              </div>
-
               <button type="submit" class="c-button u-db u-m0a u-mt-30 u-w-15-pc">新規登録</button>
             </form>
           </div>
