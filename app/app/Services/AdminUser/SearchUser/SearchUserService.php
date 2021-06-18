@@ -149,8 +149,7 @@ class SearchUserService
 
         // 営業月検索
         if ($parameter->getOperationStartMonth()) {
-            $result = $this->user_repository->fetchByOperationStartMonth($parameter->getOperationStartMonth(),
-                $searched_ids);
+            $result = $this->user_repository->fetchByOperationStartMonth($parameter->getOperationStartMonth(), $searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results = [];
             $search_results[] = $result;
@@ -158,16 +157,14 @@ class SearchUserService
 
         // status: 0：未営業、1：面談待ち、2：結果待ち、3：稼働済み and 面談予定月
         if (preg_match('/^[0-3]+$/', $parameter->getStatus()) && !empty($parameter->getInterviewMonth())) {
-            $result = $this->user_repository->fetchByInterviewMonthAndStatus($parameter->getInterviewMonth(),
-                $parameter->getStatus(), $searched_ids);
+            $result = $this->user_repository->fetchByInterviewMonthAndStatus($parameter->getInterviewMonth(), $parameter->getStatus(), $searched_ids);
             $search_results = [];
             $search_results[] = $result;
         }
 
         // status: 0：未営業、1：面談待ち、2：結果待ち、3：稼働済み and 営業月検索
         if (preg_match('/^[0-3]+$/', $parameter->getStatus()) && !empty($parameter->getOperationStartMonth())) {
-            $result = $this->user_repository->fetchByOperationStartMonthAndStatus($parameter->getOperationStartMonth(),
-                $parameter->getStatus(), $searched_ids);
+            $result = $this->user_repository->fetchByOperationStartMonthAndStatus($parameter->getOperationStartMonth(), $parameter->getStatus(), $searched_ids);
             $search_results = [];
             $search_results[] = $result;
         }
