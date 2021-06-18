@@ -13,11 +13,10 @@
     @foreach ($response->getAssignments() as $assignment)
         <tr class="p-table__bodyRow" data-href="">
             <td class="p-table__bodyRowItem--clickable">
-                <a class="d-block w-100"
-                   href="{{ route('project.detail', ['project_id' => $assignment->projects->id] )}}">{{ $assignment->projects->name ?? ''}}</a>
+                <a class="u-db u-w-160px-sp" href="{{ route('project.detail', ['project_id' => $assignment->projects->id] )}}">{{ $assignment->projects->name ?? ''}}</a>
             </td>
             <td class="p-table__bodyRowItem--clickable">
-                <a class="d-block w-100"
+                <a class="u-db u-w-150px-sp"
                    href="{{ route('user.detail', ['user_id' => $assignment->users->id] )}}">{{ $assignment->projects->sei }}
                     &nbsp;{{ $assignment->users->mei ?? ''}}</a>
             </td>
@@ -32,7 +31,7 @@
                     {{ @csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $assignment->users->id }}">
                     <input type="hidden" name="project_id" value="{{  $assignment->projects->id }}">
-                    <button type="submit" class="c-button--warning js-alert-button">削除</button>
+                    <button type="submit" class="c-button--warning u-w-65px-sp js-alert-button">削除</button>
                 </form>
             </td>
         </tr>
