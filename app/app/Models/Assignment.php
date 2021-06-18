@@ -41,7 +41,7 @@ class Assignment extends Pivot
     /**
      * @return BelongsTo
      */
-    public function users(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->BelongsTo(User::class, 'user_id', 'id');
     }
@@ -49,7 +49,7 @@ class Assignment extends Pivot
     /**
      * @return BelongsTo
      */
-    public function projects(): BelongsTo
+    public function project(): BelongsTo
     {
         return $this->BelongsTo(Project::class, 'project_id', 'id');
     }
