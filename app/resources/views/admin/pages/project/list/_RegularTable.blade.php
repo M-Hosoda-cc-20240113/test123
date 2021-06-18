@@ -20,7 +20,7 @@
     <tr class="p-table__bodyRow--clickable"
         data-href="{{ route('project.detail', ['project_id' => $project->id])}}">
       <td class="p-table__bodyRowItem">{{ $project->id ?? ''}}</td>
-      <td class="p-table__bodyRowItem "><p class="u-w-160px-sp">{{ $project->name ?? ''}}</p></td>
+      <td class="p-table__bodyRowItem "><a href="{{ route('project.detail', [$project->id]) }}" class="u-w-160px-sp">{{ $project->name ?? ''}}</a></td>
       <td class="p-table__bodyRowItem">{{ $project->user_app->count() ?? 0}}</td>
       <td class="p-table__bodyRowItem">{{ $project->user_assign->count() ?? 0}}</td>
       <td class="p-table__bodyRowItem">{{ $project->decided ? '×' : '◯'}}</td>
