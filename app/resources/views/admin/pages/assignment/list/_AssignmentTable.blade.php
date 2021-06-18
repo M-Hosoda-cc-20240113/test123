@@ -17,7 +17,7 @@
             </td>
             <td class="p-table__bodyRowItem--clickable">
                 <a class="u-db u-w-150px-sp"
-                   href="{{ route('user.detail', ['user_id' => $assignment->users->id] )}}">{{ $assignment->projects->sei }}
+                   href="{{ route('user.detail', ['user_id' => $assignment->users->id] )}}">{{ $assignment->users->sei }}
                     &nbsp;{{ $assignment->users->mei ?? ''}}</a>
             </td>
             <td class="p-table__bodyRowItem">
