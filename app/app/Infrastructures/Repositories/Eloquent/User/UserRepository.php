@@ -165,17 +165,22 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchBySkillIds(array $skill_ids, array $searched_ids = []): Collection
     {
-        $user_id = RelLevelSkillUser::whereIn('skill_id', $skill_ids)
-            ->select('user_id')
-            ->get()->toArray();
+        $user_ids = [];
+        foreach ($skill_ids as $skill_id) {
+            $user_id = RelLevelSkillUser::where('skill_id', $skill_id)
+                ->select('user_id')
+                ->get()->toArray();
+            $user_ids += $user_id;
+        }
+
         if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->whereIn('id', $searched_ids)
-                ->whereIn('id', $user_id)
+                ->whereIn('id', $user_ids)
                 ->get();
         }
         return User::where('is_admin', 0)
-            ->whereIn('id', $user_id)
+            ->whereIn('id', $user_ids)
             ->get();
     }
 
@@ -184,17 +189,23 @@ class UserRepository implements UserRepositoryInterface
      */
     public function fetchByLevelIds(array $level_ids, array $searched_ids = []): Collection
     {
-        $user_id = RelLevelSkillUser::where('level_id', $level_ids[0])
-            ->select('user_id')
-            ->get()->toArray();
+        $user_ids = [];
+        foreach ($level_ids as $level_id) {
+            $user_id = RelLevelSkillUser::where('level_id', $level_id)
+                ->select('user_id')
+                ->groupBy('user_id')
+                ->get()->toArray();
+            $user_ids += $user_id;
+        }
+
         if ($searched_ids) {
             return User::where('is_admin', 0)
                 ->whereIn('id', $searched_ids)
-                ->whereIn('id', $user_id)
+                ->whereIn('id', $user_ids)
                 ->get();
         }
         return User::where('is_admin', 0)
-            ->whereIn('id', $user_id)
+            ->whereIn('id', $user_ids)
             ->get();
     }
 
