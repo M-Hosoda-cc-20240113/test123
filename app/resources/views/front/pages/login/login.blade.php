@@ -20,12 +20,12 @@
                 <p class="c-text--warning u-w-40-pc u-m0a">{{ $message }}</p>
                 @enderror
                 <div class="p-iconInput u-mt-30 u-w-40-pc u-m0a">
-                    <img src="{{ asset('images/icons/icon_lock.png') }}">
+                    <img src="{{ asset('images/icons/icon_mail.png') }}">
                     <input name="email" type="text" placeholder="example@email.com" value="{{ old('email') }}">
                 </div>
 
                 <div class="p-iconInput u-mt-20 u-w-40-pc u-m0a">
-                    <img src="{{ asset('images/icons/icon_mail.png') }}">
+                    <img src="{{ asset('images/icons/icon_lock.png') }}">
                     <input name="password" type="password" placeholder="パスワードを入力">
                 </div>
                 <p class="c-text--muted u-w-40-pc u-m0a u-mt-5">半角英数字8文字以上</p>
