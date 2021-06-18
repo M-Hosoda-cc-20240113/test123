@@ -20,7 +20,7 @@
                 <form action="{{ route('station.delete') }}" method="post">
                     {{ @csrf_field() }}
                     <input type="hidden" name="station_id" value="{{ $station->id }}">
-                    <button type="submit" class="js-alert-button c-button--warning">削除</button>
+                    <button type="submit" class="js-alert-button u-w-35-pc c-button--warning">削除</button>
                 </form>
             </td>
         </tr>

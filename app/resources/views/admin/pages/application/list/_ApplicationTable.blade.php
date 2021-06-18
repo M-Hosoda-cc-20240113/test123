@@ -46,7 +46,7 @@
                     {{ @csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $application['users']['id'] }}">
                     <input type="hidden" name="project_id" value="{{ $application['projects']['id'] }}">
-                    <button type="submit" disabled class="c-button c-button--disabled u-m0a u-w-65px-sp">確定</button>
+                    <button type="submit" disabled class="c-button c-button--disabled u-m0a u-w-65px">確定</button>
                 </form>
             </td>
             <td class="p-table__bodyRowItem--textCenter">
@@ -54,7 +54,7 @@
                     {{ @csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $application['users']['id'] }}">
                     <input type="hidden" name="project_id" value="{{  $application['projects']['id'] }}">
-                    <button type="submit" class="c-button--warning u-w-65px-sp js-alert-button">削除</button>
+                    <button type="submit" class="c-button--warning u-w-65px js-alert-button">削除</button>
                 </form>
             </td>
         </tr>

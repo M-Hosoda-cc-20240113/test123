@@ -21,7 +21,9 @@
         @include('front.pages.note.detail._NoteDetail', ['response' => $response])
       </div>
     </div>
-    <img src="{{ asset('/images/hero/hero_02.png') }}" alt="">
+    <a href="">
+      <img src="{{ asset('/images/hero/event_bnr_20210709.png') }}" alt="">
+    </a>
   </div>
 
   @include('front.footer.footer')

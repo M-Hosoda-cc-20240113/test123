@@ -26,8 +26,8 @@ class AssignmentRepository implements AssignmentRepositoryInterface
      */
     public function all(): Collection
     {
-        return Assignment::with('users')
-            ->with('projects')
+        return Assignment::with('user')
+            ->with('project')
             ->get();
     }
 

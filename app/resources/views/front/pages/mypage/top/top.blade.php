@@ -87,7 +87,7 @@
           <p class="p-level2Heading">応募案件</p>
           <div class="u-mb-30">
             @if($response->getUser()->project_app->count() === 0 )
-              <p class="c-text">応募していません。</p>
+              <p class="c-text">応募していません。<a class="c-text--primary" href="{{ route('front.index') }}">こちら</a>から案件を探しましょう。</p>
             @endif
             @foreach($response->getUser()->project_app as $project)
               <a class="c-text--bold u-dib u-mt-10 u-indent-1"
