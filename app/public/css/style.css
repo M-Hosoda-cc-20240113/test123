@@ -481,7 +481,7 @@ input:focus {
 a:hover,
 a:active,
 a:focus {
-  color: #333333;
+  color: inherit;
 }
 
 img {
@@ -614,7 +614,7 @@ img {
   background-color: #cdcddf;
 }
 
-.c-text, .c-text--bold, .c-text--center, .c-text--primary, .c-text--warning, .c-text--muted, .c-text--light, .c-text--wp, .c-text--code {
+.c-text, .c-text--bold, .c-text--center, .c-text--primary, .c-text--warning, .c-text--muted, .c-text--light, .c-text--wp, .c-text--code, .c-text--pointer {
   font-size: 1.4rem;
   margin: 0;
   color: #333333;
@@ -664,6 +664,10 @@ img {
   padding: 15px !important;
   line-height: 2rem;
   border-radius: 8px;
+}
+
+.c-text--pointer {
+  cursor: pointer;
 }
 
 .c-tag {
@@ -974,7 +978,7 @@ img {
   height: 40px;
   text-align: center;
   border: 2px solid #42b5d1;
-  line-height: 30px;
+  line-height: 35px;
   cursor: pointer;
 }
 
@@ -1257,8 +1261,23 @@ img {
   margin-right: 42px;
 }
 
+.p-card3:hover {
+  cursor: pointer;
+}
+
+.p-card3:hover .p-card3__image {
+  transform: scale(1.2);
+  transition-duration: 0.3s;
+}
+
+.p-card3__imageWrap {
+  width: 100%;
+  overflow: hidden;
+}
+
 .p-card3__image {
-  border-radius: 8px;
+  width: 100%;
+  transition-duration: 0.3s;
 }
 
 .p-footer {
@@ -3114,6 +3133,54 @@ img {
   margin: 10px 0;
   font-weight: 400;
   line-height: 1.4;
+}
+
+.p-news {
+  width: 100%;
+}
+
+.p-news__list {
+  padding: 15px;
+  border: 1px solid #42b5d1;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-width: 0 0 0 6px;
+}
+
+.p-news__item {
+  margin-top: 10px;
+  color: #4bc1c1;
+}
+
+.p-news__item:first-child {
+  margin-top: 0;
+}
+
+.p-news__item--icon:before {
+  content: '';
+  /*何も入れない*/
+  display: inline-block;
+  /*忘れずに！*/
+  width: 14px;
+  /*画像の幅*/
+  height: 14px;
+  /*画像の高さ*/
+  background-image: url("/images/icons/icon_info.svg");
+  background-size: contain;
+  vertical-align: sub;
+  background-repeat: no-repeat;
+}
+
+.p-news__itemInner {
+  font-size: 14px;
+  color: #42b5d1;
+}
+
+.p-news__itemInnerDeco--txt {
+  font-size: 14px;
+  color: #42b5d1;
+  margin-left: 10px;
 }
 
 .u-db {
@@ -9457,4 +9524,13 @@ img {
 
 .u-bg-light {
   background-color: #ffffff;
+}
+
+.v-swiper__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-weight: 700;
 }
