@@ -128,12 +128,19 @@
           </div>
           {{-- 営業開始月・面談予定月 --}}
 
-          <div class="p-formGroup u-mt-30 u-w-50-pc u-pr-30pc">
-            <span class="c-text--bold">稼働月</span>
-            <input class="c-input" name="assign_month" type="date"
-                   value="{{ request()->input('assign_month') }}">
+          <div class="p-formGroupUnit--2col">
+            <div class="p-formGroup p-formGroupUnit--2col__item--left u-pr-30pc">
+              <p class="c-text--bold">稼働月</p>
+              <input class="c-input u-mt-5" name="assign_month" type="date"
+                     value="{{ request()->input('assign_month') }}">
+            </div>
+            <div class="p-formGroup p-formGroupUnit--2col__item--left u-pr-30pc">
+              <p class="c-text--bold">稼働終了月</p>
+              <input class="c-input u-mt-5" name="assign_fin_month" type="date"
+                     value="{{ request()->input('assign_fin_month') }}">
+            </div>
           </div>
-          {{-- 稼働月 --}}
+          {{-- 稼働月・稼働終了月 --}}
 
           <button type="submit" class="c-button u-mt-20 u-db u-w-30-pc u-m0a">検索</button>
           {{--  検索ボタン（dashboard連動）  --}}

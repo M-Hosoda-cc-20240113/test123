@@ -32,7 +32,7 @@
               </p>
               <div class="p-counter__countWrap">
                                 <span
-                                  class="p-counter__count">{{ $response->getFetchUserOperation()->count() ?? 0 }}</span><span>件</span>
+                                    class="p-counter__count">{{ $response->getUsersByOperationMonth()->count() ?? 0 }}</span><span>件</span>
               </div>
             </form>
           </div>
@@ -47,7 +47,7 @@
               </p>
               <div class="p-counter__countWrap">
                                 <span
-                                  class="p-counter__count">{{ $response->getFetchNotOpen()->count() ?? 0 }}</span><span>件</span>
+                                    class="p-counter__count">{{ $response->getNotOpenUsers()->count() ?? 0 }}</span><span>件</span>
               </div>
             </form>
           </div>
@@ -63,7 +63,7 @@
               </p>
               <div class="p-counter__countWrap">
                                 <span
-                                  class="p-counter__count">{{ $response->getFetchNewAssignUser()->count() ?? 0 }}</span><span>件</span>
+                                    class="p-counter__count">{{ $response->getNewAssignUsers()->count() ?? 0 }}</span><span>件</span>
               </div>
             </form>
           </div>
@@ -78,7 +78,7 @@
               </p>
               <div class="p-counter__countWrap">
                                 <span
-                                  class="p-counter__count">{{ $response->getFetchAssignUser()->count() ?? 0 }}</span><span>件</span>
+                                    class="p-counter__count">{{ $response->getAssignUsers()->count() ?? 0 }}</span><span>件</span>
               </div>
             </form>
           </div>
@@ -93,7 +93,21 @@
               </p>
               <div class="p-counter__countWrap">
                                 <span
-                                  class="p-counter__count">{{ $response->getFetchInterviewed()->count() ?? 0 }}/{{ $response->getFetchInterview()->count() ?? 0}}</span><span>件</span>
+                                    class="p-counter__count">{{ $response->getInterviewedUsers()->count() ?? 0 }}/{{ $response->getUsersByInterviewMonth()->count() ?? 0}}</span><span>件</span>
+              </div>
+            </form>
+          </div>
+          <div class="p-counter u-mt-10-pc">
+            <form action="{{ route('user.search') }}" method="get">
+              <input type="hidden" name="assign_fin_month"
+                     value="{{ \Carbon\Carbon::today()->format("Y-m-d") }}">
+              <p class="c-text--bold p-counter__title c-tooltip">
+                <button type="submit">稼働終了件数</button>
+                <span class="c-tooltip__text--up">今月稼働終了予定の人数</span>
+              </p>
+              <div class="p-counter__countWrap">
+                                <span
+                                    class="p-counter__count">{{ $response->getAssignFinUsers()->count() ?? 0}}</span><span>件</span>
               </div>
             </form>
           </div>

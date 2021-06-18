@@ -54,6 +54,11 @@ class SearchUserParameter
     /**
      * @var string
      */
+    private $assign_fin_month = '';
+
+    /**
+     * @var string
+     */
     private $interview_month = '';
 
     /**
@@ -262,6 +267,24 @@ class SearchUserParameter
     public function setAssignMonth(string $assign_month): SearchUserParameter
     {
         $this->assign_month = $assign_month;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAssignFinMonth(): string
+    {
+        return $this->assign_fin_month;
+    }
+
+    /**
+     * @param string $assign_fin_month
+     * @return SearchUserParameter
+     */
+    public function setAssignFinMonth(string $assign_fin_month): SearchUserParameter
+    {
+        $this->assign_fin_month = $assign_fin_month;
         return $this;
     }
 

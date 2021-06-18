@@ -132,7 +132,15 @@ class SearchUserService
 
         // 稼働月
         if ($parameter->getAssignMonth()) {
-            $result = $this->user_repository->fetchByAssignMonth($parameter->getAssignMonth(),
+            $result = $this->user_repository->fetchByAssignMonth($parameter->getAssignMonth(), $searched_ids);
+            $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
+            $search_results = [];
+            $search_results[] = $result;
+        }
+
+        // 稼働終了月
+        if ($parameter->getAssignFinMonth()) {
+            $result = $this->user_repository->fetchFinProjectUserOfThisMonth($parameter->getAssignFinMonth(),
                 $searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results = [];
@@ -141,8 +149,7 @@ class SearchUserService
 
         // 営業月検索
         if ($parameter->getOperationStartMonth()) {
-            $result = $this->user_repository->fetchByOperationStartMonth($parameter->getOperationStartMonth(),
-                $searched_ids);
+            $result = $this->user_repository->fetchByOperationStartMonth($parameter->getOperationStartMonth(), $searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results = [];
             $search_results[] = $result;
@@ -163,7 +170,7 @@ class SearchUserService
         }
 
         // 検索条件がない時
-        if (!$parameter->hasSkill() && !$parameter->hasLevel() && $parameter->getNewUser() == null && !$parameter->getNotNewUser() && !$parameter->getIsWorking() && !$parameter->getIsNotWorking() && !$parameter->getOperationStartMonth() && $parameter->getStatus() == null && !$parameter->getInterviewMonth() && !$parameter->getAssignMonth()) {
+        if (!$parameter->hasSkill() && !$parameter->hasLevel() && $parameter->getNewUser() == null && !$parameter->getNotNewUser() && !$parameter->getIsWorking() && !$parameter->getIsNotWorking() && !$parameter->getOperationStartMonth() && $parameter->getStatus() == null && !$parameter->getInterviewMonth() && !$parameter->getAssignMonth() && !$parameter->getAssignFinMonth()) {
             $result = $this->user_repository->all();
             $search_results = [];
             $search_results[] = $result;

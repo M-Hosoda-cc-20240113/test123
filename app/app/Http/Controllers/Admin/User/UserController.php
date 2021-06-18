@@ -114,12 +114,17 @@ class UserController extends Controller
         if (isset($request->level_ids)) {
             $parameter->setLevelIds($request->level_ids);
         }
+
         if (isset($request->interview_month)) {
             $parameter->setInterviewMonth($request->interview_month);
         }
 
         if (isset($request->assign_month)) {
             $parameter->setAssignMonth($request->assign_month);
+        }
+
+        if (isset($request->assign_fin_month)) {
+            $parameter->setAssignFinMonth($request->assign_fin_month);
         }
 
         if (isset($request->status)) {
