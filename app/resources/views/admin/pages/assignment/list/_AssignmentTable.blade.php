@@ -19,24 +19,24 @@
         @php /** @var \App\Models\Assignment $assignment */ @endphp
         <tr class="p-table__bodyRow" data-href="">
             <td class="p-table__bodyRowItem--clickable">
-                <a class="u-db u-w-160px-sp" href="{{ route('project.detail', ['project_id' => $assignment->project->id] )}}">{{ $assignment->project->name ?? ''}}</a>
+                <a class="u-db u-w-160px-sp" href="{{ route('project.detail', ['project_id' => $assignment->project->id]) }}">{{ $assignment->project->name ?? '' }}</a>
             </td>
             <td class="p-table__bodyRowItem--clickable">
                 <a class="u-db u-w-150px-sp"
-                   href="{{ route('user.detail', ['user_id' => $assignment->user->id] )}}">{{ $assignment->user->sei }}
-                    &nbsp;{{ $assignment->user->mei ?? ''}}</a>
+                   href="{{ route('user.detail', ['user_id' => $assignment->user->id]) }}">{{ $assignment->user->sei }}
+                    &nbsp;{{ $assignment->user->mei ?? '' }}</a>
             </td>
             <td class="p-table__bodyRowItem">
-                {{ ViewHelper::YmdReplace( $assignment->assignment_start_date ?? '未定' )}}<br>
+                {{ ViewHelper::YmdReplace($assignment->assignment_start_date ?? '未定') }}<br>
             </td>
             <td class="p-table__bodyRowItem">
-                {{ ViewHelper::YmdReplace( $assignment->assignment_end_date ?? '未定' )}}<br>
+                {{ ViewHelper::YmdReplace($assignment->assignment_end_date ?? '未定') }}<br>
             </td>
             <td class="p-table__bodyRowItem--textCenter">
                 <form action="{{ route('assignment.delete') }}" method="post">
                     {{ @csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $assignment->user->id }}">
-                    <input type="hidden" name="project_id" value="{{  $assignment->project->id }}">
+                    <input type="hidden" name="project_id" value="{{ $assignment->project->id }}">
                     <button type="submit" class="c-button--warning u-w-65px-sp js-alert-button">削除</button>
                 </form>
             </td>
