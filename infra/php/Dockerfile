@@ -20,6 +20,9 @@ RUN apt-get update && \
 #php
 COPY ./infra/php/php.ini /usr/local/etc/php/php.ini
 
+#docker.conf
+COPY ./infra/php/docker.conf /usr/local/etc/php-fpm.d/docker.conf
+
 # Node.jsをインストール
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
