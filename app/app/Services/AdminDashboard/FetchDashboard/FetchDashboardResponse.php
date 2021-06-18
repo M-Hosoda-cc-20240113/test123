@@ -11,162 +11,161 @@ class FetchDashboardResponse
     /**
      * @var Collection|null
      */
-    private $fetch_user_operation;
+    private $users_by_operation_month;
 
     /**
      * @var Collection|null
      */
-    private $fetch_interview;
+    private $users_by_interview_month;
 
     /**
      * @var Collection|null
      */
-    private $fetch_interviewed;
-
-
-    /**
-     * @var Collection|null
-     */
-    private $fetch_not_open;
+    private $interviewed_users;
 
     /**
      * @var Collection|null
      */
-    private $fetch_assign_user;
+    private $not_open_users;
 
     /**
      * @var Collection|null
      */
-    private $fetch_new_assign_user;
+    private $assign_users;
 
     /**
      * @var Collection|null
      */
-    private $fetch_assign_user_by_fin;
+    private $new_assign_users;
+
+    /**
+     * @var Collection|null
+     */
+    private $assign_fin_users;
 
     /**
      * @return Collection|null
      */
-    public function getFetchUserOperation(): ?Collection
+    public function getUsersByOperationMonth(): ?Collection
     {
-        return $this->fetch_user_operation;
+        return $this->users_by_operation_month;
     }
 
     /**
-     * @param SupportCollection|null $fetch_user_operation
+     * @param SupportCollection|null $users_by_operation_month
      * @return FetchDashboardResponse
      */
-    public function setFetchUserOperation(?SupportCollection $fetch_user_operation
+    public function setUsersByOperationMonth(?SupportCollection $users_by_operation_month
     ): FetchDashboardResponse {
-        $this->fetch_user_operation = $fetch_user_operation;
-        return $this;
-    }
-
-    /**
-     * @return Collection|null
-     */
-    public function getFetchInterview(): ?Collection
-    {
-        return $this->fetch_interview;
-    }
-
-    /**
-     * @param SupportCollection|null $fetch_interview
-     * @return FetchDashboardResponse
-     */
-    public function setFetchInterview(?SupportCollection $fetch_interview
-    ): FetchDashboardResponse {
-        $this->fetch_interview = $fetch_interview;
-        return $this;
-    }
-
-    /**
-     * @return \Illuminate\Support\Collection|null
-     */
-    public function getFetchNotOpen(): ?SupportCollection
-    {
-        return $this->fetch_not_open;
-    }
-
-    /**
-     * @param \Illuminate\Support\Collection|null $fetch_not_open
-     * @return FetchDashboardResponse
-     */
-    public function setFetchNotOpen(?SupportCollection $fetch_not_open): FetchDashboardResponse
-    {
-        $this->fetch_not_open = $fetch_not_open;
+        $this->users_by_operation_month = $users_by_operation_month;
         return $this;
     }
 
     /**
      * @return SupportCollection|null
      */
-    public function getFetchAssignUser(): ?SupportCollection
+    public function getUsersByInterviewMonth(): ?SupportCollection
     {
-        return $this->fetch_assign_user;
+        return $this->users_by_interview_month;
     }
 
     /**
-     * @param SupportCollection|null $fetch_assign_user
+     * @param SupportCollection|null $users_by_interview_month
      * @return FetchDashboardResponse
      */
-    public function setFetchAssignUser(?SupportCollection $fetch_assign_user
+    public function setUsersByInterviewMonth(?SupportCollection $users_by_interview_month
     ): FetchDashboardResponse {
-        $this->fetch_assign_user = $fetch_assign_user;
-        return $this;
-    }
-
-    /**
-     * @return Collection|null
-     */
-    public function getFetchNewAssignUser(): ?Collection
-    {
-        return $this->fetch_new_assign_user;
-    }
-
-    /**
-     * @param SupportCollection|null $fetch_new_assign_user
-     * @return FetchDashboardResponse
-     */
-    public function setFetchNewAssignUser(?SupportCollection $fetch_new_assign_user
-    ): FetchDashboardResponse {
-        $this->fetch_new_assign_user = $fetch_new_assign_user;
+        $this->users_by_interview_month = $users_by_interview_month;
         return $this;
     }
 
     /**
      * @return \Illuminate\Support\Collection|null
      */
-    public function getFetchInterviewed(): ?SupportCollection
+    public function getNotOpenUsers(): ?SupportCollection
     {
-        return $this->fetch_interviewed;
+        return $this->not_open_users;
     }
 
     /**
-     * @param \Illuminate\Support\Collection|null $fetch_interviewed
+     * @param \Illuminate\Support\Collection|null $not_open_users
      * @return FetchDashboardResponse
      */
-    public function setFetchInterviewed(?SupportCollection $fetch_interviewed): FetchDashboardResponse
+    public function setNotOpenUsers(?SupportCollection $not_open_users): FetchDashboardResponse
     {
-        $this->fetch_interviewed = $fetch_interviewed;
+        $this->not_open_users = $not_open_users;
         return $this;
     }
 
     /**
      * @return SupportCollection|null
      */
-    public function getFetchAssignUserByFin(): ?SupportCollection
+    public function getAssignUsers(): ?SupportCollection
     {
-        return $this->fetch_assign_user_by_fin;
+        return $this->assign_users;
     }
 
     /**
-     * @param SupportCollection|null $fetch_assign_user_by_fin
+     * @param SupportCollection|null $assign_users
      * @return FetchDashboardResponse
      */
-    public function setFetchAssignUserByFin(?SupportCollection $fetch_assign_user_by_fin): FetchDashboardResponse
+    public function setAssignUsers(?SupportCollection $assign_users
+    ): FetchDashboardResponse {
+        $this->assign_users = $assign_users;
+        return $this;
+    }
+
+    /**
+     * @return Collection|null
+     */
+    public function getNewAssignUsers(): ?Collection
     {
-        $this->fetch_assign_user_by_fin = $fetch_assign_user_by_fin;
+        return $this->new_assign_users;
+    }
+
+    /**
+     * @param SupportCollection|null $new_assign_users
+     * @return FetchDashboardResponse
+     */
+    public function setNewAssignUsers(?SupportCollection $new_assign_users
+    ): FetchDashboardResponse {
+        $this->new_assign_users = $new_assign_users;
+        return $this;
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection|null
+     */
+    public function getInterviewedUsers(): ?SupportCollection
+    {
+        return $this->interviewed_users;
+    }
+
+    /**
+     * @param \Illuminate\Support\Collection|null $interviewed_users
+     * @return FetchDashboardResponse
+     */
+    public function setInterviewedUsers(?SupportCollection $interviewed_users): FetchDashboardResponse
+    {
+        $this->interviewed_users = $interviewed_users;
+        return $this;
+    }
+
+    /**
+     * @return SupportCollection|null
+     */
+    public function getAssignFinUsers(): ?SupportCollection
+    {
+        return $this->assign_fin_users;
+    }
+
+    /**
+     * @param SupportCollection|null $assign_fin_users
+     * @return FetchDashboardResponse
+     */
+    public function setAssignFinUsers(?SupportCollection $assign_fin_users): FetchDashboardResponse
+    {
+        $this->assign_fin_users = $assign_fin_users;
         return $this;
     }
 }
