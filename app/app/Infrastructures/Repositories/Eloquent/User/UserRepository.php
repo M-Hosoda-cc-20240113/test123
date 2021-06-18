@@ -522,4 +522,27 @@ class UserRepository implements UserRepositoryInterface
         }
         return collect($array_merged);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchFinProjectUserOfThisMonth(string $today, array $searched_ids = []): SupportCollection
+    {
+        $today = new CarbonImmutable($today);
+        $start_of_month = $today->startOfMonth();
+        $end_of_month = $today->endOfMonth();
+        if ($searched_ids) {
+            return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+                $query->from('assignments')
+                    ->select('user_id')
+                    ->whereBetween('assignment_end_date', [$start_of_month, $end_of_month]);
+            })->whereIn('id', $searched_ids)
+                ->get();
+        }
+        return User::whereIn('id', function ($query) use ($start_of_month, $end_of_month) {
+            $query->from('assignments')
+                ->select('user_id')
+                ->whereBetween('assignment_end_date', [$start_of_month, $end_of_month]);
+        })->get();
+    }
 }

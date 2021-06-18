@@ -39,6 +39,7 @@ class FetchDashboardService
         $fetch_not_open_user = $this->user_repository->fetchByOperationStartMonthAndStatus($today, 0);
         $fetch_assign_new_user = $this->user_repository->fetchNewUserOfThisMonth($today);
         $fetch_assign_user = $this->user_repository->fetchNotNewUserOfThisMonth($today);
+        $fetch_assign_user_fin = $this->user_repository->fetchFinProjectUserOfThisMonth($today);
 
         $response->setFetchUserOperation($fetch_user_operation);
         $response->setFetchInterview($fetch_interview_user);
@@ -46,6 +47,7 @@ class FetchDashboardService
         $response->setFetchNotOpen($fetch_not_open_user);
         $response->setFetchNewAssignUser($fetch_assign_new_user);
         $response->setFetchAssignUser($fetch_assign_user);
+        $response->setFetchAssignUserByFin($fetch_assign_user_fin);
 
         return $response;
     }

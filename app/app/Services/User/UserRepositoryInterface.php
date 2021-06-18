@@ -102,45 +102,45 @@ interface UserRepositoryInterface
      * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchBySkillIds(array $skill_ids, array $searched_ids): Collection;
+    public function fetchBySkillIds(array $skill_ids, array $searched_ids = []): Collection;
 
     /**
      * @param array $level_ids
      * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByLevelIds(array $level_ids, array $searched_ids): Collection;
+    public function fetchByLevelIds(array $level_ids, array $searched_ids = []): Collection;
 
     /**
      * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByNewUser(array $searched_ids): Collection;
+    public function fetchByNewUser(array $searched_ids = []): Collection;
 
     /**
      * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByNotNewUser(array $searched_ids): Collection;
+    public function fetchByNotNewUser(array $searched_ids = []): Collection;
 
     /**
      * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByIsWorking(array $searched_ids): Collection;
+    public function fetchByIsWorking(array $searched_ids = []): Collection;
 
     /**
      * @param array $searched_ids
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function fetchByIsNotWorking(array $searched_ids): Collection;
+    public function fetchByIsNotWorking(array $searched_ids = []): Collection;
 
     /**
      * @param string $operation_start_month
      * @param array $searched_ids
      * @return \Illuminate\Support\Collection
      */
-    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids): SupportCollection;
+    public function fetchByOperationStartMonth(string $operation_start_month, array $searched_ids = []): SupportCollection;
 
     /**
      * @param string $today
@@ -148,21 +148,21 @@ interface UserRepositoryInterface
      * @param array $searched_ids
      * @return \Illuminate\Support\Collection
      */
-    public function fetchByOperationStartMonthAndStatus(string $today, int $status, array $searched_ids): SupportCollection;
+    public function fetchByOperationStartMonthAndStatus(string $today, int $status, array $searched_ids = []): SupportCollection;
 
     /**
      * @param string $today
      * @param array $searched_ids
      * @return \Illuminate\Support\Collection
      */
-    public function fetchNewUserOfThisMonth(string $today, array $searched_ids): SupportCollection;
+    public function fetchNewUserOfThisMonth(string $today, array $searched_ids = []): SupportCollection;
 
     /**
      * @param string $today
      * @param array $searched_ids
      * @return \Illuminate\Support\Collection
      */
-    public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids): SupportCollection;
+    public function fetchNotNewUserOfThisMonth(string $today, array $searched_ids = []): SupportCollection;
 
     /**
      * @param string $status
@@ -191,5 +191,13 @@ interface UserRepositoryInterface
      * @param array $searched_ids
      * @return \Illuminate\Support\Collection
      */
-    public function fetchByInterviewMonthAndStatus(string $today, int $status, array $searched_ids): SupportCollection;
+    public function fetchByInterviewMonthAndStatus(string $today, int $status, array $searched_ids = []): SupportCollection;
+
+    /**
+     * @param string $today
+     * @param array $searched_ids
+     * @return \Illuminate\Support\Collection
+     */
+    public function fetchFinProjectUserOfThisMonth(string $today, array $searched_ids = []): SupportCollection;
+
 }

@@ -40,6 +40,11 @@ class FetchDashboardResponse
     private $fetch_new_assign_user;
 
     /**
+     * @var Collection|null
+     */
+    private $fetch_assign_user_by_fin;
+
+    /**
      * @return Collection|null
      */
     public function getFetchUserOperation(): ?Collection
@@ -48,10 +53,10 @@ class FetchDashboardResponse
     }
 
     /**
-     * @param Collection|null $fetch_user_operation
+     * @param SupportCollection|null $fetch_user_operation
      * @return FetchDashboardResponse
      */
-    public function setFetchUserOperation(?Collection $fetch_user_operation
+    public function setFetchUserOperation(?SupportCollection $fetch_user_operation
     ): FetchDashboardResponse {
         $this->fetch_user_operation = $fetch_user_operation;
         return $this;
@@ -66,10 +71,10 @@ class FetchDashboardResponse
     }
 
     /**
-     * @param Collection|null $fetch_interview
+     * @param SupportCollection|null $fetch_interview
      * @return FetchDashboardResponse
      */
-    public function setFetchInterview(?Collection $fetch_interview
+    public function setFetchInterview(?SupportCollection $fetch_interview
     ): FetchDashboardResponse {
         $this->fetch_interview = $fetch_interview;
         return $this;
@@ -94,18 +99,18 @@ class FetchDashboardResponse
     }
 
     /**
-     * @return Collection|null
+     * @return SupportCollection|null
      */
-    public function getFetchAssignUser(): ?Collection
+    public function getFetchAssignUser(): ?SupportCollection
     {
         return $this->fetch_assign_user;
     }
 
     /**
-     * @param Collection|null $fetch_assign_user
+     * @param SupportCollection|null $fetch_assign_user
      * @return FetchDashboardResponse
      */
-    public function setFetchAssignUser(?Collection $fetch_assign_user
+    public function setFetchAssignUser(?SupportCollection $fetch_assign_user
     ): FetchDashboardResponse {
         $this->fetch_assign_user = $fetch_assign_user;
         return $this;
@@ -120,10 +125,10 @@ class FetchDashboardResponse
     }
 
     /**
-     * @param Collection|null $fetch_new_assign_user
+     * @param SupportCollection|null $fetch_new_assign_user
      * @return FetchDashboardResponse
      */
-    public function setFetchNewAssignUser(?Collection $fetch_new_assign_user
+    public function setFetchNewAssignUser(?SupportCollection $fetch_new_assign_user
     ): FetchDashboardResponse {
         $this->fetch_new_assign_user = $fetch_new_assign_user;
         return $this;
@@ -144,6 +149,24 @@ class FetchDashboardResponse
     public function setFetchInterviewed(?SupportCollection $fetch_interviewed): FetchDashboardResponse
     {
         $this->fetch_interviewed = $fetch_interviewed;
+        return $this;
+    }
+
+    /**
+     * @return SupportCollection|null
+     */
+    public function getFetchAssignUserByFin(): ?SupportCollection
+    {
+        return $this->fetch_assign_user_by_fin;
+    }
+
+    /**
+     * @param SupportCollection|null $fetch_assign_user_by_fin
+     * @return FetchDashboardResponse
+     */
+    public function setFetchAssignUserByFin(?SupportCollection $fetch_assign_user_by_fin): FetchDashboardResponse
+    {
+        $this->fetch_assign_user_by_fin = $fetch_assign_user_by_fin;
         return $this;
     }
 }
