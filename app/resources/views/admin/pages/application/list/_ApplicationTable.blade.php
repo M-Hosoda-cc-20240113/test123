@@ -20,8 +20,8 @@
     <tbody class="p-table__body">
     @foreach ($response->getApplications() as $key => $application)
         <tr class="p-table__bodyRow @if($application['status'] === 2) js-button-active @endif" data-href="">
-            <td class="p-table__bodyRowItem--clickable">
-                <a class="d-block w-100"
+            <td class="p-table__bodyRowItem--clickable u-w-160px">
+                <a class="d-block u-w-200px-sp"
                    href="{{ route('project.detail', ['project_id' => $application['projects']['id']] )}}">{{ $application['projects']['name'] ?? '' }}</a>
             </td>
             <td class="p-table__bodyRowItem--clickable p-table__bodyRowItem--nowrap">
@@ -46,7 +46,7 @@
                     {{ @csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $application['users']['id'] }}">
                     <input type="hidden" name="project_id" value="{{ $application['projects']['id'] }}">
-                    <button type="submit" disabled class="c-button c-button--disabled u-m0a">確定</button>
+                    <button type="submit" disabled class="c-button c-button--disabled u-m0a u-w-65px-sp">確定</button>
                 </form>
             </td>
             <td class="p-table__bodyRowItem--textCenter">
@@ -54,7 +54,7 @@
                     {{ @csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $application['users']['id'] }}">
                     <input type="hidden" name="project_id" value="{{  $application['projects']['id'] }}">
-                    <button type="submit" class="c-button--warning js-alert-button">削除</button>
+                    <button type="submit" class="c-button--warning u-w-65px-sp js-alert-button">削除</button>
                 </form>
             </td>
         </tr>
