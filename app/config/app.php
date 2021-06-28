@@ -196,6 +196,7 @@ return [
         App\Providers\NoteServiceProvider::class,
         App\Providers\NotificationAssignUserServiceProvider::class,
         App\Providers\NotificationApplyUserServiceProvider::class,
+        App\Providers\NotificationContactUserServiceProvider::class,
     ],
 
     /*

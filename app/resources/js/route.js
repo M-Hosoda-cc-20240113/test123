@@ -4,6 +4,7 @@ export const routes = {
   project_create: 'project.create.form',
   project_detail: 'project.detail',
   project_edit: 'project.edit.form',
+  user_mypage: 'home.mypage',
   user_list: 'user.list',
   user_search: 'user.search',
   user_detail: 'user.detail',
