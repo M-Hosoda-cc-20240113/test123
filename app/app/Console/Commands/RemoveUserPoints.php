@@ -38,7 +38,7 @@ class RemoveUserPoints extends Command
      */
     public function handle()
     {
-        $now_before_2years = Carbon::now()->subYears(2)->format('Y-m');
+        $now_before_2years = Carbon::now()->subYears(2)->format('Y-m-d');
         $AegisPoints = 5000;
         User::where('is_admin', 0)
             ->where('created_at', '<', $now_before_2years)
