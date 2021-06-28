@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Front\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Front\DeleteUserRequest;
 use App\Http\Requests\Front\UpdateUserRequest;
 use App\Http\Requests\Front\UpdateUserSkillRequest;
 use App\Services\Notification\ContactUser\NotificationContactUserParameter;
@@ -17,7 +16,6 @@ use App\Services\User\ShowEditUserForm\ShowEditUserFormService;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\User\UpdateUser\UpdateUserService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 

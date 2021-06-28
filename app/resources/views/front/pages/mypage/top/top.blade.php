@@ -13,8 +13,10 @@
     @include('front.header._link_mypage')
     @include('front.header._link_login_logout')
   @endcomponent
+  
   @include('front.pages._loader')
   @include('front.pages._drawer_contents')
+
   @if( is_null(Cookie::get('aegis_contact')))
     <div class="c-modal js-modal"></div>
     <div class="l-main">
