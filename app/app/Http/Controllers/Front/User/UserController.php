@@ -103,6 +103,10 @@ class UserController extends Controller
         return redirect()->route('home.mypage');
     }
 
+    /**
+     * @param NotificationContactUserServiceInterface $notification_contact_user_service
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function contact(NotificationContactUserServiceInterface $notification_contact_user_service)
     {
         $user = Auth::getUser();
