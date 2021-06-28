@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\DeleteUserRequest;
 use App\Http\Requests\Front\UpdateUserRequest;
 use App\Http\Requests\Front\UpdateUserSkillRequest;
+use App\Services\Notification\ContactUser\NotificationContactUserParameter;
+use App\Services\Notification\ContactUser\NotificationContactUserServiceInterface;
 use App\Services\User\DeleteSkill\DeleteSkillService;
 use App\Services\User\DeleteUser\DeleteUserService;
 use App\Services\User\EditSkill\UpdateSkillParameter;
@@ -101,6 +103,23 @@ class UserController extends Controller
         });
 
         return redirect()->route('home.mypage');
+    }
+
+    public function contact(NotificationContactUserServiceInterface $notification_contact_user_service)
+    {
+        $user = Auth::getUser();
+        $notification_parameter = new NotificationContactUserParameter();
+        $notification_parameter->setSei($user->sei);
+        $notification_parameter->setSeiKana($user->sei_kana);
+        $notification_parameter->setMei($user->mei_kana);
+        $notification_parameter->setMeiKana($user->mei_kana);
+        $notification_parameter->setEmail($user->email);
+        $notification_parameter->setTel($user->tel);
+//        $notification_contact_user_service->send($notification_parameter);
+        $cookie = cookie('aegis_contact', 'contact_session', 43200);
+
+
+        return redirect()->route('home.mypage')->cookie($cookie);
     }
 
     /**

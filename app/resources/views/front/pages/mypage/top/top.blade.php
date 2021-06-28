@@ -13,8 +13,23 @@
     @include('front.header._link_mypage')
     @include('front.header._link_login_logout')
   @endcomponent
-
+  @include('front.pages._loader')
   @include('front.pages._drawer_contents')
+  @if( is_null(Cookie::get('aegis_contact')))
+    <div class="c-modal js-modal"></div>
+    <div class="l-main">
+      <div class="p-mainItem c-modal__content js-modal-content">
+        <span class="c-modal__closeButton js-modal-close-button">×</span>
+        <h2 class="p-level2Heading">ありがとうございます。</h2>
+        <div class="c-text--center">下記ボタンを押すことで直接担当に通知し、すぐに折り返し連絡いたします。</div>
+        <form action="{{ route('front.user.contact') }}" method="POST">
+          {{ @csrf_field() }}
+          <button class="c-button u-db u-m0a u-mt-20 js-loading-button">今すぐ案件を探してもらう。</button>
+        </form>
+      </div>
+      <button class="c-button u-db u-m0a u-mt-20 js-modal-button">今すぐ案件を探して欲しい方はこちら！！</button>
+    </div>
+  @endif
 
   <div class="l-container--2col">
     @include('front.pages.mypage._sidebar')
@@ -24,7 +39,8 @@
           @foreach($response->getNotes()->take(5) as $note)
             <li class="p-news__item">
               <a class="p-news__itemInner" href="{{ route('front.note.detail', ['note_id' => $note->id]) }}">
-                <span class="p-news__itemInnerDeco u-mr-10">{{ ViewHelper::YmdReplace($note->created_at ?? today()) }}</span>
+                <span
+                    class="p-news__itemInnerDeco u-mr-10">{{ ViewHelper::YmdReplace($note->created_at ?? today()) }}</span>
                 <span class="Note__itemInnerDeco--txt">{{ $note->title ?? '' }}</span>
               </a>
             </li>
@@ -87,7 +103,8 @@
           <p class="p-level2Heading">応募案件</p>
           <div class="u-mb-30">
             @if($response->getUser()->project_app->count() === 0 )
-              <p class="c-text">応募していません。<a class="c-text--primary" href="{{ route('front.index') }}">こちら</a>から案件を探しましょう。</p>
+              <p class="c-text">応募していません。<a class="c-text--primary" href="{{ route('front.index') }}">こちら</a>から案件を探しましょう。
+              </p>
             @endif
             @foreach($response->getUser()->project_app as $project)
               <a class="c-text--bold u-dib u-mt-10 u-indent-1"

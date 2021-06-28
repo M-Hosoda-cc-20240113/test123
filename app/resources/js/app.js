@@ -25,6 +25,7 @@ import {note_detail} from './admin/pages/note_detail';
 import {login} from './front/pages/login';
 import {register} from './front/pages/register';
 import {index} from './front/pages/index';
+import {user_mypage} from './front/pages/mypage';
 import {user_skill_edit} from './front/pages/user_skill_edit';
 import {user_delete} from './front/pages/user_delete';
 import {user_edit} from './front/pages/user_edit';
@@ -96,6 +97,9 @@ switch (route_name) {
     break;
   case routes.user_skill_edit:
     user_skill_edit();
+    break;
+  case routes.user_mypage:
+    user_mypage();
     break;
   case routes.user_edit:
     user_edit();
