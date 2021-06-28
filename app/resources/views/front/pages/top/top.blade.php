@@ -29,7 +29,7 @@
   @include('front.pages._drawer_contents')
 
   <div class="l-container">
-    <a href="">
+    <a href="{{ route('register') }}">
       <img src="{{ asset('/images/hero/hero_01.png') }}" alt="スマートなフリーランス画像">
     </a>
 
