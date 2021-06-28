@@ -13,7 +13,7 @@
     @include('front.header._link_mypage')
     @include('front.header._link_login_logout')
   @endcomponent
-  
+
   @include('front.pages._loader')
   @include('front.pages._drawer_contents')
 

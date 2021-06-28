@@ -113,7 +113,7 @@ class UserController extends Controller
         $notification_parameter->setMeiKana($user->mei_kana);
         $notification_parameter->setEmail($user->email);
         $notification_parameter->setTel($user->tel);
-//        $notification_contact_user_service->send($notification_parameter);
+        $notification_contact_user_service->send($notification_parameter);
         $cookie = cookie('aegis_contact', 'contact_session', 43200);
 
 
