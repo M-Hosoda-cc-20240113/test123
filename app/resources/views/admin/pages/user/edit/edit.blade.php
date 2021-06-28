@@ -19,7 +19,7 @@
     <div class="l-main">
       <div class="p-mainItem">
         <h2 class="p-level2Heading">ユーザー情報編集【  {{ $response->getUser()->sei  }}
-          &nbsp;{{ $response->getUser()->mei }}  {{ $response->getUser()->is_new ? '※新規ユーザー' : '' }}】</h2>
+          &nbsp;{{ $response->getUser()->mei }}　ID：{{ $response->getUser()->id }}  {{ $response->getUser()->is_new ? '※新規ユーザー' : '' }}】</h2>
         @if($errors->all())
           <p class="c-text--bold">以下のエラーを修正してください</p>
           @foreach($errors->all() as $error)
@@ -136,7 +136,7 @@
             {{--  備考欄  --}}
 
             <div class="p-register__row--spColumn">
-              <p class="p-register__title c-text--bold u-w-100-sp">イージスポイント</p>
+              <p class="p-register__title c-text--bold u-w-100-sp">Aegisポイント</p>
               <div class="p-register__itemWrap">
                 <div class="p-register__item u-w-25-pc">
                   <input class="c-input--light"
