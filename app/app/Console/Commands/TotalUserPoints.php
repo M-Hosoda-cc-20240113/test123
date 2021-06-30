@@ -48,7 +48,6 @@ class TotalUserPoints extends Command
             ->toArray();
         foreach ($users as $user) {
             $parameter = new TotalUserPointsParameter();
-
             $user_id = $user['id'];
             $parameter->setUserId($user_id);
             DB::transaction(function () use ($total_user_points_service, $parameter) {

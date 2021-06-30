@@ -56,6 +56,7 @@ class UserController extends Controller
     /**
      * @param \App\Http\Requests\Admin\User\UpdateAdminUserRequest $request
      * @param \App\Services\AdminUser\UpdateUser\UpdateUserService $update_user_service
+     * @param \App\Services\AdminUser\TotalUserPoints\TotalUserPointsService $total_user_points_service
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */

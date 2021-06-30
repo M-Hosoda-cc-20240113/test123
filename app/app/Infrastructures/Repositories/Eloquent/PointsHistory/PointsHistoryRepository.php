@@ -12,7 +12,7 @@ class PointsHistoryRepository implements PointsHistoryInterface
 {
     public function removeUserPoints(): void
     {
-        $now_before_2years = Carbon::now()->subDays(1)->format('Y-m-d');
+        $now_before_2years = Carbon::now()->subYears(2)->format('Y-m-d');
         $PointsHistory = PointsHistory::where('created_at','<',$now_before_2years)->get();
         foreach ($PointsHistory as $item) {
             $item->delete();
