@@ -2,9 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\PointsHistory;
 use App\Models\User;
+use App\Services\PointsHistory\RemovePoints\RemoveUserPointsService;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class RemoveUserPoints extends Command
 {
@@ -35,13 +38,12 @@ class RemoveUserPoints extends Command
     /**
      * Execute the console command.
      *
+     * @throws \Throwable
      */
-    public function handle()
+    public function handle(RemoveUserPointsService $remove_user_points_service )
     {
-        $now_before_2years = Carbon::now()->subYears(2)->format('Y-m-d');
-        $AegisPoints = 5000;
-        User::where('is_admin', 0)
-            ->where('created_at', '<', $now_before_2years)
-            ->decrement('points', $AegisPoints);
+        DB::transaction(function () use ($remove_user_points_service) {
+            $remove_user_points_service->exec();
+        });
     }
 }

@@ -136,17 +136,18 @@
             {{--  備考欄  --}}
 
             <div class="p-register__row--spColumn">
-              <p class="p-register__title c-text--bold u-w-100-sp">Aegisポイント</p>
+              <p class="p-register__title c-text--bold u-w-100-sp">追加Aegisポイント</p>
               <div class="p-register__itemWrap">
                 <div class="p-register__item u-w-25-pc">
                   <input class="c-input--light"
                          name="points"
-                         value="{{ $response->getUser()->points ?? '' }}">
+                         value="0">
                   <span class="u-as-center u-pl-10 u-w-100px u-fs-12">ポイント</span>
                 </div>
+                <p class="c-text">現在のポイント：{{ $response->getUser()->points ?? '' }} pt</p>
               </div>
             </div>
-            {{--  ステータス  --}}
+            {{--  ポイント  --}}
 
             <button type="submit" class="c-button u-db u-m0a u-w-15-pc u-mb-20">登録</button>
           </form>

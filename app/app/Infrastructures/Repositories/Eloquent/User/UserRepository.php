@@ -2,8 +2,10 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\User;
 
+use App\Models\PointsHistory;
 use App\Models\RelLevelSkillUser;
 use App\Models\User;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\RegisterUser\RegisterUserParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
@@ -155,8 +157,13 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = User::findOrFail($parameter->getUserId());
         $user->remarks = $parameter->getRemarks() ?? null;
-        $user->points = $parameter->getPoints() ?? 0;
         $user->save();
+        if ($parameter->getPoints()) {
+            PointsHistory::create([
+                'user_id' => $parameter->getUserId(),
+                'points' => $parameter->getPoints(),
+            ]);
+        }
         return $user;
     }
 
@@ -544,5 +551,12 @@ class UserRepository implements UserRepositoryInterface
                 ->select('user_id')
                 ->whereBetween('assignment_end_date', [$start_of_month, $end_of_month]);
         })->get();
+    }
+
+    public function insertUserPoints(TotalUserPointsParameter $parameter): void
+    {
+        $user = User::findOrFail($parameter->getUserId());
+        $user->points = $parameter->getUserPoints();
+        $user->save();
     }
 }

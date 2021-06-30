@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -168,6 +169,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Project::class, 'statuses', 'user_id', 'project_id')
             ->withPivot('created_at', 'status');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function points_history(): HasMany
+    {
+        return $this->hasMany(PointsHistory::class);
     }
 
     /**

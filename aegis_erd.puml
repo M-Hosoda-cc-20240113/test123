@@ -188,6 +188,14 @@ package "Aegis ER図" as aegis_erd {
             updated_at:datetime [NN] (更新日時)
     }
 
+    entity "points_histories" as points_histories <ポイント履歴> {
+        + id:int [PK, AI, UN] (ID)
+        ---
+        user_id [FK(users:id), UIDX(1) , OD:CASCADE] (ユーザーID)
+        points:int [NN] (イージスポイント)
+        created_at:datetime [NN] (登録日時)
+        updated_at:datetime [NN] (更新日時)
+    }
 }
 
 users       --ri--o{    rel_levels_skills_users
@@ -214,5 +222,7 @@ projects    --do--o{    status
 
 users       --up--o{    assignment
 projects    --do--o{    assignment
+
+users       --le--|{    points_histories
 @enduml
 

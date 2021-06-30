@@ -15,6 +15,7 @@ use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserService;
 use App\Services\AdminUser\UserList\UserListService;
 use App\Services\AdminUser\UserDetail\UserDetailService;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -77,7 +78,7 @@ class UserController extends Controller
         $user = DB::transaction(function () use ($update_user_service, $parameter) {
             return $update_user_service->exec($parameter);
         });
-
+        Artisan::call('batch:totalUserPoints');
         return redirect()->route('user.detail', ['user_id' => $user->id]);
     }
 
