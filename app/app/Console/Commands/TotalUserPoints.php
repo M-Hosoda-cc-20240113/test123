@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\PointsHistory;
 use App\Models\User;
 use App\Services\AdminUser\TotalUserPoints\TotalUserPointsParameter;
 use App\Services\AdminUser\TotalUserPoints\TotalUserPointsService;
@@ -51,11 +50,7 @@ class TotalUserPoints extends Command
             $parameter = new TotalUserPointsParameter();
 
             $user_id = $user['id'];
-            $UserPoints = PointsHistory::where('user_id', $user_id)->sum('points');
-
             $parameter->setUserId($user_id);
-            $parameter->setUserPoints($UserPoints);
-
             DB::transaction(function () use ($total_user_points_service, $parameter) {
                 $total_user_points_service->exec($parameter);
             });

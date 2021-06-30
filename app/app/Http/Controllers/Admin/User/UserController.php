@@ -11,11 +11,12 @@ use App\Services\AdminUser\DeleteUser\DeleteUserService;
 use App\Services\AdminUser\SearchUser\SearchUserParameter;
 use App\Services\AdminUser\SearchUser\SearchUserService;
 use App\Services\AdminUser\ShowEditUserForm\ShowEditUserFormService;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsParameter;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsService;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserService;
 use App\Services\AdminUser\UserList\UserListService;
 use App\Services\AdminUser\UserDetail\UserDetailService;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -58,7 +59,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function edit(UpdateAdminUserRequest $request, UpdateUserService $update_user_service)
+    public function edit(UpdateAdminUserRequest $request, UpdateUserService $update_user_service, TotalUserPointsService $total_user_points_service)
     {
         $parameter = new UpdateUserAdminParameter();
         $user_id = $request->user_id;
@@ -78,7 +79,14 @@ class UserController extends Controller
         $user = DB::transaction(function () use ($update_user_service, $parameter) {
             return $update_user_service->exec($parameter);
         });
-        Artisan::call('batch:totalUserPoints');
+
+        $parameter = new TotalUserPointsParameter();
+        $user_id = $user->id;
+        $parameter->setUserId($user_id);
+        DB::transaction(function () use ($total_user_points_service, $parameter) {
+            $total_user_points_service->exec($parameter);
+        });
+
         return redirect()->route('user.detail', ['user_id' => $user->id]);
     }
 
