@@ -23,7 +23,7 @@
   {{-- お問い合わせ --}}
 
   <label class="p-checkbox u-fs-14 u-mt-20">
-    <p>個人情報利用同意<span class="c-label--warning c-label--sm u-ml-10">必須</span></p>
+    <p class="c-text--primary"><a target="_blank" rel="noopener noreferrer" href="{{ route('feature.privacy.policy') }}">個人情報利用同意</a><span class="c-label--warning c-label--sm u-ml-10">必須</span></p>
     <input name="個人情報利用同意" data-formrun-required type="checkbox">
     <div class="p-checkbox__indicator"></div>
   </label>
