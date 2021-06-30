@@ -45,6 +45,7 @@ class RegisterUserRequest extends FormRequest
                 new HalfWidthUpperCase(),
                 new HalfWidthNumber(),
             ],
+            'policy'    => ['required'],
         ];
     }
 }

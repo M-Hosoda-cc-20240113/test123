@@ -109,7 +109,13 @@
                 </div>
               </div>
             </div>
-            <p class="c-text u-fs-12">半角英数字8文字以上で大文字を1つ以上含むパスワードを入力してください。</p>
+            <p class="c-text u-fs-12">※半角英数字8文字以上で大文字を1つ以上含むパスワードを入力してください。</p>
+
+            <label class="p-checkbox u-fs-14 u-mt-20">
+              <p><a class="c-text--primary" target="_blank" rel="noopener noreferrer" href="{{ route('feature.policy') }}">利用規約</a>・<a class="c-text--primary" target="_blank" rel="noopener noreferrer" href="{{ route('feature.privacy.policy') }}">個人情報の取扱い</a>に同意します。</p>
+              <input name="policy" type="checkbox">
+              <div class="p-checkbox__indicator"></div>
+            </label>
             {{--   p-userRegisterRow   --}}
             <input type="hidden" name="project_id" value="{{ $project_id ?? '' }}">
             <button class="c-button u-db u-w-30-pc u-m0a u-mt-20 js-loading-button gtm-register">新規登録</button>
