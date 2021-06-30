@@ -220,7 +220,6 @@ class ProjectController extends Controller
         CsvCreateProjectRequest $request,
         CsvCreateProjectService $csv_create_project_service
     ) {
-
         $parameter = new CsvCreateProjectParameter();
         // アップロードファイルのファイルパスを取得
         $file_path = $request->file('csv_file')->path();
