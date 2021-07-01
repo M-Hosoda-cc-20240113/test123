@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Rules\CanRegisterBirthday;
 use App\Rules\HalfWidthLowerCase;
 use App\Rules\HalfWidthNumber;
 use App\Rules\HalfWidthUpperCase;
@@ -16,7 +17,7 @@ class RegisterUserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -29,14 +30,14 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
-            'mei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
-            'sei_kana'  => ['required', 'string', 'max:50', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
-            'mei_kana'  => ['required', 'string', 'max:50', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
-            'birthday'  => ['required', 'integer', 'digits:8'],
-            'tel'       => ['required', 'digits_between:8,11', new InUsersByTel($this->input('tel'))],
-            'email'     => ['required', 'email', new InUsersByEmail($this->input('email'))],
-            'password'  => [
+            'sei' => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
+            'mei' => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
+            'sei_kana' => ['required', 'string', 'max:50', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
+            'mei_kana' => ['required', 'string', 'max:50', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
+            'birthday' => ['required', 'digits:8', 'date', new CanRegisterBirthday($this->input('birthday'))],
+            'tel' => ['required', 'digits_between:8,11', new InUsersByTel($this->input('tel'))],
+            'email' => ['required', 'email', new InUsersByEmail($this->input('email'))],
+            'password' => [
                 'required',
                 'string',
                 'min:8',
@@ -45,7 +46,7 @@ class RegisterUserRequest extends FormRequest
                 new HalfWidthUpperCase(),
                 new HalfWidthNumber(),
             ],
-            'policy'    => ['required'],
+            'policy' => ['required'],
         ];
     }
 }
