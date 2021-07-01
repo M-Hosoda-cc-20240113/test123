@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AreaTableSeeder::class);
         $this->call(StationTableSeeder::class);
 //        $this->call(PointsHistoriesTableSeeder::class);
-        $this->call(ProjectSeeder::class);
+//        $this->call(ProjectSeeder::class);
 //        $this->call(RelLevelSkillUserTableSeeder::class);
 //        $this->call(ApplicationTableSeeder::class);
 //        $this->call(RelPositionProjectTableSeeder::class);
