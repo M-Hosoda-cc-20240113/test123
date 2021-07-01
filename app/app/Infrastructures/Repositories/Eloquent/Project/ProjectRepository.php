@@ -37,7 +37,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function findWithUsersThroughApplicationOrAssignment(int $project_id): Project
+    public function findWithUsersThroughApplicationOrAssignment($project_id): Project
     {
         return Project::with('station')
             ->with('positions')

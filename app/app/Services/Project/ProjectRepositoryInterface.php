@@ -40,7 +40,7 @@ interface ProjectRepositoryInterface
      * @param int $project_id
      * @return Project
      */
-    public function findWithUsersThroughApplicationOrAssignment(int $project_id): Project;
+    public function findWithUsersThroughApplicationOrAssignment($project_id): Project;
 
     /**
      * プロジェクト詳細（Admin）

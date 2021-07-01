@@ -21,10 +21,9 @@ class ProjectDetailService
     }
 
     /**
-     * @param int $project_id
      * @return \App\Models\Project
      */
-    public function exec(int $project_id)
+    public function exec($project_id)
     {
         return $this->project_repository->findWithUsersThroughApplicationOrAssignment($project_id);
     }

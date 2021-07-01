@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Front\Project;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Front\ProjectDetailRequest;
 use App\Http\Requests\Front\SearchProjectRequest;
 use App\Services\Project\ProjectDetail\ProjectDetailResponse;
 use App\Services\Project\ProjectDetail\ProjectDetailService;
 use App\Services\Project\SearchProject\SearchProjectParameter;
 use App\Services\Project\SearchProject\SearchProjectService;
+use Illuminate\Http\Request;
 
 /**
  * Class ProjectController
@@ -29,10 +31,10 @@ class ProjectController extends Controller
      * Admin project detail
      *
      * @param ProjectDetailService $project_detail_service
-     * @param int $project_id
+     * @param $project_id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function detail(ProjectDetailService $project_detail_service, int $project_id)
+    public function detail(ProjectDetailService $project_detail_service, $project_id)
     {
         $response = new ProjectDetailResponse();
 

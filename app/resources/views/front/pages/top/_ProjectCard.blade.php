@@ -21,7 +21,7 @@
       </td>
     </tr>
     <tr>
-      <td class="c-text">最寄り駅</td>
+      <td class="c-text">勤務地</td>
       <td class="c-text">{{ $project->station->name ?? ""}}</td>
     </tr>
   </table>

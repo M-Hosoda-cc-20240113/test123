@@ -24,10 +24,9 @@ class NoteDetailService
     }
 
     /**
-     * @param int $note_id
      * @return Note
      */
-    public function exec(int $note_id): Note
+    public function exec($note_id): Note
     {
         return $this->note_repository->findById($note_id);
     }
