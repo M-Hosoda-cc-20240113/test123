@@ -566,9 +566,9 @@ class UserRepository implements UserRepositoryInterface
      */
     public function insertUserPoints(TotalUserPointsParameter $parameter): void
     {
-        $UserPoints = PointsHistory::where('user_id', $parameter->getUserId())->sum('points');
+        $user_points = PointsHistory::where('user_id', $parameter->getUserId())->sum('points');
         $user = User::findOrFail($parameter->getUserId());
-        $user->points = $UserPoints;
+        $user->points = $user_points;
         $user->save();
     }
 }
