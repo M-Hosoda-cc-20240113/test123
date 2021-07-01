@@ -39,9 +39,12 @@ class SearchProjectRequest extends FormRequest
 
         return [
             'keyword' => ['nullable', 'string', 'max:100'],
+            'skill_ids' => ['array'],
             'skill_ids.*' => ['int', Rule::in($skill_ids)],
+            'position_ids' => ['array'],
             'position_ids.*' => ['int', Rule::in($position_ids)],
-            'area_ids.*' => ['int', Rule::in($area_ids)]
+            'area_ids' => ['array'],
+            'area_ids.*' => ['int', Rule::in($area_ids)],
         ];
     }
 }

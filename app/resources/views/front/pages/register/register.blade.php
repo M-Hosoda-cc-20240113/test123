@@ -67,7 +67,7 @@
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">生年月日</span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                  <input class="c-input p-userRegister__input u-w-100-sp" type="number"
+                  <input class="c-input p-userRegister__input u-w-100-sp" type="text"
                          placeholder="19930808"
                          name="birthday" value="{{ old('birthday') }}">
                 </div>
@@ -91,7 +91,7 @@
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">電話番号</span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                  <input class="c-input p-userRegister__input u-w-100-sp" type="number"
+                  <input class="c-input p-userRegister__input u-w-100-sp" type="text"
                          placeholder="08012345678(ハイフン不要)"
                          name="tel" value="{{ old('tel') }}">
                 </div>

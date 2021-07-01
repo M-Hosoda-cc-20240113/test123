@@ -19,7 +19,7 @@ return [
     'alpha'                => ':attributeは英字のみにしてください。',
     'alpha_dash'           => ':attributeは英数字とハイフンのみにしてください。',
     'alpha_num'            => ':attributeは英数字のみにしてください。',
-    'array'                => ':attributeは配列にしてください。',
+    'array'                => ':attributeを正しい値にしてください。',
     'before'               => ':attributeは:date以前の日付にしてください。',
     'between'              => [
         'numeric' => ':attributeは:min〜:maxまでにしてください。',

@@ -647,6 +647,8 @@ class StationTableSeeder extends Seeder
             '門司港' => '35',
             '小倉' => '35',
             '久留米' => '35',
+            'フルリモート' => '',
+            '春日部' => '31',
         ];
         $now = Carbon::now();
         foreach ($stations as $station => $value) {

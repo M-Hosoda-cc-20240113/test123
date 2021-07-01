@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('tel')->unique();
             $table->string('tel_hash')->unique();
             $table->string('birthday');
-            $table->integer('points');
+            $table->integer('points')->default(0);
             $table->tinyInteger('is_receive_notification_mail')->default(1);  //メンションメールを受け取るか
             $table->tinyInteger('is_working')->default(0);      //aegis経由で働いてるかどうか
             $table->tinyInteger('is_admin')->default(0);        //管理者権限
