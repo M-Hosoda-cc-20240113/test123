@@ -2,8 +2,10 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\User;
 
+use App\Models\PointsHistory;
 use App\Models\RelLevelSkillUser;
 use App\Models\User;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\User\RegisterUser\RegisterUserParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
@@ -93,7 +95,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function register(RegisterUserParameter $parameter): User
     {
-        return User::create([
+        $user = User::create([
             'sei' => $parameter->getSei(),
             'mei' => $parameter->getMei(),
             'sei_kana' => $parameter->getSeiKana(),
@@ -105,6 +107,13 @@ class UserRepository implements UserRepositoryInterface
             'email_hash' => hash(config('app.hash_email.algo'), $parameter->getEmail() . config('app.hash_email.salt')),
             'password' => bcrypt($parameter->getPassword()),
         ]);
+
+        PointsHistory::create([
+            'user_id' => $user->id,
+            'points' => 5000,
+        ]);
+
+        return $user;
     }
 
 
@@ -145,6 +154,7 @@ class UserRepository implements UserRepositoryInterface
         $user->project_app()->detach();
         $user->project_assign()->detach();
         $user->project_status()->detach();
+        $user->points_history()->delete();
         $user->delete();
     }
 
@@ -155,8 +165,13 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = User::findOrFail($parameter->getUserId());
         $user->remarks = $parameter->getRemarks() ?? null;
-        $user->points = $parameter->getPoints() ?? 0;
         $user->save();
+        if ($parameter->getPoints()) {
+            PointsHistory::create([
+                'user_id' => $parameter->getUserId(),
+                'points' => $parameter->getPoints(),
+            ]);
+        }
         return $user;
     }
 
@@ -544,5 +559,16 @@ class UserRepository implements UserRepositoryInterface
                 ->select('user_id')
                 ->whereBetween('assignment_end_date', [$start_of_month, $end_of_month]);
         })->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function insertUserPoints(TotalUserPointsParameter $parameter): void
+    {
+        $user_points = PointsHistory::where('user_id', $parameter->getUserId())->sum('points');
+        $user = User::findOrFail($parameter->getUserId());
+        $user->points = $user_points;
+        $user->save();
     }
 }

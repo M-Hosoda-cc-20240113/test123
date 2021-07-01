@@ -41,6 +41,6 @@ class Area extends Model
      */
     public function stations(): HasMany
     {
-        return $this->hasMany(Station::class,);
+        return $this->hasMany(Station::class);
     }
 }

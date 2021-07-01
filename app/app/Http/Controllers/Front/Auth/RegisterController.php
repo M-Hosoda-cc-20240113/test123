@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\RegisterUserRequest;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsParameter;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsService;
 use App\Services\Application\ApplyProjectService\ApplyProjectParameter;
 use App\Services\Application\ApplyProjectService\ApplyProjectService;
 use App\Services\Notification\ApplyUser\NotificationApplyUserParameter;
@@ -80,14 +82,17 @@ class RegisterController extends Controller
      * @param \App\Http\Requests\Front\RegisterUserRequest $request
      * @param \App\Services\User\RegisterUser\RegisterUserService $register_user_service
      * @param \App\Services\Application\ApplyProjectService\ApplyProjectService $apply_project_service
-     * @param \App\Services\Notification\RegisterUser\NotificationRegisterUserServiceInterface $notification_register_user_service
+     * @param \App\Services\AdminUser\TotalUserPoints\TotalUserPointsService $total_user_points_service
+     * @param \App\Services\Notification\ApplyUser\NotificationApplyUserServiceInterface $notification_apply_user_service
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \Throwable
      */
     public function register(
         RegisterUserRequest $request,
         RegisterUserService $register_user_service,
         ApplyProjectService $apply_project_service,
+        TotalUserPointsService $total_user_points_service,
         NotificationApplyUserServiceInterface $notification_apply_user_service
     ) {
         $parameter = new RegisterUserParameter();
@@ -124,6 +129,13 @@ class RegisterController extends Controller
             $notification_apply_parameter->setProjectName($project->name);
             $notification_apply_user_service->send($notification_apply_parameter);
         }
+
+        $parameter = new TotalUserPointsParameter();
+        $user_id = $user->id;
+        $parameter->setUserId($user_id);
+        DB::transaction(function () use ($total_user_points_service, $parameter) {
+            $total_user_points_service->exec($parameter);
+        });
 
         $this->guard()->login($user);
         return redirect($this->redirectTo);

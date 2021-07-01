@@ -11,6 +11,8 @@ use App\Services\AdminUser\DeleteUser\DeleteUserService;
 use App\Services\AdminUser\SearchUser\SearchUserParameter;
 use App\Services\AdminUser\SearchUser\SearchUserService;
 use App\Services\AdminUser\ShowEditUserForm\ShowEditUserFormService;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsParameter;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsService;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserService;
 use App\Services\AdminUser\UserList\UserListService;
@@ -54,10 +56,11 @@ class UserController extends Controller
     /**
      * @param \App\Http\Requests\Admin\User\UpdateAdminUserRequest $request
      * @param \App\Services\AdminUser\UpdateUser\UpdateUserService $update_user_service
+     * @param \App\Services\AdminUser\TotalUserPoints\TotalUserPointsService $total_user_points_service
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function edit(UpdateAdminUserRequest $request, UpdateUserService $update_user_service)
+    public function edit(UpdateAdminUserRequest $request, UpdateUserService $update_user_service, TotalUserPointsService $total_user_points_service)
     {
         $parameter = new UpdateUserAdminParameter();
         $user_id = $request->user_id;
@@ -76,6 +79,13 @@ class UserController extends Controller
 
         $user = DB::transaction(function () use ($update_user_service, $parameter) {
             return $update_user_service->exec($parameter);
+        });
+
+        $parameter = new TotalUserPointsParameter();
+        $user_id = $user->id;
+        $parameter->setUserId($user_id);
+        DB::transaction(function () use ($total_user_points_service, $parameter) {
+            $total_user_points_service->exec($parameter);
         });
 
         return redirect()->route('user.detail', ['user_id' => $user->id]);

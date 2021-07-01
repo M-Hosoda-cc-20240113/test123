@@ -3,6 +3,7 @@
 namespace App\Services\User;
 
 use App\Models\User;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsParameter;
 use App\Services\User\RegisterUser\RegisterUserParameter;
 use App\Services\User\UpdateUser\UpdateUserParameter;
 use App\Services\AdminUser\UpdateUser\UpdateUserAdminParameter;
@@ -200,4 +201,9 @@ interface UserRepositoryInterface
      */
     public function fetchFinProjectUserOfThisMonth(string $today, array $searched_ids = []): SupportCollection;
 
+    /**
+     * @param \App\Services\AdminUser\TotalUserPoints\TotalUserPointsParameter $parameter
+     * @return void
+     */
+    public function insertUserPoints(TotalUserPointsParameter $parameter): void;
 }
