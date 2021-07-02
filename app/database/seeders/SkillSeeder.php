@@ -82,7 +82,6 @@ class SkillSeeder extends Seeder
             'Git',
             'SQL',
             'MySQL',
-            'ディレクション',
             'Thymeleaf',
             'TypeScript',
             'UnitTest',
