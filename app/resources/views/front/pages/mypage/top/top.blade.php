@@ -18,19 +18,21 @@
   @include('front.pages._drawer_contents')
 
   @if( is_null(Cookie::get('aegis_contact')))
-    <div class="c-modal js-modal"></div>
-    <div class="l-main">
-      <div class="p-mainItem c-modal__content js-modal-content">
-        <span class="c-modal__closeButton js-modal-close-button">×</span>
-        <h2 class="p-level2Heading">ありがとうございます。</h2>
-        <div class="c-text--center">下記ボタンを押すことで直接担当に通知し、すぐに折り返し連絡いたします。</div>
-        <form action="{{ route('front.user.contact') }}" method="POST">
-          {{ @csrf_field() }}
-          <button class="c-button u-db u-m0a u-mt-20 js-loading-button">今すぐ案件を探してもらう。</button>
-        </form>
+    @if(!$response->getUser()->is_admin)
+      <div class="c-modal js-modal"></div>
+      <div class="l-main">
+        <div class="p-mainItem c-modal__content js-modal-content">
+          <span class="c-modal__closeButton js-modal-close-button">×</span>
+          <h2 class="p-level2Heading">ありがとうございます。</h2>
+          <div class="c-text--center">下記ボタンを押すことで直接担当に通知し、すぐに折り返し連絡いたします。</div>
+          <form action="{{ route('front.user.contact') }}" method="POST">
+            {{ @csrf_field() }}
+            <button class="c-button u-db u-m0a u-mt-20 js-loading-button">今すぐ案件を探してもらう。</button>
+          </form>
+        </div>
+        <button class="c-button u-db u-m0a u-mt-20 js-modal-button">今すぐ案件を探して欲しい方はこちら！！</button>
       </div>
-      <button class="c-button u-db u-m0a u-mt-20 js-modal-button">今すぐ案件を探して欲しい方はこちら！！</button>
-    </div>
+    @endif
   @endif
 
   <div class="l-container--2col">

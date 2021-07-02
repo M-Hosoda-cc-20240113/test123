@@ -34,6 +34,9 @@ class PositionSeeder extends Seeder
             'テストエンジニア',
             'ブリッジSE(ブリッジエンジニア)',
             '組み込みエンジニア(エンベデッドエンジニア)',
+            'ディレクション',
+            'PMO',
+            'アプリエンジニア',
         ];
         $now = Carbon::now();
         foreach ($names as $name) {
