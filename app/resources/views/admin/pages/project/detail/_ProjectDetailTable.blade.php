@@ -26,7 +26,7 @@
     </td>
   </tr>
   <tr class="p-itemDetailTable__row">
-    <th class="p-itemDetailTable__head">職種</th>
+    <th class="p-itemDetailTable__head">ポジション</th>
     <td class="p-itemDetailTable__body">
       @foreach ($response->getProject()->positions as $position)
         <span class="c-label u-mt-5 u-mr-10">{{ $position->name ?? '' }}</span>
