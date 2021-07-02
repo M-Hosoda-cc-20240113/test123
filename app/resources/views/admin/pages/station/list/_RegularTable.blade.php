@@ -14,7 +14,7 @@
         <tr class="p-table__bodyRow">
             <td class="p-table__bodyRowItem">{{ $station->id}}</td>
             <td class="p-table__bodyRowItem">{{ $station->name ?? ''}}駅</td>
-            <td class="p-table__bodyRowItem">{{ $station->area->name}}</td>
+            <td class="p-table__bodyRowItem">{{ $station->area->name ?? ''}}</td>
             <td class="p-table__bodyRowItem">{{ ViewHelper::YmdReplace($station->created_at ?? '' )}}</td>
             <td class="p-table__bodyRowItem--textCenter">
                 <form action="{{ route('station.delete') }}" method="post">
