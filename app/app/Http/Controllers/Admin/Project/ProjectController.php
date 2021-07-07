@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Project\CsvCreateProjectRequest;
 use App\Http\Requests\Admin\Project\DeleteProjectRequest;
 use App\Http\Requests\Admin\Project\ProjectDisplayToggleRequest;
 use App\Http\Requests\Admin\Project\UpdateProjectRequest;
+use App\Http\Requests\Admin\Project\SearchProjectRequest;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\CreateProject\CreateProjectService;
 use App\Services\AdminProject\csvCreateProject\CsvCreateProjectParameter;
@@ -15,11 +16,12 @@ use App\Services\AdminProject\csvCreateProject\CsvCreateProjectService;
 use App\Services\AdminProject\DeletePosition\DeletePositionService;
 use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectService;
+use App\Services\AdminProject\SearchProject\SearchProjectParameter;
+use App\Services\AdminProject\SearchProject\SearchProjectService;
 use App\Services\AdminProject\ToggleProjectDisplay\ProjectDisplayToggleParameter;
 use App\Services\AdminProject\ToggleProjectDisplay\ProjectDisplayToggleService;
 use App\Services\AdminProject\ShowEditProjectForm\ShowEditProjectFormService;
 use App\Services\AdminProject\ShowCreateProjectForm\ShowCreateProjectFormService;
-use App\Services\AdminProject\ProjectList\ProjectListResponse;
 use App\Services\AdminProject\ProjectList\ProjectListService;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailResponse;
 use App\Services\AdminProject\ProjectDetail\ProjectDetailService;
@@ -40,12 +42,7 @@ class ProjectController extends Controller
      */
     public function list(ProjectListService $project_list_service)
     {
-        $response = new ProjectListResponse();
-
-        $projects = $project_list_service->exec();
-
-        $response->setProjects($projects);
-
+        $response = $project_list_service->exec();
         return view('admin.pages.project.list.list', ['response' => $response]);
     }
 
@@ -259,5 +256,26 @@ class ProjectController extends Controller
             });
         }
         return redirect()->route('project.list');
+    }
+
+    public function search(SearchProjectRequest $request, SearchProjectService $search_project_service)
+    {
+        dd($request);
+        $parameter = new SearchProjectParameter();
+
+        if (isset($request->skill_ids)) {
+            $parameter->setSkillIds($request->skill_ids);
+        }
+
+        if (isset($request->position_ids)) {
+            $parameter->setPositionIds($request->position_ids);
+        }
+
+        if (isset($request->keyword)) {
+            $parameter->setKeyword($request->keyword);
+        }
+
+        $response = $search_project_service->search($parameter);
+        return view('admin.pages.project.list.list', ['response' => $response]);
     }
 }
