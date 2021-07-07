@@ -36,7 +36,7 @@ export class AllCheck {
           this.check_list[i].checked = true;
         }
       }
-    }else{
+    } else {
       for (let i in this.check_list) {
         if (this.check_list.hasOwnProperty(i)) {
           this.check_list[i].checked = false;
