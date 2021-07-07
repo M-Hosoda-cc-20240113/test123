@@ -195,11 +195,13 @@ class ProjectRepository implements ProjectRepositoryInterface
      */
     public function delete(DeleteProjectParameter $parameter): void
     {
-        $project = Project::findOrFail($parameter->getProjectId());
-        $project->user_app()->detach();
-        $project->user_assign()->detach();
-        $project->user_status()->detach();
-        $project->delete();
+        foreach ($parameter->getProjectIds() as $project_id) {
+            $project = Project::findOrFail($project_id);
+            $project->user_app()->detach();
+            $project->user_assign()->detach();
+            $project->user_status()->detach();
+            $project->delete();
+        }
     }
 
     /**

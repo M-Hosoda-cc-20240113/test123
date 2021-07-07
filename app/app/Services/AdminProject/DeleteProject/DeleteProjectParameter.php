@@ -11,25 +11,27 @@ namespace App\Services\AdminProject\DeleteProject;
 class DeleteProjectParameter
 {
     /**
-     * @var int[]
+     * @var []
      */
-    private $project_id;
+    private $project_ids;
 
     /**
-     * @return int
+     * @return array|null
      */
-    public function getProjectId(): int
+    public function getProjectIds(): ?array
     {
-        return $this->project_id;
+        return $this->project_ids;
     }
 
     /**
-     * @param int $project_id
+     * @param array $project_ids
      * @return DeleteProjectParameter
      */
-    public function setProjectId(int $project_id): DeleteProjectParameter
+    public function setProjectIds(array $project_ids): DeleteProjectParameter
     {
-        $this->project_id = $project_id;
+        $this->project_ids = $project_ids;
         return $this;
     }
+
+
 }

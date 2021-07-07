@@ -17,10 +17,18 @@
   @include('admin.pages._drawer_contents')
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
-    <span class="c-text u-mt-20">案件数：<span class="c-text--bold">{{ $response->getProjects()->count() ?? 0 }}</span>件</span>
-    <a href="{{ route('project.create.form') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録する</a>
-    @include('admin.pages.project.list._RegularTable', ['response' => $response])
-    {{ $response->getProjects()->links('components.paginator') }}
+    <form action="{{ route('project.delete') }}" method="POST">
+      {{ @csrf_field() }}
+      <span class="c-text u-mt-20">案件数：<span class="c-text--bold">{{ $response->getProjects()->count() ?? 0 }}</span>件</span>
+      <a href="{{ route('project.create.form') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録する</a>
+      <button type="submit" class="c-button--warning u-w-15 u-ml-10 u-mb-5 js-alert-button">削除</button>
+      <label class="p-checkbox">
+        <input type="checkbox" class="js-check-all">
+        <div class="p-checkbox__indicator"></div>全選択
+      </label>
+      @include('admin.pages.project.list._RegularTable', ['response' => $response])
+      {{ $response->getProjects()->links('components.paginator') }}
+    </form>
   </div>
 
   @include('admin.footer.footer')
