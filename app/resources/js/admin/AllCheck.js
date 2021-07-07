@@ -22,26 +22,24 @@ export class AllCheck {
    */
   setEvent() {
     this.check_all.addEventListener('change', e => {
-      this.changeAll(e);
+      this.onChange(e);
     });
   }
 
   /**
    * @param {Event} e
    */
-  changeAll(e) {
-    if (this.check_all.checked) {
-      for (let i in this.check_list) {
-        if (this.check_list.hasOwnProperty(i)) {
-          this.check_list[i].checked = true;
-        }
-      }
-    } else {
-      for (let i in this.check_list) {
-        if (this.check_list.hasOwnProperty(i)) {
-          this.check_list[i].checked = false;
-        }
-      }
-    }
+  onChange(e) {
+    this.toggleCheckBox(this.check_all.checked);
+  }
+
+  /**
+   * @param {boolean} checked
+   * 「全てチェック」のon/offをlistに反映
+   */
+  toggleCheckBox(checked) {
+    this.check_list.forEach((item)=> {
+      item.checked = checked;
+    });
   }
 }
