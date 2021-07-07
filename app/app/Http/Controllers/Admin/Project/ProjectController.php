@@ -260,7 +260,6 @@ class ProjectController extends Controller
 
     public function search(SearchProjectRequest $request, SearchProjectService $search_project_service)
     {
-        dd($request);
         $parameter = new SearchProjectParameter();
 
         if (isset($request->skill_ids)) {

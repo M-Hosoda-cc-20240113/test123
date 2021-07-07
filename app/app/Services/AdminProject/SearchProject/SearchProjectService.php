@@ -66,6 +66,7 @@ class SearchProjectService
 
         // スキル検索
         if ($parameter->hasSkill()) {
+            dd($parameter->getSkillIds());
             $result = $this->project_repository->fetchBySkillIds($parameter->getSkillIds(), $searched_ids);
             $searched_ids = array_merge($searched_ids, $this->gatherSearchdIds($result));
             $search_results[] = $result;
@@ -73,6 +74,7 @@ class SearchProjectService
 
         // ポジション検索
         if ($parameter->hasPosition()) {
+            dd($parameter->getPositionIds());
             $result = $this->project_repository->fetchByPositionIds($parameter->getPositionIds(), $searched_ids);
             $search_results[] = $result;
         }

@@ -93,6 +93,9 @@ class SearchProjectParameter
      */
     public function hasSkill(): bool
     {
+        foreach ($this->getSkillIds() as $skill_id) {
+
+        }
         return count($this->getSkillIds()) > 0;
     }
 

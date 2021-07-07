@@ -105,7 +105,7 @@
     @include('admin.pages.project.list._RegularTable', ['response' => $response])
     {{ $response->getProjects()->appends(request()->query())->links('components.paginator') }}
     @if($response->getProjectsCounts() === 0)
-      <p class="u-text--center u-mt-20 u-fs-20">関連するユーザーが見つかりませんでした。</p>
+      <p class="u-text--center u-mt-20 u-fs-20">関連する案件が見つかりませんでした。</p>
     @endif
   </div>
 
