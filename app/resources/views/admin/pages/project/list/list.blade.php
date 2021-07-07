@@ -19,6 +19,7 @@
 
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
+<<<<<<< HEAD
     <div class="l-main">
       <div class="p-mainItem c-modal__content js-modal-content u-mt-20">
         <span class="c-modal__closeButton js-modal-close-button">×</span>
@@ -99,14 +100,22 @@
     </template>
     {{--   テンプレート    --}}
 
-    <span class="c-text u-mt-20">案件数：<span class="c-text--bold">{{ $response->getProjectsCounts() ?? 0 }}</span>件</span>
-    <a href="{{ route('project.create.form') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録する</a>
-    <span class="c-button--secondary u-ml-10 u-w-auto u-mt-20 js-modal-button">検索フィルター</span>
-    @include('admin.pages.project.list._RegularTable', ['response' => $response])
-    {{ $response->getProjects()->appends(request()->query())->links('components.paginator') }}
-    @if($response->getProjectsCounts() === 0)
-      <p class="u-text--center u-mt-20 u-fs-20">関連する案件が見つかりませんでした。</p>
-    @endif
+    <form action="{{ route('project.delete') }}" method="POST">
+      {{ @csrf_field() }}
+      <span class="c-text u-mt-20">案件数：<span class="c-text--bold">{{ $response->getProjects()->count() ?? 0 }}</span>件</span>
+      <a href="{{ route('project.create.form') }}" class="c-button u-ml-10 u-w-auto u-mt-20">新規登録する</a>
+      <span class="c-button--secondary u-ml-10 u-w-auto u-mt-20 js-modal-button">検索フィルター</span>
+      <button type="submit" class="c-button--warning u-w-15 u-ml-10 u-mb-5 js-alert-button">削除</button>
+      <label class="p-checkbox">
+        <input type="checkbox" class="js-check-all">
+        <div class="p-checkbox__indicator"></div>全選択
+      </label>
+      @include('admin.pages.project.list._RegularTable', ['response' => $response])
+      {{ $response->getProjects()->appends(request()->query())->links('components.paginator') }}
+      @if($response->getProjectsCounts() === 0)
+        <p class="u-text--center u-mt-20 u-fs-20">関連する案件が見つかりませんでした。</p>
+      @endif
+    </form>
   </div>
 
   @include('admin.footer.footer')

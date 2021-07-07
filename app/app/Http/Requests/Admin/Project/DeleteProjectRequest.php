@@ -25,7 +25,8 @@ class DeleteProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'project_id' => ['integer', new CanDeleteProject($this->input('project_id'))],
+            'project_id' => ['array'],
+            'project_id.*' => ['integer', new CanDeleteProject($this->input('project_id'))],
         ];
     }
 
@@ -35,7 +36,7 @@ class DeleteProjectRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'project_id.integer' => '予期せぬ値が入力されました',
+            'project_id.*.integer' => '予期せぬ値が入力されました',
         ];
     }
 }

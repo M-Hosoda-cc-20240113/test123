@@ -181,7 +181,7 @@ class ProjectController extends Controller
     public function delete(DeleteProjectRequest $request, DeleteProjectService $delete_project_service)
     {
         $parameter = new DeleteProjectParameter;
-        $parameter->setProjectId($request->project_id);
+        $parameter->setProjectIds($request->project_ids);
         DB::transaction(function () use ($delete_project_service, $parameter) {
             $delete_project_service->exec($parameter);
         });
