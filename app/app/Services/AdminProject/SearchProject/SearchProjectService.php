@@ -73,7 +73,7 @@ class SearchProjectService
      * @param SearchProjectParameter $parameter
      * @return SearchProjectResponse
      */
-    public function search(SearchProjectParameter $parameter)
+    public function search(SearchProjectParameter $parameter): SearchProjectResponse
     {
         $search_results = [];
         $searched_ids = [];

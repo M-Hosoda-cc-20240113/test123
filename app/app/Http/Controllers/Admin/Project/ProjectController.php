@@ -258,6 +258,11 @@ class ProjectController extends Controller
         return redirect()->route('project.list');
     }
 
+    /**
+     * @param \App\Http\Requests\Admin\Project\SearchProjectRequest $request
+     * @param \App\Services\AdminProject\SearchProject\SearchProjectService $search_project_service
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function search(SearchProjectRequest $request, SearchProjectService $search_project_service)
     {
         $parameter = new SearchProjectParameter();
