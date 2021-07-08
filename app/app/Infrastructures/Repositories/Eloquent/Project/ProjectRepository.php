@@ -5,12 +5,14 @@ namespace App\Infrastructures\Repositories\Eloquent\Project;
 use App\Models\Application;
 use App\Models\Assignment;
 use App\Models\Project;
+use App\Models\Station;
 use App\Services\AdminProject\CreateProject\CreateProjectParameter;
 use App\Services\AdminProject\csvCreateProject\csvCreateProjectParameter;
 use App\Services\AdminProject\DeleteProject\DeleteProjectParameter;
 use App\Services\AdminProject\ToggleProjectDisplay\ProjectDisplayToggleParameter;
 use App\Services\AdminProject\UpdateProject\UpdateProjectParameter;
 use App\Services\Project\ProjectRepositoryInterface;
+use App\Services\Station\StationRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -141,7 +143,6 @@ class ProjectRepository implements ProjectRepositoryInterface
     public function fetchByKeyWord(array $keywords, array $exclude_ids = [])
     {
         $query = Project::with(['station', 'positions', 'skills'])
-            ->where('decided', 0)
             ->whereNotIn('id', $exclude_ids);
 
         foreach ($keywords as $keyword) {
@@ -235,7 +236,6 @@ class ProjectRepository implements ProjectRepositoryInterface
         )"));
 
         return Project::with(['station', 'positions', 'skills'])
-            ->where('decided', 0)
             ->whereNotIn('id', $exclude_ids)
             ->whereIn('id', array_column($target_ids, 'id'))
             ->get();
@@ -262,7 +262,6 @@ class ProjectRepository implements ProjectRepositoryInterface
         )"));
 
         return Project::with(['station', 'positions', 'skills'])
-            ->where('decided', 0)
             ->whereNotIn('id', $exclude_ids)
             ->whereIn('id', array_column($target_ids, 'id'))
             ->get();
@@ -274,7 +273,6 @@ class ProjectRepository implements ProjectRepositoryInterface
     public function fetchByStationIds(array $station_ids, array $exclude_ids = [])
     {
         return Project::with(['station', 'positions', 'skills'])
-            ->where('decided', 0)
             ->whereNotIn('id', $exclude_ids)
             ->where(static function (Builder $query) use ($station_ids) {
                 $query->whereHas('station', static function (Builder $query) use ($station_ids) {
@@ -289,17 +287,25 @@ class ProjectRepository implements ProjectRepositoryInterface
      */
     public function fetchByAreaIds(array $area_ids, array $exclude_ids = []): Collection
     {
+        $station_ids = [];
+        $stations = Station::whereIn('area_id', $area_ids)
+            ->get();
+        foreach ($stations as $station) {
+            $station_ids[] = $station->id;
+        }
         return Project::with(['station', 'positions', 'skills'])
-            ->where('decided', 0)
             ->whereNotIn('id', $exclude_ids)
-            ->where(static function (Builder $query) use ($area_ids) {
-                $query->whereHas('station', static function (Builder $query) use ($area_ids) {
-                    $query->whereIn('stations.area_id', $area_ids);
+            ->where(static function (Builder $query) use ($station_ids) {
+                $query->whereHas('station', static function (Builder $query) use ($station_ids) {
+                    $query->whereIn('stations.id', $station_ids);
                 });
             })
             ->get();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function csvCreate(CsvCreateProjectParameter $parameter): void
     {
         $project = new Project();

@@ -23,14 +23,24 @@ class ProjectListResponse
     private $positions;
 
     /**
-     * @var int
+     * @var Collection
      */
-    private $count_level_skill;
+    private $stations;
+
+    /**
+     * @var Collection
+     */
+    private $areas;
 
     /**
      * @var int
      */
-    private $projects_counts;
+    private $count_position_skill;
+
+    /**
+     * @var int
+     */
+    private $project_counts;
 
     /**
      * @return LengthAwarePaginator
@@ -89,36 +99,72 @@ class ProjectListResponse
     /**
      * @return int
      */
-    public function getCountLevelSkill(): int
+    public function getCountPositionSkill(): int
     {
-        return $this->count_level_skill;
+        return $this->count_position_skill;
     }
 
     /**
-     * @param int $count_level_skill
+     * @param int $count_position_skill
      * @return ProjectListResponse
      */
-    public function setCountLevelSkill(int $count_level_skill): ProjectListResponse
+    public function setCountPositionSkill(int $count_position_skill): ProjectListResponse
     {
-        $this->count_level_skill = $count_level_skill;
+        $this->count_position_skill = $count_position_skill;
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getProjectsCounts(): int
+    public function getProjectCounts(): int
     {
-        return $this->projects_counts;
+        return $this->project_counts;
     }
 
     /**
-     * @param int $projects_counts
+     * @param int $project_counts
      * @return ProjectListResponse
      */
-    public function setProjectsCounts(int $projects_counts): ProjectListResponse
+    public function setProjectCounts(int $project_counts): ProjectListResponse
     {
-        $this->projects_counts = $projects_counts;
+        $this->project_counts = $project_counts;
+        return $this;
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getStations(): Collection
+    {
+        return $this->stations;
+    }
+
+    /**
+     * @param \Illuminate\Support\Collection $stations
+     * @return ProjectListResponse
+     */
+    public function setStations(Collection $stations): ProjectListResponse
+    {
+        $this->stations = $stations;
+        return $this;
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getAreas(): Collection
+    {
+        return $this->areas;
+    }
+
+    /**
+     * @param \Illuminate\Support\Collection $areas
+     * @return ProjectListResponse
+     */
+    public function setAreas(Collection $areas): ProjectListResponse
+    {
+        $this->areas = $areas;
         return $this;
     }
 }

@@ -111,7 +111,7 @@ class SearchProjectService
         $skills = $this->skill_repository->all();
         $positions = $this->position_repository->all();
         $stations = $this->area_repository->all();
-        $projects = $this->getResultMerged($search_results);
+        $projects = $this->getResultMerged($search_results)->whereNotIn('decided',1);
         $response = new FetchTopResponse();
         $response->setProjects($this->paginator_service->paginate($projects, 6));
         $response->setProjectCounts($projects->count());

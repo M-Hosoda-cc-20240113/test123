@@ -100,7 +100,7 @@ interface ProjectRepositoryInterface
     /**
      * @param array $station_ids
      * @param array $exclude_ids
-     * @return Collection
+     * @return Project[]|Collection
      */
     public function fetchByStationIds(array $station_ids, array $exclude_ids = []);
 

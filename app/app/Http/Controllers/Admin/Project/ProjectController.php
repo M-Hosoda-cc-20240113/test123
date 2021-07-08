@@ -261,19 +261,13 @@ class ProjectController extends Controller
     public function search(SearchProjectRequest $request, SearchProjectService $search_project_service)
     {
         $parameter = new SearchProjectParameter();
-
-        if (isset($request->skill_ids)) {
-            $parameter->setSkillIds($request->skill_ids);
-        }
-
-        if (isset($request->position_ids)) {
-            $parameter->setPositionIds($request->position_ids);
-        }
-
+        $parameter->setSkillIds($request->skill_ids);
+        $parameter->setPositionIds($request->position_ids);
+        $parameter->setStationIds($request->station_ids);
+        $parameter->setAreaIds($request->area_ids);
         if (isset($request->keyword)) {
             $parameter->setKeyword($request->keyword);
         }
-
         $response = $search_project_service->search($parameter);
         return view('admin.pages.project.list.list', ['response' => $response]);
     }

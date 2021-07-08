@@ -12,7 +12,7 @@ class SearchProjectResponse
     /**
      * @var LengthAwarePaginator
      */
-    private $project;
+    private $projects;
 
     /**
      * @var Collection
@@ -23,6 +23,16 @@ class SearchProjectResponse
      * @var Collection
      */
     private $positions;
+
+    /**
+     * @var Collection
+     */
+    private $stations;
+
+    /**
+     * @var Collection
+     */
+    private $areas;
 
     /**
      * @var int
@@ -47,18 +57,18 @@ class SearchProjectResponse
     /**
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public function getProject(): LengthAwarePaginator
+    public function getProjects(): LengthAwarePaginator
     {
-        return $this->project;
+        return $this->projects;
     }
 
     /**
-     * @param \Illuminate\Pagination\LengthAwarePaginator $project
+     * @param \Illuminate\Pagination\LengthAwarePaginator $projects
      * @return SearchProjectResponse
      */
-    public function setProject(LengthAwarePaginator $project): SearchProjectResponse
+    public function setProjects(LengthAwarePaginator $projects): SearchProjectResponse
     {
-        $this->project = $project;
+        $this->projects = $projects;
         return $this;
     }
 
@@ -95,6 +105,42 @@ class SearchProjectResponse
     public function setPositions(Collection $positions): SearchProjectResponse
     {
         $this->positions = $positions;
+        return $this;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getStations(): Collection
+    {
+        return $this->stations;
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Collection $stations
+     * @return SearchProjectResponse
+     */
+    public function setStations(Collection $stations): SearchProjectResponse
+    {
+        $this->stations = $stations;
+        return $this;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAreas(): Collection
+    {
+        return $this->areas;
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Collection $areas
+     * @return SearchProjectResponse
+     */
+    public function setAreas(Collection $areas): SearchProjectResponse
+    {
+        $this->areas = $areas;
         return $this;
     }
 

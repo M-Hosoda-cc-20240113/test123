@@ -22,6 +22,16 @@ class SearchProjectParameter
     private $position_ids = [];
 
     /**
+     * @var int
+     */
+    private $station_ids = [];
+
+    /**
+     * @var int
+     */
+    private $area_ids = [];
+
+    /**
      * @var string
      */
     private $keyword = '';
@@ -63,6 +73,42 @@ class SearchProjectParameter
     }
 
     /**
+     * @return int
+     */
+    public function getStationIds()
+    {
+        return $this->station_ids;
+    }
+
+    /**
+     * @param array $station_ids
+     * @return SearchProjectParameter
+     */
+    public function setStationIds(array $station_ids): SearchProjectParameter
+    {
+        $this->station_ids = $station_ids;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAreaIds()
+    {
+        return $this->area_ids;
+    }
+
+    /**
+     * @param array $area_ids
+     * @return SearchProjectParameter
+     */
+    public function setAreaIds(array $area_ids): SearchProjectParameter
+    {
+        $this->area_ids = $area_ids;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getKeyword(): string
@@ -93,10 +139,13 @@ class SearchProjectParameter
      */
     public function hasSkill(): bool
     {
-        foreach ($this->getSkillIds() as $skill_id) {
-
+        $count = [];
+        foreach ($this->getSkillIds() as $skill_id){
+            if ($skill_id) {
+                $count[] = $skill_id;
+            }
         }
-        return count($this->getSkillIds()) > 0;
+        return count($count) > 0;
     }
 
     /**
@@ -104,7 +153,35 @@ class SearchProjectParameter
      */
     public function hasPosition(): bool
     {
-        return count($this->getPositionIds()) > 0;
+        $count = [];
+        foreach ($this->getPositionIds() as $position_id){
+            if ($position_id) {
+                $count[] = $position_id;
+            }
+        }
+        return count($count) > 0;
+    }
+
+    public function hasStation(): bool
+    {
+        $count = [];
+        foreach ($this->getStationIds() as $station_id){
+            if ($station_id) {
+                $count[] = $station_id;
+            }
+        }
+        return count($count) > 0;
+    }
+
+    public function hasArea(): bool
+    {
+        $count = [];
+        foreach ($this->getAreaIds() as $area_id){
+            if ($area_id) {
+                $count[] = $area_id;
+            }
+        }
+        return count($count) > 0;
     }
 
     /**
