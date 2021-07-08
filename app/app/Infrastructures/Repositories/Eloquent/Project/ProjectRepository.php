@@ -140,7 +140,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByKeyWord(array $keywords, array $exclude_ids = [])
+    public function fetchByKeyWord(array $keywords, array $exclude_ids = []):Collection
     {
         $query = Project::with(['station', 'positions', 'skills'])
             ->whereNotIn('id', $exclude_ids);
@@ -218,7 +218,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchBySkillIds(array $skill_ids, array $exclude_ids = [])
+    public function fetchBySkillIds(array $skill_ids, array $exclude_ids = []):Collection
     {
         $length = count($skill_ids);
         $arr = join(",", $skill_ids);
@@ -244,7 +244,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByPositionIds(array $position_ids, array $exclude_ids = [])
+    public function fetchByPositionIds(array $position_ids, array $exclude_ids = []):Collection
     {
         $length = count($position_ids);
         $arr = join(",", $position_ids);
@@ -270,7 +270,7 @@ class ProjectRepository implements ProjectRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function fetchByStationIds(array $station_ids, array $exclude_ids = [])
+    public function fetchByStationIds(array $station_ids, array $exclude_ids = []):Collection
     {
         return Project::with(['station', 'positions', 'skills'])
             ->whereNotIn('id', $exclude_ids)
