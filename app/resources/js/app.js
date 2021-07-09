@@ -41,6 +41,7 @@ switch (route_name) {
     project_detail();
     break;
   case routes.project_list:
+  case routes.project_list_search:
     project_list();
     break;
   case routes.project_create:

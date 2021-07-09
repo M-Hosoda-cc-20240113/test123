@@ -73,9 +73,9 @@ interface ProjectRepositoryInterface
      * キーワード検索
      * @param string[] $keywords
      * @param int[] $exclude_ids
-     * @return Project[]|Collection
+     * @return Collection
      */
-    public function fetchByKeyWord(array $keywords, array $exclude_ids = []);
+    public function fetchByKeyWord(array $keywords, array $exclude_ids = []): Collection;
 
     /**
      * @return array
@@ -86,23 +86,23 @@ interface ProjectRepositoryInterface
      * スキル検索
      * @param int[]|array $skill_ids
      * @param int[]|array $exclude_ids
-     * @return Project[]|Collection
+     * @return Collection
      */
-    public function fetchBySkillIds(array $skill_ids, array $exclude_ids = []);
+    public function fetchBySkillIds(array $skill_ids, array $exclude_ids = []): Collection;
 
     /**
      * @param array $position_ids
      * @param array $exclude_ids
-     * @return Project[]|Collection
+     * @return Collection
      */
-    public function fetchByPositionIds(array $position_ids, array $exclude_ids = []);
+    public function fetchByPositionIds(array $position_ids, array $exclude_ids = []): Collection;
 
     /**
      * @param array $station_ids
      * @param array $exclude_ids
      * @return Collection
      */
-    public function fetchByStationIds(array $station_ids, array $exclude_ids = []);
+    public function fetchByStationIds(array $station_ids, array $exclude_ids = []): Collection;
 
     /**
      * @param array $area_ids
