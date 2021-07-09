@@ -142,7 +142,6 @@ return [
         'max_operation_time' => '最高精算幅',
         'csv_array.*.max_operation_time' => '最高精算幅',
         'description' => '案件内容',
-        'csv_array.*.name' => '案件名',
         'csv_array.*.description' => '案件内容',
         'weekly_attendance' => '週勤務日数',
         'csv_array.*.weekly_attendance' => '週勤務日数',

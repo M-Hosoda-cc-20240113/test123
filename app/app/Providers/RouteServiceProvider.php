@@ -62,6 +62,15 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->admin_namespace)
                 ->group(base_path('routes/admin.php'));
         });
+
+        Route::pattern('user_id', '[0-9]+');
+        parent::boot();
+
+        Route::pattern('project_id', '[0-9]+');
+        parent::boot();
+
+        Route::pattern('note_id', '[0-9]+');
+        parent::boot();
     }
 
     /**

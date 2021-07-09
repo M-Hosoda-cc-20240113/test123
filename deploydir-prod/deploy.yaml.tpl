@@ -113,3 +113,8 @@ spec:
                 secretKeyRef:
                   key: APP_KEY
                   name: aegis-prod-secret
+            - name: SLACK_URL
+              valueFrom:
+                secretKeyRef:
+                  key: SLACK_URL
+                  name: aegis-prod-secret
