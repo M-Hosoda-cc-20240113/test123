@@ -27,83 +27,77 @@
         <div class="p-userRegister">
           <form action="{{ route('auth.register') }}" method="post">
             {{ @csrf_field() }}
-            @if($errors->has('sei') || $errors->has('mei'))
-              <div class="p-userRegister__inputUnitWrap--2col u-m0a">
-                <div class="p-userRegister__inputUnit">
-                  @foreach($errors->get('sei') as $error)
-                    <p class="c-text--warning fs-11">{{ $error }}</p>
-                  @endforeach
-                </div>
-                <div class="p-userRegister__inputUnit">
-                  @foreach($errors->get('mei') as $error)
-                    <p class="c-text--warning fs-11">{{ $error }}</p>
-                  @endforeach
-                </div>
-              </div>
-            @endif
             <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">氏名</span>
               <div class="p-userRegister__inputUnitWrap--2col">
                 <div class="p-userRegister__inputUnit">
                   <span class="c-text p-userRegister__inputName">姓</span>
-                  <input class="c-input p-userRegister__input" type="text" placeholder="田中" name="sei"
-                         value="{{ old('sei') }}">
+                  <div class="u-df u-ff-column u-w-100">
+                    @if($errors->has('sei'))
+                      @foreach($errors->get('sei') as $error)
+                        <p class="c-text--warning fs-11">{{ $error }}</p>
+                      @endforeach
+                    @endif
+                    <input class="c-input p-userRegister__input" type="text" placeholder="田中" name="sei" value="{{ old('sei') }}">
+                  </div>
                 </div>
                 <div class="p-userRegister__inputUnit">
                   <span class="c-text p-userRegister__inputName">名</span>
-                  <input class="c-input p-userRegister__input" type="text" placeholder="一郎" name="mei"
-                         value="{{ old('mei') }}">
+                  <div class="u-df u-ff-column u-w-100">
+                    @if($errors->has('mei'))
+                      @foreach($errors->get('mei') as $error)
+                        <p class="c-text--warning fs-11">{{ $error }}</p>
+                      @endforeach
+                    @endif
+                    <input class="c-input p-userRegister__input" type="text" placeholder="一郎" name="mei" value="{{ old('mei') }}">
+                  </div>
                 </div>
               </div>
             </div>
             {{--   p-userRegisterRow   --}}
 
-            @if($errors->has('sei_kana') || $errors->has('mei_kana'))
-              <div class="p-userRegister__inputUnitWrap--2col u-m0a">
-                <div class="p-userRegister__inputUnit">
-                  @foreach($errors->get('sei_kana') as $error)
-                    <p class="c-text--warning fs-11">{{ $error }}</p>
-                  @endforeach
-                </div>
-                <div class="p-userRegister__inputUnit">
-                  @foreach($errors->get('mei_kana') as $error)
-                    <p class="c-text--warning fs-11">{{ $error }}</p>
-                  @endforeach
-                </div>
-              </div>
-            @endif
             <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">フリガナ</span>
               <div class="p-userRegister__inputUnitWrap--2col">
                 <div class="p-userRegister__inputUnit">
                   <span class="c-text p-userRegister__inputName">セイ</span>
-                  <input class="c-input p-userRegister__input" type="text" placeholder="タナカ"
-                         name="sei_kana"
-                         value="{{ old('sei_kana') }}">
+                  <div class="u-df u-ff-column u-w-100">
+                    @if($errors->has('sei_kana'))
+                      @foreach($errors->get('sei_kana') as $error)
+                        <p class="c-text--warning fs-11">{{ $error }}</p>
+                      @endforeach
+                    @endif
+                    <input class="c-input p-userRegister__input" type="text" placeholder="タナカ"
+                           name="sei_kana"
+                           value="{{ old('sei_kana') }}">
+                  </div>
                 </div>
                 <div class="p-userRegister__inputUnit">
                   <span class="c-text p-userRegister__inputName">メイ</span>
-                  <input class="c-input p-userRegister__input" type="text" placeholder="イチロウ"
-                         name="mei_kana"
-                         value="{{ old('mei_kana') }}">
+                  <div class="u-df u-ff-column u-w-100">
+                    @if($errors->has('mei_kana'))
+                      @foreach($errors->get('mei_kana') as $error)
+                        <p class="c-text--warning fs-11">{{ $error }}</p>
+                      @endforeach
+                    @endif
+                    <input class="c-input p-userRegister__input" type="text" placeholder="イチロウ"
+                           name="mei_kana"
+                           value="{{ old('mei_kana') }}">
+                  </div>
                 </div>
               </div>
             </div>
             {{--   p-userRegisterRow   --}}
 
-            @if($errors->has('birthday'))
-              <div class="p-userRegister__inputUnitWrap u-m0a">
-                <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                  @foreach($errors->get('birthday') as $error)
-                    <p class="c-text--warning fs-11">{{ $error }}</p>
-                  @endforeach
-                </div>
-              </div>
-            @endif
             <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">生年月日</span>
               <div class="p-userRegister__inputUnitWrap">
-                <div class="p-userRegister__inputUnit--single u-w-50-pc">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
+                  @if($errors->has('birthday'))
+                    @foreach($errors->get('birthday') as $error)
+                      <p class="c-text--warning fs-11">{{ $error }}</p>
+                    @endforeach
+                  @endif
                   <input class="c-input p-userRegister__input u-w-100-sp" type="date"
                          name="birthday" value="{{ old('birthday') }}">
                 </div>
@@ -111,19 +105,15 @@
             </div>
             {{--   p-userRegisterRow   --}}
 
-            @if($errors->has('email'))
-              <div class="p-userRegister__inputUnitWrap u-m0a">
-                <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                  @foreach($errors->get('email') as $error)
-                    <p class="c-text--warning fs-11">{{ $error }}</p>
-                  @endforeach
-                </div>
-              </div>
-            @endif
             <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">メールアドレス</span>
               <div class="p-userRegister__inputUnitWrap">
-                <div class="p-userRegister__inputUnit--single u-w-50-pc">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
+                  @if($errors->has('email'))
+                    @foreach($errors->get('email') as $error)
+                      <p class="c-text--warning fs-11">{{ $error }}</p>
+                    @endforeach
+                  @endif
                   <input class="c-input p-userRegister__input u-w-100-sp" type="email"
                          placeholder="mail@example.com"
                          name="email" value="{{ old('email') }}">
@@ -132,19 +122,15 @@
             </div>
             {{--   p-userRegisterRow   --}}
 
-            @if($errors->has('tel'))
-              <div class="p-userRegister__inputUnitWrap u-m0a">
-                <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                  @foreach($errors->get('tel') as $error)
-                    <p class="c-text--warning fs-11">{{ $error }}</p>
-                  @endforeach
-                </div>
-              </div>
-            @endif
             <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">電話番号</span>
               <div class="p-userRegister__inputUnitWrap">
-                <div class="p-userRegister__inputUnit--single u-w-50-pc">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
+                  @if($errors->has('tel'))
+                    @foreach($errors->get('tel') as $error)
+                      <p class="c-text--warning fs-11">{{ $error }}</p>
+                    @endforeach
+                  @endif
                   <input class="c-input p-userRegister__input u-w-100-sp" type="text"
                          placeholder="08012345678(ハイフン不要)"
                          name="tel" value="{{ old('tel') }}">
@@ -153,19 +139,15 @@
             </div>
             {{--   p-userRegisterRow   --}}
 
-            @if($errors->has('password'))
-              <div class="p-userRegister__inputUnitWrap u-m0a">
-                <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                  @foreach($errors->get('password') as $error)
-                    <p class="c-text--warning fs-11">{{ $error }}</p>
-                  @endforeach
-                </div>
-              </div>
-            @endif
             <div class="p-userRegister__row u-mb-5">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">パスワード</span>
               <div class="p-userRegister__inputUnitWrap">
-                <div class="p-userRegister__inputUnit--single u-w-50-pc">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
+                  @if($errors->has('password'))
+                    @foreach($errors->get('password') as $error)
+                      <p class="c-text--warning fs-11">{{ $error }}</p>
+                    @endforeach
+                  @endif
                   <input class="c-input p-userRegister__input u-w-100-sp" type="password"
                          placeholder="" name="password"
                          value="{{ old('password') }}">
