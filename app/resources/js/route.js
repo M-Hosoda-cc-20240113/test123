@@ -1,6 +1,7 @@
 export const routes = {
   // admin
   project_list: 'project.list',
+  project_list_search: 'project.list.search',
   project_create: 'project.create.form',
   project_detail: 'project.detail',
   project_edit: 'project.edit.form',

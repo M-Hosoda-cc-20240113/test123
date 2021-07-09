@@ -19,7 +19,7 @@
   @endif
 
   {{-- 案件リスト --}}
-  @if(url()->current() === route('project.list'))
+  @if(url()->current() === route('project.list') || url()->current() === route('project.list.search'))
     <li class="p-breadCrumb__item">
       <a href="{{ route('admin.index') }}"><span>ホーム</span></a>
       @include('admin.bread_crumb._submenu')
