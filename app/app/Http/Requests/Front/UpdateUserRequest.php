@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Rules\CanRegisterBirthday;
 use App\Rules\InUsersByTel;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -30,8 +31,8 @@ class UpdateUserRequest extends FormRequest
             'mei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
             'sei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'mei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
-            'birthday'  => ['required', 'integer', 'digits:8'],
-            'tel'       => ['required', 'digits_between:8,11'],
+            'birthday'  => ['required', 'date', 'digits:8', new CanRegisterBirthday($this->input('birthday'))],
+            'tel'       => ['required', 'digits_between:8,11', new InUsersByTel($this->input('tel'))],
         ];
     }
 }
