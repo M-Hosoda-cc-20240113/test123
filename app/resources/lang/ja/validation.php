@@ -122,7 +122,7 @@ return [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
         'tel' => '電話番号',
-        'birthday' => '誕生日',
+        'birthday' => '生年月日',
         'password_confirmation' => 'パスワード確認欄',
         'position_ids' => 'ポジション',
         'position_ids.*' => 'ポジション',
@@ -163,6 +163,6 @@ return [
         'keyword' => '検索キーワード',
         'title' => 'お知らせタイトル',
         'contents' => 'お知らせ詳細',
-        'policy' => '利用規約・個人情報の取扱い'
+        'policy' => '利用規約・個人情報の取扱いへの同意'
     ]
 ];

@@ -49,4 +49,12 @@ class RegisterUserRequest extends FormRequest
             'policy' => ['required'],
         ];
     }
+
+    protected function prepareForValidation()
+    {
+        $birthday = str_replace('-','',$this->input('birthday'));
+        $this->merge([
+            'birthday' => $birthday,
+        ]);
+    }
 }

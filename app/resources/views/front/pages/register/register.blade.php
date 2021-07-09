@@ -17,16 +17,30 @@
 
         <h2 class="p-level2Heading">新規登録情報入力<span class="c-text--warning">（全項目必須）</span></h2>
 
-        @if($errors->all())
-          <p class="c-text--bold u-mt-20">以下のエラーを修正してください</p>
-          @foreach($errors->all() as $error)
-            <p class="c-text--warning">{{ $error }}</p>
-          @endforeach
-        @endif
+{{--                @if($errors->all())--}}
+{{--                  <p class="c-text--bold u-mt-20">以下のエラーを修正してください</p>--}}
+{{--                  @foreach($errors->all() as $error)--}}
+{{--                    <p class="c-text--warning">{{ $error }}</p>--}}
+{{--                  @endforeach--}}
+{{--                @endif--}}
 
         <div class="p-userRegister">
           <form action="{{ route('auth.register') }}" method="post">
             {{ @csrf_field() }}
+            @if($errors->has('sei') || $errors->has('mei'))
+              <div class="p-userRegister__inputUnitWrap--2col u-m0a">
+                <div class="p-userRegister__inputUnit">
+                  @foreach($errors->get('sei') as $error)
+                    <p class="c-text--warning fs-11">{{ $error }}</p>
+                  @endforeach
+                </div>
+                <div class="p-userRegister__inputUnit">
+                  @foreach($errors->get('mei') as $error)
+                    <p class="c-text--warning fs-11">{{ $error }}</p>
+                  @endforeach
+                </div>
+              </div>
+            @endif
             <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">氏名</span>
               <div class="p-userRegister__inputUnitWrap--2col">
@@ -44,6 +58,20 @@
             </div>
             {{--   p-userRegisterRow   --}}
 
+            @if($errors->has('sei_kana') || $errors->has('mei_kana'))
+              <div class="p-userRegister__inputUnitWrap--2col u-m0a">
+                <div class="p-userRegister__inputUnit">
+                  @foreach($errors->get('sei_kana') as $error)
+                    <p class="c-text--warning fs-11">{{ $error }}</p>
+                  @endforeach
+                </div>
+                <div class="p-userRegister__inputUnit">
+                  @foreach($errors->get('mei_kana') as $error)
+                    <p class="c-text--warning fs-11">{{ $error }}</p>
+                  @endforeach
+                </div>
+              </div>
+            @endif
             <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">フリガナ</span>
               <div class="p-userRegister__inputUnitWrap--2col">
@@ -63,18 +91,35 @@
             </div>
             {{--   p-userRegisterRow   --}}
 
+            @if($errors->has('birthday'))
+              <div class="p-userRegister__inputUnitWrap u-m0a">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc">
+                  @foreach($errors->get('birthday') as $error)
+                    <p class="c-text--warning fs-11">{{ $error }}</p>
+                  @endforeach
+                </div>
+              </div>
+            @endif
             <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">生年月日</span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc">
-                  <input class="c-input p-userRegister__input u-w-100-sp" type="text"
-                         placeholder="19930808"
+                  <input class="c-input p-userRegister__input u-w-100-sp" type="date"
                          name="birthday" value="{{ old('birthday') }}">
                 </div>
               </div>
             </div>
             {{--   p-userRegisterRow   --}}
 
+            @if($errors->has('email'))
+              <div class="p-userRegister__inputUnitWrap u-m0a">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc">
+                  @foreach($errors->get('email') as $error)
+                    <p class="c-text--warning fs-11">{{ $error }}</p>
+                  @endforeach
+                </div>
+              </div>
+            @endif
             <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">メールアドレス</span>
               <div class="p-userRegister__inputUnitWrap">
@@ -87,6 +132,15 @@
             </div>
             {{--   p-userRegisterRow   --}}
 
+            @if($errors->has('tel'))
+              <div class="p-userRegister__inputUnitWrap u-m0a">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc">
+                  @foreach($errors->get('tel') as $error)
+                    <p class="c-text--warning fs-11">{{ $error }}</p>
+                  @endforeach
+                </div>
+              </div>
+            @endif
             <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">電話番号</span>
               <div class="p-userRegister__inputUnitWrap">
@@ -99,6 +153,15 @@
             </div>
             {{--   p-userRegisterRow   --}}
 
+            @if($errors->has('password'))
+              <div class="p-userRegister__inputUnitWrap u-m0a">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc">
+                  @foreach($errors->get('password') as $error)
+                    <p class="c-text--warning fs-11">{{ $error }}</p>
+                  @endforeach
+                </div>
+              </div>
+            @endif
             <div class="p-userRegister__row u-mb-5">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">パスワード</span>
               <div class="p-userRegister__inputUnitWrap">
@@ -112,10 +175,19 @@
             <p class="c-text u-fs-12">※半角英数字8文字以上で大文字を1つ以上含むパスワードを入力してください。</p>
 
             <label class="p-checkbox u-fs-14 u-mt-20">
-              <p><a class="c-text--primary" target="_blank" rel="noopener noreferrer" href="{{ route('feature.policy') }}">利用規約</a>・<a class="c-text--primary" target="_blank" rel="noopener noreferrer" href="{{ route('feature.privacy.policy') }}">個人情報の取扱い</a>に同意します。</p>
+              <p><a class="c-text--primary" target="_blank" rel="noopener noreferrer"
+                    href="{{ route('feature.policy') }}">利用規約</a>・<a class="c-text--primary" target="_blank"
+                                                                     rel="noopener noreferrer"
+                                                                     href="{{ route('feature.privacy.policy') }}">個人情報の取扱い</a>に同意します。
+              </p>
               <input name="policy" type="checkbox">
               <div class="p-checkbox__indicator"></div>
             </label>
+            @if($errors->has('policy'))
+              @foreach($errors->get('policy') as $error)
+                <p class="c-text--warning fs-11">{{ $error }}</p>
+              @endforeach
+            @endif
             {{--   p-userRegisterRow   --}}
             <input type="hidden" name="project_id" value="{{ $project_id ?? '' }}">
             <button class="c-button u-db u-w-30-pc u-m0a u-mt-20 js-loading-button gtm-register">新規登録</button>
