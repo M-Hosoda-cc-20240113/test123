@@ -16,14 +16,6 @@
       <div class="p-mainItem">
 
         <h2 class="p-level2Heading">新規登録情報入力<span class="c-text--warning">（全項目必須）</span></h2>
-
-{{--                @if($errors->all())--}}
-{{--                  <p class="c-text--bold u-mt-20">以下のエラーを修正してください</p>--}}
-{{--                  @foreach($errors->all() as $error)--}}
-{{--                    <p class="c-text--warning">{{ $error }}</p>--}}
-{{--                  @endforeach--}}
-{{--                @endif--}}
-
         <div class="p-userRegister">
           <form action="{{ route('auth.register') }}" method="post">
             {{ @csrf_field() }}
