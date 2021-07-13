@@ -42,6 +42,6 @@ class InUsersByEmail implements Rule
      */
     public function message(): string
     {
-        return 'このメールアドレスは既に使用されています。';
+        return '正しいメールアドレスを入力してください。';
     }
 }
