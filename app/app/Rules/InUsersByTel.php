@@ -42,6 +42,6 @@ class InUsersByTel implements Rule
      */
     public function message(): string
     {
-        return 'この電話番号は既に使用されています。';
+        return '正しい電話番号を入力してください。';
     }
 }
