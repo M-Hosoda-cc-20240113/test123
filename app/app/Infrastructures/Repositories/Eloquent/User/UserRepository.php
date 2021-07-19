@@ -15,7 +15,6 @@ use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 /**
  * Class UserRepository
@@ -112,7 +111,7 @@ class UserRepository implements UserRepositoryInterface
             'invite_user_code' => $parameter->getInviteUserCode(),
         ]);
 
-        $invite_code =  RepositoryHelper::createInviteCode($user->id);
+        $invite_code = RepositoryHelper::createInviteCode($user->id);
 
         DB::transaction(function () use ($user, $invite_code) {
             $user->invite_code = $invite_code;

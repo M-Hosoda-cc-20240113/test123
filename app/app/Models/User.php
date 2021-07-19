@@ -70,6 +70,23 @@ use Illuminate\Support\Str;
  * @property-read int|null $project_app_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Project[] $project_assign
  * @property-read int|null $project_assign_count
+ * @property string $tel_hash
+ * @property int $is_new
+ * @property string|null $remarks
+ * @property string|null $invite_code
+ * @property string|null $invite_user_code
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PointsHistory[] $points_history
+ * @property-read int|null $points_history_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Project[] $project_status
+ * @property-read int|null $project_status_count
+ * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereInviteCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereInviteUserCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsNew($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRemarks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTelHash($value)
+ * @method static \Illuminate\Database\Query\Builder|User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  */
 class User extends Authenticatable
 {

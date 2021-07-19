@@ -50,7 +50,7 @@ class RegisterUserRequest extends FormRequest
                 new HalfWidthUpperCase(),
                 new HalfWidthNumber(),
             ],
-            'invite_user_code' => ['nullable', 'string','max:30',Rule::in($user_codes)],
+            'invite_user_code' => ['nullable', 'string', 'max:30', Rule::in($user_codes)],
             'policy' => ['required'],
         ];
     }
@@ -67,7 +67,7 @@ class RegisterUserRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        $birthday = str_replace('-','',$this->input('birthday'));
+        $birthday = str_replace('-', '', $this->input('birthday'));
         $this->merge([
             'birthday' => $birthday,
         ]);

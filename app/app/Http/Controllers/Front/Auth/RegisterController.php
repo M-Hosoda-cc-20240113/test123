@@ -115,9 +115,9 @@ class RegisterController extends Controller
         $notification_parameter = new NotificationRegisterUserParameter();
         $notification_parameter->setSendUser($user);
 
-        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class,['type'=>'mail']);
+        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class, ['type' => 'mail']);
         $notification->send($notification_parameter);
-        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class,['type'=>'slack']);
+        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class, ['type' => 'slack']);
         $notification->send($notification_parameter);
 
         if (!empty($request->project_id)) {

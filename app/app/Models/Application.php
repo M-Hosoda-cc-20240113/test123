@@ -28,6 +28,12 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @property-read Project|null $project
  * @property-read User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Application whereProjectId($value)
+ * @property string|null $interview_date
+ * @property string|null $operation_start_month
+ * @property-read \App\Models\Project $projects
+ * @property-read \App\Models\User $users
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereInterviewDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Application whereOperationStartMonth($value)
  */
 class Application extends Pivot
 {

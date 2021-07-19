@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|RelLevelSkillUser whereSkillId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RelLevelSkillUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RelLevelSkillUser whereUserId($value)
+ * @property-read \App\Models\Level $level
+ * @property-read \App\Models\Skill $skill
+ * @property-read \App\Models\User $user
  */
 class RelLevelSkillUser extends Model
 {
