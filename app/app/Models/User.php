@@ -335,4 +335,9 @@ class User extends Authenticatable
         $assignment_ids = array_column(Assignment::all()->toArray(), 'user_id');
         return in_array($user_id, $assignment_ids);
     }
+
+    public function points_total()
+    {
+
+    }
 }

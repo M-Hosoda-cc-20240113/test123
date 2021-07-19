@@ -104,6 +104,9 @@ class RegisterController extends Controller
         $parameter->setTel($request->tel);
         $parameter->setEmail($request->email);
         $parameter->setPassword($request->password);
+        if ($request->invite_user_code) {
+            $parameter->setInviteUserCode($request->invite_user_code);
+        }
 
         $user = DB::transaction(function () use ($register_user_service, $parameter) {
             return $register_user_service->exec($parameter);
