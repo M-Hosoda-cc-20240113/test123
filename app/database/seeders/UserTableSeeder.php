@@ -1,9 +1,11 @@
 <?php
 
 namespace Database\Seeders;
+use App\Helpers\RepositoryHelper;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+
 class UserTableSeeder extends Seeder
 {
     /**
@@ -37,7 +39,6 @@ class UserTableSeeder extends Seeder
         $tel7  = '07034123445';
         $tel8  = '07034561234';
         $tel9  = '07031235432';
-
         User::create([
             'sei'               => "田中" ,
             'sei_kana'          => "タナカ",
@@ -69,6 +70,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'remarks'           => "特になし",
             'points'            => 0,
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -86,6 +88,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 1,
             'remarks'           => "",
             'is_new'            => 0,
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -102,6 +105,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 1,
             'remarks'           => "特になし",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -119,6 +123,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'is_new'            => 0,
             'remarks'           => "特になし",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -136,6 +141,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'is_new'            => 0,
             'remarks'           => "特になし",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -152,6 +158,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -168,6 +175,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -185,6 +193,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 1,
             'is_new'            => 0,
             'remarks'           => "特になし",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -202,6 +211,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'is_admin'          => 1,
             'points'            => 0,
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -219,6 +229,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'is_admin'          => 1,
             'points'            => 0,
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
     }

@@ -71,6 +71,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $user_app_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $user_assign
  * @property-read int|null $user_assign_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $user_status
+ * @property-read int|null $user_status_count
  */
 class Project extends Model
 {

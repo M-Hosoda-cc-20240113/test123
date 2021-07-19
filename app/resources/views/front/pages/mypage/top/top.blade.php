@@ -84,6 +84,15 @@
               <td>{{ $response->getUser()->points ?? '' }} pt</td>
             </tr>
           @endif
+          <tr>
+            <th>招待コード</th>
+            <td>
+              @if(!$response->getUser()->invite_code)
+                <a class="c-button u-w-30-pc js-loading-button" href="{{ route('front.user.create.invite_code') }}">招待コード発行</a>
+              @endif
+              {{ $response->getUser()->invite_code ?? '' }}
+            </td>
+          </tr>
           </tbody>
         </table>
         {{--   ユーザー情報   --}}

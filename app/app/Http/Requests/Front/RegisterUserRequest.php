@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Front;
 
+use App\Models\User;
 use App\Rules\CanRegisterBirthday;
 use App\Rules\HalfWidthLowerCase;
 use App\Rules\HalfWidthNumber;
@@ -9,6 +10,7 @@ use App\Rules\HalfWidthUpperCase;
 use App\Rules\InUsersByEmail;
 use App\Rules\InUsersByTel;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class RegisterUserRequest extends FormRequest
 {
@@ -29,6 +31,8 @@ class RegisterUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $users = User::all();
+        $user_codes = $users->pluck('invite_code')->toArray();
         return [
             'sei' => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
             'mei' => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
@@ -46,13 +50,24 @@ class RegisterUserRequest extends FormRequest
                 new HalfWidthUpperCase(),
                 new HalfWidthNumber(),
             ],
+            'invite_user_code' => ['nullable', 'string', 'max:30', Rule::in($user_codes)],
             'policy' => ['required'],
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function messages(): array
+    {
+        return [
+            'invite_user_code.*' => '不正な招待コードです。',
         ];
     }
 
     protected function prepareForValidation()
     {
-        $birthday = str_replace('-','',$this->input('birthday'));
+        $birthday = str_replace('-', '', $this->input('birthday'));
         $this->merge([
             'birthday' => $birthday,
         ]);

@@ -7,6 +7,7 @@ use App\Http\Requests\Front\UpdateUserRequest;
 use App\Http\Requests\Front\UpdateUserSkillRequest;
 use App\Services\Notification\ContactUser\NotificationContactUserParameter;
 use App\Services\Notification\ContactUser\NotificationContactUserServiceInterface;
+use App\Services\User\CreateInviteCode\CreateInviteCodeService;
 use App\Services\User\DeleteSkill\DeleteSkillService;
 use App\Services\User\DeleteUser\DeleteUserService;
 use App\Services\User\EditSkill\UpdateSkillParameter;
@@ -144,5 +145,19 @@ class UserController extends Controller
             $delete_user_service->exec($user_id);
         });
         return redirect()->route('front.index');
+    }
+
+    /**
+     * @param \App\Services\User\CreateInviteCode\CreateInviteCodeService $create_invite_code_service
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
+     */
+    public function createInviteCode(CreateInviteCodeService $create_invite_code_service)
+    {
+        $user_id = Auth::id();
+        DB::transaction(function () use ($create_invite_code_service, $user_id) {
+            $create_invite_code_service->exec($user_id);
+        });
+        return redirect()->route('home.mypage');
     }
 }

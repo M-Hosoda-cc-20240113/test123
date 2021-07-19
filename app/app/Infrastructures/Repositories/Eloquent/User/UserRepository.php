@@ -2,6 +2,7 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\User;
 
+use App\Helpers\RepositoryHelper;
 use App\Models\PointsHistory;
 use App\Models\RelLevelSkillUser;
 use App\Models\User;
@@ -92,6 +93,7 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
+     * @throws \Throwable
      */
     public function register(RegisterUserParameter $parameter): User
     {
@@ -106,12 +108,38 @@ class UserRepository implements UserRepositoryInterface
             'email' => $parameter->getEmail(),
             'email_hash' => hash(config('app.hash_email.algo'), $parameter->getEmail() . config('app.hash_email.salt')),
             'password' => bcrypt($parameter->getPassword()),
+            'invite_user_code' => $parameter->getInviteUserCode(),
         ]);
+
+        $invite_code = RepositoryHelper::createInviteCode($user->id);
+
+        DB::transaction(function () use ($user, $invite_code) {
+            $user->invite_code = $invite_code;
+            $user->save();
+        });
 
         PointsHistory::create([
             'user_id' => $user->id,
             'points' => 5000,
         ]);
+
+        if ($parameter->getInviteUserCode()) {
+            PointsHistory::create([
+                'user_id' => $user->id,
+                'points' => 5000,
+            ]);
+
+            $invite_user = User::where('invite_code', $parameter->getInviteUserCode())->firstOrFail();
+            $invite_user_id = $invite_user->id;
+            PointsHistory::create([
+                'user_id' => $invite_user_id,
+                'points' => 5000,
+            ]);
+
+            $user_points = PointsHistory::where('user_id', $invite_user_id)->sum('points');
+            $invite_user->points = $user_points;
+            $invite_user->save();
+        }
 
         return $user;
     }
@@ -130,7 +158,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function findByTel(string $tel): ?User
     {
-        return User::where('tel_hash', $this->makeTelHash($tel))->first();
+        return User::withTrashed()->where('tel_hash', $this->makeTelHash($tel))->first();
     }
 
     /**
@@ -569,6 +597,17 @@ class UserRepository implements UserRepositoryInterface
         $user_points = PointsHistory::where('user_id', $parameter->getUserId())->sum('points');
         $user = User::findOrFail($parameter->getUserId());
         $user->points = $user_points;
+        $user->save();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function createInviteCode(int $user_id): void
+    {
+        $invite_code = RepositoryHelper::createInviteCode($user_id);
+        $user = User::findOrFail($user_id);
+        $user->invite_code = $invite_code;
         $user->save();
     }
 }

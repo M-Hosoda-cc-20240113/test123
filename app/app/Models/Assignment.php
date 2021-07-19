@@ -27,6 +27,10 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @method static \Illuminate\Database\Eloquent\Builder|Assignment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Assignment whereUserId($value)
  * @mixin \Eloquent
+ * @property string|null $assignment_start_date
+ * @property string|null $assignment_end_date
+ * @method static \Illuminate\Database\Eloquent\Builder|Assignment whereAssignmentEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Assignment whereAssignmentStartDate($value)
  */
 class Assignment extends Pivot
 {

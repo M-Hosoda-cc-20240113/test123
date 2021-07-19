@@ -206,4 +206,10 @@ interface UserRepositoryInterface
      * @return void
      */
     public function insertUserPoints(TotalUserPointsParameter $parameter): void;
+
+
+    /**
+     * @param int $user_id
+     */
+    public function createInviteCode(int $user_id): void;
 }
