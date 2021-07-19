@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Crypt;
 use App\Notifications\PasswordResetNotification;
+use Illuminate\Support\Str;
 
 /**
  * App\Models\User
@@ -336,8 +337,12 @@ class User extends Authenticatable
         return in_array($user_id, $assignment_ids);
     }
 
-    public function points_total()
+    /**
+     * @param int $user_id
+     * @return string
+     */
+    public static function createInviteCode(int $user_id): string
     {
-
+        return Str::random(8) . $user_id . "_aegis";
     }
 }

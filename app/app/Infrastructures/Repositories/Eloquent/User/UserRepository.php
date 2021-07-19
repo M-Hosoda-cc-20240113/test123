@@ -2,6 +2,7 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\User;
 
+use App\Helpers\RepositoryHelper;
 use App\Models\PointsHistory;
 use App\Models\RelLevelSkillUser;
 use App\Models\User;
@@ -111,7 +112,7 @@ class UserRepository implements UserRepositoryInterface
             'invite_user_code' => $parameter->getInviteUserCode(),
         ]);
 
-        $invite_code = Str::random(8) . $user->id . "_aegis";
+        $invite_code =  RepositoryHelper::createInviteCode($user->id);
 
         DB::transaction(function () use ($user, $invite_code) {
             $user->invite_code = $invite_code;
@@ -605,7 +606,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function createInviteCode(int $user_id): void
     {
-        $invite_code = Str::random(8) . $user_id . "_aegis";
+        $invite_code = RepositoryHelper::createInviteCode($user_id);
         $user = User::findOrFail($user_id);
         $user->invite_code = $invite_code;
         $user->save();

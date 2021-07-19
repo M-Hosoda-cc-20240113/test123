@@ -251,6 +251,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'ViewHelper' => App\Helpers\ViewHelper::class,
+        'RepositoryHelper' => App\Helpers\RepositoryHelper::class,
         'Slack' => App\Services\SlackNotification\SlackFacade::class,
 
     ],
