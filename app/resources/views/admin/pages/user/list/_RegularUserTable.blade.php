@@ -20,6 +20,7 @@
 
   <tbody class="p-table__body">
     @foreach ($response->getUsers() as $user)
+    @php /** @var \App\Models\User $user */ @endphp
     <tr class="p-table__bodyRow--clickable" data-href="{{ route('user.detail', ['user_id' => $user->id]) }}">
       <td class="p-table__bodyRowItem--nowrap">{{ $user->id ?? '' }}</td>
       <td class="p-table__bodyRowItem--nowrap">{{ $user->sei ?? '' }}&#160;{{ $user->mei ?? '' }}</td>
@@ -29,7 +30,7 @@
       <td class="p-table__bodyRowItem">{{ $user->tel ?? '' }}</td>
       <td class="p-table__bodyRowItem">{{ ViewHelper::BirthdayReplace($user->birthday ?? '')}}（{{ ViewHelper::CountAge($user->birthday ?? '')}}）</td>
       <td class="p-table__bodyRowItem">{{ $user->remarks ?? '' }}</td>
-      <td class="p-table__bodyRowItem">{{ $user->invite_user_name ?? '' }}</td>
+      <td class="p-table__bodyRowItem">{{ ViewHelper::getUserNameById($user->invite_user_id ?? '') }}</td>
     </tr>
     @endforeach
   </tbody>

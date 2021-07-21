@@ -116,9 +116,9 @@ class ViewHelper
         return $status;
     }
 
-    public static function InviteUserName(string $value = null): string
+    public static function getUserNameById(string $value = null): string
     {
-        $user = User::where('users.invite_code', $value)->first();
+        $user = User::where('users.invite_user_id', $value)->first();
         $sei = $user->sei ?? '';
         $mei = $user->mei ?? '';
         return $sei . '' . $mei;
