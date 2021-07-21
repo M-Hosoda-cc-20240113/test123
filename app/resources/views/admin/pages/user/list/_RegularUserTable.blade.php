@@ -14,6 +14,7 @@
       <th class="p-table__headRowItem">電話番号</th>
       <th class="p-table__headRowItem">生年月日&nbsp;(年齢)</th>
       <th class="p-table__headRowItem">備考欄</th>
+      <th class="p-table__headRowItem">紹介者</th>
     </tr>
   </thead>
 
@@ -28,6 +29,7 @@
       <td class="p-table__bodyRowItem">{{ $user->tel ?? '' }}</td>
       <td class="p-table__bodyRowItem">{{ ViewHelper::BirthdayReplace($user->birthday ?? '')}}（{{ ViewHelper::CountAge($user->birthday ?? '')}}）</td>
       <td class="p-table__bodyRowItem">{{ $user->remarks ?? '' }}</td>
+      <td class="p-table__bodyRowItem">{{ $user->invite_user_name ?? '' }}</td>
     </tr>
     @endforeach
   </tbody>

@@ -108,6 +108,8 @@ class User extends Authenticatable
         'email',
         'email_hash',
         'password',
+        'invite_code',
+        'invite_user_name',
     ];
 
     /**

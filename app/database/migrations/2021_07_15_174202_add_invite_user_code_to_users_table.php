@@ -16,7 +16,7 @@ class AddInviteUserCodeToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            $table->string('invite_user_code')->nullable();
+            $table->string('invite_user_name')->nullable();
         });
     }
 
@@ -28,7 +28,7 @@ class AddInviteUserCodeToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('invite_user_code');
+            $table->dropColumn('invite_user_name');
         });
     }
 }
