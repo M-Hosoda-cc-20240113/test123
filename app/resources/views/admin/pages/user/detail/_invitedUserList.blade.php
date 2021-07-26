@@ -1,25 +1,25 @@
 @php
-/**
- * @var \App\Services\AdminUser\UserList\UserListResponse $response
- */
+  /**
+   * @var \App\Services\AdminUser\UserDetail\UserDetailResponse $response
+   */
 @endphp
-<table class="p-table">
+<table class="p-table js-invited-table">
   <thead class="p-table__head">
-    <tr class="p-table__headRow">
-      <th class="p-table__headRowItem--soart">ID</th>
-      <th class="p-table__headRowItem--soart">氏名</th>
-      <th class="p-table__headRowItem--soart">登録日</th>
-      <th class="p-table__headRowItem">稼働中</th>
-      <th class="p-table__headRowItem">新規</th>
-      <th class="p-table__headRowItem">電話番号</th>
-      <th class="p-table__headRowItem">生年月日&nbsp;(年齢)</th>
-      <th class="p-table__headRowItem">備考欄</th>
-      <th class="p-table__headRowItem">紹介者</th>
-    </tr>
+  <tr class="p-table__headRow">
+    <th class="p-table__headRowItem--soart">ID</th>
+    <th class="p-table__headRowItem--soart">氏名</th>
+    <th class="p-table__headRowItem--soart">登録日</th>
+    <th class="p-table__headRowItem">稼働中</th>
+    <th class="p-table__headRowItem">新規</th>
+    <th class="p-table__headRowItem">電話番号</th>
+    <th class="p-table__headRowItem">生年月日&nbsp;(年齢)</th>
+    <th class="p-table__headRowItem">備考欄</th>
+    <th class="p-table__headRowItem">紹介者</th>
+  </tr>
   </thead>
 
   <tbody class="p-table__body">
-    @foreach ($response->getUsers() as $user)
+  @foreach ($response->getInvitedUsers() as $user)
     @php /** @var \App\Models\User $user */ @endphp
     <tr class="p-table__bodyRow--clickable" data-href="{{ route('user.detail', ['user_id' => $user->id]) }}">
       <td class="p-table__bodyRowItem--nowrap">{{ $user->id ?? '' }}</td>
@@ -32,6 +32,6 @@
       <td class="p-table__bodyRowItem">{{ $user->remarks ?? '' }}</td>
       <td class="p-table__bodyRowItem">{{ ViewHelper::getUserNameById($user->invite_user_id ?? '') }}</td>
     </tr>
-    @endforeach
+  @endforeach
   </tbody>
 </table>

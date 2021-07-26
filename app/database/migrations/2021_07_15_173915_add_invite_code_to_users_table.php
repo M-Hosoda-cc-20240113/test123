@@ -14,7 +14,7 @@ class AddInviteCodeToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('invite_code')->nullable()->unique();
+            $table->string('invite_code')->nullable()->unique()->after('points');
         });
     }
 

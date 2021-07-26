@@ -97,6 +97,10 @@ class UserRepository implements UserRepositoryInterface
      */
     public function register(RegisterUserParameter $parameter): User
     {
+        if ($parameter->getInviteUserCode()) {
+            $invite_user = User::where('invite_code', $parameter->getInviteUserCode())->firstOrFail();
+            $invite_user_id = $invite_user->id;
+        }
         $user = User::create([
             'sei' => $parameter->getSei(),
             'mei' => $parameter->getMei(),
@@ -108,15 +112,12 @@ class UserRepository implements UserRepositoryInterface
             'email' => $parameter->getEmail(),
             'email_hash' => hash(config('app.hash_email.algo'), $parameter->getEmail() . config('app.hash_email.salt')),
             'password' => bcrypt($parameter->getPassword()),
-            'invite_user_code' => $parameter->getInviteUserCode(),
+            'invite_user_id' => $invite_user_id ?? null,
         ]);
 
         $invite_code = RepositoryHelper::createInviteCode($user->id);
-
-        DB::transaction(function () use ($user, $invite_code) {
-            $user->invite_code = $invite_code;
-            $user->save();
-        });
+        $user->invite_code = $invite_code;
+        $user->save();
 
         PointsHistory::create([
             'user_id' => $user->id,
@@ -609,5 +610,14 @@ class UserRepository implements UserRepositoryInterface
         $user = User::findOrFail($user_id);
         $user->invite_code = $invite_code;
         $user->save();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function invitedUserList(int $user_id): Collection
+    {
+        return User::withTrashed()->where('invite_user_id', $user_id)
+            ->get();
     }
 }

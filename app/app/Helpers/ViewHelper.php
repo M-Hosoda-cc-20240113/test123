@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\User;
 use DateTime;
 use Illuminate\Support\HtmlString;
 
@@ -59,7 +60,7 @@ class ViewHelper
      */
     public static function YmdReplace(string $value = null)
     {
-        if(preg_match('/^(?=.*[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}).*$/', $value)){
+        if (preg_match('/^(?=.*[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}).*$/', $value)) {
             $date = new DateTime($value);
             return date_format($date, 'Y/m/d');
         }
@@ -73,7 +74,7 @@ class ViewHelper
      */
     public static function BirthdayReplace(string $value = null)
     {
-        if(!empty($value)){
+        if (!empty($value)) {
             $date = new DateTime($value);
             return date_format($date, 'Y/m/d');
         }
@@ -88,14 +89,14 @@ class ViewHelper
     {
         $now = date("Ymd");
         $birthday = str_replace("-", "", $value);
-        return floor(($now-$birthday)/10000).'歳';
+        return floor(($now - $birthday) / 10000) . '歳';
     }
 
     /**
      * @param string $value
      * @return string
      */
-    public static function Status(string $value):string
+    public static function Status(string $value): string
     {
         $status = "";
         switch ($value) {
@@ -113,7 +114,18 @@ class ViewHelper
                 break;
         }
         return $status;
+    }
 
+    /**
+     * @param string|null $value
+     * @return string
+     */
+    public static function getUserNameById(string $value = null): string
+    {
+        $user = User::where('id', $value)->first();
+        $sei = $user->sei ?? '';
+        $mei = $user->mei ?? '';
+        return $sei . '' . $mei;
     }
 }
 

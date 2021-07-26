@@ -29,6 +29,10 @@
           <input type="hidden" name="user_id" value="{{ $response->getUser()->id }}">
           <button type="submit" class="c-button--warning u-db u-m0a u-w-15-pc u-mt-10 js-alert-button">強制退会</button>
         </form>
+        @if($response->getInvitedUsers()->count() != 0)
+          <p class="u-text u-mt-20 u-fs-16">招待者一覧</p>
+          @include('admin.pages.user.detail._invitedUserList', ['response' => $response])
+        @endif
       </div>
     </div>
   </div>

@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Str;
 
 class AddInviteUserCodeToUsersTable extends Migration
 {
@@ -15,8 +14,7 @@ class AddInviteUserCodeToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-
-            $table->string('invite_user_code')->nullable();
+            $table->integer('invite_user_id')->nullable()->after('invite_code');
         });
     }
 
@@ -28,7 +26,7 @@ class AddInviteUserCodeToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('invite_user_code');
+            $table->dropColumn('invite_user_id');
         });
     }
 }

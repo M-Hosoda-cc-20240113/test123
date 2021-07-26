@@ -74,7 +74,6 @@ use Illuminate\Support\Str;
  * @property int $is_new
  * @property string|null $remarks
  * @property string|null $invite_code
- * @property string|null $invite_user_code
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PointsHistory[] $points_history
  * @property-read int|null $points_history_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Project[] $project_status
@@ -87,6 +86,9 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTelHash($value)
  * @method static \Illuminate\Database\Query\Builder|User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereInviteUserName($value)
+ * @property int|null $invite_user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereInviteUserId($value)
  */
 class User extends Authenticatable
 {
@@ -108,6 +110,8 @@ class User extends Authenticatable
         'email',
         'email_hash',
         'password',
+        'invite_code',
+        'invite_user_id',
     ];
 
     /**
