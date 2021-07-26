@@ -99,7 +99,7 @@ class UserRepository implements UserRepositoryInterface
     {
         if ($parameter->getInviteUserCode()) {
             $invite_user = User::where('invite_code', $parameter->getInviteUserCode())->firstOrFail();
-            $invite_user_name = $invite_user->sei. ' '. $invite_user->mei;
+            $invite_user_id = $invite_user->id;
         }
         $user = User::create([
             'sei' => $parameter->getSei(),
@@ -112,7 +112,7 @@ class UserRepository implements UserRepositoryInterface
             'email' => $parameter->getEmail(),
             'email_hash' => hash(config('app.hash_email.algo'), $parameter->getEmail() . config('app.hash_email.salt')),
             'password' => bcrypt($parameter->getPassword()),
-            'invite_user_name' => $invite_user_name ?? null,
+            'invite_user_id' => $invite_user_id ?? null,
         ]);
 
         $invite_code = RepositoryHelper::createInviteCode($user->id);
@@ -610,5 +610,14 @@ class UserRepository implements UserRepositoryInterface
         $user = User::findOrFail($user_id);
         $user->invite_code = $invite_code;
         $user->save();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function invitedUserList(int $user_id): Collection
+    {
+        return User::withTrashed()->where('invite_user_id', $user_id)
+            ->get();
     }
 }

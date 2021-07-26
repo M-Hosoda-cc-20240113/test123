@@ -86,7 +86,7 @@
   </tr>
   <tr class="p-itemDetailTable__row">
     <th class="p-itemDetailTable__head">紹介者</th>
-    <td class="p-itemDetailTable__body">{{ $response->getUser()->invite_user_name ?? '無し' }}</td>
+    <td class="p-itemDetailTable__body">{{ ViewHelper::getUserNameById($response->getUser()->invite_user_id ?? '無し' )}}</td>
   </tr>
   </tbody>
 </table>

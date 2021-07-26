@@ -24,12 +24,17 @@ class UserDetailService
         $this->relLevelSKillUser_repository = $relLevelSKillUser_repository;
     }
 
-    public function exec(int $user_id)
+    /**
+     * @param int $user_id
+     * @return \App\Services\AdminUser\UserDetail\UserDetailResponse
+     */
+    public function exec(int $user_id): UserDetailResponse
     {
         $response = new UserDetailResponse();
-
+        $invited_user_list = $this->user_repository->invitedUserList($user_id);
         $user = $this->user_repository->fetchWithProjectsThroughApplicationOrAssignment($user_id);
         $response->setUser($user);
+        $response->setInvitedUsers($invited_user_list);
 
         $LevelSkillUSer = $this->relLevelSKillUser_repository->fetchByUserId($user_id);
         $response->setRelLevelSkillUSer($LevelSkillUSer);
