@@ -87,6 +87,8 @@
   <tr class="p-itemDetailTable__row">
     <th class="p-itemDetailTable__head">紹介者</th>
     <td class="p-itemDetailTable__body">{{ ViewHelper::getUserNameById($response->getUser()->invite_user_id ?? '無し' )}}</td>
+    <th class="p-itemDetailTable__head">希望連絡時間</th>
+    <td class="p-itemDetailTable__body">{!! nl2br(e($response->getUser()->contact_time ?? '')) !!}</td>
   </tr>
   </tbody>
 </table>

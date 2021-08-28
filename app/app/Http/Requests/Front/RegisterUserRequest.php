@@ -52,6 +52,7 @@ class RegisterUserRequest extends FormRequest
             ],
             'invite_user_code' => ['nullable', 'string', 'max:30', Rule::in($user_codes)],
             'policy' => ['required'],
+            'contact_time' =>['nullable', 'string', 'max:500']
         ];
     }
 
