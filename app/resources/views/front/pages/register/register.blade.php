@@ -20,8 +20,7 @@
           <form action="{{ route('auth.register') }}" method="post">
             {{ @csrf_field() }}
             <div class="p-userRegister__row">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">氏名<span
-                        class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">氏名<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap--2col">
                 <div class="p-userRegister__inputUnit">
                   <span class="c-text p-userRegister__inputName">姓</span>
@@ -31,8 +30,7 @@
                         <p class="c-text--warning fs-11">{{ $error }}</p>
                       @endforeach
                     @endif
-                    <input class="c-input p-userRegister__input" type="text" placeholder="田中" name="sei"
-                           value="{{ old('sei') }}">
+                    <input class="c-input p-userRegister__input" type="text" placeholder="田中" name="sei" value="{{ old('sei') }}">
                   </div>
                 </div>
                 <div class="p-userRegister__inputUnit">
@@ -43,8 +41,7 @@
                         <p class="c-text--warning fs-11">{{ $error }}</p>
                       @endforeach
                     @endif
-                    <input class="c-input p-userRegister__input" type="text" placeholder="一郎" name="mei"
-                           value="{{ old('mei') }}">
+                    <input class="c-input p-userRegister__input" type="text" placeholder="一郎" name="mei" value="{{ old('mei') }}">
                   </div>
                 </div>
               </div>
@@ -52,8 +49,7 @@
             {{--   p-userRegisterRow   --}}
 
             <div class="p-userRegister__row">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">フリガナ<span
-                        class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">フリガナ<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap--2col">
                 <div class="p-userRegister__inputUnit">
                   <span class="c-text p-userRegister__inputName">セイ</span>
@@ -86,8 +82,7 @@
             {{--   p-userRegisterRow   --}}
 
             <div class="p-userRegister__row">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">生年月日<span
-                        class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">生年月日<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
                   @if($errors->has('birthday'))
@@ -103,8 +98,7 @@
             {{--   p-userRegisterRow   --}}
 
             <div class="p-userRegister__row">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">メールアドレス<span
-                        class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">メールアドレス<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
                   @if($errors->has('email'))
@@ -121,8 +115,7 @@
             {{--   p-userRegisterRow   --}}
 
             <div class="p-userRegister__row">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">電話番号<span
-                        class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">電話番号<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
                   @if($errors->has('tel'))
@@ -164,16 +157,14 @@
                       <p class="c-text--warning fs-11">{{ $error }}</p>
                     @endforeach
                   @endif
-                  <input class="c-input p-userRegister__input u-w-100-sp" type="text"
-                         name="invite_user_code" value="{{ old('invite_user_code') }}">
+                  <input class="c-input p-userRegister__input u-w-100-sp" type="text" name="invite_user_code" value="{{ old('invite_user_code') }}">
                 </div>
               </div>
             </div>
             {{--   p-userRegisterRow   --}}
 
             <div class="p-userRegister__row u-mb-5">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">パスワード<span
-                        class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">パスワード<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
                   @if($errors->has('password'))

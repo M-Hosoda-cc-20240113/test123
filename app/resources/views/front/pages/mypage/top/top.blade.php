@@ -43,8 +43,7 @@
           @foreach($response->getNotes()->take(5) as $note)
             <li class="p-news__item">
               <a class="p-news__itemInner" href="{{ route('front.note.detail', ['note_id' => $note->id]) }}">
-                <span
-                        class="p-news__itemInnerDeco u-mr-10">{{ ViewHelper::YmdReplace($note->created_at ?? today()) }}</span>
+                <span class="p-news__itemInnerDeco u-mr-10">{{ ViewHelper::YmdReplace($note->created_at ?? today()) }}</span>
                 <span class="Note__itemInnerDeco--txt">{{ $note->title ?? '' }}</span>
               </a>
             </li>
@@ -111,8 +110,7 @@
               </p>
             @endif
             @foreach($response->getRelLevelSkillUser() as $level_skill)
-              <span
-                      class="c-label u-mt-5 u-mr-10">{{ $level_skill->skill->name }}（{{ $level_skill->level->level }})</span>
+              <span class="c-label u-mt-5 u-mr-10">{{ $level_skill->skill->name }}（{{ $level_skill->level->level }})</span>
             @endforeach
           </div>
           {{--  スキル  --}}
