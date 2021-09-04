@@ -60,6 +60,7 @@ class UserController extends Controller
         $parameter->setMeiKana($request->mei_kana);
         $parameter->setTel($request->tel);
         $parameter->setBirthday($request->birthday);
+        $parameter->setContactTime($request->contact_time);
 
         DB::transaction(function () use ($update_user_service, $parameter) {
             $update_user_service->exec($parameter);

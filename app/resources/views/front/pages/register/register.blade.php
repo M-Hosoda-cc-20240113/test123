@@ -132,6 +132,23 @@
             {{--   p-userRegisterRow   --}}
 
             <div class="p-userRegister__row">
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">希望連絡時間帯</span>
+              <div class="p-userRegister__inputUnitWrap">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
+                  @if($errors->has('contact_time'))
+                    @foreach($errors->get('contact_time') as $error)
+                      <p class="c-text--warning fs-11">{{ $error }}</p>
+                    @endforeach
+                  @endif
+                  <textarea class="c-input p-userRegister__input u-w-100-sp" autocomplete="on" placeholder="平日　10:00~18:00"
+                            name="contact_time"  rows="4" cols="40">{{ old('contact_time') }}</textarea>
+                </div>
+              </div>
+            </div>
+
+            {{--   p-userRegisterRow   --}}
+
+            <div class="p-userRegister__row">
               <span class="c-text--bold p-userRegister__title u-mb-5-sp">招待コード</span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
@@ -140,8 +157,7 @@
                       <p class="c-text--warning fs-11">{{ $error }}</p>
                     @endforeach
                   @endif
-                  <input class="c-input p-userRegister__input u-w-100-sp" type="text"
-                         name="invite_user_code" value="{{ old('invite_user_code') }}">
+                  <input class="c-input p-userRegister__input u-w-100-sp" type="text" name="invite_user_code" value="{{ old('invite_user_code') }}">
                 </div>
               </div>
             </div>
@@ -168,7 +184,8 @@
               <p><a class="c-text--primary" target="_blank" rel="noopener noreferrer"
                     href="{{ route('feature.policy') }}">利用規約</a>・<a class="c-text--primary" target="_blank"
                                                                      rel="noopener noreferrer"
-                                                                     href="{{ route('feature.privacy.policy') }}">個人情報の取扱い</a>に同意します。<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span>
+                                                                     href="{{ route('feature.privacy.policy') }}">個人情報の取扱い</a>に同意します。<span
+                        class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span>
               </p>
               <input name="policy" type="checkbox">
               <div class="p-checkbox__indicator"></div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\admin\Note;
+namespace App\Http\Requests\Admin\Note;
 
 use App\Models\Note;
 use Illuminate\Foundation\Http\FormRequest;

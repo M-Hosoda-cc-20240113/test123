@@ -104,6 +104,7 @@ class RegisterController extends Controller
         $parameter->setTel($request->tel);
         $parameter->setEmail($request->email);
         $parameter->setPassword($request->password);
+        $parameter->setContactTime($request->contact_time);
         if ($request->invite_user_code) {
             $parameter->setInviteUserCode($request->invite_user_code);
         }

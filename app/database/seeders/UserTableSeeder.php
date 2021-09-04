@@ -54,6 +54,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'remarks'           => "特になし",
             'points'            => 0,
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
             'created_at'        => $now
         ]);
 
@@ -71,6 +72,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'remarks'           => "特になし",
             'points'            => 0,
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
             'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
@@ -89,6 +91,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 1,
             'remarks'           => "",
             'is_new'            => 0,
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
             'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
@@ -106,6 +109,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 1,
             'remarks'           => "特になし",
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
             'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
@@ -125,6 +129,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'is_new'            => 0,
             'remarks'           => "特になし",
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
             'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
@@ -144,6 +149,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'is_new'            => 0,
             'remarks'           => "特になし",
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
             'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
@@ -161,6 +167,7 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
             'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);

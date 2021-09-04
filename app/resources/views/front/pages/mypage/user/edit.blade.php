@@ -59,6 +59,10 @@
               <input name="birthday" type="number" class="c-input2"
                      value="{{ $response->getUser()->birthday }}">
             </div>
+            <div class="p-formGroup p-formGroupUnit--2col__item">
+              <span class="c-text">希望連絡時間</span>
+              <textarea name="contact_time" autocomplete="on" type="text" rows="4" cols="40" class="c-input2">{{ $response->getUser()->contact_time }}</textarea>
+            </div>
           </div>
 
           <button type="submit" class="c-button u-db u-m0a u-mt-20 js-loading-button">更新する</button>

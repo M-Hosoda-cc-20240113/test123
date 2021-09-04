@@ -86,6 +86,7 @@ class UserRepository implements UserRepositoryInterface
             $user->mei_kana = $parameter->getMeiKana();
             $user->tel = $parameter->getTel();
             $user->birthday = $parameter->getBirthday();
+            $user->contact_time = $parameter->getContactTime();
             $user->save();
         });
     }
@@ -113,6 +114,7 @@ class UserRepository implements UserRepositoryInterface
             'email_hash' => hash(config('app.hash_email.algo'), $parameter->getEmail() . config('app.hash_email.salt')),
             'password' => bcrypt($parameter->getPassword()),
             'invite_user_id' => $invite_user_id ?? null,
+            'contact_time' => $parameter->getContactTime() ?? null,
         ]);
 
         $invite_code = RepositoryHelper::createInviteCode($user->id);

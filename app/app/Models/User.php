@@ -112,6 +112,7 @@ class User extends Authenticatable
         'password',
         'invite_code',
         'invite_user_id',
+        'contact_time',
     ];
 
     /**

@@ -27,12 +27,13 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
-            'mei'       => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
-            'sei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
-            'mei_kana'  => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
-            'birthday'  => ['required', 'date', 'digits:8', new CanRegisterBirthday($this->input('birthday'))],
-            'tel'       => ['required', 'digits_between:8,11', new InUsersByTel($this->input('tel'))],
+            'sei'           => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
+            'mei'           => ['required', 'string', 'max:30', 'regex:/^[\p{Hiragana}|\p{Katakana}|\p{Han}|ー]+$/u'],
+            'sei_kana'      => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
+            'mei_kana'      => ['required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
+            'birthday'      => ['required', 'date', 'digits:8', new CanRegisterBirthday($this->input('birthday'))],
+            'tel'           => ['required', 'digits_between:8,11', new InUsersByTel($this->input('tel'))],
+            'contact_time'  => ['contact_time' =>['nullable', 'string', 'max:500']]
         ];
     }
 }
