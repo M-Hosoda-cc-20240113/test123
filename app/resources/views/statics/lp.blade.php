@@ -40,7 +40,7 @@
   <ul class="p-drawerContents2 drawer-content">
     <li class="py-4 u-bg-cp2-2"><a class="text-white" href="#">特徴</a></li>
     <li class="py-4 u-bg-cp2-2"><a class="text-white" href="#flow">ご利用の流れ</a></li>
-    <li class="py-4 u-bg-cp2-2"><a class="text-white" href="#event">イベント</a></li>
+    <li class="py-4 u-bg-cp2-2"><a class="text-white" href="#particles-js">イベント</a></li>
   </ul>
   <div class="flex relative justify-center bg-white" style="height:600px;">
     <div class="flex items-center text-center lg:text-left px-8 md:px-12 lg:w-1/2">
