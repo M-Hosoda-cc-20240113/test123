@@ -622,4 +622,9 @@ class UserRepository implements UserRepositoryInterface
         return User::withTrashed()->where('invite_user_id', $user_id)
             ->get();
     }
+
+    public function addUserPoints(): void
+    {
+
+    }
 }
