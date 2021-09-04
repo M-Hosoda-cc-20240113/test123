@@ -206,4 +206,16 @@ interface UserRepositoryInterface
      * @return void
      */
     public function insertUserPoints(TotalUserPointsParameter $parameter): void;
+
+
+    /**
+     * @param int $user_id
+     */
+    public function createInviteCode(int $user_id): void;
+
+    /**
+     * @param int $user_id
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function invitedUserList(int $user_id): Collection;
 }

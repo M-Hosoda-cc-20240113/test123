@@ -47,6 +47,16 @@ class RegisterUserParameter
     private $password;
 
     /**
+     * @var string|null
+     */
+    private $invite_user_code;
+
+    /**
+     * @var string|null
+     */
+    private $contact_time;
+
+    /**
      * @return string
      */
     public function getSei(): string
@@ -187,6 +197,42 @@ class RegisterUserParameter
     public function setPassword(string $password): RegisterUserParameter
     {
         $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getInviteUserCode(): ?string
+    {
+        return $this->invite_user_code;
+    }
+
+    /**
+     * @param string|null $invite_user_code
+     * @return RegisterUserParameter
+     */
+    public function setInviteUserCode(?string $invite_user_code): RegisterUserParameter
+    {
+        $this->invite_user_code = $invite_user_code;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContactTime(): ?string
+    {
+        return $this->contact_time;
+    }
+
+    /**
+     * @param string|null $contact_time
+     * @return RegisterUserParameter
+     */
+    public function setContactTime(?string $contact_time): RegisterUserParameter
+    {
+        $this->contact_time = $contact_time;
         return $this;
     }
 }

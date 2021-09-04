@@ -35,6 +35,7 @@ Route::namespace('Home')->prefix('mypage')->middleware(['auth'])->group(function
 Route::namespace('User')->prefix('users')->group(function () {
     Route::get('/edit', [UserController::class, 'showEditForm'])->name('front.user.edit');
     Route::post('/edit', [UserController::class, 'edit']);
+    Route::get('/create_code', [UserController::class, 'createInviteCode'])->name('front.user.create.invite_code');
     Route::post('/contact', [UserController::class, 'contact'])->name('front.user.contact');
     Route::get('/skills/edit', [UserController::class, 'showEditSkillForm'])->name('front.user.skill.form');
     Route::post('/skills/edit', [UserController::class, 'skillEdit'])->name('front.user.skill.edit');

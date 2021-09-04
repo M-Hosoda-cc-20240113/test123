@@ -2,6 +2,7 @@
 
 namespace App\Infrastructures\Repositories\Eloquent\User;
 
+use App\Helpers\RepositoryHelper;
 use App\Models\PointsHistory;
 use App\Models\RelLevelSkillUser;
 use App\Models\User;
@@ -85,6 +86,7 @@ class UserRepository implements UserRepositoryInterface
             $user->mei_kana = $parameter->getMeiKana();
             $user->tel = $parameter->getTel();
             $user->birthday = $parameter->getBirthday();
+            $user->contact_time = $parameter->getContactTime();
             $user->save();
         });
     }
@@ -92,9 +94,14 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * {@inheritdoc}
+     * @throws \Throwable
      */
     public function register(RegisterUserParameter $parameter): User
     {
+        if ($parameter->getInviteUserCode()) {
+            $invite_user = User::where('invite_code', $parameter->getInviteUserCode())->firstOrFail();
+            $invite_user_id = $invite_user->id;
+        }
         $user = User::create([
             'sei' => $parameter->getSei(),
             'mei' => $parameter->getMei(),
@@ -106,12 +113,36 @@ class UserRepository implements UserRepositoryInterface
             'email' => $parameter->getEmail(),
             'email_hash' => hash(config('app.hash_email.algo'), $parameter->getEmail() . config('app.hash_email.salt')),
             'password' => bcrypt($parameter->getPassword()),
+            'invite_user_id' => $invite_user_id ?? null,
+            'contact_time' => $parameter->getContactTime() ?? null,
         ]);
+
+        $invite_code = RepositoryHelper::createInviteCode($user->id);
+        $user->invite_code = $invite_code;
+        $user->save();
 
         PointsHistory::create([
             'user_id' => $user->id,
             'points' => 5000,
         ]);
+
+        if ($parameter->getInviteUserCode()) {
+            PointsHistory::create([
+                'user_id' => $user->id,
+                'points' => 5000,
+            ]);
+
+            $invite_user = User::where('invite_code', $parameter->getInviteUserCode())->firstOrFail();
+            $invite_user_id = $invite_user->id;
+            PointsHistory::create([
+                'user_id' => $invite_user_id,
+                'points' => 5000,
+            ]);
+
+            $user_points = PointsHistory::where('user_id', $invite_user_id)->sum('points');
+            $invite_user->points = $user_points;
+            $invite_user->save();
+        }
 
         return $user;
     }
@@ -130,7 +161,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function findByTel(string $tel): ?User
     {
-        return User::where('tel_hash', $this->makeTelHash($tel))->first();
+        return User::withTrashed()->where('tel_hash', $this->makeTelHash($tel))->first();
     }
 
     /**
@@ -570,5 +601,30 @@ class UserRepository implements UserRepositoryInterface
         $user = User::findOrFail($parameter->getUserId());
         $user->points = $user_points;
         $user->save();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function createInviteCode(int $user_id): void
+    {
+        $invite_code = RepositoryHelper::createInviteCode($user_id);
+        $user = User::findOrFail($user_id);
+        $user->invite_code = $invite_code;
+        $user->save();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function invitedUserList(int $user_id): Collection
+    {
+        return User::withTrashed()->where('invite_user_id', $user_id)
+            ->get();
+    }
+
+    public function addUserPoints(): void
+    {
+
     }
 }

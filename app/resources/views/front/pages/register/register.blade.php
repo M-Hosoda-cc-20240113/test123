@@ -15,12 +15,12 @@
     <div class="l-main">
       <div class="p-mainItem">
 
-        <h2 class="p-level2Heading">新規登録情報入力<span class="c-text--warning">（全項目必須）</span></h2>
+        <h2 class="p-level2Heading">新規登録情報入力</h2>
         <div class="p-userRegister">
           <form action="{{ route('auth.register') }}" method="post">
             {{ @csrf_field() }}
             <div class="p-userRegister__row">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">氏名</span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">氏名<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap--2col">
                 <div class="p-userRegister__inputUnit">
                   <span class="c-text p-userRegister__inputName">姓</span>
@@ -49,7 +49,7 @@
             {{--   p-userRegisterRow   --}}
 
             <div class="p-userRegister__row">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">フリガナ</span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">フリガナ<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap--2col">
                 <div class="p-userRegister__inputUnit">
                   <span class="c-text p-userRegister__inputName">セイ</span>
@@ -82,7 +82,7 @@
             {{--   p-userRegisterRow   --}}
 
             <div class="p-userRegister__row">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">生年月日</span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">生年月日<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
                   @if($errors->has('birthday'))
@@ -98,7 +98,7 @@
             {{--   p-userRegisterRow   --}}
 
             <div class="p-userRegister__row">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">メールアドレス</span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">メールアドレス<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
                   @if($errors->has('email'))
@@ -115,7 +115,7 @@
             {{--   p-userRegisterRow   --}}
 
             <div class="p-userRegister__row">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">電話番号</span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">電話番号<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
                   @if($errors->has('tel'))
@@ -131,8 +131,40 @@
             </div>
             {{--   p-userRegisterRow   --}}
 
+            <div class="p-userRegister__row">
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">希望連絡時間帯</span>
+              <div class="p-userRegister__inputUnitWrap">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
+                  @if($errors->has('contact_time'))
+                    @foreach($errors->get('contact_time') as $error)
+                      <p class="c-text--warning fs-11">{{ $error }}</p>
+                    @endforeach
+                  @endif
+                  <textarea class="c-input p-userRegister__input u-w-100-sp" autocomplete="on" placeholder="平日　10:00~18:00"
+                            name="contact_time"  rows="4" cols="40">{{ old('contact_time') }}</textarea>
+                </div>
+              </div>
+            </div>
+
+            {{--   p-userRegisterRow   --}}
+
+            <div class="p-userRegister__row">
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">招待コード</span>
+              <div class="p-userRegister__inputUnitWrap">
+                <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
+                  @if($errors->has('invite_user_code'))
+                    @foreach($errors->get('invite_user_code') as $error)
+                      <p class="c-text--warning fs-11">{{ $error }}</p>
+                    @endforeach
+                  @endif
+                  <input class="c-input p-userRegister__input u-w-100-sp" type="text" name="invite_user_code" value="{{ old('invite_user_code') }}">
+                </div>
+              </div>
+            </div>
+            {{--   p-userRegisterRow   --}}
+
             <div class="p-userRegister__row u-mb-5">
-              <span class="c-text--bold p-userRegister__title u-mb-5-sp">パスワード</span>
+              <span class="c-text--bold p-userRegister__title u-mb-5-sp">パスワード<span class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span></span>
               <div class="p-userRegister__inputUnitWrap">
                 <div class="p-userRegister__inputUnit--single u-w-50-pc u-df u-ff-column">
                   @if($errors->has('password'))
@@ -152,7 +184,8 @@
               <p><a class="c-text--primary" target="_blank" rel="noopener noreferrer"
                     href="{{ route('feature.policy') }}">利用規約</a>・<a class="c-text--primary" target="_blank"
                                                                      rel="noopener noreferrer"
-                                                                     href="{{ route('feature.privacy.policy') }}">個人情報の取扱い</a>に同意します。
+                                                                     href="{{ route('feature.privacy.policy') }}">個人情報の取扱い</a>に同意します。<span
+                        class="c-label--warning c-label--rounded c-label--sm u-ml-10">必須</span>
               </p>
               <input name="policy" type="checkbox">
               <div class="p-checkbox__indicator"></div>

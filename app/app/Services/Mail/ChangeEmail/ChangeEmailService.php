@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Services\Mail;
+namespace App\Services\Mail\ChangeEmail;
 
 use App\Models\EmailReset;
 use App\Models\User;
+use App\Services\Mail\EmailResetRepositoryInterface;
 use App\Services\User\UserRepositoryInterface;
 
 /**

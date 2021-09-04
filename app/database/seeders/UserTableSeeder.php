@@ -1,9 +1,11 @@
 <?php
 
 namespace Database\Seeders;
+use App\Helpers\RepositoryHelper;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+
 class UserTableSeeder extends Seeder
 {
     /**
@@ -37,7 +39,6 @@ class UserTableSeeder extends Seeder
         $tel7  = '07034123445';
         $tel8  = '07034561234';
         $tel9  = '07031235432';
-
         User::create([
             'sei'               => "田中" ,
             'sei_kana'          => "タナカ",
@@ -49,9 +50,11 @@ class UserTableSeeder extends Seeder
             'tel_hash'               => hash(config('app.hash_email.algo'), $tel1 . config('app.hash_email.salt')),
             'birthday'          => '19940603',
             'password'          => bcrypt('test1234'),
+            'invite_user_id' => 3,
             'is_working'        => 0,
             'remarks'           => "特になし",
-            'points'            => 0,
+            'points'            => 5000,
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
             'created_at'        => $now
         ]);
 
@@ -68,7 +71,9 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
             'remarks'           => "特になし",
-            'points'            => 0,
+            'points'            => 5000,
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -86,6 +91,9 @@ class UserTableSeeder extends Seeder
             'is_working'        => 1,
             'remarks'           => "",
             'is_new'            => 0,
+            'points'            => 10000,
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -102,6 +110,9 @@ class UserTableSeeder extends Seeder
             'password'          => bcrypt('test1234'),
             'is_working'        => 1,
             'remarks'           => "特になし",
+            'points'            => 0,
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -116,9 +127,13 @@ class UserTableSeeder extends Seeder
             'tel_hash'          => hash(config('app.hash_email.algo'), $tel5 . config('app.hash_email.salt')),
             'birthday'          => '19910216',
             'password'          => bcrypt('test1234'),
+            'invite_user_id' => 3,
             'is_working'        => 0,
             'is_new'            => 0,
+            'points'            => 5000,
             'remarks'           => "特になし",
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -133,9 +148,13 @@ class UserTableSeeder extends Seeder
             'tel_hash'          => hash(config('app.hash_email.algo'), $tel6 . config('app.hash_email.salt')),
             'birthday'          => '19890216',
             'password'          => bcrypt('test1234'),
+            'invite_user_id' => 4,
             'is_working'        => 0,
             'is_new'            => 0,
+            'points'            => 5000,
             'remarks'           => "特になし",
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -151,7 +170,10 @@ class UserTableSeeder extends Seeder
             'birthday'          => '19900216',
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
+            'points'            => 5000,
             'remarks'           => "特になし",
+            'contact_time'      => "平日　10:00~18:00\n土日祝日　10:00~18:00",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -167,7 +189,9 @@ class UserTableSeeder extends Seeder
             'birthday'          => '19880216',
             'password'          => bcrypt('test1234'),
             'is_working'        => 0,
+            'points'            => 15000,
             'remarks'           => "特になし",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -185,6 +209,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 1,
             'is_new'            => 0,
             'remarks'           => "特になし",
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -202,6 +227,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'is_admin'          => 1,
             'points'            => 0,
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
 
@@ -219,6 +245,7 @@ class UserTableSeeder extends Seeder
             'is_working'        => 0,
             'is_admin'          => 1,
             'points'            => 0,
+            'invite_code'       => RepositoryHelper::createInviteCode(),
             'created_at'        => $now
         ]);
     }

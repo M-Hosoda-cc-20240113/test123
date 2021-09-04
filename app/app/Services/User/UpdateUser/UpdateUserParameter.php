@@ -46,6 +46,11 @@ class UpdateUserParameter
     private $birthday;
 
     /**
+     * @var string|null
+     */
+    private $contact_time;
+
+    /**
      * @return User
      */
     public function getUser(): User
@@ -168,6 +173,24 @@ class UpdateUserParameter
     public function setBirthday(int $birthday): UpdateUserParameter
     {
         $this->birthday = $birthday;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getContactTime(): ?string
+    {
+        return $this->contact_time;
+    }
+
+    /**
+     * @param string|null $contact_time
+     * @return UpdateUserParameter
+     */
+    public function setContactTime(?string $contact_time): UpdateUserParameter
+    {
+        $this->contact_time = $contact_time;
         return $this;
     }
 }

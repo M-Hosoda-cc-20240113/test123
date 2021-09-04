@@ -1,2 +1,5 @@
 .idea/
 app/storage/framework/views/
+docker-compose.yml
+infra
+app/.env

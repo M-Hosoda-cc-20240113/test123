@@ -43,8 +43,7 @@
           @foreach($response->getNotes()->take(5) as $note)
             <li class="p-news__item">
               <a class="p-news__itemInner" href="{{ route('front.note.detail', ['note_id' => $note->id]) }}">
-                <span
-                    class="p-news__itemInnerDeco u-mr-10">{{ ViewHelper::YmdReplace($note->created_at ?? today()) }}</span>
+                <span class="p-news__itemInnerDeco u-mr-10">{{ ViewHelper::YmdReplace($note->created_at ?? today()) }}</span>
                 <span class="Note__itemInnerDeco--txt">{{ $note->title ?? '' }}</span>
               </a>
             </li>
@@ -77,6 +76,10 @@
             <th>生年月日</th>
             <td>{{ ViewHelper::BirthdayReplace($response->getUser()->birthday ?? '' )}}</td>
           </tr>
+          <tr>
+            <th>希望連絡時間</th>
+            <td>{!! nl2br(e($response->getUser()->contact_time ?? '' ))!!}</td>
+          </tr>
 
           @if(!$response->getUser()->is_admin)
             <tr>
@@ -84,6 +87,15 @@
               <td>{{ $response->getUser()->points ?? '' }} pt</td>
             </tr>
           @endif
+          <tr>
+            <th>招待コード</th>
+            <td>
+              @if(!$response->getUser()->invite_code)
+                <a class="c-button u-w-30-pc js-loading-button" href="{{ route('front.user.create.invite_code') }}">招待コード発行</a>
+              @endif
+              {{ $response->getUser()->invite_code ?? '' }}
+            </td>
+          </tr>
           </tbody>
         </table>
         {{--   ユーザー情報   --}}
@@ -98,8 +110,7 @@
               </p>
             @endif
             @foreach($response->getRelLevelSkillUser() as $level_skill)
-              <span
-                  class="c-label u-mt-5 u-mr-10">{{ $level_skill->skill->name }}（{{ $level_skill->level->level }})</span>
+              <span class="c-label u-mt-5 u-mr-10">{{ $level_skill->skill->name }}（{{ $level_skill->level->level }})</span>
             @endforeach
           </div>
           {{--  スキル  --}}

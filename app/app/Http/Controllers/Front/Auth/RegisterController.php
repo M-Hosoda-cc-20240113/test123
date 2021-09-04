@@ -104,6 +104,10 @@ class RegisterController extends Controller
         $parameter->setTel($request->tel);
         $parameter->setEmail($request->email);
         $parameter->setPassword($request->password);
+        $parameter->setContactTime($request->contact_time);
+        if ($request->invite_user_code) {
+            $parameter->setInviteUserCode($request->invite_user_code);
+        }
 
         $user = DB::transaction(function () use ($register_user_service, $parameter) {
             return $register_user_service->exec($parameter);
@@ -112,9 +116,9 @@ class RegisterController extends Controller
         $notification_parameter = new NotificationRegisterUserParameter();
         $notification_parameter->setSendUser($user);
 
-        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class,['type'=>'mail']);
+        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class, ['type' => 'mail']);
         $notification->send($notification_parameter);
-        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class,['type'=>'slack']);
+        $notification = \App::makeWith(NotificationRegisterUserServiceInterface::class, ['type' => 'slack']);
         $notification->send($notification_parameter);
 
         if (!empty($request->project_id)) {

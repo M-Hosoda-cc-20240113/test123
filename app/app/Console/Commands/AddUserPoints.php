@@ -3,7 +3,11 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Services\PointsHistory\AddUserPoints\AddUserPointsService;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsParameter;
+use App\Services\AdminUser\TotalUserPoints\TotalUserPointsService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class AddUserPoints extends Command
 {
@@ -34,10 +38,27 @@ class AddUserPoints extends Command
     /**
      * Execute the console command.
      *
+     * @throws \Throwable
      */
-    public function handle()
+    public function handle(AddUserPointsService $add_user_points_service, TotalUserPointsService $total_user_points_service)
     {
-        $AegisPoints = 5000;
-        User::where('is_admin',0)->increment('points',$AegisPoints);
+        //ポイント履歴に5000ポイント追加
+        DB::transaction(function () use ($add_user_points_service) {
+            $add_user_points_service->exec();
+        });
+
+        //Usersテーブルにポイント集計
+        $users = User::where('is_admin', 0)
+            ->select('id')
+            ->get()
+            ->toArray();
+        foreach ($users as $user) {
+            $parameter = new TotalUserPointsParameter();
+            $user_id = $user['id'];
+            $parameter->setUserId($user_id);
+            DB::transaction(function () use ($total_user_points_service, $parameter) {
+                $total_user_points_service->exec($parameter);
+            });
+        }
     }
 }
