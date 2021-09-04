@@ -47,11 +47,11 @@ We would like to extend our thanks to the following sponsors for funding Aegis d
 
 ## Contributing
 
-Thank you for considering contributing to the Aegis framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Thank you for considering contributing to the Aegis framework! The contribution guide can be found in the [Aegis documentation](https://laravel.com/docs/contributions).
 
 ## Code of Conduct
 
-In order to ensure that the Aegis community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+In order to ensure that the Aegis community is welcoming to all, please review and abide by the [Code of Conduct](https://Aegis.com/docs/contributions#code-of-conduct).
 
 ## Security Vulnerabilities
 
