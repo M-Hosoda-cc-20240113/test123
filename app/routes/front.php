@@ -5,6 +5,7 @@ use App\Http\Controllers\Front\Contact\ContactController;
 use App\Http\Controllers\Front\Email\EmailController;
 use App\Http\Controllers\Front\Feature\FeatureController;
 use App\Http\Controllers\Front\Note\NoteController;
+use App\Http\Controllers\Front\Passive\PassiveController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\Index\IndexController;
 use App\Http\Controllers\Front\Home\HomeController;
@@ -85,4 +86,8 @@ Route::namespace('Feature')->prefix('feature')->group(function () {
 
 Route::namespace('Note')->prefix('note')->group(function () {
     Route::get('/{note_id}', [NoteController::class, 'detail'])->name('front.note.detail');
+});
+
+Route::namespace('Passive')->group(function () {
+    Route::get('/lp', [PassiveController::class, 'lp'])->name('front.passive.lp');
 });
