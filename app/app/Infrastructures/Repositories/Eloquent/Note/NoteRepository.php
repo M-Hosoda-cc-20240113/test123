@@ -20,7 +20,7 @@ class NoteRepository implements NoteRepositoryInterface
      */
     public function all(): Collection
     {
-        return Note::all();
+        return Note::all()->sortByDesc("id");
     }
 
     /**

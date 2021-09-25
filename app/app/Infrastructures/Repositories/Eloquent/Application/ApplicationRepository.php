@@ -21,7 +21,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface
     {
         return Application::with('users')
             ->with('projects')
-            ->orderBy('created_at')
+            ->orderBy('created_at','desc')
             ->get();
     }
 

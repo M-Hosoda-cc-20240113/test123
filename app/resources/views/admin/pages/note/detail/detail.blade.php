@@ -21,7 +21,7 @@
     <div class="l-main u-mt-20">
       <div class="p-mainItem">
         <h2 class="p-level2Heading">{{ $response->getNote()->title ?? '' }}</h2>
-        <p class="u-text u-mt-20 u-fs-16">{{ $response->getNote()->contents ?? '' }}</p>
+        <p class="u-text u-mt-20 u-fs-16">{!! nl2br(e($response->getNote()->contents ?? '')) !!}</p>
         <a class="c-button u-db u-m0a u-w-30-pc u-mt-50"
            href="{{ route('note.edit.form', ['note_id' => $response->getNote()->id]) }}">編集</a>
         <form action="{{ route('note.delete') }}" method="post">

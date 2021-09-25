@@ -30,6 +30,7 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::where('is_admin', 0)
             ->with('project_app')
+            ->orderBy('id', 'desc')
             ->get();
     }
 

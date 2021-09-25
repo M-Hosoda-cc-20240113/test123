@@ -17,7 +17,7 @@ class StationRepository implements StationRepositoryInterface
      */
     public function all(): Collection
     {
-        return Station::all();
+        return Station::all()->sortByDesc('id');
     }
 
     /**
