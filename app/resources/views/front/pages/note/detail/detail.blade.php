@@ -22,7 +22,7 @@
       </div>
     </div>
     <a href="">
-      <img src="{{ asset('/images/hero/event_bnr_20210709.png') }}" alt="">
+      <img src="{{ asset('/images/hero/event_bnr_common.png') }}" alt="">
     </a>
   </div>
 
