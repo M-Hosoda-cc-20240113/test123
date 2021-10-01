@@ -15,7 +15,7 @@ class SkillRepository implements SkillRepositoryInterface
      */
     public function all(): Collection
     {
-        return Skill::all();
+        return Skill::all()->sortByDesc('id');
     }
 
     /**

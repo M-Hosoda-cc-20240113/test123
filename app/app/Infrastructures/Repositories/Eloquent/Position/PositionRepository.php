@@ -15,7 +15,7 @@ class PositionRepository implements PositionRepositoryInterface
      */
     public function all(): Collection
     {
-        return Position::all();
+        return Position::all()->sortByDesc('id');
     }
 
     /**

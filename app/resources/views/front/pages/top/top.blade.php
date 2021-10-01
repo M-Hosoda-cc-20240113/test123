@@ -104,8 +104,8 @@
       <p class="u-text--center mt-30 u-fs-20">関連する求人・案件が見つかりませんでした。</p>
     @endif
 
-    <a href="https://aegis.connpass.com/event/218524/">
-      <img class="u-mt-30" src="{{ asset('/images/hero/event_bnr_20210730.png') }}" alt="イベントバナー">
+    <a href="https://aegis.connpass.com/">
+      <img class="u-mt-30" src="{{ asset('/images/hero/event_bnr_common.png') }}" alt="イベントバナー">
     </a>
 
     <div class="p-mainItem u-mt-30">

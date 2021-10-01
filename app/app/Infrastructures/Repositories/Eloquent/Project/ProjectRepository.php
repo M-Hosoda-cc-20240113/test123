@@ -33,6 +33,7 @@ class ProjectRepository implements ProjectRepositoryInterface
             ->with('skills')
             ->with('user_app')
             ->with('user_assign')
+            ->orderBy('id', 'desc')
             ->get();
     }
 
@@ -134,6 +135,7 @@ class ProjectRepository implements ProjectRepositoryInterface
             ->with('positions')
             ->with('skills')
             ->where('decided', 0)
+            ->orderBy('id', 'desc')
             ->get();
     }
 
@@ -164,7 +166,7 @@ class ProjectRepository implements ProjectRepositoryInterface
                     });
             });
         }
-        return $query->get();
+        return $query->orderBy('id', 'desc')->get();
     }
 
 
@@ -238,6 +240,7 @@ class ProjectRepository implements ProjectRepositoryInterface
         return Project::with(['station', 'positions', 'skills'])
             ->whereNotIn('id', $exclude_ids)
             ->whereIn('id', array_column($target_ids, 'id'))
+            ->orderBy('id', 'desc')
             ->get();
     }
 
@@ -264,6 +267,7 @@ class ProjectRepository implements ProjectRepositoryInterface
         return Project::with(['station', 'positions', 'skills'])
             ->whereNotIn('id', $exclude_ids)
             ->whereIn('id', array_column($target_ids, 'id'))
+            ->orderBy('id', 'desc')
             ->get();
     }
 
@@ -300,7 +304,7 @@ class ProjectRepository implements ProjectRepositoryInterface
                     $query->whereIn('stations.id', $station_ids);
                 });
             })
-            ->get();
+            ->orderBy('id', 'desc')->get();
     }
 
     /**

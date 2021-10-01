@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin\Note;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\admin\Note\CreateNoteRequest;
-use App\Http\Requests\admin\Note\DeleteNoteRequest;
+use App\Http\Requests\Admin\Note\CreateNoteRequest;
+use App\Http\Requests\Admin\Note\DeleteNoteRequest;
 use App\Http\Requests\Admin\Note\UpdateNoteRequest;
 use App\Services\Note\CreateNote\CreateNoteParameter;
 use App\Services\Note\CreateNote\CreateNoteService;

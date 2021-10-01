@@ -21,7 +21,7 @@ class LevelRepository implements LevelRepositoryInterface
      */
     public function all(): Collection
     {
-        return Level::all();
+        return Level::all()->sortByDesc('id');
     }
 
     /**

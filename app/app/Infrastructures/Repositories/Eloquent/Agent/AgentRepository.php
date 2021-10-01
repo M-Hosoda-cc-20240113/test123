@@ -16,7 +16,7 @@ class AgentRepository implements AgentRepositoryInterface
      */
     public function all(): Collection
     {
-        return Agent::all();
+        return Agent::all()->sortByDesc('id');
     }
 
     /**

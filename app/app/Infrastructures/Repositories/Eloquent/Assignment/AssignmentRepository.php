@@ -28,6 +28,7 @@ class AssignmentRepository implements AssignmentRepositoryInterface
     {
         return Assignment::with('user')
             ->with('project')
+            ->orderBy('id','desc')
             ->get();
     }
 
