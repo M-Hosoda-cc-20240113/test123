@@ -13,7 +13,7 @@
     @include('admin.header._link_login_logout')
   @endcomponent
   @include('admin.pages._drawer_contents')
-
+  @include('admin.pages.js-select2.select2')
   <div class="l-container">
     @include('admin.bread_crumb._BreadCrumb')
     <div class="l-main">
@@ -35,12 +35,12 @@
               <div class="p-register__itemWrap">
                 <div class="p-register__item u-w-50-pc">
                   <label for="" class="c-select">
-                    <select name="agent_id" id="">
+                    <select class="js-select2" name="agent_id" id="">
                       <option value="">選択してください</option>
                       @foreach($response->getAgents() as $agent)
                         @php /** @var \App\Models\Agent $agent */ @endphp
                         <option
-                          value={{ $agent->id ?? ''}} {{ $response->getProject()->agent->id ?? '' === $agent->id }}>{{ $agent->name ?? ''}}</option>
+                          value="{{ $agent->id}}" {{ $response->getProject()->agent->id === $agent->id ? 'selected' : '' }}>{{ $agent->name}}</option>
                       @endforeach
                     </select>
                   </label>
@@ -55,11 +55,11 @@
               <div class="p-register__itemWrap">
                 <div class="p-register__item u-w-50-pc">
                   <label for="" class="c-select">
-                    <select name="station_id" id="">
+                    <select class="js-select2" name="station_id" id="">
                       <option value="">選択してください</option>
                       @foreach($response->getStations() as $station)
                         <option
-                          value={{ $station->id ?? ''}} {{ $response->getProject()->station->id ?? '' === $station->id ? 'selected' : '' }}>{{ $station->name ?? ''}}</option>
+                          value="{{ $station->id }}" {{ $response->getProject()->station->id  === $station->id ? 'selected' : '' }}>{{ $station->name}}</option>
                       @endforeach
                     </select>
                   </label>

@@ -16,7 +16,7 @@
   @endcomponent
 
   @include('admin.pages._drawer_contents')
-
+  @include('admin.pages.js-select2.select2')
   <div class="c-modal js-modal"></div>
 
   <div class="l-container">
@@ -63,7 +63,7 @@
               <div class="p-register__itemWrap--2col">
                 <div class="p-register__item u-w-50-pc">
                   <label for="" class="c-select">
-                    <select name="agent_id" id="">
+                    <select class="js-select2" name="agent_id" id="">
                       <option value="">選択してください</option>
                       @foreach($response->getAgents() as $agent)
                         <option value="{{ $agent->id }}">{{ $agent->name }}</option>
@@ -86,7 +86,7 @@
               <div class="p-register__itemWrap--2col">
                 <div class="p-register__item u-w-50-pc">
                   <label for="" class="c-select">
-                    <select name="station_id" id="">
+                    <select class="js-select2" name="station_id" id="">
                       <option value="">選択してください</option>
                       @foreach($response->getStations() as $station)
                         <option value="{{ $station->id }}">{{ $station->name }}</option>
