@@ -104,7 +104,7 @@
       <p class="u-text--center mt-30 u-fs-20">関連する求人・案件が見つかりませんでした。</p>
     @endif
 
-    <a href="https://aegis.connpass.com/">
+    <a href="https://www.wantedly.com/companies/company_9209539/projects#meetup">
       <img class="u-mt-30" src="{{ asset('/images/hero/event_bnr_common.png') }}" alt="イベントバナー">
     </a>
 
