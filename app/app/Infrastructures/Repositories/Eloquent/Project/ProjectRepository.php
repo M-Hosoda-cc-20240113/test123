@@ -33,6 +33,7 @@ class ProjectRepository implements ProjectRepositoryInterface
             ->with('skills')
             ->with('user_app')
             ->with('user_assign')
+            ->orderBy('updated_at', 'desc')
             ->orderBy('id', 'desc')
             ->get();
     }
@@ -135,6 +136,7 @@ class ProjectRepository implements ProjectRepositoryInterface
             ->with('positions')
             ->with('skills')
             ->where('decided', 0)
+            ->orderBy('updated_at', 'desc')
             ->orderBy('id', 'desc')
             ->get();
     }
