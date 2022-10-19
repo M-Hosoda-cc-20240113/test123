@@ -91,7 +91,7 @@
                     @endforeach
                   @endif
                   <input class="c-input p-userRegister__input u-w-100-sp" type="date"
-                         name="birthday" value="{{ old('birthday') }}">
+                         name="birthday" value="{{ old('birthday') ?? '1998-01-01' }}">
                 </div>
               </div>
             </div>
