@@ -3,6 +3,7 @@
    * @var \App\Services\AdminProject\ShowEditProjectForm\ShowEditProjectFormResponse $response
    */
 @endphp
+
 @extends('front.layout')
 @section('title', '案件編集|Aegis')
 
