@@ -1,7 +1,5 @@
 # aegis環境構築
 
-GitlabにてAegisプロジェクトに参加
-
 リポジトリaegisをローカルにクローン
 
 クローンが終わったらコンテナを立ち上げる（初めての場合結構時間かかります）
@@ -34,7 +32,6 @@ compose install が終わったら「.env」の作成（コンテナ内）
 
 ```bash
 cp .env.example .env
-
 ```
 
 「.env」を作成したら.envのDBとHASHの設定を追加・編集
