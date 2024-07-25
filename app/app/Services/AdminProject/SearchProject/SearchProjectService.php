@@ -126,7 +126,7 @@ class SearchProjectService
         $projects = $this->getResultMerged($search_results);
         $max_count = max($count_skill ?? 0, $count_position ?? 0);
         $response = new SearchProjectResponse();
-        $response->setProjects($this->paginator_service->paginate($projects));
+        $response->setProjects($this->paginator_service->paginate($projects, 9));
         $response->setProjectCounts($projects->count());
         $response->setStations($stations);
         $response->setAreas($areas);
@@ -144,7 +144,8 @@ class SearchProjectService
      * @param Collection[] $search_results 検索結果たち
      * @return Collection
      */
-    private function getResultMerged(array $search_results): Collection {
+    private function getResultMerged(array $search_results): Collection
+    {
         $merged = collect();
         foreach ($search_results as $search_result) {
             $merged = $merged->merge($search_result);
@@ -156,7 +157,8 @@ class SearchProjectService
      * @param Collection $projects
      * @return array
      */
-    private function gatherSearchdIds(Collection $projects): array {
+    private function gatherSearchdIds(Collection $projects): array
+    {
         return $projects->map(static function ($item) {
             return $item->id;
         })->toArray();

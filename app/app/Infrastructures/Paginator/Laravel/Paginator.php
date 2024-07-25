@@ -25,7 +25,9 @@ class Paginator implements PaginatorInterface
         $item_for_current_page = $items->slice($off_set, $per_page);
 
         return new LengthAwarePaginator(
-            $item_for_current_page, $items->count(), $per_page,
+            $item_for_current_page,
+            $items->count(),
+            $per_page,
             LaravelPaginator::resolveCurrentPage(),
             ['path' => LaravelPaginator::resolveCurrentPath()]
         );

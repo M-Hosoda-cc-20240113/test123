@@ -3,7 +3,6 @@
 
 namespace App\Services\AdminUser\DeleteUser;
 
-
 /**
  * Class DeleteUserParameter
  * @package App\Services\AdminUser\DeleteUSer

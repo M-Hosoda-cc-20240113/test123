@@ -83,7 +83,7 @@
       <div class="p-searchBox u-mt-20">
         <input name="keyword" class="c-input--light p-searchBox__input js-search_input" type="text"
                value="{{ request()->input('keyword') }}"
-               placeholder="PHP JavaScript">
+               placeholder="PHP JavaScript Laravel">
         <button type="submit" class="c-button--secondary p-searchBox__button js-project_search"
                 data-search-url="{{ route('front.project.search') }}">検索
         </button>

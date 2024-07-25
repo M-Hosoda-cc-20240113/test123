@@ -1,4 +1,4 @@
-FROM mysql@sha256:dce31fcdd15aaedb5591aa89f19ec37cb79981af46511781fa41287d88ed0abd
+FROM --platform=linux/x86_64 mysql@sha256:dce31fcdd15aaedb5591aa89f19ec37cb79981af46511781fa41287d88ed0abd
 
 ENV MYSQL_DATABASE=aegis \
   MYSQL_USER=developer \
@@ -8,6 +8,8 @@ ENV MYSQL_DATABASE=aegis \
 
 COPY ./my.cnf /etc/mysql/conf.d/my.cnf
 RUN chmod 644 /etc/mysql/conf.d/my.cnf
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B7B3B788A8D3785C
+
 # Japanese
 RUN apt-get update \
     && apt-get install -y locales \
