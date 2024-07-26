@@ -114,6 +114,5 @@
     </div>
   </div>
 
-
   @include('front.footer.footer')
 @endsection
